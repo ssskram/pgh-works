@@ -20,13 +20,8 @@ export class Home extends React.Component<any, any> {
 
     public render() {
         return <div className="home-container">
-            <img src='./images/ip.png' className="img-responsive center-block home-image" />
             <div className='text-center'>
                 <h1>PGH SPA w/ Redux</h1>
-                <div className="row text-center">
-                    <Messages messages={this.props.messages} />
-                </div>
-                <hr />
             </div>
             <div className='row'>
                 <div className='col-md-4 text-center'>
