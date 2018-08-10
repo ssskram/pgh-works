@@ -4,6 +4,25 @@ import * as User from '../store/user';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 
+const btnWidth = {
+    width: '93%'
+}
+
+const imgSize = {
+    height: '50px'
+}
+
+const marginTop = {
+    marginTop: '18px',
+}
+
+const iconStyle = {
+    height: '28px',
+    marginTop: '-3px',
+    marginLeft: '5px',
+    marginRight: '15px'
+}
+
 export class NavMenu extends React.Component<any, any>  {
     constructor(props) {
         super(props);
@@ -34,22 +53,39 @@ export class NavMenu extends React.Component<any, any>  {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={'/'} data-toggle="collapse" data-target=".in">pgh <strong>Works</strong></Link>
+                    <Link className='navbar-brand' to={'/'} data-toggle="collapse" data-target=".in">
+                        <div style={marginTop} className='pull-left'>pgh <strong>Works</strong></div>
+                        <div><img style={imgSize} className='pull-right hidden-md hidden-sm hidden-xs' src='./images/construction.png' /></div>
+                    </Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
-                        <li className="sidenav-header">Services</li>
                         <li>
-                            <NavLink to={'/Survey'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span className='glyphicon glyphicon-list'></span> Survey
+                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/list.png' /></span> All projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/Map'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span className='glyphicon glyphicon-map-marker'></span> Map
+                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/timeline.png' /></span> Timelines
+                            </NavLink>
+                        </li>
+                        <div className='text-center'>
+                            <NavLink to={'/'} style={btnWidth} className='btn btn-primary'>
+                                <b>Add a Project</b>
+                            </NavLink>
+                        </div>
                         <div className='accountcontainer'>
                             <li className="account">{user}</li>
                             <li className='logout'>
