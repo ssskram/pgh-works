@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import * as User from '../store/user';
-import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
+import * as React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import * as User from '../store/user'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../store'
+import Modal from 'react-responsive-modal'
 
 const btnWidth = {
     width: '93%'
@@ -23,6 +24,10 @@ const iconStyle = {
     marginRight: '15px'
 }
 
+const modalLogout = {
+    color: '#383838',
+}
+
 export class NavMenu extends React.Component<any, any>  {
     constructor(props) {
         super(props);
@@ -41,13 +46,28 @@ export class NavMenu extends React.Component<any, any>  {
         self.setState({ user: props.user })
     }
 
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        });
+    }
+
+    navModal() {
+        this.setState({
+            modalIsOpen: true
+        })
+    }
+
     public render() {
-        const { user } = this.state
+        const {
+            user,
+            modalIsOpen
+        } = this.state
 
         return <div className='main-nav'>
             <div className='navbar navbar-inverse'>
                 <div className='navbar-header'>
-                    <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                    <button onClick={this.navModal.bind(this)} type='button' className='navbar-toggle'>
                         <span className='sr-only'>Toggle navigation</span>
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
@@ -87,16 +107,53 @@ export class NavMenu extends React.Component<any, any>  {
                             </NavLink>
                         </div>
                         <div className='accountcontainer'>
-                            <li className="account">{user}</li>
-                            <li className='logout'>
-                                <a href='/Account/Login' id="logout" className='btn btn-link navbar-logout-btn navbar-link'>
-                                    <span className='glyphicon glyphicon-user'></span>Logout
+                            <div className="account">{user}</div>
+                            <div className='logout'>
+                                <a href='/Account/Login' id="logout" className='btn btn-link navbar-logout-btn'>
+                                    <span className='glyphicon glyphicon-user nav-glyphicon'></span>Logout
                                 </a>
-                            </li>
+                            </div>
                         </div>
                     </ul>
                 </div>
             </div>
+            <Modal
+                open={modalIsOpen}
+                onClose={this.closeModal.bind(this)}
+                classNames={{
+                    overlay: 'custom-overlay',
+                    modal: 'custom-modal'
+                }}
+                center>
+                <div className='col-md-12'>
+                    <br />
+                    <br />
+                    <div className='text-center'>
+                        <Link onClick={this.closeModal.bind(this)} to={'/Items'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/list.png' /></span> <b>All Projects</b>
+                        </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
+                    </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/UnitsOfIssue'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
+                    </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/WhatsAnEmergency'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/timeline.png' /></span> Timelines
+                    </Link>
+                    </div>
+                    <div className='accountcontainer'>
+                        <div style={modalLogout} className="account">{user}</div>
+                        <div  style={modalLogout} className='logout'>
+                            <NavLink  style={modalLogout} to={'/Account/Login'} activeClassName='active' id="logout" className='btn btn-link navbar-logout-btn'>
+                                <span className='glyphicon glyphicon-user nav-glyphicon'></span>Logout
+                            </NavLink>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </Modal>
         </div>;
     }
 }

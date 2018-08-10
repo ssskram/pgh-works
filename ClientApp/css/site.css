@@ -170,6 +170,12 @@ hr {
 
 .navbar-inverse .navbar-toggle {
     border-color: transparent !important;
+    margin-top: 20px;
+}
+
+.icon-bar {
+    width: 30px !important;
+    height: 5px !important;
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
@@ -207,7 +213,33 @@ hr {
 
 .navbar-logout-btn {
     padding: 7px 5px 5px 5px !important;
+    border-radius: 4px;
 }
+
+.navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link:focus {
+    color: #fffaee;
+}
+
+.navbar-inverse .btn-link {
+    color: #fffaee;
+}
+
+.btn-link {
+    margin-top: 5px;
+}
+
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+    border: .5px solid #fffaee;
+    background-color: transparent !important;
+}
+
+.nav-glyphicon {
+    margin-right: 10px;
+}
+
 
 /* Forms
 /* ------------------------- */
