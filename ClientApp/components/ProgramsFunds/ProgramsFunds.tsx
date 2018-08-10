@@ -14,6 +14,8 @@ export class ProgramsFunds extends React.Component<any, any> {
     public render() {
         return (
             <div>
+                <h2>Programs & Funds</h2>
+                <hr/>
             </div>
         )
     }

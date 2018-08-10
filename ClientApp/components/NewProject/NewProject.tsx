@@ -14,7 +14,8 @@ export class NewProject extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                New project
+                <h2>New project</h2>
+                <hr/>
             </div>
         )
     }

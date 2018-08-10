@@ -14,6 +14,8 @@ export class Timeline extends React.Component<any, any> {
     public render() {
         return (
             <div>
+                <h2>Timelines</h2>
+                <hr/>
             </div>
         )
     }

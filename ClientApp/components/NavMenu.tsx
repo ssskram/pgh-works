@@ -83,23 +83,23 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/AllProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
                                 <span><img style={iconStyle} src='./images/list.png' /></span> All projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/MyProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
                                 <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/Programs'} activeClassName='active' data-toggle="collapse" data-target=".in">
                                 <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span><img style={iconStyle} src='./images/timeline.png' /></span> Timelines
+                            <NavLink to={'/Timeline'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
                             </NavLink>
                         </li>
                         <div className='text-center'>
@@ -130,17 +130,17 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <br />
                     <div className='text-center'>
-                        <Link onClick={this.closeModal.bind(this)} to={'/Items'} style={btnWidth} className='btn btn-primary'>
+                        <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
                         <span><img style={iconStyle} src='./images/list.png' /></span> <b>All Projects</b>
                         </Link>
-                        <Link onClick={this.closeModal.bind(this)} to={'/'} style={btnWidth} className='btn btn-primary'>
+                        <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
                         <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
                     </Link>
-                        <Link onClick={this.closeModal.bind(this)} to={'/UnitsOfIssue'} style={btnWidth} className='btn btn-primary'>
+                        <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
                         <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                     </Link>
-                        <Link onClick={this.closeModal.bind(this)} to={'/WhatsAnEmergency'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/timeline.png' /></span> Timelines
+                        <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
                     </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/NewProject'} style={btnWidth} className='btn btn-primary'>
                         <span><img style={iconStyle} src='./images/add.png' /></span> New Project

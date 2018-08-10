@@ -14,6 +14,8 @@ export class MyProjects extends React.Component<any, any> {
     public render() {
         return (
             <div>
+                <h2>My Projects</h2>
+                <hr/>
             </div>
         )
     }
