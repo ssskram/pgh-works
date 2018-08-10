@@ -103,7 +103,7 @@ export class NavMenu extends React.Component<any, any>  {
                             </NavLink>
                         </li>
                         <div className='text-center'>
-                            <NavLink to={'/'} style={btnWidth} className='btn btn-primary'>
+                            <NavLink to={'/NewProject'} style={btnWidth} className='btn btn-primary'>
                                 <b>Add a Project</b>
                             </NavLink>
                         </div>
@@ -141,6 +141,9 @@ export class NavMenu extends React.Component<any, any>  {
                     </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/WhatsAnEmergency'} style={btnWidth} className='btn btn-primary'>
                         <span><img style={iconStyle} src='./images/timeline.png' /></span> Timelines
+                    </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/NewProject'} style={btnWidth} className='btn btn-primary'>
+                        <span><img style={iconStyle} src='./images/add.png' /></span> New Project
                     </Link>
                     </div>
                     <div className='accountcontainer'>

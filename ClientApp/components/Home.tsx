@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import * as Ping from '../store/ping';
 import * as MessagesStore from '../store/messages';
+import Map from './Map/Map'
+import { Helmet } from "react-helmet"
 
 export class Home extends React.Component<any, any> {
 
@@ -18,17 +20,11 @@ export class Home extends React.Component<any, any> {
     }
 
     public render() {
-        return <div className="home-container">
-            <div className='text-center'>
-            </div>
-            <div className='row'>
-                <div className='col-md-4 text-center'>
-                </div>
-                <div className='col-md-4 text-center'>
-                </div>
-                <div className='col-md-4 text-center'>
-                </div>
-            </div>
+        return <div>
+            <Helmet>
+                <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } '}</style>
+            </Helmet>
+            <Map />
         </div>;
     }
 }

@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "dependencies": {
     "@types/google-maps-react": "file:./Types/google-maps-react",
+    "@types/googlemaps": "^3.30.11",
     "@types/history": "4.6.0",
+    "@types/markerclustererplus": "^2.1.33",
     "@types/react": "15.0.35",
     "@types/react-dom": "15.5.1",
     "@types/react-hot-loader": "3.0.3",
@@ -32,6 +34,8 @@
     "node-noop": "1.0.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
+    "react-google-maps": "^9.4.5",
+    "react-helmet": "^5.2.0",
     "react-hot-loader": "3.0.0-beta.7",
     "react-places-autocomplete": "^7.2.0",
     "react-redux": "5.0.5",

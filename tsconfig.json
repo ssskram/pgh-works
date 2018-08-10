@@ -14,7 +14,9 @@
       "dom"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "googlemaps",
+      "markerclustererplus"
     ],
     "noImplicitAny": false
   },

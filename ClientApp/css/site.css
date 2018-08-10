@@ -1,14 +1,16 @@
 /* Core
 /* ------------------------- */
 
-html, body {
+html {
     height: 100% !important;
+    width: 100% !important;
 }
 
 body {
     background-color: rgba(255, 250, 238, .5);
     font-family: 'Raleway', sans-serif;
     letter-spacing: .5px;
+    padding: 45px 50px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -44,9 +46,10 @@ hr {
 /* ------------------------- */
 
 @media (max-width: 767px) {
-    body {
-        padding-top: 50px;
+    body { 
+        padding: 110px 50px;
     }
+
     .main-nav {
         z-index: 100000;
         height: auto;
@@ -513,7 +516,7 @@ textarea {
 
 #map {
     height: 100vh;
-    margin-left: -15px;
+    width: 100%;
 }
 
 a[href^="http://maps.google.com/maps"] {
