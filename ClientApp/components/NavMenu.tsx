@@ -32,7 +32,8 @@ export class NavMenu extends React.Component<any, any>  {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user
+            user: this.props.user,
+            modalIsOpen: false
         }
     }
 
@@ -145,7 +146,7 @@ export class NavMenu extends React.Component<any, any>  {
                     <div className='accountcontainer'>
                         <div style={modalLogout} className="account">{user}</div>
                         <div  style={modalLogout} className='logout'>
-                            <NavLink  style={modalLogout} to={'/Account/Login'} activeClassName='active' id="logout" className='btn btn-link navbar-logout-btn'>
+                            <NavLink style={modalLogout} to={'/Account/Login'} activeClassName='active'  id="logout" className='btn btn-link navbar-logout-btn'>
                                 <span className='glyphicon glyphicon-user nav-glyphicon'></span>Logout
                             </NavLink>
                         </div>
