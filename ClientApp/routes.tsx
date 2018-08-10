@@ -3,11 +3,11 @@ import { Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import Home from './components/Home'
 import { Login } from './components/Account/Login'
-import NewProject from './components/NewProject/NewProject'
+import NewProject from './components/NewProject/Container'
 import ProgramsFunds from './components/ProgramsFunds/ProgramsFunds'
 import AllProjects from './components/ProjectLists/AllProjects'
 import MyProjects from './components/ProjectLists/MyProjects'
-import Timeline from './components/Timeline/Timeline'
+import Timeline from './components/Timeline/Container'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
