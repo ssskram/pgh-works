@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/ping'
+import { Helmet } from "react-helmet"
 
 export class NewProject extends React.Component<any, any> {
 
@@ -14,8 +15,13 @@ export class NewProject extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h2>New project</h2>
-                <hr/>
+                <Helmet>
+                    <style>{' body { background-color: rgb(44, 62, 80) } '}</style>
+                </Helmet>
+                <div className='floating-div'>
+                    <h2>New project</h2>
+                    <hr />
+                </div>
             </div>
         )
     }
@@ -28,4 +34,4 @@ export default connect(
     ({
         ...Ping.actionCreators
     })
-  )(NewProject as any) as typeof NewProject
+)(NewProject as any) as typeof NewProject

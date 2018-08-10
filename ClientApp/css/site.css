@@ -13,6 +13,14 @@ body {
     padding: 45px 0px;
 }
 
+.floating-div {
+    margin: 25px;
+    background-color: #fffaee;
+    padding: 40px;
+    height: 100%;
+    border-radius: 5px;
+}
+
 h1, h2, h3, h4, h5 {
     color: #383838;
     font-family: 'Raleway', sans-serif;
