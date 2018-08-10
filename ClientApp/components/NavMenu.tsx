@@ -83,13 +83,13 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <NavLink to={'/AllProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span><img style={iconStyle} src='./images/list.png' /></span> All projects
+                            <NavLink to={'/MyProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/MyProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
+                            <NavLink to={'/AllProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/list.png' /></span> All projects
                             </NavLink>
                         </li>
                         <li>
@@ -131,25 +131,25 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <div className='text-center'>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/list.png' /></span> <b>All Projects</b>
+                            <span><img style={iconStyle} src='./images/list.png' /></span> <b>All Projects</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
+                            <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
                     </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
+                            <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                     </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
+                            <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
                     </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/NewProject'} style={btnWidth} className='btn btn-primary'>
-                        <span><img style={iconStyle} src='./images/add.png' /></span> New Project
+                            <span><img style={iconStyle} src='./images/add.png' /></span> New Project
                     </Link>
                     </div>
                     <div className='accountcontainer'>
                         <div style={modalLogout} className="account">{user}</div>
-                        <div  style={modalLogout} className='logout'>
-                            <NavLink style={modalLogout} to={'/Account/Login'} activeClassName='active'  id="logout" className='btn btn-link navbar-logout-btn'>
+                        <div style={modalLogout} className='logout'>
+                            <NavLink style={modalLogout} to={'/Account/Login'} activeClassName='active' id="logout" className='btn btn-link navbar-logout-btn'>
                                 <span className='glyphicon glyphicon-user nav-glyphicon'></span>Logout
                             </NavLink>
                         </div>
