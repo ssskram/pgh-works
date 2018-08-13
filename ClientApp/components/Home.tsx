@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import * as Ping from '../store/ping';
 import * as MessagesStore from '../store/messages';
-import Map from './Map/Map'
+import Map from './Map/HomeMap'
 import { Helmet } from "react-helmet"
 
 export class Home extends React.Component<any, any> {

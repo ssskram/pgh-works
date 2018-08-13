@@ -154,7 +154,7 @@ hr {
 
 .navbar-brand {
     color: #fffaee !important;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -514,8 +514,18 @@ textarea {
 /* Google map
 /* ------------------------- */
 
-#map {
+#home-map {
     height: 100vh;
+    width: 100%;
+}
+
+#polygon-draw {
+    height: 600px;
+    width: 700px;
+}
+
+#single-project {
+    height: 300px;
     width: 100%;
 }
 
