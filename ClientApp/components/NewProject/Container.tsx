@@ -3,8 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/ping'
-
-import Geolocate from './1 - Geolocate/Geolocate'
+import Geolocate from './Geolocate/Geolocate'
 
 export class NewProject extends React.Component<any, any> {
     constructor() {

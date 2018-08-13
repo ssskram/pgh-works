@@ -55,7 +55,7 @@ export default class Geolocate extends React.Component<any, any> {
                 <h2><b>Project location</b></h2>
                 {shape.length > 0 &&
                     <div>
-                        <Map />
+                        <Map shape={shape}/>
                         <button onClick={this.props.next} className='btn btn-success'>Continue</button>
                     </div>
 

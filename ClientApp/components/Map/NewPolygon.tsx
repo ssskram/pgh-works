@@ -11,7 +11,7 @@ export default class PolygonGeneration extends React.Component<any, any> {
 
         for (var i = 0; i < vertices.getLength(); i++) {
             var xy = vertices.getAt(i);
-            var coord = { "Lat": xy.lat(), "Lng": xy.lng() }
+            var coord = { lat : xy.lat(), lng: xy.lng() }
             shape.push(coord)
         }
 
@@ -41,16 +41,8 @@ export default class PolygonGeneration extends React.Component<any, any> {
                             position: google.maps.ControlPosition.TOP_CENTER,
                             drawingModes: [
                                 google.maps.drawing.OverlayType.POLYGON
-                            ],
-                        },
-                        circleOptions: {
-                            fillColor: `#ffff00`,
-                            fillOpacity: 1,
-                            strokeWeight: 5,
-                            clickable: false,
-                            editable: true,
-                            zIndex: 1,
-                        },
+                            ]
+                        }
                     }}
                     {...props}
                     onOverlayComplete={this.handleOverlayComplete}
