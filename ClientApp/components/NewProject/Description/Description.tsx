@@ -10,7 +10,8 @@ export class ProjectDescription extends React.Component<any, any> {
         return (
             <div>
                 <Map shape={this.props.shape}/>
-                <h4>Description</h4>
+                <h4><i>Fields for project description go here</i></h4>
+                
             </div>
         )
     }

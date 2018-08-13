@@ -12,7 +12,7 @@ export class ImportShape extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h2>Search and select asset</h2>
+                <h3>Import shape</h3>
                 <hr/>
                 <div className='row col-md-12'>
                    <i>Interface for searching & selecting shape-bound asset from Cartegraph</i>
