@@ -123,10 +123,6 @@ hr {
     z-index: 2;
 }
 
-.main-nav li .glyphicon {
-    margin-right: 10px;
-}
-
 .main-nav li a.active:focus {
     background-color: rgb(26, 36, 47);
     color: #fffaee !important;
@@ -374,6 +370,13 @@ textarea {
     border: 1px solid #BF1E2E;
 }
 
+.btn-big {
+    font-size: 22px;
+    padding: 15px 40px !important;
+    width: 80%;
+    line-height: 1.5em;
+    margin: 20px 0px !important;
+}
 
 /* Panels
 /* ------------------------- */

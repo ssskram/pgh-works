@@ -14,6 +14,9 @@ export class ImportShape extends React.Component<any, any> {
             <div>
                 <h2>Search and select asset</h2>
                 <hr/>
+                <div className='row col-md-12'>
+                   <i>Interface for searching & selecting shape-bound asset from Cartegraph</i>
+                </div>
             </div>
         )
     }

@@ -5,6 +5,19 @@ import Import from './ImportShape'
 import New from './NewShape'
 import Map from './../../Map/ProjectMap'
 
+const imgSize = {
+    height: '100px'
+}
+
+const bigFont = {
+    fontSize: '30px'
+}
+
+const saveBtn = {
+    fontSize: '22px',
+    padding: '15px'
+}
+
 export default class Geolocate extends React.Component<any, any> {
     constructor() {
         super();
@@ -52,18 +65,62 @@ export default class Geolocate extends React.Component<any, any> {
 
         return (
             <div className='text-center' >
-                <h2><b>Project location</b></h2>
                 {shape.length > 0 &&
                     <div>
-                        <Map shape={shape}/>
-                        <button onClick={this.props.next} className='btn btn-success'>Continue</button>
+                        <Map shape={shape} />
+                        <br />
+                        <div className='row'>
+                            <button style={saveBtn} onClick={this.props.next} className='btn btn-success'>
+                                <b>
+                                    Save and continue
+                                </b>
+                            </button>
+                        </div>
+                        <div className='row'>
+                            <button onClick={this.newShape.bind(this)} className='btn btn-warning'>
+                                Draw a new shape
+                        </button>
+                        </div>
+                        <div className='row'>
+                            <button onClick={this.importShape.bind(this)}  className='btn btn-warning'>
+                                Import a different shape
+                        </button>
+                        </div>
                     </div>
 
                 }
                 {shape.length == 0 &&
                     <div>
-                        <button onClick={this.importShape.bind(this)} className='btn btn-primary'>Import shape</button>
-                        <button onClick={this.newShape.bind(this)} className='btn btn-primary'>New shape</button>
+                        <button onClick={this.newShape.bind(this)} className='btn btn-primary btn-big'>
+                            <div className='row'>
+                                <div className='col-md-2'>
+                                    <img style={imgSize} src='./images/polygon.png' />
+                                </div>
+                                <div className='col-md-10'>
+                                    <div className='row'>
+                                        <span style={bigFont}><b>New shape</b></span>
+                                    </div>
+                                    <div className='row'>
+                                        <i>Using an interactive map, draw a polygon that will serve as the geographical bounds for your project</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        <button onClick={this.importShape.bind(this)} className='btn btn-primary btn-big'>
+                            <div className='row'>
+                                <div className='col-md-2'>
+                                    <img style={imgSize} src='./images/importShape.png' />
+                                </div>
+                                <div className='col-md-10'>
+                                    <div className='row'>
+                                        <span style={bigFont}><b>Import shape</b></span>
+                                    </div>
+                                    <div className='row'>
+                                        <i>Import an existing shape from a facility, park, intersection, project, or other geospatial asset defined within Cartegraph</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
                     </div>
                 }
                 <Modal
