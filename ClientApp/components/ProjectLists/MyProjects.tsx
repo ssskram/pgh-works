@@ -16,6 +16,7 @@ export class MyProjects extends React.Component<any, any> {
             <div>
                 <h2>My Projects</h2>
                 <hr/>
+                <i className='text-center'>Return filterable list of projects where user is identified as either the project manager, or project member</i>
             </div>
         )
     }

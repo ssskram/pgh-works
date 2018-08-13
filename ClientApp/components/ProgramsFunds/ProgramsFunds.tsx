@@ -16,6 +16,7 @@ export class ProgramsFunds extends React.Component<any, any> {
             <div>
                 <h2>Programs & Funds</h2>
                 <hr/>
+                <i className='text-center'>Return filterable list of programs/funding sources</i>
             </div>
         )
     }

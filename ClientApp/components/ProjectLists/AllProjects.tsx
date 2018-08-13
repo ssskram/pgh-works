@@ -16,6 +16,7 @@ export class AllProjects extends React.Component<any, any> {
             <div>
                 <h2>All Projects</h2>
                 <hr/>
+                <i className='text-center'>Return filterable list of all projects in system</i>
             </div>
         )
     }
