@@ -75,7 +75,7 @@ export class NavMenu extends React.Component<any, any>  {
                         <span className='icon-bar'></span>
                     </button>
                     <Link className='navbar-brand' to={'/'} data-toggle="collapse" data-target=".in">
-                        <div style={marginTop} className='pull-left'>pgh <strong>Works</strong></div>
+                        <div style={marginTop} className='pull-left'>PGH <strong>Works</strong></div>
                         <div><img style={imgSize} className='pull-right hidden-md hidden-sm hidden-xs' src='./images/construction.png' /></div>
                     </Link>
                 </div>
