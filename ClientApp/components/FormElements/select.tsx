@@ -21,13 +21,12 @@ export default class input extends React.Component<any, any> {
                         value={this.props.value}
                         onChange={this.props.onChange.bind(this)}
                         options={this.props.options}
-
-
                         closeOnSelect={!this.props.multi}
                         simpleValue={this.props.multi}
                         removeSelected={this.props.multi}
                         multi={this.props.multi}
                         clearable={this.props.multi}
+                        delimiter=', '
                     />
                 </div>
             </div>
