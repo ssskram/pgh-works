@@ -55,6 +55,7 @@
     "style-loader": "^0.18.2",
     "typescript": "2.4.1",
     "url-loader": "^0.5.9",
+    "uuid": "^3.3.2",
     "vis": "^4.21.0",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",

@@ -28,6 +28,14 @@ export default class Geolocate extends React.Component<any, any> {
         }
     }
 
+    componentDidMount () {
+        if (this.props.shape) {
+            this.setState({
+                shape: this.props.shape
+            })
+        }
+    }
+
     closeModal() {
         this.setState({
             modalIsOpen: false

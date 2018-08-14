@@ -1,26 +1,51 @@
 
 import * as React from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/ping'
+import * as User from '../../store/user'
 import Geolocate from './Geolocate/Geolocate'
 import ProjectDescription from './Description/Description'
+import * as moment from 'moment'
+import { v1 as uuid } from 'uuid'
 
 export class NewProject extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             step: 1,
+            redirect: false,
 
             // project state
-            shape: []
+            projectID: '',
+            shape: [],
+            projectName: '',
+            startDate: '',
+            endDate: '',
+            projectManager: '',
+            projectMembers: '',
+            projectDescription: '',
+            projectStatus: '',
+            expectedCost: '',
+            actualCost: '',
+            notes: '',
+            created: moment(),
+            createdBy: this.props.user,
+            lastModifiedBy: this.props.user
         }
     }
 
     componentDidMount() {
         // ping server
         this.props.ping()
+
+        // generate uuid for projectID
+        const guid: string = uuid()
+        this.setState({
+            projectID: guid
+        })
     }
 
     setShape(shape) {
@@ -41,11 +66,42 @@ export class NewProject extends React.Component<any, any> {
         })
     }
 
+    post() {
+
+        // add to project store 
+
+        // post to cartegraph
+
+        this.setState({
+            redirect: true
+        })
+    }
+
     public render() {
         const {
             step,
-            shape
+            redirect,
+
+            // state
+            projectID,
+            shape,
+            projectName,
+            startDate,
+            endDate,
+            projectManager,
+            projectMembers,
+            projectDescription,
+            projectStatus,
+            expectedCost,
+            actualCost,
+            notes
         } = this.state
+
+        const link = "/Project/id=" + projectID
+
+        if (redirect) {
+            return <Redirect to={link} />
+        }
 
         return (
             <div>
@@ -65,11 +121,13 @@ export class NewProject extends React.Component<any, any> {
                         <Geolocate
                             next={this.next.bind(this)}
                             setShape={this.setShape.bind(this)}
+                            shape={shape}
                         />
                     }
                     {step == 2 &&
                         <ProjectDescription
-                            shape={shape}
+                            back={this.back.bind(this)}
+                            post={this.post.bind(this)}
                         />
                     }
                 </div>
@@ -80,9 +138,11 @@ export class NewProject extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.ping
+        ...state.ping,
+        ...state.user
     }),
     ({
-        ...Ping.actionCreators
+        ...Ping.actionCreators,
+        ...User.actionCreators
     })
 )(NewProject as any) as typeof NewProject

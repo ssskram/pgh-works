@@ -5,6 +5,14 @@ import { ApplicationState } from '../../../store'
 import ProjectFields from './../../Inputs/Project'
 import * as moment from 'moment'
 
+const paddingLeft = {
+    paddingLeft: '25px'
+}
+
+const paddingRight = {
+    paddingRight: '25px'
+}
+
 export class ProjectDescription extends React.Component<any, any> {
     constructor() {
         super();
@@ -30,11 +38,8 @@ export class ProjectDescription extends React.Component<any, any> {
         this.setState({ [event.name]: event.value });
     }
 
-    handleMultiSelect (field, value) {
-        console.log('here')
-        console.log(field)
-        console.log(value)
-        this.setState({ [field] : value })
+    handleMultiSelect(field, value) {
+        this.setState({ [field]: value })
     }
 
     handleStartDate(date) {
@@ -72,6 +77,17 @@ export class ProjectDescription extends React.Component<any, any> {
                     handleStartDate={this.handleStartDate.bind(this)}
                     handleEndDate={this.handleEndDate.bind(this)}
                 />
+
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <div className='col-sm-6 text-center'>
+                            <button className='btn btn-warning' onClick={this.props.back}><span style={paddingRight} className='glyphicon glyphicon-arrow-left'></span>Previous</button>
+                        </div>
+                        <div className='col-sm-6 text-center'>
+                            <button className='btn btn-success' onClick={this.props.post}>Next<span style={paddingLeft} className='glyphicon glyphicon-arrow-right'></span></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
