@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
-import * as Ping from '../store/ping';
-import * as MessagesStore from '../store/messages';
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../store'
+import * as Ping from '../store/ping'
+import * as Projects from '../store/projects'
 import Map from './Map/HomeMap'
 import { Helmet } from "react-helmet"
 
@@ -13,11 +13,11 @@ export class Home extends React.Component<any, any> {
 
         // ping server
         this.props.ping()
+
+        // load projects
+        this.props.loadProjects()
     }
 
-    componentWillUnmount() {
-        this.props.clear()
-    }
 
     public render() {
         return <div>
@@ -35,7 +35,7 @@ export default connect(
         ...state.ping
     }),
     ({
-        ...MessagesStore.actionCreators,
+        ...Projects.actionCreators,
         ...Ping.actionCreators
     })
 )(Home as any) as typeof Home;

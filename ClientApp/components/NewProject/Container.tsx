@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/ping'
 import * as User from '../../store/user'
+import * as Projects from '../../store/projects'
 import Geolocate from './Geolocate/Geolocate'
 import ProjectDescription from './Description/Description'
 import * as moment from 'moment'
@@ -69,6 +70,7 @@ export class NewProject extends React.Component<any, any> {
     post() {
 
         // add to project store 
+        this.props.addProject(this.state)
 
         // post to cartegraph
 
@@ -139,10 +141,12 @@ export class NewProject extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
-        ...state.user
+        ...state.user,
+        ...state.projects
     }),
     ({
         ...Ping.actionCreators,
-        ...User.actionCreators
+        ...User.actionCreators,
+        ...Projects.actionCreators
     })
 )(NewProject as any) as typeof NewProject
