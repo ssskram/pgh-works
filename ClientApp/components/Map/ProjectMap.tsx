@@ -5,11 +5,11 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-ma
 export default class ProjectMap extends React.Component<any, any> {
 
     render() {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < this.props.shape.length; i++) {
-            bounds.extend(this.props.shape[i]);
-        }
+        // const bounds = new google.maps.LatLngBounds()
+        // var i
+        // for (i = 0; i < this.props.shape.length; i++) {
+        //     bounds.extend(this.props.shape[i]);
+        // }
 
         const MapComponent = compose(
             withProps({
@@ -23,7 +23,7 @@ export default class ProjectMap extends React.Component<any, any> {
         )((props) =>
             <GoogleMap
                 defaultZoom={15}
-                ref={(map) => { if (map) map.fitBounds(bounds) }}
+                // ref={(map) => { if (map) map.fitBounds(bounds) }}
             >
                 <Polygon
                     paths={[this.props.shape]}
