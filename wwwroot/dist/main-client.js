@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8e5a906d1ea97a0ed87"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "53c31bd5c27057e67b94"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6907,19 +6907,20 @@ var ProjectMap = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ProjectMap.prototype.render = function () {
-        // const bounds = new google.maps.LatLngBounds()
-        // var i
-        // for (i = 0; i < this.props.shape.length; i++) {
-        //     bounds.extend(this.props.shape[i]);
-        // }
         var _this = this;
+        var bounds = new google.maps.LatLngBounds();
+        var i;
+        for (i = 0; i < this.props.shape.length; i++) {
+            bounds.extend(this.props.shape[i]);
+        }
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 15 },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 15, ref: function (map) { if (map)
+                    map.fitBounds(bounds); } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [_this.props.shape] }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
