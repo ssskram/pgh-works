@@ -66,6 +66,10 @@ export class ProjectDescription extends React.Component<any, any> {
         }
     }
 
+    post() {
+        this.props.post(this.state)
+    }
+
     public render() {
         return (
             <div>
@@ -84,7 +88,7 @@ export class ProjectDescription extends React.Component<any, any> {
                             <button className='btn btn-warning' onClick={this.props.back}><span style={paddingRight} className='glyphicon glyphicon-arrow-left'></span>Previous</button>
                         </div>
                         <div className='col-sm-6 text-center'>
-                            <button className='btn btn-success' onClick={this.props.post}>Next<span style={paddingLeft} className='glyphicon glyphicon-arrow-right'></span></button>
+                            <button className='btn btn-success' onClick={this.post.bind(this)}>Next<span style={paddingLeft} className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </div>
                 </div>

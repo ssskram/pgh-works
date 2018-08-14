@@ -67,10 +67,23 @@ export class NewProject extends React.Component<any, any> {
         })
     }
 
-    post() {
+    post(projectDesc) {
 
-        // add to project store 
-        this.props.addProject(this.state)
+        this.setState({
+            projectName: projectDesc.projectName,
+            startDate: projectDesc.startDate,
+            endDate: projectDesc.endDate,
+            projectManager: projectDesc.projectManager,
+            projectMembers: projectDesc.projectMembers,
+            projectDescription: projectDesc.projectDescription,
+            projectStatus: projectDesc.projectStatus,
+            expectedCost: projectDesc.expectedCost,
+            actualCost: projectDesc.actualCost,
+            notes: projectDesc.notes
+        }, function (this) {
+            // add to project store 
+            this.props.addProject(this.state)
+        })
 
         // post to cartegraph
 
@@ -83,20 +96,8 @@ export class NewProject extends React.Component<any, any> {
         const {
             step,
             redirect,
-
-            // state
             projectID,
-            shape,
-            projectName,
-            startDate,
-            endDate,
-            projectManager,
-            projectMembers,
-            projectDescription,
-            projectStatus,
-            expectedCost,
-            actualCost,
-            notes
+            shape
         } = this.state
 
         const link = "/Project/id=" + projectID
