@@ -5,6 +5,7 @@ import { ApplicationState } from '../../store'
 import * as Statuses from '../../store/GETS/status'
 import * as Personnel from '../../store/GETS/personnel'
 import Input from '../FormElements/input'
+import Currency from '../FormElements/currency'
 import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
@@ -33,6 +34,14 @@ export class ProjectInputs extends React.Component<any, any> {
 
     handleChildChange(event) {
         this.props.handleInput(event)
+    }
+
+    handleActualCost(event, maskedvalue, floatvalue) {
+        this.props.handleActualCost(maskedvalue)
+    }
+
+    handleExpectedCost(event, maskedvalue, floatvalue) {
+        this.props.handleExpectedCost(maskedvalue)
     }
 
     handleChildSelect(event) {
@@ -158,22 +167,22 @@ export class ProjectInputs extends React.Component<any, any> {
                 </div>
 
                 <div className='col-md-6'>
-                    <Input
+                    <Currency
                         value={expectedCost}
                         name="expectedCost"
                         header="Expected cost"
                         placeholder="Enter an amount"
-                        callback={this.handleChildChange.bind(this)}
+                        callback={this.handleExpectedCost.bind(this)}
                     />
                 </div>
 
                 <div className='col-md-6'>
-                    <Input
+                    <Currency
                         value={actualCost}
                         name="actualCost"
                         header="Actual cost"
                         placeholder="Enter an amount"
-                        callback={this.handleChildChange.bind(this)}
+                        callback={this.handleActualCost.bind(this)}
                     />
                 </div>
             </div>

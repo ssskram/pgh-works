@@ -43,6 +43,14 @@ export class ProjectDescription extends React.Component<any, any> {
         this.setState({ [field]: value })
     }
 
+    handleActualCost (value) {
+        this.setState({ actualCost: value })
+    }
+
+    handleExpectedCost (value) {
+        this.setState({ expectedCost: value })
+    }
+
     handleStartDate(date) {
         if (date) {
             this.setState({
@@ -101,6 +109,8 @@ export class ProjectDescription extends React.Component<any, any> {
                     handleMulti={this.handleMultiSelect.bind(this)}
                     handleStartDate={this.handleStartDate.bind(this)}
                     handleEndDate={this.handleEndDate.bind(this)}
+                    handleExpectedCost={this.handleExpectedCost.bind(this)}
+                    handleActualCost={this.handleActualCost.bind(this)}
                 />
 
                 <div className='row'>
