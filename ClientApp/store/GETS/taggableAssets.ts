@@ -18,7 +18,7 @@ export interface AssetItem {
 
 export const actionCreators = {
     loadTaggableAssets: () => (dispatch) => {
-        fetch('/api/assets/loadAssets', {
+        fetch('/api/assets/loadTaggableAssets', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
