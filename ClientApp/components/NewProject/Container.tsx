@@ -68,7 +68,6 @@ export class NewProject extends React.Component<any, any> {
     }
 
     post(projectDesc) {
-
         this.setState({
             projectName: projectDesc.projectName,
             startDate: projectDesc.startDate,

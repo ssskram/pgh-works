@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import ProjectFields from '../../Inputs/Project'
 import * as moment from 'moment'
+import { bindActionCreators } from 'redux';
 
 const paddingLeft = {
     paddingLeft: '25px'
@@ -70,7 +71,27 @@ export class ProjectDescription extends React.Component<any, any> {
         this.props.post(this.state)
     }
 
+    back() {
+        this.props.back()
+    }
+
     public render() {
+        const {
+            projectName,
+            startDate,
+            endDate,
+            projectManager,
+            projectStatus
+        } = this.state
+
+        // validation
+        const isEnabled =
+            projectName != '' &&
+            startDate != '' &&
+            endDate != '' &&
+            projectManager != '' &&
+            projectStatus != ''
+
         return (
             <div>
                 <ProjectFields
@@ -85,10 +106,10 @@ export class ProjectDescription extends React.Component<any, any> {
                 <div className='row'>
                     <div className='col-md-12'>
                         <div className='col-sm-6 text-center'>
-                            <button className='btn btn-warning' onClick={this.props.back}><span style={paddingRight} className='glyphicon glyphicon-arrow-left'></span>Previous</button>
+                            <button className='btn btn-warning' onClick={this.back.bind(this)}><span style={paddingRight} className='glyphicon glyphicon-arrow-left'></span>Previous</button>
                         </div>
                         <div className='col-sm-6 text-center'>
-                            <button className='btn btn-success' onClick={this.post.bind(this)}>Next<span style={paddingLeft} className='glyphicon glyphicon-arrow-right'></span></button>
+                            <button disabled={!isEnabled} className='btn btn-success' onClick={this.post.bind(this)}>Next<span style={paddingLeft} className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </div>
                 </div>

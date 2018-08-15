@@ -1,5 +1,9 @@
 
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as Statuses from '../../store/GETS/status'
+import * as Personnel from '../../store/GETS/personnel'
 import Input from '../FormElements/input'
 import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
@@ -20,7 +24,12 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
 ]
 
-export default class ProjectInputs extends React.Component<any, any> {
+export class ProjectInputs extends React.Component<any, any> {
+
+    componentDidMount () {
+        // set personnel dropdowns
+        // set status dropdowns
+    }
 
     handleChildChange(event) {
         this.props.handleInput(event)
@@ -171,3 +180,14 @@ export default class ProjectInputs extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.statuses,
+        ...state.personnel
+    }),
+    ({
+        ...Statuses.actionCreators,
+        ...Personnel.actionCreators
+    })
+)(ProjectInputs as any) as typeof ProjectInputs

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bf32e4d31b70645d77fb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "373e49b0c3631f67ad00"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -45806,12 +45806,16 @@ var ProgramFundInputs = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export ProjectInputs */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormElements_input__ = __webpack_require__(569);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__ = __webpack_require__(571);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(570);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_datepicker__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_status__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_personnel__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_input__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_select__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__ = __webpack_require__(568);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -45822,6 +45826,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+
+
 
 
 
@@ -45844,6 +45859,10 @@ var ProjectInputs = (function (_super) {
     function ProjectInputs() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    ProjectInputs.prototype.componentDidMount = function () {
+        // set personnel dropdowns
+        // set status dropdowns
+    };
     ProjectInputs.prototype.handleChildChange = function (event) {
         this.props.handleInput(event);
     };
@@ -45866,29 +45885,30 @@ var ProjectInputs = (function (_super) {
         var _a = this.props.description, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__FormElements_input__["a" /* default */], { value: expectedCost, name: "expectedCost", header: "Expected cost", placeholder: "Enter an amount", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: expectedCost, name: "expectedCost", header: "Expected cost", placeholder: "Enter an amount", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__FormElements_input__["a" /* default */], { value: actualCost, name: "actualCost", header: "Actual cost", placeholder: "Enter an amount", callback: this.handleChildChange.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: actualCost, name: "actualCost", header: "Actual cost", placeholder: "Enter an amount", callback: this.handleChildChange.bind(this) }))));
     };
     return ProjectInputs;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (ProjectInputs);
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.statuses, state.personnel)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_status__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_GETS_personnel__["a" /* actionCreators */])))(ProjectInputs));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Inputs/Project.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Inputs/Project.tsx"); } } })();
@@ -46512,17 +46532,27 @@ var ProjectDescription = (function (_super) {
     ProjectDescription.prototype.post = function () {
         this.props.post(this.state);
     };
+    ProjectDescription.prototype.back = function () {
+        this.props.back();
+    };
     ProjectDescription.prototype.render = function () {
+        var _a = this.state, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus;
+        // validation
+        var isEnabled = projectName != '' &&
+            startDate != '' &&
+            endDate != '' &&
+            projectManager != '' &&
+            projectStatus != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: this.props.back },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: this.back.bind(this) },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingRight, className: 'glyphicon glyphicon-arrow-left' }),
                             "Previous")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-success', onClick: this.post.bind(this) },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.post.bind(this) },
                             "Next",
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingLeft, className: 'glyphicon glyphicon-arrow-right' })))))));
     };
