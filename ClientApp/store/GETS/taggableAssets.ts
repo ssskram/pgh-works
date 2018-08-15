@@ -14,6 +14,12 @@ export interface AssetItem {
     assetOID: string
     assetName: string
     assetLocation: string
+    shape: Coords[]
+}
+
+export interface Coords {
+    lat: string
+    lng: string
 }
 
 export const actionCreators = {

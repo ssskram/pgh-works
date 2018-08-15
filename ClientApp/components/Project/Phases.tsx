@@ -12,6 +12,8 @@ export class Phases extends React.Component<any, any> {
         } = this.props
         return (
             <div>
+                <h3>Phases<span><button className='btn pull-right'>Create a new phase</button></span></h3>
+                <hr />
                 <h5>Return phases created for project {projectID}</h5>
             </div>
         )

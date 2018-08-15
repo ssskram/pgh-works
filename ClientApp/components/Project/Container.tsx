@@ -152,23 +152,15 @@ export class Project extends React.Component<any, any> {
                     </table>
                 </div>
                 <div className='col-md-12'>
-                    <h3>Monies</h3>
-                    <hr />
-                    <Funds projectID={projectID}/>
-                </div>
-                <div className='col-md-12'>
-                    <h3>Phases</h3>
-                    <hr />
                     <Phases projectID={projectID}/>
                 </div>
                 <div className='col-md-12'>
-                    <h3>Attachments</h3>
-                    <hr />
+                    <Funds projectID={projectID}/>
+                </div>
+                <div className='col-md-12'>
                     <Attachments projectID={projectID}/>
                 </div>
                 <div className='col-md-12'>
-                    <h3>Tags</h3>
-                    <hr />
                     <Tags projectID={projectID}/>
                 </div>
 
