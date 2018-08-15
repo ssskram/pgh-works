@@ -3,18 +3,79 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as AttachmentsStore from '../../store/attachments'
+import Modal from 'react-responsive-modal'
+import AttachmentModule from '../Inputs/Attachment'
 
 export class Attachments extends React.Component<any, any> {
+    constructor() {
+        super();
+        this.state = {
+            // utilities
+            modalIsOpen: false,
+
+            // attachments
+            attachments: [],
+        }
+        this.getAttachments = this.getAttachments.bind(this);
+    }
+
+    componentDidMount() {
+        this.getAttachments(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.getAttachments(this.props)
+    }
+
+    getAttachments (props) {
+        let attachments = props.attachments.filter(function (item) {
+            return item.projectID == props.projectID
+        })
+        if (attachments.length > 0) {
+            this.setState({
+                attachments: attachments
+            })
+        }
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        });
+    }
+
+    openModal() {
+        this.setState ({
+            modalIsOpen: true
+        })
+    }
 
     public render() {
         const {
-            projectID
-        } = this.props
+            modalIsOpen,
+            attachments
+        } = this.state
+
         return (
             <div>
-                <h3>Attachments<span><button className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
+                <h3>Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
                 <hr />
-                <h5>Return attachments added to project {projectID}</h5>
+                {attachments.length == 0 &&
+                    <h4 className='text-center'>There are no attachments on this project</h4>
+                }
+                {attachments.length > 0 &&
+                    <h4 className='text-center'><i>Return attachments now</i></h4>
+                }
+                <Modal
+                    open={modalIsOpen}
+                    onClose={this.closeModal.bind(this)}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                    <AttachmentModule />
+                </Modal>
             </div>
         )
     }

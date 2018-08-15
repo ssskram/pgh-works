@@ -56,7 +56,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                     <h4 className='text-center'>There are no programs or funds associated with this project</h4>
                 }
                 {programs.length > 0 &&
-                    <h4 className='text-center'><i>Return phases now</i></h4>
+                    <h4 className='text-center'><i>Return programs/funds now</i></h4>
                 }
                 <Modal
                     open={modalIsOpen}
