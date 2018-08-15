@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/ping'
 import * as Projects from '../../store/projects'
-import Spinner from './../Utilities/Spinner'
-import Map from './../Map/ProjectMap'
+import Spinner from '../Utilities/Spinner'
+import Map from '../Map/ProjectMap'
 import Moment from 'react-moment'
 
 const bigFont = {
@@ -23,6 +23,7 @@ export class Project extends React.Component<any, any> {
             spinner: true,
 
             // project state
+            cartegraphID: '',
             projectID: '',
             projectName: '',
             startDate: '',
@@ -67,6 +68,7 @@ export class Project extends React.Component<any, any> {
 
     setProjectState(project) {
         this.setState({
+            cartegraphID: project.cartegraphID,
             projectID: project.projectID,
             projectName: project.projectName,
             startDate: project.startDate,
@@ -93,6 +95,7 @@ export class Project extends React.Component<any, any> {
         const {
             spinner,
             projectID,
+            cartegraphID,
             projectName,
             startDate,
             endDate,

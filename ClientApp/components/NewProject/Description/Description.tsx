@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
-import ProjectFields from './../../Inputs/Project'
+import ProjectFields from '../../Inputs/Project'
 import * as moment from 'moment'
 
 const paddingLeft = {

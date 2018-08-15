@@ -13,6 +13,7 @@ export interface ProjectState {
 }
 
 export interface ProjectItem {
+    cartegraphID: string
     projectID: string
     projectName: string
     startDate: string

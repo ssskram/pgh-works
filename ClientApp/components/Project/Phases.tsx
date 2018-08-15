@@ -14,7 +14,7 @@ export class Phases extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h3>Project data</h3>
+                <h3>Phase data</h3>
                 <hr/>
             </div>
         )

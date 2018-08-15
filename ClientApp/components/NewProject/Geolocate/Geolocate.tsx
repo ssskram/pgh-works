@@ -1,9 +1,9 @@
 
 import * as React from 'react'
-import Modal from 'react-responsive-modal'
+import Modal from 'react-responsive-modal/types'
 import Import from './ImportShape'
 import New from './NewShape'
-import Map from './../../Map/ProjectMap'
+import Map from '../../Map/ProjectMap'
 
 const imgSize = {
     height: '100px'
