@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "373e49b0c3631f67ad00"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0b06eaed9bc17a4db2b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -47075,7 +47075,10 @@ var Project = (function (_super) {
     Project.prototype.render = function () {
         var _a = this.state, spinner = _a.spinner, projectID = _a.projectID, cartegraphID = _a.cartegraphID, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy, shape = _a.shape;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectName),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                projectName,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn pull-right hidden-xs' }, "Edit project"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Map_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -47403,7 +47406,7 @@ var Tags = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' }, "Add a tag"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             tags.length == 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no assets tagged on this project"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no tags on this project"),
             tags.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Return tags now")),

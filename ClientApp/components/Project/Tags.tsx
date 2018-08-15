@@ -62,7 +62,7 @@ export class Tags extends React.Component<any, any> {
                 <h3>Tags<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add a tag</button></span></h3>
                 <hr />
                 {tags.length == 0 &&
-                    <h4 className='text-center'>There are no assets tagged on this project</h4>
+                    <h4 className='text-center'>There are no tags on this project</h4>
                 }
                 {tags.length > 0 &&
                     <h4 className='text-center'><i>Return tags now</i></h4>

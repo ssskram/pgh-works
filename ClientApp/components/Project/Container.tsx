@@ -116,7 +116,7 @@ export class Project extends React.Component<any, any> {
         } = this.state
         return (
             <div>
-                <h2>{projectName}</h2>
+                <h2>{projectName}<span><button className='btn pull-right hidden-xs'>Edit project</button></span></h2>
                 <hr />
                 <Map shape={shape} />
                 <br />
