@@ -2,19 +2,13 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import * as Ping from '../../store/GETS/ping'
 
 export class Phases extends React.Component<any, any> {
-
-    componentDidMount() {
-        // ping server
-        this.props.ping()
-    }
 
     public render() {
         return (
             <div>
-                <h3>Phase data</h3>
+                <h3>You have not added any phases to this project</h3>
                 <hr/>
             </div>
         )
@@ -23,9 +17,7 @@ export class Phases extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.ping
     }),
     ({
-        ...Ping.actionCreators
     })
   )(Phases as any) as typeof Phases

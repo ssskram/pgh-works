@@ -7,6 +7,10 @@ import * as Projects from '../../store/projects'
 import Spinner from '../Utilities/Spinner'
 import Map from '../Map/ProjectMap'
 import Moment from 'react-moment'
+import Phases from './Phases'
+import Funds from './Funds'
+import Attachments from './Attachments'
+import Tags from './Tags'
 
 const bigFont = {
     fontSize: '18px'
@@ -150,18 +154,22 @@ export class Project extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <h3>Monies</h3>
                     <hr />
+                    <Funds />
                 </div>
                 <div className='col-md-12'>
                     <h3>Phases</h3>
                     <hr />
+                    <Phases />
                 </div>
                 <div className='col-md-12'>
                     <h3>Attachments</h3>
                     <hr />
+                    <Attachments />
                 </div>
                 <div className='col-md-12'>
                     <h3>Tags</h3>
                     <hr />
+                    <Tags />
                 </div>
 
                 {spinner == true &&
