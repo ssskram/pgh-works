@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2ea22f014fc31b51edf6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "186b3708abe7a67739fe"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8160,6 +8160,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tags__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__GETS_status__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__GETS_taggableAssets__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__GETS_personnel__ = __webpack_require__(634);
+
 
 
 
@@ -8184,7 +8186,8 @@ var reducers = {
     attachments: __WEBPACK_IMPORTED_MODULE_8__attachments__["b" /* reducer */],
     tags: __WEBPACK_IMPORTED_MODULE_9__tags__["b" /* reducer */],
     statuses: __WEBPACK_IMPORTED_MODULE_10__GETS_status__["b" /* reducer */],
-    taggableAssets: __WEBPACK_IMPORTED_MODULE_11__GETS_taggableAssets__["b" /* reducer */]
+    taggableAssets: __WEBPACK_IMPORTED_MODULE_11__GETS_taggableAssets__["b" /* reducer */],
+    personnel: __WEBPACK_IMPORTED_MODULE_12__GETS_personnel__["b" /* reducer */]
 };
 
 
@@ -47045,6 +47048,7 @@ var Line = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_tags__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_GETS_status__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_GETS_taggableAssets__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_GETS_personnel__ = __webpack_require__(634);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -47074,6 +47078,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var Hydrate = (function (_super) {
     __extends(Hydrate, _super);
     function Hydrate() {
@@ -47091,6 +47096,7 @@ var Hydrate = (function (_super) {
         props.loadTags();
         props.loadStatuses();
         props.loadTaggableAssets();
+        props.loadPersonnel();
     };
     Hydrate.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null));
@@ -47098,7 +47104,7 @@ var Hydrate = (function (_super) {
     return Hydrate;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.projects, state.drawdowns, state.funds, state.phases, state.milestones, state.attachments, state.tags, state.statuses, state.taggableAssets)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_projects__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_phases__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_milestones__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_7__store_attachments__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_8__store_tags__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_9__store_GETS_status__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_taggableAssets__["a" /* actionCreators */])))(Hydrate));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.projects, state.drawdowns, state.funds, state.phases, state.milestones, state.attachments, state.tags, state.statuses, state.taggableAssets, state.personnel)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_projects__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_phases__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_milestones__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_7__store_attachments__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_8__store_tags__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_9__store_GETS_status__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_taggableAssets__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_11__store_GETS_personnel__["a" /* actionCreators */])))(Hydrate));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); } } })();
@@ -57180,6 +57186,55 @@ __webpack_require__(324);
 __webpack_require__(323);
 module.exports = __webpack_require__(322);
 
+
+/***/ }),
+/* 633 */,
+/* 634 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionCreators; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return reducer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_domain_task__);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+var loadPersonnel = 'load';
+var unloadedState = {
+    personnel: []
+};
+var actionCreators = {
+    loadPersonnel: function () { return function (dispatch) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/personnel/loadPersonnel', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        });
+        // .then(response => response.json())
+        // .then(data => {
+        //     dispatch({ type: loadPersonnel, personnel: data.items });
+        // });
+    }; }
+};
+var reducer = function (state, action) {
+    switch (action.type) {
+        case loadPersonnel:
+            return __assign({}, state, { personnel: action.personnel });
+    }
+    return state || unloadedState;
+};
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/GETS/personnel.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/GETS/personnel.ts"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);
