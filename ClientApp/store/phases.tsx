@@ -18,8 +18,8 @@ export interface PhaseState {
 export interface PhaseItem {
     cartegraphID: string
     phaseID: string
+    projectID: string
     phaseName: string
-    parentProject: string
     phaseDescription: string
     startDate: string
     endDate: string

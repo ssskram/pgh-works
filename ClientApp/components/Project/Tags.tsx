@@ -2,14 +2,17 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
+import * as TagStore from '../../store/tags'
 
 export class Tags extends React.Component<any, any> {
 
     public render() {
+        const {
+            projectID
+        } = this.props
         return (
             <div>
-                <h3>You have not added any tags to this project</h3>
-                <hr/>
+                <h5>Return tags on project {projectID}</h5>
             </div>
         )
     }
@@ -17,9 +20,9 @@ export class Tags extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-
+        ...state.tags
     }),
     ({
-
+        ...TagStore.actionCreators
     })
-  )(Tags as any) as typeof Tags
+)(Tags as any) as typeof Tags

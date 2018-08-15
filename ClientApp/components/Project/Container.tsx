@@ -154,22 +154,22 @@ export class Project extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <h3>Monies</h3>
                     <hr />
-                    <Funds />
+                    <Funds projectID={projectID}/>
                 </div>
                 <div className='col-md-12'>
                     <h3>Phases</h3>
                     <hr />
-                    <Phases />
+                    <Phases projectID={projectID}/>
                 </div>
                 <div className='col-md-12'>
                     <h3>Attachments</h3>
                     <hr />
-                    <Attachments />
+                    <Attachments projectID={projectID}/>
                 </div>
                 <div className='col-md-12'>
                     <h3>Tags</h3>
                     <hr />
-                    <Tags />
+                    <Tags projectID={projectID}/>
                 </div>
 
                 {spinner == true &&

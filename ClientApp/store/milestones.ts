@@ -19,8 +19,8 @@ export interface MilestoneItem {
     cartegraphID: string
     milestoneID: string
     milestoneName: string
-    parentPhase: string
-    parentProject: string
+    phaseID: string
+    projectID: string
     milestoneStatus: string
     percentComplete: string
     notes: string
