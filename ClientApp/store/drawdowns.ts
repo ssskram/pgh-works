@@ -2,7 +2,8 @@ import { fetch } from 'domain-task';
 
 const loadDrawdowns = 'load'
 const add = 'add'
-const update = 'update'
+// TODO
+const del = 'delete'
 
 const unloadedState: DrawdownState = {
     drawdowns: []
@@ -13,7 +14,8 @@ export interface DrawdownState {
 }
 
 export interface DrawdownItem {
-    categraphID: string
+    projectID: string
+    fundID: string
     drawdownName: string
     drawdownYear: string
     drawdownAmount: string

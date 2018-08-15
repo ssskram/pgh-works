@@ -2,7 +2,8 @@ import { fetch } from 'domain-task';
 
 const loadFunds = 'load'
 const add = 'add'
-const update = 'update'
+// TODO
+const del = 'delete'
 
 const unloadedState: FundState = {
     funds: []
@@ -14,9 +15,11 @@ export interface FundState {
 
 export interface FundItem {
     categraphID: string
+    fundID: string
     fundName: string
     fundYear: string
-    drawdownAmount: string
+    fundOriginalAmount: string
+    fundCurrentAmount: string
 }
 
 export const actionCreators = {

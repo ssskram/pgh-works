@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../store';
-import Modal from 'react-responsive-modal/types'
+import Modal from 'react-responsive-modal'
 
 export class Spinner extends React.Component<any, any> {
     constructor() {

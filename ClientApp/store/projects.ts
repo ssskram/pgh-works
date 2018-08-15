@@ -2,6 +2,8 @@ import { fetch } from 'domain-task';
 
 const loadProjects = 'load'
 const add = 'add'
+
+// TODO
 const update = 'update'
 
 const unloadedState: ProjectState = {

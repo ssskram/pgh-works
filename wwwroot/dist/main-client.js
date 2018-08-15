@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "796c5a579b63fe56745a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b989b0b50dca5f7f0217"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8146,6 +8146,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ping__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__projects__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__drawdowns__ = __webpack_require__(625);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__funds__ = __webpack_require__(626);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__phases__ = __webpack_require__(628);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__milestones__ = __webpack_require__(627);
+
+
+
+
 
 
 
@@ -8154,7 +8162,11 @@ var reducers = {
     user: __WEBPACK_IMPORTED_MODULE_2__user__["b" /* reducer */],
     ping: __WEBPACK_IMPORTED_MODULE_1__ping__["b" /* reducer */],
     messages: __WEBPACK_IMPORTED_MODULE_0__messages__["a" /* reducer */],
-    projects: __WEBPACK_IMPORTED_MODULE_3__projects__["b" /* reducer */]
+    projects: __WEBPACK_IMPORTED_MODULE_3__projects__["b" /* reducer */],
+    drawdowns: __WEBPACK_IMPORTED_MODULE_4__drawdowns__["a" /* reducer */],
+    funds: __WEBPACK_IMPORTED_MODULE_5__funds__["a" /* reducer */],
+    phases: __WEBPACK_IMPORTED_MODULE_6__phases__["a" /* reducer */],
+    milestones: __WEBPACK_IMPORTED_MODULE_7__milestones__["a" /* reducer */]
 };
 
 
@@ -54830,6 +54842,225 @@ __webpack_require__(316);
 __webpack_require__(315);
 module.exports = __webpack_require__(314);
 
+
+/***/ }),
+/* 624 */,
+/* 625 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export actionCreators */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var loadDrawdowns = 'load';
+var add = 'add';
+// TODO
+var del = 'delete';
+var unloadedState = {
+    drawdowns: []
+};
+var actionCreators = {
+    loadDrawdowns: function () { return function (dispatch) {
+        // fetch('/api/drawdowns/load', {
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         dispatch({ type: loadDrawdowns, drawdowns: data.items });
+        //     });
+    }; },
+    addDrawdown: function (item) { return function (dispatch) {
+        dispatch({
+            type: add, item: item
+        });
+    }; },
+};
+var reducer = function (state, action) {
+    switch (action.type) {
+        case loadDrawdowns:
+            return __assign({}, state, { drawdowns: action.drawdowns });
+        case add:
+            return __assign({}, state, { drawdowns: state.drawdowns.concat(action.item) });
+    }
+    return state || unloadedState;
+};
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/drawdowns.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/drawdowns.ts"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(4)(module)))
+
+/***/ }),
+/* 626 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export actionCreators */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var loadFunds = 'load';
+var add = 'add';
+// TODO
+var del = 'delete';
+var unloadedState = {
+    funds: []
+};
+var actionCreators = {
+    loadFunds: function () { return function (dispatch) {
+        // fetch('/api/funds/load', {
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         dispatch({ type: loadFunds, funds: data.items });
+        //     });
+    }; },
+    addFund: function (item) { return function (dispatch) {
+        dispatch({
+            type: add, item: item
+        });
+    }; },
+};
+var reducer = function (state, action) {
+    switch (action.type) {
+        case loadFunds:
+            return __assign({}, state, { funds: action.funds });
+        case add:
+            return __assign({}, state, { funds: state.funds.concat(action.item) });
+    }
+    return state || unloadedState;
+};
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/funds.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/funds.ts"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(4)(module)))
+
+/***/ }),
+/* 627 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export actionCreators */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var loadMilestones = 'load';
+var add = 'add';
+var update = 'update';
+var unloadedState = {
+    milestones: []
+};
+var actionCreators = {
+    loadMilestones: function () { return function (dispatch) {
+        // fetch('/api/milestones/load', {
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         dispatch({ type: loadMilestones, milestones: data.items });
+        //     });
+    }; },
+    addMilestone: function (item) { return function (dispatch) {
+        dispatch({
+            type: add, item: item
+        });
+    }; },
+};
+var reducer = function (state, action) {
+    switch (action.type) {
+        case loadMilestones:
+            return __assign({}, state, { milestones: action.milestones });
+        case add:
+            return __assign({}, state, { milestones: state.milestones.concat(action.item) });
+    }
+    return state || unloadedState;
+};
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/milestones.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/milestones.ts"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(4)(module)))
+
+/***/ }),
+/* 628 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export actionCreators */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return reducer; });
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var loadPhases = 'load';
+var add = 'add';
+var update = 'update';
+var unloadedState = {
+    phases: []
+};
+var actionCreators = {
+    loadPhases: function () { return function (dispatch) {
+        // fetch('/api/phases/load', {
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         dispatch({ type: loadPhases, phases: data.items });
+        //     });
+    }; },
+    addPhase: function (item) { return function (dispatch) {
+        dispatch({
+            type: add, item: item
+        });
+    }; },
+};
+var reducer = function (state, action) {
+    switch (action.type) {
+        case loadPhases:
+            return __assign({}, state, { phases: action.phases });
+        case add:
+            return __assign({}, state, { phases: state.phases.concat(action.item) });
+    }
+    return state || unloadedState;
+};
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/phases.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/phases.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(4)(module)))
 
 /***/ })
 /******/ ]);

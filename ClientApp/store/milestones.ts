@@ -2,7 +2,10 @@ import { fetch } from 'domain-task';
 
 const loadMilestones = 'load'
 const add = 'add'
+
+// TODO
 const update = 'update'
+const del = 'del'
 
 const unloadedState: MilestoneState = {
     milestones: []

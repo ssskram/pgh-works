@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import Modal from 'react-responsive-modal/types'
+import Modal from 'react-responsive-modal'
 import Import from './ImportShape'
 import New from './NewShape'
 import Map from '../../Map/ProjectMap'

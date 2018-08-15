@@ -2,7 +2,10 @@ import { fetch } from 'domain-task';
 
 const loadPhases = 'load'
 const add = 'add'
+
+// TODO
 const update = 'update'
+const del = 'delete'
 
 const unloadedState: PhaseState = {
     phases: []
