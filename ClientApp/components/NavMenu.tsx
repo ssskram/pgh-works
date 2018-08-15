@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import * as User from '../store/user'
+import * as User from '../store/GETS/user'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
 import Modal from 'react-responsive-modal'

@@ -33,12 +33,12 @@ export interface PhaseItem {
 
 export const actionCreators = {
     loadPhases: () => (dispatch) => {
-        // fetch('/api/phases/load', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
+        fetch('/api/phases/loadPhases', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
         //     .then(response => response.json())
         //     .then(data => {
         //         dispatch({ type: loadPhases, phases: data.items });

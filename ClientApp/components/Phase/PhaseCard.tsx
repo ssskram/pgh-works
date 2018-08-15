@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import * as Ping from '../../store/ping'
+import * as Ping from '../../store/GETS/ping'
 
 export class PhaseData extends React.Component<any, any> {
 

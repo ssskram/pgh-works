@@ -23,22 +23,22 @@ export interface DrawdownItem {
 
 export const actionCreators = {
     loadDrawdowns: () => (dispatch) => {
-        // fetch('/api/drawdowns/load', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadDrawdowns, drawdowns: data.items });
-        //     });
+        fetch('/api/drawdowns/loadDrawdowns', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
+            // .then(response => response.json())
+            // .then(data => {
+            //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
+            // });
     },
     addDrawdown: (item) => (dispatch) => {
         dispatch({
             type: add, item
         })
-    },
+    }
 }
 
 export const reducer = (state: DrawdownState, action) => {

@@ -31,12 +31,12 @@ export interface MilestoneItem {
 
 export const actionCreators = {
     loadMilestones: () => (dispatch) => {
-        // fetch('/api/milestones/load', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
+        fetch('/api/milestones/loadMilestones', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
         //     .then(response => response.json())
         //     .then(data => {
         //         dispatch({ type: loadMilestones, milestones: data.items });

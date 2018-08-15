@@ -1,11 +1,15 @@
 import * as Messages from './messages'
-import * as Ping from './ping'
-import * as User from './user'
+import * as Ping from './GETS/ping'
+import * as User from './GETS/user'
 import * as Projects from './projects'
 import * as Drawdowns from './drawdowns'
 import * as Funds from './funds'
 import * as Phases from './phases'
 import * as Milestones from './milestones'
+import * as Attachments from './attachments'
+import * as Tags from './tags'
+import * as Statuses from './GETS/status'
+import * as TaggableAssets from './GETS/taggableAssets'
 
 export interface ApplicationState {
     user: User.UserState
@@ -16,6 +20,10 @@ export interface ApplicationState {
     funds: Funds.FundState
     phases: Phases.PhaseState
     milestones: Milestones.MilestoneItem
+    attachments: Attachments.AttachmentState
+    tags: Tags.TagState
+    statuses: Statuses.StatusState,
+    taggableAssets: TaggableAssets.AssetState
 }
 export const reducers = {
     user: User.reducer,
@@ -25,7 +33,11 @@ export const reducers = {
     drawdowns: Drawdowns.reducer,
     funds: Funds.reducer,
     phases: Phases.reducer,
-    milestones: Milestones.reducer
+    milestones: Milestones.reducer,
+    attachments: Attachments.reducer,
+    tags: Tags.reducer,
+    statuses: Statuses.reducer,
+    taggableAssets: TaggableAssets.reducer
 };
 
 export interface AppThunkAction<TAction> {

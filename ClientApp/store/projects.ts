@@ -40,12 +40,12 @@ export interface Coords {
 
 export const actionCreators = {
     loadProjects: () => (dispatch) => {
-        // fetch('/api/projects/load', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
+        fetch('/api/projects/loadProjects', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
         //     .then(response => response.json())
         //     .then(data => {
         //         dispatch({ type: loadProjects, projects: data.items });

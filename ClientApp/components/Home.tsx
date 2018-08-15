@@ -1,8 +1,8 @@
 import * as React from 'react'
+import Hydrate from './Utilities/HydrateStore'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
-import * as Ping from '../store/ping'
-import * as Projects from '../store/projects'
+import * as Ping from '../store/GETS/ping'
 import Map from './Map/HomeMap'
 import { Helmet } from "react-helmet"
 
@@ -13,14 +13,12 @@ export class Home extends React.Component<any, any> {
 
         // ping server
         this.props.ping()
-
-        // load projects
-        this.props.loadProjects()
     }
 
 
     public render() {
         return <div>
+            <Hydrate />
             <Helmet>
                 <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } '}</style>
             </Helmet>
@@ -31,11 +29,9 @@ export class Home extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.messages,
         ...state.ping
     }),
     ({
-        ...Projects.actionCreators,
         ...Ping.actionCreators
     })
 )(Home as any) as typeof Home;

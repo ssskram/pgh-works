@@ -3,7 +3,7 @@ import { fetch } from 'domain-task';
 const loadFunds = 'load'
 const add = 'add'
 // TODO
-const del = 'delete'
+const update = 'update'
 
 const unloadedState: FundState = {
     funds: []
@@ -24,12 +24,12 @@ export interface FundItem {
 
 export const actionCreators = {
     loadFunds: () => (dispatch) => {
-        // fetch('/api/funds/load', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
+        fetch('/api/funds/loadFunds', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
         //     .then(response => response.json())
         //     .then(data => {
         //         dispatch({ type: loadFunds, funds: data.items });
