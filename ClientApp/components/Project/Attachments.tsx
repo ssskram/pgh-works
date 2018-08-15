@@ -12,7 +12,7 @@ export class Attachments extends React.Component<any, any> {
         } = this.props
         return (
             <div>
-                <h3>Attachments<span><button className='btn pull-right'>Upload an attachment</button></span></h3>
+                <h3>Attachments<span><button className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
                 <hr />
                 <h5>Return attachments added to project {projectID}</h5>
             </div>

@@ -10,9 +10,10 @@ export class Tags extends React.Component<any, any> {
         const {
             projectID
         } = this.props
+        
         return (
             <div>
-                <h3>Tags<span><button className='btn pull-right'>Add a tag</button></span></h3>
+                <h3>Tags<span><button className='btn pull-right hidden-xs'>Add a tag</button></span></h3>
                 <hr />
                 <h5>Return tags on project {projectID}</h5>
             </div>

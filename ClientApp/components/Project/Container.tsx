@@ -8,7 +8,7 @@ import Spinner from '../Utilities/Spinner'
 import Map from '../Map/ProjectMap'
 import Moment from 'react-moment'
 import Phases from './Phases'
-import Funds from './Funds'
+import Funds from './ProgramsFunds'
 import Attachments from './Attachments'
 import Tags from './Tags'
 
@@ -65,7 +65,6 @@ export class Project extends React.Component<any, any> {
             return item.projectID == id
         })
         if (project) {
-            console.log(project)
             this.setProjectState(project)
         }
     }

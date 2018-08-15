@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
-import * as Assets from './../../../store/GETS/taggableAssets'
+import * as Assets from '../../../store/GETS/taggableAssets'
 
 export class ImportShape extends React.Component<any, any> {
 
