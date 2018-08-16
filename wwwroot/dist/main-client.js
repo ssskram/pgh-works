@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f2eb299856823e4c16ae"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b3ebb17129311bf3a5ec"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -46827,7 +46827,7 @@ var currency = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { className: "form-control", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { className: "form-control", prefix: "$", precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
     };
     return currency;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
