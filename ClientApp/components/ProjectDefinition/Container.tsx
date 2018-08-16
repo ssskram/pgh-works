@@ -32,7 +32,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             expectedCost: '',
             actualCost: '',
             notes: '',
-            created: moment(),
+            created: moment().format('MM/DD/YYYY'),
             createdBy: this.props.user,
             lastModifiedBy: this.props.user
         }
@@ -82,6 +82,7 @@ export class ProjectDefinition extends React.Component<any, any> {
         }, function (this) {
             // add to project store 
             this.props.addProject(this.state)
+            console.log(this.state)
         })
         this.setState({
             redirect: true

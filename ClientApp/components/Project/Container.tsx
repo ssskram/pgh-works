@@ -11,6 +11,7 @@ import Moment from 'react-moment'
 import Phases from './Phases'
 import Funds from './ProgramsFunds'
 import Attachments from './Attachments'
+import * as User from '../../store/GETS/user'
 import ProjectFields from '../Inputs/Project'
 import Tags from './Tags'
 import * as moment from 'moment'
@@ -178,7 +179,12 @@ export class Project extends React.Component<any, any> {
 
     put() {
         this.closeModal()
-        this.props.updateProject(this.state)
+        this.setState({
+            lastModifiedBy: this.props.user
+        }, function(this) {
+            this.props.updateProject(this.state)
+            console.log(this.state)
+        })
     }
 
     public render() {
@@ -224,7 +230,6 @@ export class Project extends React.Component<any, any> {
                 <div className='col-md-6'>
                     <table className="table">
                         <tbody>
-                            test
                             <tr style={bigFont}>
                                 <th style={borderNone} scope="row">Status</th>
                                 <td style={borderNone}>{projectStatus}</td>
@@ -314,10 +319,12 @@ export class Project extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
-        ...state.projects
+        ...state.projects,
+        ...state.user,
     }),
     ({
         ...Ping.actionCreators,
+        ...User.actionCreators,
         ...Projects.actionCreators
     })
 )(Project as any) as typeof Project

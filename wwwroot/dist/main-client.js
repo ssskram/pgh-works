@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "20ea08bc850893acb9ff"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f2eb299856823e4c16ae"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -47793,11 +47793,12 @@ var Attachments = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Phases__ = __webpack_require__(597);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ProgramsFunds__ = __webpack_require__(598);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Attachments__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Inputs_Project__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Tags__ = __webpack_require__(599);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__UpdateLocation__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_GETS_user__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Inputs_Project__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Tags__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__UpdateLocation__ = __webpack_require__(600);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -47816,6 +47817,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -47952,7 +47954,7 @@ var Project = (function (_super) {
     Project.prototype.handleStartDate = function (date) {
         if (date) {
             this.setState({
-                startDate: __WEBPACK_IMPORTED_MODULE_13_moment__(date).format('MM/DD/YYYY')
+                startDate: __WEBPACK_IMPORTED_MODULE_14_moment__(date).format('MM/DD/YYYY')
             });
         }
         else {
@@ -47964,7 +47966,7 @@ var Project = (function (_super) {
     Project.prototype.handleEndDate = function (date) {
         if (date) {
             this.setState({
-                endDate: __WEBPACK_IMPORTED_MODULE_13_moment__(date).format('MM/DD/YYYY')
+                endDate: __WEBPACK_IMPORTED_MODULE_14_moment__(date).format('MM/DD/YYYY')
             });
         }
         else {
@@ -47980,7 +47982,12 @@ var Project = (function (_super) {
     };
     Project.prototype.put = function () {
         this.closeModal();
-        this.props.updateProject(this.state);
+        this.setState({
+            lastModifiedBy: this.props.user
+        }, function () {
+            this.props.updateProject(this.state);
+            console.log(this.state);
+        });
     };
     Project.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, cartegraphID = _a.cartegraphID, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy, shape = _a.shape;
@@ -48003,7 +48010,6 @@ var Project = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("table", { className: "table" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tbody", null,
-                        "test",
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", { style: bigFont },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { style: borderNone, scope: "row" }, "Status"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { style: borderNone }, projectStatus)),
@@ -48031,7 +48037,7 @@ var Project = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Attachments__["a" /* default */], { projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Tags__["a" /* default */], { projectID: projectID })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Tags__["a" /* default */], { projectID: projectID })),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Utilities_Spinner__["a" /* default */], { notice: '...loading the project...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -48040,19 +48046,19 @@ var Project = (function (_super) {
                 }, center: true },
                 edit == 'project' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this), handleExpectedCost: this.handleExpectedCost.bind(this), handleActualCost: this.handleActualCost.bind(this) }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this), handleExpectedCost: this.handleExpectedCost.bind(this), handleActualCost: this.handleActualCost.bind(this) }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.put.bind(this) },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save")))))),
                 edit == 'location' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__UpdateLocation__["a" /* default */], { setShape: this.setShape.bind(this), put: this.put.bind(this) }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__UpdateLocation__["a" /* default */], { setShape: this.setShape.bind(this), put: this.put.bind(this) }))));
     };
     return Project;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.projects)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_projects__["a" /* actionCreators */])))(Project));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.projects, state.user)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_11__store_GETS_user__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_projects__["a" /* actionCreators */])))(Project));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Project/Container.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Project/Container.tsx"); } } })();
@@ -48510,7 +48516,7 @@ var ProjectDefinition = (function (_super) {
             expectedCost: '',
             actualCost: '',
             notes: '',
-            created: __WEBPACK_IMPORTED_MODULE_8_moment__(),
+            created: __WEBPACK_IMPORTED_MODULE_8_moment__().format('MM/DD/YYYY'),
             createdBy: _this.props.user,
             lastModifiedBy: _this.props.user
         };
@@ -48555,6 +48561,7 @@ var ProjectDefinition = (function (_super) {
         }, function () {
             // add to project store 
             this.props.addProject(this.state);
+            console.log(this.state);
         });
         this.setState({
             redirect: true
