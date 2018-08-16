@@ -599,6 +599,10 @@ textarea {
     background: rgba(26, 36, 47, .8);
 }
 
+.react-datepicker__portal {
+    background-color: rgba(26, 36, 47, .8);
+}
+
 .custom-modal {
     margin: 5px !important;
     background: #fffcf5;

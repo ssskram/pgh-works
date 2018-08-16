@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b3ebb17129311bf3a5ec"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b123e0d42a9248aa5c01"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -47589,11 +47589,11 @@ var NavMenu = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/money.png' })),
                             " Programs/Funds"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/Timeline', style: btnWidth, className: 'btn btn-primary' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/Timeline', style: btnWidth, className: 'btn btn-primary hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timeline.png' })),
                             " Timeline"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/NewProject', style: btnWidth, className: 'btn btn-primary' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/ProjectDefinition', style: btnWidth, className: 'btn btn-primary hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/add.png' })),
                             " New Project")),
