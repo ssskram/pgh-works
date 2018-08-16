@@ -178,6 +178,7 @@ export class Project extends React.Component<any, any> {
 
     put() {
         this.closeModal()
+        this.props.updateProject(this.state)
     }
 
     public render() {
@@ -223,6 +224,7 @@ export class Project extends React.Component<any, any> {
                 <div className='col-md-6'>
                     <table className="table">
                         <tbody>
+                            test
                             <tr style={bigFont}>
                                 <th style={borderNone} scope="row">Status</th>
                                 <td style={borderNone}>{projectStatus}</td>

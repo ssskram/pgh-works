@@ -83,9 +83,6 @@ export class ProjectDefinition extends React.Component<any, any> {
             // add to project store 
             this.props.addProject(this.state)
         })
-
-        // post to cartegraph
-
         this.setState({
             redirect: true
         })

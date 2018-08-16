@@ -2,8 +2,6 @@ import { fetch } from 'domain-task';
 
 const loadProjects = 'load'
 const add = 'add'
-
-// TODO
 const update = 'update'
 
 const unloadedState: ProjectState = {
@@ -52,10 +50,21 @@ export const actionCreators = {
         //     });
     },
     addProject: (item) => (dispatch) => {
+
+        // post to cartegraph
+
         dispatch({
             type: add, item
         })
     },
+    updateProject: (item) => (dispatch) => {
+
+        // put to cartegraph
+        
+        dispatch({
+            type: update, item
+        })
+    }
 }
 
 export const reducer = (state: ProjectState, action) => {
@@ -69,6 +78,29 @@ export const reducer = (state: ProjectState, action) => {
             return {
                 ...state,
                 projects: state.projects.concat(action.item)
+            };
+        case update:
+            return {
+                ...state,
+                projects: state.projects.map(project => project.projectID === action.item.projectID ? { ...project,
+                    cartegraphID: action.item.cartegraphID,
+                    projectID: action.item.projectID,
+                    projectName: action.item.projectName,
+                    startDate: action.item.startDate,
+                    endDate: action.item.endDate,
+                    projectManager: action.item.projectManager,
+                    projectMembers: action.item.projectMembers,
+                    projectDescription: action.item.projectDescription,
+                    projectStatus: action.item.projectStatus,
+                    expectedCost: action.item.expectedCost,
+                    actualCost: action.item.actualCost,
+                    notes: action.item.notes,
+                    created: action.item.created,
+                    createdBy: action.item.createdBy,
+                    lastModifiedBy: action.item.lastModifiedBy,
+                    shape: action.item.shape
+                    } : project
+                )
             };
     }
 
