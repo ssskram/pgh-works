@@ -14,12 +14,18 @@ import Attachments from './Attachments'
 import ProjectFields from '../Inputs/Project'
 import Tags from './Tags'
 import * as moment from 'moment'
+import UpdateLocation from './UpdateLocation'
 
 const bigFont = {
     fontSize: '18px'
 }
+
 const borderNone = {
     border: 'none'
+}
+
+const btnMargin = {
+    margin: '0px 5px'
 }
 
 export class Project extends React.Component<any, any> {
@@ -164,7 +170,13 @@ export class Project extends React.Component<any, any> {
         }
     }
 
-    put () {
+    setShape(shape) {
+        this.setState({
+            shape: shape
+        })
+    }
+
+    put() {
         this.closeModal()
     }
 
@@ -202,7 +214,8 @@ export class Project extends React.Component<any, any> {
         return (
             <div>
                 <h2>{projectName}
-                    <span><button onClick={this.editProject.bind(this)} className='btn pull-right hidden-xs'>Edit project</button></span>
+                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
+                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Modify location</button></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />
@@ -285,7 +298,10 @@ export class Project extends React.Component<any, any> {
 
                     }
                     {edit == 'location' &&
-                        <h4><i>Location update goes here</i></h4>
+                        <UpdateLocation
+                            setShape={this.setShape.bind(this)}
+                            put={this.put.bind(this)}
+                        />
                     }
                 </Modal>
             </div>
