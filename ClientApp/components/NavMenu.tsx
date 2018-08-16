@@ -103,7 +103,7 @@ export class NavMenu extends React.Component<any, any>  {
                             </NavLink>
                         </li>
                         <div className='text-center'>
-                            <NavLink to={'/NewProject'} style={btnWidth} className='btn btn-primary'>
+                            <NavLink to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary'>
                                 <b>Add a Project</b>
                             </NavLink>
                         </div>

@@ -52,8 +52,6 @@ export const actionCreators = {
         //     });
     },
     addProject: (item) => (dispatch) => {
-        console.log('here')
-        console.log(item)
         dispatch({
             type: add, item
         })

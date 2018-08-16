@@ -11,7 +11,7 @@ import ProjectDescription from './Description/Description'
 import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 
-export class NewProject extends React.Component<any, any> {
+export class ProjectDefinition extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -149,4 +149,4 @@ export default connect(
         ...User.actionCreators,
         ...Projects.actionCreators
     })
-)(NewProject as any) as typeof NewProject
+)(ProjectDefinition as any) as typeof ProjectDefinition

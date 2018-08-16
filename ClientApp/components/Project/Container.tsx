@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
+import Modal from 'react-responsive-modal'
 import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
 import Spinner from '../Utilities/Spinner'
@@ -10,7 +11,9 @@ import Moment from 'react-moment'
 import Phases from './Phases'
 import Funds from './ProgramsFunds'
 import Attachments from './Attachments'
+import ProjectFields from '../Inputs/Project'
 import Tags from './Tags'
+import * as moment from 'moment'
 
 const bigFont = {
     fontSize: '18px'
@@ -25,6 +28,8 @@ export class Project extends React.Component<any, any> {
         this.state = {
             // utilities
             spinner: true,
+            modalIsOpen: false,
+            update: '',
 
             // project state
             cartegraphID: '',
@@ -94,8 +99,79 @@ export class Project extends React.Component<any, any> {
         })
     }
 
+    editProject() {
+        this.setState({
+            modalIsOpen: true,
+            edit: 'project'
+        })
+    }
+
+    editLocation() {
+        this.setState({
+            modalIsOpen: true,
+            edit: 'location'
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false,
+            edit: ''
+        })
+    }
+
+    handleChildChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleChildSelect(event) {
+        this.setState({ [event.name]: event.value });
+    }
+
+    handleMultiSelect(field, value) {
+        this.setState({ [field]: value })
+    }
+
+    handleActualCost(value) {
+        this.setState({ actualCost: value })
+    }
+
+    handleExpectedCost(value) {
+        this.setState({ expectedCost: value })
+    }
+
+    handleStartDate(date) {
+        if (date) {
+            this.setState({
+                startDate: moment(date).format('MM/DD/YYYY')
+            });
+        } else {
+            this.setState({
+                startDate: null
+            });
+        }
+    }
+
+    handleEndDate(date) {
+        if (date) {
+            this.setState({
+                endDate: moment(date).format('MM/DD/YYYY')
+            });
+        } else {
+            this.setState({
+                endDate: null
+            });
+        }
+    }
+
+    put () {
+        this.closeModal()
+    }
+
     public render() {
         const {
+            modalIsOpen,
+            edit,
             spinner,
             projectID,
             cartegraphID,
@@ -114,9 +190,20 @@ export class Project extends React.Component<any, any> {
             lastModifiedBy,
             shape
         } = this.state
+
+        // validation
+        const isEnabled =
+            projectName != '' &&
+            startDate != '' &&
+            endDate != '' &&
+            projectManager != '' &&
+            projectStatus != ''
+
         return (
             <div>
-                <h2>{projectName}<span><button className='btn pull-right hidden-xs'>Edit project</button></span></h2>
+                <h2>{projectName}
+                    <span><button onClick={this.editProject.bind(this)} className='btn pull-right hidden-xs'>Edit project</button></span>
+                </h2>
                 <hr />
                 <Map shape={shape} />
                 <br />
@@ -151,21 +238,56 @@ export class Project extends React.Component<any, any> {
                     </table>
                 </div>
                 <div className='col-md-12'>
-                    <Phases projectID={projectID}/>
+                    <Phases projectID={projectID} />
                 </div>
                 <div className='col-md-12'>
-                    <Funds projectID={projectID}/>
+                    <Funds projectID={projectID} />
                 </div>
                 <div className='col-md-12'>
-                    <Attachments projectID={projectID}/>
+                    <Attachments projectID={projectID} />
                 </div>
                 <div className='col-md-12'>
-                    <Tags projectID={projectID}/>
+                    <Tags projectID={projectID} />
                 </div>
 
                 {spinner == true &&
                     <Spinner notice='...loading the project...' />
                 }
+
+                <Modal
+                    open={modalIsOpen}
+                    onClose={this.closeModal.bind(this)}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                    {edit == 'project' &&
+                        <div>
+                            <ProjectFields
+                                description={this.state}
+                                handleInput={this.handleChildChange.bind(this)}
+                                handleSelect={this.handleChildSelect.bind(this)}
+                                handleMulti={this.handleMultiSelect.bind(this)}
+                                handleStartDate={this.handleStartDate.bind(this)}
+                                handleEndDate={this.handleEndDate.bind(this)}
+                                handleExpectedCost={this.handleExpectedCost.bind(this)}
+                                handleActualCost={this.handleActualCost.bind(this)}
+                            />
+                            <div className='row'>
+                                <div className='col-md-12 text-center'>
+                                    <div>
+                                        <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    {edit == 'location' &&
+                        <h4><i>Location update goes here</i></h4>
+                    }
+                </Modal>
             </div>
         )
     }

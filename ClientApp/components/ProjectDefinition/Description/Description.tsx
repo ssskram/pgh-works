@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import ProjectFields from '../../Inputs/Project'
 import * as moment from 'moment'
-import { bindActionCreators } from 'redux';
 
 const paddingLeft = {
     paddingLeft: '25px'
