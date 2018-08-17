@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e2415c6e6e2819d5bdf1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8daeb7349c5ac8fe850a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6974,7 +6974,7 @@ var reducer = function (state, action) {
 };
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/phases.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/phases.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/store/phases.ts"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/store/phases.ts"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
@@ -48911,8 +48911,12 @@ var Phases = (function (_super) {
             phases.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
             phases.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Return phases now")),
+                phases.map(function (phase) {
+                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, phase.phaseName)))));
+                }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -49937,6 +49941,7 @@ var Hydrate = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hydrate.prototype.componentDidMount = function () {
+        console.log(this.props);
         var props = this.props;
         // load all stores
         props.loadProjects();

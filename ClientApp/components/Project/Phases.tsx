@@ -64,7 +64,17 @@ export class Phases extends React.Component<any, any> {
                     <h4 className='text-center'>There are no phases defined for this project</h4>
                 }
                 {phases.length > 0 &&
-                    <h4 className='text-center'><i>Return phases now</i></h4>
+                    phases.map((phase) => {
+                        return (
+                            <div className="col-sm-12" key={phase.phaseID}>
+                                <div className="panel">
+                                    <div className="panel-body text-center">
+                                        <h3>{phase.phaseName}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
                 }
                 <Modal
                     open={modalIsOpen}

@@ -27,6 +27,7 @@ export interface ApplicationState {
     taggableAssets: TaggableAssets.AssetState
     personnel: Personnel.PersonnelState
 }
+
 export const reducers = {
     user: User.reducer,
     ping: Ping.reducer,
