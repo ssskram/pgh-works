@@ -14,8 +14,7 @@ export class PhaseData extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h3>Phase data</h3>
-                <hr/>
+                <h4>Phase data here</h4>
             </div>
         )
     }

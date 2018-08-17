@@ -1,5 +1,6 @@
 
 import * as React from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Phases from '../../store/phases'
@@ -26,6 +27,7 @@ export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            redirect: false,
             projectID: '',
             phaseID: '',
             cartegraphID: '',
@@ -60,18 +62,18 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     handleChildChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     handleStartDate(date) {
         if (date) {
             this.setState({
                 startDate: moment(date).format('MM/DD/YYYY')
-            });
+            })
         } else {
             this.setState({
                 startDate: null
-            });
+            })
         }
     }
 
@@ -79,21 +81,20 @@ export class PhaseInputs extends React.Component<any, any> {
         if (date) {
             this.setState({
                 endDate: moment(date).format('MM/DD/YYYY')
-            });
+            })
         } else {
             this.setState({
                 endDate: null
-            });
+            })
         }
     }
 
     handleStatusMulti(value) {
         this.setState({ phaseStatus: value });
-    };
+    }
 
     handlePercent(event, maskedvalue, floatvalue) {
         let value = 0
-        console.log(floatvalue)
         if (floatvalue > 100) {
             value = 100
         } else {
@@ -103,11 +104,21 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     post() {
-        console.log(this.state)
+        this.props.addPhase(this.state)
+        this.setState ({
+            redirect:true
+        })        
+    }
+
+    put() {
+        this.props.updatePhase(this.state)
+        this.props.closeModal()
     }
 
     public render() {
         const {
+            redirect,
+            phaseID,
             phaseName,
             startDate,
             endDate,
@@ -124,6 +135,12 @@ export class PhaseInputs extends React.Component<any, any> {
             endDate != '' &&
             phaseStatus != '' &&
             percentComplete != ''
+
+        const link = "/Phase/id=" + phaseID
+
+        if (redirect) {
+            return <Redirect to={link} />
+        }
 
         return (
             <div>
@@ -203,7 +220,7 @@ export class PhaseInputs extends React.Component<any, any> {
                     <div style={sliderContainer}>
                         <div className='col-md-12'>
                             <Progress completed={percentComplete} color='#337ab7' />
-                        <br/>
+                            <br />
                         </div>
                     </div>
                 }

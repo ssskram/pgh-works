@@ -89,7 +89,17 @@ export class NavMenu extends React.Component<any, any>  {
                         </li>
                         <li>
                             <NavLink to={'/AllProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span><img style={iconStyle} src='./images/list.png' /></span> All projects
+                                <span><img style={iconStyle} src='./images/projects.png' /></span> All projects
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/AllPhases'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/phase.png' /></span> All phases
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/AllMilestones'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                                <span><img style={iconStyle} src='./images/milestone.png' /></span> All milestones
                             </NavLink>
                         </li>
                         <li>
@@ -130,18 +140,24 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <br />
                     <div className='text-center'>
-                        <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/list.png' /></span> <b>All Projects</b>
-                        </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
-                    </Link>
+                        </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
+                            <span><img style={iconStyle} src='./images/projects.png' /></span> <b>All Projects</b>
+                        </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/AllPhases'} style={btnWidth} className='btn btn-primary'>
+                            <span><img style={iconStyle} src='./images/phase.png' /></span> <b>All Phases</b>
+                        </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/AllMilestones'} style={btnWidth} className='btn btn-primary'>
+                            <span><img style={iconStyle} src='./images/milestone.png' /></span> <b>All Milestones</b>
+                        </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
-                    </Link>
+                        </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary hidden-xs'>
                             <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
-                    </Link>
+                        </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary hidden-xs'>
                             <span><img style={iconStyle} src='./images/add.png' /></span> New Project
                     </Link>

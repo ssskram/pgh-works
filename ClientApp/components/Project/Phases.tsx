@@ -45,7 +45,7 @@ export class Phases extends React.Component<any, any> {
     }
 
     openModal() {
-        this.setState ({
+        this.setState({
             modalIsOpen: true
         })
     }
@@ -74,7 +74,10 @@ export class Phases extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <PhaseForm projectID={this.props.projectID}/>
+                    <PhaseForm
+                        projectID={this.props.projectID}
+                        closeModal={this.closeModal.bind(this)}
+                    />
                 </Modal>
             </div>
         )
