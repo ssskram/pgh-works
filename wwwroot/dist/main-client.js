@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8daeb7349c5ac8fe850a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fdf621acc269a3d4a72a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -48688,8 +48688,6 @@ var Project = (function (_super) {
         }, function () {
             this.setState({
                 spinner: false
-            }, function () {
-                console.log(this.state);
             });
         });
     };
@@ -48764,7 +48762,6 @@ var Project = (function (_super) {
             lastModifiedBy: this.props.user
         }, function () {
             this.props.updateProject(this.state);
-            console.log(this.state);
         });
     };
     Project.prototype.render = function () {
@@ -49941,7 +49938,6 @@ var Hydrate = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Hydrate.prototype.componentDidMount = function () {
-        console.log(this.props);
         var props = this.props;
         // load all stores
         props.loadProjects();

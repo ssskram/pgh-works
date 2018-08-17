@@ -94,8 +94,6 @@ export class Project extends React.Component<any, any> {
         }, function (this) {
             this.setState({
                 spinner: false
-            }, function(this) {
-                console.log(this.state)
             })
         })
     }
@@ -177,7 +175,6 @@ export class Project extends React.Component<any, any> {
             lastModifiedBy: this.props.user
         }, function(this) {
             this.props.updateProject(this.state)
-            console.log(this.state)
         })
     }
 
