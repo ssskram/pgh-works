@@ -11,7 +11,11 @@ import Datepicker from '../FormElements/datepicker'
 import Percent from '../FormElements/numbers'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
+import Progress from 'react-progressbar'
 
+const sliderContainer = {
+    padding: '0px 15px'
+}
 
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'projectStatus' },
@@ -98,6 +102,10 @@ export class PhaseInputs extends React.Component<any, any> {
         this.setState({ percentComplete: value })
     }
 
+    post() {
+        console.log(this.state)
+    }
+
     public render() {
         const {
             phaseName,
@@ -108,6 +116,14 @@ export class PhaseInputs extends React.Component<any, any> {
             percentComplete,
             notes,
         } = this.state
+
+        // validation
+        const isEnabled =
+            phaseName != '' &&
+            startDate != '' &&
+            endDate != '' &&
+            phaseStatus != '' &&
+            percentComplete != ''
 
         return (
             <div>
@@ -152,7 +168,7 @@ export class PhaseInputs extends React.Component<any, any> {
                         options={statuses}
                     />
                 </div>
-                
+
                 <div className='col-md-6'>
                     <Datepicker
                         value={startDate}
@@ -183,7 +199,22 @@ export class PhaseInputs extends React.Component<any, any> {
                         callback={this.handlePercent.bind(this)}
                     />
                 </div>
+                {percentComplete > 0 &&
+                    <div style={sliderContainer}>
+                        <div className='col-md-12'>
+                            <Progress completed={percentComplete} color='#337ab7' />
+                        <br/>
+                        </div>
+                    </div>
+                }
 
+                <div className='row'>
+                    <div className='col-md-12 text-center'>
+                        <div>
+                            <button disabled={!isEnabled} className='btn btn-success' onClick={this.post.bind(this)}><b>Save</b></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
