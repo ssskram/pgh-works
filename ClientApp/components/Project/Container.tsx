@@ -7,7 +7,6 @@ import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
 import Spinner from '../Utilities/Spinner'
 import Map from '../Map/ProjectMap'
-import Moment from 'react-moment'
 import Phases from './Phases'
 import Funds from './ProgramsFunds'
 import Attachments from './Attachments'
@@ -16,14 +15,7 @@ import ProjectFields from '../Inputs/Project'
 import Tags from './Tags'
 import * as moment from 'moment'
 import UpdateLocation from './UpdateLocation'
-
-const bigFont = {
-    fontSize: '18px'
-}
-
-const borderNone = {
-    border: 'none'
-}
+import ProjectCard from './ProjectCard'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -193,20 +185,11 @@ export class Project extends React.Component<any, any> {
             edit,
             spinner,
             projectID,
-            cartegraphID,
             projectName,
             startDate,
             endDate,
             projectManager,
-            projectMembers,
-            projectDescription,
             projectStatus,
-            expectedCost,
-            actualCost,
-            notes,
-            created,
-            createdBy,
-            lastModifiedBy,
             shape
         } = this.state
 
@@ -227,47 +210,25 @@ export class Project extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <div className='col-md-6'>
-                    <table className="table">
-                        <tbody>
-                            <tr style={bigFont}>
-                                <th style={borderNone} scope="row">Status</th>
-                                <td style={borderNone}>{projectStatus}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Start date</th>
-                                <td><Moment format="MM/DD/YYYY" date={startDate} /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">End date</th>
-                                <td><Moment format="MM/DD/YYYY" date={endDate} /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Project manager</th>
-                                <td>{projectManager}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Project members</th>
-                                <td>{projectMembers}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Project description</th>
-                                <td>{projectDescription}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className='col-md-12'>
+                    <ProjectCard project={this.state}/>
+                    <br/>
                 </div>
                 <div className='col-md-12'>
                     <Phases projectID={projectID} />
+                    <br/>
                 </div>
                 <div className='col-md-12'>
                     <Funds projectID={projectID} />
+                    <br/>
                 </div>
                 <div className='col-md-12'>
                     <Attachments projectID={projectID} />
+                    <br/>
                 </div>
                 <div className='col-md-12'>
                     <Tags projectID={projectID} />
+                    <br/>
                 </div>
 
                 {spinner == true &&

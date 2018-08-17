@@ -74,7 +74,7 @@ export class Phases extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <PhaseForm />
+                    <PhaseForm projectID={this.props.projectID}/>
                 </Modal>
             </div>
         )

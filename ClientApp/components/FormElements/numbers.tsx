@@ -17,7 +17,7 @@ export default class currency extends React.Component<any, any> {
                     <h4 className="form-h4">{this.props.header}</h4>
                     <CurrencyInput type='search'
                         className={conditionalClass}
-                        prefix="$"
+                        prefix={this.props.prefix}
                         precision="0"
                         value={this.props.value}
                         onChangeEvent={this.props.callback.bind(this)} />
