@@ -248,6 +248,10 @@ hr {
 /* Forms
 /* ------------------------- */
 
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
+
 .form-h {
     margin-left: 15px;
 }
@@ -296,6 +300,10 @@ hr {
     margin: 0px !important;
 }
 
+.Select--multi .Select-value {
+    color: #383838 !important;
+}
+
 textarea {
     overflow: hidden;
 }
@@ -314,6 +322,10 @@ textarea {
 
 .dropdown-menu {
     overflow: visible;
+}
+
+.highlight-filter {
+    background-color: #f3fafe !important;
 }
 
 /* Buttons

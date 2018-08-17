@@ -46,7 +46,9 @@ export default class datepicker extends React.Component<any, any> {
     public render() {
 
         var conditionalClass = classNames({
-            'form-control': true
+            'btn': true,
+            'btn-datepicker': true,
+            'highlight-filter': this.props.value
         });
 
         return (
@@ -54,7 +56,7 @@ export default class datepicker extends React.Component<any, any> {
                 <div className="col-md-12 form-element">
                     <h4 className="form-h4">{this.props.header}</h4>
                     <button
-                        className="btn btn-datepicker"
+                        className={conditionalClass}
                         onClick={this.toggleCalendar.bind(this)}>
                         {this.state.date == null &&
                             <span style={{color: '#aaa'}}>{this.props.placeholder}</span>
