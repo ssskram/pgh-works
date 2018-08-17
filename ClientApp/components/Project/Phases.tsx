@@ -60,7 +60,8 @@ export class Phases extends React.Component<any, any> {
             <div>
                 <h3>Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Create a new phase</button></span></h3>
                 <hr />
-                {phases.length == 0 &&
+                    <h4 className='text-center'>There are no phases defined for this project</h4>
+                {/* {phases.length == 0 &&
                     <h4 className='text-center'>There are no phases defined for this project</h4>
                 }
                 {phases.length > 0 &&
@@ -75,7 +76,7 @@ export class Phases extends React.Component<any, any> {
                             </div>
                         )
                     })
-                }
+                } */}
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}

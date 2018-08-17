@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fdf621acc269a3d4a72a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "90958efd21079286d93f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -48905,15 +48905,7 @@ var Phases = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' }, "Create a new phase"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            phases.length == 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
-            phases.length > 0 &&
-                phases.map(function (phase) {
-                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, phase.phaseName)))));
-                }),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
