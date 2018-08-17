@@ -94,6 +94,8 @@ export class Project extends React.Component<any, any> {
         }, function (this) {
             this.setState({
                 spinner: false
+            }, function(this) {
+                console.log(this.state)
             })
         })
     }
@@ -203,7 +205,7 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>{projectName}
+                <h2 style={{letterSpacing: '2px'}}>{projectName}
                     <span><button onClick={this.editProject.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
                     <span><button onClick={this.editLocation.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Modify location</button></span>
                 </h2>

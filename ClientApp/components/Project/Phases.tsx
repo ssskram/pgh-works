@@ -24,7 +24,7 @@ export class Phases extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.getPhases(this.props)
+        this.getPhases(nextProps)
     }
 
     getPhases(props) {

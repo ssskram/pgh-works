@@ -54,6 +54,7 @@ export default class ProjectCard extends React.Component<any, any> {
         return (
             <div>
                 <div className='row'>
+                    <br/>
                     <div style={projectContainer} className='col-md-6'>
                         <table className="table">
                             <tbody>
@@ -98,7 +99,7 @@ export default class ProjectCard extends React.Component<any, any> {
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <th style={borderNone} scope="row">Created</th>
+                                    <th style={borderNone} scope="row">Project created</th>
                                     <td style={borderNone}>{created}</td>
                                 </tr>
                                 <tr>

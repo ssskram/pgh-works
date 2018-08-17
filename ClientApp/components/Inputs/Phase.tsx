@@ -105,6 +105,7 @@ export class PhaseInputs extends React.Component<any, any> {
 
     post() {
         this.props.addPhase(this.state)
+        // this.props.closeModal()
         this.setState ({
             redirect:true
         })        
@@ -133,9 +134,8 @@ export class PhaseInputs extends React.Component<any, any> {
             phaseName != '' &&
             startDate != '' &&
             endDate != '' &&
-            phaseStatus != '' &&
-            percentComplete != ''
-
+            phaseStatus != ''
+            
         const link = "/Phase/id=" + phaseID
 
         if (redirect) {

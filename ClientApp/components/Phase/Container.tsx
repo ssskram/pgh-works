@@ -1,5 +1,6 @@
 
 import * as React from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
@@ -18,6 +19,7 @@ export class Phase extends React.Component<any, any> {
             // utilities
             spinner: true,
             modalIsOpen: false,
+            redirect: false,
 
             // phase state
             phaseID: '',
@@ -102,8 +104,15 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
+    returnToProject () {
+        this.setState ({
+            redirect: true
+        })
+    }
+
     public render() {
         const {
+            redirect,
             spinner,
             modalIsOpen,
             phaseID,
@@ -123,10 +132,15 @@ export class Phase extends React.Component<any, any> {
             shape
         } = this.state
 
+        const link = "/Project/id=" + projectID
+        if (redirect) {
+            return <Redirect to={link} />
+        }
+
         return (
             <div>
-                <h2>{projectName}
-                    <span><button className='btn pull-right'>Return to project</button></span>
+                <h2 style={{letterSpacing: '2px'}}>{projectName}
+                    <span><button onClick={this.returnToProject.bind(this)} className='btn pull-right'>Return to project</button></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />
