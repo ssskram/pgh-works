@@ -110,10 +110,6 @@ export default class ProjectCard extends React.Component<any, any> {
                                     <th scope="row">Last modified by</th>
                                     <td>{lastModifiedBy}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">Project ID</th>
-                                    <td>{projectID}</td>
-                                </tr>
                                 {cartegraphID &&
                                     <tr>
                                         <th scope="row">Cartegraph ID</th>

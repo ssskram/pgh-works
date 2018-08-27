@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "96351379c8ff85a8d601"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "48e50d6361545afab741"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7000,11 +7000,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
-        })
-            .then(function (response) { return response.json(); })
-            .then(function (data) {
-            dispatch({ type: loadPhases, phases: data.items });
         });
+        // .then(response => response.json())
+        // .then(data => {
+        //     dispatch({ type: loadPhases, phases: data });
+        // });
     }; },
     addPhase: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -49154,7 +49154,6 @@ var Phases = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' }, "Create a new phase"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
             phases.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
             phases.length > 0 &&
@@ -49373,9 +49372,6 @@ var ProjectCard = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Last modified by"),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, lastModifiedBy)),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Project ID"),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectID)),
                             cartegraphID &&
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Cartegraph ID"),

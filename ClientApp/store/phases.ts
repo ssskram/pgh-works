@@ -41,10 +41,10 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            .then(response => response.json())
-            .then(data => {
-                dispatch({ type: loadPhases, phases: data.items });
-            });
+            // .then(response => response.json())
+            // .then(data => {
+            //     dispatch({ type: loadPhases, phases: data });
+            // });
     },
     addPhase: (item): AppThunkAction<any> => (dispatch, getState) =>  {
         dispatch({
