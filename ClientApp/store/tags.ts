@@ -1,9 +1,10 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
 const loadTags = 'load'
 const add = 'add'
+
 // TODO
 const del = 'delete'
 
@@ -24,7 +25,7 @@ export interface TagItem {
 }
 
 export const actionCreators = {
-    loadTags: () => (dispatch) => {
+    loadTags: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/tags/loadTags', {
             credentials: 'same-origin',
             headers: {
@@ -36,14 +37,15 @@ export const actionCreators = {
         //         dispatch({ type: loadTags, tags: data.items });
         //     });
     },
-    addTag: (item) => (dispatch) => {
+    addTag: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
             type: add, item
         })
     }
 }
 
-export const reducer = (state: TagState, action) => {
+export const reducer: Reducer<TagState> = (state: TagState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadTags:
             return {

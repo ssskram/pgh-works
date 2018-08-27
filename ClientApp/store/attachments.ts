@@ -1,9 +1,10 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
 const loadAttachments = 'load'
 const add = 'add'
+
 // TODO
 const del = 'delete'
 
@@ -25,7 +26,7 @@ export interface AttachmentItem {
 }
 
 export const actionCreators = {
-    loadAttachments: () => (dispatch) => {
+    loadAttachments: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/attachments/loadAttachments', {
             credentials: 'same-origin',
             headers: {
@@ -37,14 +38,15 @@ export const actionCreators = {
             //     dispatch({ type: loadAttachments, attachments: data.items });
             // });
     },
-    addAttachment: (item) => (dispatch) => {
+    addAttachment: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
             type: add, item
         })
     }
 }
 
-export const reducer = (state: AttachmentState, action) => {
+export const reducer: Reducer<AttachmentState> = (state: AttachmentState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadAttachments:
             return {

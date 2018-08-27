@@ -1,6 +1,6 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
 const loadMilestones = 'load'
 const add = 'add'
@@ -32,7 +32,7 @@ export interface MilestoneItem {
 }
 
 export const actionCreators = {
-    loadMilestones: () => (dispatch) => {
+    loadMilestones: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/milestones/loadMilestones', {
             credentials: 'same-origin',
             headers: {
@@ -44,14 +44,16 @@ export const actionCreators = {
         //         dispatch({ type: loadMilestones, milestones: data.items });
         //     });
     },
-    addMilestone: (item) => (dispatch) => {
+    addMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
+        
         dispatch({
             type: add, item
         })
     },
 }
 
-export const reducer = (state: MilestoneState, action) => {
+export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadMilestones:
             return {

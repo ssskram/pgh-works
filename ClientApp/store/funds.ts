@@ -1,10 +1,10 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
-
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
 const loadFunds = 'load'
 const add = 'add'
+
 // TODO
 const update = 'update'
 
@@ -26,7 +26,7 @@ export interface FundItem {
 }
 
 export const actionCreators = {
-    loadFunds: () => (dispatch) => {
+    loadFunds: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/funds/loadFunds', {
             credentials: 'same-origin',
             headers: {
@@ -38,14 +38,15 @@ export const actionCreators = {
         //         dispatch({ type: loadFunds, funds: data.items });
         //     });
     },
-    addFund: (item) => (dispatch) => {
+    addFund: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
             type: add, item
         })
     },
 }
 
-export const reducer = (state: FundState, action) => {
+export const reducer: Reducer<FundState> = (state: FundState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadFunds:
             return {

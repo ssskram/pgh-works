@@ -1,10 +1,11 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
 
 const loadDrawdowns = 'load'
 const add = 'add'
+
 // TODO
 const del = 'delete'
 
@@ -25,7 +26,7 @@ export interface DrawdownItem {
 }
 
 export const actionCreators = {
-    loadDrawdowns: () => (dispatch) => {
+    loadDrawdowns: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/drawdowns/loadDrawdowns', {
             credentials: 'same-origin',
             headers: {
@@ -37,14 +38,15 @@ export const actionCreators = {
             //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
             // });
     },
-    addDrawdown: (item) => (dispatch) => {
+    addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
             type: add, item
         })
     }
 }
 
-export const reducer = (state: DrawdownState, action) => {
+export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadDrawdowns:
             return {

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8012f05009cfb7690cfd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "deef1e8894bceee3d592"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10294,7 +10294,7 @@ var unloadedState = {
     attachments: []
 };
 var actionCreators = {
-    loadAttachments: function () { return function (dispatch) {
+    loadAttachments: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/attachments/loadAttachments', {
             credentials: 'same-origin',
             headers: {
@@ -10306,13 +10306,14 @@ var actionCreators = {
         //     dispatch({ type: loadAttachments, attachments: data.items });
         // });
     }; },
-    addAttachment: function (item) { return function (dispatch) {
+    addAttachment: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadAttachments:
             return __assign({}, state, { attachments: action.attachments });
@@ -10352,7 +10353,7 @@ var unloadedState = {
     drawdowns: []
 };
 var actionCreators = {
-    loadDrawdowns: function () { return function (dispatch) {
+    loadDrawdowns: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/drawdowns/loadDrawdowns', {
             credentials: 'same-origin',
             headers: {
@@ -10364,13 +10365,14 @@ var actionCreators = {
         //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
         // });
     }; },
-    addDrawdown: function (item) { return function (dispatch) {
+    addDrawdown: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadDrawdowns:
             return __assign({}, state, { drawdowns: action.drawdowns });
@@ -10410,7 +10412,7 @@ var unloadedState = {
     tags: []
 };
 var actionCreators = {
-    loadTags: function () { return function (dispatch) {
+    loadTags: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/loadTags', {
             credentials: 'same-origin',
             headers: {
@@ -10422,13 +10424,14 @@ var actionCreators = {
         //         dispatch({ type: loadTags, tags: data.items });
         //     });
     }; },
-    addTag: function (item) { return function (dispatch) {
+    addTag: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadTags:
             return __assign({}, state, { tags: action.tags });
@@ -25197,7 +25200,7 @@ var unloadedState = {
     funds: []
 };
 var actionCreators = {
-    loadFunds: function () { return function (dispatch) {
+    loadFunds: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/funds/loadFunds', {
             credentials: 'same-origin',
             headers: {
@@ -25209,13 +25212,14 @@ var actionCreators = {
         //         dispatch({ type: loadFunds, funds: data.items });
         //     });
     }; },
-    addFund: function (item) { return function (dispatch) {
+    addFund: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; },
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadFunds:
             return __assign({}, state, { funds: action.funds });
@@ -25256,7 +25260,7 @@ var unloadedState = {
     milestones: []
 };
 var actionCreators = {
-    loadMilestones: function () { return function (dispatch) {
+    loadMilestones: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/milestones/loadMilestones', {
             credentials: 'same-origin',
             headers: {
@@ -25268,13 +25272,14 @@ var actionCreators = {
         //         dispatch({ type: loadMilestones, milestones: data.items });
         //     });
     }; },
-    addMilestone: function (item) { return function (dispatch) {
+    addMilestone: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; },
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadMilestones:
             return __assign({}, state, { milestones: action.milestones });
