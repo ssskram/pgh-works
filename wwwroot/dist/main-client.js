@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "934623b6cb27048ddf66"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "49fc37456c8b81c30490"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -25072,7 +25072,7 @@ var ImportShape = (function (_super) {
     };
     ImportShape.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__TaggableAssets_Container__["a" /* default */], { receiveAsset: this.receiveAsset.bind(this) })));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__TaggableAssets_Container__["a" /* default */], { parent: 'shape', receiveAsset: this.receiveAsset.bind(this) })));
     };
     return ImportShape;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -49953,7 +49953,7 @@ var Geolocate = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: bigFont },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Import shape"))),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing shape from a facility, pool, playground, park, intersection, bridge, project, retaining wall, or steps")))))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing shape from a facility, pool, playground, intersection, bridge, project, retaining wall, or steps")))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -50008,9 +50008,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var TaggableAssetSelection = (function (_super) {
     __extends(TaggableAssetSelection, _super);
-    function TaggableAssetSelection() {
-        var _this = _super.call(this) || this;
+    function TaggableAssetSelection(props) {
+        var _this = _super.call(this, props) || this;
         _this.state = {
+            parentComponent: props.parent,
             assetType: '',
         };
         return _this;
@@ -50029,10 +50030,10 @@ var TaggableAssetSelection = (function (_super) {
         this.props.receiveAsset(asset);
     };
     TaggableAssetSelection.prototype.render = function () {
-        var assetType = this.state.assetType;
+        var _a = this.state, parentComponent = _a.parentComponent, assetType = _a.assetType;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             assetType == '' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__TaggableAssets_SelectType__["a" /* default */], { receiveType: this.receiveType.bind(this) }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__TaggableAssets_SelectType__["a" /* default */], { parentComponent: parentComponent, receiveType: this.receiveType.bind(this) }),
             assetType != '' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__TaggableAssets_SelectAsset__["a" /* default */], { assetType: assetType, receiveAsset: this.receiveAsset.bind(this), back: this.back.bind(this) })));
     };
@@ -50180,6 +50181,7 @@ var SelectAssetType = (function (_super) {
     };
     SelectAssetType.prototype.render = function () {
         var _this = this;
+        var parentComponent = this.props.parentComponent;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Select asset type"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
@@ -50190,9 +50192,10 @@ var SelectAssetType = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Retaining Wall'); }, className: 'btn btn-secondary' }, "Retaining Wall"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Pool'); }, className: 'btn btn-secondary' }, "Pool"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Playground'); }, className: 'btn btn-secondary' }, "Playground"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-secondary' }, "Park"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Intersection'); }, className: 'btn btn-secondary' }, "Intersection"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Bridge'); }, className: 'btn btn-secondary' }, "Bridge"))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Bridge'); }, className: 'btn btn-secondary' }, "Bridge"),
+                parentComponent != 'shape' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-secondary' }, "Park"))));
     };
     return SelectAssetType;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

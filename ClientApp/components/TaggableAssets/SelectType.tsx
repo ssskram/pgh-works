@@ -14,6 +14,9 @@ export class SelectAssetType extends React.Component<any, any> {
     }
 
     public render() {
+        const {
+            parentComponent
+        } = this.props
         return (
             <div>
                 <h3>Select asset type</h3>
@@ -25,9 +28,11 @@ export class SelectAssetType extends React.Component<any, any> {
                     <button onClick={() => this.passType('Retaining Wall')} className='btn btn-secondary'>Retaining Wall</button>
                     <button onClick={() => this.passType('Pool')} className='btn btn-secondary'>Pool</button>
                     <button onClick={() => this.passType('Playground')} className='btn btn-secondary'>Playground</button>
-                    <button onClick={() => this.passType('Park')} className='btn btn-secondary'>Park</button>
                     <button onClick={() => this.passType('Intersection')} className='btn btn-secondary'>Intersection</button>
                     <button onClick={() => this.passType('Bridge')} className='btn btn-secondary'>Bridge</button>
+                    {parentComponent != 'shape' &&
+                        <button onClick={() => this.passType('Park')} className='btn btn-secondary'>Park</button>
+                    }
                 </div>
             </div>
         )

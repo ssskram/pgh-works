@@ -7,9 +7,10 @@ import SelectType from '../TaggableAssets/SelectType'
 import SelectAsset from '../TaggableAssets/SelectAsset'
 
 export class TaggableAssetSelection extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            parentComponent: props.parent,
             assetType: '',
         }
     }
@@ -32,13 +33,14 @@ export class TaggableAssetSelection extends React.Component<any, any> {
 
     public render() {
         const {
-            assetType,
+            parentComponent,
+            assetType
         } = this.state
 
         return (
             <div>
                 {assetType == '' &&
-                    <SelectType receiveType={this.receiveType.bind(this)} />
+                    <SelectType parentComponent={parentComponent} receiveType={this.receiveType.bind(this)} />
                 }
                 {assetType != '' &&
                     <SelectAsset

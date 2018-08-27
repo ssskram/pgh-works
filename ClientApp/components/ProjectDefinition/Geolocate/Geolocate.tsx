@@ -125,7 +125,7 @@ export default class Geolocate extends React.Component<any, any> {
                                         <span style={bigFont}><b>Import shape</b></span>
                                     </div>
                                     <div className='row'>
-                                        <i>Import an existing shape from a facility, pool, playground, park, intersection, bridge, project, retaining wall, or steps</i>
+                                        <i>Import an existing shape from a facility, pool, playground, intersection, bridge, project, retaining wall, or steps</i>
                                     </div>
                                 </div>
                             </div>

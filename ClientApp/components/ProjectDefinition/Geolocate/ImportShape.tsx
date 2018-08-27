@@ -17,7 +17,7 @@ export class ImportShape extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <TaggableAssetSelection receiveAsset={this.receiveAsset.bind(this)} />
+                <TaggableAssetSelection parent={'shape'} receiveAsset={this.receiveAsset.bind(this)} />
             </div>
         )
     }
