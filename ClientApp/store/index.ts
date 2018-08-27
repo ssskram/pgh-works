@@ -1,4 +1,3 @@
-import * as Messages from './messages'
 import * as Ping from './GETS/ping'
 import * as User from './GETS/user'
 import * as Projects from './projects'
@@ -15,7 +14,6 @@ import * as Personnel from './GETS/personnel'
 export interface ApplicationState {
     user: User.UserState
     ping: Ping.PingState
-    messages: Messages.MessageState
     projects: Projects.ProjectState
     drawdowns: Drawdowns.DrawdownState
     funds: Funds.FundState
@@ -31,7 +29,6 @@ export interface ApplicationState {
 export const reducers = {
     user: User.reducer,
     ping: Ping.reducer,
-    messages: Messages.reducer,
     projects: Projects.reducer,
     drawdowns: Drawdowns.reducer,
     funds: Funds.reducer,
