@@ -72,7 +72,7 @@ export class UpdateLocation extends React.Component<any, any> {
                     <New passShape={this.setShape.bind(this)} />
                 }
                 {shapeType == 'import' &&
-                    <Import />
+                    <Import passShape={this.setShape.bind(this)} />
                 }
             </div>
         )
