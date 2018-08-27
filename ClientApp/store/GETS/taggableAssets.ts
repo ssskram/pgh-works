@@ -22,8 +22,8 @@ export interface Coords {
 }
 
 export interface Points {
-    lat: string
-    lng: string
+    lat: number
+    lng: number
 }
 
 export const actionCreators = {

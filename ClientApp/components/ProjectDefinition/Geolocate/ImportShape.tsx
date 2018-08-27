@@ -11,7 +11,7 @@ export class ImportShape extends React.Component<any, any> {
     }
 
     receiveAsset(asset) {
-        console.log(asset)
+        this.props.passShape(asset.shape.points)
     }
 
     public render() {

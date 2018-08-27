@@ -141,7 +141,7 @@ export default class Geolocate extends React.Component<any, any> {
                     }}
                     center>
                     {type == 'import' &&
-                        <Import />
+                        <Import passShape={this.setShape.bind(this)} />
                     }
                     {type == 'new' &&
                         <New passShape={this.setShape.bind(this)} />
