@@ -9,7 +9,7 @@ export class SelectAssetType extends React.Component<any, any> {
         super()
     }
 
-    passType (type) {
+    passType(type) {
         this.props.receiveType(type)
     }
 
@@ -22,16 +22,61 @@ export class SelectAssetType extends React.Component<any, any> {
                 <h3>Select asset type</h3>
                 <hr />
                 <div className='row col-md-12'>
-                    <button onClick={() => this.passType('Facility')} className='btn btn-secondary'>Facility</button>
-                    <button onClick={() => this.passType('Project')} className='btn btn-secondary'>Project</button>
-                    <button onClick={() => this.passType('Steps')} className='btn btn-secondary'>Steps</button>
-                    <button onClick={() => this.passType('Retaining Wall')} className='btn btn-secondary'>Retaining Wall</button>
-                    <button onClick={() => this.passType('Pool')} className='btn btn-secondary'>Pool</button>
-                    <button onClick={() => this.passType('Playground')} className='btn btn-secondary'>Playground</button>
-                    <button onClick={() => this.passType('Intersection')} className='btn btn-secondary'>Intersection</button>
-                    <button onClick={() => this.passType('Bridge')} className='btn btn-secondary'>Bridge</button>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Facility')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/facilities.png' /></span><br />
+                            Facility
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Project')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/projects.png' /></span><br />
+                            Project
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Steps')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/steps.png' /></span><br />
+                            Steps
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Retaining Wall')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/wall.png' /></span><br />
+                            Retaining Wall
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Pool')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/pools.png' /></span><br />
+                            Pool
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Playground')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/playground.png' /></span><br />
+                            Playground
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Intersection')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/signal.png' /></span><br />
+                            Intersection
+                        `</button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Bridge')} className='btn btn-assetType'>
+                            <span><img src='./images/assetTypes/bridges.png' /></span><br />
+                            Bridge
+                        </button>
+                    </div>
                     {parentComponent != 'shape' &&
-                        <button onClick={() => this.passType('Park')} className='btn btn-secondary'>Park</button>
+                        <div className='col-md-4 text-center'>
+                            <button onClick={() => this.passType('Park')} className='btn btn-assetType'>
+                                <span><img src='./images/assetTypes/parks.png' /></span><br />
+                                Park
+                            </button>
+                        </div>
                     }
                 </div>
             </div>
