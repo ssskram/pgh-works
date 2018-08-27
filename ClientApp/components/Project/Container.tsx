@@ -66,6 +66,7 @@ export class Project extends React.Component<any, any> {
         // set project, and pass project to setProjectState
         const id = this.props.match.params.id
         if (props.projects) {
+            console.log(props.projects)
             let project = props.projects.find(function (item) {
                 return item.projectID == id
             })

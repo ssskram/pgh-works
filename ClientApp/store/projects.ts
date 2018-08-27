@@ -2,10 +2,10 @@ import { fetch, addTask } from 'domain-task';
 import { Action, Reducer } from 'redux';
 import { AppThunkAction } from './';
 
-
-const loadProjects = 'load'
-const add = 'add'
-const update = 'update'
+const projectStore = 'projectStore'
+const loadProjects = 'loadProject'
+const addProject = 'addProject'
+const updateProject = 'updateProject'
 
 const unloadedState: ProjectState = {
     projects: []
@@ -40,32 +40,34 @@ export interface Coords {
 }
 
 export const actionCreators = {
-    loadProjects: () => (dispatch) => {
-        fetch('/api/projects/loadProjects', {
+    loadProjects: (): AppThunkAction<any> => (dispatch, getState) => {
+        let fetchTask = fetch('/api/projects/loadProjects', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadProjects, projects: data.items });
-        //     });
+            // .then(response => response.json() as Promise<ProjectItem[]>)
+            // .then(data => {
+            //     dispatch({ type: loadProjects, projects: data });
+            // });
+        addTask(fetchTask)
+        dispatch({ type: projectStore })
     },
-    addProject: (item) => (dispatch) => {
+    addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
 
         // post to cartegraph
 
         dispatch({
-            type: add, item
+            type: addProject, item
         })
     },
-    updateProject: (item) => (dispatch) => {
+    updateProject: (item): AppThunkAction<any> => (dispatch, getState) => {
 
         // put to cartegraph
         
         dispatch({
-            type: update, item
+            type: updateProject, item
         })
     }
 }
@@ -77,12 +79,12 @@ export const reducer = (state: ProjectState, action) => {
                 ...state,
                 projects: action.projects
             };
-        case add:
+        case addProject:
             return {
                 ...state,
                 projects: state.projects.concat(action.item)
             };
-        case update:
+        case updateProject:
             return {
                 ...state,
                 projects: state.projects.map(project => project.projectID === action.item.projectID ? { ...project,
