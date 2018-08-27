@@ -1,4 +1,6 @@
-import { fetch } from 'domain-task';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './../'
 
 const loadStatuses = 'load'
 
@@ -15,7 +17,7 @@ export interface StatusItem {
 }
 
 export const actionCreators = {
-    loadStatuses: () => (dispatch) => {
+    loadStatuses: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/statuses/loadStatuses', {
             credentials: 'same-origin',
             headers: {
@@ -29,7 +31,8 @@ export const actionCreators = {
     }
 }
 
-export const reducer = (state: StatusState, action) => {
+export const reducer: Reducer<StatusState> = (state: StatusState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadStatuses:
             return {

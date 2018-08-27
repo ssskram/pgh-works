@@ -1,4 +1,6 @@
-import { fetch } from 'domain-task';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './../'
 
 const loadPersonnel = 'load'
 
@@ -17,7 +19,7 @@ export interface PersonnelItem {
 }
 
 export const actionCreators = {
-    loadPersonnel: () => (dispatch) => {
+    loadPersonnel: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/personnel/loadPersonnel', {
             credentials: 'same-origin',
             headers: {
@@ -31,7 +33,8 @@ export const actionCreators = {
     }
 }
 
-export const reducer = (state: PersonnelState, action) => {
+export const reducer: Reducer<PersonnelState> = (state: PersonnelState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadPersonnel:
             return {

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "deef1e8894bceee3d592"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6bc62fd3eec5b7d90bf5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6749,7 +6749,7 @@ var unloadedState = {
     assets: []
 };
 var actionCreators = {
-    loadTaggableAssets: function () { return function (dispatch) {
+    loadTaggableAssets: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/assets/loadTaggableAssets', {
             credentials: 'same-origin',
             headers: {
@@ -6762,7 +6762,8 @@ var actionCreators = {
         });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadAssets:
             return __assign({}, state, { assets: action.assets });
@@ -10195,7 +10196,7 @@ var unloadedState = {
     personnel: []
 };
 var actionCreators = {
-    loadPersonnel: function () { return function (dispatch) {
+    loadPersonnel: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/personnel/loadPersonnel', {
             credentials: 'same-origin',
             headers: {
@@ -10208,7 +10209,8 @@ var actionCreators = {
         // });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadPersonnel:
             return __assign({}, state, { personnel: action.personnel });
@@ -10243,7 +10245,7 @@ var unloadedState = {
     statuses: []
 };
 var actionCreators = {
-    loadStatuses: function () { return function (dispatch) {
+    loadStatuses: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/statuses/loadStatuses', {
             credentials: 'same-origin',
             headers: {
@@ -10256,7 +10258,8 @@ var actionCreators = {
         // });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadStatuses:
             return __assign({}, state, { statuses: action.statuses });

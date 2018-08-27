@@ -1,4 +1,6 @@
-import { fetch } from 'domain-task';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './../'
 
 const loadAssets = 'load'
 
@@ -27,7 +29,7 @@ export interface Points {
 }
 
 export const actionCreators = {
-    loadTaggableAssets: () => (dispatch) => {
+    loadTaggableAssets: (): AppThunkAction<any> => (dispatch, getState) => {
         fetch('/api/assets/loadTaggableAssets', {
             credentials: 'same-origin',
             headers: {
@@ -41,7 +43,8 @@ export const actionCreators = {
     }
 }
 
-export const reducer = (state: AssetState, action) => {
+export const reducer: Reducer<AssetState> = (state: AssetState, incomingAction: Action) =>  {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadAssets:
             return {
