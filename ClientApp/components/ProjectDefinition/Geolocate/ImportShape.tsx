@@ -3,32 +3,21 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Assets from '../../../store/GETS/taggableAssets'
-import SelectType from './../../TaggableAssets/SelectType'
-import SelectAsset from './../../TaggableAssets/SelectAsset'
+import TaggableAssetSelection from './../../TaggableAssets/Container'
 
 export class ImportShape extends React.Component<any, any> {
     constructor() {
-        super();
-        this.state = {
-            assetType: '',
-            selectedAsset: {}
-        }
+        super()
+    }
+
+    receiveAsset(asset) {
+        console.log(asset)
     }
 
     public render() {
-        const {
-            assetType,
-            selectedAsset
-        } = this.state
-
         return (
             <div>
-                {assetType == '' &&
-                    <SelectType />
-                }
-                {assetType != '' &&
-                    <SelectAsset />
-                }
+                <TaggableAssetSelection receiveAsset={this.receiveAsset.bind(this)} />
             </div>
         )
     }

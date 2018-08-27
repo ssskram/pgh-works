@@ -9,10 +9,13 @@ export class SelectAsset extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h3>Select Asset</h3>
+                <h3>Select {this.props.assetType}</h3>
                 <hr />
-                <div className='row col-md-12'>
-                    <i>Interface for searching & selecting shape-bound asset from Cartegraph</i>
+                <div className='row'>
+                    <i>dropdown here</i>
+                    <div className='col-md-12 text-center'>
+                        <button onClick={this.props.back} className='btn btn-warning'>Back</button>
+                    </div>
                 </div>
             </div>
         )
