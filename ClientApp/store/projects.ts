@@ -2,7 +2,7 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-const loadProjects = 'loadProject'
+const loadProjects = 'loadProjects'
 const addProject = 'addProject'
 const updateProject = 'updateProject'
 

@@ -2,11 +2,11 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-const loadAttachments = 'load'
-const add = 'add'
+const loadAttachments = 'loadAttachments'
+const addAttachment = 'addAttachment'
 
 // TODO
-const del = 'delete'
+const del = 'deleteAttachments'
 
 const unloadedState: AttachmentState = {
     attachments: []
@@ -40,7 +40,7 @@ export const actionCreators = {
     },
     addAttachment: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
-            type: add, item
+            type: addAttachment, item
         })
     }
 }
@@ -53,7 +53,7 @@ export const reducer: Reducer<AttachmentState> = (state: AttachmentState, incomi
                 ...state,
                 attachments: action.attachments
             };
-        case add:
+        case addAttachment:
             return {
                 ...state,
                 attachments: state.attachments.concat(action.item)

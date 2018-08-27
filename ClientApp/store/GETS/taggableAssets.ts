@@ -2,7 +2,7 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './../'
 
-const loadAssets = 'load'
+const loadAssets = 'loadAssets'
 
 const unloadedState: AssetState = {
     assets: []

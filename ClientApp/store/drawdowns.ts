@@ -2,12 +2,11 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-
-const loadDrawdowns = 'load'
-const add = 'add'
+const loadDrawdowns = 'loadDrawdowns'
+const addDrawdown = 'addDrawdowns'
 
 // TODO
-const del = 'delete'
+const del = 'deleteDrawdowns'
 
 const unloadedState: DrawdownState = {
     drawdowns: []
@@ -40,7 +39,7 @@ export const actionCreators = {
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
-            type: add, item
+            type: addDrawdown, item
         })
     }
 }
@@ -53,7 +52,7 @@ export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAc
                 ...state,
                 drawdowns: action.drawdowns
             };
-        case add:
+        case addDrawdown:
             return {
                 ...state,
                 drawdowns: state.drawdowns.concat(action.item)

@@ -2,11 +2,11 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-const loadFunds = 'load'
-const add = 'add'
+const loadFunds = 'loadFunds'
+const addFund = 'addFunds'
 
 // TODO
-const update = 'update'
+const update = 'updateFunds'
 
 const unloadedState: FundState = {
     funds: []
@@ -40,7 +40,7 @@ export const actionCreators = {
     },
     addFund: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
-            type: add, item
+            type: addFund, item
         })
     },
 }
@@ -53,7 +53,7 @@ export const reducer: Reducer<FundState> = (state: FundState, incomingAction: Ac
                 ...state,
                 funds: action.funds
             };
-        case add:
+        case addFund:
             return {
                 ...state,
                 funds: state.funds.concat(action.item)

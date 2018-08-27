@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6bc62fd3eec5b7d90bf5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "96351379c8ff85a8d601"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6744,7 +6744,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadAssets = 'load';
+var loadAssets = 'loadAssets';
 var unloadedState = {
     assets: []
 };
@@ -6985,11 +6985,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadPhases = 'load';
-var add = 'add';
+var loadPhases = 'loadPhases';
+var addPhase = 'addPhases';
 // TODO
-var update = 'update';
-var del = 'delete';
+var update = 'updatePhases';
+var del = 'deletePhases';
 var unloadedState = {
     phases: []
 };
@@ -7008,7 +7008,7 @@ var actionCreators = {
     }; },
     addPhase: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addPhase, item: item
         });
     }; },
 };
@@ -7017,7 +7017,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadPhases:
             return __assign({}, state, { phases: action.phases });
-        case add:
+        case addPhase:
             return __assign({}, state, { phases: state.phases.concat(action.item) });
     }
     return state || unloadedState;
@@ -7045,7 +7045,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadProjects = 'loadProject';
+var loadProjects = 'loadProjects';
 var addProject = 'addProject';
 var updateProject = 'updateProject';
 var unloadedState = {
@@ -10191,7 +10191,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadPersonnel = 'load';
+var loadPersonnel = 'loadPersonnel';
 var unloadedState = {
     personnel: []
 };
@@ -10240,7 +10240,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadStatuses = 'load';
+var loadStatuses = 'loadStatuses';
 var unloadedState = {
     statuses: []
 };
@@ -10289,10 +10289,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadAttachments = 'load';
-var add = 'add';
+var loadAttachments = 'loadAttachments';
+var addAttachment = 'addAttachment';
 // TODO
-var del = 'delete';
+var del = 'deleteAttachments';
 var unloadedState = {
     attachments: []
 };
@@ -10311,7 +10311,7 @@ var actionCreators = {
     }; },
     addAttachment: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addAttachment, item: item
         });
     }; }
 };
@@ -10320,7 +10320,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadAttachments:
             return __assign({}, state, { attachments: action.attachments });
-        case add:
+        case addAttachment:
             return __assign({}, state, { attachments: state.attachments.concat(action.item) });
     }
     return state || unloadedState;
@@ -10348,10 +10348,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadDrawdowns = 'load';
-var add = 'add';
+var loadDrawdowns = 'loadDrawdowns';
+var addDrawdown = 'addDrawdowns';
 // TODO
-var del = 'delete';
+var del = 'deleteDrawdowns';
 var unloadedState = {
     drawdowns: []
 };
@@ -10370,7 +10370,7 @@ var actionCreators = {
     }; },
     addDrawdown: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addDrawdown, item: item
         });
     }; }
 };
@@ -10379,7 +10379,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadDrawdowns:
             return __assign({}, state, { drawdowns: action.drawdowns });
-        case add:
+        case addDrawdown:
             return __assign({}, state, { drawdowns: state.drawdowns.concat(action.item) });
     }
     return state || unloadedState;
@@ -10407,10 +10407,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadTags = 'load';
-var add = 'add';
+var loadTags = 'loadTags';
+var addTag = 'addTags';
 // TODO
-var del = 'delete';
+var del = 'deleteTags';
 var unloadedState = {
     tags: []
 };
@@ -10429,7 +10429,7 @@ var actionCreators = {
     }; },
     addTag: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addTag, item: item
         });
     }; }
 };
@@ -10438,7 +10438,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadTags:
             return __assign({}, state, { tags: action.tags });
-        case add:
+        case addTag:
             return __assign({}, state, { tags: state.tags.concat(action.item) });
     }
     return state || unloadedState;
@@ -25195,10 +25195,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadFunds = 'load';
-var add = 'add';
+var loadFunds = 'loadFunds';
+var addFund = 'addFunds';
 // TODO
-var update = 'update';
+var update = 'updateFunds';
 var unloadedState = {
     funds: []
 };
@@ -25217,7 +25217,7 @@ var actionCreators = {
     }; },
     addFund: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addFund, item: item
         });
     }; },
 };
@@ -25226,7 +25226,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadFunds:
             return __assign({}, state, { funds: action.funds });
-        case add:
+        case addFund:
             return __assign({}, state, { funds: state.funds.concat(action.item) });
     }
     return state || unloadedState;
@@ -25254,11 +25254,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var loadMilestones = 'load';
-var add = 'add';
+var loadMilestones = 'loadMilestones';
+var addMilestone = 'addMilestones';
 // TODO
-var update = 'update';
-var del = 'del';
+var update = 'updateMilestones';
+var del = 'deleteMilestones';
 var unloadedState = {
     milestones: []
 };
@@ -25277,7 +25277,7 @@ var actionCreators = {
     }; },
     addMilestone: function (item) { return function (dispatch, getState) {
         dispatch({
-            type: add, item: item
+            type: addMilestone, item: item
         });
     }; },
 };
@@ -25286,7 +25286,7 @@ var reducer = function (state, incomingAction) {
     switch (action.type) {
         case loadMilestones:
             return __assign({}, state, { milestones: action.milestones });
-        case add:
+        case addMilestone:
             return __assign({}, state, { milestones: state.milestones.concat(action.item) });
     }
     return state || unloadedState;
@@ -49155,6 +49155,15 @@ var Phases = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' }, "Create a new phase"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
+            phases.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' }, "There are no phases defined for this project"),
+            phases.length > 0 &&
+                phases.map(function (phase) {
+                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, phase.phaseName)))));
+                }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'

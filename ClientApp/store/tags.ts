@@ -2,11 +2,11 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-const loadTags = 'load'
-const add = 'add'
+const loadTags = 'loadTags'
+const addTag = 'addTags'
 
 // TODO
-const del = 'delete'
+const del = 'deleteTags'
 
 const unloadedState: TagState = {
     tags: []
@@ -39,7 +39,7 @@ export const actionCreators = {
     },
     addTag: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
-            type: add, item
+            type: addTag, item
         })
     }
 }
@@ -52,7 +52,7 @@ export const reducer: Reducer<TagState> = (state: TagState, incomingAction: Acti
                 ...state,
                 tags: action.tags
             };
-        case add:
+        case addTag:
             return {
                 ...state,
                 tags: state.tags.concat(action.item)

@@ -2,7 +2,7 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './../'
 
-const loadPersonnel = 'load'
+const loadPersonnel = 'loadPersonnel'
 
 const unloadedState: PersonnelState = {
     personnel: []

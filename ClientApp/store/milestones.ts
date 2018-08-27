@@ -2,12 +2,12 @@ import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
-const loadMilestones = 'load'
-const add = 'add'
+const loadMilestones = 'loadMilestones'
+const addMilestone = 'addMilestones'
 
 // TODO
-const update = 'update'
-const del = 'del'
+const update = 'updateMilestones'
+const del = 'deleteMilestones'
 
 const unloadedState: MilestoneState = {
     milestones: []
@@ -47,7 +47,7 @@ export const actionCreators = {
     addMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
         
         dispatch({
-            type: add, item
+            type: addMilestone, item
         })
     },
 }
@@ -60,7 +60,7 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
                 ...state,
                 milestones: action.milestones
             };
-        case add:
+        case addMilestone:
             return {
                 ...state,
                 milestones: state.milestones.concat(action.item)
