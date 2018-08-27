@@ -27,14 +27,16 @@ export class Attachments extends React.Component<any, any> {
         this.getAttachments(this.props)
     }
 
-    getAttachments (props) {
-        let attachments = props.attachments.filter(function (item) {
-            return item.projectID == props.projectID
-        })
-        if (attachments.length > 0) {
-            this.setState({
-                attachments: attachments
+    getAttachments(props) {
+        if (props.attachments) {
+            let attachments = props.attachments.filter(function (item) {
+                return item.projectID == props.projectID
             })
+            if (attachments.length > 0) {
+                this.setState({
+                    attachments: attachments
+                })
+            }
         }
     }
 
@@ -45,7 +47,7 @@ export class Attachments extends React.Component<any, any> {
     }
 
     openModal() {
-        this.setState ({
+        this.setState({
             modalIsOpen: true
         })
     }
@@ -88,4 +90,4 @@ export default connect(
     ({
         ...AttachmentsStore.actionCreators
     })
-  )(Attachments as any) as typeof Attachments
+)(Attachments as any) as typeof Attachments

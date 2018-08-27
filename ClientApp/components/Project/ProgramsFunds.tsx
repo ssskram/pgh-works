@@ -20,13 +20,15 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     getPrograms(props) {
-        let programs = props.drawdowns.filter(function (item) {
-            return item.projectID == props.projectID
-        })
-        if (programs.length > 0) {
-            this.setState({
-                programs: programs
+        if (props.drawdowns) {
+            let programs = props.drawdowns.filter(function (item) {
+                return item.projectID == props.projectID
             })
+            if (programs.length > 0) {
+                this.setState({
+                    programs: programs
+                })
+            }
         }
     }
 
@@ -37,7 +39,7 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     openModal() {
-        this.setState ({
+        this.setState({
             modalIsOpen: true
         })
     }
@@ -80,4 +82,4 @@ export default connect(
     ({
         ...Drawdowns.actionCreators
     })
-  )(ProgramsFunds as any) as typeof ProgramsFunds
+)(ProgramsFunds as any) as typeof ProgramsFunds

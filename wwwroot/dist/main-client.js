@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0b535cdbd49be4f57a02"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7e53f55809b45a38c4b8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6999,11 +6999,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadPhases, phases: data.items });
         });
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadPhases, phases: data.items });
-        //     });
     }; },
     addPhase: function (item) { return function (dispatch) {
         dispatch({
@@ -48745,13 +48745,15 @@ var Attachments = (function (_super) {
         this.getAttachments(this.props);
     };
     Attachments.prototype.getAttachments = function (props) {
-        var attachments = props.attachments.filter(function (item) {
-            return item.projectID == props.projectID;
-        });
-        if (attachments.length > 0) {
-            this.setState({
-                attachments: attachments
+        if (props.attachments) {
+            var attachments = props.attachments.filter(function (item) {
+                return item.projectID == props.projectID;
             });
+            if (attachments.length > 0) {
+                this.setState({
+                    attachments: attachments
+                });
+            }
         }
     };
     Attachments.prototype.closeModal = function () {
@@ -48895,11 +48897,13 @@ var Project = (function (_super) {
     Project.prototype.findProject = function (props) {
         // set project, and pass project to setProjectState
         var id = this.props.match.params.id;
-        var project = props.projects.find(function (item) {
-            return item.projectID == id;
-        });
-        if (project) {
-            this.setProjectState(project);
+        if (props.projects) {
+            var project = props.projects.find(function (item) {
+                return item.projectID == id;
+            });
+            if (project) {
+                this.setProjectState(project);
+            }
         }
     };
     Project.prototype.setProjectState = function (project) {
@@ -49113,13 +49117,15 @@ var Phases = (function (_super) {
         this.getPhases(nextProps);
     };
     Phases.prototype.getPhases = function (props) {
-        var phases = props.phases.filter(function (item) {
-            return item.projectID == props.projectID;
-        });
-        if (phases.length > 0) {
-            this.setState({
-                phases: phases
+        if (props.phases) {
+            var phases = props.phases.filter(function (item) {
+                return item.projectID == props.projectID;
             });
+            if (phases.length > 0) {
+                this.setState({
+                    phases: phases
+                });
+            }
         }
     };
     Phases.prototype.closeModal = function () {
@@ -49205,13 +49211,15 @@ var ProgramsFunds = (function (_super) {
         return _this;
     }
     ProgramsFunds.prototype.getPrograms = function (props) {
-        var programs = props.drawdowns.filter(function (item) {
-            return item.projectID == props.projectID;
-        });
-        if (programs.length > 0) {
-            this.setState({
-                programs: programs
+        if (props.drawdowns) {
+            var programs = props.drawdowns.filter(function (item) {
+                return item.projectID == props.projectID;
             });
+            if (programs.length > 0) {
+                this.setState({
+                    programs: programs
+                });
+            }
         }
     };
     ProgramsFunds.prototype.closeModal = function () {
@@ -49428,13 +49436,15 @@ var Tags = (function (_super) {
         this.getTags(this.props);
     };
     Tags.prototype.getTags = function (props) {
-        var tags = props.tags.filter(function (item) {
-            return item.projectID == props.projectID;
-        });
-        if (tags.length > 0) {
-            this.setState({
-                tags: tags
+        if (props.tags) {
+            var tags = props.tags.filter(function (item) {
+                return item.projectID == props.projectID;
             });
+            if (tags.length > 0) {
+                this.setState({
+                    tags: tags
+                });
+            }
         }
     };
     Tags.prototype.closeModal = function () {

@@ -28,13 +28,15 @@ export class Phases extends React.Component<any, any> {
     }
 
     getPhases(props) {
-        let phases = props.phases.filter(function (item) {
-            return item.projectID == props.projectID
-        })
-        if (phases.length > 0) {
-            this.setState({
-                phases: phases
+        if (props.phases) {
+            let phases = props.phases.filter(function (item) {
+                return item.projectID == props.projectID
             })
+            if (phases.length > 0) {
+                this.setState({
+                    phases: phases
+                })
+            }
         }
     }
 
@@ -60,7 +62,7 @@ export class Phases extends React.Component<any, any> {
             <div>
                 <h3>Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Create a new phase</button></span></h3>
                 <hr />
-                    <h4 className='text-center'>There are no phases defined for this project</h4>
+                <h4 className='text-center'>There are no phases defined for this project</h4>
                 {/* {phases.length == 0 &&
                     <h4 className='text-center'>There are no phases defined for this project</h4>
                 }

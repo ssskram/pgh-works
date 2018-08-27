@@ -65,11 +65,13 @@ export class Project extends React.Component<any, any> {
     findProject(props) {
         // set project, and pass project to setProjectState
         const id = this.props.match.params.id
-        let project = props.projects.find(function (item) {
-            return item.projectID == id
-        })
-        if (project) {
-            this.setProjectState(project)
+        if (props.projects) {
+            let project = props.projects.find(function (item) {
+                return item.projectID == id
+            })
+            if (project) {
+                this.setProjectState(project)
+            }
         }
     }
 
@@ -173,7 +175,7 @@ export class Project extends React.Component<any, any> {
         this.closeModal()
         this.setState({
             lastModifiedBy: this.props.user
-        }, function(this) {
+        }, function (this) {
             this.props.updateProject(this.state)
         })
     }
@@ -202,7 +204,7 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{letterSpacing: '2px'}}>{projectName}
+                <h2 style={{ letterSpacing: '2px' }}>{projectName}
                     <span><button onClick={this.editProject.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
                     <span><button onClick={this.editLocation.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Modify location</button></span>
                 </h2>
@@ -210,24 +212,24 @@ export class Project extends React.Component<any, any> {
                 <Map shape={shape} />
                 <br />
                 <div className='col-md-12'>
-                    <ProjectCard project={this.state}/>
-                    <br/>
+                    <ProjectCard project={this.state} />
+                    <br />
                 </div>
                 <div className='col-md-12'>
                     <Phases projectID={projectID} />
-                    <br/>
+                    <br />
                 </div>
                 <div className='col-md-12'>
                     <Funds projectID={projectID} />
-                    <br/>
+                    <br />
                 </div>
                 <div className='col-md-12'>
                     <Attachments projectID={projectID} />
-                    <br/>
+                    <br />
                 </div>
                 <div className='col-md-12'>
                     <Tags projectID={projectID} />
-                    <br/>
+                    <br />
                 </div>
 
                 {spinner == true &&

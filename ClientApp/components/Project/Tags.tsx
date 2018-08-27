@@ -29,13 +29,15 @@ export class Tags extends React.Component<any, any> {
     }
 
     getTags(props) {
-        let tags = props.tags.filter(function (item) {
-            return item.projectID == props.projectID
-        })
-        if (tags.length > 0) {
-            this.setState({
-                tags: tags
+        if (props.tags) {
+            let tags = props.tags.filter(function (item) {
+                return item.projectID == props.projectID
             })
+            if (tags.length > 0) {
+                this.setState({
+                    tags: tags
+                })
+            }
         }
     }
 
@@ -46,7 +48,7 @@ export class Tags extends React.Component<any, any> {
     }
 
     openModal() {
-        this.setState ({
+        this.setState({
             modalIsOpen: true
         })
     }
@@ -56,7 +58,7 @@ export class Tags extends React.Component<any, any> {
             modalIsOpen,
             tags
         } = this.state
-        
+
         return (
             <div>
                 <h3>Tags<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add a tag</button></span></h3>
