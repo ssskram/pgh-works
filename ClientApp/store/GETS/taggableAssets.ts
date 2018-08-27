@@ -13,11 +13,15 @@ export interface AssetState {
 export interface AssetItem {
     assetOID: string
     assetName: string
-    assetLocation: string
+    assetType: string
     shape: Coords[]
 }
 
 export interface Coords {
+    Points: Points[]
+}
+
+export interface Points {
     lat: string
     lng: string
 }
@@ -30,10 +34,11 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            // .then(response => response.json())
-            // .then(data => {
-            //     dispatch({ type: loadAssets, assets: data.items });
-            // });
+            .then(response => response.json())
+            .then(data => {
+                dispatch({ type: loadAssets, assets: data });
+                console.log (data)
+            });
     }
 }
 

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "90958efd21079286d93f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a0830bacb6d5bd83f190"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10206,11 +10206,12 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadAssets, assets: data });
+            console.log(data);
         });
-        // .then(response => response.json())
-        // .then(data => {
-        //     dispatch({ type: loadAssets, assets: data.items });
-        // });
     }; }
 };
 var reducer = function (state, action) {
