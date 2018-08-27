@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d5421550b3ae085d938c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8012f05009cfb7690cfd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6993,7 +6993,7 @@ var unloadedState = {
     phases: []
 };
 var actionCreators = {
-    loadPhases: function () { return function (dispatch) {
+    loadPhases: function () { return function (dispatch, getState) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/phases/loadPhases', {
             credentials: 'same-origin',
             headers: {
@@ -7005,13 +7005,14 @@ var actionCreators = {
             dispatch({ type: loadPhases, phases: data.items });
         });
     }; },
-    addPhase: function (item) { return function (dispatch) {
+    addPhase: function (item) { return function (dispatch, getState) {
         dispatch({
             type: add, item: item
         });
     }; },
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadPhases:
             return __assign({}, state, { phases: action.phases });
@@ -7043,7 +7044,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 
-var projectStore = 'projectStore';
 var loadProjects = 'loadProject';
 var addProject = 'addProject';
 var updateProject = 'updateProject';
@@ -7052,7 +7052,7 @@ var unloadedState = {
 };
 var actionCreators = {
     loadProjects: function () { return function (dispatch, getState) {
-        var fetchTask = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/loadProjects', {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/loadProjects', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
@@ -7062,8 +7062,6 @@ var actionCreators = {
         // .then(data => {
         //     dispatch({ type: loadProjects, projects: data });
         // });
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["addTask"])(fetchTask);
-        dispatch({ type: projectStore });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
         // post to cartegraph
@@ -7078,7 +7076,8 @@ var actionCreators = {
         });
     }; }
 };
-var reducer = function (state, action) {
+var reducer = function (state, incomingAction) {
+    var action = incomingAction;
     switch (action.type) {
         case loadProjects:
             return __assign({}, state, { projects: action.projects });

@@ -1,8 +1,7 @@
-import { fetch, addTask } from 'domain-task';
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from './';
+import { fetch } from 'domain-task'
+import { Action, Reducer } from 'redux'
+import { AppThunkAction } from './'
 
-const projectStore = 'projectStore'
 const loadProjects = 'loadProject'
 const addProject = 'addProject'
 const updateProject = 'updateProject'
@@ -41,7 +40,7 @@ export interface Coords {
 
 export const actionCreators = {
     loadProjects: (): AppThunkAction<any> => (dispatch, getState) => {
-        let fetchTask = fetch('/api/projects/loadProjects', {
+        fetch('/api/projects/loadProjects', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
@@ -51,8 +50,6 @@ export const actionCreators = {
             // .then(data => {
             //     dispatch({ type: loadProjects, projects: data });
             // });
-        addTask(fetchTask)
-        dispatch({ type: projectStore })
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
 
@@ -72,7 +69,8 @@ export const actionCreators = {
     }
 }
 
-export const reducer = (state: ProjectState, action) => {
+export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingAction: Action) => {
+    const action = incomingAction as any;
     switch (action.type) {
         case loadProjects:
             return {
