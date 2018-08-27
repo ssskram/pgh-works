@@ -37,7 +37,6 @@ export const actionCreators = {
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: loadAssets, assets: data });
-                console.log (data)
             });
     }
 }

@@ -8,6 +8,7 @@ export class ImportShape extends React.Component<any, any> {
 
     componentDidMount() {
         // get taggable assets here and provide CgShape as importable object
+        console.log(this.props.assets)
     }
 
     public render() {

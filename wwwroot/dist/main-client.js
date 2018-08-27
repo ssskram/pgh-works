@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a0830bacb6d5bd83f190"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd0f62a32b96f6fd472e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10210,7 +10210,6 @@ var actionCreators = {
             .then(function (response) { return response.json(); })
             .then(function (data) {
             dispatch({ type: loadAssets, assets: data });
-            console.log(data);
         });
     }; }
 };
@@ -24832,6 +24831,7 @@ var ImportShape = (function (_super) {
     }
     ImportShape.prototype.componentDidMount = function () {
         // get taggable assets here and provide CgShape as importable object
+        console.log(this.props.assets);
     };
     ImportShape.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
@@ -49719,7 +49719,7 @@ var Geolocate = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: bigFont },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Import shape"))),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing shape from a facility, park, intersection, project, or other geospatial asset defined within Cartegraph")))))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing shape from a facility, pool, playground, park, intersection, bridge, project, retaining wall, or steps")))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
