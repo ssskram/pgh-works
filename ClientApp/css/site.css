@@ -348,6 +348,10 @@ textarea {
     letter-spacing: 2px !important;
 }
 
+.btn-success {
+    font-weight: bold;
+}
+
 .btn i {
     padding: 0px !important;
     padding-bottom: 5px;

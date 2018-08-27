@@ -22,9 +22,15 @@ export class SelectAsset extends React.Component<any, any> {
 
     filter(value) {
         var filteredAssets = this.state.assets.filter(asset => asset.assetName.includes(value))
-        this.setState({
-            assets: filteredAssets
-        })
+        if (value != '') {
+            this.setState({
+                assets: filteredAssets
+            })
+        } else {
+            this.setState({
+                assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType)
+            })
+        }
     }
 
     public render() {
@@ -32,7 +38,7 @@ export class SelectAsset extends React.Component<any, any> {
             assetType
         } = this.props
 
-        const { 
+        const {
             assets,
             search
         } = this.state

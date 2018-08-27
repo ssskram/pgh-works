@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6518ffa37e65f909b746"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0b535cdbd49be4f57a02"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -50097,10 +50097,18 @@ var SelectAsset = (function (_super) {
         var _a;
     };
     SelectAsset.prototype.filter = function (value) {
+        var _this = this;
         var filteredAssets = this.state.assets.filter(function (asset) { return asset.assetName.includes(value); });
-        this.setState({
-            assets: filteredAssets
-        });
+        if (value != '') {
+            this.setState({
+                assets: filteredAssets
+            });
+        }
+        else {
+            this.setState({
+                assets: this.props.assets.filter(function (asset) { return asset.assetType == _this.props.assetType; })
+            });
+        }
     };
     SelectAsset.prototype.render = function () {
         var _this = this;
