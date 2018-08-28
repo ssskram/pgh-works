@@ -70,6 +70,19 @@ export class SelectAssetType extends React.Component<any, any> {
                             Bridge
                         </button>
                     </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Court')} className='btn btn-assetType'>
+                            <span><img src='./images/image-placeholder.png' style={{width: '130px', height: '130px'}}/></span><br />
+                            Court
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => this.passType('Playing Field')} className='btn btn-assetType'>
+                            <span><img src='./images/image-placeholder.png' style={{width: '130px', height: '130px'}}/></span><br />
+                            Playing Field
+                        </button>
+                    </div>
+
                     {parentComponent != 'shape' &&
                         <div className='col-md-4 text-center'>
                             <button onClick={() => this.passType('Park')} className='btn btn-assetType'>
