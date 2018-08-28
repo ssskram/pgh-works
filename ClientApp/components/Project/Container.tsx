@@ -12,7 +12,7 @@ import Funds from './ProgramsFunds'
 import Attachments from './Attachments'
 import * as User from '../../store/GETS/user'
 import ProjectFields from '../Inputs/Project'
-import Tags from './Tags'
+import Tags from '../Tags/Tags'
 import * as moment from 'moment'
 import UpdateLocation from './UpdateLocation'
 import ProjectCard from './ProjectCard'
@@ -218,7 +218,7 @@ export class Project extends React.Component<any, any> {
                     <br />
                 </div>
                 <div className='col-md-12'>
-                    <Tags projectID={projectID} />
+                    <Tags parentID={projectID} parentName={projectName}/>
                     <br />
                 </div>
                 <div className='col-md-12'>

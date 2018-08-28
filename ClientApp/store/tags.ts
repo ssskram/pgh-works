@@ -17,7 +17,8 @@ export interface TagState {
 }
 
 export interface TagItem {
-    projectID: string    
+    parentID: string
+    parentName: string    
     taggedAssetOID: string
     taggedAssetName: string
     dateCreated: string
