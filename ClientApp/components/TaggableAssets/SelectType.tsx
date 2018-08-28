@@ -72,13 +72,13 @@ export class SelectAssetType extends React.Component<any, any> {
                     </div>
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.passType('Court')} className='btn btn-assetType'>
-                            <span><img src='./images/image-placeholder.png' style={{width: '130px', height: '130px'}}/></span><br />
+                            <span><img src='./images/assetTypes/courts.png' /></span><br />
                             Court
                         </button>
                     </div>
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.passType('Playing Field')} className='btn btn-assetType'>
-                            <span><img src='./images/image-placeholder.png' style={{width: '130px', height: '130px'}}/></span><br />
+                            <span><img src='./images/assetTypes/baseball.png' /></span><br />
                             Playing Field
                         </button>
                     </div>
