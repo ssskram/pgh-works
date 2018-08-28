@@ -9,8 +9,13 @@ import * as Phases from '../../store/phases'
 import Spinner from '../Utilities/Spinner'
 import Modal from 'react-responsive-modal'
 import Map from '../Map/ProjectMap'
+import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './PhaseCard'
 import Milestones from './Milestones'
+
+const btnMargin = {
+    margin: '0px 5px'
+}
 
 export class Phase extends React.Component<any, any> {
     constructor() {
@@ -104,9 +109,15 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
-    returnToProject () {
-        this.setState ({
+    returnToProject() {
+        this.setState({
             redirect: true
+        })
+    }
+
+    editPhase() {
+        this.setState({
+            modalIsOpen: true,
         })
     }
 
@@ -139,8 +150,9 @@ export class Phase extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{letterSpacing: '2px'}}>{projectName}
-                    <span><button onClick={this.returnToProject.bind(this)} className='btn pull-right'>Return to project</button></span>
+                <h2 style={{ letterSpacing: '2px' }}>{projectName}
+                    <span><button onClick={this.editPhase.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
+                    <span><button onClick={this.returnToProject.bind(this)} style={btnMargin} className='btn pull-right'>Return to project</button></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />
@@ -152,7 +164,7 @@ export class Phase extends React.Component<any, any> {
                 </div>
                 <div className='col-md-12'>
                     <Milestones phaseID={phaseID} />
-                    <br/>
+                    <br />
                 </div>
 
                 {spinner == true &&
@@ -166,6 +178,10 @@ export class Phase extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
+                    <PhaseForm
+                        phaseID={phaseID}
+                        closeModal={this.closeModal.bind(this)}
+                    />
                 </Modal>
             </div>
         )

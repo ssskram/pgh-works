@@ -4,10 +4,10 @@ import { AppThunkAction } from './'
 
 const loadPhases = 'loadPhases'
 const addPhase = 'addPhases'
+const updatePhase = 'updatePhases'
 
 // TODO
-const update = 'updatePhases'
-const del = 'deletePhases'
+const deletePhase = 'deletePhases'
 
 const unloadedState: PhaseState = {
     phases: []
@@ -41,19 +41,30 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            // .then(response => response.json())
-            // .then(data => {
-            //     dispatch({ type: loadPhases, phases: data });
-            // });
+        // .then(response => response.json())
+        // .then(data => {
+        //     dispatch({ type: loadPhases, phases: data });
+        // });
     },
-    addPhase: (item): AppThunkAction<any> => (dispatch, getState) =>  {
+    addPhase: (item): AppThunkAction<any> => (dispatch, getState) => {
+
+        // post to cartegraph
+
         dispatch({
             type: addPhase, item
         })
     },
+    updatePhase: (item): AppThunkAction<any> => (dispatch, getState) => {
+
+        // put to cartegraph
+
+        dispatch({
+            type: updatePhase, item
+        })
+    }
 }
 
-export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: Action) =>  {
+export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: Action) => {
     const action = incomingAction as any;
     switch (action.type) {
         case loadPhases:
@@ -65,6 +76,27 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
             return {
                 ...state,
                 phases: state.phases.concat(action.item)
+            };
+        case updatePhase:
+            return {
+                ...state,
+                phases: state.phases.map(phase => phase.phaseID === action.item.phaseID ? {
+                    ...phase,
+                    cartegraphID: action.item.cartegraphID,
+                    projectID: action.item.projectID,
+                    phaseID: action.item.phaseID,
+                    phaseName: action.item.phaseName,
+                    startDate: action.item.startDate,
+                    endDate: action.item.endDate,
+                    phaseDescription: action.item.phaseDescription,
+                    phaseStatus: action.item.phaseStatus,
+                    percentComplete: action.item.percentComplete,
+                    notes: action.item.notes,
+                    created: action.item.created,
+                    createdBy: action.item.createdBy,
+                    lastModifiedBy: action.item.lastModifiedBy
+                } : phase
+                )
             };
     }
 

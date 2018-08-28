@@ -44,9 +44,27 @@ export class PhaseInputs extends React.Component<any, any> {
         }
     }
     componentDidMount() {
-        // set status dropdown
-        if (this.props.phaseName) {
+        if (this.props.phaseID) {
             // update phase
+            let phaseID = this.props.phaseID
+            let phase = this.props.phases.find(function (item) {
+                return item.phaseID == phaseID
+            })
+            this.setState({
+                projectID: phase.projectID,
+                phaseID: phase.phaseID,
+                cartegraphID: phase.cartegraphID,
+                phaseName: phase.phaseName,
+                startDate: phase.startDate,
+                endDate: phase.endDate,
+                phaseDescription: phase.phaseDescription,
+                phaseStatus: phase.phaseStatus,
+                percentComplete: phase.percentComplete,
+                notes: phase.notes,
+                created: phase.created,
+                createdBy: phase.createdBy,
+                lastModifiedBy: this.props.user,
+            })
         }
         else {
             // new phase
@@ -104,16 +122,17 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     post() {
-        this.props.addPhase(this.state)
-        // this.props.closeModal()
-        this.setState ({
-            redirect:true
-        })        
-    }
-
-    put() {
-        this.props.updatePhase(this.state)
-        this.props.closeModal()
+        if (this.props.phaseID) {
+            // update
+            this.props.updatePhase(this.state)
+            this.props.closeModal()
+        } else {
+            // new
+            this.props.addPhase(this.state)
+            this.setState({
+                redirect: true
+            })
+        }
     }
 
     public render() {
@@ -135,7 +154,7 @@ export class PhaseInputs extends React.Component<any, any> {
             startDate != '' &&
             endDate != '' &&
             phaseStatus != ''
-            
+
         const link = "/Phase/id=" + phaseID
 
         if (redirect) {
