@@ -5,6 +5,7 @@ import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
+import * as moment from 'moment'
 
 export class Tags extends React.Component<any, any> {
     constructor() {
@@ -15,13 +16,6 @@ export class Tags extends React.Component<any, any> {
 
             // tags
             tags: [],
-
-            // new tag
-            projectID: '',
-            taggedAssetOID: '',
-            dateCreated: '',
-            tagType: '',
-            tagDescription: ''
         }
         this.getTags = this.getTags.bind(this);
     }
@@ -31,14 +25,16 @@ export class Tags extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.getTags(this.props)
+        this.getTags(nextProps)
     }
 
     getTags(props) {
+        console.log(props)
         if (props.tags) {
             let tags = props.tags.filter(function (item) {
                 return item.projectID == props.projectID
             })
+            console.log(tags)
             if (tags.length > 0) {
                 this.setState({
                     tags: tags
@@ -47,9 +43,16 @@ export class Tags extends React.Component<any, any> {
         }
     }
 
-    postTag (asset) {
-        console.log(asset)
-        // post tag here
+    postTag (tag) {
+        let tagLoad = {
+            projectID: this.props.projectID,    
+            taggedAssetOID: tag.taggedAssetOID,
+            taggedAssetName: tag.taggedAssetName,
+            dateCreated: moment().format('MM/DD/YYYY'),
+            tagType: tag.tagType,
+            tagDescription: tag.tagDescription,
+        }
+        this.props.addTag(tagLoad)
         this.setState({
             modalIsOpen: false
         })
@@ -76,10 +79,10 @@ export class Tags extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Tags<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
+                <h3>Tagged Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
                 <hr />
                 {tags.length == 0 &&
-                    <h4 className='text-center'>There are no geospatial assets related to this project</h4>
+                    <h4 className='text-center'>No tags</h4>
                 }
                 {tags.length > 0 &&
                     <h4 className='text-center'><i>Return tags now</i></h4>

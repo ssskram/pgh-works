@@ -4,15 +4,16 @@ import TaggableAssetSelection from '../TaggableAssets/Container'
 
 export default class Tag extends React.Component<any, any> {
 
-    receiveAsset(asset) {
-        this.props.postTag(asset)
+    receiveTag(tag) {
+        // set state here
+        this.props.postTag(tag)
     }
 
     public render() {
         return (
             <div>
-                <br/>
-                <TaggableAssetSelection parent={'asset'} receiveAsset={this.receiveAsset.bind(this)} />
+                <br />
+                <TaggableAssetSelection parent={'asset'} receiveTag={this.receiveTag.bind(this)} />
             </div>
         )
     }

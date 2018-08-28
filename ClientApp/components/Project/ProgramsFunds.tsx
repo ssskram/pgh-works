@@ -55,7 +55,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                 <h3>Programs & Funds<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Associate a program or fund</button></span></h3>
                 <hr />
                 {programs.length == 0 &&
-                    <h4 className='text-center'>There are no programs or funds associated with this project</h4>
+                    <h4 className='text-center'>No associated programs or funds</h4>
                 }
                 {programs.length > 0 &&
                     <h4 className='text-center'><i>Return programs/funds now</i></h4>

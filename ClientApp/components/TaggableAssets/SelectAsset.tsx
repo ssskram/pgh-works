@@ -91,9 +91,6 @@ export class SelectAsset extends React.Component<any, any> {
                     <button onClick={this.props.back} className='btn btn-warning pull-right'>Back</button>
                 </div>
                 <div className='col-md-12'>
-                    <hr />
-                </div>
-                <div className='col-md-12'>
                     <Input
                         value={search}
                         name="search"
