@@ -15,6 +15,13 @@ export class Tags extends React.Component<any, any> {
 
             // tags
             tags: [],
+
+            // new tag
+            projectID: '',
+            taggedAssetOID: '',
+            dateCreated: '',
+            tagType: '',
+            tagDescription: ''
         }
         this.getTags = this.getTags.bind(this);
     }
