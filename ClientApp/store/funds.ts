@@ -21,6 +21,8 @@ export interface FundItem {
     fundID: string
     fundName: string
     fundYear: string
+    fundType: string
+    expirationDate: string
     fundOriginalAmount: string
     fundCurrentAmount: string
 }
