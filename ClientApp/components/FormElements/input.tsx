@@ -7,7 +7,6 @@ export default class input extends React.Component<any, any> {
 
         var conditionalClass = classNames({
             'form-control': true,
-            'highlight-filter': this.props.value
         });
 
         return (

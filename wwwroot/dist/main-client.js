@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "48e50d6361545afab741"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f4812586eed15e95f742"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10102,7 +10102,6 @@ var input = (function (_super) {
     input.prototype.render = function () {
         var conditionalClass = __WEBPACK_IMPORTED_MODULE_1_classnames___default()({
             'form-control': true,
-            'highlight-filter': this.props.value
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
@@ -24734,7 +24733,6 @@ var datepicker = (function (_super) {
         var conditionalClass = __WEBPACK_IMPORTED_MODULE_1_classnames___default()({
             'btn': true,
             'btn-datepicker': true,
-            'highlight-filter': this.props.value
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
@@ -24786,7 +24784,6 @@ var currency = (function (_super) {
     currency.prototype.render = function () {
         var conditionalClass = __WEBPACK_IMPORTED_MODULE_2_classnames___default()({
             'form-control': true,
-            'highlight-filter': this.props.value
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
@@ -24831,18 +24828,10 @@ var input = (function (_super) {
         return _this;
     }
     input.prototype.render = function () {
-        var conditionalClass = {
-            backgroundColor: ''
-        };
-        if (this.props.value) {
-            conditionalClass = {
-                backgroundColor: '#f3fafe'
-            };
-        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], { autoFocus: this.state.autoFocus, placeholder: this.props.placeholder, name: this.props.name, value: this.props.value, onChange: this.props.onChange.bind(this), options: this.props.options, closeOnSelect: !this.props.multi, simpleValue: this.props.multi, removeSelected: this.props.multi, multi: this.props.multi, clearable: this.props.multi, style: conditionalClass, delimiter: ', ' }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], { autoFocus: this.state.autoFocus, placeholder: this.props.placeholder, name: this.props.name, value: this.props.value, onChange: this.props.onChange.bind(this), options: this.props.options, closeOnSelect: !this.props.multi, simpleValue: this.props.multi, removeSelected: this.props.multi, multi: this.props.multi, clearable: this.props.multi, delimiter: ', ' }))));
     };
     return input;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -24898,7 +24887,6 @@ var textarea = (function (_super) {
     textarea.prototype.render = function () {
         var conditionalClass = __WEBPACK_IMPORTED_MODULE_1_classnames___default()({
             'form-control': true,
-            'highlight-filter': this.props.value
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
@@ -49966,7 +49954,7 @@ var Geolocate = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: bigFont },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "New shape"))),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Using an interactive map, draw a polygon that will serve as the geographical bounds for your project"))))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Draw a polygon that will serve as the geographical bounds for your project"))))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.importShape.bind(this), className: 'btn btn-primary btn-big' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -49976,7 +49964,7 @@ var Geolocate = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: bigFont },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Import shape"))),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing shape from a facility, pool, playground, intersection, bridge, project, retaining wall, or steps")))))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Import an existing polygon from a facility, pool, playground, intersection, bridge, project, retaining wall, or steps")))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
