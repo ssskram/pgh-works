@@ -217,6 +217,10 @@ export class Project extends React.Component<any, any> {
                     <br />
                 </div>
                 <div className='col-md-12'>
+                    <Tags projectID={projectID} />
+                    <br />
+                </div>
+                <div className='col-md-12'>
                     <Phases projectID={projectID} />
                     <br />
                 </div>
@@ -226,10 +230,6 @@ export class Project extends React.Component<any, any> {
                 </div>
                 <div className='col-md-12'>
                     <Attachments projectID={projectID} />
-                    <br />
-                </div>
-                <div className='col-md-12'>
-                    <Tags projectID={projectID} />
                     <br />
                 </div>
 

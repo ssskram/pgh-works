@@ -8,6 +8,7 @@ import * as User from '../../store/GETS/user'
 import * as Projects from '../../store/projects'
 import Geolocate from './Geolocate/Geolocate'
 import ProjectDescription from './Description/Description'
+import Map from '../Map/ProjectMap'
 import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 
@@ -124,10 +125,15 @@ export class ProjectDefinition extends React.Component<any, any> {
                         />
                     }
                     {step == 2 &&
+                    <div>
+                        <Map shape={shape} />
+                        <br/>
                         <ProjectDescription
                             back={this.back.bind(this)}
                             post={this.post.bind(this)}
+                            shape={shape}
                         />
+                    </div>
                     }
                 </div>
             </div>

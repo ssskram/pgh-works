@@ -33,10 +33,13 @@ const descContainer = {
 
 export default class ProjectCard extends React.Component<any, any> {
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+    
     public render() {
         const {
             cartegraphID,
-            projectID,
             startDate,
             endDate,
             projectManager,

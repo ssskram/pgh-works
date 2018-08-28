@@ -21,7 +21,7 @@ export class SelectAsset extends React.Component<any, any> {
     }
 
     filter(value) {
-        var filteredAssets = this.state.assets.filter(asset => asset.assetName.includes(value))
+        var filteredAssets = this.state.assets.filter(asset => asset.assetName.toLowerCase().includes(value.toLowerCase()))
         if (value != '') {
             this.setState({
                 assets: filteredAssets

@@ -63,7 +63,7 @@ export class Attachments extends React.Component<any, any> {
                 <h3>Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
                 <hr />
                 {attachments.length == 0 &&
-                    <h4 className='text-center'>There are no attachments on this project</h4>
+                    <h4 className='text-center'>No attachments</h4>
                 }
                 {attachments.length > 0 &&
                     <h4 className='text-center'><i>Return attachments now</i></h4>

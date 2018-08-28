@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
-import TagModule from '../Inputs/Tag'
-
+import TagInput from '../Inputs/Tag'
 
 export class Tags extends React.Component<any, any> {
     constructor() {
@@ -41,6 +40,14 @@ export class Tags extends React.Component<any, any> {
         }
     }
 
+    postTag (asset) {
+        console.log(asset)
+        // post tag here
+        this.setState({
+            modalIsOpen: false
+        })
+    }
+
     closeModal() {
         this.setState({
             modalIsOpen: false
@@ -53,6 +60,7 @@ export class Tags extends React.Component<any, any> {
         })
     }
 
+    
     public render() {
         const {
             modalIsOpen,
@@ -61,10 +69,10 @@ export class Tags extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Tags<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add a tag</button></span></h3>
+                <h3>Tags<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
                 <hr />
                 {tags.length == 0 &&
-                    <h4 className='text-center'>There are no tags on this project</h4>
+                    <h4 className='text-center'>There are no geospatial assets related to this project</h4>
                 }
                 {tags.length > 0 &&
                     <h4 className='text-center'><i>Return tags now</i></h4>
@@ -77,7 +85,7 @@ export class Tags extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <TagModule />
+                    <TagInput postTag={this.postTag.bind(this)}/>
                 </Modal>
             </div>
         )
