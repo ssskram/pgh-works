@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e8060906221ce42158c8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "239ce556c0fb89e363dd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7065,6 +7065,7 @@ var actionCreators = {
         // });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
+        console.log(item);
         // post to cartegraph
         dispatch({
             type: addProject, item: item
@@ -7085,7 +7086,7 @@ var reducer = function (state, incomingAction) {
         case addProject:
             return __assign({}, state, { projects: state.projects.concat(action.item) });
         case updateProject:
-            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, startDate: action.item.startDate, endDate: action.item.endDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, expectedCost: action.item.expectedCost, actualCost: action.item.actualCost, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
+            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, startDate: action.item.startDate, endDate: action.item.endDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, projectType: action.item.projectType, expectedCost: action.item.expectedCost, actualCost: action.item.actualCost, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
     }
     return state || unloadedState;
 };
@@ -24718,7 +24719,14 @@ var members = [
 ];
 var statuses = [
     { value: 'In progress', label: 'In progress', name: 'projectStatus' },
+    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+];
+var types = [
+    { value: 'Programming', label: 'Programming', name: 'projectType' },
+    { value: 'Design', label: 'Design', name: 'projectType' },
+    { value: 'Construction', label: 'Construction', name: 'projectType' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'projectType' }
 ];
 var ProjectInputs = (function (_super) {
     __extends(ProjectInputs, _super);
@@ -24754,12 +24762,14 @@ var ProjectInputs = (function (_super) {
         this.props.handleEndDate(date);
     };
     ProjectInputs.prototype.render = function () {
-        var _a = this.props.description, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes;
+        var _a = this.props.description, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, projectType = _a.projectType, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectType, name: "projectType", header: 'Project type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -47417,8 +47427,9 @@ var sliderContainer = {
     padding: '0px 15px'
 };
 var statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
+    { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ];
 var PhaseInputs = (function (_super) {
     __extends(PhaseInputs, _super);
@@ -48737,6 +48748,7 @@ var Project = (function (_super) {
             projectMembers: '',
             projectDescription: '',
             projectStatus: '',
+            projectType: '',
             expectedCost: '',
             actualCost: '',
             notes: '',
@@ -48780,6 +48792,7 @@ var Project = (function (_super) {
             projectMembers: project.projectMembers,
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
+            projectType: project.projectType,
             expectedCost: project.expectedCost,
             actualCost: project.actualCost,
             notes: project.notes,
@@ -49185,7 +49198,7 @@ var ProjectCard = (function (_super) {
         window.scrollTo(0, 0);
     };
     ProjectCard.prototype.render = function () {
-        var _a = this.props.project, cartegraphID = _a.cartegraphID, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy;
+        var _a = this.props.project, cartegraphID = _a.cartegraphID, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, projectType = _a.projectType, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -49195,6 +49208,10 @@ var ProjectCard = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", { style: bigFont },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { style: borderNone, scope: "row" }, "Status"),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { style: borderNone }, projectStatus)),
+                            projectType &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Type"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectType)),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Start date"),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
@@ -49571,6 +49588,7 @@ var ProjectDefinition = (function (_super) {
             projectMembers: projectDesc.projectMembers,
             projectDescription: projectDesc.projectDescription,
             projectStatus: projectDesc.projectStatus,
+            projectType: projectDesc.projectType,
             expectedCost: projectDesc.expectedCost,
             actualCost: projectDesc.actualCost,
             notes: projectDesc.notes
@@ -49663,6 +49681,7 @@ var ProjectDescription = (function (_super) {
             projectMembers: '',
             projectDescription: '',
             projectStatus: '',
+            projectType: '',
             expectedCost: '',
             actualCost: '',
             notes: ''

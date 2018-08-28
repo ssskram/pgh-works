@@ -24,6 +24,7 @@ export interface ProjectItem {
     projectMembers: string
     projectDescription: string
     projectStatus: string
+    projectType: string
     expectedCost: string
     actualCost: string
     notes: string
@@ -52,6 +53,8 @@ export const actionCreators = {
             // });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
+
+        console.log(item)
 
         // post to cartegraph
 
@@ -95,6 +98,7 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectMembers: action.item.projectMembers,
                     projectDescription: action.item.projectDescription,
                     projectStatus: action.item.projectStatus,
+                    projectType: action.item.projectType,
                     expectedCost: action.item.expectedCost,
                     actualCost: action.item.actualCost,
                     notes: action.item.notes,

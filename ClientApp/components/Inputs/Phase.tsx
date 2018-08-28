@@ -19,10 +19,10 @@ const sliderContainer = {
 }
 
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
+    { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
-
 export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()

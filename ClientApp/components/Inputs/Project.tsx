@@ -22,7 +22,15 @@ const members = [
 
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'projectStatus' },
+    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+]
+
+const types= [
+    { value: 'Programming', label: 'Programming', name: 'projectType' },
+    { value: 'Design', label: 'Design', name: 'projectType' },
+    { value: 'Construction', label: 'Construction', name: 'projectType' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'projectType' }
 ]
 
 export class ProjectInputs extends React.Component<any, any> {
@@ -73,6 +81,7 @@ export class ProjectInputs extends React.Component<any, any> {
             projectMembers,
             projectDescription,
             projectStatus,
+            projectType,
             expectedCost,
             actualCost,
             notes
@@ -92,10 +101,22 @@ export class ProjectInputs extends React.Component<any, any> {
 
                 <div className='col-md-12'>
                     <Select
+                        value={projectType}
+                        name="projectType"
+                        header='Project type'
+                        placeholder='Select type'
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
+                        options={types}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Select
                         value={projectStatus}
                         name="projectStatus"
                         header='Project status'
-                        placeholder='Select statuses'
+                        placeholder='Select status(es)'
                         onChange={this.handleStatusMulti.bind(this)}
                         multi={true}
                         options={statuses}

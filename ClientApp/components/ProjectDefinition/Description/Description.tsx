@@ -24,6 +24,7 @@ export class ProjectDescription extends React.Component<any, any> {
             projectMembers: '',
             projectDescription: '',
             projectStatus: '',
+            projectType: '',
             expectedCost: '',
             actualCost: '',
             notes: ''

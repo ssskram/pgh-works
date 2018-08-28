@@ -83,6 +83,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectMembers: projectDesc.projectMembers,
             projectDescription: projectDesc.projectDescription,
             projectStatus: projectDesc.projectStatus,
+            projectType: projectDesc.projectType,
             expectedCost: projectDesc.expectedCost,
             actualCost: projectDesc.actualCost,
             notes: projectDesc.notes

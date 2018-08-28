@@ -36,7 +36,7 @@ export default class ProjectCard extends React.Component<any, any> {
     componentDidMount() {
         window.scrollTo(0, 0)
     }
-    
+
     public render() {
         const {
             cartegraphID,
@@ -46,6 +46,7 @@ export default class ProjectCard extends React.Component<any, any> {
             projectMembers,
             projectDescription,
             projectStatus,
+            projectType,
             expectedCost,
             actualCost,
             notes,
@@ -57,7 +58,7 @@ export default class ProjectCard extends React.Component<any, any> {
         return (
             <div>
                 <div className='row'>
-                    <br/>
+                    <br />
                     <div style={projectContainer} className='col-md-6'>
                         <table className="table">
                             <tbody>
@@ -65,6 +66,12 @@ export default class ProjectCard extends React.Component<any, any> {
                                     <th style={borderNone} scope="row">Status</th>
                                     <td style={borderNone}>{projectStatus}</td>
                                 </tr>
+                                {projectType &&
+                                    <tr>
+                                        <th scope="row">Type</th>
+                                        <td>{projectType}</td>
+                                    </tr>
+                                }
                                 <tr>
                                     <th scope="row">Start date</th>
                                     <td><Moment format="MM/DD/YYYY" date={startDate} /></td>
