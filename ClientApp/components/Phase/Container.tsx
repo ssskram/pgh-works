@@ -157,7 +157,7 @@ export class Phase extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <h2><b>Phase :</b> {phaseName}</h2>
+                <h2 style={{marginLeft: '25px'}}><b>Phase :</b> {phaseName}</h2>
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                     <br />

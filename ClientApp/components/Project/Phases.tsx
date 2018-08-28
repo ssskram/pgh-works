@@ -5,6 +5,7 @@ import { ApplicationState } from '../../store'
 import * as PhasesStore from '../../store/phases'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
+import PhaseCard from './Cards/PhaseCard'
 
 export class Phases extends React.Component<any, any> {
     constructor() {
@@ -63,18 +64,12 @@ export class Phases extends React.Component<any, any> {
                 <h3>Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
                 <hr />
                 {phases.length == 0 &&
-                    <h4 className='text-center'>No phases</h4>
+                    <h4 className='text-center'><i>No phases</i></h4>
                 }
                 {phases.length > 0 &&
                     phases.map((phase) => {
                         return (
-                            <div className="col-sm-12" key={phase.phaseID}>
-                                <div className="panel">
-                                    <div className="panel-body text-center">
-                                        <h3>{phase.phaseName}</h3>
-                                    </div>
-                                </div>
-                            </div>
+                            <PhaseCard phase={phase} />
                         )
                     })
                 }

@@ -11,7 +11,7 @@ const borderNone = {
 }
 
 const phaseContainer = {
-    backgroundColor: '#f3fafe',
+    backgroundColor: '#FFF7EC',
     borderRadius: '10px',
     padding: '10px',
     margin: '5px 0px',
@@ -21,14 +21,6 @@ const phaseContainer = {
 const metaContainer = {
     margin: '5px 0px',
     padding: '20px 0px 0px 30px'
-}
-
-const descContainer = {
-    margin: '25px 0px',
-    borderRadius: '5px',
-    padding: '20px 40px',
-    backgroundColor: 'rgba(92, 184, 92, .08)',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
 }
 
 export default class PhaseCard extends React.Component<any, any> {
@@ -76,6 +68,10 @@ export default class PhaseCard extends React.Component<any, any> {
                                         <td>% {percentComplete}</td>
                                     </tr>
                                 }
+                                <tr>
+                                    <th scope="row">Description</th>
+                                    <td>{phaseDescription}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -109,15 +105,6 @@ export default class PhaseCard extends React.Component<any, any> {
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div className='row'>
-                    {phaseDescription &&
-                        <div style={descContainer} className='col-md-12'>
-                            <h3>Phase description</h3>
-                            <hr />
-                            <div style={bigFont}>{phaseDescription}</div>
-                        </div>
-                    }
                 </div>
             </div>
         )

@@ -15,7 +15,7 @@ import ProjectFields from '../Inputs/Project'
 import Tags from '../Tags/Tags'
 import * as moment from 'moment'
 import UpdateLocation from './UpdateLocation'
-import ProjectCard from './ProjectCard'
+import ProjectCard from './Cards/ProjectCard'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -218,11 +218,11 @@ export class Project extends React.Component<any, any> {
                     <br />
                 </div>
                 <div className='col-md-12'>
-                    <Tags parentID={projectID} parentName={projectName}/>
+                    <Phases projectID={projectID} />
                     <br />
                 </div>
                 <div className='col-md-12'>
-                    <Phases projectID={projectID} />
+                    <Tags parentID={projectID} parentName={projectName}/>
                     <br />
                 </div>
                 <div className='col-md-12'>
