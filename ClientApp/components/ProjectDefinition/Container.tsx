@@ -56,6 +56,12 @@ export class ProjectDefinition extends React.Component<any, any> {
         })
     }
 
+    setName(name) {
+        this.setState({
+            projectName: name
+        })
+    }
+
     next() {
         this.setState({
             step: this.state.step + 1
@@ -94,7 +100,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             step,
             redirect,
             projectID,
-            shape
+            shape,
         } = this.state
 
         const link = "/Project/id=" + projectID
@@ -105,18 +111,19 @@ export class ProjectDefinition extends React.Component<any, any> {
 
         return (
             <div>
+                <h2>
+                    <span>New project</span>
+                    <b>
+                        {step == 1 &&
+                            <span className='pull-right'><span className='glyphicon glyphicon-map-marker nav-glyphicon hidden-xs'></span>Location</span>
+                        }
+                        {step == 2 &&
+                            <span className='pull-right'><span className='glyphicon glyphicon-info-sign nav-glyphicon hidden-xs'></span>Description</span>
+                        }
+                    </b>
+                </h2>
+                <hr />
                 <div>
-                    <h2>New project
-                        <b>
-                            {step == 1 &&
-                                <span className='pull-right'><span className='glyphicon glyphicon-map-marker nav-glyphicon hidden-xs'></span>Location</span>
-                            }
-                            {step == 2 &&
-                                <span className='pull-right'><span className='glyphicon glyphicon-info-sign nav-glyphicon hidden-xs'></span>Description</span>
-                            }
-                        </b>
-                    </h2>
-                    <hr />
                     {step == 1 &&
                         <Geolocate
                             next={this.next.bind(this)}

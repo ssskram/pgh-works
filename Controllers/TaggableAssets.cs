@@ -24,14 +24,16 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public async Task<object> loadTaggableAssets () {
             await getFacilities ();
-            await getProjects();
-            await getSteps();
-            await getRetainingWalls();
-            await getPools();
-            await getPlaygrounds();
-            await getParks();
-            await getIntersections();
-            await getBridges();
+            await getProjects ();
+            await getSteps ();
+            await getRetainingWalls ();
+            await getPools ();
+            await getPlaygrounds ();
+            await getParks ();
+            await getIntersections ();
+            await getBridges ();
+            await getFields();
+            await getCourts();
             return AllAssets;
         }
 
@@ -198,6 +200,44 @@ namespace pghworks.Controllers {
             foreach (var item in bridges) {
                 TaggableAssets ta = new TaggableAssets () {
                     assetType = "Bridge",
+                    assetOID = item.Oid,
+                    assetName = item.IDField,
+                    shape = item.CgShape.ToObject<Shape> ()
+                };
+                AllAssets.Add (ta);
+            }
+        }
+
+        public async Task getFields () {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlayingFieldsClass?fields=Oid,CgShape,IDField";
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (cartegraphUrl);
+            dynamic fields = JObject.Parse (content) ["PlayingFieldsClass"];
+            foreach (var item in fields) {
+                TaggableAssets ta = new TaggableAssets () {
+                    assetType = "Playing Field",
+                    assetOID = item.Oid,
+                    assetName = item.IDField,
+                    shape = item.CgShape.ToObject<Shape> ()
+                };
+                AllAssets.Add (ta);
+            }
+        }
+
+        public async Task getCourts () {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/CourtsClass?fields=Oid,CgShape,IDField";
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (cartegraphUrl);
+            dynamic courts = JObject.Parse (content) ["CourtsClass"];
+            foreach (var item in courts) {
+                TaggableAssets ta = new TaggableAssets () {
+                    assetType = "Court",
                     assetOID = item.Oid,
                     assetName = item.IDField,
                     shape = item.CgShape.ToObject<Shape> ()

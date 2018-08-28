@@ -29,12 +29,10 @@ export class Tags extends React.Component<any, any> {
     }
 
     getTags(props) {
-        console.log(props)
         if (props.tags) {
             let tags = props.tags.filter(function (item) {
                 return item.projectID == props.projectID
             })
-            console.log(tags)
             if (tags.length > 0) {
                 this.setState({
                     tags: tags

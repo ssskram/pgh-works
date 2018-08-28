@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ca91a183c0e8ca76a19b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6de0dd6065066010fe84"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -48761,7 +48761,6 @@ var Project = (function (_super) {
         // set project, and pass project to setProjectState
         var id = this.props.match.params.id;
         if (props.projects) {
-            console.log(props.projects);
             var project = props.projects.find(function (item) {
                 return item.projectID == id;
             });
@@ -48981,12 +48980,10 @@ var Phases = (function (_super) {
         this.getPhases(nextProps);
     };
     Phases.prototype.getPhases = function (props) {
-        console.log(props);
         if (props.phases) {
             var phases = props.phases.filter(function (item) {
                 return item.projectID == props.projectID;
             });
-            console.log(phases);
             if (phases.length > 0) {
                 this.setState({
                     phases: phases
@@ -49313,12 +49310,10 @@ var Tags = (function (_super) {
         this.getTags(nextProps);
     };
     Tags.prototype.getTags = function (props) {
-        console.log(props);
         if (props.tags) {
             var tags = props.tags.filter(function (item) {
                 return item.projectID == props.projectID;
             });
-            console.log(tags);
             if (tags.length > 0) {
                 this.setState({
                     tags: tags
@@ -49552,6 +49547,11 @@ var ProjectDefinition = (function (_super) {
             shape: shape
         });
     };
+    ProjectDefinition.prototype.setName = function (name) {
+        this.setState({
+            projectName: name
+        });
+    };
     ProjectDefinition.prototype.next = function () {
         this.setState({
             step: this.state.step + 1
@@ -49589,19 +49589,19 @@ var ProjectDefinition = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "New project"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                    step == 1 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-map-marker nav-glyphicon hidden-xs' }),
+                            "Location"),
+                    step == 2 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign nav-glyphicon hidden-xs' }),
+                            "Description"))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                    "New project",
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                        step == 1 &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-map-marker nav-glyphicon hidden-xs' }),
-                                "Location"),
-                        step == 2 &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign nav-glyphicon hidden-xs' }),
-                                "Description"))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                 step == 1 &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Geolocate_Geolocate__["a" /* default */], { next: this.next.bind(this), setShape: this.setShape.bind(this), shape: shape }),
                 step == 2 &&

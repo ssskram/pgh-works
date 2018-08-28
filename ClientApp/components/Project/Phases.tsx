@@ -28,12 +28,10 @@ export class Phases extends React.Component<any, any> {
     }
 
     getPhases(props) {
-        console.log(props)
         if (props.phases) {
             let phases = props.phases.filter(function (item) {
                 return item.projectID == props.projectID
             })
-            console.log(phases)
             if (phases.length > 0) {
                 this.setState({
                     phases: phases
