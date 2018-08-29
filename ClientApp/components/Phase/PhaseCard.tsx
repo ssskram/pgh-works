@@ -68,10 +68,12 @@ export default class PhaseCard extends React.Component<any, any> {
                                         <td>% {percentComplete}</td>
                                     </tr>
                                 }
-                                <tr>
-                                    <th scope="row">Description</th>
-                                    <td>{phaseDescription}</td>
-                                </tr>
+                                {phaseDescription &&
+                                    <tr>
+                                        <th scope="row">Description</th>
+                                        <td>{phaseDescription}</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

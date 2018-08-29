@@ -8,7 +8,6 @@ import * as Projects from '../../store/projects'
 import * as Phases from '../../store/phases'
 import Spinner from '../Utilities/Spinner'
 import Modal from 'react-responsive-modal'
-import Map from '../Map/ProjectMap'
 import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './PhaseCard'
 import Milestones from './Milestones'
@@ -16,6 +15,10 @@ import Attachments from './../Attachments/Attachments'
 
 const btnMargin = {
     margin: '0px 5px'
+}
+
+const marginBottom = {
+    marginBottom: '50px'
 }
 
 export class Phase extends React.Component<any, any> {
@@ -152,24 +155,20 @@ export class Phase extends React.Component<any, any> {
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editPhase.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
+                    <span><button onClick={this.editPhase.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update phase</button></span>
                     <span><button onClick={this.returnToProject.bind(this)} style={btnMargin} className='btn pull-right'>Return to project</button></span>
                 </h2>
                 <hr />
-                <Map shape={shape} />
                 <br />
-                <h2 style={{marginLeft: '25px'}}><b>Phase :</b> {phaseName}</h2>
-                <div className='col-md-12'>
+                <h2 className='text-center'><b><img style={{marginTop: '-12px'}} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
+                <div style={marginBottom} className='col-md-12'>
                     <PhaseCard phase={this.state} />
-                    <br />
                 </div>
-                <div className='col-md-12'>
+                <div style={marginBottom} className='col-md-12'>
                     <Milestones phaseID={phaseID} projectID={projectID}/>
-                    <br />
                 </div>
-                <div className='col-md-12'>
+                <div style={marginBottom} className='col-md-12'>
                     <Attachments projectID={projectID} />
-                    <br />
                 </div>
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />

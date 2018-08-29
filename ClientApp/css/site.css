@@ -747,3 +747,10 @@ a[href^="https://maps.google.com/maps"] {
 #GMapsID div div a div img {
     display: none;
 }
+
+/* Google map
+/* ------------------------- */
+
+.progressbar-progress {
+    background-color: #d5ddf6 !important;
+}

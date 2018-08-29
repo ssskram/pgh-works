@@ -21,6 +21,10 @@ const btnMargin = {
     margin: '0px 5px'
 }
 
+const marginBottom = {
+    marginBottom: '50px'
+}
+
 export class Project extends React.Component<any, any> {
     constructor() {
         super();
@@ -213,25 +217,20 @@ export class Project extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <div className='row col-md-12'>
+                <div style={marginBottom} className='row col-md-12'>
                     <ProjectCard project={this.state} />
-                    <br />
                 </div>
-                <div className='row col-md-12'>
+                <div style={marginBottom} className='row col-md-12'>
                     <Phases projectID={projectID} />
-                    <br />
                 </div>
-                <div className='row col-md-12'>
-                    <Tags parentID={projectID} parentName={projectName} parentType='Project'/>
-                    <br />
+                <div style={marginBottom} className='row col-md-12'>
+                    <Tags parentID={projectID} parentName={projectName} parentType='Project' />
                 </div>
-                <div className='row col-md-12'>
+                <div style={marginBottom} className='row col-md-12'>
                     <Funds projectID={projectID} />
-                    <br />
                 </div>
-                <div className='row col-md-12'>
+                <div style={marginBottom} className='row col-md-12'>
                     <Attachments projectID={projectID} />
-                    <br />
                 </div>
 
                 {spinner == true &&

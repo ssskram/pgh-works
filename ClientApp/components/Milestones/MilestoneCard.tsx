@@ -44,8 +44,9 @@ export class Milestone extends React.Component<any, any> {
             milestone
         } = this.props
 
+        let percentRemaining = 100 - milestone.percentComplete - 1
         const progressBackground = {
-            backgroundColor: ''
+            background: 'linear-gradient(to right, #d5ddf6 ' + milestone.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
 
         return (
