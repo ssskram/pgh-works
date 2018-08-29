@@ -11,7 +11,7 @@ const borderNone = {
 }
 
 const phaseContainer = {
-    backgroundColor: '#FFF7EC',
+    backgroundColor: '#f3fafe',
     borderRadius: '10px',
     padding: '10px',
     margin: '5px 0px',

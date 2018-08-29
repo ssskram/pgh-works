@@ -20,8 +20,9 @@ export class PhaseCard extends React.Component<any, any> {
             milestones
         } = this.props
 
+        let percentRemaining = 100 - phase.percentComplete - 1
         const progressBackground = {
-            backgroundColor: ''
+            background: 'linear-gradient(to right, #d5ddf6 ' + phase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
 
         const allMilestones = milestones.filter(function (milestone) {
