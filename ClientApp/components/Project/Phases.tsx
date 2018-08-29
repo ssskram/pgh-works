@@ -6,6 +6,7 @@ import * as PhasesStore from '../../store/phases'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './Cards/PhaseCard'
+import TL from 'react-visjs-timeline'
 
 export class Phases extends React.Component<any, any> {
     constructor() {
@@ -59,12 +60,49 @@ export class Phases extends React.Component<any, any> {
             phases
         } = this.state
 
+        // timeline configs
+
+        const timelineHeight = phases.length * 50 + 80
+
+        const timelineOptions = {
+            width: '100%',
+            height: timelineHeight + 'px',
+            stack: true,
+            showMajorLabels: true,
+            showCurrentTime: true,
+            zoomMin: 1000000,
+            format: {
+                minorLabels: {
+                    minute: 'h:mma',
+                    hour: 'ha'
+                }
+            }
+        }
+
+        const items = [] as any
+
+        phases.forEach( function (phase, index) {
+            let timelineItem = {
+                id: index,
+                content: phase.phaseName,
+                start: phase.startDate,
+                end: phase.endDate
+            }
+            items.push(timelineItem)
+        })
+
         return (
             <div>
                 <h3>Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
                 <hr />
                 {phases.length == 0 &&
                     <h4 className='text-center'><i>No phases</i></h4>
+                }
+                {phases.length > 0 &&
+                    <div className='col-md-10 col-md-offset-1 hidden-xs'>
+                        <TL options={timelineOptions} items={items} />
+                        <br/>
+                    </div>
                 }
                 {phases.length > 0 &&
                     phases.map((phase) => {

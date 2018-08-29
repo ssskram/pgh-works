@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7ec9f0a4c0c80421e2b3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "92c83aa07ce4c0ce51dd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -49728,6 +49728,8 @@ var Project = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Phase__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Cards_PhaseCard__ = __webpack_require__(609);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_visjs_timeline__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_visjs_timeline___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_visjs_timeline__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -49746,6 +49748,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -49795,6 +49798,32 @@ var Phases = (function (_super) {
     };
     Phases.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, phases = _a.phases;
+        // timeline configs
+        var timelineHeight = phases.length * 50 + 80;
+        var timelineOptions = {
+            width: '100%',
+            height: timelineHeight + 'px',
+            stack: true,
+            showMajorLabels: true,
+            showCurrentTime: true,
+            zoomMin: 1000000,
+            format: {
+                minorLabels: {
+                    minute: 'h:mma',
+                    hour: 'ha'
+                }
+            }
+        };
+        var items = [];
+        phases.forEach(function (phase, index) {
+            var timelineItem = {
+                id: index,
+                content: phase.phaseName,
+                start: phase.startDate,
+                end: phase.endDate
+            };
+            items.push(timelineItem);
+        });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                 "Phases",
@@ -49804,6 +49833,10 @@ var Phases = (function (_super) {
             phases.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No phases")),
+            phases.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10 col-md-offset-1 hidden-xs' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_visjs_timeline___default.a, { options: timelineOptions, items: items }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             phases.length > 0 &&
                 phases.map(function (phase) {
                     return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Cards_PhaseCard__["a" /* default */], { phase: phase }));
@@ -50883,6 +50916,9 @@ var TagsCard = (function (_super) {
         }
         if (tag.tagType == "Playing Field") {
             src = './images/assetTypes/baseball.png';
+        }
+        if (tag.tagType == "Park") {
+            src = './images/assetTypes/parks.png';
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },

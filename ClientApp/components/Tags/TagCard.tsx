@@ -66,6 +66,9 @@ export class TagsCard extends React.Component<any, any> {
         if (tag.tagType == "Playing Field") {
             src = './images/assetTypes/baseball.png'
         }
+        if (tag.tagType == "Park") {
+            src = './images/assetTypes/parks.png'
+        }
 
         return (
             <div className="col-sm-4">
