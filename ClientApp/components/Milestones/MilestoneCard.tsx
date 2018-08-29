@@ -9,7 +9,7 @@ export class Milestone extends React.Component<any, any> {
     constructor () {
         super()
         this.state = {
-            modalIsOpen: ''
+            modalIsOpen: false
         }
     }
 

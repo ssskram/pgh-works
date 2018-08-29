@@ -5,6 +5,7 @@ import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
+import TagCard from '../Tags/TagCard'
 import * as moment from 'moment'
 
 export class Tags extends React.Component<any, any> {
@@ -41,9 +42,10 @@ export class Tags extends React.Component<any, any> {
         }
     }
 
-    postTag (tag) {
+    postTag(tag) {
         let tagLoad = {
-            parentID: this.props.parentID,    
+            parentID: this.props.parentID,
+            parentType: this.props.parentType,
             parentName: this.props.parentName,
             taggedAssetOID: tag.taggedAssetOID,
             taggedAssetName: tag.taggedAssetName,
@@ -69,7 +71,7 @@ export class Tags extends React.Component<any, any> {
         })
     }
 
-    
+
     public render() {
         const {
             modalIsOpen,
@@ -80,12 +82,18 @@ export class Tags extends React.Component<any, any> {
             <div>
                 <h3>Tagged Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
                 <hr />
-                {tags.length == 0 &&
-                    <h4 className='text-center'><i>No tags</i></h4>
-                }
-                {tags.length > 0 &&
-                    <h4 className='text-center'><i>Return tags now</i></h4>
-                }
+                <div className='col-md-12'>
+                    {tags.length == 0 &&
+                        <h4 className='text-center'><i>No tags</i></h4>
+                    }
+                    {tags.length > 0 &&
+                        tags.map((tag) => {
+                            return (
+                                <TagCard tag={tag} />
+                            )
+                        })
+                    }
+                </div>
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
@@ -94,7 +102,7 @@ export class Tags extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <TagInput postTag={this.postTag.bind(this)}/>
+                    <TagInput postTag={this.postTag.bind(this)} />
                 </Modal>
             </div>
         )

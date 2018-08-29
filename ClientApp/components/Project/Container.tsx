@@ -213,23 +213,23 @@ export class Project extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <div className='col-md-12'>
+                <div className='row col-md-12'>
                     <ProjectCard project={this.state} />
                     <br />
                 </div>
-                <div className='col-md-12'>
+                <div className='row col-md-12'>
                     <Phases projectID={projectID} />
                     <br />
                 </div>
-                <div className='col-md-12'>
-                    <Tags parentID={projectID} parentName={projectName}/>
+                <div className='row col-md-12'>
+                    <Tags parentID={projectID} parentName={projectName} parentType='Project'/>
                     <br />
                 </div>
-                <div className='col-md-12'>
+                <div className='row col-md-12'>
                     <Funds projectID={projectID} />
                     <br />
                 </div>
-                <div className='col-md-12'>
+                <div className='row col-md-12'>
                     <Attachments projectID={projectID} />
                     <br />
                 </div>

@@ -171,7 +171,6 @@ export class Phase extends React.Component<any, any> {
                     <Attachments projectID={projectID} />
                     <br />
                 </div>
-
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />
                 }

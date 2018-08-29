@@ -18,6 +18,7 @@ export interface TagState {
 
 export interface TagItem {
     parentID: string
+    parentType: string
     parentName: string    
     taggedAssetOID: string
     taggedAssetName: string

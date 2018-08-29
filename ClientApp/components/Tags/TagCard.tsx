@@ -2,20 +2,92 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import * as Ping from '../../store/GETS/ping'
+import * as TagStore from '../../store/tags'
+import Modal from 'react-responsive-modal'
 
 export class TagsCard extends React.Component<any, any> {
+    constructor() {
+        super()
+        this.state = {
+            modalIsOpen: false
+        }
+    }
 
     componentDidMount() {
-        // ping server
-        this.props.ping()
+        console.log(this.props)
+    }
+
+    openModal() {
+        this.setState({
+            modalIsOpen: true
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        });
     }
 
     public render() {
+        const {
+            modalIsOpen
+        } = this.state
+        const {
+            tag
+        } = this.props
+
+        let src = ''
+        if (tag.tagType == "Steps") {
+            src = './images/assetTypes/steps.png'
+        }
+        if (tag.tagType == "Facility") {
+            src = './images/assetTypes/facilities.png'
+        }
+        if (tag.tagType == "Project") {
+            src = './images/assetTypes/projects.png'
+        }
+        if (tag.tagType == "Retaining Wall") {
+            src = './images/assetTypes/wall.png'
+        }
+        if (tag.tagType == "Pool") {
+            src = './images/assetTypes/pools.png'
+        }
+        if (tag.tagType == "Playground") {
+            src = './images/assetTypes/playground.png'
+        }
+        if (tag.tagType == "Intersection") {
+            src = './images/assetTypes/signal.png'
+        }
+        if (tag.tagType == "Bridge") {
+            src = './images/assetTypes/bridges.png'
+        }
+        if (tag.tagType == "Court") {
+            src = './images/assetTypes/courts.png'
+        }
+        if (tag.tagType == "Playing Field") {
+            src = './images/assetTypes/baseball.png'
+        }
+
         return (
-            <div>
-                <h3>Tag data</h3>
-                <hr/>
+            <div className="col-sm-4" key={tag.taggedAssetOID}>
+                <div className="panel">
+                    <div className="panel-body text-center">
+                        <h3>{tag.taggedAssetName}</h3>
+                        <img src={src} />
+                        <h4><b>{tag.tagType}</b></h4>
+                        <h4><i>"{tag.tagDescription}"</i></h4>
+                    </div>
+                </div>
+                <Modal
+                    open={modalIsOpen}
+                    onClose={this.closeModal.bind(this)}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                </Modal>
             </div>
         )
     }
@@ -23,9 +95,9 @@ export class TagsCard extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.ping
+        ...state.tags
     }),
     ({
-        ...Ping.actionCreators
+        ...TagStore.actionCreators
     })
-  )(TagsCard as any) as typeof TagsCard
+)(TagsCard as any) as typeof TagsCard
