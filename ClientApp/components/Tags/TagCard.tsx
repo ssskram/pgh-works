@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
+import DeleteTag from './DeleteTag'
 
 export class TagsCard extends React.Component<any, any> {
     constructor() {
@@ -11,10 +12,6 @@ export class TagsCard extends React.Component<any, any> {
         this.state = {
             modalIsOpen: false
         }
-    }
-
-    componentDidMount() {
-        console.log(this.props)
     }
 
     openModal() {
@@ -33,6 +30,7 @@ export class TagsCard extends React.Component<any, any> {
         const {
             modalIsOpen
         } = this.state
+        
         const {
             tag
         } = this.props
@@ -70,8 +68,9 @@ export class TagsCard extends React.Component<any, any> {
         }
 
         return (
-            <div className="col-sm-4" key={tag.taggedAssetOID}>
+            <div className="col-sm-4" key={tag.tagID}>
                 <div className="panel">
+                <button onClick={this.openModal.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
                         <h3>{tag.taggedAssetName}</h3>
                         <img src={src} />
@@ -87,6 +86,7 @@ export class TagsCard extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
+                    <DeleteTag tag={tag} closeModal={this.closeModal.bind(this)}/>
                 </Modal>
             </div>
         )

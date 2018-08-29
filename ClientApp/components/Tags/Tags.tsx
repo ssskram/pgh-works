@@ -7,6 +7,8 @@ import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
 import TagCard from '../Tags/TagCard'
 import * as moment from 'moment'
+import { v1 as uuid } from 'uuid'
+
 
 export class Tags extends React.Component<any, any> {
     constructor() {
@@ -43,7 +45,9 @@ export class Tags extends React.Component<any, any> {
     }
 
     postTag(tag) {
+        const guid: string = uuid()
         let tagLoad = {
+            tagID: guid,
             parentID: this.props.parentID,
             parentType: this.props.parentType,
             parentName: this.props.parentName,
