@@ -7,7 +7,10 @@ import * as Tags from '../../store/tags'
 export class DeleteTag extends React.Component<any, any> {
 
     deleteTag () {
+        // remove from store
         this.props.deleteTag(this.props.tag)
+        // then delete locally
+        this.props.removeTag(this.props.tag)
         this.props.closeModal()
     }
 

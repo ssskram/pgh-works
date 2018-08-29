@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b3b6ddc9bd2f42664286"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7ec9f0a4c0c80421e2b3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7199,6 +7199,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var loadTags = 'loadTags';
 var addTag = 'addTags';
 var deleteTag = 'deleteTags';
+var refreshTags = 'refreshTags';
 var unloadedState = {
     tags: []
 };
@@ -7234,11 +7235,9 @@ var reducer = function (state, incomingAction) {
         case addTag:
             return __assign({}, state, { tags: state.tags.concat(action.item) });
         case deleteTag:
-            return {
-                tags: state.tags.filter(function (item) {
-                    return !item.tagID == action.item.tagID;
-                })
-            };
+            var tagsCopy = state.tags.slice();
+            tagsCopy.splice(tagsCopy.indexOf(action.item), 1);
+            return __assign({}, state, { tags: tagsCopy });
     }
     return state || unloadedState;
 };
@@ -50777,7 +50776,10 @@ var DeleteTag = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DeleteTag.prototype.deleteTag = function () {
+        // remove from store
         this.props.deleteTag(this.props.tag);
+        // then delete locally
+        this.props.removeTag(this.props.tag);
         this.props.closeModal();
     };
     DeleteTag.prototype.render = function () {
@@ -50882,7 +50884,7 @@ var TagsCard = (function (_super) {
         if (tag.tagType == "Playing Field") {
             src = './images/assetTypes/baseball.png';
         }
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4", key: tag.tagID },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
@@ -50899,7 +50901,7 @@ var TagsCard = (function (_super) {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
                 }, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__DeleteTag__["a" /* default */], { tag: tag, closeModal: this.closeModal.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__DeleteTag__["a" /* default */], { tag: tag, removeTag: this.props.removeTag, closeModal: this.closeModal.bind(this) }))));
     };
     return TagsCard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -51012,7 +51014,17 @@ var Tags = (function (_super) {
             modalIsOpen: true
         });
     };
+    Tags.prototype.removeTag = function (tag) {
+        // removes tag locally from state
+        // done in step with mutable delete from redux store
+        var tagsCopy = this.state.tags.slice();
+        tagsCopy.splice(tagsCopy.indexOf(tag), 1);
+        this.setState({
+            tags: tagsCopy
+        });
+    };
     Tags.prototype.render = function () {
+        var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, tags = _a.tags;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
@@ -51026,7 +51038,7 @@ var Tags = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No tags")),
                 tags.length > 0 &&
                     tags.map(function (tag) {
-                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__["a" /* default */], { tag: tag }));
+                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__["a" /* default */], { tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this) }));
                     })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',

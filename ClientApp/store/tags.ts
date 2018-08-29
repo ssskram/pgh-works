@@ -5,6 +5,7 @@ import { AppThunkAction } from './'
 const loadTags = 'loadTags'
 const addTag = 'addTags'
 const deleteTag = 'deleteTags'
+const refreshTags = 'refreshTags'
 
 const unloadedState: TagState = {
     tags: []
@@ -67,10 +68,11 @@ export const reducer: Reducer<TagState> = (state: TagState, incomingAction: Acti
                 tags: state.tags.concat(action.item)
             };
         case deleteTag:
+            var tagsCopy = state.tags.slice()
+            tagsCopy.splice(tagsCopy.indexOf(action.item), 1);
             return {
-                tags: state.tags.filter(function(item) {
-                    return !item.tagID == action.item.tagID
-                })
+                ...state,
+                tags: tagsCopy
             };
     }
 

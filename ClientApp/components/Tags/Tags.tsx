@@ -75,6 +75,15 @@ export class Tags extends React.Component<any, any> {
         })
     }
 
+    removeTag(tag) {
+        // removes tag locally from state
+        // done in step with mutable delete from redux store
+        var tagsCopy = this.state.tags.slice()
+        tagsCopy.splice(tagsCopy.indexOf(tag), 1);
+        this.setState ({
+            tags: tagsCopy
+        })
+    }
 
     public render() {
         const {
@@ -93,7 +102,10 @@ export class Tags extends React.Component<any, any> {
                     {tags.length > 0 &&
                         tags.map((tag) => {
                             return (
-                                <TagCard tag={tag} />
+                                <TagCard
+                                    tag={tag} 
+                                    key={tag.tagID}
+                                    removeTag={this.removeTag.bind(this)}/>
                             )
                         })
                     }

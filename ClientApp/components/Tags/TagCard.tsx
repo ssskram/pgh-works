@@ -23,14 +23,14 @@ export class TagsCard extends React.Component<any, any> {
     closeModal() {
         this.setState({
             modalIsOpen: false
-        });
+        })
     }
 
     public render() {
         const {
             modalIsOpen
         } = this.state
-        
+
         const {
             tag
         } = this.props
@@ -68,9 +68,9 @@ export class TagsCard extends React.Component<any, any> {
         }
 
         return (
-            <div className="col-sm-4" key={tag.tagID}>
+            <div className="col-sm-4">
                 <div className="panel">
-                <button onClick={this.openModal.bind(this)} className='pull-right delete-btn'>X</button>
+                    <button onClick={this.openModal.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
                         <h3>{tag.taggedAssetName}</h3>
                         <img src={src} />
@@ -86,7 +86,10 @@ export class TagsCard extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <DeleteTag tag={tag} closeModal={this.closeModal.bind(this)}/>
+                    <DeleteTag
+                        tag={tag}
+                        removeTag={this.props.removeTag}
+                        closeModal={this.closeModal.bind(this)}/>
                 </Modal>
             </div>
         )
