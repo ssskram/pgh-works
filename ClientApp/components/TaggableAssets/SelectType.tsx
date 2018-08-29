@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Assets from '../../store/GETS/taggableAssets'
+import Spinner from '../Utilities/Spinner'
 
 export class SelectAssetType extends React.Component<any, any> {
     constructor() {
@@ -19,6 +20,9 @@ export class SelectAssetType extends React.Component<any, any> {
         } = this.props
         return (
             <div>
+                {this.props.assets.length == 0 &&
+                    <Spinner notice='...loading assets...' />
+                }
                 <h3>Select asset type</h3>
                 <hr />
                 <div className='row col-md-12'>

@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Modal from 'react-responsive-modal'
 import MilestoneForm from '../Inputs/Milestone'
+import DeleteMilestone from './DeleteMilestone'
 
 export class Milestone extends React.Component<any, any> {
-    constructor () {
+    constructor() {
         super()
         this.state = {
+            modalType: '',
             modalIsOpen: false
         }
     }
@@ -25,10 +27,19 @@ export class Milestone extends React.Component<any, any> {
         });
     }
 
+    setDelete() {
+        this.setState({
+            modalType: 'delete',
+            modalIsOpen: true
+        })
+    }
+
     public render() {
         const {
-            modalIsOpen
+            modalIsOpen,
+            modalType
         } = this.state
+
         const {
             milestone
         } = this.props
@@ -38,8 +49,9 @@ export class Milestone extends React.Component<any, any> {
         }
 
         return (
-            <div className="col-sm-4" key={milestone.milestoneID}>
+            <div className="col-sm-4" >
                 <div style={progressBackground} className="panel">
+                    <button onClick={this.setDelete.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
                         <div className='col-md-12'>
                             <h2><b>{milestone.milestoneName}</b></h2>
@@ -57,10 +69,18 @@ export class Milestone extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <MilestoneForm
-                        milestoneID={milestone.milestoneID}
-                        closeModal={this.closeModal.bind(this)}
-                    />
+                    {modalType == 'delete' &&
+                        <DeleteMilestone
+                            milestone={milestone}
+                            closeModal={this.closeModal.bind(this)}
+                            removeMilestone={this.props.removeMilestone} />
+                    }
+                    {modalType != 'delete' &&
+                        <MilestoneForm
+                            milestoneID={milestone.milestoneID}
+                            closeModal={this.closeModal.bind(this)}
+                        />
+                    }
                 </Modal>
             </div>
         )
@@ -72,4 +92,4 @@ export default connect(
     }),
     ({
     })
-  )(Milestone as any) as typeof Milestone
+)(Milestone as any) as typeof Milestone

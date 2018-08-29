@@ -62,7 +62,7 @@ export class Phases extends React.Component<any, any> {
 
         // timeline configs
 
-        const timelineHeight = phases.length * 50 + 80
+        const timelineHeight = phases.length * 40 + 90
 
         const timelineOptions = {
             width: '100%',

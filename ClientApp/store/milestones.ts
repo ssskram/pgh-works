@@ -5,8 +5,6 @@ import { AppThunkAction } from './'
 const loadMilestones = 'loadMilestones'
 const addMilestone = 'addMilestones'
 const updateMilestone = 'updateMilestones'
-
-// TODO
 const deleteMilestone = 'deleteMilestones'
 
 const unloadedState: MilestoneState = {
@@ -46,7 +44,6 @@ export const actionCreators = {
     },
     addMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
 
-        console.log(item)
         dispatch({
             type: addMilestone, item
         })
@@ -57,6 +54,12 @@ export const actionCreators = {
 
         dispatch({
             type: updateMilestone, item
+        })
+    },
+    deleteMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
+        console.log(item)
+        dispatch({
+            type: deleteMilestone, item
         })
     }
 }
@@ -94,6 +97,13 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
                     lastModifiedBy: action.item.lastModifiedBy
                 } : milestone
                 )
+            };
+        case deleteMilestone:
+            var milestonesCopy = state.milestones.slice()
+            milestonesCopy.splice(milestonesCopy.indexOf(action.item), 1);
+            return {
+                ...state,
+                milestones: milestonesCopy
             };
     }
 

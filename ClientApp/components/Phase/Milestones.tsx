@@ -6,6 +6,7 @@ import * as MilestoneStore from '../../store/milestones'
 import Modal from 'react-responsive-modal'
 import MilestoneCard from './../Milestones/MilestoneCard'
 import MilestoneForm from '../Inputs/Milestone'
+import TL from 'react-visjs-timeline'
 
 export class Milestones extends React.Component<any, any> {
     constructor() {
@@ -53,23 +54,73 @@ export class Milestones extends React.Component<any, any> {
         });
     }
 
+    removeMilestone(milestone) {
+        // removes milestone locally from state
+        // done in step with mutable delete from redux store
+        var milestonesCopy = this.state.milestones.slice()
+        milestonesCopy.splice(milestonesCopy.indexOf(milestone), 1);
+        this.setState({
+            tags: milestonesCopy
+        })
+    }
+
     public render() {
         const {
             modalIsOpen,
             milestones
         } = this.state
 
+        // timeline configs
+
+        const timelineHeight = milestones.length * 40 + 90
+
+        const timelineOptions = {
+            width: '100%',
+            height: timelineHeight + 'px',
+            stack: true,
+            showMajorLabels: true,
+            showCurrentTime: true,
+            zoomMin: 1000000,
+            format: {
+                minorLabels: {
+                    minute: 'h:mma',
+                    hour: 'ha'
+                }
+            }
+        }
+
+        const items = [] as any
+
+        milestones.forEach(function (milestone, index) {
+            let timelineItem = {
+                id: index,
+                content: milestone.milestoneName,
+                start: milestone.startDate,
+                end: milestone.endDate
+            }
+            items.push(timelineItem)
+        })
+
         return (
             <div>
                 <h3>Milestones<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add milestone</button></span></h3>
-                <hr/>
+                <hr />
                 {milestones.length == 0 &&
                     <h4 className='text-center'><i>No milestones</i></h4>
                 }
                 {milestones.length > 0 &&
+                    <div className='col-md-10 col-md-offset-1 hidden-xs'>
+                        <TL options={timelineOptions} items={items} />
+                        <br />
+                    </div>
+                }
+                {milestones.length > 0 &&
                     milestones.map((milestone) => {
                         return (
-                            <MilestoneCard milestone={milestone} />
+                            <MilestoneCard
+                                key={milestone.milestoneID}
+                                milestone={milestone}
+                                removeMilestone={this.removeMilestone.bind(this)} />
                         )
                     })
                 }
@@ -99,4 +150,4 @@ export default connect(
     ({
         ...MilestoneStore.actionCreators
     })
-  )(Milestones as any) as typeof Milestones
+)(Milestones as any) as typeof Milestones
