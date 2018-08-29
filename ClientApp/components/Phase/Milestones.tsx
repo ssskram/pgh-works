@@ -8,6 +8,12 @@ import MilestoneCard from './../Milestones/MilestoneCard'
 import MilestoneForm from '../Inputs/Milestone'
 import TL from 'react-visjs-timeline'
 
+const iconStyle = {
+    marginRight: '5px',
+    marginTop: '-8px',
+    height: '35px'
+}
+
 export class Milestones extends React.Component<any, any> {
     constructor() {
         super();
@@ -103,7 +109,7 @@ export class Milestones extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Milestones<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add milestone</button></span></h3>
+                <h3><img style={iconStyle} src='./images/milestoneGrey.png' /> Milestones<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add milestone</button></span></h3>
                 <hr />
                 {milestones.length == 0 &&
                     <h4 className='text-center'><i>No milestones</i></h4>

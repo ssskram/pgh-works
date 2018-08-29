@@ -10,6 +10,7 @@ import Spinner from '../Utilities/Spinner'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './PhaseCard'
+import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
 import Attachments from './../Attachments/Attachments'
 
@@ -166,6 +167,9 @@ export class Phase extends React.Component<any, any> {
                 </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Milestones phaseID={phaseID} projectID={projectID}/>
+                </div>
+                <div style={marginBottom} className='row col-md-12'>
+                    <Tags parentID={projectID} parentName={projectName} parentType='Project' />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Attachments projectID={projectID} />

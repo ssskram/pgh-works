@@ -9,6 +9,11 @@ import TagCard from '../Tags/TagCard'
 import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 
+const iconStyle = {
+    marginRight: '5px',
+    marginTop: '-8px',
+    height: '35px'
+}
 
 export class Tags extends React.Component<any, any> {
     constructor() {
@@ -93,7 +98,7 @@ export class Tags extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Tagged Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
+                <h3><img style={iconStyle} src='./images/tag.png' /> Related Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
                 <hr />
                 <div className='col-md-12'>
                     {tags.length == 0 &&

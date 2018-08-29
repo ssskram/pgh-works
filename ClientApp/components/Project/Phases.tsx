@@ -8,6 +8,12 @@ import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './Cards/PhaseCard'
 import TL from 'react-visjs-timeline'
 
+const iconStyle = {
+    marginRight: '5px',
+    marginTop: '-8px',
+    height: '35px'
+}
+
 export class Phases extends React.Component<any, any> {
     constructor() {
         super();
@@ -81,7 +87,7 @@ export class Phases extends React.Component<any, any> {
 
         const items = [] as any
 
-        phases.forEach( function (phase, index) {
+        phases.forEach(function (phase, index) {
             let timelineItem = {
                 id: index,
                 content: phase.phaseName,
@@ -93,7 +99,7 @@ export class Phases extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
+                <h3><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
                 <hr />
                 {phases.length == 0 &&
                     <h4 className='text-center'><i>No phases</i></h4>
@@ -101,7 +107,7 @@ export class Phases extends React.Component<any, any> {
                 {phases.length > 0 &&
                     <div className='col-md-10 col-md-offset-1 hidden-xs'>
                         <TL options={timelineOptions} items={items} />
-                        <br/>
+                        <br />
                     </div>
                 }
                 {phases.length > 0 &&

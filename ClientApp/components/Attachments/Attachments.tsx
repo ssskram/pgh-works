@@ -6,6 +6,12 @@ import * as AttachmentsStore from '../../store/attachments'
 import Modal from 'react-responsive-modal'
 import AttachmentModule from '../Inputs/Attachment'
 
+const iconStyle = {
+    marginRight: '5px',
+    marginTop: '-8px',
+    height: '35px'
+}
+
 export class Attachments extends React.Component<any, any> {
     constructor() {
         super();
@@ -60,7 +66,7 @@ export class Attachments extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
+                <h3><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
                 <hr />
                 <div className='col-md-12'>
                     {attachments.length == 0 &&
