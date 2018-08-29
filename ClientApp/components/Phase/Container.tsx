@@ -12,6 +12,7 @@ import Map from '../Map/ProjectMap'
 import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './PhaseCard'
 import Milestones from './Milestones'
+import Attachments from './../Attachments/Attachments'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -163,7 +164,11 @@ export class Phase extends React.Component<any, any> {
                     <br />
                 </div>
                 <div className='col-md-12'>
-                    <Milestones phaseID={phaseID} />
+                    <Milestones phaseID={phaseID} projectID={projectID}/>
+                    <br />
+                </div>
+                <div className='col-md-12'>
+                    <Attachments projectID={projectID} />
                     <br />
                 </div>
 

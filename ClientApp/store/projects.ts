@@ -53,9 +53,7 @@ export const actionCreators = {
             // });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        console.log(item)
-
+        
         // post to cartegraph
 
         dispatch({

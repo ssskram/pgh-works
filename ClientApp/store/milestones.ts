@@ -4,10 +4,10 @@ import { AppThunkAction } from './'
 
 const loadMilestones = 'loadMilestones'
 const addMilestone = 'addMilestones'
+const updateMilestone = 'updateMilestones'
 
 // TODO
-const update = 'updateMilestones'
-const del = 'deleteMilestones'
+const deleteMilestone = 'deleteMilestones'
 
 const unloadedState: MilestoneState = {
     milestones: []
@@ -45,14 +45,23 @@ export const actionCreators = {
         //     });
     },
     addMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
-        
+
+        console.log(item)
         dispatch({
             type: addMilestone, item
         })
     },
+    updateMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
+
+        // put to cartegraph
+
+        dispatch({
+            type: updateMilestone, item
+        })
+    }
 }
 
-export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incomingAction: Action) =>  {
+export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incomingAction: Action) => {
     const action = incomingAction as any;
     switch (action.type) {
         case loadMilestones:
@@ -64,6 +73,27 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
             return {
                 ...state,
                 milestones: state.milestones.concat(action.item)
+            };
+        case updateMilestone:
+            return {
+                ...state,
+                milestones: state.milestones.map(milestone => milestone.milestoneID === action.item.milestoneID ? {
+                    ...milestone,
+                    cartegraphID: action.item.cartegraphID,
+                    projectID: action.item.projectID,
+                    milestoneID: action.item.milestoneID,
+                    milestoneName: action.item.milestoneName,
+                    startDate: action.item.startDate,
+                    endDate: action.item.endDate,
+                    milestoneDescription: action.item.milestoneDescription,
+                    milestoneStatus: action.item.milestoneStatus,
+                    percentComplete: action.item.percentComplete,
+                    notes: action.item.notes,
+                    created: action.item.created,
+                    createdBy: action.item.createdBy,
+                    lastModifiedBy: action.item.lastModifiedBy
+                } : milestone
+                )
             };
     }
 

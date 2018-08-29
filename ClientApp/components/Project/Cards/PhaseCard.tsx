@@ -14,10 +14,6 @@ const iconStyle = {
 
 export class PhaseCard extends React.Component<any, any> {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     public render() {
         const {
             phase,

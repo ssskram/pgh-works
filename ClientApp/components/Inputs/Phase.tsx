@@ -23,6 +23,7 @@ const statuses = [
     { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
+
 export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()
