@@ -3,32 +3,57 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
+import { Redirect } from 'react-router-dom'
 import Modal from 'react-responsive-modal'
 import DeleteTag from './DeleteTag'
+import TaggedAssetReport from './TaggedAssetReport'
 
 export class TagsCard extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            redirect: false,
+            redirectTo: '',
+            modalType: '',
             modalIsOpen: false
         }
     }
 
-    openModal() {
+    deleteTag() {
         this.setState({
-            modalIsOpen: true
+            modalIsOpen: true,
+            modalType: 'delete'
+        })
+    }
+
+    inspectFacility() {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'inspect'
         })
     }
 
     closeModal() {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: ''
+        })
+    }
+
+    redirect(link) {
+        this.setState({
+            modalIsOpen: false,
+            redirect: true,
+            redirectTo: link
         })
     }
 
     public render() {
         const {
-            modalIsOpen
+            redirect,
+            redirectTo,
+            modalIsOpen,
+            modalType
         } = this.state
 
         const {
@@ -70,15 +95,20 @@ export class TagsCard extends React.Component<any, any> {
             src = './images/assetTypes/parks.png'
         }
 
+        if (redirect == true) {
+            return <Redirect to={redirectTo} />
+        }
+
         return (
             <div className="col-sm-4">
                 <div className="panel">
-                    <button onClick={this.openModal.bind(this)} className='pull-right delete-btn'>X</button>
+                    <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
                         <h3>{tag.taggedAssetName}</h3>
                         <img src={src} />
                         <h4><b>{tag.tagType}</b></h4>
                         <h4><i>"{tag.tagDescription}"</i></h4>
+                        <button onClick={this.inspectFacility.bind(this)} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
                     </div>
                 </div>
                 <Modal
@@ -89,10 +119,17 @@ export class TagsCard extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <DeleteTag
-                        tag={tag}
-                        removeTag={this.props.removeTag}
-                        closeModal={this.closeModal.bind(this)}/>
+                    {modalType == 'delete' &&
+                        <DeleteTag
+                            tag={tag}
+                            removeTag={this.props.removeTag}
+                            closeModal={this.closeModal.bind(this)} />
+                    }
+                    {modalType == 'inspect' &&
+                        <TaggedAssetReport
+                            redirect={this.redirect.bind(this)}
+                            tag={tag} />
+                    }
                 </Modal>
             </div>
         )

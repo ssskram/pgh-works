@@ -57,7 +57,6 @@ export const actionCreators = {
         })
     },
     deleteMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
-        console.log(item)
         dispatch({
             type: deleteMilestone, item
         })
