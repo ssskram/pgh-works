@@ -67,6 +67,10 @@ namespace pghworks {
                     .Services.ConfigureApplicationCookie (options => {
                         options.Cookie.Name = ".PGH_SSO";
                         options.Cookie.Domain = ".azurewebsites.us";
+                        options.Cookie.HttpOnly = true;
+                        options.Cookie.Expiration = TimeSpan.FromHours (10);
+                        options.ExpireTimeSpan = TimeSpan.FromHours (10);
+                        options.SlidingExpiration = true;
                     });
                 services.AddDataProtection ()
                     .SetApplicationName ("PGH_SSO")
@@ -80,7 +84,7 @@ namespace pghworks {
             }
 
             Environment.SetEnvironmentVariable ("sendgrid", Configuration["sendgrid"]);
-            Environment.SetEnvironmentVariable("CartegraphAPIkey", Configuration["CartegraphAPIkey"]);
+            Environment.SetEnvironmentVariable ("CartegraphAPIkey", Configuration["CartegraphAPIkey"]);
 
             services.AddMvc ()
                 .AddSessionStateTempDataProvider ();
