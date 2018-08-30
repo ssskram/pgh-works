@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "32bc94914e2aa7cd3511"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a9a51e48d4c3a8739a56"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -25997,6 +25997,7 @@ var Tags = (function (_super) {
         return _this;
     }
     Tags.prototype.componentDidMount = function () {
+        console.log(this.props);
         this.getTags(this.props);
     };
     Tags.prototype.componentWillReceiveProps = function (nextProps) {
