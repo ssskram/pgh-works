@@ -3,7 +3,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
-import { Redirect } from 'react-router-dom'
 import Modal from 'react-responsive-modal'
 import DeleteTag from './DeleteTag'
 import TaggedAssetReport from './TaggedAssetReport'
@@ -12,8 +11,6 @@ export class TagsCard extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
-            redirect: false,
-            redirectTo: '',
             modalType: '',
             modalIsOpen: false
         }
@@ -40,18 +37,8 @@ export class TagsCard extends React.Component<any, any> {
         })
     }
 
-    redirect(link) {
-        this.setState({
-            modalIsOpen: false,
-            redirect: true,
-            redirectTo: link
-        })
-    }
-
     public render() {
         const {
-            redirect,
-            redirectTo,
             modalIsOpen,
             modalType
         } = this.state
@@ -95,10 +82,6 @@ export class TagsCard extends React.Component<any, any> {
             src = './images/assetTypes/parks.png'
         }
 
-        if (redirect == true) {
-            return <Redirect to={redirectTo} />
-        }
-
         return (
             <div className="col-sm-4">
                 <div className="panel">
@@ -127,7 +110,6 @@ export class TagsCard extends React.Component<any, any> {
                     }
                     {modalType == 'inspect' &&
                         <TaggedAssetReport
-                            redirect={this.redirect.bind(this)}
                             tag={tag} />
                     }
                 </Modal>

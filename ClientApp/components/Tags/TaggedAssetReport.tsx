@@ -6,6 +6,10 @@ import * as Tag from '../../store/GETS/ping'
 
 export class TaggedAssetReport extends React.Component<any, any> {
 
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     public render() {
         const {
             tag,
@@ -13,13 +17,13 @@ export class TaggedAssetReport extends React.Component<any, any> {
         } = this.props
 
         const relevantTags = tags.filter(function (item) {
-            return item.taggedAssetID == tag.taggedAssetID
+            return item.taggedAssetOID == tag.taggedAssetOID
         })
 
         return (
             <div>
                 <h3><b>{tag.taggedAssetName}</b></h3>
-                <h4><i>Other tags</i></h4>
+                <h4><i>Tags</i></h4>
                 <hr />
                 {relevantTags.map((tag) => {
                     const link = '/' + tag.parentType + '/id=' + tag.parentID
@@ -35,7 +39,7 @@ export class TaggedAssetReport extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className='col-md-3'>
-                                    <button onClick={() => this.props.redirect(link)} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                                    <button className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
                                 </div>
                             </div>
                         </div>
