@@ -97,11 +97,6 @@ export class NavMenu extends React.Component<any, any>  {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllMilestones'} activeClassName='active' data-toggle="collapse" data-target=".in">
-                                <span><img style={iconStyle} src='./images/milestone.png' /></span> All milestones
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink to={'/Programs'} activeClassName='active' data-toggle="collapse" data-target=".in">
                                 <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                             </NavLink>
@@ -147,9 +142,6 @@ export class NavMenu extends React.Component<any, any>  {
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllPhases'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src='./images/phase.png' /></span> <b>All Phases</b>
-                        </Link>
-                        <Link onClick={this.closeModal.bind(this)} to={'/AllMilestones'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/milestone.png' /></span> <b>All Milestones</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds

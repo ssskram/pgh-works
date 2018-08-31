@@ -1,18 +1,36 @@
 
 import * as React from 'react'
-import Input from '../FormElements/input'
-import TextArea from '../FormElements/textarea'
-import Select from '../FormElements/select'
-import Datepicker from '../FormElements/datepicker'
+import Dropzone from 'react-dropzone'
 
 export default class Attachment extends React.Component<any, any> {
+    constructor() {
+        super()
+        this.state = { files: [] }
+    }
+
+    onDrop(files) {
+        this.setState({
+            files
+        });
+    }
 
     public render() {
         return (
-            <div>
-                <br/>
-                <h4><i>Attachment module goes here</i></h4>
-            </div>
+            <section>
+                <div className="dropzone">
+                    <Dropzone onDrop={this.onDrop.bind(this)}>
+                        <p>Try dropping some files here, or click to select files to upload.</p>
+                    </Dropzone>
+                </div>
+                <aside>
+                    <h2>Dropped files</h2>
+                    <ul>
+                        {
+                            this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                        }
+                    </ul>
+                </aside>
+            </section>
         )
     }
 }
