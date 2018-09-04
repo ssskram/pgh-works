@@ -6,11 +6,14 @@ import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
 import * as User from '../../store/GETS/user'
 import * as Projects from '../../store/projects'
+import * as Assets from '../../store/GETS/taggableAssets'
+import * as TagStore from '../../store/tags'
 import Geolocate from './Geolocate/Geolocate'
 import ProjectDescription from './Description/Description'
 import Map from '../Map/ProjectMap'
 import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
+import inside from 'point-in-polygon'
 
 export class ProjectDefinition extends React.Component<any, any> {
     constructor(props) {
@@ -90,11 +93,53 @@ export class ProjectDefinition extends React.Component<any, any> {
         }, function (this) {
             // add to project store 
             this.props.addProject(this.state)
+            this.pointsInPolygon()
         })
         this.setState({
             redirect: true
         })
     }
+
+    pointsInPolygon () {
+        const self = this
+        let shape = [] as any
+        let componentAssets = [] as any
+        this.state.shape.forEach(function (point) {
+            const shapeArray = [ point.lat, point.lng]
+            shape.push(shapeArray)
+        })
+        this.props.assets.forEach(function(asset) {
+            if (asset.shape) {
+                asset.shape.points.forEach(function(point) {
+                    const ins = inside([ point.lat, point.lng], shape)
+                    if (ins == true && !componentAssets.includes(asset)) {
+                        componentAssets.push(asset)
+                    }
+                })
+            }
+        })
+        if (componentAssets.length > 0) {
+            componentAssets.forEach(function (component) {
+                self.createTag (component)
+            })
+        }
+    }
+
+    createTag (asset) {
+        const guid: string = uuid()
+        let tagLoad = {
+            tagID: guid,
+            parentID: this.state.projectID,
+            parentType: 'Project',
+            parentName: this.state.projectName,
+            taggedAssetOID: asset.assetOID,
+            taggedAssetName: asset.assetName,
+            dateCreated: moment().format('MM/DD/YYYY'),
+            tagType: asset.assetType,
+            tagDescription: 'Within project bounds',
+        }
+        this.props.addTag(tagLoad)
+    } 
 
     public render() {
         const {
@@ -153,11 +198,15 @@ export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
         ...state.user,
-        ...state.projects
+        ...state.projects,
+        ...state.taggableAssets,
+        ...state.tags
     }),
     ({
         ...Ping.actionCreators,
         ...User.actionCreators,
-        ...Projects.actionCreators
+        ...Projects.actionCreators,
+        ...Assets.actionCreators,
+        ...TagStore.actionCreators
     })
 )(ProjectDefinition as any) as typeof ProjectDefinition

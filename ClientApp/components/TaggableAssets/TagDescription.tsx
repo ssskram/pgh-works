@@ -19,14 +19,15 @@ export class TagDescription extends React.Component<any, any> {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    postTag () {
+    postTag() {
         this.props.receiveDescription(this.state)
     }
 
     public render() {
         const {
             tagDescription,
-            taggedAssetName
+            taggedAssetName,
+            writeToAsset
         } = this.state
 
         const isEnabled = tagDescription != ''
@@ -35,10 +36,10 @@ export class TagDescription extends React.Component<any, any> {
             <div>
                 <div className='col-md-12 text-center'>
                     <h3>{taggedAssetName}</h3>
-                    <hr/>
+                    <hr />
                 </div>
                 <div className='col-md-12'>
-                <TextArea
+                    <TextArea
                         value={tagDescription}
                         name="tagDescription"
                         header="Description"
