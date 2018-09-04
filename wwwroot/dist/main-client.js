@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "43c73cb402df63d21dc2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "36620007b289c1e7caf3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -25997,7 +25997,6 @@ var Tags = (function (_super) {
         return _this;
     }
     Tags.prototype.componentDidMount = function () {
-        console.log(this.props);
         this.getTags(this.props);
     };
     Tags.prototype.componentWillReceiveProps = function (nextProps) {
@@ -49634,41 +49633,76 @@ var ImportShapes = (function (_super) {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedShape: {}
+            selectedShape: {},
+            showInfowindow: false
         };
         _this.polygonSelection = _this.polygonSelection.bind(_this);
         return _this;
     }
-    ImportShapes.prototype.polygonSelection = function (asset) {
-        var bounds = new google.maps.LatLngBounds();
-        var i;
-        for (i = 0; i < asset.shape.points.length; i++) {
-            bounds.extend(asset.shape.points[i]);
+    ImportShapes.prototype.componentWillReceiveProps = function (nextProps) {
+        if (nextProps.assets.length === 1) {
+            var foundAsset = nextProps.assets[0];
+            this.setCenter(foundAsset.shape.points);
+            this.setState({
+                assets: nextProps.assets
+            });
         }
-        var lat = bounds.getCenter().lat();
-        var lng = bounds.getCenter().lng();
+        else {
+            this.setState({
+                assets: nextProps.assets,
+                zoom: 13,
+                center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            });
+        }
+    };
+    ImportShapes.prototype.polygonSelection = function (asset) {
+        this.setCenter(asset.shape.points);
         this.setState({
-            selectedShape: asset.shape.points,
-            center: { lat: lat, lng: lng },
-            zoom: 17
+            selectedShape: asset,
+            showInfowindow: true
         });
         // zoom to shape
         // make accept/redo buttons visible
         // filter assets by those with atleast one share point
     };
+    ImportShapes.prototype.setCenter = function (points) {
+        var bounds = new google.maps.LatLngBounds();
+        var i;
+        for (i = 0; i < points.length; i++) {
+            bounds.extend(points[i]);
+        }
+        var lat = bounds.getCenter().lat();
+        var lng = bounds.getCenter().lng();
+        this.setState({
+            center: { lat: lat, lng: lng },
+            zoom: 16
+        });
+    };
+    ImportShapes.prototype.closeWindow = function () {
+        this.setState({
+            showInfowindow: false
+        });
+    };
     ImportShapes.prototype.render = function () {
         var _this = this;
-        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, selectedShape = _a.selectedShape;
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, showInfowindow = _a.showInfowindow, selectedShape = _a.selectedShape;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: zoom, defaultCenter: center }, assets &&
-                assets.map(function (asset) {
-                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], key: asset.assetOID, onClick: function () { return _this.polygonSelection(asset); } }));
-                }));
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: zoom, defaultCenter: center },
+                assets &&
+                    assets.map(function (asset, index) {
+                        if (asset.shape) {
+                            return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], onClick: function () { return _this.polygonSelection(asset); } })));
+                        }
+                    }),
+                showInfowindow == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, selectedShape.assetName)));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'polygon-draw' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
@@ -51909,9 +51943,12 @@ var SelectAsset = (function (_super) {
             });
         }
     };
+    SelectAsset.prototype.back = function () {
+        console.log(this.props);
+    };
     SelectAsset.prototype.render = function () {
-        var assetType = this.props.assetType;
-        var _a = this.state, assets = _a.assets, search = _a.search;
+        var _a = this.props, assetType = _a.assetType, back = _a.back;
+        var _b = this.state, assets = _b.assets, search = _b.search;
         var searchPlaceholder = "Search for " + assetType;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -51919,7 +51956,8 @@ var SelectAsset = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'pull-left' },
                     "Select ",
                     assetType),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.props.back, className: 'btn btn-warning pull-right' }, "Back")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.back.bind(this), className: 'btn btn-warning pull-right' }, "Back"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: search, name: "search", header: "", placeholder: searchPlaceholder, callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
@@ -52353,9 +52391,6 @@ var TaggedAssetReport = (function (_super) {
     function TaggedAssetReport() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TaggedAssetReport.prototype.componentDidMount = function () {
-        console.log(this.props);
-    };
     TaggedAssetReport.prototype.render = function () {
         var _a = this.props, tag = _a.tag, tags = _a.tags;
         var relevantTags = tags.filter(function (item) {

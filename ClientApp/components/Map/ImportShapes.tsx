@@ -1,6 +1,6 @@
 import * as React from "react";
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
 
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
@@ -9,23 +9,34 @@ export default class ImportShapes extends React.Component<any, any> {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedShape: {}
+            selectedShape: {},
+            showInfowindow: false
         }
         this.polygonSelection = this.polygonSelection.bind(this)
     }
 
-    polygonSelection(asset) {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < asset.shape.points.length; i++) {
-            bounds.extend(asset.shape.points[i]);
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.assets.length === 1) {
+            let foundAsset = nextProps.assets[0]
+            this.setCenter(foundAsset.shape.points)
+            this.setState({
+                assets: nextProps.assets
+            })
+        } else {
+            this.setState({
+                assets: nextProps.assets,
+                zoom: 13,
+                center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            })
         }
-        let lat = bounds.getCenter().lat()
-        let lng = bounds.getCenter().lng()
-        this.setState ({
-            selectedShape: asset.shape.points,
-            center: { lat: lat, lng: lng},
-            zoom: 17
+
+    }
+
+    polygonSelection(asset) {
+        this.setCenter(asset.shape.points)
+        this.setState({
+            selectedShape: asset,
+            showInfowindow: true
         })
 
         // zoom to shape
@@ -33,11 +44,32 @@ export default class ImportShapes extends React.Component<any, any> {
         // filter assets by those with atleast one share point
     }
 
+    setCenter(points) {
+        const bounds = new google.maps.LatLngBounds()
+        var i
+        for (i = 0; i < points.length; i++) {
+            bounds.extend(points[i]);
+        }
+        let lat = bounds.getCenter().lat()
+        let lng = bounds.getCenter().lng()
+        this.setState({
+            center: { lat: lat, lng: lng },
+            zoom: 16
+        })
+    }
+
+    closeWindow() {
+        this.setState({
+            showInfowindow: false
+        })
+    }
+
     render() {
         const {
             assets,
             zoom,
             center,
+            showInfowindow,
             selectedShape
         } = this.state
 
@@ -56,15 +88,24 @@ export default class ImportShapes extends React.Component<any, any> {
                 defaultCenter={center}
             >
                 {assets &&
-                    assets.map((asset) => {
-                        return (
-                            <Polygon
-                                paths={[asset.shape.points]}
-                                key={asset.assetOID}
-                                onClick={() => this.polygonSelection(asset)}
-                            />
-                        )
+                    assets.map((asset, index) => {
+                        if (asset.shape) {
+                            return (
+                                <div key={index}>
+                                    <Polygon
+                                        paths={[asset.shape.points]}
+                                        onClick={() => this.polygonSelection(asset)}>
+                                    </Polygon>
+                                </div>
+
+                            )
+                        }
                     })
+                }
+                {showInfowindow == true &&
+                    <InfoWindow position={center}>
+                        <div className='col-md-12'>{selectedShape.assetName}</div>
+                    </InfoWindow>
                 }
             </GoogleMap>
         )

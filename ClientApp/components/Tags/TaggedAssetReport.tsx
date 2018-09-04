@@ -6,10 +6,6 @@ import * as Tag from '../../store/GETS/ping'
 
 export class TaggedAssetReport extends React.Component<any, any> {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     public render() {
         const {
             tag,

@@ -740,15 +740,11 @@ a[href^="https://maps.google.com/maps"] {
     display: none;
 }
 
-.gmnoprint div {
-    background: none !important;
-}
-
 #GMapsID div div a div img {
     display: none;
 }
 
-/* Google map
+/* Progress bar
 /* ------------------------- */
 
 .progressbar-progress {

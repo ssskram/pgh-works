@@ -33,9 +33,14 @@ export class SelectAsset extends React.Component<any, any> {
         }
     }
 
+    back () {
+        console.log(this.props)
+    }
+    
     public render() {
         const {
-            assetType
+            assetType,
+            back
         } = this.props
 
         const {
@@ -50,7 +55,7 @@ export class SelectAsset extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <br />
                     <h3 className='pull-left'>Select {assetType}</h3>
-                    <button onClick={this.props.back} className='btn btn-warning pull-right'>Back</button>
+                    <div><button onClick={this.back.bind(this)} className='btn btn-warning pull-right'>Back</button></div>
                 </div>
                 <div className='col-md-12'>
                     <Input
