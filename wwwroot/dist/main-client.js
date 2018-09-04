@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ca9a1dd44e60518773eb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "025fa1484e32507ed46d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -51095,11 +51095,46 @@ var Project = (function (_super) {
             edit: ''
         }, function () {
             if (existingShape != shape) {
-                this.deleteGeospatialTags();
-                this.pointsInPolygon();
+                // delete existing geospatial tags
+                var self_1 = this;
+                var tags = this.props.tags.filter(function (item) {
+                    return item.parentID == self_1.state.projectID;
+                });
+                var tagsToDelete = tags.filter(function (tag) {
+                    return tag.tagDescription == 'Within project bounds';
+                });
+                tagsToDelete.forEach(function (tag) {
+                    self_1.props.deleteTag(tag);
+                });
+                // refresh geospatial tags with new shape
+                var shape_1 = [];
+                var componentAssets_1 = [];
+                this.state.shape.forEach(function (point) {
+                    var shapeArray = [point.lat, point.lng];
+                    shape_1.push(shapeArray);
+                });
+                this.props.assets.forEach(function (asset) {
+                    if (asset.shape) {
+                        asset.shape.points.forEach(function (point) {
+                            var ins = __WEBPACK_IMPORTED_MODULE_19_point_in_polygon___default()([point.lat, point.lng], shape_1);
+                            if (ins == true && !componentAssets_1.includes(asset)) {
+                                componentAssets_1.push(asset);
+                            }
+                        });
+                    }
+                });
+                if (componentAssets_1.length > 0) {
+                    componentAssets_1.forEach(function (component) {
+                        self_1.createTag(component);
+                    });
+                }
             }
         });
-        this.props.updateProject(this.state);
+        this.setState({
+            shape: shape
+        }, function () {
+            this.props.updateProject(this.state);
+        });
     };
     Project.prototype.put = function () {
         this.closeModal();
@@ -51108,42 +51143,6 @@ var Project = (function (_super) {
         }, function () {
             this.props.updateProject(this.state);
         });
-    };
-    Project.prototype.deleteGeospatialTags = function () {
-        var self = this;
-        var tags = this.props.tags.filter(function (item) {
-            return item.parentID == self.state.projectID;
-        });
-        var tagsToDelete = tags.filter(function (tag) {
-            return tag.tagDescription == 'Within project bounds';
-        });
-        tagsToDelete.forEach(function (tag) {
-            self.props.deleteTag(tag);
-        });
-    };
-    Project.prototype.pointsInPolygon = function () {
-        var self = this;
-        var shape = [];
-        var componentAssets = [];
-        this.state.shape.forEach(function (point) {
-            var shapeArray = [point.lat, point.lng];
-            shape.push(shapeArray);
-        });
-        this.props.assets.forEach(function (asset) {
-            if (asset.shape) {
-                asset.shape.points.forEach(function (point) {
-                    var ins = __WEBPACK_IMPORTED_MODULE_19_point_in_polygon___default()([point.lat, point.lng], shape);
-                    if (ins == true && !componentAssets.includes(asset)) {
-                        componentAssets.push(asset);
-                    }
-                });
-            }
-        });
-        if (componentAssets.length > 0) {
-            componentAssets.forEach(function (component) {
-                self.createTag(component);
-            });
-        }
     };
     Project.prototype.createTag = function (asset) {
         var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_18_uuid__["v1"])();

@@ -184,11 +184,47 @@ export class Project extends React.Component<any, any> {
             edit: ''
         }, function (this) {
             if (existingShape != shape) {
-                this.deleteGeospatialTags ()
-                this.pointsInPolygon ()
+                // delete existing geospatial tags
+                let self = this
+                let tags = this.props.tags.filter(function (item) {
+                    return item.parentID == self.state.projectID
+                })
+                let tagsToDelete = tags.filter(function (tag) {
+                    return tag.tagDescription == 'Within project bounds'
+                })
+                tagsToDelete.forEach(function (tag) {
+                    self.props.deleteTag(tag)
+                })
+
+                // refresh geospatial tags with new shape
+                let shape = [] as any
+                let componentAssets = [] as any
+                this.state.shape.forEach(function (point) {
+                    const shapeArray = [point.lat, point.lng]
+                    shape.push(shapeArray)
+                })
+                this.props.assets.forEach(function (asset) {
+                    if (asset.shape) {
+                        asset.shape.points.forEach(function (point) {
+                            const ins = inside([point.lat, point.lng], shape)
+                            if (ins == true && !componentAssets.includes(asset)) {
+                                componentAssets.push(asset)
+                            }
+                        })
+                    }
+                })
+                if (componentAssets.length > 0) {
+                    componentAssets.forEach(function (component) {
+                        self.createTag(component)
+                    })
+                }
             }
         })
-        this.props.updateProject(this.state)
+        this.setState({
+            shape: shape
+        }, function (this) {
+            this.props.updateProject(this.state)
+        })
     }
 
     put() {
@@ -200,45 +236,7 @@ export class Project extends React.Component<any, any> {
         })
     }
 
-    deleteGeospatialTags () {
-        let self = this
-        let tags = this.props.tags.filter(function (item) {
-            return item.parentID == self.state.projectID
-        })
-        let tagsToDelete = tags.filter (function (tag) {
-            return tag.tagDescription == 'Within project bounds'
-        })
-        tagsToDelete.forEach (function (tag) {
-            self.props.deleteTag(tag)
-        })
-    }
-
-    pointsInPolygon () {
-        const self = this
-        let shape = [] as any
-        let componentAssets = [] as any
-        this.state.shape.forEach(function (point) {
-            const shapeArray = [ point.lat, point.lng]
-            shape.push(shapeArray)
-        })
-        this.props.assets.forEach(function(asset) {
-            if (asset.shape) {
-                asset.shape.points.forEach(function(point) {
-                    const ins = inside([ point.lat, point.lng], shape)
-                    if (ins == true && !componentAssets.includes(asset)) {
-                        componentAssets.push(asset)
-                    }
-                })
-            }
-        })
-        if (componentAssets.length > 0) {
-            componentAssets.forEach(function (component) {
-                self.createTag (component)
-            })
-        }
-    }
-
-    createTag (asset) {
+    createTag(asset) {
         const guid: string = uuid()
         let tagLoad = {
             tagID: guid,
@@ -252,7 +250,7 @@ export class Project extends React.Component<any, any> {
             tagDescription: 'Within project bounds',
         }
         this.props.addTag(tagLoad)
-    } 
+    }
 
     public render() {
         const {
