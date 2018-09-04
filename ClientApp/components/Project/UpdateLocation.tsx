@@ -35,7 +35,6 @@ export class UpdateLocation extends React.Component<any, any> {
 
     setShape(shape) {
         this.props.setShape(shape)
-        this.props.put()
     }
 
     public render() {

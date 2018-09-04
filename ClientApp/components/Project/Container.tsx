@@ -178,13 +178,17 @@ export class Project extends React.Component<any, any> {
     setShape(shape) {
         let existingShape = this.state.shape
         this.setState({
-            shape: shape
+            shape: shape,
+            lastModifiedBy: this.props.user,
+            modalIsOpen: false,
+            edit: ''
         }, function (this) {
-            if (existingShape != this.state.shape) {
+            if (existingShape != shape) {
                 this.deleteGeospatialTags ()
                 this.pointsInPolygon ()
             }
         })
+        this.props.updateProject(this.state)
     }
 
     put() {
