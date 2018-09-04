@@ -7,6 +7,13 @@ import Modal from 'react-responsive-modal'
 import DeleteTag from './DeleteTag'
 import TaggedAssetReport from './TaggedAssetReport'
 
+const imgHeight = {
+    height: '50px'
+}
+
+const marginTop = {
+    marginTop: '15px'
+}
 export class TagsCard extends React.Component<any, any> {
     constructor() {
         super()
@@ -83,15 +90,21 @@ export class TagsCard extends React.Component<any, any> {
         }
 
         return (
-            <div className="col-sm-4">
+            <div className="col-sm-12">
                 <div className="panel">
                     <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
-                        <h3>{tag.taggedAssetName}</h3>
-                        <img src={src} />
-                        <h4><b>{tag.tagType}</b></h4>
-                        <h4><i>"{tag.tagDescription}"</i></h4>
-                        <button onClick={this.inspectFacility.bind(this)} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                        <div className='col-md-3'>
+                            <img src={src} style={imgHeight} />
+                            <h4><b>{tag.tagType}</b></h4>
+                        </div>
+                        <div className='col-md-6' style={marginTop}>
+                            <h3>{tag.taggedAssetName}</h3>
+                            <h4><i>"{tag.tagDescription}"</i></h4>
+                        </div>
+                        <div className='col-md-3'>
+                            <button onClick={this.inspectFacility.bind(this)} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                        </div>
                     </div>
                 </div>
                 <Modal

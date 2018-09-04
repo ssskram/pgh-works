@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c70f2560ec9dee33fe53"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "54a41d561343e6af83e9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -52325,6 +52325,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var imgHeight = {
+    height: '50px'
+};
+var marginTop = {
+    marginTop: '15px'
+};
 var TagsCard = (function (_super) {
     __extends(TagsCard, _super);
     function TagsCard() {
@@ -52390,21 +52396,24 @@ var TagsCard = (function (_super) {
         if (tag.tagType == "Park") {
             src = './images/assetTypes/parks.png';
         }
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, tag.taggedAssetName),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src }),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                            "\"",
-                            tag.tagDescription,
-                            "\"")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.inspectFacility.bind(this), className: 'btn btn-success' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src, style: imgHeight }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: marginTop },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, tag.taggedAssetName),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                "\"",
+                                tag.tagDescription,
+                                "\""))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.inspectFacility.bind(this), style: marginTop, className: 'btn btn-success' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
