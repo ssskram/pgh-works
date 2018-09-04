@@ -9,7 +9,7 @@ export default class ImportShapes extends React.Component<any, any> {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedShape: {},
+            selectedAsset: {},
             showInfowindow: false
         }
         this.polygonSelection = this.polygonSelection.bind(this)
@@ -20,7 +20,9 @@ export default class ImportShapes extends React.Component<any, any> {
             let foundAsset = nextProps.assets[0]
             this.setCenter(foundAsset.shape.points)
             this.setState({
-                assets: nextProps.assets
+                assets: nextProps.assets,
+                selectedAsset: foundAsset,
+                showInfowindow: true
             })
         } else {
             this.setState({
@@ -35,13 +37,9 @@ export default class ImportShapes extends React.Component<any, any> {
     polygonSelection(asset) {
         this.setCenter(asset.shape.points)
         this.setState({
-            selectedShape: asset,
+            selectedAsset: asset,
             showInfowindow: true
         })
-
-        // zoom to shape
-        // make accept/redo buttons visible
-        // filter assets by those with atleast one share point
     }
 
     setCenter(points) {
@@ -58,7 +56,7 @@ export default class ImportShapes extends React.Component<any, any> {
         })
     }
 
-    closeWindow() {
+    closeWindow () {
         this.setState({
             showInfowindow: false
         })
@@ -70,7 +68,7 @@ export default class ImportShapes extends React.Component<any, any> {
             zoom,
             center,
             showInfowindow,
-            selectedShape
+            selectedAsset
         } = this.state
 
         const MapComponent = compose(
@@ -103,8 +101,11 @@ export default class ImportShapes extends React.Component<any, any> {
                     })
                 }
                 {showInfowindow == true &&
-                    <InfoWindow position={center}>
-                        <div className='col-md-12'>{selectedShape.assetName}</div>
+                    <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
+                        <div className='col-md-12'>
+                        <h4>{selectedAsset.assetName}</h4>
+                        <button onClick={() => this.props.receiveAsset(selectedAsset)} className='btn btn-success'>Save & continue</button>
+                        </div>
                     </InfoWindow>
                 }
             </GoogleMap>

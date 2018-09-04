@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "36620007b289c1e7caf3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2b5cf1f1d9b2ad46765d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -49633,7 +49633,7 @@ var ImportShapes = (function (_super) {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedShape: {},
+            selectedAsset: {},
             showInfowindow: false
         };
         _this.polygonSelection = _this.polygonSelection.bind(_this);
@@ -49644,7 +49644,9 @@ var ImportShapes = (function (_super) {
             var foundAsset = nextProps.assets[0];
             this.setCenter(foundAsset.shape.points);
             this.setState({
-                assets: nextProps.assets
+                assets: nextProps.assets,
+                selectedAsset: foundAsset,
+                showInfowindow: true
             });
         }
         else {
@@ -49658,12 +49660,9 @@ var ImportShapes = (function (_super) {
     ImportShapes.prototype.polygonSelection = function (asset) {
         this.setCenter(asset.shape.points);
         this.setState({
-            selectedShape: asset,
+            selectedAsset: asset,
             showInfowindow: true
         });
-        // zoom to shape
-        // make accept/redo buttons visible
-        // filter assets by those with atleast one share point
     };
     ImportShapes.prototype.setCenter = function (points) {
         var bounds = new google.maps.LatLngBounds();
@@ -49685,7 +49684,7 @@ var ImportShapes = (function (_super) {
     };
     ImportShapes.prototype.render = function () {
         var _this = this;
-        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, showInfowindow = _a.showInfowindow, selectedShape = _a.selectedShape;
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, showInfowindow = _a.showInfowindow, selectedAsset = _a.selectedAsset;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
@@ -49701,8 +49700,10 @@ var ImportShapes = (function (_super) {
                         }
                     }),
                 showInfowindow == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, selectedShape.assetName)));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center, onCloseClick: _this.closeWindow.bind(_this) },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedAsset.assetName),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveAsset(selectedAsset); }, className: 'btn btn-success' }, "Save & continue"))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'polygon-draw' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
@@ -51943,9 +51944,6 @@ var SelectAsset = (function (_super) {
             });
         }
     };
-    SelectAsset.prototype.back = function () {
-        console.log(this.props);
-    };
     SelectAsset.prototype.render = function () {
         var _a = this.props, assetType = _a.assetType, back = _a.back;
         var _b = this.state, assets = _b.assets, search = _b.search;
@@ -51956,12 +51954,11 @@ var SelectAsset = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'pull-left' },
                     "Select ",
                     assetType),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.back.bind(this), className: 'btn btn-warning pull-right' }, "Back"))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: back, className: 'btn btn-warning', style: { marginLeft: '25px' } }, "Back")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: search, name: "search", header: "", placeholder: searchPlaceholder, callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Map_ImportShapes__["a" /* default */], { assets: assets }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Map_ImportShapes__["a" /* default */], { assets: assets, receiveAsset: this.props.receiveAsset }))));
     };
     return SelectAsset;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

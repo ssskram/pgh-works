@@ -32,10 +32,6 @@ export class SelectAsset extends React.Component<any, any> {
             })
         }
     }
-
-    back () {
-        console.log(this.props)
-    }
     
     public render() {
         const {
@@ -55,7 +51,7 @@ export class SelectAsset extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <br />
                     <h3 className='pull-left'>Select {assetType}</h3>
-                    <div><button onClick={this.back.bind(this)} className='btn btn-warning pull-right'>Back</button></div>
+                    <button onClick={back} className='btn btn-warning' style={{marginLeft: '25px'}}>Back</button>
                 </div>
                 <div className='col-md-12'>
                     <Input
@@ -67,7 +63,7 @@ export class SelectAsset extends React.Component<any, any> {
                     />
                 </div>
                 <div className='col-md-12 text-center'>
-                    <SelectionMap assets={assets}/>
+                    <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset}/>
                 </div>
             </div>
         )
