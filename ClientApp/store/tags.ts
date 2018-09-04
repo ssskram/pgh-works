@@ -5,7 +5,6 @@ import { AppThunkAction } from './'
 const loadTags = 'loadTags'
 const addTag = 'addTags'
 const deleteTag = 'deleteTags'
-const refreshTags = 'refreshTags'
 
 const unloadedState: TagState = {
     tags: []

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "54a41d561343e6af83e9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5e806e51e627008aade4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6919,7 +6919,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var loadTags = 'loadTags';
 var addTag = 'addTags';
 var deleteTag = 'deleteTags';
-var refreshTags = 'refreshTags';
 var unloadedState = {
     tags: []
 };
@@ -50894,12 +50893,18 @@ var ProjectCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ProgramsFunds__ = __webpack_require__(622);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Attachments_Attachments__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_GETS_user__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Inputs_Project__ = __webpack_require__(327);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Tags_Tags__ = __webpack_require__(331);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__UpdateLocation__ = __webpack_require__(623);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Cards_ProjectCard__ = __webpack_require__(619);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_GETS_taggableAssets__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__store_tags__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Inputs_Project__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Tags_Tags__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__UpdateLocation__ = __webpack_require__(623);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__Cards_ProjectCard__ = __webpack_require__(619);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_uuid__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_uuid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_point_in_polygon__ = __webpack_require__(556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_point_in_polygon__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -50918,6 +50923,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
+
+
+
 
 
 
@@ -51056,7 +51065,7 @@ var Project = (function (_super) {
     Project.prototype.handleStartDate = function (date) {
         if (date) {
             this.setState({
-                startDate: __WEBPACK_IMPORTED_MODULE_13_moment__(date).format('MM/DD/YYYY')
+                startDate: __WEBPACK_IMPORTED_MODULE_15_moment__(date).format('MM/DD/YYYY')
             });
         }
         else {
@@ -51068,7 +51077,7 @@ var Project = (function (_super) {
     Project.prototype.handleEndDate = function (date) {
         if (date) {
             this.setState({
-                endDate: __WEBPACK_IMPORTED_MODULE_13_moment__(date).format('MM/DD/YYYY')
+                endDate: __WEBPACK_IMPORTED_MODULE_15_moment__(date).format('MM/DD/YYYY')
             });
         }
         else {
@@ -51078,8 +51087,14 @@ var Project = (function (_super) {
         }
     };
     Project.prototype.setShape = function (shape) {
+        var existingShape = this.state.shape;
         this.setState({
             shape: shape
+        }, function () {
+            if (existingShape != this.state.shape) {
+                this.deleteGeospatialTags();
+                this.pointsInPolygon();
+            }
         });
     };
     Project.prototype.put = function () {
@@ -51089,6 +51104,57 @@ var Project = (function (_super) {
         }, function () {
             this.props.updateProject(this.state);
         });
+    };
+    Project.prototype.deleteGeospatialTags = function () {
+        var self = this;
+        var tags = this.props.tags.filter(function (item) {
+            return item.parentID == self.state.projectID;
+        });
+        var tagsToDelete = tags.filter(function (tag) {
+            return tag.tagDescription == 'Within project bounds';
+        });
+        tagsToDelete.forEach(function (tag) {
+            self.props.deleteTag(tag);
+        });
+    };
+    Project.prototype.pointsInPolygon = function () {
+        var self = this;
+        var shape = [];
+        var componentAssets = [];
+        this.state.shape.forEach(function (point) {
+            var shapeArray = [point.lat, point.lng];
+            shape.push(shapeArray);
+        });
+        this.props.assets.forEach(function (asset) {
+            if (asset.shape) {
+                asset.shape.points.forEach(function (point) {
+                    var ins = __WEBPACK_IMPORTED_MODULE_19_point_in_polygon___default()([point.lat, point.lng], shape);
+                    if (ins == true && !componentAssets.includes(asset)) {
+                        componentAssets.push(asset);
+                    }
+                });
+            }
+        });
+        if (componentAssets.length > 0) {
+            componentAssets.forEach(function (component) {
+                self.createTag(component);
+            });
+        }
+    };
+    Project.prototype.createTag = function (asset) {
+        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_18_uuid__["v1"])();
+        var tagLoad = {
+            tagID: guid,
+            parentID: this.state.projectID,
+            parentType: 'Project',
+            parentName: this.state.projectName,
+            taggedAssetOID: asset.assetOID,
+            taggedAssetName: asset.assetName,
+            dateCreated: __WEBPACK_IMPORTED_MODULE_15_moment__().format('MM/DD/YYYY'),
+            tagType: asset.assetType,
+            tagDescription: 'Within project bounds',
+        };
+        this.props.addTag(tagLoad);
     };
     Project.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus, shape = _a.shape;
@@ -51109,11 +51175,11 @@ var Project = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Map_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Cards_ProjectCard__["a" /* default */], { project: this.state })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_17__Cards_ProjectCard__["a" /* default */], { project: this.state })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Phases__["a" /* default */], { projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Tags_Tags__["a" /* default */], { parentID: projectID, parentName: projectName, parentType: 'Project' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Tags_Tags__["a" /* default */], { parentID: projectID, parentName: projectName, parentType: 'Project' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__ProgramsFunds__["a" /* default */], { projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
@@ -51126,19 +51192,19 @@ var Project = (function (_super) {
                 }, center: true },
                 edit == 'project' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this), handleExpectedCost: this.handleExpectedCost.bind(this), handleActualCost: this.handleActualCost.bind(this) }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this), handleExpectedCost: this.handleExpectedCost.bind(this), handleActualCost: this.handleActualCost.bind(this) }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.put.bind(this) },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save")))))),
                 edit == 'location' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__UpdateLocation__["a" /* default */], { setShape: this.setShape.bind(this), put: this.put.bind(this) }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_16__UpdateLocation__["a" /* default */], { setShape: this.setShape.bind(this), put: this.put.bind(this) }))));
     };
     return Project;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.projects, state.user)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_user__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_projects__["a" /* actionCreators */])))(Project));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.projects, state.taggableAssets, state.user, state.tags)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_user__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_projects__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_11__store_GETS_taggableAssets__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_12__store_tags__["a" /* actionCreators */])))(Project));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Project/Container.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Project/Container.tsx"); } } })();

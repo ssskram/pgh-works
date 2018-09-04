@@ -11,11 +11,15 @@ import Phases from './Phases'
 import Funds from './ProgramsFunds'
 import Attachments from '../Attachments/Attachments'
 import * as User from '../../store/GETS/user'
+import * as Assets from '../../store/GETS/taggableAssets'
+import * as TagStore from '../../store/tags'
 import ProjectFields from '../Inputs/Project'
 import Tags from '../Tags/Tags'
 import * as moment from 'moment'
 import UpdateLocation from './UpdateLocation'
 import ProjectCard from './Cards/ProjectCard'
+import { v1 as uuid } from 'uuid'
+import inside from 'point-in-polygon'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -172,8 +176,14 @@ export class Project extends React.Component<any, any> {
     }
 
     setShape(shape) {
+        let existingShape = this.state.shape
         this.setState({
             shape: shape
+        }, function (this) {
+            if (existingShape != this.state.shape) {
+                this.deleteGeospatialTags ()
+                this.pointsInPolygon ()
+            }
         })
     }
 
@@ -185,6 +195,60 @@ export class Project extends React.Component<any, any> {
             this.props.updateProject(this.state)
         })
     }
+
+    deleteGeospatialTags () {
+        let self = this
+        let tags = this.props.tags.filter(function (item) {
+            return item.parentID == self.state.projectID
+        })
+        let tagsToDelete = tags.filter (function (tag) {
+            return tag.tagDescription == 'Within project bounds'
+        })
+        tagsToDelete.forEach (function (tag) {
+            self.props.deleteTag(tag)
+        })
+    }
+
+    pointsInPolygon () {
+        const self = this
+        let shape = [] as any
+        let componentAssets = [] as any
+        this.state.shape.forEach(function (point) {
+            const shapeArray = [ point.lat, point.lng]
+            shape.push(shapeArray)
+        })
+        this.props.assets.forEach(function(asset) {
+            if (asset.shape) {
+                asset.shape.points.forEach(function(point) {
+                    const ins = inside([ point.lat, point.lng], shape)
+                    if (ins == true && !componentAssets.includes(asset)) {
+                        componentAssets.push(asset)
+                    }
+                })
+            }
+        })
+        if (componentAssets.length > 0) {
+            componentAssets.forEach(function (component) {
+                self.createTag (component)
+            })
+        }
+    }
+
+    createTag (asset) {
+        const guid: string = uuid()
+        let tagLoad = {
+            tagID: guid,
+            parentID: this.state.projectID,
+            parentType: 'Project',
+            parentName: this.state.projectName,
+            taggedAssetOID: asset.assetOID,
+            taggedAssetName: asset.assetName,
+            dateCreated: moment().format('MM/DD/YYYY'),
+            tagType: asset.assetType,
+            tagDescription: 'Within project bounds',
+        }
+        this.props.addTag(tagLoad)
+    } 
 
     public render() {
         const {
@@ -283,11 +347,15 @@ export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
         ...state.projects,
+        ...state.taggableAssets,
         ...state.user,
+        ...state.tags
     }),
     ({
         ...Ping.actionCreators,
         ...User.actionCreators,
-        ...Projects.actionCreators
+        ...Projects.actionCreators,
+        ...Assets.actionCreators,
+        ...TagStore.actionCreators
     })
 )(Project as any) as typeof Project
