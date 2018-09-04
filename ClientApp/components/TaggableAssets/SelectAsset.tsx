@@ -4,17 +4,19 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Assets from '../../store/GETS/taggableAssets'
 import Input from '../FormElements/input'
-import Paging from '../Utilities/Paging'
+import SelectionMap from './../Map/ImportShapes'
 
 export class SelectAsset extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            currentPage: 1,
-            itemsPerPage: 25,
             search: '',
             assets: props.assets.filter(asset => asset.assetType == props.assetType)
         }
+    }
+
+    componentDidMount () {
+        console.log(this.props.assets)
     }
 
     handleChildChange(event) {
@@ -35,53 +37,17 @@ export class SelectAsset extends React.Component<any, any> {
         }
     }
 
-    handleNextClick() {
-        window.scrollTo(0, 0)
-        let current = this.state.currentPage
-        this.setState({
-            currentPage: current + 1
-        });
-    }
-
-    handlePreviousClick() {
-        window.scrollTo(0, 0)
-        let current = this.state.currentPage
-        this.setState({
-            currentPage: current - 1
-        });
-    }
-
     public render() {
         const {
             assetType
         } = this.props
 
         const {
-            currentPage,
-            itemsPerPage,
             assets,
             search
         } = this.state
 
         var searchPlaceholder = "Search for " + assetType
-
-        // Logic for paging
-        const indexOfLastItem = currentPage * itemsPerPage;
-        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-        const currentItems = assets.slice(indexOfFirstItem, indexOfLastItem);
-        const renderItems = currentItems.map((item) => {
-            return (
-                <div className="col-md-12" key={item.assetOID}>
-                    <button className='btn btn-success' onClick={() => this.props.receiveAsset(item)}>{item.assetName}</button>
-                </div>
-            )
-        })
-
-        // Logic for displaying page numbers
-        const pageNumbers: any[] = []
-        for (let i = 1; i <= Math.ceil(assets.length / itemsPerPage); i++) {
-            pageNumbers.push(i);
-        }
 
         return (
             <div>
@@ -100,17 +66,7 @@ export class SelectAsset extends React.Component<any, any> {
                     />
                 </div>
                 <div className='col-md-12 text-center'>
-                    {renderItems}
-                </div>
-                <div className='col-md-12'>
-                    <br/>
-                    <Paging
-                        count={assets}
-                        currentPage={currentPage}
-                        totalPages={pageNumbers}
-                        next={this.handleNextClick.bind(this)}
-                        prev={this.handlePreviousClick.bind(this)} />
-                    <br />
+                    <SelectionMap assets={assets}/>
                 </div>
             </div>
         )
