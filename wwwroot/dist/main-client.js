@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5077647c954e3d4633ed"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "43c73cb402df63d21dc2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -49628,21 +49628,46 @@ var __extends = (this && this.__extends) || (function () {
 
 var ImportShapes = (function (_super) {
     __extends(ImportShapes, _super);
-    function ImportShapes() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function ImportShapes(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            assets: props.assets,
+            zoom: 13,
+            center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            selectedShape: {}
+        };
+        _this.polygonSelection = _this.polygonSelection.bind(_this);
+        return _this;
     }
+    ImportShapes.prototype.polygonSelection = function (asset) {
+        var bounds = new google.maps.LatLngBounds();
+        var i;
+        for (i = 0; i < asset.shape.points.length; i++) {
+            bounds.extend(asset.shape.points[i]);
+        }
+        var lat = bounds.getCenter().lat();
+        var lng = bounds.getCenter().lng();
+        this.setState({
+            selectedShape: asset.shape.points,
+            center: { lat: lat, lng: lng },
+            zoom: 17
+        });
+        // zoom to shape
+        // make accept/redo buttons visible
+        // filter assets by those with atleast one share point
+    };
     ImportShapes.prototype.render = function () {
         var _this = this;
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, selectedShape = _a.selectedShape;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 13, defaultCenter: { lat: 40.437470539681442, lng: -79.987124601795273 } }, _this.props.assets &&
-                _this.props.assets.map(function (asset) {
-                    console.log(asset);
-                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points] }));
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: zoom, defaultCenter: center }, assets &&
+                assets.map(function (asset) {
+                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], key: asset.assetOID, onClick: function () { return _this.polygonSelection(asset); } }));
                 }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'polygon-draw' },
@@ -51865,9 +51890,6 @@ var SelectAsset = (function (_super) {
         };
         return _this;
     }
-    SelectAsset.prototype.componentDidMount = function () {
-        console.log(this.props.assets);
-    };
     SelectAsset.prototype.handleChildChange = function (event) {
         this.setState((_a = {}, _a[event.target.name] = event.target.value, _a));
         this.filter(event.target.value);

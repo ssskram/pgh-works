@@ -15,10 +15,6 @@ export class SelectAsset extends React.Component<any, any> {
         }
     }
 
-    componentDidMount () {
-        console.log(this.props.assets)
-    }
-
     handleChildChange(event) {
         this.setState({ [event.target.name]: event.target.value });
         this.filter(event.target.value)
