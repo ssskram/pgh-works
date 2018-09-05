@@ -68,7 +68,33 @@ export class Phases extends React.Component<any, any> {
 
         // timeline configs
 
-        const timelineHeight = phases.length * 40 + 90
+        const items = [] as any
+        let counter = 0
+        phases.forEach(function (phase) {
+            let expected = {
+                id: counter,
+                content: phase.phaseName + ' (expected)',
+                start: phase.expectedStartDate,
+                end: phase.expectedEndDate
+            }
+            counter++
+            items.push(expected)
+        })
+
+        phases.forEach(function (phase) {
+            if (phase.actualStartDate && phase.actualEndDate) {
+                let actual = {
+                    id: counter,
+                    content: phase.phaseName + ' (actual)',
+                    start: phase.actualStartDate,
+                    end: phase.actualEndDate
+                }
+                counter++
+                items.push(actual)
+            }
+        })
+
+        const timelineHeight = items.length * 40 + 90
 
         const timelineOptions = {
             width: '100%',
@@ -84,18 +110,6 @@ export class Phases extends React.Component<any, any> {
                 }
             }
         }
-
-        const items = [] as any
-
-        phases.forEach(function (phase, index) {
-            let timelineItem = {
-                id: index,
-                content: phase.phaseName,
-                start: phase.expectedStartDate,
-                end: phase.expectedEndDate
-            }
-            items.push(timelineItem)
-        })
 
         return (
             <div>

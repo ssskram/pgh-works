@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c2258cbee4c64585cf5d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "768d9afe54423b07c78d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -51466,7 +51466,31 @@ var Phases = (function (_super) {
     Phases.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, phases = _a.phases;
         // timeline configs
-        var timelineHeight = phases.length * 40 + 90;
+        var items = [];
+        var counter = 0;
+        phases.forEach(function (phase) {
+            var expected = {
+                id: counter,
+                content: phase.phaseName + ' (expected)',
+                start: phase.expectedStartDate,
+                end: phase.expectedEndDate
+            };
+            counter++;
+            items.push(expected);
+        });
+        phases.forEach(function (phase) {
+            if (phase.actualStartDate && phase.actualEndDate) {
+                var actual = {
+                    id: counter,
+                    content: phase.phaseName + ' (actual)',
+                    start: phase.actualStartDate,
+                    end: phase.actualEndDate
+                };
+                counter++;
+                items.push(actual);
+            }
+        });
+        var timelineHeight = items.length * 40 + 90;
         var timelineOptions = {
             width: '100%',
             height: timelineHeight + 'px',
@@ -51481,16 +51505,6 @@ var Phases = (function (_super) {
                 }
             }
         };
-        var items = [];
-        phases.forEach(function (phase, index) {
-            var timelineItem = {
-                id: index,
-                content: phase.phaseName,
-                start: phase.expectedStartDate,
-                end: phase.expectedEndDate
-            };
-            items.push(timelineItem);
-        });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/phaseGrey.png' }),
