@@ -13,6 +13,7 @@ import Percent from '../FormElements/numbers'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 import Progress from 'react-progressbar'
+import Modal from 'react-responsive-modal'
 import PhaseFollows from './PhaseFollows'
 
 const sliderContainer = {
@@ -38,6 +39,7 @@ export class PhaseInputs extends React.Component<any, any> {
         this.state = {
             // utilities
             redirect: false,
+            modalIsOpen: false,
 
             // phase state
             projectID: '',
@@ -149,6 +151,26 @@ export class PhaseInputs extends React.Component<any, any> {
         }
     }
 
+    phaseFollows() {
+        this.setState({
+            modalIsOpen: true,
+        })
+    }
+
+    setPhaseFollows(string) {
+        console.log(string)
+        this.setState({
+            phaseFollows: string,
+            modalIsOpen: false
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false,
+        })
+    }
+
     public render() {
         const {
             redirect,
@@ -164,6 +186,7 @@ export class PhaseInputs extends React.Component<any, any> {
             phaseStatus,
             percentComplete,
             notes,
+            modalIsOpen
         } = this.state
 
         // validation
@@ -236,14 +259,19 @@ export class PhaseInputs extends React.Component<any, any> {
                 </div>
 
                 <div className='col-md-12'>
-                    <Select
-                        value={phaseFollows}
-                        name="phaseFollows"
-                        header='Phase follows'
-                        placeholder='Identify preceding work'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                    />
+                    <div className="form-group">
+                        <div className="col-md-12 form-element">
+                            <h4 className="form-h4">Phase follows</h4>
+                            <input type='search'
+                                className='form-control button-input'
+                                onClick={this.phaseFollows.bind(this)}
+                                value={phaseFollows}
+                                name='phaseFollows'
+                                id='phaseFollows'
+                                placeholder='Identify preceding work'>
+                            </input>
+                        </div>
+                    </div>
                 </div>
 
                 {!this.props.update &&
@@ -316,6 +344,17 @@ export class PhaseInputs extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
+                <Modal
+                    open={modalIsOpen}
+                    onClose={this.closeModal.bind(this)}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                    <PhaseFollows
+                        passFollows={this.setPhaseFollows.bind(this)} />
+                </Modal>
             </div>
         )
     }

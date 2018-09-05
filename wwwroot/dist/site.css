@@ -248,6 +248,14 @@ hr {
 /* Forms
 /* ------------------------- */
 
+.button-input {
+    cursor: pointer;
+}
+
+.button-input:focus {
+    color: transparent;
+}
+
 input[type=search]::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
 }
