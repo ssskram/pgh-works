@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "025fa1484e32507ed46d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "19ec41af56b4b74c87c2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -49728,7 +49728,7 @@ var ImportShapes = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedAsset.assetName),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveAsset(selectedAsset); }, className: 'btn btn-success' }, "Save & continue"))));
         });
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'polygon-draw' },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'polygon-draw', style: { margin: '0 auto' } },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
     };
     return ImportShapes;

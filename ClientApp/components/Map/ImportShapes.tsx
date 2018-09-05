@@ -112,7 +112,7 @@ export default class ImportShapes extends React.Component<any, any> {
         )
 
         return (
-            <div id='polygon-draw'>
+            <div id='polygon-draw' style={{margin: '0 auto'}}>
                 <MapComponent />
             </div>
         )
