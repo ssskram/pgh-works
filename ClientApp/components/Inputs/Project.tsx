@@ -38,13 +38,14 @@ const departments = [
 ]
 
 export class ProjectInputs extends React.Component<any, any> {
-    constructor () {
+    constructor() {
         super()
         this.handleDate = this.handleDate.bind(this)
     }
-    componentDidMount () {
+    componentDidMount() {
         // set personnel dropdowns
         // set status dropdowns
+        console.log(this.props)
     }
 
     handleChildChange(event) {
@@ -79,7 +80,8 @@ export class ProjectInputs extends React.Component<any, any> {
             projectDepartment,
             projectDescription,
             projectStatus,
-            notes
+            notes,
+            update
         } = this.props.description
 
         return (
@@ -125,26 +127,30 @@ export class ProjectInputs extends React.Component<any, any> {
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>
+                {!update &&
+                    <div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={expectedStartDate}
+                                name="expectedStartDate"
+                                header="Expected start date"
+                                placeholder="Select a date"
+                                callback={(value) => this.handleDate(value, 'expectedStartDate')}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={expectedStartDate}
-                        name="expectedStartDate"
-                        header="Expected start date"
-                        placeholder="Select a date"
-                        callback={(value) =>this.handleDate(value, 'expectedStartDate')}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={expectedEndDate}
+                                name="expectedEndDate"
+                                header="Expected end date"
+                                placeholder="Select a date"
+                                callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={expectedEndDate}
-                        name="expectedEndDate"
-                        header="Expected end date"
-                        placeholder="Select a date"
-                        callback={(value) =>this.handleDate(value, 'expectedEndDate')}
-                    />
-                </div>
+                    </div>
+                }
 
                 <div className='col-md-6'>
                     <Datepicker
@@ -152,7 +158,7 @@ export class ProjectInputs extends React.Component<any, any> {
                         name="actualStartDate"
                         header="Actual start date"
                         placeholder="Select a date"
-                        callback={(value) =>this.handleDate(value, 'actualStartDate')}
+                        callback={(value) => this.handleDate(value, 'actualStartDate')}
                     />
                 </div>
 
@@ -162,7 +168,7 @@ export class ProjectInputs extends React.Component<any, any> {
                         name="actualEndDate"
                         header="Actual end date"
                         placeholder="Select a date"
-                        callback={(value) =>this.handleDate(value, 'actualEndDate')}
+                        callback={(value) => this.handleDate(value, 'actualEndDate')}
                     />
                 </div>
 

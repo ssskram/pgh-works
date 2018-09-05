@@ -40,15 +40,15 @@ export default class ProjectCard extends React.Component<any, any> {
     public render() {
         const {
             cartegraphID,
-            startDate,
-            endDate,
+            expectedStartDate,
+            expectedEndDate,
+            actualStartDate,
+            actualEndDate,
             projectManager,
             projectMembers,
+            projectDepartment,
             projectDescription,
             projectStatus,
-            projectType,
-            expectedCost,
-            actualCost,
             notes,
             created,
             createdBy,
@@ -66,20 +66,26 @@ export default class ProjectCard extends React.Component<any, any> {
                                     <th style={borderNone} scope="row">Status</th>
                                     <td style={borderNone}>{projectStatus}</td>
                                 </tr>
-                                {projectType &&
+                                <tr>
+                                    <th scope="row">Expected start date</th>
+                                    <td><Moment format="MM/DD/YYYY" date={expectedStartDate} /></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Expected end date</th>
+                                    <td><Moment format="MM/DD/YYYY" date={expectedEndDate} /></td>
+                                </tr>
+                                {actualStartDate &&
                                     <tr>
-                                        <th scope="row">Type</th>
-                                        <td>{projectType}</td>
+                                        <th scope="row">Actual start date</th>
+                                        <td><Moment format="MM/DD/YYYY" date={actualStartDate} /></td>
                                     </tr>
                                 }
-                                <tr>
-                                    <th scope="row">Start date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={startDate} /></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">End date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={endDate} /></td>
-                                </tr>
+                                {actualEndDate &&
+                                    <tr>
+                                        <th scope="row">Actual end date</th>
+                                        <td><Moment format="MM/DD/YYYY" date={actualEndDate} /></td>
+                                    </tr>
+                                }
                                 <tr>
                                     <th scope="row">Project manager</th>
                                     <td>{projectManager}</td>
@@ -90,18 +96,10 @@ export default class ProjectCard extends React.Component<any, any> {
                                         <td>{projectMembers}</td>
                                     </tr>
                                 }
-                                {expectedCost &&
-                                    <tr>
-                                        <th scope="row">Expected cost</th>
-                                        <td>{expectedCost}</td>
-                                    </tr>
-                                }
-                                {actualCost &&
-                                    <tr>
-                                        <th scope="row">Actual cost</th>
-                                        <td>{actualCost}</td>
-                                    </tr>
-                                }
+                                <tr>
+                                    <th scope="row">Project department</th>
+                                    <td>{projectDepartment}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

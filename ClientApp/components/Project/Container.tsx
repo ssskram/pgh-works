@@ -36,21 +36,21 @@ export class Project extends React.Component<any, any> {
             // utilities
             spinner: true,
             modalIsOpen: false,
-            update: '',
+            update: 'true',
 
             // project state
             cartegraphID: '',
             projectID: '',
             projectName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             projectManager: '',
             projectMembers: '',
+            projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            projectType: '',
-            expectedCost: '',
-            actualCost: '',
             notes: '',
             created: '',
             createdBy: '',
@@ -89,15 +89,15 @@ export class Project extends React.Component<any, any> {
             cartegraphID: project.cartegraphID,
             projectID: project.projectID,
             projectName: project.projectName,
-            startDate: project.startDate,
-            endDate: project.endDate,
+            expectedStartDate: project.expectedStartDate,
+            expectedEndDate: project.expectedEndDate,
+            actualStartDate: project.actualStartDate,
+            actualEndDate: project.actualEndDate,
             projectManager: project.projectManager,
             projectMembers: project.projectMembers,
+            projectDepartment: project.projectDepartment,
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
-            projectType: project.projectType,
-            expectedCost: project.expectedCost,
-            actualCost: project.actualCost,
             notes: project.notes,
             created: project.created,
             createdBy: project.createdBy,
@@ -259,9 +259,6 @@ export class Project extends React.Component<any, any> {
             spinner,
             projectID,
             projectName,
-            startDate,
-            endDate,
-            projectManager,
             projectStatus,
             shape
         } = this.state
@@ -269,9 +266,6 @@ export class Project extends React.Component<any, any> {
         // validation
         const isEnabled =
             projectName != '' &&
-            startDate != '' &&
-            endDate != '' &&
-            projectManager != '' &&
             projectStatus != ''
 
         return (

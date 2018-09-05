@@ -68,7 +68,8 @@ export class ProjectDescription extends React.Component<any, any> {
             expectedStartDate,
             expectedEndDate,
             projectManager,
-            projectStatus
+            projectStatus,
+            projectDepartment
         } = this.state
 
         // validation
@@ -77,7 +78,8 @@ export class ProjectDescription extends React.Component<any, any> {
             expectedStartDate != '' &&
             expectedEndDate != '' &&
             projectManager != '' &&
-            projectStatus != ''
+            projectStatus != '' &&
+            projectDepartment != ''
 
         return (
             <div>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "12a1034f173abc077b8d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d52dcd3feb5d0a38df96"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -25708,6 +25708,7 @@ var ProjectInputs = (function (_super) {
     ProjectInputs.prototype.componentDidMount = function () {
         // set personnel dropdowns
         // set status dropdowns
+        console.log(this.props);
     };
     ProjectInputs.prototype.handleChildChange = function (event) {
         this.props.handleInput(event);
@@ -25726,7 +25727,7 @@ var ProjectInputs = (function (_super) {
     };
     ProjectInputs.prototype.render = function () {
         var _this = this;
-        var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes;
+        var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, update = _a.update;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
@@ -25736,10 +25737,12 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } })),
+            !update &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -50800,7 +50803,7 @@ var ProjectCard = (function (_super) {
         window.scrollTo(0, 0);
     };
     ProjectCard.prototype.render = function () {
-        var _a = this.props.project, cartegraphID = _a.cartegraphID, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, projectType = _a.projectType, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy;
+        var _a = this.props.project, cartegraphID = _a.cartegraphID, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, created = _a.created, createdBy = _a.createdBy, lastModifiedBy = _a.lastModifiedBy;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -50810,18 +50813,24 @@ var ProjectCard = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", { style: bigFont },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { style: borderNone, scope: "row" }, "Status"),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { style: borderNone }, projectStatus)),
-                            projectType &&
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Expected start date"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: expectedStartDate }))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Expected end date"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: expectedEndDate }))),
+                            actualStartDate &&
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Type"),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectType)),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Start date"),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: startDate }))),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "End date"),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: endDate }))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Actual start date"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: actualStartDate }))),
+                            actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Actual end date"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_moment___default.a, { format: "MM/DD/YYYY", date: actualEndDate }))),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Project manager"),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectManager)),
@@ -50829,14 +50838,9 @@ var ProjectCard = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Project members"),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectMembers)),
-                            expectedCost &&
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Expected cost"),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, expectedCost)),
-                            actualCost &&
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Actual cost"),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, actualCost))))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("th", { scope: "row" }, "Project department"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, projectDepartment))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: metaContainer, className: 'col-md-6' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("table", { className: "table" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tbody", null,
@@ -50953,20 +50957,20 @@ var Project = (function (_super) {
             // utilities
             spinner: true,
             modalIsOpen: false,
-            update: '',
+            update: 'true',
             // project state
             cartegraphID: '',
             projectID: '',
             projectName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             projectManager: '',
             projectMembers: '',
+            projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            projectType: '',
-            expectedCost: '',
-            actualCost: '',
             notes: '',
             created: '',
             createdBy: '',
@@ -51002,15 +51006,15 @@ var Project = (function (_super) {
             cartegraphID: project.cartegraphID,
             projectID: project.projectID,
             projectName: project.projectName,
-            startDate: project.startDate,
-            endDate: project.endDate,
+            expectedStartDate: project.expectedStartDate,
+            expectedEndDate: project.expectedEndDate,
+            actualStartDate: project.actualStartDate,
+            actualEndDate: project.actualEndDate,
             projectManager: project.projectManager,
             projectMembers: project.projectMembers,
+            projectDepartment: project.projectDepartment,
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
-            projectType: project.projectType,
-            expectedCost: project.expectedCost,
-            actualCost: project.actualCost,
             notes: project.notes,
             created: project.created,
             createdBy: project.createdBy,
@@ -51156,12 +51160,9 @@ var Project = (function (_super) {
         this.props.addTag(tagLoad);
     };
     Project.prototype.render = function () {
-        var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus, shape = _a.shape;
+        var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, projectName = _a.projectName, projectStatus = _a.projectStatus, shape = _a.shape;
         // validation
         var isEnabled = projectName != '' &&
-            startDate != '' &&
-            endDate != '' &&
-            projectManager != '' &&
             projectStatus != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
@@ -51612,14 +51613,15 @@ var ProjectDefinition = (function (_super) {
             projectID: '',
             shape: [],
             projectName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             projectManager: '',
             projectMembers: '',
+            projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            expectedCost: '',
-            actualCost: '',
             notes: '',
             created: __WEBPACK_IMPORTED_MODULE_11_moment__().format('MM/DD/YYYY'),
             createdBy: _this.props.user,
@@ -51659,15 +51661,15 @@ var ProjectDefinition = (function (_super) {
     ProjectDefinition.prototype.post = function (projectDesc) {
         this.setState({
             projectName: projectDesc.projectName,
-            startDate: projectDesc.startDate,
-            endDate: projectDesc.endDate,
+            expectedStartDate: projectDesc.expectedStartDate,
+            expectedEndDate: projectDesc.expectedEndDate,
+            actualStartDate: projectDesc.actualStartDate,
+            actualEndDate: projectDesc.actualEndDate,
             projectManager: projectDesc.projectManager,
             projectMembers: projectDesc.projectMembers,
+            projectDepartment: projectDesc.projectDepartment,
             projectDescription: projectDesc.projectDescription,
             projectStatus: projectDesc.projectStatus,
-            projectType: projectDesc.projectType,
-            expectedCost: projectDesc.expectedCost,
-            actualCost: projectDesc.actualCost,
             notes: projectDesc.notes
         }, function () {
             // add to project store 
@@ -51836,13 +51838,14 @@ var ProjectDescription = (function (_super) {
         this.props.back();
     };
     ProjectDescription.prototype.render = function () {
-        var _a = this.state, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus;
+        var _a = this.state, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus, projectDepartment = _a.projectDepartment;
         // validation
         var isEnabled = projectName != '' &&
             expectedStartDate != '' &&
             expectedEndDate != '' &&
             projectManager != '' &&
-            projectStatus != '';
+            projectStatus != '' &&
+            projectDepartment != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleDate: this.handleDate.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
