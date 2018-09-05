@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "19ec41af56b4b74c87c2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f0987c66448631b7e1d3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8256,7 +8256,7 @@ var reducer = function (state, incomingAction) {
         case addPhase:
             return __assign({}, state, { phases: state.phases.concat(action.item) });
         case updatePhase:
-            return __assign({}, state, { phases: state.phases.map(function (phase) { return phase.phaseID === action.item.phaseID ? __assign({}, phase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, phaseID: action.item.phaseID, phaseName: action.item.phaseName, startDate: action.item.startDate, endDate: action.item.endDate, phaseDescription: action.item.phaseDescription, phaseStatus: action.item.phaseStatus, percentComplete: action.item.percentComplete, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy }) : phase; }) });
+            return __assign({}, state, { phases: state.phases.map(function (phase) { return phase.phaseID === action.item.phaseID ? __assign({}, phase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, phaseID: action.item.phaseID, phaseName: action.item.phaseName, phaseType: action.item.phaseType, phaseFollows: action.item.phaseFollows, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, phaseDescription: action.item.phaseDescription, phaseStatus: action.item.phaseStatus, percentComplete: action.item.percentComplete, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy }) : phase; }) });
     }
     return state || unloadedState;
 };
@@ -8323,7 +8323,7 @@ var reducer = function (state, incomingAction) {
         case addProject:
             return __assign({}, state, { projects: state.projects.concat(action.item) });
         case updateProject:
-            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, startDate: action.item.startDate, endDate: action.item.endDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, projectType: action.item.projectType, expectedCost: action.item.expectedCost, actualCost: action.item.actualCost, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
+            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, expectedCost: action.item.expectedCost, actualCost: action.item.actualCost, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
     }
     return state || unloadedState;
 };

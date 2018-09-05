@@ -18,13 +18,15 @@ export interface ProjectItem {
     cartegraphID: string
     projectID: string
     projectName: string
-    startDate: string
-    endDate: string
+    expectedStartDate: string
+    expectedEndDate: string
+    actualStartDate: string
+    actualEndDate: string
     projectManager: string
     projectMembers: string
+    projectDepartment: string
     projectDescription: string
     projectStatus: string
-    projectType: string
     expectedCost: string
     actualCost: string
     notes: string
@@ -90,13 +92,15 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     cartegraphID: action.item.cartegraphID,
                     projectID: action.item.projectID,
                     projectName: action.item.projectName,
-                    startDate: action.item.startDate,
-                    endDate: action.item.endDate,
+                    expectedStartDate: action.item.expectedStartDate,
+                    expectedEndDate: action.item.expectedEndDate,
+                    actualStartDate: action.item.actualStartDate,
+                    actualEndDate: action.item.actualEndDate,
                     projectManager: action.item.projectManager,
                     projectMembers: action.item.projectMembers,
+                    projectDepartment: action.item.projectDepartment,
                     projectDescription: action.item.projectDescription,
                     projectStatus: action.item.projectStatus,
-                    projectType: action.item.projectType,
                     expectedCost: action.item.expectedCost,
                     actualCost: action.item.actualCost,
                     notes: action.item.notes,
