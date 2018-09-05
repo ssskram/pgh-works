@@ -13,6 +13,8 @@ import Percent from '../FormElements/numbers'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 import Progress from 'react-progressbar'
+import PhaseFollows from './PhaseFollows'
+import { Phase } from '../Phase/Container';
 
 const sliderContainer = {
     padding: '0px 15px'
@@ -24,17 +26,31 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
 
+const types = [
+    { value: 'Programming', label: 'Programming', name: 'phaseType' },
+    { value: 'Design', label: 'Design', name: 'phaseType' },
+    { value: 'Construction', label: 'Construction', name: 'phaseType' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
+]
+
 export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            // utilities
             redirect: false,
+
+            // phase state
             projectID: '',
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
-            startDate: '',
-            endDate: '',
+            phaseType: '',
+            phaseFollows: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             phaseDescription: '',
             phaseStatus: '',
             percentComplete: '',
@@ -43,6 +59,7 @@ export class PhaseInputs extends React.Component<any, any> {
             createdBy: '',
             lastModifiedBy: ''
         }
+        this.handleDate = this.handleDate.bind(this)
     }
     componentDidMount() {
         if (this.props.phaseID) {
@@ -56,8 +73,12 @@ export class PhaseInputs extends React.Component<any, any> {
                 phaseID: phase.phaseID,
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
-                startDate: phase.startDate,
-                endDate: phase.endDate,
+                phaseType: phase.phaseType,
+                phaseFollows: phase.phaseFollows,
+                expectedStartDate: phase.expectedStartDate,
+                expectedEndDate: phase.expectedEndDate,
+                actualStartDate: phase.actualStartDate,
+                actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
                 percentComplete: phase.percentComplete,
@@ -84,32 +105,16 @@ export class PhaseInputs extends React.Component<any, any> {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    handleStartDate(date) {
-        if (date) {
-            this.setState({
-                startDate: moment(date).format('MM/DD/YYYY')
-            })
-        } else {
-            this.setState({
-                startDate: null
-            })
-        }
-    }
-
-    handleEndDate(date) {
-        if (date) {
-            this.setState({
-                endDate: moment(date).format('MM/DD/YYYY')
-            })
-        } else {
-            this.setState({
-                endDate: null
-            })
-        }
+    handleDate(date, name) {
+        this.props.handleDate(date, name)
     }
 
     handleStatusMulti(value) {
         this.setState({ phaseStatus: value });
+    }
+
+    handleChildSelect(event) {
+        this.setState({ [event.name]: event.value });
     }
 
     handlePercent(event, maskedvalue, floatvalue) {
@@ -141,8 +146,12 @@ export class PhaseInputs extends React.Component<any, any> {
             redirect,
             phaseID,
             phaseName,
-            startDate,
-            endDate,
+            phaseType,
+            phaseFollows,
+            expectedStartDate,
+            expectedEndDate,
+            actualStartDate,
+            actualEndDate,
             phaseDescription,
             phaseStatus,
             percentComplete,
@@ -152,8 +161,8 @@ export class PhaseInputs extends React.Component<any, any> {
         // validation
         const isEnabled =
             phaseName != '' &&
-            startDate != '' &&
-            endDate != '' &&
+            expectedStartDate != '' &&
+            expectedEndDate != '' &&
             phaseStatus != ''
 
         const link = "/Phase/id=" + phaseID
@@ -171,6 +180,18 @@ export class PhaseInputs extends React.Component<any, any> {
                         header="Phase name"
                         placeholder="Enter a name"
                         callback={this.handleChildChange.bind(this)}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Select
+                        value={phaseType}
+                        name="phaseType"
+                        header='Phase type'
+                        placeholder='Select type'
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
+                        options={types}
                     />
                 </div>
 
@@ -206,26 +227,57 @@ export class PhaseInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={startDate}
-                        name="startDate"
-                        header="Start date"
-                        placeholder="Select a date"
-                        callback={this.handleStartDate.bind(this)}
+                <div className='col-md-12'>
+                    <Select
+                        value={phaseFollows}
+                        name="phaseFollows"
+                        header='Phase follows'
+                        placeholder='Identify preceding work'
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
                     />
                 </div>
 
                 <div className='col-md-6'>
                     <Datepicker
-                        value={endDate}
-                        name="endDate"
-                        header="End date"
+                        value={expectedStartDate}
+                        name="expectedStartDate"
+                        header="Expected start date"
                         placeholder="Select a date"
-                        callback={this.handleEndDate.bind(this)}
+                        callback={(value) => this.handleDate(value, 'expectedStartDate')}
                     />
                 </div>
 
+                <div className='col-md-6'>
+                    <Datepicker
+                        value={expectedEndDate}
+                        name="expectedEndDate"
+                        header="Expected end date"
+                        placeholder="Select a date"
+                        callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                    />
+                </div>
+
+                <div className='col-md-6'>
+                    <Datepicker
+                        value={actualStartDate}
+                        name="actualStartDate"
+                        header="Actual start date"
+                        placeholder="Select a date"
+                        callback={(value) => this.handleDate(value, 'actualStartDate')}
+                    />
+                </div>
+
+                <div className='col-md-6'>
+                    <Datepicker
+                        value={actualEndDate}
+                        name="actualEndDate"
+                        header="Actual end date"
+                        placeholder="Select a date"
+                        callback={(value) => this.handleDate(value, 'actualEndDate')}
+                    />
+                </div>
+                
                 <div className='col-md-12'>
                     <Percent
                         value={percentComplete}

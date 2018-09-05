@@ -25,13 +25,6 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
 ]
 
-const types = [
-    { value: 'Programming', label: 'Programming', name: 'projectType' },
-    { value: 'Design', label: 'Design', name: 'projectType' },
-    { value: 'Construction', label: 'Construction', name: 'projectType' },
-    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'projectType' }
-]
-
 const departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
     { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
