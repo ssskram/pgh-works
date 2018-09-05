@@ -29,6 +29,7 @@ export class Tags extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.getTags(this.props)
     }
 

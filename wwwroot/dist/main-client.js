@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "61bcbcfa34ce9de6e8cb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c2258cbee4c64585cf5d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -26065,6 +26065,7 @@ var Tags = (function (_super) {
         return _this;
     }
     Tags.prototype.componentDidMount = function () {
+        console.log(this.props);
         this.getTags(this.props);
     };
     Tags.prototype.componentWillReceiveProps = function (nextProps) {
@@ -50488,7 +50489,7 @@ var Phase = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Milestones__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'row col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Tags_Tags__["a" /* default */], { parentID: projectID, parentName: projectName, parentType: 'Project' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Tags_Tags__["a" /* default */], { parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Attachments_Attachments__["a" /* default */], { projectID: projectID })),
             spinner == true &&

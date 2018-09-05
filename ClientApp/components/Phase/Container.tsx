@@ -177,7 +177,7 @@ export class Phase extends React.Component<any, any> {
                     <Milestones phaseID={phaseID} projectID={projectID}/>
                 </div>
                 <div style={marginBottom} className='row col-md-12'>
-                    <Tags parentID={projectID} parentName={projectName} parentType='Project' />
+                    <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Attachments projectID={projectID} />
