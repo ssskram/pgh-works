@@ -41,7 +41,7 @@ export class PhaseCard extends React.Component<any, any> {
                     <div className="panel-body text-center">
                         <div className='col-md-4'>
                             <h2><b>{phase.phaseName}</b></h2>
-                            <h4>{phase.startDate} - {phase.endDate}</h4>
+                            <h4>{phase.expectedStartDate} - {phase.expectedEndDate}</h4>
                         </div>
                         <div className='col-md-4'>
                             <h2>{openMilestones.length} open milestones</h2>

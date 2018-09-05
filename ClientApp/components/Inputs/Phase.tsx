@@ -262,7 +262,7 @@ export class PhaseInputs extends React.Component<any, any> {
                     <div className="form-group">
                         <div className="col-md-12 form-element">
                             <h4 className="form-h4">Phase follows</h4>
-                            <input type='search'
+                            <input
                                 className='form-control button-input'
                                 onClick={this.phaseFollows.bind(this)}
                                 value={phaseFollows}

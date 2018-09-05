@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0c21ea158536deb8c09d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "61bcbcfa34ce9de6e8cb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -25648,7 +25648,7 @@ var PhaseInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, "Phase follows"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: 'search', className: 'form-control button-input', onClick: this.phaseFollows.bind(this), value: phaseFollows, name: 'phaseFollows', id: 'phaseFollows', placeholder: 'Identify preceding work' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { className: 'form-control button-input', onClick: this.phaseFollows.bind(this), value: phaseFollows, name: 'phaseFollows', id: 'phaseFollows', placeholder: 'Identify preceding work' })))),
             !this.props.update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -50454,11 +50454,15 @@ var Phase = (function (_super) {
         });
     };
     Phase.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName;
+        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, phaseID = _a.phaseID, phaseName = _a.phaseName, phaseFollows = _a.phaseFollows, projectID = _a.projectID, projectName = _a.projectName;
         var link = "/Project/id=" + projectID;
         if (redirect) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
         }
+        function lowerFirstLetter(string) {
+            return string.charAt(0).toLowerCase() + string.slice(1);
+        }
+        var phaseFollowsFormatted = lowerFirstLetter(phaseFollows);
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                 projectName,
@@ -50473,6 +50477,12 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px' }, src: './images/phaseGrey.png' })),
                 " ",
                 phaseName),
+            phaseFollows &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                        "Follows ",
+                        phaseFollowsFormatted)),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__PhaseCard__["a" /* default */], { phase: this.state })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
@@ -50891,9 +50901,9 @@ var PhaseCard = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            phase.startDate,
+                            phase.expectedStartDate,
                             " - ",
-                            phase.endDate)),
+                            phase.expectedEndDate)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                             openMilestones.length,

@@ -141,6 +141,7 @@ export class Phase extends React.Component<any, any> {
             modalIsOpen,
             phaseID,
             phaseName,
+            phaseFollows,
             projectID,
             projectName
         } = this.state
@@ -149,6 +150,12 @@ export class Phase extends React.Component<any, any> {
         if (redirect) {
             return <Redirect to={link} />
         }
+
+        function lowerFirstLetter(string) {
+            return string.charAt(0).toLowerCase() + string.slice(1);
+        }
+
+        const phaseFollowsFormatted = lowerFirstLetter(phaseFollows)
 
         return (
             <div>
@@ -159,6 +166,10 @@ export class Phase extends React.Component<any, any> {
                 <hr />
                 <br />
                 <h2 className='text-center'><b><img style={{marginTop: '-12px'}} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
+                {phaseFollows &&
+                    <h4 className='text-center'><i>Follows {phaseFollowsFormatted}</i></h4>
+                }
+                <h4></h4>
                 <div style={marginBottom} className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
