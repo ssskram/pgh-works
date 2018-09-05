@@ -5,7 +5,6 @@ import { ApplicationState } from '../../store'
 import * as Statuses from '../../store/GETS/status'
 import * as Personnel from '../../store/GETS/personnel'
 import Input from '../FormElements/input'
-import Currency from '../FormElements/numbers'
 import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
@@ -26,15 +25,23 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
 ]
 
-const types= [
+const types = [
     { value: 'Programming', label: 'Programming', name: 'projectType' },
     { value: 'Design', label: 'Design', name: 'projectType' },
     { value: 'Construction', label: 'Construction', name: 'projectType' },
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'projectType' }
 ]
 
-export class ProjectInputs extends React.Component<any, any> {
+const departments = [
+    { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
+    { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
+]
 
+export class ProjectInputs extends React.Component<any, any> {
+    constructor () {
+        super()
+        this.handleDate = this.handleDate.bind(this)
+    }
     componentDidMount () {
         // set personnel dropdowns
         // set status dropdowns
@@ -42,14 +49,6 @@ export class ProjectInputs extends React.Component<any, any> {
 
     handleChildChange(event) {
         this.props.handleInput(event)
-    }
-
-    handleActualCost(event, maskedvalue, floatvalue) {
-        this.props.handleActualCost(maskedvalue)
-    }
-
-    handleExpectedCost(event, maskedvalue, floatvalue) {
-        this.props.handleExpectedCost(maskedvalue)
     }
 
     handleChildSelect(event) {
@@ -64,26 +63,22 @@ export class ProjectInputs extends React.Component<any, any> {
         this.props.handleMulti("projectStatus", value)
     }
 
-    handleStartDate(date) {
-        this.props.handleStartDate(date)
-    }
-
-    handleEndDate(date) {
-        this.props.handleEndDate(date)
+    handleDate(date, name) {
+        this.props.handleDate(date, name)
     }
 
     public render() {
         const {
             projectName,
-            startDate,
-            endDate,
+            expectedStartDate,
+            expectedEndDate,
+            actualStartDate,
+            actualEndDate,
             projectManager,
             projectMembers,
+            projectDepartment,
             projectDescription,
             projectStatus,
-            projectType,
-            expectedCost,
-            actualCost,
             notes
         } = this.props.description
 
@@ -96,18 +91,6 @@ export class ProjectInputs extends React.Component<any, any> {
                         header="Project name"
                         placeholder="Enter a name"
                         callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-12'>
-                    <Select
-                        value={projectType}
-                        name="projectType"
-                        header='Project type'
-                        placeholder='Select type'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                        options={types}
                     />
                 </div>
 
@@ -145,21 +128,41 @@ export class ProjectInputs extends React.Component<any, any> {
 
                 <div className='col-md-6'>
                     <Datepicker
-                        value={startDate}
-                        name="startDate"
-                        header="Start date"
+                        value={expectedStartDate}
+                        name="expectedStartDate"
+                        header="Expected start date"
                         placeholder="Select a date"
-                        callback={this.handleStartDate.bind(this)}
+                        callback={(value) =>this.handleDate(value, 'expectedStartDate')}
                     />
                 </div>
 
                 <div className='col-md-6'>
                     <Datepicker
-                        value={endDate}
-                        name="endDate"
-                        header="End date"
+                        value={expectedEndDate}
+                        name="expectedEndDate"
+                        header="Expected end date"
                         placeholder="Select a date"
-                        callback={this.handleEndDate.bind(this)}
+                        callback={(value) =>this.handleDate(value, 'expectedEndDate')}
+                    />
+                </div>
+
+                <div className='col-md-6'>
+                    <Datepicker
+                        value={actualStartDate}
+                        name="actualStartDate"
+                        header="Actual start date"
+                        placeholder="Select a date"
+                        callback={(value) =>this.handleDate(value, 'actualStartDate')}
+                    />
+                </div>
+
+                <div className='col-md-6'>
+                    <Datepicker
+                        value={actualEndDate}
+                        name="actualEndDate"
+                        header="Actual end date"
+                        placeholder="Select a date"
+                        callback={(value) =>this.handleDate(value, 'actualEndDate')}
                     />
                 </div>
 
@@ -187,25 +190,15 @@ export class ProjectInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                <div className='col-md-6'>
-                    <Currency
-                        value={expectedCost}
-                        name="expectedCost"
-                        header="Expected cost"
-                        placeholder="Enter an amount"
-                        prefix="$"
-                        callback={this.handleExpectedCost.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-6'>
-                    <Currency
-                        value={actualCost}
-                        name="actualCost"
-                        header="Actual cost"
-                        placeholder="Enter an amount"
-                        prefix="$"
-                        callback={this.handleActualCost.bind(this)}
+                <div className='col-md-12'>
+                    <Select
+                        value={projectDepartment}
+                        name="projectDepartment"
+                        header='Project department'
+                        placeholder='Select a department'
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
+                        options={departments}
                     />
                 </div>
             </div>

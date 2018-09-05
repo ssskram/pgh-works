@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f0987c66448631b7e1d3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "12a1034f173abc077b8d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8323,7 +8323,7 @@ var reducer = function (state, incomingAction) {
         case addProject:
             return __assign({}, state, { projects: state.projects.concat(action.item) });
         case updateProject:
-            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, expectedCost: action.item.expectedCost, actualCost: action.item.actualCost, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
+            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, notes: action.item.notes, created: action.item.created, createdBy: action.item.createdBy, lastModifiedBy: action.item.lastModifiedBy, shape: action.item.shape }) : project; }) });
     }
     return state || unloadedState;
 };
@@ -25646,10 +25646,9 @@ var PhaseInputs = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_status__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_personnel__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_input__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_numbers__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_select__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_select__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__ = __webpack_require__(126);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -25668,7 +25667,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -25696,10 +25694,16 @@ var types = [
     { value: 'Construction', label: 'Construction', name: 'projectType' },
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'projectType' }
 ];
+var departments = [
+    { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
+    { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
+];
 var ProjectInputs = (function (_super) {
     __extends(ProjectInputs, _super);
     function ProjectInputs() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.handleDate = _this.handleDate.bind(_this);
+        return _this;
     }
     ProjectInputs.prototype.componentDidMount = function () {
         // set personnel dropdowns
@@ -25707,12 +25711,6 @@ var ProjectInputs = (function (_super) {
     };
     ProjectInputs.prototype.handleChildChange = function (event) {
         this.props.handleInput(event);
-    };
-    ProjectInputs.prototype.handleActualCost = function (event, maskedvalue, floatvalue) {
-        this.props.handleActualCost(maskedvalue);
-    };
-    ProjectInputs.prototype.handleExpectedCost = function (event, maskedvalue, floatvalue) {
-        this.props.handleExpectedCost(maskedvalue);
     };
     ProjectInputs.prototype.handleChildSelect = function (event) {
         this.props.handleSelect(event);
@@ -25723,37 +25721,35 @@ var ProjectInputs = (function (_super) {
     ProjectInputs.prototype.handleStatusMulti = function (value) {
         this.props.handleMulti("projectStatus", value);
     };
-    ProjectInputs.prototype.handleStartDate = function (date) {
-        this.props.handleStartDate(date);
-    };
-    ProjectInputs.prototype.handleEndDate = function (date) {
-        this.props.handleEndDate(date);
+    ProjectInputs.prototype.handleDate = function (date, name) {
+        this.props.handleDate(date, name);
     };
     ProjectInputs.prototype.render = function () {
-        var _a = this.props.description, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, projectType = _a.projectType, expectedCost = _a.expectedCost, actualCost = _a.actualCost, notes = _a.notes;
+        var _this = this;
+        var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectType, name: "projectType", header: 'Project type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: actualEndDate, name: "actualEndDate", header: "Actual end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualEndDate'); } })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_numbers__["a" /* default */], { value: expectedCost, name: "expectedCost", header: "Expected cost", placeholder: "Enter an amount", prefix: "$", callback: this.handleExpectedCost.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_numbers__["a" /* default */], { value: actualCost, name: "actualCost", header: "Actual cost", placeholder: "Enter an amount", prefix: "$", callback: this.handleActualCost.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", header: 'Project department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments }))));
     };
     return ProjectInputs;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -51796,15 +51792,14 @@ var ProjectDescription = (function (_super) {
         var _this = _super.call(this) || this;
         _this.state = {
             projectName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             projectManager: '',
             projectMembers: '',
+            projectDepartment: '',
             projectDescription: '',
-            projectStatus: '',
-            projectType: '',
-            expectedCost: '',
-            actualCost: '',
             notes: ''
         };
         return _this;
@@ -51821,35 +51816,18 @@ var ProjectDescription = (function (_super) {
         this.setState((_a = {}, _a[field] = value, _a));
         var _a;
     };
-    ProjectDescription.prototype.handleActualCost = function (value) {
-        this.setState({ actualCost: value });
-    };
-    ProjectDescription.prototype.handleExpectedCost = function (value) {
-        this.setState({ expectedCost: value });
-    };
-    ProjectDescription.prototype.handleStartDate = function (date) {
+    ProjectDescription.prototype.handleDate = function (date, name) {
         if (date) {
-            this.setState({
-                startDate: __WEBPACK_IMPORTED_MODULE_3_moment__(date).format('MM/DD/YYYY')
-            });
+            this.setState((_a = {},
+                _a[name] = __WEBPACK_IMPORTED_MODULE_3_moment__(date).format('MM/DD/YYYY'),
+                _a));
         }
         else {
-            this.setState({
-                startDate: null
-            });
+            this.setState((_b = {},
+                _b[name] = null,
+                _b));
         }
-    };
-    ProjectDescription.prototype.handleEndDate = function (date) {
-        if (date) {
-            this.setState({
-                endDate: __WEBPACK_IMPORTED_MODULE_3_moment__(date).format('MM/DD/YYYY')
-            });
-        }
-        else {
-            this.setState({
-                endDate: null
-            });
-        }
+        var _a, _b;
     };
     ProjectDescription.prototype.post = function () {
         this.props.post(this.state);
@@ -51858,15 +51836,15 @@ var ProjectDescription = (function (_super) {
         this.props.back();
     };
     ProjectDescription.prototype.render = function () {
-        var _a = this.state, projectName = _a.projectName, startDate = _a.startDate, endDate = _a.endDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus;
+        var _a = this.state, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus;
         // validation
         var isEnabled = projectName != '' &&
-            startDate != '' &&
-            endDate != '' &&
+            expectedStartDate != '' &&
+            expectedEndDate != '' &&
             projectManager != '' &&
             projectStatus != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleStartDate: this.handleStartDate.bind(this), handleEndDate: this.handleEndDate.bind(this), handleExpectedCost: this.handleExpectedCost.bind(this), handleActualCost: this.handleActualCost.bind(this) }),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Inputs_Project__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleDate: this.handleDate.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },

@@ -18,15 +18,14 @@ export class ProjectDescription extends React.Component<any, any> {
         super();
         this.state = {
             projectName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             projectManager: '',
             projectMembers: '',
+            projectDepartment: '',
             projectDescription: '',
-            projectStatus: '',
-            projectType: '',
-            expectedCost: '',
-            actualCost: '',
             notes: ''
         }
     }
@@ -43,34 +42,14 @@ export class ProjectDescription extends React.Component<any, any> {
         this.setState({ [field]: value })
     }
 
-    handleActualCost (value) {
-        this.setState({ actualCost: value })
-    }
-
-    handleExpectedCost (value) {
-        this.setState({ expectedCost: value })
-    }
-
-    handleStartDate(date) {
+    handleDate(date, name) {
         if (date) {
             this.setState({
-                startDate: moment(date).format('MM/DD/YYYY')
+                [name]: moment(date).format('MM/DD/YYYY')
             });
         } else {
             this.setState({
-                startDate: null
-            });
-        }
-    }
-
-    handleEndDate(date) {
-        if (date) {
-            this.setState({
-                endDate: moment(date).format('MM/DD/YYYY')
-            });
-        } else {
-            this.setState({
-                endDate: null
+                [name]: null
             });
         }
     }
@@ -86,8 +65,8 @@ export class ProjectDescription extends React.Component<any, any> {
     public render() {
         const {
             projectName,
-            startDate,
-            endDate,
+            expectedStartDate,
+            expectedEndDate,
             projectManager,
             projectStatus
         } = this.state
@@ -95,8 +74,8 @@ export class ProjectDescription extends React.Component<any, any> {
         // validation
         const isEnabled =
             projectName != '' &&
-            startDate != '' &&
-            endDate != '' &&
+            expectedStartDate != '' &&
+            expectedEndDate != '' &&
             projectManager != '' &&
             projectStatus != ''
 
@@ -107,10 +86,7 @@ export class ProjectDescription extends React.Component<any, any> {
                     handleInput={this.handleChildChange.bind(this)}
                     handleSelect={this.handleChildSelect.bind(this)}
                     handleMulti={this.handleMultiSelect.bind(this)}
-                    handleStartDate={this.handleStartDate.bind(this)}
-                    handleEndDate={this.handleEndDate.bind(this)}
-                    handleExpectedCost={this.handleExpectedCost.bind(this)}
-                    handleActualCost={this.handleActualCost.bind(this)}
+                    handleDate={this.handleDate.bind(this)}
                 />
 
                 <div className='row'>

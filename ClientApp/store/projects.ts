@@ -27,8 +27,6 @@ export interface ProjectItem {
     projectDepartment: string
     projectDescription: string
     projectStatus: string
-    expectedCost: string
-    actualCost: string
     notes: string
     created: string
     createdBy: string
@@ -101,8 +99,6 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectDepartment: action.item.projectDepartment,
                     projectDescription: action.item.projectDescription,
                     projectStatus: action.item.projectStatus,
-                    expectedCost: action.item.expectedCost,
-                    actualCost: action.item.actualCost,
                     notes: action.item.notes,
                     created: action.item.created,
                     createdBy: action.item.createdBy,
