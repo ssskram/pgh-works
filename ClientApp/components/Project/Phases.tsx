@@ -91,8 +91,8 @@ export class Phases extends React.Component<any, any> {
             let timelineItem = {
                 id: index,
                 content: phase.phaseName,
-                start: phase.startDate,
-                end: phase.endDate
+                start: phase.expectedStartDate,
+                end: phase.expectedEndDate
             }
             items.push(timelineItem)
         })

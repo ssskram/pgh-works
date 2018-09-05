@@ -35,9 +35,13 @@ export class Phase extends React.Component<any, any> {
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
-            startDate: '',
-            endDate: '',
+            expectedStartDate: '',
+            expectedEndDate: '',
+            actualStartDate: '',
+            actualEndDate: '',
             phaseDescription: '',
+            phaseType: '',
+            phaseFollows: '',
             phaseStatus: '',
             percentComplete: '',
             notes: '',
@@ -81,10 +85,14 @@ export class Phase extends React.Component<any, any> {
             phaseID: phase.phaseID,
             cartegraphID: phase.cartegraphID,
             phaseName: phase.phaseName,
-            startDate: phase.startDate,
-            endDate: phase.endDate,
+            expectedStartDate: phase.expectedStartDate,
+            expectedEndDate: phase.expectedEndDate,
+            actualStartDate: phase.actualStartDate,
+            actualEndDate: phase.actualEndDate,
             phaseDescription: phase.phaseDescription,
             phaseStatus: phase.phaseStatus,
+            phaseType: phase.phaseType,
+            phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
             created: phase.created,
@@ -132,20 +140,9 @@ export class Phase extends React.Component<any, any> {
             spinner,
             modalIsOpen,
             phaseID,
-            cartegraphID,
             phaseName,
-            startDate,
-            endDate,
-            phaseDescription,
-            phaseStatus,
-            percentComplete,
-            notes,
-            created,
-            createdBy,
-            lastModifiedBy,
             projectID,
-            projectName,
-            shape
+            projectName
         } = this.state
 
         const link = "/Project/id=" + projectID
@@ -188,6 +185,7 @@ export class Phase extends React.Component<any, any> {
                     <PhaseForm
                         phaseID={phaseID}
                         closeModal={this.closeModal.bind(this)}
+                        update
                     />
                 </Modal>
             </div>

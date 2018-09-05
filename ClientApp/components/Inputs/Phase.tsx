@@ -14,7 +14,6 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 import Progress from 'react-progressbar'
 import PhaseFollows from './PhaseFollows'
-import { Phase } from '../Phase/Container';
 
 const sliderContainer = {
     padding: '0px 15px'
@@ -62,6 +61,7 @@ export class PhaseInputs extends React.Component<any, any> {
         this.handleDate = this.handleDate.bind(this)
     }
     componentDidMount() {
+        console.log(this.props)
         if (this.props.phaseID) {
             // update phase
             let phaseID = this.props.phaseID
@@ -106,7 +106,15 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     handleDate(date, name) {
-        this.props.handleDate(date, name)
+        if (date) {
+            this.setState({
+                [name]: moment(date).format('MM/DD/YYYY')
+            });
+        } else {
+            this.setState({
+                [name]: null
+            });
+        }
     }
 
     handleStatusMulti(value) {
@@ -238,25 +246,29 @@ export class PhaseInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={expectedStartDate}
-                        name="expectedStartDate"
-                        header="Expected start date"
-                        placeholder="Select a date"
-                        callback={(value) => this.handleDate(value, 'expectedStartDate')}
-                    />
-                </div>
+                {!this.props.update &&
+                    <div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={expectedStartDate}
+                                name="expectedStartDate"
+                                header="Expected start date"
+                                placeholder="Select a date"
+                                callback={(value) => this.handleDate(value, 'expectedStartDate')}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={expectedEndDate}
-                        name="expectedEndDate"
-                        header="Expected end date"
-                        placeholder="Select a date"
-                        callback={(value) => this.handleDate(value, 'expectedEndDate')}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={expectedEndDate}
+                                name="expectedEndDate"
+                                header="Expected end date"
+                                placeholder="Select a date"
+                                callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                            />
+                        </div>
+                    </div>
+                }
 
                 <div className='col-md-6'>
                     <Datepicker
@@ -277,7 +289,7 @@ export class PhaseInputs extends React.Component<any, any> {
                         callback={(value) => this.handleDate(value, 'actualEndDate')}
                     />
                 </div>
-                
+
                 <div className='col-md-12'>
                     <Percent
                         value={percentComplete}

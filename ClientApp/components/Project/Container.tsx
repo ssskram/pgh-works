@@ -151,26 +151,14 @@ export class Project extends React.Component<any, any> {
         this.setState({ expectedCost: value })
     }
 
-    handleStartDate(date) {
+    handleDate(date, name) {
         if (date) {
             this.setState({
-                startDate: moment(date).format('MM/DD/YYYY')
+                [name]: moment(date).format('MM/DD/YYYY')
             });
         } else {
             this.setState({
-                startDate: null
-            });
-        }
-    }
-
-    handleEndDate(date) {
-        if (date) {
-            this.setState({
-                endDate: moment(date).format('MM/DD/YYYY')
-            });
-        } else {
-            this.setState({
-                endDate: null
+                [name]: null
             });
         }
     }
@@ -312,8 +300,7 @@ export class Project extends React.Component<any, any> {
                                 handleInput={this.handleChildChange.bind(this)}
                                 handleSelect={this.handleChildSelect.bind(this)}
                                 handleMulti={this.handleMultiSelect.bind(this)}
-                                handleStartDate={this.handleStartDate.bind(this)}
-                                handleEndDate={this.handleEndDate.bind(this)}
+                                handleDate={this.handleDate.bind(this)}
                                 handleExpectedCost={this.handleExpectedCost.bind(this)}
                                 handleActualCost={this.handleActualCost.bind(this)}
                             />
