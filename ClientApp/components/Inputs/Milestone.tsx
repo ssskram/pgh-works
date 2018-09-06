@@ -5,23 +5,9 @@ import { ApplicationState } from '../../store'
 import * as Milestones from '../../store/milestones'
 import * as User from '../../store/GETS/user'
 import Input from '../FormElements/input'
-import TextArea from '../FormElements/textarea'
-import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
-import Percent from '../FormElements/numbers'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
-import Progress from 'react-progressbar'
-
-const sliderContainer = {
-    padding: '0px 15px'
-}
-
-const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'milestoneStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'milestoneStatus' },
-    { value: 'Complete', label: 'Complete', name: 'milestoneStatus' }
-]
 
 export class MilestoneInputs extends React.Component<any, any> {
     constructor() {
@@ -32,43 +18,22 @@ export class MilestoneInputs extends React.Component<any, any> {
             milestoneID: '',
             cartegraphID: '',
             milestoneName: '',
+            percentComplete: 0,
             dueDate: '',
-            milestoneDescription: '',
             created: '',
             createdBy: '',
         }
     }
     componentDidMount() {
-        if (this.props.milestoneID) {
-            // update milestone
-            let milestoneID = this.props.milestoneID
-            let milestone = this.props.milestones.find(function (item) {
-                return item.milestoneID == milestoneID
-            })
-            this.setState({
-                projectID: milestone.projectID,
-                phaseID: milestone.phaseID,
-                milestoneID: milestone.milestoneID,
-                cartegraphID: milestone.cartegraphID,
-                milestoneName: milestone.milestoneName,
-                dueDate: milestone.dueDate,
-                milestoneDescription: milestone.milestoneDescription,
-                milestoneStatus: milestone.milestoneStatus,
-                created: milestone.created,
-                createdBy: milestone.createdBy
-            })
-        }
-        else {
-            // new milestone
-            const guid: string = uuid()
-            this.setState({
-                projectID: this.props.projectID,
-                phaseID: this.props.phaseID,
-                milestoneID: guid,
-                created: moment().format('MM/DD/YYYY'),
-                createdBy: this.props.user
-            })
-        }
+        // new milestone
+        const guid: string = uuid()
+        this.setState({
+            projectID: this.props.projectID,
+            phaseID: this.props.phaseID,
+            milestoneID: guid,
+            created: moment().format('MM/DD/YYYY'),
+            createdBy: this.props.user
+        })
     }
 
     handleChildChange(event) {
@@ -101,10 +66,8 @@ export class MilestoneInputs extends React.Component<any, any> {
 
     public render() {
         const {
-            milestoneID,
             milestoneName,
             dueDate,
-            milestoneDescription,
         } = this.state
 
         // validation
@@ -124,21 +87,11 @@ export class MilestoneInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                <div className='col-md-6'>
-                    <TextArea
-                        value={milestoneDescription}
-                        name="milestoneDescription"
-                        header="Milestone description"
-                        placeholder="Provide a brief explanation of the milestone"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-6'>
+                <div className='col-md-12'>
                     <Datepicker
                         value={dueDate}
-                        name="endDate"
-                        header="End date"
+                        name="dueDate"
+                        header="Due date"
                         placeholder="Select a date"
                         callback={this.handleDueDate.bind(this)}
                     />
