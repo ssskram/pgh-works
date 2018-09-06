@@ -1,7 +1,6 @@
 
 import * as React from 'react'
-import * as createRef from 'react'
-import TL from 'react-visjs-timeline'
+import TL from './../Timeline/Timeline'
 
 const timelineContainer = {
     margin: '25px 0px',
@@ -10,10 +9,7 @@ const timelineContainer = {
     backgroundColor: 'rgba(92, 184, 92, .08)',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
 }
-
 export default class ProjectTimeline extends React.Component<any, any> {
-
-    private timelineWrapperRef = React.createRef()
 
     public render() {
         const {
@@ -44,23 +40,6 @@ export default class ProjectTimeline extends React.Component<any, any> {
             items.push(actual)
         }
 
-        const timelineHeight = items.length * 40 + 90
-
-        const timelineOptions = {
-            width: '100%',
-            height: timelineHeight + 'px',
-            stack: true,
-            showMajorLabels: true,
-            showCurrentTime: true,
-            zoomMin: 1000000,
-            format: {
-                minorLabels: {
-                    minute: 'h:mma',
-                    hour: 'ha'
-                }
-            }
-        }
-
         return (
             <div>
                 <div style={timelineContainer} className='col-md-12'>
@@ -74,7 +53,9 @@ export default class ProjectTimeline extends React.Component<any, any> {
                             <h4><b>{actualStartDate} - {actualEndDate}</b></h4>
                         </div>
                     }
-                    <TL options={timelineOptions} items={items} ref={this.timelineWrapperRef} />
+                    {this.props.project &&
+                        <TL items={items} />
+                    }
                 </div>
             </div>
         )
