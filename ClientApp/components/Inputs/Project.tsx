@@ -30,6 +30,31 @@ const departments = [
     { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
 ]
 
+const sectionHeader = {
+    marginLeft: '30px',
+    letterSpacing: '2px',
+    fontWeight: 600 as any
+}
+
+const dateStyle = {
+    backgroundColor: 'rgba(92, 184, 92, .05)',
+    padding: '10px',
+    borderRadius: '10px',
+    margin: '20px 0px'
+}
+
+const ownerStyle = {
+    backgroundColor: 'rgba(34, 41, 107, .05)',
+    padding: '10px',
+    borderRadius: '10px',
+    margin: '20px 0px'
+}
+
+const glyphs = {
+    marginRight: '25px',
+    fontSize: '30px'
+}
+
 export class ProjectInputs extends React.Component<any, any> {
     constructor() {
         super()
@@ -120,85 +145,92 @@ export class ProjectInputs extends React.Component<any, any> {
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>
-                {!update &&
-                    <div>
-                        <div className='col-md-6'>
-                            <Datepicker
-                                value={expectedStartDate}
-                                name="expectedStartDate"
-                                header="Expected start date"
-                                placeholder="Select a date"
-                                callback={(value) => this.handleDate(value, 'expectedStartDate')}
-                            />
-                        </div>
 
-                        <div className='col-md-6'>
-                            <Datepicker
-                                value={expectedEndDate}
-                                name="expectedEndDate"
-                                header="Expected end date"
-                                placeholder="Select a date"
-                                callback={(value) => this.handleDate(value, 'expectedEndDate')}
-                            />
-                        </div>
+                <div style={dateStyle} className='col-md-12'>
+                    <h3 style={sectionHeader}>Duration<span style={glyphs} className='glyphicon glyphicon-calendar hidden-sm hidden-xs pull-right'></span></h3>
+                    {!update &&
+                        <div>
+                            <div className='col-md-6'>
+                                <Datepicker
+                                    value={expectedStartDate}
+                                    name="expectedStartDate"
+                                    header="Expected start date"
+                                    placeholder="Select a date"
+                                    callback={(value) => this.handleDate(value, 'expectedStartDate')}
+                                />
+                            </div>
 
+                            <div className='col-md-6'>
+                                <Datepicker
+                                    value={expectedEndDate}
+                                    name="expectedEndDate"
+                                    header="Expected end date"
+                                    placeholder="Select a date"
+                                    callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                                />
+                            </div>
+
+                        </div>
+                    }
+
+                    <div className='col-md-6'>
+                        <Datepicker
+                            value={actualStartDate}
+                            name="actualStartDate"
+                            header="Actual start date"
+                            placeholder="Select a date"
+                            callback={(value) => this.handleDate(value, 'actualStartDate')}
+                        />
                     </div>
-                }
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={actualStartDate}
-                        name="actualStartDate"
-                        header="Actual start date"
-                        placeholder="Select a date"
-                        callback={(value) => this.handleDate(value, 'actualStartDate')}
-                    />
+                    <div className='col-md-6'>
+                        <Datepicker
+                            value={actualEndDate}
+                            name="actualEndDate"
+                            header="Actual end date"
+                            placeholder="Select a date"
+                            callback={(value) => this.handleDate(value, 'actualEndDate')}
+                        />
+                    </div>
                 </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={actualEndDate}
-                        name="actualEndDate"
-                        header="Actual end date"
-                        placeholder="Select a date"
-                        callback={(value) => this.handleDate(value, 'actualEndDate')}
-                    />
-                </div>
+                <div className='col-md-12' style={ownerStyle}>
+                    <h3 style={sectionHeader}>Owners<span style={glyphs} className='glyphicon glyphicon-user hidden-sm hidden-xs pull-right'></span></h3>
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectDepartment}
+                            name="projectDepartment"
+                            header='Department'
+                            placeholder='Select a department'
+                            onChange={this.handleChildSelect.bind(this)}
+                            multi={false}
+                            options={departments}
+                        />
+                    </div>
 
-                <div className='col-md-12'>
-                    <Select
-                        value={projectDepartment}
-                        name="projectDepartment"
-                        header='Project department'
-                        placeholder='Select a department'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                        options={departments}
-                    />
-                </div>
-                
-                <div className='col-md-12'>
-                    <Select
-                        value={projectManager}
-                        name="projectManager"
-                        header='Project manager'
-                        placeholder='Select manager'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                        options={managers}
-                    />
-                </div>
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectManager}
+                            name="projectManager"
+                            header='Project manager'
+                            placeholder='Select manager'
+                            onChange={this.handleChildSelect.bind(this)}
+                            multi={false}
+                            options={managers}
+                        />
+                    </div>
 
-                <div className='col-md-12'>
-                    <Select
-                        value={projectMembers}
-                        name="projectMembers"
-                        header='Project members'
-                        placeholder='Select team members'
-                        onChange={this.handleMembersMulti.bind(this)}
-                        multi={true}
-                        options={members}
-                    />
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectMembers}
+                            name="projectMembers"
+                            header='Project members'
+                            placeholder='Select team members'
+                            onChange={this.handleMembersMulti.bind(this)}
+                            multi={true}
+                            options={members}
+                        />
+                    </div>
                 </div>
             </div>
         )
