@@ -23,8 +23,8 @@ const marginBottom = {
 }
 
 export class Phase extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             spinner: true,

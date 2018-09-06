@@ -23,14 +23,6 @@ const metaContainer = {
     padding: '20px 0px 0px 30px'
 }
 
-const descContainer = {
-    margin: '25px 0px',
-    borderRadius: '5px',
-    padding: '20px 40px',
-    backgroundColor: 'rgba(92, 184, 92, .08)',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-}
-
 export default class ProjectCard extends React.Component<any, any> {
 
     componentDidMount() {
@@ -40,10 +32,6 @@ export default class ProjectCard extends React.Component<any, any> {
     public render() {
         const {
             cartegraphID,
-            expectedStartDate,
-            expectedEndDate,
-            actualStartDate,
-            actualEndDate,
             projectManager,
             projectMembers,
             projectDepartment,
@@ -67,25 +55,9 @@ export default class ProjectCard extends React.Component<any, any> {
                                     <td style={borderNone}>{projectStatus}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Expected start date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={expectedStartDate} /></td>
+                                    <th scope="row">Project department</th>
+                                    <td>{projectDepartment}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">Expected end date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={expectedEndDate} /></td>
-                                </tr>
-                                {actualStartDate &&
-                                    <tr>
-                                        <th scope="row">Actual start date</th>
-                                        <td><Moment format="MM/DD/YYYY" date={actualStartDate} /></td>
-                                    </tr>
-                                }
-                                {actualEndDate &&
-                                    <tr>
-                                        <th scope="row">Actual end date</th>
-                                        <td><Moment format="MM/DD/YYYY" date={actualEndDate} /></td>
-                                    </tr>
-                                }
                                 <tr>
                                     <th scope="row">Project manager</th>
                                     <td>{projectManager}</td>
@@ -96,10 +68,12 @@ export default class ProjectCard extends React.Component<any, any> {
                                         <td>{projectMembers}</td>
                                     </tr>
                                 }
-                                <tr>
-                                    <th scope="row">Project department</th>
-                                    <td>{projectDepartment}</td>
-                                </tr>
+                                {projectDescription &&
+                                    <tr>
+                                        <th scope="row">Project description</th>
+                                        <td>{projectDescription}</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -133,15 +107,6 @@ export default class ProjectCard extends React.Component<any, any> {
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div className='row'>
-                    {projectDescription &&
-                        <div style={descContainer} className='col-md-12'>
-                            <h3>Project description</h3>
-                            <hr />
-                            <div style={bigFont}>{projectDescription}</div>
-                        </div>
-                    }
                 </div>
             </div>
         )

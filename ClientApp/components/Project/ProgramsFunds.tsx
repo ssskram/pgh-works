@@ -13,8 +13,8 @@ const iconStyle = {
 }
 
 export class ProgramsFunds extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             modalIsOpen: false,

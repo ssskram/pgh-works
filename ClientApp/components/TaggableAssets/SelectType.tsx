@@ -6,8 +6,8 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import Spinner from '../Utilities/Spinner'
 
 export class SelectAssetType extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     passType(type) {

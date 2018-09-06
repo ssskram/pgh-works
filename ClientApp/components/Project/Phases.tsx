@@ -15,8 +15,8 @@ const iconStyle = {
 }
 
 export class Phases extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             modalIsOpen: false,

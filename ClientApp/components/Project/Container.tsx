@@ -20,6 +20,7 @@ import UpdateLocation from './UpdateLocation'
 import ProjectCard from './Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
 import inside from 'point-in-polygon'
+import ProjectTimeline from './ProjectTimeline'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -30,8 +31,8 @@ const marginBottom = {
 }
 
 export class Project extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             spinner: true,
@@ -248,7 +249,9 @@ export class Project extends React.Component<any, any> {
             projectID,
             projectName,
             projectStatus,
-            shape
+            shape,
+            expectedStartDate,
+            expectedEndDate
         } = this.state
 
         // validation
@@ -265,9 +268,14 @@ export class Project extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <div style={marginBottom} className='row col-md-12'>
+                <div className='row col-md-12'>
                     <ProjectCard project={this.state} />
                 </div>
+                {expectedStartDate && expectedEndDate &&
+                    <div style={marginBottom} className='row col-md-12'>
+                        <ProjectTimeline project={this.state} />
+                    </div>
+                }
                 <div style={marginBottom} className='row col-md-12'>
                     <Phases projectID={projectID} />
                 </div>

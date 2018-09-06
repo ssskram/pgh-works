@@ -3,8 +3,8 @@ import * as React from 'react'
 import Dropzone from 'react-dropzone'
 
 export default class Attachment extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = { files: [] }
     }
 
