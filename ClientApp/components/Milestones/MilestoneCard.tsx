@@ -44,20 +44,14 @@ export class Milestone extends React.Component<any, any> {
             milestone
         } = this.props
 
-        let percentRemaining = 100 - milestone.percentComplete - 1
-        const progressBackground = {
-            background: 'linear-gradient(to right, #d5ddf6 ' + milestone.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
-        }
-
         return (
             <div className="col-sm-4" >
-                <div style={progressBackground} className="panel">
+                <div className="panel">
                     <button onClick={this.setDelete.bind(this)} className='pull-right delete-btn'>X</button>
                     <div className="panel-body text-center">
                         <div className='col-md-12'>
                             <h2><b>{milestone.milestoneName}</b></h2>
-                            <h4>{milestone.startDate} - {milestone.endDate}</h4>
-                            <h4><i>{milestone.milestoneStatus}</i></h4>
+                            <h4>Due {milestone.dueDate}</h4>
                             <button onClick={this.openModal.bind(this)} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
                         </div>
                     </div>

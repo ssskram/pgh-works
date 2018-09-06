@@ -21,12 +21,11 @@ export interface MilestoneItem {
     milestoneName: string
     phaseID: string
     projectID: string
-    milestoneStatus: string
+    dueDate: string
     percentComplete: string
-    notes: string
     created: string
     createdBy: string
-    lastModifiedBy: string
+
 }
 
 export const actionCreators = {
@@ -84,16 +83,13 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
                     cartegraphID: action.item.cartegraphID,
                     projectID: action.item.projectID,
                     milestoneID: action.item.milestoneID,
+                    phaseID: action.item.phaseID,
                     milestoneName: action.item.milestoneName,
-                    startDate: action.item.startDate,
-                    endDate: action.item.endDate,
+                    dueDate: action.item.dueDate,
                     milestoneDescription: action.item.milestoneDescription,
-                    milestoneStatus: action.item.milestoneStatus,
                     percentComplete: action.item.percentComplete,
-                    notes: action.item.notes,
                     created: action.item.created,
-                    createdBy: action.item.createdBy,
-                    lastModifiedBy: action.item.lastModifiedBy
+                    createdBy: action.item.createdBy
                 } : milestone
                 )
             };

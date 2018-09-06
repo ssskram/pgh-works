@@ -32,15 +32,10 @@ export class MilestoneInputs extends React.Component<any, any> {
             milestoneID: '',
             cartegraphID: '',
             milestoneName: '',
-            startDate: '',
-            endDate: '',
+            dueDate: '',
             milestoneDescription: '',
-            milestoneStatus: '',
-            percentComplete: '',
-            notes: '',
             created: '',
             createdBy: '',
-            lastModifiedBy: ''
         }
     }
     componentDidMount() {
@@ -56,15 +51,11 @@ export class MilestoneInputs extends React.Component<any, any> {
                 milestoneID: milestone.milestoneID,
                 cartegraphID: milestone.cartegraphID,
                 milestoneName: milestone.milestoneName,
-                startDate: milestone.startDate,
-                endDate: milestone.endDate,
+                dueDate: milestone.dueDate,
                 milestoneDescription: milestone.milestoneDescription,
                 milestoneStatus: milestone.milestoneStatus,
-                percentComplete: milestone.percentComplete,
-                notes: milestone.notes,
                 created: milestone.created,
-                createdBy: milestone.createdBy,
-                lastModifiedBy: this.props.user,
+                createdBy: milestone.createdBy
             })
         }
         else {
@@ -75,8 +66,7 @@ export class MilestoneInputs extends React.Component<any, any> {
                 phaseID: this.props.phaseID,
                 milestoneID: guid,
                 created: moment().format('MM/DD/YYYY'),
-                createdBy: this.props.user,
-                lastModifiedBy: this.props.user
+                createdBy: this.props.user
             })
         }
     }
@@ -85,42 +75,16 @@ export class MilestoneInputs extends React.Component<any, any> {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    handleStartDate(date) {
+    handleDueDate(date) {
         if (date) {
             this.setState({
-                startDate: moment(date).format('MM/DD/YYYY')
+                dueDate: moment(date).format('MM/DD/YYYY')
             })
         } else {
             this.setState({
-                startDate: null
+                dueDate: null
             })
         }
-    }
-
-    handleEndDate(date) {
-        if (date) {
-            this.setState({
-                endDate: moment(date).format('MM/DD/YYYY')
-            })
-        } else {
-            this.setState({
-                endDate: null
-            })
-        }
-    }
-
-    handleStatusMulti(value) {
-        this.setState({ milestoneStatus: value });
-    }
-
-    handlePercent(event, maskedvalue, floatvalue) {
-        let value = 0
-        if (floatvalue > 100) {
-            value = 100
-        } else {
-            value = floatvalue
-        }
-        this.setState({ percentComplete: value })
     }
 
     post() {
@@ -139,20 +103,14 @@ export class MilestoneInputs extends React.Component<any, any> {
         const {
             milestoneID,
             milestoneName,
-            startDate,
-            endDate,
+            dueDate,
             milestoneDescription,
-            milestoneStatus,
-            percentComplete,
-            notes,
         } = this.state
 
         // validation
         const isEnabled =
             milestoneName != '' &&
-            startDate != '' &&
-            endDate != '' &&
-            milestoneStatus != ''
+            dueDate != ''
 
         return (
             <div>
@@ -177,65 +135,14 @@ export class MilestoneInputs extends React.Component<any, any> {
                 </div>
 
                 <div className='col-md-6'>
-                    <TextArea
-                        value={notes}
-                        name="notes"
-                        header="Notes"
-                        placeholder="Enter any other relevant information"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-12'>
-                    <Select
-                        value={milestoneStatus}
-                        name="milestoneStatus"
-                        header='Milestone status'
-                        placeholder='Select statuses'
-                        onChange={this.handleStatusMulti.bind(this)}
-                        multi={true}
-                        options={statuses}
-                    />
-                </div>
-
-                <div className='col-md-6'>
                     <Datepicker
-                        value={startDate}
-                        name="startDate"
-                        header="Start date"
-                        placeholder="Select a date"
-                        callback={this.handleStartDate.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={endDate}
+                        value={dueDate}
                         name="endDate"
                         header="End date"
                         placeholder="Select a date"
-                        callback={this.handleEndDate.bind(this)}
+                        callback={this.handleDueDate.bind(this)}
                     />
                 </div>
-
-                <div className='col-md-12'>
-                    <Percent
-                        value={percentComplete}
-                        name="percentComplete"
-                        header="Percent complete"
-                        placeholder="Enter a number"
-                        prefix="% "
-                        callback={this.handlePercent.bind(this)}
-                    />
-                </div>
-                {percentComplete > 0 &&
-                    <div style={sliderContainer}>
-                        <div className='col-md-12'>
-                            <Progress completed={percentComplete} color='#337ab7' />
-                            <br />
-                        </div>
-                    </div>
-                }
 
                 <div className='row'>
                     <div className='col-md-12 text-center'>

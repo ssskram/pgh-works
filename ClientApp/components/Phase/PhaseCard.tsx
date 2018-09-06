@@ -20,7 +20,7 @@ const phaseContainer = {
 
 const metaContainer = {
     margin: '5px 0px',
-    padding: '20px 0px 0px 30px'
+    padding: '0px 0px 0px 30px'
 }
 
 export default class PhaseCard extends React.Component<any, any> {
@@ -50,7 +50,7 @@ export default class PhaseCard extends React.Component<any, any> {
                         <table className="table">
                             <tbody>
                                 <tr style={bigFont}>
-                                    <th style={borderNone} scope="row">Status</th>
+                                    <th style={borderNone} scope="row">Phase status</th>
                                     <td style={borderNone}>{phaseStatus}</td>
                                 </tr>
                                 <tr>

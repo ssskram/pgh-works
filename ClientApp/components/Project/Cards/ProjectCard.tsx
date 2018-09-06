@@ -51,7 +51,7 @@ export default class ProjectCard extends React.Component<any, any> {
                         <table className="table">
                             <tbody>
                                 <tr style={bigFont}>
-                                    <th style={borderNone} scope="row">Status</th>
+                                    <th style={borderNone} scope="row">Project status</th>
                                     <td style={borderNone}>{projectStatus}</td>
                                 </tr>
                                 <tr>

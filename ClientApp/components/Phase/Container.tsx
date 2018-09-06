@@ -183,10 +183,10 @@ export class Phase extends React.Component<any, any> {
                     </div>
                 }
                 <div style={marginBottom} className='col-md-12'>
-                    <Subphases phaseID={phaseID} projectID={projectID} />
+                    <Milestones phaseID={phaseID} projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
-                    <Milestones phaseID={phaseID} projectID={projectID} />
+                    <Subphases phaseID={phaseID} projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='row col-md-12'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
