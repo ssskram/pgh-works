@@ -8,32 +8,37 @@ export default class Line extends React.Component<any, any> {
         this.state = {
             groups: [],
             items: [],
+            hidden: true
         }
         this.redraw = this.redraw.bind(this)
     }
 
     componentWillMount() {
+        let self = this
         this.redraw()
+        setTimeout(function () {
+            self.setState({
+                hidden: false
+            })
+        }, 10);
     }
 
-    componentWillReceiveProps () {
+    componentWillReceiveProps() {
         this.redraw()
     }
 
     redraw() {
-        this.setState ({
+        this.setState({
             groups: this.props.groups,
             items: this.props.items
         })
     }
 
-    moveWindow() {
-        window.scrollTo(0,0)
-    }
     public render() {
         const {
             groups,
-            items
+            items,
+            hidden
         } = this.state
 
         const timelineHeight = items.length * 40 + 90
@@ -45,7 +50,6 @@ export default class Line extends React.Component<any, any> {
             autoResize: true,
             showMajorLabels: true,
             showCurrentTime: true,
-            onUpdate: this.moveWindow(),
             zoomMin: 1000000,
             format: {
                 minorLabels: {
@@ -57,7 +61,12 @@ export default class Line extends React.Component<any, any> {
 
         return (
             <div>
-                <TL options={timelineOptions} items={items} groups={groups} />
+                {!hidden &&
+                    <TL
+                        options={timelineOptions}
+                        items={items}
+                        groups={groups} />
+                }
             </div>
         )
     }

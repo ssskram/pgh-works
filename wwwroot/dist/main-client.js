@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f42336df2de6b8851208"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "126a69da5808a11cefcb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11037,12 +11037,19 @@ var Line = (function (_super) {
         _this.state = {
             groups: [],
             items: [],
+            hidden: true
         };
         _this.redraw = _this.redraw.bind(_this);
         return _this;
     }
     Line.prototype.componentWillMount = function () {
+        var self = this;
         this.redraw();
+        setTimeout(function () {
+            self.setState({
+                hidden: false
+            });
+        }, 10);
     };
     Line.prototype.componentWillReceiveProps = function () {
         this.redraw();
@@ -11053,11 +11060,8 @@ var Line = (function (_super) {
             items: this.props.items
         });
     };
-    Line.prototype.moveWindow = function () {
-        window.scrollTo(0, 0);
-    };
     Line.prototype.render = function () {
-        var _a = this.state, groups = _a.groups, items = _a.items;
+        var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden;
         var timelineHeight = items.length * 40 + 90;
         var timelineOptions = {
             width: '100%',
@@ -11066,7 +11070,6 @@ var Line = (function (_super) {
             autoResize: true,
             showMajorLabels: true,
             showCurrentTime: true,
-            onUpdate: this.moveWindow(),
             zoomMin: 1000000,
             format: {
                 minorLabels: {
@@ -11075,7 +11078,7 @@ var Line = (function (_super) {
                 }
             }
         };
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, !hidden &&
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline___default.a, { options: timelineOptions, items: items, groups: groups })));
     };
     return Line;
