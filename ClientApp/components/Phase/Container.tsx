@@ -13,6 +13,7 @@ import PhaseCard from './PhaseCard'
 import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
 import Attachments from './../Attachments/Attachments'
+import Timeline from './PhaseTimeline'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -23,8 +24,8 @@ const marginBottom = {
 }
 
 export class Phase extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             // utilities
             spinner: true,
@@ -143,7 +144,9 @@ export class Phase extends React.Component<any, any> {
             phaseName,
             phaseFollows,
             projectID,
-            projectName
+            projectName,
+            expectedStartDate,
+            expectedEndDate
         } = this.state
 
         const link = "/Project/id=" + projectID
@@ -165,7 +168,7 @@ export class Phase extends React.Component<any, any> {
                 </h2>
                 <hr />
                 <br />
-                <h2 className='text-center'><b><img style={{marginTop: '-12px'}} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
+                <h2 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
                 {phaseFollows &&
                     <h4 className='text-center'><i>Follows {phaseFollowsFormatted}</i></h4>
                 }
@@ -173,8 +176,13 @@ export class Phase extends React.Component<any, any> {
                 <div style={marginBottom} className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
+                {expectedStartDate && expectedEndDate &&
+                    <div style={marginBottom} className='col-md-12'>
+                        <Timeline phase={this.state} />
+                    </div>
+                }
                 <div style={marginBottom} className='col-md-12'>
-                    <Milestones phaseID={phaseID} projectID={projectID}/>
+                    <Milestones phaseID={phaseID} projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='row col-md-12'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />

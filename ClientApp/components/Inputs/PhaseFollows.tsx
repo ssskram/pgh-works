@@ -10,8 +10,8 @@ const projects = [] as any
 const phases = [] as any
 
 export class PhaseFollows extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             project: '',
             phase: ''

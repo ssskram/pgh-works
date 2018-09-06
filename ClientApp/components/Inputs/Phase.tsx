@@ -34,8 +34,8 @@ const types = [
 ]
 
 export class PhaseInputs extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             // utilities
             redirect: false,

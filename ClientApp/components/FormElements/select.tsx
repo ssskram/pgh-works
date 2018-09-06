@@ -2,8 +2,8 @@ import * as React from 'react';
 import Select from 'react-select';
 
 export default class input extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             autoFocus: false
         }

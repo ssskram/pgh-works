@@ -6,8 +6,8 @@ import * as Assets from '../../../store/GETS/taggableAssets'
 import TaggableAssetSelection from './../../TaggableAssets/Container'
 
 export class ImportShape extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
     }
 
     receiveAsset(asset) {

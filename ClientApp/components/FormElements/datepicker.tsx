@@ -5,8 +5,8 @@ import * as moment from 'moment'
 import Moment from 'react-moment'
 
 export default class datepicker extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             date: null,
             isOpen: false

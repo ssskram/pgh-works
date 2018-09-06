@@ -24,8 +24,8 @@ const statuses = [
 ]
 
 export class MilestoneInputs extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             projectID: '',
             phaseID: '',

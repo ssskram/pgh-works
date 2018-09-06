@@ -20,8 +20,8 @@ const saveBtn = {
 }
 
 export default class Geolocate extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             type: '',
             modalIsOpen: false,

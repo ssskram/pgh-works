@@ -32,7 +32,7 @@ export class NavMenu extends React.Component<any, any>  {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
+            user: props.user,
             modalIsOpen: false
         }
     }

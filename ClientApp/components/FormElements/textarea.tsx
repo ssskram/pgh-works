@@ -2,8 +2,8 @@ import * as React from 'react';
 import classNames from 'classnames'
 
 export default class textarea extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             height: '100px'
         }

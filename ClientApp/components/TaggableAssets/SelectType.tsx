@@ -6,8 +6,8 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import Spinner from '../Utilities/Spinner'
 
 export class SelectAssetType extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
     }
 
     passType(type) {
@@ -88,7 +88,7 @@ export class SelectAssetType extends React.Component<any, any> {
                     </div>
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.passType('Street')} className='btn btn-assetType'>
-                            <span><img src='./images/assetTypes/baseball.png' /></span><br />
+                            <span><img src='./images/assetTypes/street.png' /></span><br />
                             Street Segment
                         </button>
                     </div>

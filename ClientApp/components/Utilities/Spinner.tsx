@@ -4,8 +4,8 @@ import { ApplicationState } from '../../store';
 import Modal from 'react-responsive-modal'
 
 export class Spinner extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
     }
 
     closeModal() {

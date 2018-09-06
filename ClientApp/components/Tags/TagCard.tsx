@@ -15,8 +15,8 @@ const marginTop = {
     marginTop: '15px'
 }
 export class TagsCard extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             modalType: '',
             modalIsOpen: false
@@ -87,6 +87,9 @@ export class TagsCard extends React.Component<any, any> {
         }
         if (tag.tagType == "Park") {
             src = './images/assetTypes/parks.png'
+        }
+        if (tag.tagType == "Street") {
+            src = './images/assetTypes/street.png'
         }
 
         return (

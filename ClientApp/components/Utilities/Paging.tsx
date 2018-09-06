@@ -12,8 +12,8 @@ const paddingRight = {
 }
 
 export default class Paging extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
     }
 
     public render() {

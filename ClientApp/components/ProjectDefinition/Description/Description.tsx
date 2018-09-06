@@ -14,8 +14,8 @@ const paddingRight = {
 }
 
 export class ProjectDescription extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             projectName: '',
             expectedStartDate: '',

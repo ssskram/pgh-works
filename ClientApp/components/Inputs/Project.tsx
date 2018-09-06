@@ -31,8 +31,8 @@ const departments = [
 ]
 
 export class ProjectInputs extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.handleDate = this.handleDate.bind(this)
     }
     componentDidMount() {

@@ -7,8 +7,8 @@ import MilestoneForm from '../Inputs/Milestone'
 import DeleteMilestone from './DeleteMilestone'
 
 export class Milestone extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             modalType: '',
             modalIsOpen: false

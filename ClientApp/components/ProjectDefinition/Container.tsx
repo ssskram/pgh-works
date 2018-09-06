@@ -38,8 +38,8 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectStatus: '',
             notes: '',
             created: moment().format('MM/DD/YYYY'),
-            createdBy: this.props.user,
-            lastModifiedBy: this.props.user
+            createdBy: props.user,
+            lastModifiedBy: props.user
         }
     }
 

@@ -32,14 +32,9 @@ export default class PhaseCard extends React.Component<any, any> {
     public render() {
         const {
             cartegraphID,
-            expectedStartDate,
-            expectedEndDate,
-            actualStartDate,
-            actualEndDate,
             phaseDescription,
             phaseStatus,
             phaseType,
-            phaseFollows,
             percentComplete,
             notes,
             created,
@@ -62,26 +57,6 @@ export default class PhaseCard extends React.Component<any, any> {
                                     <th scope="row">Phase type</th>
                                     <td>{phaseType}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">Expected start date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={expectedStartDate} /></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Expected end date</th>
-                                    <td><Moment format="MM/DD/YYYY" date={expectedEndDate} /></td>
-                                </tr>
-                                {actualStartDate &&
-                                    <tr>
-                                        <th scope="row">Actual start date</th>
-                                        <td><Moment format="MM/DD/YYYY" date={actualStartDate} /></td>
-                                    </tr>
-                                }
-                                {actualEndDate &&
-                                    <tr>
-                                        <th scope="row">Actual end date</th>
-                                        <td><Moment format="MM/DD/YYYY" date={actualEndDate} /></td>
-                                    </tr>
-                                }
                                 {percentComplete &&
                                     <tr>
                                         <th scope="row">Percent complete</th>
