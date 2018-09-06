@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d6030c5d91098838c4ef"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0a426f69bf33f68f7a81"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -52380,6 +52380,12 @@ var SelectAssetType = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/baseball.png' })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                         "Playing Field")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Street'); }, className: 'btn btn-assetType' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/baseball.png' })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        "Street Segment")),
                 parentComponent != 'shape' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-assetType' },

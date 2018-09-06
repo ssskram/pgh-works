@@ -34,6 +34,7 @@ namespace pghworks.Controllers {
             await getBridges ();
             await getFields();
             await getCourts();
+            await getStreets();
             return AllAssets;
         }
 
@@ -240,6 +241,25 @@ namespace pghworks.Controllers {
                     assetType = "Court",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    shape = item.CgShape.ToObject<Shape> ()
+                };
+                AllAssets.Add (ta);
+            }
+        }
+
+        public async Task getStreets () {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField";
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (cartegraphUrl);
+            dynamic streets = JObject.Parse (content) ["cgPavementClass"];
+            foreach (var item in streets) {
+                TaggableAssets ta = new TaggableAssets () {
+                    assetType = "Street",
+                    assetOID = item.Oid,
+                    assetName = item.StreetField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
