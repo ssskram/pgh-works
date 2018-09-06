@@ -167,6 +167,18 @@ export class ProjectInputs extends React.Component<any, any> {
 
                 <div className='col-md-12'>
                     <Select
+                        value={projectDepartment}
+                        name="projectDepartment"
+                        header='Project department'
+                        placeholder='Select a department'
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
+                        options={departments}
+                    />
+                </div>
+                
+                <div className='col-md-12'>
+                    <Select
                         value={projectManager}
                         name="projectManager"
                         header='Project manager'
@@ -186,18 +198,6 @@ export class ProjectInputs extends React.Component<any, any> {
                         onChange={this.handleMembersMulti.bind(this)}
                         multi={true}
                         options={members}
-                    />
-                </div>
-
-                <div className='col-md-12'>
-                    <Select
-                        value={projectDepartment}
-                        name="projectDepartment"
-                        header='Project department'
-                        placeholder='Select a department'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                        options={departments}
                     />
                 </div>
             </div>

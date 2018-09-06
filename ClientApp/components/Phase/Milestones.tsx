@@ -66,7 +66,7 @@ export class Milestones extends React.Component<any, any> {
         var milestonesCopy = this.state.milestones.slice()
         milestonesCopy.splice(milestonesCopy.indexOf(milestone), 1);
         this.setState({
-            tags: milestonesCopy
+            milestones: milestonesCopy
         })
     }
 

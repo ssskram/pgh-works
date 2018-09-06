@@ -12,6 +12,7 @@ import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './PhaseCard'
 import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
+import Subphases from './SubPhases'
 import Attachments from './../Attachments/Attachments'
 import Timeline from './PhaseTimeline'
 
@@ -173,7 +174,7 @@ export class Phase extends React.Component<any, any> {
                     <h4 className='text-center'><i>Follows {phaseFollowsFormatted}</i></h4>
                 }
                 <h4></h4>
-                <div style={marginBottom} className='col-md-12'>
+                <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
                 {expectedStartDate && expectedEndDate &&
@@ -181,6 +182,9 @@ export class Phase extends React.Component<any, any> {
                         <Timeline phase={this.state} />
                     </div>
                 }
+                <div style={marginBottom} className='col-md-12'>
+                    <Subphases phaseID={phaseID} projectID={projectID} />
+                </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Milestones phaseID={phaseID} projectID={projectID} />
                 </div>

@@ -5,6 +5,7 @@ import * as Drawdowns from './drawdowns'
 import * as Funds from './funds'
 import * as Phases from './phases'
 import * as Milestones from './milestones'
+import * as Subphases from './subphases'
 import * as Attachments from './attachments'
 import * as Tags from './tags'
 import * as Statuses from './GETS/status'
@@ -19,6 +20,7 @@ export interface ApplicationState {
     funds: Funds.FundState
     phases: Phases.PhaseState
     milestones: Milestones.MilestoneItem
+    subphases: Subphases.SubphaseItem
     attachments: Attachments.AttachmentState
     tags: Tags.TagState
     statuses: Statuses.StatusState,
@@ -34,6 +36,7 @@ export const reducers = {
     funds: Funds.reducer,
     phases: Phases.reducer,
     milestones: Milestones.reducer,
+    subphases: Subphases.reducer,
     attachments: Attachments.reducer,
     tags: Tags.reducer,
     statuses: Statuses.reducer,

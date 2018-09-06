@@ -320,18 +320,6 @@ textarea {
     overflow: visible;
 }
 
-.dropdown-menu open {
-    overflow: visible;
-}
-
-.dropdown-menu inner {
-    overflow: visible;
-}
-
-.dropdown-menu {
-    overflow: visible;
-}
-
 /* Buttons
 /* ------------------------- */
 
@@ -681,7 +669,6 @@ td {
     margin-top: 25px !important;
     padding-bottom: 25px;
 }
-
 
 .styles_closeButton__20ID4 {
     padding: 7px;

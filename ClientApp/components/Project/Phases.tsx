@@ -87,7 +87,8 @@ export class Phases extends React.Component<any, any> {
                     id: counter,
                     content: phase.phaseName + ' (actual)',
                     start: phase.actualStartDate,
-                    end: phase.actualEndDate
+                    end: phase.actualEndDate,
+                    style: 'background-color: pink'
                 }
                 counter++
                 items.push(actual)
@@ -100,6 +101,7 @@ export class Phases extends React.Component<any, any> {
             width: '100%',
             height: timelineHeight + 'px',
             stack: true,
+            autoResize: true,
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,
@@ -127,7 +129,7 @@ export class Phases extends React.Component<any, any> {
                 {phases.length > 0 &&
                     phases.map((phase) => {
                         return (
-                            <PhaseCard phase={phase} />
+                            <PhaseCard phase={phase} key={phase.phaseID} />
                         )
                     })
                 }
