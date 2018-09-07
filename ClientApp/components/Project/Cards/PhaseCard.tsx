@@ -22,8 +22,6 @@ export class PhaseCard extends React.Component<any, any> {
             subphases
         } = this.props
 
-        console.log(subphases)
-
         const allMilestones = milestones.filter(function (milestone) {
             return milestone.phaseID == phase.phaseID
         })

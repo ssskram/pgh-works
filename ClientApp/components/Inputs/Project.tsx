@@ -60,10 +60,10 @@ export class ProjectInputs extends React.Component<any, any> {
         super()
         this.handleDate = this.handleDate.bind(this)
     }
+    
     componentDidMount() {
         // set personnel dropdowns
         // set status dropdowns
-        console.log(this.props)
     }
 
     handleChildChange(event) {

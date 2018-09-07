@@ -60,7 +60,6 @@ export class PhaseInputs extends React.Component<any, any> {
         this.handleDate = this.handleDate.bind(this)
     }
     componentDidMount() {
-        console.log(this.props)
         if (this.props.phaseID) {
             // update phase
             let phaseID = this.props.phaseID
@@ -155,7 +154,6 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     setPhaseFollows(string) {
-        console.log(string)
         this.setState({
             phaseFollows: string,
             modalIsOpen: false

@@ -106,7 +106,7 @@ export class ProjectDefinition extends React.Component<any, any> {
         let shape = [] as any
         let componentAssets = [] as any
         this.state.shape.forEach(function (point) {
-            const shapeArray = [ point.lat, point.lng]
+            const shapeArray = [ point.lat, point.lng ]
             shape.push(shapeArray)
         })
         this.props.assets.forEach(function(asset) {
