@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "80356c5319a421d5ddfd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "68b6155cf31be84ad0ca"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -54713,13 +54713,12 @@ var SelectAssetType = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/street.png' })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                         "Street Segment")),
-                parentComponent != 'shape' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-assetType' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/parks.png' })),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                            "Park")))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-assetType' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/parks.png' })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        "Park")))));
     };
     return SelectAssetType;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
