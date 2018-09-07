@@ -1,6 +1,7 @@
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
+import randomcolor from 'randomcolor'
 
 export default class HomeMap extends React.Component<any, any> {
     constructor(props) {
@@ -42,8 +43,7 @@ export default class HomeMap extends React.Component<any, any> {
 
     closeWindow() {
         this.setState({
-            showInfowindow: false,
-            zoom: 13
+            showInfowindow: false
         })
     }
 
@@ -72,10 +72,12 @@ export default class HomeMap extends React.Component<any, any> {
             >
                 {projects &&
                     projects.map((project, index) => {
+                        let color = randomcolor()
                         if (project.shape) {
                             return (
                                 <div key={index}>
                                     <Polygon
+                                        options={{fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4}}
                                         paths={[project.shape]}
                                         onClick={() => this.polygonSelection(project)}>
                                     </Polygon>
@@ -87,7 +89,7 @@ export default class HomeMap extends React.Component<any, any> {
                 }
                 {showInfowindow == true &&
                     <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
-                        <div className='col-md-12'>
+                        <div className='col-md-12 text-center'>
                             <h4>{selectedProject.projectName}</h4>
                             <button onClick={() => this.props.receiveProject(selectedProject)} className='btn btn-success'>Open project</button>
                         </div>
