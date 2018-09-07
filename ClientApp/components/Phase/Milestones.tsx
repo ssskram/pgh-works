@@ -8,6 +8,7 @@ import Modal from 'react-responsive-modal'
 import DeleteMilestone from './../Milestones/DeleteMilestone'
 import MilestoneForm from './../Inputs/Milestone'
 import * as moment from 'moment'
+import classnames from 'classnames'
 
 const iconStyle = {
     marginRight: '5px',
@@ -120,7 +121,7 @@ export class Milestones extends React.Component<any, any> {
         }, {
             Header: 'Due date',
             accessor: 'dueDate',
-            Cell: props => <span>{props.value}</span>
+            Cell: props => <span className={classnames({redText: moment(props.value).isBefore(moment().format('MM/DD/YYYY'))})}> {props.value}</span>
         }, {
             Header: '',
             accessor: 'milestoneID',

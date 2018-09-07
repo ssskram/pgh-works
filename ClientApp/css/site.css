@@ -745,3 +745,10 @@ a[href^="https://maps.google.com/maps"] {
 .progressbar-progress {
     background-color: #d5ddf6 !important;
 }
+
+/* Site specific
+/* ------------------------- */
+
+.redText {
+    color: red;
+}
