@@ -20,6 +20,7 @@ export class MilestoneInputs extends React.Component<any, any> {
             milestoneName: '',
             percentComplete: 0,
             dueDate: '',
+            dateCompleted: '',
             created: '',
             createdBy: '',
         }

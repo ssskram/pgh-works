@@ -30,7 +30,6 @@ export interface PhaseItem {
     actualStartDate: string
     actualEndDate: string
     phaseStatus: string
-    percentComplete: string
     notes: string
     created: string
     createdBy: string
@@ -98,7 +97,6 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
                     actualEndDate: action.item.actualEndDate,
                     phaseDescription: action.item.phaseDescription,
                     phaseStatus: action.item.phaseStatus,
-                    percentComplete: action.item.percentComplete,
                     notes: action.item.notes,
                     created: action.item.created,
                     createdBy: action.item.createdBy,

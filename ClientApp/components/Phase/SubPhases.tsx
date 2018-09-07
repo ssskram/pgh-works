@@ -6,7 +6,6 @@ import * as SubphaseStore from '../../store/subphases'
 import Modal from 'react-responsive-modal'
 import SubphaseCard from './../Subphases/SubphaseCard'
 import SubphaseForm from '../Inputs/Subphase'
-import TL from 'react-visjs-timeline'
 
 const iconStyle = {
     marginRight: '5px',

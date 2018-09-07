@@ -7,6 +7,7 @@ import * as MilestoneStore from '../../store/milestones'
 import Modal from 'react-responsive-modal'
 import DeleteMilestone from './../Milestones/DeleteMilestone'
 import MilestoneForm from './../Inputs/Milestone'
+import * as moment from 'moment'
 
 const iconStyle = {
     marginRight: '5px',
@@ -87,9 +88,22 @@ export class Milestones extends React.Component<any, any> {
         })
     }
 
-    completeMilestone() {
-        // modify selected milestone in local state
-        // push update to store
+    completeMilestone(milestoneID) {
+        let milestone = this.state.milestones.find(function (milestone) {
+            return milestone.milestoneID == milestoneID
+        })
+        milestone.percentComplete = 100
+        milestone.dateCompleted = moment().format('MM/DD/YYYY')
+        this.props.updateMilestone(milestone)
+    }
+
+    reopenMilestone(milestoneID) {
+        let milestone = this.state.milestones.find(function (milestone) {
+            return milestone.milestoneID == milestoneID
+        })
+        milestone.percentComplete = 0
+        milestone.dateCompleted = ''
+        this.props.updateMilestone(milestone)
     }
 
     public render() {
@@ -100,21 +114,40 @@ export class Milestones extends React.Component<any, any> {
             modalType
         } = this.state
 
-        const columns = [{
+        const openColumns = [{
             Header: 'Name',
             accessor: 'milestoneName'
         }, {
             Header: 'Due date',
-            accessor: 'dueDate'
+            accessor: 'dueDate',
+            Cell: props => <span>{props.value}</span>
         }, {
             Header: '',
             accessor: 'milestoneID',
-            Cell: props => <button className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
+            Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
             maxWidth: 100
         }, {
             Header: '',
             accessor: 'milestoneID',
             Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+            maxWidth: 100
+        }]
+
+        const closedColumns = [{
+            Header: 'Name',
+            accessor: 'milestoneName',
+            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
+        }, {
+            Header: 'Due date',
+            accessor: 'dueDate',
+            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
+        }, {
+            Header: 'Completed',
+            accessor: 'dateCompleted'
+        }, {
+            Header: '',
+            accessor: 'milestoneID',
+            Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-up'></span></button>,
             maxWidth: 100
         }]
 
@@ -138,7 +171,7 @@ export class Milestones extends React.Component<any, any> {
                         <h4><b>Open milestones</b></h4>
                         <ReactTable
                             data={openMilestones}
-                            columns={columns}
+                            columns={openColumns}
                             loading={false}
                             minRows={0}
                             pageSize={100}
@@ -156,12 +189,15 @@ export class Milestones extends React.Component<any, any> {
                         />
                     </div>
                 }
+                {completedMilestones.length > 0 && openMilestones.length > 0 &&
+                    <div className='col-md-12'><br/><br/></div>
+                }
                 {completedMilestones.length > 0 &&
                     <div className='col-md-12'>
                         <h4><b>Completed milestones</b></h4>
                         <ReactTable
                             data={completedMilestones}
-                            columns={columns}
+                            columns={closedColumns}
                             loading={false}
                             minRows={0}
                             pageSize={100}
