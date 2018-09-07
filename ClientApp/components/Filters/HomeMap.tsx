@@ -44,7 +44,11 @@ export default class MapFilter extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-    `               <ProjectFilters />
+                    <div>
+                    <h2>Filter projects</h2>
+                    <hr/>
+                    <ProjectFilters />
+                    </div>
                 </Modal>
             </div>
         )
