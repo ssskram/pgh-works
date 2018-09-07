@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -23,18 +24,19 @@ namespace pghworks.Controllers {
         // GET
         [HttpGet ("[action]")]
         public async Task<object> loadTaggableAssets () {
+            Task parks = getParks ();
             await getFacilities ();
             await getProjects ();
             await getSteps ();
             await getRetainingWalls ();
             await getPools ();
             await getPlaygrounds ();
-            await getParks ();
             await getIntersections ();
             await getBridges ();
-            await getFields();
-            await getCourts();
-            await getStreets();
+            await getFields ();
+            await getCourts ();
+            await getStreets ();
+            await parks;
             return AllAssets;
         }
 
@@ -160,14 +162,29 @@ namespace pghworks.Controllers {
                 new AuthenticationHeaderValue ("Basic", key);
             string content = await client.GetStringAsync (cartegraphUrl);
             dynamic parks = JObject.Parse (content) ["ParksClass"];
+
             foreach (var item in parks) {
-                TaggableAssets ta = new TaggableAssets () {
+                var breaks = item.CgShape.Breaks.ToString ();
+                if (breaks == null || breaks == "[]") {
+                    TaggableAssets ta = new TaggableAssets () {
                     assetType = "Park",
                     assetOID = item.Oid,
                     assetName = item.IDField,
                     shape = item.CgShape.ToObject<Shape> ()
-                };
-                AllAssets.Add (ta);
+                    };
+                    AllAssets.Add (ta);
+                } else {
+                    var shape = item.CgShape.ToObject<Shape> ();
+                    Shape hull = new Shape ();
+                    hull.Points = GetConvexHull (shape.Points);
+                    TaggableAssets ta = new TaggableAssets () {
+                        assetType = "Park",
+                        assetOID = item.Oid,
+                        assetName = item.IDField,
+                        shape = hull
+                    };
+                    AllAssets.Add (ta);
+                }
             }
         }
 
@@ -264,6 +281,41 @@ namespace pghworks.Controllers {
                 };
                 AllAssets.Add (ta);
             }
+        }
+
+        // calculating convex hull for park shapes
+        public static double cross (Points O, Points A, Points B) {
+            return (A.Lat - O.Lat) * (B.Lng - O.Lng) - (A.Lng - O.Lng) * (B.Lat - O.Lat);
+        }
+
+        public static List<Points> GetConvexHull (List<Points> points) {
+            if (points == null)
+                return null;
+
+            if (points.Count () <= 1)
+                return points;
+
+            int n = points.Count (), k = 0;
+            List<Points> H = new List<Points> (new Points[2 * n]);
+
+            points.Sort ((a, b) =>
+                a.Lat == b.Lat ? a.Lng.CompareTo (b.Lng) : a.Lat.CompareTo (b.Lat));
+
+            // Build lower hull
+            for (int i = 0; i < n; ++i) {
+                while (k >= 2 && cross (H[k - 2], H[k - 1], points[i]) <= 0)
+                    k--;
+                H[k++] = points[i];
+            }
+
+            // Build upper hull
+            for (int i = n - 2, t = k + 1; i >= 0; i--) {
+                while (k >= t && cross (H[k - 2], H[k - 1], points[i]) <= 0)
+                    k--;
+                H[k++] = points[i];
+            }
+
+            return H.Take (k - 1).ToList ();
         }
     }
 }
