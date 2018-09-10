@@ -53,17 +53,20 @@ hr {
     body {
         padding: 110px 0px;
     }
+
     .main-nav {
         z-index: 100000;
         height: auto;
         max-height: 100vh;
         overflow-x: hidden;
     }
+
     .home-image {
         opacity: 0.8;
         max-height: 250px !important;
         margin-top: 45px;
     }
+
     .navbar-logout-btn {
         padding: 7px 5px 5px 5px !important;
     }
@@ -74,40 +77,50 @@ hr {
         height: 100%;
         width: calc(25% - 20px);
     }
+
     .navbar-inverse {
         overflow: auto;
     }
+
     .main-nav .navbar {
         border-radius: 0px;
         border-width: 0px;
         height: 100%;
     }
+
     .main-nav .navbar-header {
         float: none;
     }
+
     .main-nav .navbar-collapse {
         border-top: 1px solid #444;
         padding: 0px;
     }
+
     .main-nav .navbar ul {
         float: none;
     }
+
     .main-nav .navbar li {
         float: none;
         font-size: 20px;
         margin: 10px;
     }
+
     .main-nav .navbar li a {
         padding: 15px 20px;
         border-radius: 4px;
     }
+
     .main-nav .navbar a {
         width: 100%;
         white-space: normal;
     }
+
     .navbar-logout-btn {
         padding: 7px 5px 5px 5px !important;
     }
+
     .home-image {
         opacity: 0.8;
         max-height: 350px !important;
@@ -435,7 +448,7 @@ textarea {
 .btn-datepicker:focus {
     border-color: #66afe9;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
 .delete-btn {
@@ -518,7 +531,7 @@ td {
 }
 
 .rt-noData {
-    display:none !important;
+    display: none !important;
 }
 
 .ReactTable .rt-thead .rt-th.-sort-asc,
@@ -623,12 +636,14 @@ td {
 }
 
 @-webkit-keyframes load1 {
+
     0%,
     80%,
     100% {
         box-shadow: 0 0;
         height: 4em;
     }
+
     40% {
         box-shadow: 0 -2em;
         height: 5em;
@@ -636,12 +651,14 @@ td {
 }
 
 @keyframes load1 {
+
     0%,
     80%,
     100% {
         box-shadow: 0 0;
         height: 4em;
     }
+
     40% {
         box-shadow: 0 -2em;
         height: 5em;
@@ -681,6 +698,10 @@ td {
 
 .alert {
     border-width: 0 0 0 10px;
+}
+
+.alert-info {
+    border-color: #31708f;
 }
 
 .alert-success {

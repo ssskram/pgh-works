@@ -99,7 +99,7 @@ export class Phase extends React.Component<any, any> {
             notes: phase.notes,
             created: phase.created,
             createdBy: phase.createdBy,
-            lastModifiedBy: phase.lastModifiedBy,
+            lastModifiedBy: phase.lastModifiedBy
         }, function (this) {
             this.findProject(this.state.projectID)
         })

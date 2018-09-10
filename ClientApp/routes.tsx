@@ -11,6 +11,7 @@ import MyProjects from './components/Lists/MyProjects'
 import Timeline from './components/Timeline/Container'
 import ProjectRecord from './components/Project/Container'
 import PhaseRecord from './components/Phase/Container'
+import ProgramFund from './components/ProgramsFunds/FundViewer'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
@@ -22,5 +23,6 @@ export const routes = <Layout>
     <Route exact path='/Timeline' component={ Timeline } />
     <Route exact path='/Project/id=:id' component={ ProjectRecord } />
     <Route exact path='/Phase/id=:id' component={ PhaseRecord } />
+    <Route exact path='/Fund/id=:id' component={ ProgramFund } />
     <Route path='/Account/Login' component={ Login } />
 </Layout>;
