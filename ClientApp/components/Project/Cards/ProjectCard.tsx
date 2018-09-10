@@ -1,6 +1,5 @@
 
 import * as React from 'react'
-import Moment from 'react-moment'
 
 const bigFont = {
     fontSize: '18px'

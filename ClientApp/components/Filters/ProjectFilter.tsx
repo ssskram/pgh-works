@@ -67,6 +67,12 @@ export default class ProjectFilter extends React.Component<any, any> {
         }
     }
 
+    filter () {
+        this.setState ({
+            modalIsOpen: false
+        })
+    }
+
     public render() {
         const {
             modalIsOpen,
@@ -145,7 +151,7 @@ export default class ProjectFilter extends React.Component<any, any> {
                         </div>
 
                         <div className='col-md-12 text-center'>
-                            <button className='btn btn-success'>Apply filter</button>
+                            <button onClick={this.filter.bind(this)} className='btn btn-success'>Apply filter</button>
                         </div>
                     </div>
                 </Modal>

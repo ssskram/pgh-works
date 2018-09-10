@@ -722,6 +722,11 @@ td {
     width: 100%;
 }
 
+#project-thumbnail {
+    height: 150px;
+    width: 100%;
+}
+
 a[href^="http://maps.google.com/maps"] {
     display: none !important
 }

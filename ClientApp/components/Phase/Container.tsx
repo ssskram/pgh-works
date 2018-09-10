@@ -151,6 +151,7 @@ export class Phase extends React.Component<any, any> {
         } = this.state
 
         const link = "/Project/id=" + projectID
+        
         if (redirect) {
             return <Redirect to={link} />
         }
