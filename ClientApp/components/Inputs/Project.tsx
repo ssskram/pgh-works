@@ -103,7 +103,7 @@ export class ProjectInputs extends React.Component<any, any> {
         } = this.props.description
 
         return (
-            <div>
+            <div style={{padding: '10px'}}>
                 <div className='col-md-12'>
                     <Input
                         value={projectName}
