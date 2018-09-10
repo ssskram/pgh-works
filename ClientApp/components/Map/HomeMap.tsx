@@ -15,10 +15,6 @@ export default class HomeMap extends React.Component<any, any> {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props.projects)
-    }
-
     polygonSelection(project) {
         this.setCenter(project.shape)
         this.setState({

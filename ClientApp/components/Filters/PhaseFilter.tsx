@@ -133,7 +133,7 @@ export default class PhaseFilter extends React.Component<any, any> {
                                 name="startDate"
                                 header="From"
                                 placeholder="Select a date"
-                                callback={(value) => this.handleDate(value, 'expectedStartDate')}
+                                callback={(value) => this.handleDate(value, 'startDate')}
                             />
                         </div>
 
@@ -143,7 +143,7 @@ export default class PhaseFilter extends React.Component<any, any> {
                                 name="endDate"
                                 header="To"
                                 placeholder="Select a date"
-                                callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                                callback={(value) => this.handleDate(value, 'endDate')}
                             />
                         </div>
 
