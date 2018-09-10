@@ -14,10 +14,6 @@ import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import PhaseFollows from './PhaseFollows'
 
-const sliderContainer = {
-    padding: '0px 15px'
-}
-
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
     { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f8fe411ac04a38ef2412"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4f81d8d68acda70629ae"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -26707,9 +26707,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var sliderContainer = {
-    padding: '0px 15px'
-};
 var statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
     { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
@@ -52105,6 +52102,8 @@ var AllMilestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_phases__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Filters_PhaseFilter__ = __webpack_require__(721);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -52126,10 +52125,16 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
+
 var AllPhases = (function (_super) {
     __extends(AllPhases, _super);
-    function AllPhases() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function AllPhases(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            phases: props.phases
+        };
+        return _this;
     }
     AllPhases.prototype.componentDidMount = function () {
         // ping server
@@ -52137,14 +52142,17 @@ var AllPhases = (function (_super) {
     };
     AllPhases.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "All Phases"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                "All Phases ",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Filters_PhaseFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", { className: 'text-center' }, "Return filterable list of all phases in system")));
     };
     return AllPhases;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__["a" /* actionCreators */])))(AllPhases));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.phases)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_phases__["a" /* actionCreators */])))(AllPhases));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Lists/AllPhases.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Lists/AllPhases.tsx"); } } })();
@@ -69346,6 +69354,132 @@ __webpack_require__(360);
 __webpack_require__(359);
 module.exports = __webpack_require__(358);
 
+
+/***/ }),
+/* 720 */,
+/* 721 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormElements_datepicker__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormElements_input__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(15);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+var btnStyle = {
+    fontSize: '25px',
+    backgroundColor: 'rgb(255, 255, 255)',
+    padding: '8px'
+};
+var types = [
+    { value: 'Programming', label: 'Programming', name: 'phaseType' },
+    { value: 'Design', label: 'Design', name: 'phaseType' },
+    { value: 'Construction', label: 'Construction', name: 'phaseType' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
+];
+var statuses = [
+    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
+    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
+    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+];
+var PhaseFilter = (function (_super) {
+    __extends(PhaseFilter, _super);
+    function PhaseFilter() {
+        var _this = _super.call(this) || this;
+        _this.state = {
+            modalIsOpen: false,
+            phaseName: '',
+            startDate: '',
+            endDate: '',
+            phaseType: '',
+            projectStatus: ''
+        };
+        return _this;
+    }
+    PhaseFilter.prototype.closeModal = function () {
+        this.setState({
+            modalIsOpen: false
+        });
+    };
+    PhaseFilter.prototype.openModal = function () {
+        this.setState({
+            modalIsOpen: true
+        });
+    };
+    PhaseFilter.prototype.handleChildChange = function (event) {
+        this.setState((_a = {}, _a[event.target.name] = event.target.value, _a));
+        var _a;
+    };
+    PhaseFilter.prototype.handleChildSelect = function (event) {
+        this.setState((_a = {}, _a[event.name] = event.value, _a));
+        var _a;
+    };
+    PhaseFilter.prototype.handleDate = function (date, name) {
+        if (date) {
+            this.setState((_a = {},
+                _a[name] = __WEBPACK_IMPORTED_MODULE_4_moment__(date).format('MM/DD/YYYY'),
+                _a));
+        }
+        else {
+            this.setState((_b = {},
+                _b[name] = null,
+                _b));
+        }
+        var _a, _b;
+    };
+    PhaseFilter.prototype.render = function () {
+        var _this = this;
+        var _a = this.state, modalIsOpen = _a.modalIsOpen, phaseName = _a.phaseName, startDate = _a.startDate, endDate = _a.endDate, phaseType = _a.phaseType, phaseStatus = _a.phaseStatus;
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter phases")),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
+                    overlay: 'custom-overlay',
+                    modal: 'custom-modal'
+                }, center: true },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "Filter phases"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: phaseName, name: "phaseName", header: "Phase name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", header: 'Phase status', placeholder: 'Select status', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: phaseType, name: "phaseType", header: 'Phase type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "From", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "To", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-success' }, "Apply filter"))))));
+    };
+    return PhaseFilter;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+/* harmony default export */ __webpack_exports__["a"] = (PhaseFilter);
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Filters/PhaseFilter.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Filters/PhaseFilter.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);
