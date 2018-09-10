@@ -1,10 +1,13 @@
 
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
 import Datepicker from '../FormElements/datepicker'
 import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
+import * as Projects from '../../store/projects'
 
 const btnStyle = {
     fontSize: '25px',
@@ -25,7 +28,9 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'projectStatus' }
 ]
 
-export default class PhaseFilter extends React.Component<any, any> {
+let projects = [] as any
+
+export class PhaseFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
@@ -34,8 +39,17 @@ export default class PhaseFilter extends React.Component<any, any> {
             startDate: '',
             endDate: '',
             phaseType: '',
-            projectStatus: ''
+            phaseStatus: '',
+            projectName: ''
         }
+    }
+
+    componentDidMount() {
+        projects = []
+        this.props.projects.forEach(function (project) {
+            let json = { "value": project.projectName, "label": project.projectName, "name": 'projectName' }
+            projects.push(json)
+        })
     }
 
     closeModal() {
@@ -70,8 +84,8 @@ export default class PhaseFilter extends React.Component<any, any> {
         }
     }
 
-    filter () {
-        this.setState ({
+    filter() {
+        this.setState({
             modalIsOpen: false
         })
     }
@@ -84,6 +98,7 @@ export default class PhaseFilter extends React.Component<any, any> {
             endDate,
             phaseType,
             phaseStatus,
+            projectName
         } = this.state
         return (
             <div>
@@ -133,6 +148,18 @@ export default class PhaseFilter extends React.Component<any, any> {
                             />
                         </div>
 
+                        <div className='col-md-12'>
+                            <Select
+                                value={projectName}
+                                name="projectName"
+                                header='Project name'
+                                placeholder='Select project'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={projects}
+                            />
+                        </div>
+
                         <div className='col-md-6'>
                             <Datepicker
                                 value={startDate}
@@ -162,3 +189,12 @@ export default class PhaseFilter extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.projects,
+    }),
+    ({
+        ...Projects.actionCreators,
+    })
+)(PhaseFilter as any) as typeof PhaseFilter

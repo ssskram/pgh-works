@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Projects from '../../store/projects'
 import * as Drawdowns from '../../store/drawdowns'
-import * as Funds from '../../store/funds'
+import * as Funds from '../../store/GETS/funds'
 import * as Phases from '../../store/phases'
 import * as Milestones from '../../store/milestones'
 import * as Attachments from '../../store/attachments'
@@ -12,6 +12,7 @@ import * as Tags from '../../store/tags'
 import * as Statuses from '../../store/GETS/status'
 import * as TaggableAssets from '../../store/GETS/taggableAssets'
 import * as Personnel from '../../store/GETS/personnel'
+import * as SubPhases from '../../store/subphases'
 
 export class Hydrate extends React.Component<any, any> {
 
@@ -29,6 +30,7 @@ export class Hydrate extends React.Component<any, any> {
         props.loadStatuses()
         props.loadTaggableAssets()
         props.loadPersonnel()
+        props.loadSubphases()
     }
 
     public render() {
@@ -50,7 +52,8 @@ export default connect(
         ...state.tags,
         ...state.statuses,
         ...state.taggableAssets,
-        ...state.personnel
+        ...state.personnel,
+        ...state.subphases
     }),
     ({
         ...Projects.actionCreators,
@@ -62,6 +65,7 @@ export default connect(
         ...Tags.actionCreators,
         ...Statuses.actionCreators,
         ...TaggableAssets.actionCreators,
-        ...Personnel.actionCreators
+        ...Personnel.actionCreators,
+        ...SubPhases.actionCreators
     })
   )(Hydrate as any) as typeof Hydrate

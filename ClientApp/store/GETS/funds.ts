@@ -1,6 +1,6 @@
 import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
-import { AppThunkAction } from './'
+import { AppThunkAction } from './../'
 
 const loadFunds = 'loadFunds'
 const addFund = 'addFunds'
@@ -24,7 +24,6 @@ export interface FundItem {
     fundType: string
     expirationDate: string
     fundOriginalAmount: string
-    fundCurrentAmount: string
 }
 
 export const actionCreators = {
@@ -54,11 +53,6 @@ export const reducer: Reducer<FundState> = (state: FundState, incomingAction: Ac
             return {
                 ...state,
                 funds: action.funds
-            };
-        case addFund:
-            return {
-                ...state,
-                funds: state.funds.concat(action.item)
             };
     }
 

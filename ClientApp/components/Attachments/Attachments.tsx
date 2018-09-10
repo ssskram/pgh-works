@@ -98,7 +98,7 @@ export class Attachments extends React.Component<any, any> {
         } = this.props
 
         const columns = [{
-            Header: 'Name',
+            Header: 'Attachment',
             accessor: 'attachmentName'
         }, {
             Header: 'Description',
