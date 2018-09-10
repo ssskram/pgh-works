@@ -6,7 +6,7 @@ import * as AttachmentsStore from '../../store/attachments'
 import Modal from 'react-responsive-modal'
 import AttachmentModule from '../Inputs/Attachment'
 import Table from 'react-table'
-import { Link } from 'react-router-dom';
+import DeleteAttachment from './DeleteAttachment'
 
 const iconStyle = {
     marginRight: '5px',
@@ -20,15 +20,16 @@ export class Attachments extends React.Component<any, any> {
         this.state = {
             // utilities
             modalIsOpen: false,
+            modalType: '',
 
             // attachments
+            selectedAttachment: {},
             attachments: [],
         }
         this.getAttachments = this.getAttachments.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.getAttachments(this.props)
     }
 
@@ -51,13 +52,16 @@ export class Attachments extends React.Component<any, any> {
 
     closeModal() {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: '',
+            selectedAttachment: {}
         });
     }
 
-    openModal() {
+    addAttachment() {
         this.setState({
-            modalIsOpen: true
+            modalIsOpen: true,
+            modalType: 'add'
         })
     }
 
@@ -65,13 +69,31 @@ export class Attachments extends React.Component<any, any> {
         console.log(link)
     }
 
-    deleteAttachment(link) {
-        console.log(link)
+    // delete attachment from store
+    deleteAttachment(attachment) {
+        console.log(attachment)
+        this.setState ({
+            selectedAttachment: attachment,
+            modalType: 'delete',
+            modalIsOpen: true
+        })
+    }
+
+    removeAttachment(attachment) {
+        // removes tag locally from state
+        // done in step with mutable delete from redux store
+        var attachmentsCopy = this.state.attachments.slice()
+        attachmentsCopy.splice(attachmentsCopy.indexOf(attachment), 1);
+        this.setState ({
+            attachments: attachmentsCopy
+        })
     }
 
     public render() {
         const {
             modalIsOpen,
+            modalType,
+            selectedAttachment,
             attachments
         } = this.state
 
@@ -97,13 +119,13 @@ export class Attachments extends React.Component<any, any> {
         }, {
             Header: '',
             accessor: 'attachmentID',
-            Cell: props => <button onClick={() => this.deleteAttachment(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+            Cell: props => <button onClick={() => this.deleteAttachment(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
             maxWidth: 100
         }]
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
+                <h3><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
                 <hr />
                 <div className='col-md-12'>
                     {attachments.length == 0 &&
@@ -137,10 +159,18 @@ export class Attachments extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <AttachmentModule
-                        parentID={parentID}
-                        parentType={parentType}
-                        closeModal={this.closeModal.bind(this)} />
+                    {modalType == 'add' &&
+                        <AttachmentModule
+                            parentID={parentID}
+                            parentType={parentType}
+                            closeModal={this.closeModal.bind(this)} />
+                    }
+                    {modalType == 'delete' &&
+                        <DeleteAttachment
+                            attachment={selectedAttachment}
+                            removeAttachment={this.removeAttachment.bind(this)}
+                            closeModal={this.closeModal.bind(this)} />
+                    }
                 </Modal>
             </div>
         )
