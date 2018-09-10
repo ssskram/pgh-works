@@ -44,7 +44,7 @@ export class Attachment extends React.Component<any, any> {
 
     save () {
         this.setState ({
-            link: this.state.file.preview
+            attachmentLink: this.state.file[0].preview
         }, function(this) {
             this.props.addAttachment(this.state)
         })

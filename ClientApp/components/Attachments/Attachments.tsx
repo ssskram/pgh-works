@@ -6,6 +6,7 @@ import * as AttachmentsStore from '../../store/attachments'
 import Modal from 'react-responsive-modal'
 import AttachmentModule from '../Inputs/Attachment'
 import Table from 'react-table'
+import { Link } from 'react-router-dom';
 
 const iconStyle = {
     marginRight: '5px',
@@ -27,11 +28,12 @@ export class Attachments extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.getAttachments(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
-        this.getAttachments(this.props)
+        this.getAttachments(nextProps)
     }
 
     getAttachments(props) {
@@ -59,6 +61,14 @@ export class Attachments extends React.Component<any, any> {
         })
     }
 
+    openAttachment(link) {
+        console.log(link)
+    }
+
+    deleteAttachment(link) {
+        console.log(link)
+    }
+
     public render() {
         const {
             modalIsOpen,
@@ -70,6 +80,27 @@ export class Attachments extends React.Component<any, any> {
             parentType
         } = this.props
 
+        const columns = [{
+            Header: 'Name',
+            accessor: 'attachmentName'
+        }, {
+            Header: 'Description',
+            accessor: 'attachmentDescription',
+        }, {
+            Header: 'Uploaded',
+            accessor: 'dateCreated',
+        }, {
+            Header: '',
+            accessor: 'attachmentLink',
+            Cell: props => <button onClick={() => this.openAttachment(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></button>,
+            maxWidth: 100
+        }, {
+            Header: '',
+            accessor: 'attachmentID',
+            Cell: props => <button onClick={() => this.deleteAttachment(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+            maxWidth: 100
+        }]
+
         return (
             <div>
                 <h3><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
@@ -79,7 +110,23 @@ export class Attachments extends React.Component<any, any> {
                         <h4 className='text-center'><i>No attachments</i></h4>
                     }
                     {attachments.length > 0 &&
-                        <h4 className='text-center'><i>Return attachments now</i></h4>
+                        <Table
+                            data={attachments}
+                            columns={columns}
+                            loading={false}
+                            minRows={0}
+                            showPagination={false}
+                            showPageSizeOptions={false}
+                            noDataText=''
+                            getTdProps={() => ({
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    fontSize: '16px'
+                                }
+                            })}
+                        />
                     }
                 </div>
                 <Modal
