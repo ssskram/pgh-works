@@ -7,7 +7,7 @@ import * as Ping from '../store/GETS/ping'
 import * as Projects from '../store/projects'
 import Map from './Map/HomeMap'
 import { Helmet } from "react-helmet"
-import Filters from './Filters/HomeMap'
+import Filters from './Filters/ProjectFilter'
 
 const floatingPanelBig = {
     position: 'absolute' as any,

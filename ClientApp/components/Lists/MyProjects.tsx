@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
+import ProjectFilters from '../Filters/ProjectFilter'
 
 export class MyProjects extends React.Component<any, any> {
 
@@ -14,7 +15,7 @@ export class MyProjects extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <h2>My Projects</h2>
+                <h2>My Projects <span style={{marginTop: '-10px'}} className='pull-right'><ProjectFilters /></span></h2>
                 <hr/>
                 <i className='text-center'>Return filterable list of projects where user is identified as either the project manager, or project member</i>
             </div>
