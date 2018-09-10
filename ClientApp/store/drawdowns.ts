@@ -17,11 +17,12 @@ export interface DrawdownState {
 }
 
 export interface DrawdownItem {
-    projectID: string
+    parentID: string
+    parentType: string
     fundID: string
-    drawdownName: string
-    drawdownYear: string
     drawdownAmount: string
+    drawdownType: string
+    contractorVendor: string
 }
 
 export const actionCreators = {

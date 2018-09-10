@@ -28,13 +28,13 @@ export class AllPhases extends React.Component<any, any> {
     }
 
     getPhaseLink(phaseID) {
-        this.setState ({
+        this.setState({
             redirectLink: "/Phase/id=" + phaseID,
             redirect: true
         })
     }
 
-    returnProjectName (projectID) {
+    returnProjectName(projectID) {
         const project = this.props.projects.find(function (project) {
             return project.projectID == projectID
         })
@@ -60,7 +60,7 @@ export class AllPhases extends React.Component<any, any> {
         }, {
             Header: 'Project',
             accessor: 'projectID',
-            Cell: props=> <div>{this.returnProjectName(props.value)}</div>
+            Cell: props => <div>{this.returnProjectName(props.value)}</div>
         }, {
             Header: '',
             accessor: 'phaseID',
@@ -76,24 +76,26 @@ export class AllPhases extends React.Component<any, any> {
             <div>
                 <h2>All Phases <span style={{ marginTop: '-10px' }} className='pull-right'><PhaseFilters /></span></h2>
                 <hr />
-                <Table
-                    data={phases}
-                    columns={columns}
-                    loading={false}
-                    minRows={0}
-                    pageSize={50}
-                    showPagination={true}
-                    showPageSizeOptions={false}
-                    noDataText=''
-                    getTdProps={() => ({
-                        style: {
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            fontSize: '16px'
-                        }
-                    })}
-                />
+                {phases.length > 0 &&
+                    <Table
+                        data={phases}
+                        columns={columns}
+                        loading={false}
+                        minRows={0}
+                        pageSize={50}
+                        showPagination={true}
+                        showPageSizeOptions={false}
+                        noDataText=''
+                        getTdProps={() => ({
+                            style: {
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                fontSize: '16px'
+                            }
+                        })}
+                    />
+                }
             </div>
         )
     }
