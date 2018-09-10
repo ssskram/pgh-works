@@ -751,6 +751,17 @@ a[href^="https://maps.google.com/maps"] {
     background-color: #d5ddf6 !important;
 }
 
+/* Dropzone
+/* ------------------------- */
+
+.dropzone-style {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    height: 200px;
+    border: 1px black dashed;
+}
+
 /* Site specific
 /* ------------------------- */
 

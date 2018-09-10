@@ -193,7 +193,7 @@ export class Phase extends React.Component<any, any> {
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
-                    <Attachments projectID={projectID} />
+                    <Attachments parentID={phaseID} parentType={'Phase'} />
                 </div>
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />

@@ -5,6 +5,7 @@ import { ApplicationState } from '../../store'
 import * as AttachmentsStore from '../../store/attachments'
 import Modal from 'react-responsive-modal'
 import AttachmentModule from '../Inputs/Attachment'
+import Table from 'react-table'
 
 const iconStyle = {
     marginRight: '5px',
@@ -64,6 +65,11 @@ export class Attachments extends React.Component<any, any> {
             attachments
         } = this.state
 
+        const {
+            parentID,
+            parentType
+        } = this.props
+
         return (
             <div>
                 <h3><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Upload an attachment</button></span></h3>
@@ -84,7 +90,10 @@ export class Attachments extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <AttachmentModule />
+                    <AttachmentModule
+                        parentID={parentID}
+                        parentType={parentType}
+                        closeModal={this.closeModal.bind(this)} />
                 </Modal>
             </div>
         )

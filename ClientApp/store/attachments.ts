@@ -17,7 +17,8 @@ export interface AttachmentState {
 }
 
 export interface AttachmentItem {
-    parentID: string    
+    parentID: string
+    parentType: string    
     attachmentID: string
     dateCreated: string
     attachmentName: string
