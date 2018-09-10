@@ -65,13 +65,8 @@ export class Attachments extends React.Component<any, any> {
         })
     }
 
-    openAttachment(link) {
-        console.log(link)
-    }
-
     // delete attachment from store
     deleteAttachment(attachment) {
-        console.log(attachment)
         this.setState ({
             selectedAttachment: attachment,
             modalType: 'delete',
@@ -114,7 +109,7 @@ export class Attachments extends React.Component<any, any> {
         }, {
             Header: '',
             accessor: 'attachmentLink',
-            Cell: props => <button onClick={() => this.openAttachment(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></button>,
+            Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
             maxWidth: 100
         }, {
             Header: '',
