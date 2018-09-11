@@ -8,7 +8,7 @@ import * as Projects from '../../store/projects'
 import Spinner from '../Utilities/Spinner'
 import Map from '../Map/ProjectMap'
 import Phases from './Phases'
-import Funds from '../ProgramsFunds/Drawdowns'
+import Drawdowns from '../ProgramsFunds/Drawdowns'
 import Attachments from '../Attachments/Attachments'
 import * as User from '../../store/GETS/user'
 import * as Assets from '../../store/GETS/taggableAssets'
@@ -268,24 +268,24 @@ export class Project extends React.Component<any, any> {
                 <hr />
                 <Map shape={shape} />
                 <br />
-                <div className='row col-md-12'>
+                <div className='col-md-12'>
                     <ProjectCard project={this.state} />
                 </div>
                 {expectedStartDate && expectedEndDate &&
-                    <div style={marginBottom} className='row col-md-12'>
+                    <div style={marginBottom} className='col-md-12'>
                         <ProjectTimeline project={this.state} />
                     </div>
                 }
-                <div style={marginBottom} className='row col-md-12'>
+                <div style={marginBottom} className='col-md-12'>
                     <Phases projectID={projectID} />
                 </div>
-                <div style={marginBottom} className='row col-md-12'>
-                    <Funds parentID={projectID} parentType={'Project'}/>
+                <div style={marginBottom} className='col-md-12'>
+                    <Drawdowns parentID={projectID} parentType={'Project'}/>
                 </div>
-                <div style={marginBottom} className='row col-md-12'>
+                <div style={marginBottom} className='col-md-12'>
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />
                 </div>
-                <div style={marginBottom} className='row col-md-12'>
+                <div style={marginBottom} className='col-md-12'>
                     <Attachments parentID={projectID} parentType={'Project'} />
                 </div>
 

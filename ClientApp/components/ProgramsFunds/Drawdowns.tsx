@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 import * as Drawdowns from '../../store/drawdowns'
 import * as Funds from '../../store/GETS/funds'
 import Modal from 'react-responsive-modal'
-import DrawdownForm from '../Inputs/ProgramsFund'
+import DrawdownForm from '../Inputs/Drawdown'
 import DeleteDrawdown from './DeleteDrawdown'
 import * as CurrencyFormat from 'react-currency-format'
 
@@ -177,7 +177,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/programsGrey.png' /> Programs & Funds<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'>Associate a program or fund</button></span></h3>
+                <h3><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'>Drawdown a program or fund</button></span></h3>
                 <hr />
 
                 <div className='col-md-12'>
@@ -240,6 +240,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         <DrawdownForm
                             closeModal={this.closeModal.bind(this)}
                             parentID={this.props.parentID}
+                            projectID={this.props.projectID}
                             parentType={this.props.parentType} />
                     }
                     {modalType == 'delete' &&

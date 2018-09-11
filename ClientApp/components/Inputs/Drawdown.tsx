@@ -9,28 +9,19 @@ import Input from '../FormElements/input'
 import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
+import { max } from 'moment';
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
-const types = [
-    { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
-    { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
-    { value: 'Spent', label: 'Spent', name: 'drawdownType' }
-]
-
-const contractorVendors = [
-    { value: 'Contractor A', label: 'Contractor A', name: 'contractorVendor' },
-    { value: 'Contractor B', label: 'Contractor B', name: 'contractorVendor' },
-    { value: 'Contractor C', label: 'Contractor C', name: 'contractorVendor' },
-    { value: 'Contractor D', label: 'Contractor D', name: 'contractorVendor' },
-    { value: 'Contractor E', label: 'Contractor E', name: 'contractorVendor' },
-    { value: 'Contractor F', label: 'Contractor F', name: 'contractorVendor' },
-]
+let types = [] as any
+let contractorVendors = [] as any
 
 export class ProgramFundInputs extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
+            maxDrawdown: 0,
+            projectDrawdowns: [],
             funds: props.funds,
             fundSearch: '',
             fundName: '',
@@ -47,6 +38,45 @@ export class ProgramFundInputs extends React.Component<any, any> {
         }
     }
 
+    componentDidMount() {
+        let allFunds = this.props.funds
+        let projectID = this.props.projectID
+        if (this.props.parentType == 'Phase') {
+            const projectDrawdowns = this.props.drawdowns.filter(function (drawdown) {
+                return (drawdown.parentID == projectID) && (drawdown.parentType == 'Project')
+            })
+            // set available list of funds derived from project drawdown
+            let funds = [] as any
+            projectDrawdowns.forEach(function (drawdown) {
+                const fund = allFunds.find(function (fund) {
+                    return fund.fundID == drawdown.fundID
+                })
+                funds.push(fund)
+            })
+            this.setState ({
+                projectDrawdowns: projectDrawdowns,
+                funds: funds
+            })
+        } else {
+            types = []
+            types = [
+                { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
+                { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
+                { value: 'Spent', label: 'Spent', name: 'drawdownType' }
+            ]
+            contractorVendors = []
+            contractorVendors = [
+                { value: 'Contractor A', label: 'Contractor A', name: 'contractorVendor' },
+                { value: 'Contractor B', label: 'Contractor B', name: 'contractorVendor' },
+                { value: 'Contractor C', label: 'Contractor C', name: 'contractorVendor' },
+                { value: 'Contractor D', label: 'Contractor D', name: 'contractorVendor' },
+                { value: 'Contractor E', label: 'Contractor E', name: 'contractorVendor' },
+                { value: 'Contractor F', label: 'Contractor F', name: 'contractorVendor' },
+            ]
+        }
+
+    }
+
     handleChildChange(event) {
         this.setState({ [event.target.name]: event.target.value })
         if (event.target.name == 'fundSearch') {
@@ -61,6 +91,11 @@ export class ProgramFundInputs extends React.Component<any, any> {
     handleCurrency(event, maskedvalue, floatvalue) {
         this.setState({
             drawdownAmount: floatvalue
+        }, function (this) {
+            if (this.state.maxDrawdown > 0 && this.state.drawdownAmount > this.state.maxDrawdown) {
+                alert('You cannot exceed the project-level drawdown of this fund: $' + this.state.maxDrawdown)
+                this.setState ({ drawdownAmount: '' })
+            }
         })
     }
 
@@ -74,6 +109,26 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundType: fund.fundType,
             fundYear: fund.fundYear
         })
+        if (this.props.parentType == 'Phase') {
+            types = []
+            contractorVendors = []
+            let maxDrawdown = 0
+            let projectFundDrawdowns = this.state.projectDrawdowns.filter(function (item) {
+                return item.fundID == fundID
+            })
+            projectFundDrawdowns.forEach(function (drawdown) {
+                const ts = { value: drawdown.drawdownType, label: drawdown.drawdownType, name: 'drawdownType' }
+                types.push(ts)
+                if (drawdown.contractorVendor) {
+                    const cv =  { value: drawdown.contractorVendor, label: drawdown.contractorVendor, name: 'contractorVendor' }
+                    contractorVendors.push(cv)
+                }
+                maxDrawdown = maxDrawdown + drawdown.drawdownAmount
+            })
+            this.setState ({
+                maxDrawdown: maxDrawdown
+            })
+        }
     }
 
     filterFunds(input) {
