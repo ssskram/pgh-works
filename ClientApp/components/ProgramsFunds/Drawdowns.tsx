@@ -177,7 +177,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'>Drawdown a program or fund</button></span></h3>
+                <h3><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'>Add cost</button></span></h3>
                 <hr />
 
                 <div className='col-md-12'>
@@ -214,7 +214,8 @@ export class ProgramsFunds extends React.Component<any, any> {
                             loading={false}
                             minRows={0}
                             pageSize={10}
-                            showPagination={true}
+                            showPageJump={false}
+                            showPagination={drawdowns.length > 10}
                             showPageSizeOptions={false}
                             noDataText=''
                             getTdProps={() => ({

@@ -187,7 +187,8 @@ export class FundViewer extends React.Component<any, any> {
                         loading={false}
                         minRows={0}
                         pageSize={10}
-                        showPagination={true}
+                        showPageJump={false}
+                        showPagination={drawdowns > 10}
                         showPageSizeOptions={false}
                         noDataText=''
                         getTdProps={() => ({

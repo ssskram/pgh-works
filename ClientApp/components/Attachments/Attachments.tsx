@@ -132,6 +132,7 @@ export class Attachments extends React.Component<any, any> {
                             columns={columns}
                             loading={false}
                             minRows={0}
+                            showPageJump={false}
                             showPagination={false}
                             showPageSizeOptions={false}
                             noDataText=''

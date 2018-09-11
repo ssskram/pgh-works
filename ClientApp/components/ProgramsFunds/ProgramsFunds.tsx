@@ -85,7 +85,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         minRows={0}
                         pageSize={50}
                         showPageJump={false}
-                        showPagination={true}
+                        showPagination={funds > 50}
                         showPageSizeOptions={false}
                         noDataText=''
                         getTdProps={() => ({

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ae6d33fbd844ea0c13b2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "441d0fe0ae73a3ec0816"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -28535,7 +28535,7 @@ var Attachments = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No attachments")),
                 attachments.length > 0 &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: attachments, columns: columns, loading: false, minRows: 0, showPagination: false, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: attachments, columns: columns, loading: false, minRows: 0, showPageJump: false, showPagination: false, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                             style: {
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -29477,7 +29477,7 @@ var ProgramsFunds = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/programsGrey.png' }),
                 " Cost",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), className: 'btn pull-right hidden-xs' }, "Drawdown a program or fund"))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), className: 'btn pull-right hidden-xs' }, "Add cost"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
@@ -29500,7 +29500,7 @@ var ProgramsFunds = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
             drawdowns.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: drawdowns.length > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                             style: {
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -54664,7 +54664,7 @@ var ProgramFundInputs = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_input__["a" /* default */], { value: fundSearch, name: "fundSearch", header: "Search by name", placeholder: "Enter a program/fund name", callback: this.handleChildChange.bind(this) })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: funds > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                             style: {
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -55131,7 +55131,7 @@ var AllPhases = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_PhaseFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_table__["a" /* default */], { data: phases, columns: columns, loading: false, minRows: 0, pageSize: 50, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_table__["a" /* default */], { data: phases, columns: columns, loading: false, minRows: 0, pageSize: 50, showPageJump: false, showPagination: phases > 50, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                         style: {
                             display: 'flex',
                             flexDirection: 'column',
@@ -56998,7 +56998,7 @@ var FundViewer = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
             drawdowns.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: drawdowns > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                         style: {
                             display: 'flex',
                             flexDirection: 'column',
@@ -57122,7 +57122,7 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_FundFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 50, showPageJump: false, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 50, showPageJump: false, showPagination: funds > 50, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                         style: {
                             display: 'flex',
                             flexDirection: 'column',

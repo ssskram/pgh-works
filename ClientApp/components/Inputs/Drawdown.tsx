@@ -233,7 +233,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                             minRows={0}
                             pageSize={10}
                             showPageJump={false}
-                            showPagination={true}
+                            showPagination={funds > 10}
                             showPageSizeOptions={false}
                             noDataText=''
                             getTdProps={() => ({
