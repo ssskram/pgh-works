@@ -9,6 +9,12 @@ import * as Projects from '../../store/projects'
 import PhaseFilters from '../Filters/PhaseFilter'
 import Table from 'react-table'
 
+const iconStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+}
 
 export class AllPhases extends React.Component<any, any> {
     constructor(props) {
@@ -95,6 +101,13 @@ export class AllPhases extends React.Component<any, any> {
                             }
                         })}
                     />
+                }
+                {phases.length == 0 &&
+                    <div className='col-md-12 text-center'>
+                        <br />
+                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
+                        <h1>No phases defined in system</h1>
+                    </div>
                 }
             </div>
         )

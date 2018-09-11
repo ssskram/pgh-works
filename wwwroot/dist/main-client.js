@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "27b3f9bd7c351e1e2324"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "61d5590274a3da202c9c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -54570,6 +54570,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var iconStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+};
 var AllPhases = (function (_super) {
     __extends(AllPhases, _super);
     function AllPhases(props) {
@@ -54639,7 +54645,14 @@ var AllPhases = (function (_super) {
                             justifyContent: 'center',
                             fontSize: '16px'
                         }
-                    }); } })));
+                    }); } }),
+            phases.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/nothing.png' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "No phases defined in system"))));
     };
     return AllPhases;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -54774,11 +54787,20 @@ var AllProjects = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Filters_ProjectFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            renderItems,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
+            projects.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    renderItems,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
+            projects.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/nothing.png' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "No projects defined in system"))));
     };
     return AllProjects;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -54913,11 +54935,20 @@ var MyProjects = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Filters_ProjectFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            renderItems,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
+            projects.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    renderItems,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
+            projects.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/nothing.png' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "No projects associated with your account"))));
     };
     return MyProjects;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -56398,6 +56429,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var iconStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+};
 var ProgramsFunds = (function (_super) {
     __extends(ProgramsFunds, _super);
     function ProgramsFunds(props) {
@@ -56463,7 +56500,14 @@ var ProgramsFunds = (function (_super) {
                             justifyContent: 'center',
                             fontSize: '16px'
                         }
-                    }); } })));
+                    }); } }),
+            funds.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/nothing.png' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "No programs or funds defined in system"))));
     };
     return ProgramsFunds;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

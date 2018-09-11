@@ -9,6 +9,13 @@ import Table from 'react-table'
 import FundFilter from './../Filters/FundFilter'
 import * as CurrencyFormat from 'react-currency-format'
 
+const iconStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+}
+
 export class ProgramsFunds extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -53,7 +60,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         }, {
             Header: 'Original Amount',
             accessor: 'fundAmount',
-            Cell: props =>  <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
+            Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
         }, {
             Header: '',
             accessor: 'fundID',
@@ -61,7 +68,7 @@ export class ProgramsFunds extends React.Component<any, any> {
             maxWidth: 100
         }]
 
-        let redirectLink= "/Fund/id=" + selectedFundID
+        let redirectLink = "/Fund/id=" + selectedFundID
         if (redirect) {
             return <Redirect to={redirectLink} />
         }
@@ -89,6 +96,13 @@ export class ProgramsFunds extends React.Component<any, any> {
                             }
                         })}
                     />
+                }
+                {funds.length == 0 &&
+                    <div className='col-md-12 text-center'>
+                        <br />
+                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
+                        <h1>No programs or funds defined in system</h1>
+                    </div>
                 }
             </div>
         )

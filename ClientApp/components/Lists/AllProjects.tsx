@@ -74,7 +74,7 @@ export class AllProjects extends React.Component<any, any> {
                         <div className='col-md-3'>
                             <MapThumbnail shape={project.shape} />
                         </div>
-                        <div style={{paddingTop: '25px'}} className='col-md-3'>
+                        <div style={{ paddingTop: '25px' }} className='col-md-3'>
                             <Link to={link} className='btn btn-success'><h2><span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></h2></Link>
                         </div>
                     </div>
@@ -92,16 +92,27 @@ export class AllProjects extends React.Component<any, any> {
             <div>
                 <h2>All Projects <span style={{ marginTop: '-10px' }} className='pull-right'><ProjectFilters /></span></h2>
                 <hr />
-                {renderItems}
-                <br />
-                <Paging
-                    count={projects}
-                    currentPage={currentPage}
-                    totalPages={pageNumbers}
-                    next={this.handleNextClick.bind(this)}
-                    prev={this.handlePreviousClick.bind(this)} />
-                <br />
-                <br />
+                {projects.length > 0 &&
+                    <div>
+                        {renderItems}
+                        < br />
+                        <Paging
+                            count={projects}
+                            currentPage={currentPage}
+                            totalPages={pageNumbers}
+                            next={this.handleNextClick.bind(this)}
+                            prev={this.handlePreviousClick.bind(this)} />
+                        <br />
+                        <br />
+                    </div>
+                }
+                {projects.length == 0 &&
+                    <div className='col-md-12 text-center'>
+                        <br />
+                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
+                        <h1>No projects defined in system</h1>
+                    </div>
+                }
             </div>
         )
     }
