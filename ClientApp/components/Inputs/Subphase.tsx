@@ -156,6 +156,8 @@ export class SubphaseInput extends React.Component<any, any> {
 
         return (
             <div>
+                <h3>Subphase</h3>
+                <hr/>
                 <div className='col-md-12'>
                     <Input
                         value={subphaseName}
