@@ -26,8 +26,7 @@ export class TagDescription extends React.Component<any, any> {
     public render() {
         const {
             tagDescription,
-            taggedAssetName,
-            writeToAsset
+            taggedAssetName
         } = this.state
 
         const isEnabled = tagDescription != ''
@@ -43,6 +42,7 @@ export class TagDescription extends React.Component<any, any> {
                         value={tagDescription}
                         name="tagDescription"
                         header="Description"
+                        required={true}
                         placeholder="Provide a brief explanation for the tag"
                         callback={this.handleChildChange.bind(this)}
                     />

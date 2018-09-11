@@ -84,6 +84,7 @@ export class Attachment extends React.Component<any, any> {
                                 name="attachmentName"
                                 header="Attachment name"
                                 placeholder="Enter a name"
+                                required={true}
                                 callback={this.handleChildChange.bind(this)}
                             />
                         </div>
@@ -93,6 +94,7 @@ export class Attachment extends React.Component<any, any> {
                                 value={attachmentDescription}
                                 name="attachmentDescription"
                                 header="Description"
+                                required={true}
                                 placeholder="Provide context for the attachment"
                                 callback={this.handleChildChange.bind(this)}
                             />

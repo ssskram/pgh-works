@@ -83,6 +83,7 @@ export class MilestoneInputs extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <Input
                         value={milestoneName}
+                        required={true}
                         name="milestoneName"
                         header="Milestone name"
                         placeholder="Enter a name"
@@ -94,6 +95,7 @@ export class MilestoneInputs extends React.Component<any, any> {
                     <Datepicker
                         value={dueDate}
                         name="dueDate"
+                        required={true}
                         header="Due date"
                         placeholder="Select a date"
                         callback={this.handleDueDate.bind(this)}

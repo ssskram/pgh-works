@@ -163,6 +163,7 @@ export class SubphaseInput extends React.Component<any, any> {
                         value={subphaseName}
                         name="subphaseName"
                         header="Subphase name"
+                        required={true}
                         placeholder="Enter a name"
                         callback={this.handleChildChange.bind(this)}
                     />
@@ -193,6 +194,7 @@ export class SubphaseInput extends React.Component<any, any> {
                         value={subphaseStatus}
                         name="subphaseStatus"
                         header='Subphase status'
+                        required={true}
                         placeholder='Select statuses'
                         onChange={this.handleStatusMulti.bind(this)}
                         multi={true}
@@ -204,6 +206,7 @@ export class SubphaseInput extends React.Component<any, any> {
                     <Datepicker
                         value={startDate}
                         name="startDate"
+                        required={true}
                         header="Start date"
                         placeholder="Select a date"
                         callback={this.handleStartDate.bind(this)}
@@ -215,6 +218,7 @@ export class SubphaseInput extends React.Component<any, any> {
                         value={endDate}
                         name="endDate"
                         header="End date"
+                        required={true}
                         placeholder="Select a date"
                         callback={this.handleEndDate.bind(this)}
                     />

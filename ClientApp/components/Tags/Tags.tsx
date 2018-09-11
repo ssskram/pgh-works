@@ -98,7 +98,7 @@ export class Tags extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/tag.png' /> Component Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
+                <h3><img style={iconStyle} src='./images/tag.png' /> Relevant Assets<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Tag an asset</button></span></h3>
                 <hr />
                 <div className='col-md-12'>
                     {tags.length == 0 &&

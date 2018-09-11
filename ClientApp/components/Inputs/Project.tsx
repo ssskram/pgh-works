@@ -108,6 +108,7 @@ export class ProjectInputs extends React.Component<any, any> {
                     <Input
                         value={projectName}
                         name="projectName"
+                        required={true}
                         header="Project name"
                         placeholder="Enter a name"
                         callback={this.handleChildChange.bind(this)}
@@ -122,6 +123,7 @@ export class ProjectInputs extends React.Component<any, any> {
                         placeholder='Select status(es)'
                         onChange={this.handleStatusMulti.bind(this)}
                         multi={true}
+                        required={true}
                         options={statuses}
                     />
                 </div>
@@ -155,6 +157,7 @@ export class ProjectInputs extends React.Component<any, any> {
                                     value={expectedStartDate}
                                     name="expectedStartDate"
                                     header="Expected start date"
+                                    required={true}
                                     placeholder="Select a date"
                                     callback={(value) => this.handleDate(value, 'expectedStartDate')}
                                 />
@@ -165,6 +168,7 @@ export class ProjectInputs extends React.Component<any, any> {
                                     value={expectedEndDate}
                                     name="expectedEndDate"
                                     header="Expected end date"
+                                    required={true}
                                     placeholder="Select a date"
                                     callback={(value) => this.handleDate(value, 'expectedEndDate')}
                                 />
@@ -200,6 +204,7 @@ export class ProjectInputs extends React.Component<any, any> {
                         <Select
                             value={projectDepartment}
                             name="projectDepartment"
+                            required={true}
                             header='Department'
                             placeholder='Select a department'
                             onChange={this.handleChildSelect.bind(this)}
@@ -213,6 +218,7 @@ export class ProjectInputs extends React.Component<any, any> {
                             value={projectManager}
                             name="projectManager"
                             header='Project manager'
+                            required={true}
                             placeholder='Select manager'
                             onChange={this.handleChildSelect.bind(this)}
                             multi={false}

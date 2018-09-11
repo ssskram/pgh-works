@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "441d0fe0ae73a3ec0816"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "689f57cc0ad14729ea49"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6416,7 +6416,9 @@ var input = (function (_super) {
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
+                    this.props.header,
+                    this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("input", { type: 'search', className: conditionalClass, value: this.props.value, name: this.props.name, id: this.props.name, placeholder: this.props.placeholder, onChange: this.props.callback.bind(this) }))));
     };
     return input;
@@ -6653,7 +6655,9 @@ var input = (function (_super) {
     input.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
+                    this.props.header,
+                    this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], { autoFocus: this.state.autoFocus, placeholder: this.props.placeholder, name: this.props.name, value: this.props.value, onChange: this.props.onChange.bind(this), options: this.props.options, closeOnSelect: !this.props.multi, simpleValue: this.props.multi, removeSelected: this.props.multi, multi: this.props.multi, clearable: this.props.multi, delimiter: ', ' }))));
     };
     return input;
@@ -6873,7 +6877,9 @@ var datepicker = (function (_super) {
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
+                    this.props.header,
+                    this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: conditionalClass, onClick: this.toggleCalendar.bind(this) },
                     this.state.date == null &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: '#aaa' } }, this.props.placeholder),
@@ -10171,7 +10177,9 @@ var textarea = (function (_super) {
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
+                    this.props.header,
+                    this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("textarea", { onKeyUp: this.setHeight.bind(this), onFocus: this.setHeight.bind(this), value: this.props.value, className: conditionalClass, name: this.props.name, id: this.props.name, placeholder: this.props.placeholder, style: { height: this.state.height }, onChange: this.props.callback.bind(this) }))));
     };
     return textarea;
@@ -28595,7 +28603,9 @@ var currency = (function (_super) {
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, this.props.header),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
+                    this.props.header,
+                    this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { type: 'search', className: conditionalClass, prefix: this.props.prefix, precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
     };
     return currency;
@@ -28816,7 +28826,7 @@ var PhaseInputs = (function (_super) {
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_input__["a" /* default */], { value: phaseName, name: "phaseName", header: "Phase name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_input__["a" /* default */], { value: phaseName, name: "phaseName", required: true, header: "Phase name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: phaseType, name: "phaseType", header: 'Phase type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -28824,7 +28834,7 @@ var PhaseInputs = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", header: 'Phase status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", required: true, header: 'Phase status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "form-group" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12 form-element" },
@@ -28833,9 +28843,9 @@ var PhaseInputs = (function (_super) {
             !this.props.update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", required: true, header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -28970,9 +28980,9 @@ var ProjectInputs = (function (_super) {
         var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, update = _a.update;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' } },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", required: true, header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, required: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -28984,9 +28994,9 @@ var ProjectInputs = (function (_super) {
                 !update &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -28996,9 +29006,9 @@ var ProjectInputs = (function (_super) {
                     "Owners",
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: glyphs, className: 'glyphicon glyphicon-user hidden-sm hidden-xs pull-right' })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", header: 'Department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", required: true, header: 'Department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })))));
     };
@@ -29194,17 +29204,17 @@ var SubphaseInput = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Subphase"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: subphaseName, name: "subphaseName", header: "Subphase name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: subphaseName, name: "subphaseName", header: "Subphase name", required: true, placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: subphaseDescription, name: "subphaseDescription", header: "Subphase description", placeholder: "Provide a brief explanation of the subphase", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: subphaseStatus, name: "subphaseStatus", header: 'Subphase status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: subphaseStatus, name: "subphaseStatus", header: 'Subphase status', required: true, placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", required: true, header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", required: true, placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__["a" /* default */], { value: percentComplete, name: "percentComplete", header: "Percent complete", placeholder: "Enter a number", prefix: "% ", callback: this.handlePercent.bind(this) })),
             percentComplete > 0 &&
@@ -29842,7 +29852,7 @@ var Tags = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/tag.png' }),
-                " Component Assets",
+                " Relevant Assets",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' }, "Tag an asset"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
@@ -54421,9 +54431,9 @@ var Attachment = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Attachment description"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: attachmentName, name: "attachmentName", header: "Attachment name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: attachmentName, name: "attachmentName", header: "Attachment name", placeholder: "Enter a name", required: true, callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: attachmentDescription, name: "attachmentDescription", header: "Description", placeholder: "Provide context for the attachment", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: attachmentDescription, name: "attachmentDescription", header: "Description", required: true, placeholder: "Provide context for the attachment", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12  text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.save.bind(this), className: 'btn btn-success' }, "Save")))));
     };
@@ -54687,9 +54697,9 @@ var ProgramFundInputs = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundYear)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: drawdownType, name: "drawdownType", header: 'Drawdown type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: drawdownType, name: "drawdownType", header: 'Drawdown type', placeholder: 'Select type', required: true, onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: contractorVendor, name: "contractorVendor", header: 'Contractor or vendor', placeholder: 'Select contractor or vendor', onChange: this.handleChildSelect.bind(this), multi: false, options: contractorVendors })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
@@ -54816,9 +54826,9 @@ var MilestoneInputs = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "New milestone"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: milestoneName, name: "milestoneName", header: "Milestone name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: milestoneName, required: true, name: "milestoneName", header: "Milestone name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: dueDate, name: "dueDate", header: "Due date", placeholder: "Select a date", callback: this.handleDueDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: dueDate, name: "dueDate", required: true, header: "Due date", placeholder: "Select a date", callback: this.handleDueDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
@@ -57870,13 +57880,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 
 
-var timelineContainer = {
-    margin: '25px 0px',
-    borderRadius: '5px',
-    padding: '20px 40px',
-    backgroundColor: 'rgba(92, 184, 92, .08)',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-};
 var ProjectTimeline = (function (_super) {
     __extends(ProjectTimeline, _super);
     function ProjectTimeline() {
@@ -57887,7 +57890,7 @@ var ProjectTimeline = (function (_super) {
         var items = [];
         var expected = {
             id: 1,
-            content: projectName + ' (expected)',
+            content: projectName + ', ' + expectedStartDate + ' - ' + expectedEndDate + ' (expected)',
             start: expectedStartDate,
             end: expectedEndDate
         };
@@ -57895,7 +57898,7 @@ var ProjectTimeline = (function (_super) {
         if (actualStartDate && actualEndDate) {
             var actual = {
                 id: 2,
-                content: projectName + ' (actual)',
+                content: projectName + ', ' + actualStartDate + ' - ' + actualEndDate + ' (actual)',
                 start: actualStartDate,
                 end: actualEndDate,
                 style: 'background-color: pink'
@@ -57903,24 +57906,8 @@ var ProjectTimeline = (function (_super) {
             items.push(actual);
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: timelineContainer, className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Expected duration"),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                            expectedStartDate,
-                            " - ",
-                            expectedEndDate))),
-                actualStartDate && actualEndDate &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Actual duration"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                                actualStartDate,
-                                " - ",
-                                actualEndDate))),
-                this.props.project &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.project &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
     };
     return ProjectTimeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -58882,14 +58869,14 @@ var TagDescription = (function (_super) {
         this.props.receiveDescription(this.state);
     };
     TagDescription.prototype.render = function () {
-        var _a = this.state, tagDescription = _a.tagDescription, taggedAssetName = _a.taggedAssetName, writeToAsset = _a.writeToAsset;
+        var _a = this.state, tagDescription = _a.tagDescription, taggedAssetName = _a.taggedAssetName;
         var isEnabled = tagDescription != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, taggedAssetName),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null)),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: tagDescription, name: "tagDescription", header: "Description", placeholder: "Provide a brief explanation for the tag", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: tagDescription, name: "tagDescription", header: "Description", required: true, placeholder: "Provide a brief explanation for the tag", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.props.back, className: 'btn btn-warning pull-left' }, "Back"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.postTag.bind(this), className: 'btn btn-success pull-right' }, "Submit"))));

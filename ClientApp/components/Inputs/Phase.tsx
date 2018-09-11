@@ -199,6 +199,7 @@ export class PhaseInputs extends React.Component<any, any> {
                     <Input
                         value={phaseName}
                         name="phaseName"
+                        required={true}
                         header="Phase name"
                         placeholder="Enter a name"
                         callback={this.handleChildChange.bind(this)}
@@ -241,6 +242,7 @@ export class PhaseInputs extends React.Component<any, any> {
                     <Select
                         value={phaseStatus}
                         name="phaseStatus"
+                        required={true}
                         header='Phase status'
                         placeholder='Select statuses'
                         onChange={this.handleStatusMulti.bind(this)}
@@ -271,6 +273,7 @@ export class PhaseInputs extends React.Component<any, any> {
                             <Datepicker
                                 value={expectedStartDate}
                                 name="expectedStartDate"
+                                required={true}
                                 header="Expected start date"
                                 placeholder="Select a date"
                                 callback={(value) => this.handleDate(value, 'expectedStartDate')}
@@ -282,6 +285,7 @@ export class PhaseInputs extends React.Component<any, any> {
                                 value={expectedEndDate}
                                 name="expectedEndDate"
                                 header="Expected end date"
+                                required={true}
                                 placeholder="Select a date"
                                 callback={(value) => this.handleDate(value, 'expectedEndDate')}
                             />

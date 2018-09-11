@@ -261,6 +261,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 name="drawdownType"
                                 header='Drawdown type'
                                 placeholder='Select type'
+                                required={true}
                                 onChange={this.handleChildSelect.bind(this)}
                                 multi={false}
                                 options={types}
@@ -271,6 +272,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 value={drawdownAmount}
                                 name="drawdownAmount"
                                 header="Drawdown amount"
+                                required={true}
                                 placeholder="Enter an amount"
                                 prefix="$"
                                 callback={this.handleCurrency.bind(this)}
