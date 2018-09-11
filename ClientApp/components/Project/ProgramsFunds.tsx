@@ -74,7 +74,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <FundForm />
+                    <FundForm parentID={this.props.projectID} parentType={this.props.parentType}/>
                 </Modal>
             </div>
         )

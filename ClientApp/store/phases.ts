@@ -52,7 +52,8 @@ export const actionCreators = {
     addPhase: (item): AppThunkAction<any> => (dispatch, getState) => {
 
         // post to cartegraph
-
+        
+        console.log(item)
         dispatch({
             type: addPhase, item
         })

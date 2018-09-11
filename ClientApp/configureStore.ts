@@ -26,7 +26,6 @@ export default function configureStore(history: History, initialState?: Applicat
             store.replaceReducer(buildRootReducer(nextRootReducer.reducers));
         });
     }
-
     return store;
 }
 
