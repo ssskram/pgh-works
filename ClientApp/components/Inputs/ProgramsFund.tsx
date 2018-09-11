@@ -6,16 +6,26 @@ import Table from 'react-table'
 import * as Funds from '../../store/GETS/funds'
 import * as Drawdowns from '../../store/drawdowns'
 import Input from '../FormElements/input'
-import TextArea from '../FormElements/textarea'
+import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
-import Datepicker from '../FormElements/datepicker'
+import { Helmet } from "react-helmet"
 
-const iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
-}
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+
+const types = [
+    { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
+    { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
+    { value: 'Spent', label: 'Spent', name: 'drawdownType' }
+]
+
+const contractorVendors = [
+    { value: 'Contractor A', label: 'Contractor A', name: 'contractorVendor' },
+    { value: 'Contractor B', label: 'Contractor B', name: 'contractorVendor' },
+    { value: 'Contractor C', label: 'Contractor C', name: 'contractorVendor' },
+    { value: 'Contractor D', label: 'Contractor D', name: 'contractorVendor' },
+    { value: 'Contractor E', label: 'Contractor E', name: 'contractorVendor' },
+    { value: 'Contractor F', label: 'Contractor F', name: 'contractorVendor' },
+]
 
 export class ProgramFundInputs extends React.Component<any, any> {
     constructor(props) {
@@ -23,6 +33,9 @@ export class ProgramFundInputs extends React.Component<any, any> {
         this.state = {
             funds: props.funds,
             fundSearch: '',
+            fundName: '',
+            fundYear: '',
+            fundType: '',
 
             // drawdown state
             parentID: props.parentID,
@@ -45,16 +58,27 @@ export class ProgramFundInputs extends React.Component<any, any> {
         this.setState({ [event.name]: event.value });
     }
 
-    selectFund(fundID) {
-        console.log(fundID)
+    handleCurrency(event, maskedvalue, floatvalue) {
         this.setState({
-            fundID: fundID
+            drawdownAmount: maskedvalue
         })
     }
 
-    filterFunds (input) {
+    selectFund(fundID) {
+        let fund = this.props.funds.find(function (item) {
+            return item.fundID == fundID
+        })
+        this.setState({
+            fundID: fundID,
+            fundName: fund.fundName,
+            fundType: fund.fundType,
+            fundYear: fund.fundYear
+        })
+    }
+
+    filterFunds(input) {
         if (input == '' || input == null) {
-            this.setState ({
+            this.setState({
                 funds: this.props.funds
             })
         } else {
@@ -65,23 +89,39 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 }
                 return true
             })
-            this.setState ({
+            this.setState({
                 funds: filtered
             })
         }
+    }
+
+    back() {
+        this.setState({
+            fundID: ''
+        })
+    }
+
+    post () {
+        this.props.addDrawdown(this.state)
+        this.props.closeModal()
     }
 
     public render() {
         const {
             funds,
             fundSearch,
-            parentID,
-            parentType,
+            fundName,
+            fundYear,
+            fundType,
             fundID,
             drawdownAmount,
             drawdownType,
             contractorVendor,
         } = this.state
+
+        const {
+            drawdowns
+        } = this.props
 
         const columns = [{
             Header: 'Fund/Program',
@@ -101,6 +141,9 @@ export class ProgramFundInputs extends React.Component<any, any> {
 
         return (
             <div>
+                <Helmet>
+                    <style>{dropdownStyle}</style>
+                </Helmet>
                 {fundID == '' &&
                     <div className='col-md-12'>
                         <br />
@@ -138,7 +181,52 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 }
                 {fundID != '' &&
                     <div className='col-md-12'>
-                        <h4>form fields here</h4>
+                        <br />
+                        <h2>Drawdown</h2>
+                        <h4>Fund: <b>{fundName}</b></h4>
+                        <h4>Fund type: <b>{fundType}</b></h4>
+                        <h4>Fund year: <b>{fundYear}</b></h4>
+                        <hr />
+                        <div className='col-md-12'>
+                            <Select
+                                value={drawdownType}
+                                name="drawdownType"
+                                header='Drawdown type'
+                                placeholder='Select type'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={types}
+                            />
+                        </div>
+                        <div className='col-md-12'>
+                            <Currency
+                                value={drawdownAmount}
+                                name="drawdownAmount"
+                                header="Drawdown amount"
+                                placeholder="Enter an amount"
+                                prefix="$"
+                                callback={this.handleCurrency.bind(this)}
+                            />
+                        </div>
+                        <div className='col-md-12'>
+                            <Select
+                                value={contractorVendor}
+                                name="contractorVendor"
+                                header='Contractor or vendor'
+                                placeholder='Select contractor or vendor'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={contractorVendors}
+                            />
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <div className='col-md-6'>
+                                <button onClick={this.back.bind(this)} className='btn btn-warning'>Back</button>
+                            </div>
+                            <div className='col-md-6'>
+                                <button onClick={this.post.bind(this)} className='btn btn-success'>Save</button>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>

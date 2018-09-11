@@ -280,7 +280,7 @@ export class Project extends React.Component<any, any> {
                     <Phases projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='row col-md-12'>
-                    <Funds projectID={projectID} parentType={'Project'}/>
+                    <Funds parentID={projectID} parentType={'Project'}/>
                 </div>
                 <div style={marginBottom} className='row col-md-12'>
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />

@@ -25,10 +25,19 @@ export class ProgramsFunds extends React.Component<any, any> {
         this.getPrograms = this.getPrograms.bind(this);
     }
 
+    componentDidMount() {
+        this.getPrograms(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.getPrograms(nextProps)
+    }
+
     getPrograms(props) {
+        console.log(props)
         if (props.drawdowns) {
             let programs = props.drawdowns.filter(function (item) {
-                return item.projectID == props.projectID
+                return item.parentID == props.parentID
             })
             if (programs.length > 0) {
                 this.setState({
@@ -74,7 +83,10 @@ export class ProgramsFunds extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <FundForm parentID={this.props.projectID} parentType={this.props.parentType}/>
+                    <FundForm
+                        closeModal={this.closeModal.bind(this)}
+                        parentID={this.props.parentID}
+                        parentType={this.props.parentType} />
                 </Modal>
             </div>
         )

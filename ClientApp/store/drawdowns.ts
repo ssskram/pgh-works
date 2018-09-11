@@ -39,6 +39,7 @@ export const actionCreators = {
             // });
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
+        console.log(item)
         dispatch({
             type: addDrawdown, item
         })

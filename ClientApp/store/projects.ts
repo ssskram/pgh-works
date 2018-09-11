@@ -56,7 +56,6 @@ export const actionCreators = {
         
         // post to cartegraph
         
-        console.log(item)
         dispatch({
             type: addProject, item
         })
