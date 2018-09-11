@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "754a1551621f0fdbf380"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "108c78ecba13eac5b1b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -56474,10 +56474,10 @@ var emptyNotice = {
 var FundViewer = (function (_super) {
     __extends(FundViewer, _super);
     function FundViewer(props) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, props) || this;
         _this.state = {
             drawdowns: props.drawdowns.filter(function (drawdown) {
-                return drawdown.fundID == props.fund.fundID;
+                return drawdown.fundID == props.match.params.id;
             }),
             fundName: '',
             fundYear: '',
@@ -57476,7 +57476,6 @@ var ProgramsFunds = (function (_super) {
         this.getDrawdowns(nextProps);
     };
     ProgramsFunds.prototype.getDrawdowns = function (props) {
-        console.log(props);
         if (props.drawdowns) {
             var drawdowns = props.drawdowns.filter(function (item) {
                 return item.parentID == props.parentID;
@@ -57505,7 +57504,6 @@ var ProgramsFunds = (function (_super) {
         });
     };
     ProgramsFunds.prototype.deleteDrawdown = function (drawdown) {
-        console.log(drawdown);
     };
     ProgramsFunds.prototype.getFund = function (id) {
         var fund = this.props.funds.find(function (fund) {

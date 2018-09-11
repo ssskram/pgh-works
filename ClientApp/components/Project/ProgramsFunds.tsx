@@ -40,7 +40,6 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     getDrawdowns(props) {
-        console.log(props)
         if (props.drawdowns) {
             let drawdowns = props.drawdowns.filter(function (item) {
                 return item.parentID == props.parentID
@@ -73,7 +72,6 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     deleteDrawdown(drawdown) {
-        console.log(drawdown)
     }
 
     getFund(id) {

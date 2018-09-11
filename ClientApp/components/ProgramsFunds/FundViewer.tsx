@@ -12,10 +12,10 @@ const emptyNotice = {
 
 export class FundViewer extends React.Component<any, any> {
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             drawdowns: props.drawdowns.filter(function (drawdown) {
-                return drawdown.fundID == props.fund.fundID
+                return drawdown.fundID == props.match.params.id
             }),
             fundName: '',
             fundYear: '',
