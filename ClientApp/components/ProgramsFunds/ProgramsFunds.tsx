@@ -6,6 +6,7 @@ import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
 import Table from 'react-table'
+import FundFilter from './../Filters/FundFilter'
 
 export class ProgramsFunds extends React.Component<any, any> {
     constructor(props) {
@@ -65,7 +66,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>Programs & Funds</h2>
+                <h2>Programs & Funds <span style={{ marginTop: '-10px' }} className='pull-right'><FundFilter /></span></h2>
                 <hr />
                 {funds.length > 0 &&
                     <Table
