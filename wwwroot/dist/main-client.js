@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "715945b25473df75389e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "27b3f9bd7c351e1e2324"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6837,7 +6837,7 @@ var datepicker = (function (_super) {
                     this.state.date != null &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_moment___default.a, { format: "MM/DD/YYYY", date: this.state.date })),
                 this.state.isOpen &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_datepicker__["a" /* default */], { selected: this.state.date, name: this.props.name, id: this.props.name, placeholderText: this.props.placeholder, onChange: this.handleChange.bind(this), className: conditionalClass, calendarClassName: "datepicker-calendar", isClearable: true, showMonthDropdown: true, showYearDropdown: true, withPortal: true, inline: true }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_datepicker__["a" /* default */], { selected: this.state.date, name: this.props.name, id: this.props.name, placeholderText: this.props.placeholder, onChange: this.handleChange.bind(this), className: conditionalClass, calendarClassName: "datepicker-calendar", isClearable: true, onClickOutside: this.toggleCalendar.bind(this), showMonthDropdown: true, showYearDropdown: true, withPortal: true, inline: true }))));
     };
     return datepicker;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -56333,22 +56333,19 @@ var FundViewer = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                "$",
-                                spent)))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                "$",
-                                encumbered)))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                "$",
-                                preencumbered)))))));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))))));
     };
     return FundViewer;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

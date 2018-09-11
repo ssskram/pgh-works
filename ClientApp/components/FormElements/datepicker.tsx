@@ -74,6 +74,7 @@ export default class datepicker extends React.Component<any, any> {
                             className={conditionalClass}
                             calendarClassName="datepicker-calendar"
                             isClearable={true}
+                            onClickOutside={this.toggleCalendar.bind(this)}
                             showMonthDropdown
                             showYearDropdown
                             withPortal

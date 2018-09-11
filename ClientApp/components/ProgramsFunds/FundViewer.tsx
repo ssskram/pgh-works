@@ -91,7 +91,7 @@ export class FundViewer extends React.Component<any, any> {
                         <div className='panel'>
                             <div className='panel-body'>
                                 <h3>Spent</h3>
-                                <h1>${spent}</h1>
+                                <h1><CurrencyFormat value={spent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ export class FundViewer extends React.Component<any, any> {
                         <div className='panel'>
                             <div className='panel-body'>
                                 <h3>Encumbered</h3>
-                                <h1>${encumbered}</h1>
+                                <h1><CurrencyFormat value={encumbered} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export class FundViewer extends React.Component<any, any> {
                         <div className='panel'>
                             <div className='panel-body'>
                                 <h3>Pre-encumbered</h3>
-                                <h1>${preencumbered}</h1>
+                                <h1><CurrencyFormat value={preencumbered} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
                             </div>
                         </div>
                     </div>
