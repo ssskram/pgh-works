@@ -84,6 +84,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         loading={false}
                         minRows={0}
                         pageSize={50}
+                        showPageJump={false}
                         showPagination={true}
                         showPageSizeOptions={false}
                         noDataText=''

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "61d5590274a3da202c9c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6bc0855161bc3c4db8ed"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -56493,7 +56493,7 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_FundFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 50, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 50, showPageJump: false, showPagination: true, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                         style: {
                             display: 'flex',
                             flexDirection: 'column',
