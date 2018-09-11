@@ -4,9 +4,7 @@ import { AppThunkAction } from './'
 
 const loadDrawdowns = 'loadDrawdowns'
 const addDrawdown = 'addDrawdowns'
-
-// TODO
-const del = 'deleteDrawdowns'
+const deleteDrawdown = 'deleteDrawdown'
 
 const unloadedState: DrawdownState = {
     drawdowns: []
@@ -33,20 +31,25 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            // .then(response => response.json())
-            // .then(data => {
-            //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
-            // });
+        // .then(response => response.json())
+        // .then(data => {
+        //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
+        // });
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
         console.log(item)
         dispatch({
             type: addDrawdown, item
         })
+    },
+    deleteDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
+        dispatch({
+            type: deleteDrawdown, item
+        })
     }
 }
 
-export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAction: Action) =>  {
+export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAction: Action) => {
     const action = incomingAction as any;
     switch (action.type) {
         case loadDrawdowns:
@@ -58,6 +61,13 @@ export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAc
             return {
                 ...state,
                 drawdowns: state.drawdowns.concat(action.item)
+            };
+        case deleteDrawdown:
+            var drawdownCopy = state.drawdowns.slice()
+            drawdownCopy.splice(drawdownCopy.indexOf(action.item), 1);
+            return {
+                ...state,
+                drawdowns: drawdownCopy
             };
     }
 
