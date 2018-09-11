@@ -30,7 +30,7 @@ namespace pghworks.Controllers {
         // GET
         [HttpGet ("[action]")]
         public async Task<object> loadFunds () {
-            string funds = System.IO.File.ReadAllText ("demoFunds.json");
+            string funds = System.IO.File.ReadAllText ("demoData/demoFunds.json");
             dynamic fundObject = JObject.Parse (funds) ["funds"];
             List<Fund> AllFunds = new List<Fund> ();
             foreach (var item in fundObject) {
