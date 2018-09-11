@@ -24,9 +24,9 @@ export class Attachment extends React.Component<any, any> {
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         const guid: string = uuid()
-        this.setState ({
+        this.setState({
             attachmentID: guid,
             dateCreated: moment().format('MM/DD/YYYY')
         })
@@ -42,10 +42,10 @@ export class Attachment extends React.Component<any, any> {
         });
     }
 
-    save () {
-        this.setState ({
+    save() {
+        this.setState({
             attachmentLink: this.state.file[0].preview
-        }, function(this) {
+        }, function (this) {
             this.props.addAttachment(this.state)
         })
         this.props.closeModal()
@@ -57,6 +57,11 @@ export class Attachment extends React.Component<any, any> {
             attachmentName,
             attachmentDescription,
         } = this.state
+
+        // validation
+        const isEnabled =
+            attachmentName != '' &&
+            attachmentDescription != ''
 
         return (
             <div className='col-md-12'>
@@ -94,7 +99,7 @@ export class Attachment extends React.Component<any, any> {
                         </div>
 
                         <div className='col-md-12  text-center'>
-                            <button onClick={this.save.bind(this)} className='btn btn-success'>Save</button>
+                            <button disabled={!isEnabled} onClick={this.save.bind(this)} className='btn btn-success'>Save</button>
                         </div>
                     </div>
                 }

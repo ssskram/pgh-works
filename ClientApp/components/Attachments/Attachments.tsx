@@ -110,12 +110,12 @@ export class Attachments extends React.Component<any, any> {
             Header: '',
             accessor: 'attachmentLink',
             Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
-            maxWidth: 100
+            maxWidth: 75
         }, {
             Header: '',
             accessor: 'attachmentID',
             Cell: props => <button onClick={() => this.deleteAttachment(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
-            maxWidth: 100
+            maxWidth: 75
         }]
 
         return (

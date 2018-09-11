@@ -60,7 +60,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
 
     handleCurrency(event, maskedvalue, floatvalue) {
         this.setState({
-            drawdownAmount: maskedvalue
+            drawdownAmount: floatvalue
         })
     }
 
@@ -101,8 +101,16 @@ export class ProgramFundInputs extends React.Component<any, any> {
         })
     }
 
-    post () {
-        this.props.addDrawdown(this.state)
+    post() {
+        const drawdown = {
+            parentID: this.state.parentID,
+            parentType: this.state.parentType,
+            fundID: this.state.fundID,
+            drawdownAmount: this.state.drawdownAmount,
+            drawdownType: this.state.drawdownType,
+            contractorVendor: this.state.contractorVendor
+        }
+        this.props.addDrawdown(drawdown)
         this.props.closeModal()
     }
 
@@ -122,6 +130,11 @@ export class ProgramFundInputs extends React.Component<any, any> {
         const {
             drawdowns
         } = this.props
+
+        // validation
+        const isEnabled =
+            drawdownAmount != '' &&
+            drawdownType != ''
 
         const columns = [{
             Header: 'Fund/Program',
@@ -224,7 +237,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 <button onClick={this.back.bind(this)} className='btn btn-warning'>Back</button>
                             </div>
                             <div className='col-md-6'>
-                                <button onClick={this.post.bind(this)} className='btn btn-success'>Save</button>
+                                <button disabled={!isEnabled} onClick={this.post.bind(this)} className='btn btn-success'>Save</button>
                             </div>
                         </div>
                     </div>
