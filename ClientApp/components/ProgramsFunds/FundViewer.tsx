@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Drawdowns from '../../store/drawdowns'
 import * as Funds from '../../store/GETS/funds'
+import * as CurrencyFormat from 'react-currency-format'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -71,7 +72,7 @@ export class FundViewer extends React.Component<any, any> {
                 <h2>{fundName}</h2>
                 <h4>Year: <b>{fundYear}</b></h4>
                 <h4>Type: <b>{fundType}</b></h4>
-                <h4>Original amount: ${fundAmount}</h4>
+                <h4>Original amount: <CurrencyFormat value={fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
                 {expirationDate &&
                     <h4><i>Expires on {expirationDate}</i></h4>
                 }
@@ -82,7 +83,7 @@ export class FundViewer extends React.Component<any, any> {
                     </div>
                 }
                 <div className='text-center alert alert-success'>
-                    <h1>${amountRemaining} unencumbered</h1>
+                    <h1><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /> unencumbered</h1>
                 </div>
                 <div className='col-md-12'>
                     <br />

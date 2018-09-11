@@ -7,6 +7,7 @@ import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
 import Table from 'react-table'
 import FundFilter from './../Filters/FundFilter'
+import * as CurrencyFormat from 'react-currency-format'
 
 export class ProgramsFunds extends React.Component<any, any> {
     constructor(props) {
@@ -52,6 +53,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         }, {
             Header: 'Original Amount',
             accessor: 'fundAmount',
+            Cell: props =>  <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
         }, {
             Header: '',
             accessor: 'fundID',
