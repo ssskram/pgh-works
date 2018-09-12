@@ -47,10 +47,10 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            // .then(response => response.json() as Promise<ProjectItem[]>)
-            // .then(data => {
-            //     dispatch({ type: loadProjects, projects: data });
-            // });
+            .then(response => response.json() as Promise<ProjectItem[]>)
+            .then(data => {
+                dispatch({ type: loadProjects, projects: data });
+            });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
         

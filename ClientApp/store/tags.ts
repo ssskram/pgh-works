@@ -34,10 +34,10 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadTags, tags: data.items });
-        //     });
+            .then(response => response.json())
+            .then(data => {
+                dispatch({ type: loadTags, tags: data });
+            });
     },
 
     addTag: (item): AppThunkAction<any> => (dispatch, getState) => {

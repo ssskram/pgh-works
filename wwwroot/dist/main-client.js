@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "abca1b222f246c3c5c5b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4fd1d9a40e858e271a23"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6245,11 +6245,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadProjects, projects: data });
         });
-        // .then(response => response.json() as Promise<ProjectItem[]>)
-        // .then(data => {
-        //     dispatch({ type: loadProjects, projects: data });
-        // });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
         // post to cartegraph
@@ -6978,11 +6978,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadPhases, phases: data });
         });
-        // .then(response => response.json())
-        // .then(data => {
-        //     dispatch({ type: loadPhases, phases: data });
-        // });
     }; },
     addPhase: function (item) { return function (dispatch, getState) {
         // post to cartegraph
@@ -7047,11 +7047,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadTags, tags: data });
         });
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadTags, tags: data.items });
-        //     });
     }; },
     addTag: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9646,11 +9646,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadMilestones, milestones: data });
         });
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadMilestones, milestones: data.items });
-        //     });
     }; },
     addMilestone: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9724,11 +9724,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadSubphases, subphases: data });
         });
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         dispatch({ type: loadSubphases, subphases: data.items });
-        //     });
     }; },
     addSubphase: function (item) { return function (dispatch, getState) {
         dispatch({

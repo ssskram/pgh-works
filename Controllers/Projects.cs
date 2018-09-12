@@ -34,7 +34,7 @@ namespace pghworks.Controllers {
             public string projectMembers { get; set; }
             public string projectName { get; set; }
             public string projectStatus { get; set; }
-            public Shape shape { get; set; }
+            public List<Shape> shape { get; set; }
         }
 
         public class Shape {
@@ -66,7 +66,7 @@ namespace pghworks.Controllers {
                     projectMembers = item.projectMembers,
                     projectName = item.projectName,
                     projectStatus = item.projectStatus,
-                    shape = item.shape
+                    shape = item.shape.ToObject<List<Shape>> ()
                 };
                 AllProjects.Add(pj);
             }
