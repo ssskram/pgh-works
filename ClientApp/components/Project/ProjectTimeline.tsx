@@ -36,6 +36,8 @@ export default class ProjectTimeline extends React.Component<any, any> {
         return (
             <div>
                 <div className='col-md-12'>
+                    <br />
+                    <br />
                     {this.props.project &&
                         <TL items={items} />
                     }
