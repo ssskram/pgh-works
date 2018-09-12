@@ -1,4 +1,36 @@
 {
-    "tags": [
+    "tags": [{
+            "dateCreated": "09/12/2018",
+            "parentID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "parentName": "Ft Pitt Pedestrian Bridge Reconstruction",
+            "parentType": "Project",
+            "tagDescription": "Within project bounds",
+            "tagID": "1c425820-b6a1-11e8-930d-dd084cae8ed3",
+            "tagType": "Bridge",
+            "taggedAssetName": "Fort Duquesne Pedestrian Bridge",
+            "taggedAssetOID": "378927944"
+        },
+        {
+            "dateCreated": "09/12/2018",
+            "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "parentName": "Point Park Extension Project",
+            "parentType": "Project",
+            "tagDescription": "Within project bounds",
+            "tagID": "d5a09bf0-b6a2-11e8-930d-dd084cae8ed3",
+            "tagType": "Bridge",
+            "taggedAssetName": "Fort Duquesne Pedestrian Bridge",
+            "taggedAssetOID": "378927944"
+        },
+        {
+            "dateCreated": "09/12/2018",
+            "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "parentName": "Point Park Extension Project",
+            "parentType": "Project",
+            "tagDescription": "Within project bounds",
+            "tagID": "d5a09bf1-b6a2-11e8-930d-dd084cae8ed3",
+            "tagType": "Park",
+            "taggedAssetName": "Point State Park",
+            "taggedAssetOID": "1552629774"
+        }
     ]
 }
