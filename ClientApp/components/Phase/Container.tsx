@@ -63,6 +63,7 @@ export class Phase extends React.Component<any, any> {
     }
     componentDidMount() {
         // ping server
+        this.props.loadPhases()
         this.props.ping()
         this.findPhase(this.props)
     }

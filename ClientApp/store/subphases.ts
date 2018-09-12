@@ -22,7 +22,7 @@ export interface SubphaseItem {
     phaseID: string
     projectID: string
     subphaseStatus: string
-    percentComplete: string
+    percentComplete: number
     notes: string
     created: string
     createdBy: string

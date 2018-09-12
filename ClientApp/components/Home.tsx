@@ -8,6 +8,7 @@ import * as Projects from '../store/projects'
 import Map from './Map/HomeMap'
 import { Helmet } from "react-helmet"
 import Filters from './Filters/ProjectFilter'
+import Spinner from './Utilities/Spinner'
 
 const floatingPanelBig = {
     position: 'absolute' as any,
@@ -18,7 +19,7 @@ const floatingPanelBig = {
     paddingLeft: '10px'
 }
 
-const floatingPanelSmall = { 
+const floatingPanelSmall = {
     position: 'absolute' as any,
     bottom: '17px',
     left: '15px',
@@ -66,6 +67,9 @@ export class Home extends React.Component<any, any> {
         }
 
         return <div>
+            {projects.length == 0 &&
+                <Spinner notice='...loading the projects...' />
+            }
             <Hydrate />
             <Helmet>
                 <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } '}</style>

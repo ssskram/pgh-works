@@ -22,7 +22,7 @@ export interface MilestoneItem {
     phaseID: string
     projectID: string
     dueDate: string
-    percentComplete: string
+    percentComplete: number
     dateCompleted: string
     created: string
     createdBy: string

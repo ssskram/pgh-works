@@ -15,6 +15,12 @@ export default class HomeMap extends React.Component<any, any> {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState ({
+            projects: nextProps.projects
+        })
+    }
+
     polygonSelection(project) {
         this.setCenter(project.shape)
         this.setState({
