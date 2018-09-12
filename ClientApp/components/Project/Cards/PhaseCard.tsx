@@ -43,8 +43,6 @@ export class PhaseCard extends React.Component<any, any> {
             totalTaskValue = totalTaskValue + 100
             completedTaskValue = completedTaskValue + subphase.percentComplete
         })
-        console.log(totalTaskValue)
-        console.log(completedTaskValue)
         let percentComplete = completedTaskValue/totalTaskValue * 100
         let percentRemaining = 100 - percentComplete - 1
 

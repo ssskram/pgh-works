@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "17ef9d1e41b8d040f0cc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "90b14e6e5443af3ccb8c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6256,14 +6256,12 @@ var actionCreators = {
         dispatch({
             type: addProject, item: item
         });
-        console.log(getState());
     }; },
     updateProject: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateProject, item: item
         });
-        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -6989,14 +6987,12 @@ var actionCreators = {
         dispatch({
             type: addPhase, item: item
         });
-        console.log(getState());
     }; },
     updatePhase: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updatePhase, item: item
         });
-        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -7057,7 +7053,6 @@ var actionCreators = {
         dispatch({
             type: addTag, item: item
         });
-        console.log(getState());
     }; },
     deleteTag: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9586,13 +9581,11 @@ var actionCreators = {
         dispatch({
             type: addDrawdown, item: item
         });
-        console.log(getState());
     }; },
     deleteDrawdown: function (item) { return function (dispatch, getState) {
         dispatch({
             type: deleteDrawdown, item: item
         });
-        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -9656,14 +9649,12 @@ var actionCreators = {
         dispatch({
             type: addMilestone, item: item
         });
-        console.log(getState());
     }; },
     updateMilestone: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateMilestone, item: item
         });
-        console.log(getState());
     }; },
     deleteMilestone: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9734,14 +9725,12 @@ var actionCreators = {
         dispatch({
             type: addSubphase, item: item
         });
-        console.log(getState());
     }; },
     updateSubphase: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateSubphase, item: item
         });
-        console.log(getState());
     }; },
     deleteSubphase: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -57233,8 +57222,6 @@ var PhaseCard = (function (_super) {
             totalTaskValue = totalTaskValue + 100;
             completedTaskValue = completedTaskValue + subphase.percentComplete;
         });
-        console.log(totalTaskValue);
-        console.log(completedTaskValue);
         var percentComplete = completedTaskValue / totalTaskValue * 100;
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {

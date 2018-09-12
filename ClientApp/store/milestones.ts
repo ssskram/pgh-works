@@ -46,7 +46,6 @@ export const actionCreators = {
         dispatch({
             type: addMilestone, item
         })
-        console.log(getState())
     },
     updateMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
 
@@ -55,7 +54,6 @@ export const actionCreators = {
         dispatch({
             type: updateMilestone, item
         })
-        console.log(getState())
     },
     deleteMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({

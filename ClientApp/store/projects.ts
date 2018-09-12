@@ -58,7 +58,6 @@ export const actionCreators = {
         dispatch({
             type: addProject, item
         })
-        console.log(getState())
     },
     updateProject: (item): AppThunkAction<any> => (dispatch, getState) => {
 
@@ -67,7 +66,6 @@ export const actionCreators = {
         dispatch({
             type: updateProject, item
         })
-        console.log(getState())
     }
 }
 

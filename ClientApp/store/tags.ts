@@ -44,7 +44,6 @@ export const actionCreators = {
         dispatch({
             type: addTag, item
         })
-        console.log(getState())
     },
 
     deleteTag: (item): AppThunkAction<any> => (dispatch, getState) => {

@@ -47,7 +47,6 @@ export const actionCreators = {
         dispatch({
             type: addSubphase, item
         })
-        console.log(getState())
     },
     updateSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
 
@@ -56,7 +55,6 @@ export const actionCreators = {
         dispatch({
             type: updateSubphase, item
         })
-        console.log(getState())
     },
     deleteSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
