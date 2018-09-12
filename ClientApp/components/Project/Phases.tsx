@@ -6,7 +6,7 @@ import * as PhasesStore from '../../store/phases'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
 import PhaseCard from './Cards/PhaseCard'
-import TL from 'react-visjs-timeline'
+import TL from './../Timeline/Timeline'
 
 const iconStyle = {
     marginRight: '5px',
@@ -95,24 +95,6 @@ export class Phases extends React.Component<any, any> {
             }
         })
 
-        const timelineHeight = items.length * 40 + 90
-
-        const timelineOptions = {
-            width: '100%',
-            height: timelineHeight + 'px',
-            stack: true,
-            autoResize: true,
-            showMajorLabels: true,
-            showCurrentTime: true,
-            zoomMin: 1000000,
-            format: {
-                minorLabels: {
-                    minute: 'h:mma',
-                    hour: 'ha'
-                }
-            }
-        }
-
         return (
             <div>
                 <h3><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
@@ -122,7 +104,7 @@ export class Phases extends React.Component<any, any> {
                 }
                 {phases.length > 0 &&
                     <div className='col-md-10 col-md-offset-1 hidden-xs'>
-                        <TL options={timelineOptions} items={items} />
+                        <TL items={items} />
                         <br />
                     </div>
                 }

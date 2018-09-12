@@ -11,12 +11,12 @@ const groups = [
 ]
 
 const items = [
-    { id: 1, group: 'Project A', content: 'Phase A', start: '2018-04-20', end: '2018-09-20' },
-    { id: 2, group: 'Project A', content: 'Phase b', start: '2017-05-22', end: '2018-06-03' },
-    { id: 3, group: 'Project B', content: 'Phase A', start: '2018-01-31', end: '2018-04-18' },
-    { id: 4, group: 'Project B', content: 'Phase B', start: '2017-08-03', end: '2018-09-19' },
-    { id: 5, group: 'Project B', content: 'Phase C', start: '2017-12-03', end: '2018-12-03' },
-    { id: 6, group: 'Project A', content: 'Phase C', start: '2018-08-03', end: '2018-09-19' },
+    { id: 1, group: 'Project A', content: 'Phase A', start: '04/20/2018', end: '09/20/2018' },
+    { id: 2, group: 'Project A', content: 'Phase b', start: '05/22/2017', end: '06/03/2018' },
+    { id: 3, group: 'Project B', content: 'Phase A', start: '01/31/2018', end: '04/18/2018' },
+    { id: 4, group: 'Project B', content: 'Phase B', start: '03/08/2017', end: '09/19/2018' },
+    { id: 5, group: 'Project B', content: 'Phase C', start: '12/03/2017', end: '12/03/2018' },
+    { id: 6, group: 'Project A', content: 'Phase C', start: '08/03/2018', end: '09/19/2018' },
 ]
 
 export class Timeline extends React.Component<any, any> {
