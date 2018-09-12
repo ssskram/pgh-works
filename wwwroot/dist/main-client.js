@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3778b057b3ebf5ba8ea6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b83c43a91a391e4b5c68"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6256,12 +6256,14 @@ var actionCreators = {
         dispatch({
             type: addProject, item: item
         });
+        console.log(getState());
     }; },
     updateProject: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateProject, item: item
         });
+        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -6987,12 +6989,14 @@ var actionCreators = {
         dispatch({
             type: addPhase, item: item
         });
+        console.log(getState());
     }; },
     updatePhase: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updatePhase, item: item
         });
+        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -7053,6 +7057,7 @@ var actionCreators = {
         dispatch({
             type: addTag, item: item
         });
+        console.log(getState());
     }; },
     deleteTag: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9578,15 +9583,16 @@ var actionCreators = {
         // });
     }; },
     addDrawdown: function (item) { return function (dispatch, getState) {
-        console.log(item);
         dispatch({
             type: addDrawdown, item: item
         });
+        console.log(getState());
     }; },
     deleteDrawdown: function (item) { return function (dispatch, getState) {
         dispatch({
             type: deleteDrawdown, item: item
         });
+        console.log(getState());
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -9650,12 +9656,14 @@ var actionCreators = {
         dispatch({
             type: addMilestone, item: item
         });
+        console.log(getState());
     }; },
     updateMilestone: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateMilestone, item: item
         });
+        console.log(getState());
     }; },
     deleteMilestone: function (item) { return function (dispatch, getState) {
         dispatch({
@@ -9726,12 +9734,14 @@ var actionCreators = {
         dispatch({
             type: addSubphase, item: item
         });
+        console.log(getState());
     }; },
     updateSubphase: function (item) { return function (dispatch, getState) {
         // put to cartegraph
         dispatch({
             type: updateSubphase, item: item
         });
+        console.log(getState());
     }; },
     deleteSubphase: function (item) { return function (dispatch, getState) {
         dispatch({

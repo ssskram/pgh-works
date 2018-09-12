@@ -56,6 +56,7 @@ export const actionCreators = {
         dispatch({
             type: addPhase, item
         })
+        console.log(getState())
     },
     updatePhase: (item): AppThunkAction<any> => (dispatch, getState) => {
 
@@ -64,6 +65,7 @@ export const actionCreators = {
         dispatch({
             type: updatePhase, item
         })
+        console.log(getState())
     }
 }
 

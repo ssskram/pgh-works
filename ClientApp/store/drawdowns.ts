@@ -37,15 +37,16 @@ export const actionCreators = {
         // });
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
-        console.log(item)
         dispatch({
             type: addDrawdown, item
         })
+        console.log(getState())
     },
     deleteDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
         dispatch({
             type: deleteDrawdown, item
         })
+        console.log(getState())
     }
 }
 
