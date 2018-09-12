@@ -48,7 +48,9 @@ export class Milestones extends React.Component<any, any> {
             })
             if (milestones.length > 0) {
                 this.setState({
-                    milestones: milestones
+                    milestones: milestones.sort(function (a, b) {
+                        return +new Date(b.dueDate) - +new Date(a.dueDate);
+                    })
                 })
             }
         }

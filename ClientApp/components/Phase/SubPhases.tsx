@@ -41,7 +41,9 @@ export class SubPhases extends React.Component<any, any> {
             })
             if (subphases.length > 0) {
                 this.setState({
-                    subphases: subphases
+                    subphases: subphases.sort(function (a, b) {
+                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate);
+                    })
                 })
             }
         }

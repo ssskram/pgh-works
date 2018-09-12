@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bd9b15f96d4a46d7b674"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ebff9feac4c2faa037f1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -54638,7 +54638,9 @@ var Milestones = (function (_super) {
             });
             if (milestones.length > 0) {
                 this.setState({
-                    milestones: milestones
+                    milestones: milestones.sort(function (a, b) {
+                        return +new Date(b.dueDate) - +new Date(a.dueDate);
+                    })
                 });
             }
         }
@@ -55022,7 +55024,9 @@ var SubPhases = (function (_super) {
             });
             if (subphases.length > 0) {
                 this.setState({
-                    subphases: subphases
+                    subphases: subphases.sort(function (a, b) {
+                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate);
+                    })
                 });
             }
         }
@@ -56099,7 +56103,9 @@ var Phases = (function (_super) {
             });
             if (phases.length > 0) {
                 this.setState({
-                    phases: phases
+                    phases: phases.sort(function (a, b) {
+                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate);
+                    })
                 });
             }
         }

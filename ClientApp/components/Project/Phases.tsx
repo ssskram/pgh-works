@@ -42,7 +42,9 @@ export class Phases extends React.Component<any, any> {
             })
             if (phases.length > 0) {
                 this.setState({
-                    phases: phases
+                    phases: phases.sort(function (a, b) {
+                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate);
+                    })
                 })
             }
         }
@@ -73,7 +75,7 @@ export class Phases extends React.Component<any, any> {
         phases.forEach(function (phase) {
             let expected = {
                 id: counter,
-                content: phase.phaseName +  ', ' + phase.expectedStartDate + ' - ' + phase.expectedEndDate,
+                content: phase.phaseName + ', ' + phase.expectedStartDate + ' - ' + phase.expectedEndDate,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate
             }
@@ -85,7 +87,7 @@ export class Phases extends React.Component<any, any> {
             if (phase.actualStartDate && phase.actualEndDate) {
                 let actual = {
                     id: counter,
-                    content: phase.phaseName +  ', ' + phase.actualStartDate + ' - ' + phase.actualEndDate,
+                    content: phase.phaseName + ', ' + phase.actualStartDate + ' - ' + phase.actualEndDate,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
                     style: 'background-color: pink'
@@ -106,7 +108,7 @@ export class Phases extends React.Component<any, any> {
                     <div className='col-md-10 col-md-offset-1 hidden-xs'>
                         <TL items={items} />
                         <br />
-                        <br/>
+                        <br />
                     </div>
                 }
                 {phases.length > 0 &&
