@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fb285b4d6419aeca5aee"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3778b057b3ebf5ba8ea6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -13536,7 +13536,7 @@ var Line = (function (_super) {
     };
     Line.prototype.render = function () {
         var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden;
-        var timelineHeight = items.length * 50 + 100;
+        var timelineHeight = items.length * 50 + 90;
         var timelineOptions = {
             width: '100%',
             height: timelineHeight + 'px',
@@ -54672,16 +54672,22 @@ var ProgramFundInputs = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Select a program or fund"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_input__["a" /* default */], { value: fundSearch, name: "fundSearch", header: "Search by name", placeholder: "Enter a program/fund name", callback: this.handleChildChange.bind(this) })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: funds > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
-                            style: {
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                fontSize: '16px'
-                            }
-                        }); } })),
+                    funds.length > 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_input__["a" /* default */], { value: fundSearch, name: "fundSearch", header: "Search by name", placeholder: "Enter a program/fund name", callback: this.handleChildChange.bind(this) })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: funds, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: funds > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                                    style: {
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                        fontSize: '16px'
+                                    }
+                                }); } })),
+                    funds.length == 0 && this.props.parentType == 'Phase' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'alert alert-info' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Expenditures must be declared at the project level before being declared at the phase level")))),
             fundID != '' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

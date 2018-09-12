@@ -53,7 +53,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 })
                 funds.push(fund)
             })
-            this.setState ({
+            this.setState({
                 projectDrawdowns: projectDrawdowns,
                 funds: funds
             })
@@ -94,7 +94,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
         }, function (this) {
             if (this.state.maxDrawdown > 0 && this.state.drawdownAmount > this.state.maxDrawdown) {
                 alert('You cannot exceed the project-level drawdown of this fund: $' + this.state.maxDrawdown)
-                this.setState ({ drawdownAmount: '' })
+                this.setState({ drawdownAmount: '' })
             }
         })
     }
@@ -120,12 +120,12 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 const ts = { value: drawdown.drawdownType, label: drawdown.drawdownType, name: 'drawdownType' }
                 types.push(ts)
                 if (drawdown.contractorVendor) {
-                    const cv =  { value: drawdown.contractorVendor, label: drawdown.contractorVendor, name: 'contractorVendor' }
+                    const cv = { value: drawdown.contractorVendor, label: drawdown.contractorVendor, name: 'contractorVendor' }
                     contractorVendors.push(cv)
                 }
                 maxDrawdown = maxDrawdown + drawdown.drawdownAmount
             })
-            this.setState ({
+            this.setState({
                 maxDrawdown: maxDrawdown
             })
         }
@@ -217,34 +217,43 @@ export class ProgramFundInputs extends React.Component<any, any> {
                         <br />
                         <h3>Select a program or fund</h3>
                         <hr />
-                        <div className='col-md-12'>
-                            <Input
-                                value={fundSearch}
-                                name="fundSearch"
-                                header="Search by name"
-                                placeholder="Enter a program/fund name"
-                                callback={this.handleChildChange.bind(this)}
-                            />
-                        </div>
-                        <Table
-                            data={funds}
-                            columns={columns}
-                            loading={false}
-                            minRows={0}
-                            pageSize={10}
-                            showPageJump={false}
-                            showPagination={funds > 10}
-                            showPageSizeOptions={false}
-                            noDataText=''
-                            getTdProps={() => ({
-                                style: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    fontSize: '16px'
-                                }
-                            })}
-                        />
+                        {funds.length > 0 &&
+                            <div>
+                                <div className='col-md-12'>
+                                    <Input
+                                        value={fundSearch}
+                                        name="fundSearch"
+                                        header="Search by name"
+                                        placeholder="Enter a program/fund name"
+                                        callback={this.handleChildChange.bind(this)}
+                                    />
+                                </div>
+                                <Table
+                                    data={funds}
+                                    columns={columns}
+                                    loading={false}
+                                    minRows={0}
+                                    pageSize={10}
+                                    showPageJump={false}
+                                    showPagination={funds > 10}
+                                    showPageSizeOptions={false}
+                                    noDataText=''
+                                    getTdProps={() => ({
+                                        style: {
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'center',
+                                            fontSize: '16px'
+                                        }
+                                    })}
+                                />
+                            </div>
+                        }
+                        {funds.length == 0 && this.props.parentType == 'Phase' &&
+                            <div className='col-md-12 text-center'>
+                                <div className='alert alert-info'><h3>Expenditures must be declared at the project level before being declared at the phase level</h3></div>
+                            </div>
+                        }
                     </div>
                 }
                 {fundID != '' &&

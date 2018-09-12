@@ -41,7 +41,7 @@ export default class Line extends React.Component<any, any> {
             hidden
         } = this.state
 
-        const timelineHeight = items.length * 50 + 100
+        const timelineHeight = items.length * 50 + 90
 
         const timelineOptions = {
             width: '100%',
