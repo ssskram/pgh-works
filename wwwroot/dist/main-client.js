@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ebff9feac4c2faa037f1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "68fa83982d8aa65f9bb5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -28490,7 +28490,9 @@ var ProgramsFunds = (function (_super) {
             });
             if (drawdowns.length > 0) {
                 this.setState({
-                    drawdowns: drawdowns
+                    drawdowns: drawdowns.sort(function (a, b) {
+                        return +b.drawdownAmount - +a.drawdownAmount;
+                    })
                 });
             }
         }

@@ -49,7 +49,9 @@ export class ProgramsFunds extends React.Component<any, any> {
             })
             if (drawdowns.length > 0) {
                 this.setState({
-                    drawdowns: drawdowns
+                    drawdowns: drawdowns.sort(function (a, b) {
+                        return +b.drawdownAmount - +a.drawdownAmount;
+                    })
                 })
             }
         }
