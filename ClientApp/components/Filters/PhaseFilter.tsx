@@ -126,6 +126,18 @@ export class PhaseFilter extends React.Component<any, any> {
 
                         <div className='col-md-12'>
                             <Select
+                                value={projectName}
+                                name="projectName"
+                                header='Project name'
+                                placeholder='Select project'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={projects}
+                            />
+                        </div>
+                        
+                        <div className='col-md-12'>
+                            <Select
                                 value={phaseStatus}
                                 name="phaseStatus"
                                 header='Phase status'
@@ -145,18 +157,6 @@ export class PhaseFilter extends React.Component<any, any> {
                                 onChange={this.handleChildSelect.bind(this)}
                                 multi={false}
                                 options={types}
-                            />
-                        </div>
-
-                        <div className='col-md-12'>
-                            <Select
-                                value={projectName}
-                                name="projectName"
-                                header='Project name'
-                                placeholder='Select project'
-                                onChange={this.handleChildSelect.bind(this)}
-                                multi={false}
-                                options={projects}
                             />
                         </div>
 

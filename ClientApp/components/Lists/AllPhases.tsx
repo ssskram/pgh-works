@@ -58,15 +58,15 @@ export class AllPhases extends React.Component<any, any> {
             Header: 'Phase',
             accessor: 'phaseName'
         }, {
+            Header: 'Project',
+            accessor: 'projectID',
+            Cell: props => <div>{this.returnProjectName(props.value)}</div>
+        }, {
             Header: 'Type',
             accessor: 'phaseType',
         }, {
             Header: 'Status',
             accessor: 'phaseStatus',
-        }, {
-            Header: 'Project',
-            accessor: 'projectID',
-            Cell: props => <div>{this.returnProjectName(props.value)}</div>
         }, {
             Header: '',
             accessor: 'phaseID',

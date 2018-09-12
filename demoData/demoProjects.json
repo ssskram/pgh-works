@@ -1,4 +1,125 @@
 {
-    "projects": [
+    "projects": [{
+            "actualEndDate": "12/01/2018",
+            "actualStartDate": "05/10/2018",
+            "cartegraphID": "",
+            "created": "09/12/2018",
+            "createdBy": "paul.marks@pittsburghpa.gov",
+            "expectedEndDate": "10/27/2018",
+            "expectedStartDate": "04/04/2018",
+            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
+            "notes": "",
+            "projectDepartment": "DPW",
+            "projectDescription": "Extending Point Park into the Ohio River on real big stilts.",
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "projectManager": "John Smith",
+            "projectMembers": "",
+            "projectName": "Point Park Extension Project",
+            "projectStatus": "Mobilizing",
+            "shape": [{
+                    "lat": 40.44318404233651,
+                    "lng": -80.00829458514659
+                },
+                {
+                    "lat": 40.442155222236856,
+                    "lng": -80.01305818835704
+                },
+                {
+                    "lat": 40.44249816401963,
+                    "lng": -80.01456022540538
+                },
+                {
+                    "lat": 40.441763286628486,
+                    "lng": -80.01483917514292
+                },
+                {
+                    "lat": 40.44158364871095,
+                    "lng": -80.01314401904551
+                },
+                {
+                    "lat": 40.439803574309494,
+                    "lng": -80.0098824528834
+                },
+                {
+                    "lat": 40.43947695003552,
+                    "lng": -80.00773668567149
+                },
+                {
+                    "lat": 40.44073444478419,
+                    "lng": -80.00692129413096
+                },
+                {
+                    "lat": 40.44140401031335,
+                    "lng": -80.00702858249156
+                },
+                {
+                    "lat": 40.442743121364764,
+                    "lng": -80.00765085498301
+                }
+            ]
+        },
+        {
+            "actualEndDate": "07/29/2017",
+            "actualStartDate": "06/01/2016",
+            "cartegraphID": "",
+            "created": "09/12/2018",
+            "createdBy": "paul.marks@pittsburghpa.gov",
+            "expectedEndDate": "06/15/2017",
+            "expectedStartDate": "06/01/2016",
+            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
+            "notes": "",
+            "projectDepartment": "DOMI",
+            "projectDescription": "Bridge was rebuilt",
+            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "projectManager": "John Smith",
+            "projectMembers": "John Smith, Jane Doe",
+            "projectName": "Ft Duquesne Pedestrian Bridge Reconstruction",
+            "projectStatus": "Complete",
+            "shape": [{
+                    "lat": 40.4424829031629,
+                    "lng": -80.00928386821151
+                },
+                {
+                    "lat": 40.44269519962845,
+                    "lng": -80.00918730868695
+                },
+                {
+                    "lat": 40.44282176066393,
+                    "lng": -80.00913902892468
+                },
+                {
+                    "lat": 40.44295648666566,
+                    "lng": -80.00910684241649
+                },
+                {
+                    "lat": 40.44320144234065,
+                    "lng": -80.00910147799847
+                },
+                {
+                    "lat": 40.44367502078114,
+                    "lng": -80.00918194426892
+                },
+                {
+                    "lat": 40.44482220989683,
+                    "lng": -80.00956818236712
+                },
+                {
+                    "lat": 40.445728516279175,
+                    "lng": -80.01001879348169
+                },
+                {
+                    "lat": 40.44581832975965,
+                    "lng": -80.00997051371942
+                },
+                {
+                    "lat": 40.44604286293578,
+                    "lng": -80.00999733580957
+                },
+                {
+                    "lat": 40.4460387805211,
+                    "lng": -80.01000270022759
+                }
+            ]
+        }
     ]
 }
