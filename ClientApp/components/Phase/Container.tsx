@@ -62,6 +62,7 @@ export class Phase extends React.Component<any, any> {
         this.findProject = this.findProject.bind(this)
     }
     componentDidMount() {
+        window.scrollTo(0, 0)
         // ping server
         this.props.ping()
         this.findPhase(this.props)

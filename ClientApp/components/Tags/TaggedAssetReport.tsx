@@ -1,5 +1,6 @@
 
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Tag from '../../store/GETS/ping'
@@ -35,7 +36,7 @@ export class TaggedAssetReport extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className='col-md-3'>
-                                    <button className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                                    <Link to={link} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></Link>
                                 </div>
                             </div>
                         </div>

@@ -44,6 +44,7 @@ export class TagsCard extends React.Component<any, any> {
         })
     }
 
+
     public render() {
         const {
             modalIsOpen,
@@ -126,7 +127,7 @@ export class TagsCard extends React.Component<any, any> {
                     }
                     {modalType == 'inspect' &&
                         <TaggedAssetReport
-                            tag={tag} />
+                            tag={tag}/>
                     }
                 </Modal>
             </div>
