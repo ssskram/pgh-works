@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6d64f77af2840df4cd16"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fb285b4d6419aeca5aee"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -13536,7 +13536,7 @@ var Line = (function (_super) {
     };
     Line.prototype.render = function () {
         var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden;
-        var timelineHeight = items.length * 40 + 90;
+        var timelineHeight = items.length * 50 + 100;
         var timelineOptions = {
             width: '100%',
             height: timelineHeight + 'px',
@@ -56571,24 +56571,17 @@ var __extends = (this && this.__extends) || (function () {
 })();
 
 
-var timelineContainer = {
-    margin: '25px 0px',
-    borderRadius: '5px',
-    padding: '20px 40px',
-    backgroundColor: 'rgba(92, 184, 92, .08)',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-};
 var PhaseTimeline = (function (_super) {
     __extends(PhaseTimeline, _super);
     function PhaseTimeline() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     PhaseTimeline.prototype.render = function () {
-        var _a = this.props.phase, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseName = _a.phaseName;
+        var _a = this.props.phase, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate;
         var items = [];
         var expected = {
             id: 1,
-            content: phaseName + ' (expected)',
+            content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate
         };
@@ -56596,7 +56589,7 @@ var PhaseTimeline = (function (_super) {
         if (actualStartDate && actualEndDate) {
             var actual = {
                 id: 2,
-                content: phaseName + ' (actual)',
+                content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
                 style: 'background-color: pink'
@@ -56604,24 +56597,14 @@ var PhaseTimeline = (function (_super) {
             items.push(actual);
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: timelineContainer, className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Expected duration"),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                            expectedStartDate,
-                            " - ",
-                            expectedEndDate))),
-                actualStartDate && actualEndDate &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Actual duration"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                                actualStartDate,
-                                " - ",
-                                actualEndDate))),
-                this.props.phase &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'pink', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.phase &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items })))));
     };
     return PhaseTimeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -57791,7 +57774,7 @@ var Phases = (function (_super) {
         phases.forEach(function (phase) {
             var expected = {
                 id: counter,
-                content: phase.phaseName + ' (expected)',
+                content: phase.phaseName + ', ' + phase.expectedStartDate + ' - ' + phase.expectedEndDate,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate
             };
@@ -57802,7 +57785,7 @@ var Phases = (function (_super) {
             if (phase.actualStartDate && phase.actualEndDate) {
                 var actual = {
                     id: counter,
-                    content: phase.phaseName + ' (actual)',
+                    content: phase.phaseName + ', ' + phase.actualStartDate + ' - ' + phase.actualEndDate,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
                     style: 'background-color: pink'
@@ -57886,11 +57869,11 @@ var ProjectTimeline = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ProjectTimeline.prototype.render = function () {
-        var _a = this.props.project, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectName = _a.projectName;
+        var _a = this.props.project, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate;
         var items = [];
         var expected = {
             id: 1,
-            content: projectName + ', ' + expectedStartDate + ' - ' + expectedEndDate + ' (expected)',
+            content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate
         };
@@ -57898,7 +57881,7 @@ var ProjectTimeline = (function (_super) {
         if (actualStartDate && actualEndDate) {
             var actual = {
                 id: 2,
-                content: projectName + ', ' + actualStartDate + ' - ' + actualEndDate + ' (actual)',
+                content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
                 style: 'background-color: pink'
@@ -57909,8 +57892,11 @@ var ProjectTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                this.props.project &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'pink', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.project &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items })))));
     };
     return ProjectTimeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

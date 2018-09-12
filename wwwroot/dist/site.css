@@ -789,6 +789,15 @@ a[href^="https://maps.google.com/maps"] {
     border: 1px black dashed;
 }
 
+/* Timeline
+/* ------------------------- */
+
+
+.vis-item-content {
+    font-size: 18px;
+    padding: 10px;
+}
+
 /* Site specific
 /* ------------------------- */
 

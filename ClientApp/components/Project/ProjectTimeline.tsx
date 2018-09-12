@@ -9,14 +9,13 @@ export default class ProjectTimeline extends React.Component<any, any> {
             expectedStartDate,
             expectedEndDate,
             actualStartDate,
-            actualEndDate,
-            projectName
+            actualEndDate
         } = this.props.project
 
         const items = [] as any
         let expected = {
             id: 1,
-            content: projectName + ', ' + expectedStartDate + ' - ' + expectedEndDate + ' (expected)',
+            content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate
         }
@@ -25,7 +24,7 @@ export default class ProjectTimeline extends React.Component<any, any> {
         if (actualStartDate && actualEndDate) {
             let actual = {
                 id: 2,
-                content: projectName + ', ' + actualStartDate + ' - ' + actualEndDate + ' (actual)',
+                content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
                 style: 'background-color: pink'
@@ -38,9 +37,15 @@ export default class ProjectTimeline extends React.Component<any, any> {
                 <div className='col-md-12'>
                     <br />
                     <br />
-                    {this.props.project &&
-                        <TL items={items} />
-                    }
+                    <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
+                        <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
+                        <span style={{ backgroundColor: 'pink', padding: '8px' }}>Actual</span>
+                    </div>
+                    <div className='col-md-12'>
+                        {this.props.project &&
+                            <TL items={items} />
+                        }
+                    </div>
                 </div>
             </div>
         )

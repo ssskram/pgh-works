@@ -2,13 +2,6 @@
 import * as React from 'react'
 import TL from './../Timeline/Timeline'
 
-const timelineContainer = {
-    margin: '25px 0px',
-    borderRadius: '5px',
-    padding: '20px 40px',
-    backgroundColor: 'rgba(92, 184, 92, .08)',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-}
 export default class PhaseTimeline extends React.Component<any, any> {
 
     public render() {
@@ -17,13 +10,12 @@ export default class PhaseTimeline extends React.Component<any, any> {
             expectedEndDate,
             actualStartDate,
             actualEndDate,
-            phaseName
         } = this.props.phase
 
         const items = [] as any
         let expected = {
             id: 1,
-            content: phaseName + ' (expected)',
+            content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate
         }
@@ -32,7 +24,7 @@ export default class PhaseTimeline extends React.Component<any, any> {
         if (actualStartDate && actualEndDate) {
             let actual = {
                 id: 2,
-                content: phaseName + ' (actual)',
+                content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
                 style: 'background-color: pink'
@@ -42,20 +34,18 @@ export default class PhaseTimeline extends React.Component<any, any> {
 
         return (
             <div>
-                <div style={timelineContainer} className='col-md-12'>
-                    <div className='col-md-6'>
-                        <h3>Expected duration</h3>
-                        <h4><b>{expectedStartDate} - {expectedEndDate}</b></h4>
+                <div className='col-md-12'>
+                    <br />
+                    <br />
+                    <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
+                        <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
+                        <span style={{ backgroundColor: 'pink', padding: '8px' }}>Actual</span>
                     </div>
-                    {actualStartDate && actualEndDate &&
-                        <div className='col-md-6'>
-                            <h3>Actual duration</h3>
-                            <h4><b>{actualStartDate} - {actualEndDate}</b></h4>
-                        </div>
-                    }
-                    {this.props.phase &&
-                        <TL items={items} />
-                    }
+                    <div className='col-md-12'>
+                        {this.props.phase &&
+                            <TL items={items} />
+                        }
+                    </div>
                 </div>
             </div>
         )

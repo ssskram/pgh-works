@@ -73,7 +73,7 @@ export class Phases extends React.Component<any, any> {
         phases.forEach(function (phase) {
             let expected = {
                 id: counter,
-                content: phase.phaseName + ' (expected)',
+                content: phase.phaseName +  ', ' + phase.expectedStartDate + ' - ' + phase.expectedEndDate,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate
             }
@@ -85,7 +85,7 @@ export class Phases extends React.Component<any, any> {
             if (phase.actualStartDate && phase.actualEndDate) {
                 let actual = {
                     id: counter,
-                    content: phase.phaseName + ' (actual)',
+                    content: phase.phaseName +  ', ' + phase.actualStartDate + ' - ' + phase.actualEndDate,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
                     style: 'background-color: pink'
