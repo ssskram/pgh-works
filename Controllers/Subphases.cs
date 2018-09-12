@@ -24,7 +24,7 @@ namespace pghworks.Controllers {
             public string endDate { get; set; }
             public string lastModifiedBy { get; set; }
             public string notes { get; set; }
-            public string percentComplete { get; set; }
+            public int percentComplete { get; set; }
             public string phaseID { get; set; }
             public string projectID { get; set; }
             public string startDate { get; set; }

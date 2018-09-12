@@ -25,7 +25,7 @@ namespace pghworks.Controllers {
             public string dueDate { get; set; }
             public string milestoneID { get; set; }
             public string milestoneName { get; set; }
-            public string percentComplete { get; set; }
+            public int percentComplete { get; set; }
             public string phaseID { get; set; }
             public string projectID { get; set; }
         }

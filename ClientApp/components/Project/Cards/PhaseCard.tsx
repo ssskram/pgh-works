@@ -45,6 +45,16 @@ export class PhaseCard extends React.Component<any, any> {
         })
         let percentComplete = completedTaskValue/totalTaskValue * 100
         let percentRemaining = 100 - percentComplete - 1
+        
+        console.log("--------------------------------")
+        console.log(phase.phaseName)
+        console.log(allMilestones)
+        console.log(allSubphases)
+        console.log("Total tasks value: " + totalTaskValue)
+        console.log("Completed tasks value: " + completedTaskValue)
+        console.log("Percent complete: " + percentComplete)
+        console.log("Percent remaining: " + percentRemaining)
+        console.log("--------------------------------")
 
         const progressBackground = {
             background: 'linear-gradient(to right, rgba(92, 184, 92, .08), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
