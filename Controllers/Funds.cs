@@ -29,7 +29,7 @@ namespace pghworks.Controllers {
 
         // GET
         [HttpGet ("[action]")]
-        public async Task<object> loadFunds () {
+        public object loadFunds () {
             string funds = System.IO.File.ReadAllText ("demoData/demoFunds.json");
             dynamic fundObject = JObject.Parse (funds) ["funds"];
             List<Fund> AllFunds = new List<Fund> ();
@@ -44,7 +44,6 @@ namespace pghworks.Controllers {
                 };
                 AllFunds.Add(fn);
             }
-            await Task.Delay(1);
             return AllFunds;
         }
     }
