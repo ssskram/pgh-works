@@ -47,7 +47,7 @@ export class PhaseCard extends React.Component<any, any> {
         let percentRemaining = 100 - percentComplete - 1
 
         const progressBackground = {
-            background: 'linear-gradient(to right, #d5ddf6 ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, rgba(92, 184, 92, .08), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
         
         const link = "/Phase/id=" + phase.phaseID

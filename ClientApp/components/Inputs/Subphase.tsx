@@ -11,11 +11,6 @@ import Datepicker from '../FormElements/datepicker'
 import Percent from '../FormElements/numbers'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
-import Progress from 'react-progressbar'
-
-const sliderContainer = {
-    padding: '0px 15px'
-}
 
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
@@ -234,14 +229,6 @@ export class SubphaseInput extends React.Component<any, any> {
                         callback={this.handlePercent.bind(this)}
                     />
                 </div>
-                {percentComplete > 0 &&
-                    <div style={sliderContainer}>
-                        <div className='col-md-12'>
-                            <Progress completed={percentComplete} color='#337ab7' />
-                            <br />
-                        </div>
-                    </div>
-                }
 
                 <div className='row'>
                     <div className='col-md-12 text-center'>

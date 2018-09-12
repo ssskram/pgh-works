@@ -106,6 +106,7 @@ export class Phases extends React.Component<any, any> {
                     <div className='col-md-10 col-md-offset-1 hidden-xs'>
                         <TL items={items} />
                         <br />
+                        <br/>
                     </div>
                 }
                 {phases.length > 0 &&
