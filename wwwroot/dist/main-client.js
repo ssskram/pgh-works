@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4d5717bb01bfef6d89ba"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0e66dfa505395e28cdaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60357,6 +60357,7 @@ var SubPhases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_drawdowns__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_phases__ = __webpack_require__(35);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -60378,6 +60379,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var DeleteDrawdown = (function (_super) {
     __extends(DeleteDrawdown, _super);
     function DeleteDrawdown() {
@@ -60385,12 +60387,26 @@ var DeleteDrawdown = (function (_super) {
     }
     DeleteDrawdown.prototype.deleteDrawdown = function () {
         var drawdown = this.props.drawdown;
+        var allDrawdowns = this.props.drawdowns;
+        var phases = this.props.phases;
+        var deleteIt = this.props.deleteDrawdown();
         console.log(drawdown);
         // remove from store
         this.props.deleteDrawdown(drawdown);
         // then delete locally
         this.props.removeDrawdown(drawdown);
-        if (this.props.drawdown) {
+        if (drawdown.drawdownType == 'Project') {
+            var relevantPhases = phases.filter(function (phase) { return phase.projectID == drawdown.parentID; });
+            var phaseDrawdowns_1 = [];
+            relevantPhases.forEach(function (phase) {
+                var phaseDrawdown = allDrawdowns.find(function (drawdown) {
+                    drawdown.parentID == phase.phaseID && drawdown.drawdownType == 'Phase';
+                });
+                phaseDrawdowns_1.push(phaseDrawdown);
+            });
+            phaseDrawdowns_1.forEach(function (phase) {
+                deleteIt(phase);
+            });
         }
         this.props.closeModal();
     };
@@ -60402,7 +60418,7 @@ var DeleteDrawdown = (function (_super) {
     return DeleteDrawdown;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_drawdowns__["a" /* actionCreators */])))(DeleteDrawdown));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns, state.phases)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_phases__["a" /* actionCreators */])))(DeleteDrawdown));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/ProgramsFunds/DeleteDrawdown.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/ProgramsFunds/DeleteDrawdown.tsx"); } } })();
