@@ -5,13 +5,20 @@ import { ApplicationState } from '../../store'
 import Table from 'react-table'
 import * as Funds from '../../store/GETS/funds'
 import * as Drawdowns from '../../store/drawdowns'
+import * as Phases from '../../store/phases'
 import Input from '../FormElements/input'
 import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
-import { max } from 'moment';
+import * as CurrencyFormat from 'react-currency-format'
+import Tooltip from 'react-tooltip'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+
+const tooltipStyle = {
+    marginLeft: '20px',
+    fontSize: '16px'
+}
 
 let types = [] as any
 let contractorVendors = [] as any
@@ -20,8 +27,10 @@ export class ProgramFundInputs extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
+            amountRemaining: 0,
             maxDrawdown: 0,
             projectDrawdowns: [],
+            expenditureTooltips: [],
             funds: props.funds,
             fundSearch: '',
             fundName: '',
@@ -85,15 +94,45 @@ export class ProgramFundInputs extends React.Component<any, any> {
     }
 
     handleChildSelect(event) {
-        this.setState({ [event.name]: event.value });
+        if (this.props.parentType == 'Phase') {
+            const fundID = this.state.fundID
+            const allDrawdowns = this.props.drawdowns
+            const projectID = this.props.projectID
+            let sumSiblingDrawdowns = 0
+            let expenditureTooltips = [] as any
+            let siblingPhases = this.props.phases.filter(function (phase) {
+                return phase.projectID == projectID
+            })
+            siblingPhases.forEach(function (phase) {
+                const drawdowns = allDrawdowns.filter(function (drawdown) {
+                    return drawdown.parentID == phase.phaseID && drawdown.parentType == 'Phase'
+                })
+                drawdowns.forEach(function (drawdown) {
+                    if (drawdown.fundID == fundID && drawdown.drawdownType == event.value) {
+                        sumSiblingDrawdowns = sumSiblingDrawdowns + drawdown.drawdownAmount
+                        expenditureTooltips.push({ phaseName: phase.phaseName, drawdownAmount: drawdown.drawdownAmount })
+                    }
+                })
+            })
+            const amountRemaining = this.state.maxDrawdown - sumSiblingDrawdowns
+            this.setState({
+                [event.name]: event.value,
+                amountRemaining: amountRemaining,
+                expenditureTooltips: expenditureTooltips
+            })
+        } else {
+            this.setState({
+                [event.name]: event.value
+            })
+        }
     }
 
     handleCurrency(event, maskedvalue, floatvalue) {
         this.setState({
             drawdownAmount: floatvalue
         }, function (this) {
-            if (this.state.maxDrawdown > 0 && this.state.drawdownAmount > this.state.maxDrawdown) {
-                alert('You cannot exceed the project-level drawdown of this fund: $' + this.state.maxDrawdown)
+            if (this.state.amountRemaining > 0 && this.state.drawdownAmount > this.state.amountRemaining) {
+                alert('You cannot exceed the remaining balance of this fund & drawdown type for this project: $' + this.state.amountRemaining)
                 this.setState({ drawdownAmount: '' })
             }
         })
@@ -180,10 +219,13 @@ export class ProgramFundInputs extends React.Component<any, any> {
             drawdownAmount,
             drawdownType,
             contractorVendor,
+            maxDrawdown,
+            expenditureTooltips,
+            amountRemaining
         } = this.state
 
         const {
-            drawdowns
+            parentType
         } = this.props
 
         // validation
@@ -206,6 +248,10 @@ export class ProgramFundInputs extends React.Component<any, any> {
             Cell: props => <button onClick={() => this.selectFund(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
             maxWidth: 75
         }]
+
+        const tooltipContainer = expenditureTooltips.map((phaseDrawdown, index) => {
+            return <div key={index}>Phase "{phaseDrawdown.phaseName}", drawdown: <b><CurrencyFormat value={phaseDrawdown.drawdownAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></div>
+        })
 
         return (
             <div>
@@ -276,28 +322,49 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 options={types}
                             />
                         </div>
-                        <div className='col-md-12'>
-                            <Currency
-                                value={drawdownAmount}
-                                name="drawdownAmount"
-                                header="Drawdown amount"
-                                required={true}
-                                placeholder="Enter an amount"
-                                prefix="$"
-                                callback={this.handleCurrency.bind(this)}
-                            />
-                        </div>
-                        <div className='col-md-12'>
-                            <Select
-                                value={contractorVendor}
-                                name="contractorVendor"
-                                header='Contractor or vendor'
-                                placeholder='Select contractor or vendor'
-                                onChange={this.handleChildSelect.bind(this)}
-                                multi={false}
-                                options={contractorVendors}
-                            />
-                        </div>
+                        {parentType == 'Phase' && drawdownType != '' &&
+                            <div className='col-md-12'>
+                                <Currency
+                                    value={drawdownAmount}
+                                    name="drawdownAmount"
+                                    header="Drawdown amount"
+                                    required={true}
+                                    placeholder="Enter an amount"
+                                    prefix="$"
+                                    callback={this.handleCurrency.bind(this)}
+                                />
+                                <a style={tooltipStyle} data-tip data-for='global'>Amount remaining: <b style={{ color: 'red' }}><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></a>
+                                <br />
+                                <br />
+                                <Tooltip html={true} id='global' aria-haspopup='true' role='example'>{tooltipContainer}</Tooltip>
+                            </div>
+                        }
+                        {parentType == 'Project' &&
+                            <div className='col-md-12'>
+                                <Currency
+                                    value={drawdownAmount}
+                                    name="drawdownAmount"
+                                    header="Drawdown amount"
+                                    required={true}
+                                    placeholder="Enter an amount"
+                                    prefix="$"
+                                    callback={this.handleCurrency.bind(this)}
+                                />
+                            </div>
+                        }
+                        {parentType == 'Project' &&
+                            <div className='col-md-12'>
+                                <Select
+                                    value={contractorVendor}
+                                    name="contractorVendor"
+                                    header='Contractor or vendor'
+                                    placeholder='Select contractor or vendor'
+                                    onChange={this.handleChildSelect.bind(this)}
+                                    multi={false}
+                                    options={contractorVendors}
+                                />
+                            </div>
+                        }
                         <div className='col-md-12 text-center'>
                             <div className='col-md-6'>
                                 <button onClick={this.back.bind(this)} className='btn btn-warning'>Back</button>
@@ -316,10 +383,12 @@ export class ProgramFundInputs extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.funds,
-        ...state.drawdowns
+        ...state.drawdowns,
+        ...state.phases
     }),
     ({
         ...Funds.actionCreators,
-        ...Drawdowns.actionCreators
+        ...Drawdowns.actionCreators,
+        ...Phases.actionCreators
     })
 )(ProgramFundInputs as any) as typeof ProgramFundInputs
