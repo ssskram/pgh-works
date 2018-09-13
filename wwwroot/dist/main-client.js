@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a98b11b7ca4c3491213f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4d5717bb01bfef6d89ba"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58231,14 +58231,20 @@ var ProgramFundInputs = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-ok' })); },
                 maxWidth: 75
             }];
-        var tooltipContainer = expenditureTooltips.map(function (phaseDrawdown, index) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
-                "Phase \"",
-                phaseDrawdown.phaseName,
-                "\", drawdown: ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: phaseDrawdown.drawdownAmount, displayType: 'text', thousandSeparator: true, prefix: '$' })));
+        var siblingExpenditures = expenditureTooltips.map(function (item, index) {
+            return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, item.phaseName),
+                ": -",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: item.drawdownAmount, displayType: 'text', thousandSeparator: true, prefix: '$' })));
         });
+        var tooltip = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Attributed to project:  "),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: maxDrawdown, displayType: 'text', thousandSeparator: true, prefix: '$' })),
+            expenditureTooltips.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Sub other phases:"),
+                    siblingExpenditures));
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
@@ -58282,13 +58288,13 @@ var ProgramFundInputs = (function (_super) {
                     parentType == 'Phase' && drawdownType != '' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) }),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: tooltipStyle, "data-tip": true, "data-for": 'global' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: tooltipStyle, "data-tip": true, "data-for": 'siblings' },
                                 "Amount remaining: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", { style: { color: 'red' } },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_tooltip___default.a, { html: true, id: 'global', "aria-haspopup": 'true', role: 'example' }, tooltipContainer)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_tooltip___default.a, { id: 'siblings' }, tooltip)),
                     parentType == 'Project' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) })),
@@ -60378,10 +60384,14 @@ var DeleteDrawdown = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DeleteDrawdown.prototype.deleteDrawdown = function () {
+        var drawdown = this.props.drawdown;
+        console.log(drawdown);
         // remove from store
-        this.props.deleteDrawdown(this.props.drawdown);
+        this.props.deleteDrawdown(drawdown);
         // then delete locally
-        this.props.removeDrawdown(this.props.drawdown);
+        this.props.removeDrawdown(drawdown);
+        if (this.props.drawdown) {
+        }
         this.props.closeModal();
     };
     DeleteDrawdown.prototype.render = function () {

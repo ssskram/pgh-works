@@ -249,9 +249,24 @@ export class ProgramFundInputs extends React.Component<any, any> {
             maxWidth: 75
         }]
 
-        const tooltipContainer = expenditureTooltips.map((phaseDrawdown, index) => {
-            return <div key={index}>Phase "{phaseDrawdown.phaseName}", drawdown: <b><CurrencyFormat value={phaseDrawdown.drawdownAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></div>
-        })
+        const siblingExpenditures = expenditureTooltips.map((item, index) => {
+            return (
+                <div key={index}><b>{item.phaseName}</b>: -<CurrencyFormat value={item.drawdownAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+            );
+        });
+
+        const tooltip =
+            <div className='col-md-12'>
+                <div>
+                    <b>Attributed to project:  </b><CurrencyFormat value={maxDrawdown} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                </div>
+                {expenditureTooltips.length > 0 &&
+                    <div>
+                        <i>Sub other phases:</i>
+                        {siblingExpenditures}
+                    </div>
+                }
+            </div>
 
         return (
             <div>
@@ -333,10 +348,10 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                     prefix="$"
                                     callback={this.handleCurrency.bind(this)}
                                 />
-                                <a style={tooltipStyle} data-tip data-for='global'>Amount remaining: <b style={{ color: 'red' }}><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></a>
+                                <a style={tooltipStyle} data-tip data-for='siblings'>Amount remaining: <b style={{ color: 'red' }}><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></a>
                                 <br />
                                 <br />
-                                <Tooltip html={true} id='global' aria-haspopup='true' role='example'>{tooltipContainer}</Tooltip>
+                                <Tooltip id='siblings'>{tooltip}</Tooltip>
                             </div>
                         }
                         {parentType == 'Project' &&

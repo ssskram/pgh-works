@@ -7,10 +7,15 @@ import * as Drawdowns from '../../store/drawdowns'
 export class DeleteDrawdown extends React.Component<any, any> {
 
     deleteDrawdown () {
+        const drawdown = this.props.drawdown
+        console.log(drawdown)
         // remove from store
-        this.props.deleteDrawdown(this.props.drawdown)
+        this.props.deleteDrawdown(drawdown)
         // then delete locally
-        this.props.removeDrawdown(this.props.drawdown)
+        this.props.removeDrawdown(drawdown)
+        if (this.props.drawdown) {
+
+        }
         this.props.closeModal()
     }
 
