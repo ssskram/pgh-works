@@ -74,7 +74,7 @@ export class NavMenu extends React.Component<any, any>  {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={'/'} data-toggle="collapse" data-target=".in">
+                    <Link className='navbar-brand' to={'/'}>
                         <div style={marginTop}>PGH <strong>Works</strong></div>
                     </Link>
                 </div>
@@ -82,27 +82,27 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <NavLink to={'/MyProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/MyProjects'}>
                                 <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllProjects'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/AllProjects'}>
                                 <span><img style={iconStyle} src='./images/projects.png' /></span> All projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllPhases'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/AllPhases'}>
                                 <span><img style={iconStyle} src='./images/phase.png' /></span> All phases
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/Programs'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/Programs'}>
                                 <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/Timeline'} activeClassName='active' data-toggle="collapse" data-target=".in">
+                            <NavLink to={'/Timeline'} >
                                 <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
                             </NavLink>
                         </li>

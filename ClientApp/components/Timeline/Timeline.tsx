@@ -89,6 +89,7 @@ export default class Line extends React.Component<any, any> {
             height: timelineHeight + 'px',
             stack: true,
             autoResize: true,
+            zoomable: false,            
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,

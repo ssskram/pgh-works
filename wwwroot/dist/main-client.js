@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5243326bdb017175d15a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fc28b645c814a73e03ae"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11607,6 +11607,7 @@ var Line = (function (_super) {
             height: timelineHeight + 'px',
             stack: true,
             autoResize: true,
+            zoomable: false,
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,
@@ -63450,7 +63451,7 @@ var NavMenu = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'icon-bar' }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'icon-bar' }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'icon-bar' })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { className: 'navbar-brand', to: '/', "data-toggle": "collapse", "data-target": ".in" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { className: 'navbar-brand', to: '/' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginTop },
                             "PGH ",
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("strong", null, "Works")))),
@@ -63458,27 +63459,27 @@ var NavMenu = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'navbar-collapse collapse' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("ul", { className: 'nav navbar-nav' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/MyProjects', activeClassName: 'active', "data-toggle": "collapse", "data-target": ".in" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/MyProjects' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/worker.png' })),
                                 " My projects")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/AllProjects', activeClassName: 'active', "data-toggle": "collapse", "data-target": ".in" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/AllProjects' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/projects.png' })),
                                 " All projects")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/AllPhases', activeClassName: 'active', "data-toggle": "collapse", "data-target": ".in" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/AllPhases' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/phase.png' })),
                                 " All phases")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/Programs', activeClassName: 'active', "data-toggle": "collapse", "data-target": ".in" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/Programs' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/money.png' })),
                                 " Programs/Funds")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/Timeline', activeClassName: 'active', "data-toggle": "collapse", "data-target": ".in" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: '/Timeline' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timeline.png' })),
                                 " Timeline")),
@@ -66660,9 +66661,9 @@ var TagsCard = (function (_super) {
 /* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export TaggedAssetReport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(17);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66688,13 +66689,29 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var TaggedAssetReport = (function (_super) {
     __extends(TaggedAssetReport, _super);
     function TaggedAssetReport() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.state = {
+            redirect: false,
+            link: ''
+        };
+        return _this;
     }
+    TaggedAssetReport.prototype.setRedirect = function (link) {
+        this.setState({
+            link: link,
+            redirect: true
+        });
+    };
     TaggedAssetReport.prototype.render = function () {
+        var _this = this;
         var _a = this.props, tag = _a.tag, tags = _a.tags;
+        var _b = this.state, redirect = _b.redirect, link = _b.link;
         var relevantTags = tags.filter(function (item) {
             return item.taggedAssetOID == tag.taggedAssetOID;
         });
+        if (redirect == true) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { to: link });
+        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.taggedAssetName)),
@@ -66712,14 +66729,14 @@ var TaggedAssetReport = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, tag.parentType)))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setRedirect(link); }, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' }))))));
             })));
     };
     return TaggedAssetReport;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(function (state) { return (__assign({}, state.tags)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */])))(TaggedAssetReport));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.tags)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__["a" /* actionCreators */])))(TaggedAssetReport));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Tags/TaggedAssetReport.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Tags/TaggedAssetReport.tsx"); } } })();
