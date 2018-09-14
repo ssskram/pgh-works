@@ -27,7 +27,7 @@ const btnMargin = {
 }
 
 const marginBottom = {
-    marginBottom: '50px'
+    marginBottom: '70px'
 }
 
 export class Project extends React.Component<any, any> {
@@ -263,8 +263,8 @@ export class Project extends React.Component<any, any> {
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update info</button></span>
-                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Modify location</button></span>
+                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-info-sign'></span></button></span>
+                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-map-marker'></span></button></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />

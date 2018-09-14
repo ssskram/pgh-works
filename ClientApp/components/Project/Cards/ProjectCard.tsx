@@ -1,26 +1,8 @@
 
 import * as React from 'react'
-
-const bigFont = {
-    fontSize: '18px'
-}
-
-const borderNone = {
-    border: 'none'
-}
-
-const projectContainer = {
-    backgroundColor: '#f3fafe',
-    borderRadius: '10px',
-    padding: '10px',
-    margin: '5px 0px',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-}
-
-const metaContainer = {
-    margin: '5px 0px',
-    padding: '20px 0px 0px 30px'
-}
+import Slider from "react-slick";
+import RightArrow from './../../Utilities/CarouselRight'
+import LeftArrow from './../../Utilities/CarouselLeft'
 
 export default class ProjectCard extends React.Component<any, any> {
 
@@ -30,83 +12,71 @@ export default class ProjectCard extends React.Component<any, any> {
 
     public render() {
         const {
-            cartegraphID,
             projectManager,
             projectMembers,
             projectDepartment,
             projectDescription,
             projectStatus,
             notes,
-            created,
-            createdBy,
-            lastModifiedBy,
+            created
         } = this.props.project
+
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            nextArrow: <RightArrow />,
+            prevArrow: <LeftArrow />
+        };
 
         return (
             <div>
                 <div className='row'>
                     <br />
-                    <div style={projectContainer} className='col-md-6'>
-                        <table className="table">
-                            <tbody>
-                                <tr style={bigFont}>
-                                    <th style={borderNone} scope="row">Project status</th>
-                                    <td style={borderNone}>{projectStatus}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Department</th>
-                                    <td>{projectDepartment}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Project manager</th>
-                                    <td>{projectManager}</td>
-                                </tr>
-                                {projectMembers &&
-                                    <tr>
-                                        <th scope="row">Project members</th>
-                                        <td>{projectMembers}</td>
-                                    </tr>
-                                }
-                                {projectDescription &&
-                                    <tr>
-                                        <th scope="row">Project description</th>
-                                        <td>{projectDescription}</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    <div style={metaContainer} className='col-md-6'>
-                        <table className="table">
-                            <tbody>
-                                <tr>
-                                    <th style={borderNone} scope="row">Project created</th>
-                                    <td style={borderNone}>{created}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Created by</th>
-                                    <td>{createdBy}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Last modified by</th>
-                                    <td>{lastModifiedBy}</td>
-                                </tr>
-                                {cartegraphID &&
-                                    <tr>
-                                        <th scope="row">Cartegraph ID</th>
-                                        <td>{cartegraphID}</td>
-                                    </tr>
-                                }
-                                {notes &&
-                                    <tr>
-                                        <th scope="row">Notes</th>
-                                        <td>{notes}</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                    <Slider {...settings}>
+
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Project status</u></h3>
+                            <h2>{projectStatus}</h2>
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Department</u></h3>
+                            <h2>{projectDepartment}</h2>
+                        </div>
+                        {projectDescription &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Description</u></h3>
+                                <h2>{projectDescription}</h2>
+                            </div>
+                        }
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Project manager</u></h3>
+                            <h2>{projectManager}</h2>
+                        </div>
+                        {projectMembers &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Project members</u></h3>
+                                <h2>{projectMembers}</h2>
+                            </div>
+                        }
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Project created</u></h3>
+                            <h2>{created}</h2>
+                        </div>
+                        {notes &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Notes</u></h3>
+                                <h2>{notes}</h2>
+                            </div>
+                        }
+                    </Slider>
                 </div>
+                <br/>
+                <br/>
+                <br/>
             </div>
         )
     }

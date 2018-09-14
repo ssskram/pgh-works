@@ -11,7 +11,7 @@ import TL from './../Timeline/Timeline'
 const iconStyle = {
     marginRight: '5px',
     marginTop: '-8px',
-    height: '35px'
+    height: '40px'
 }
 
 export class Phases extends React.Component<any, any> {
@@ -99,7 +99,7 @@ export class Phases extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Define a new phase</button></span></h3>
+                <h2><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 {phases.length == 0 &&
                     <h4 className='text-center'><i>No phases</i></h4>

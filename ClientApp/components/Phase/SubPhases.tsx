@@ -79,7 +79,7 @@ export class SubPhases extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/subphase.png' /> Subphases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>Add subphase</button></span></h3>
+                <h2><img style={iconStyle} src='./images/subphase.png' /> Subphases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 {subphases.length == 0 &&
                     <h4 className='text-center'><i>No subphases</i></h4>

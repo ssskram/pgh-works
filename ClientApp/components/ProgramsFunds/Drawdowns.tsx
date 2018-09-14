@@ -179,7 +179,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h3><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'>Add cost</button></span></h3>
+                <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
 
                 <div className='col-md-12'>

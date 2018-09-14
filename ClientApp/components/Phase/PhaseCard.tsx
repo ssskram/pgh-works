@@ -1,6 +1,8 @@
 
 import * as React from 'react'
-import Moment from 'react-moment'
+import Slider from "react-slick";
+import RightArrow from './../Utilities/CarouselRight'
+import LeftArrow from './../Utilities/CarouselLeft'
 
 const bigFont = {
     fontSize: '18px'
@@ -42,67 +44,52 @@ export default class PhaseCard extends React.Component<any, any> {
             lastModifiedBy,
         } = this.props.phase
 
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            nextArrow: <RightArrow />,
+            prevArrow: <LeftArrow />
+        };
+
         return (
             <div>
                 <div className='row'>
                     <br />
-                    <div style={phaseContainer} className='col-md-6'>
-                        <table className="table">
-                            <tbody>
-                                <tr style={bigFont}>
-                                    <th style={borderNone} scope="row">Phase status</th>
-                                    <td style={borderNone}>{phaseStatus}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Phase type</th>
-                                    <td>{phaseType}</td>
-                                </tr>
-                                {percentComplete &&
-                                    <tr>
-                                        <th scope="row">Percent complete</th>
-                                        <td>% {percentComplete}</td>
-                                    </tr>
-                                }
-                                {phaseDescription &&
-                                    <tr>
-                                        <th scope="row">Description</th>
-                                        <td>{phaseDescription}</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    <div style={metaContainer} className='col-md-6'>
-                        <table className="table">
-                            <tbody>
-                                <tr>
-                                    <th style={borderNone} scope="row">Phase created</th>
-                                    <td style={borderNone}>{created}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Created by</th>
-                                    <td>{createdBy}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Last modified by</th>
-                                    <td>{lastModifiedBy}</td>
-                                </tr>
-                                {cartegraphID &&
-                                    <tr>
-                                        <th scope="row">Cartegraph ID</th>
-                                        <td>{cartegraphID}</td>
-                                    </tr>
-                                }
-                                {notes &&
-                                    <tr>
-                                        <th scope="row">Notes</th>
-                                        <td>{notes}</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                    <Slider {...settings}>
+
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Phase status</u></h3>
+                            <h2>{phaseStatus}</h2>
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Phase type</u></h3>
+                            <h2>{phaseType}</h2>
+                        </div>
+                        {phaseDescription &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Description</u></h3>
+                                <h2>{phaseDescription}</h2>
+                            </div>
+                        }
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Phase created</u></h3>
+                            <h2>{created}</h2>
+                        </div>
+                        {notes &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Notes</u></h3>
+                                <h2>{notes}</h2>
+                            </div>
+                        }
+                    </Slider>
                 </div>
+                <br />
+                <br />
+                <br />
             </div>
         )
     }

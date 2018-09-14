@@ -22,7 +22,7 @@ const btnMargin = {
 }
 
 const marginBottom = {
-    marginBottom: '50px'
+    marginBottom: '70px'
 }
 
 export class Phase extends React.Component<any, any> {
@@ -167,8 +167,8 @@ export class Phase extends React.Component<any, any> {
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editPhase.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'>Update phase</button></span>
-                    <span><button onClick={this.returnToProject.bind(this)} style={btnMargin} className='btn pull-right'>Return to project</button></span>
+                    <span><button onClick={this.editPhase.bind(this)} style={btnMargin} className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-info-sign'></span></button></span>
+                    <span><button onClick={this.returnToProject.bind(this)} style={btnMargin} className='btn pull-right'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-arrow-left'></span></button></span>
                 </h2>
                 <hr />
                 <br />
