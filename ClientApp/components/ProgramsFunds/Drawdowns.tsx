@@ -152,7 +152,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         }, {
             Header: '',
             accessor: 'fundID',
-            Cell: props => <button onClick={() => this.redirectToFund(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></button>,
+            Cell: props => <button onClick={() => this.redirectToFund(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
             maxWidth: 75
         }]
 

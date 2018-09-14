@@ -36,7 +36,7 @@ export class TaggedAssetReport extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className='col-md-3'>
-                                    <Link to={link} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></Link>
+                                    <Link to={link} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
                                 </div>
                             </div>
                         </div>

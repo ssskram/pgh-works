@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "93a7c2f624e1dad4ec43"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c6deadf0b549e093ed91"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35665,7 +35665,7 @@ var ProgramsFunds = (function (_super) {
                 Header: '',
                 accessor: 'fundID',
                 Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.redirectToFund(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
                 maxWidth: 75
             }];
         // calculating project costs
@@ -64302,7 +64302,7 @@ var AllPhases = (function (_super) {
                 Header: '',
                 accessor: 'phaseID',
                 Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.getPhaseLink(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
                 maxWidth: 100
             }];
         if (redirect) {
@@ -66153,7 +66153,7 @@ var FundViewer = (function (_super) {
                 Header: '',
                 accessor: 'parentID',
                 Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.redirectToProject(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
                 maxWidth: 75
             }];
         var redirectLink = "/Project/id=" + selectedProjectID;
@@ -66323,7 +66323,7 @@ var ProgramsFunds = (function (_super) {
                 Header: '',
                 accessor: 'fundID',
                 Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.viewFund(props.original); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
                 maxWidth: 100
             }];
         var redirectLink = "/Fund/id=" + selectedFundID;
@@ -67790,7 +67790,7 @@ var Subphase = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, subphase.subphaseStatus)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn btn-success' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' }))))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -68359,7 +68359,7 @@ var TaggedAssetReport = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, tag.parentType)))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' }))))));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))));
             })));
     };
     return TaggedAssetReport;
