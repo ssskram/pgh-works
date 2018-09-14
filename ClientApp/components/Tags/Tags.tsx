@@ -93,7 +93,7 @@ export class Tags extends React.Component<any, any> {
     public render() {
         const {
             modalIsOpen,
-            tags
+            tags,
         } = this.state
 
         return (

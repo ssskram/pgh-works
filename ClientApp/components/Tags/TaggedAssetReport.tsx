@@ -3,23 +3,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Tag from '../../store/GETS/ping'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export class TaggedAssetReport extends React.Component<any, any> {
-    constructor() {
-        super()
-        this.state = {
-            redirect: false,
-            link: ''
-        }
-    }
-
-    setRedirect(link) {
-        this.setState ({
-            link: link,
-            redirect: true
-        })
-    }
 
     public render() {
         const {
@@ -27,18 +13,9 @@ export class TaggedAssetReport extends React.Component<any, any> {
             tags
         } = this.props
 
-        const { 
-            redirect,
-            link
-        } = this.state
-
         const relevantTags = tags.filter(function (item) {
             return item.taggedAssetOID == tag.taggedAssetOID
         })
-
-        if (redirect == true) {
-            return <Redirect to={link} />
-        }
 
         return (
             <div>
@@ -59,7 +36,7 @@ export class TaggedAssetReport extends React.Component<any, any> {
                                     </div>
                                 </div>
                                 <div className='col-md-3'>
-                                    <button onClick={() => this.setRedirect(link)} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                                    <Link to={link} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></Link>
                                 </div>
                             </div>
                         </div>

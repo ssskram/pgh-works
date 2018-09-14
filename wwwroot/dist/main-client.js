@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fc28b645c814a73e03ae"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "339bfd0c8ee5e84f7a5a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66689,29 +66689,13 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var TaggedAssetReport = (function (_super) {
     __extends(TaggedAssetReport, _super);
     function TaggedAssetReport() {
-        var _this = _super.call(this) || this;
-        _this.state = {
-            redirect: false,
-            link: ''
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    TaggedAssetReport.prototype.setRedirect = function (link) {
-        this.setState({
-            link: link,
-            redirect: true
-        });
-    };
     TaggedAssetReport.prototype.render = function () {
-        var _this = this;
         var _a = this.props, tag = _a.tag, tags = _a.tags;
-        var _b = this.state, redirect = _b.redirect, link = _b.link;
         var relevantTags = tags.filter(function (item) {
             return item.taggedAssetOID == tag.taggedAssetOID;
         });
-        if (redirect == true) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { to: link });
-        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.taggedAssetName)),
@@ -66729,7 +66713,7 @@ var TaggedAssetReport = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, tag.parentType)))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setRedirect(link); }, className: 'btn btn-success' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-search' }))))));
             })));
     };
