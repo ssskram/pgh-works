@@ -11,8 +11,7 @@ import * as Projects from '../../store/projects'
 
 const btnStyle = {
     fontSize: '25px',
-    backgroundColor: 'rgb(255, 255, 255)',
-    padding: '8px'
+    border: '1px solid rgb(44, 62, 80)'
 }
 
 const types = [
@@ -102,7 +101,7 @@ export class PhaseFilter extends React.Component<any, any> {
         } = this.state
         return (
             <div>
-                <button onClick={this.openModal.bind(this)} style={btnStyle}><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter phases</span></button>
+                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}

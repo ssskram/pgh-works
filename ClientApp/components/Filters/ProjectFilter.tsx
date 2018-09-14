@@ -8,8 +8,7 @@ import Modal from 'react-responsive-modal'
 
 const btnStyle = {
     fontSize: '25px',
-    backgroundColor: 'rgb(255, 255, 255)',
-    padding: '8px'
+    border: '1px solid rgb(44, 62, 80)'
 }
 
 const departments = [
@@ -84,7 +83,7 @@ export default class ProjectFilter extends React.Component<any, any> {
         } = this.state
         return (
             <div>
-                <button onClick={this.openModal.bind(this)} style={btnStyle}><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter projects</span></button>
+                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}

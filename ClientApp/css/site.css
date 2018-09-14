@@ -798,6 +798,14 @@ a[href^="https://maps.google.com/maps"] {
     padding: 10px;
 }
 
+/* Carousel
+/* ------------------------- */
+
+.slick-slide,
+.slick-slide * {
+    outline: none !important;
+}
+
 /* Site specific
 /* ------------------------- */
 
