@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4e2508214b86df34680e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "500e3d0cbe869f5226a2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11548,20 +11548,20 @@ var Line = (function (_super) {
     }
     Line.prototype.componentWillMount = function () {
         var self = this;
-        this.redraw();
+        this.redraw(this.props);
         setTimeout(function () {
             self.setState({
                 hidden: false
             });
         }, 10);
     };
-    Line.prototype.componentWillReceiveProps = function () {
-        this.redraw();
+    Line.prototype.componentWillReceiveProps = function (nextProps) {
+        this.redraw(nextProps);
     };
-    Line.prototype.redraw = function () {
+    Line.prototype.redraw = function (props) {
         this.setState({
-            groups: this.props.groups,
-            items: this.props.items
+            groups: props.groups,
+            items: props.items
         });
     };
     Line.prototype.render = function () {
@@ -16267,9 +16267,14 @@ var actionCreators = {
             });
         }
     }; },
-    deleteTimeline: function (item) { return function (dispatch, getState) {
-        dispatch({
-            type: deleteTimeline, item: item
+    deleteTimeline: function (projectID) { return function (dispatch, getState) {
+        var itemsToDelete = getState().timeline.timeline.filter(function (timeline) {
+            return timeline.id == projectID || timeline.parentProjectID == projectID;
+        });
+        itemsToDelete.forEach(function (timelineItem) {
+            dispatch({
+                type: deleteTimeline, timelineItem: timelineItem
+            });
         });
     }; }
 };
@@ -68474,15 +68479,38 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var Timeline = (function (_super) {
     __extends(Timeline, _super);
     function Timeline() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.state = {
+            timeline: [],
+            items: [],
+            groups: []
+        };
+        return _this;
     }
     Timeline.prototype.componentDidMount = function () {
         // ping server
         this.props.ping();
-        console.log(this.props);
+        this.setState({
+            timeline: this.props.timeline
+        });
+    };
+    Timeline.prototype.componentWillReceiveProps = function (nextProps) {
+        this.setState({
+            timeline: nextProps.timeline
+        });
+    };
+    Timeline.prototype.returnPhaseCount = function (projectID) {
+        var phases = this.state.timeline.filter(function (item) {
+            return item.parentProjectID == projectID;
+        });
+        return phases.length;
+    };
+    Timeline.prototype.deleteTimelineItem = function (projectID) {
+        this.props.deleteTimeline(projectID);
     };
     Timeline.prototype.render = function () {
-        var timeline = this.props.timeline;
+        var _this = this;
+        var timeline = this.state.timeline;
         var groups = [];
         var items = [];
         var index = 1;
@@ -68545,8 +68573,15 @@ var Timeline = (function (_super) {
                 Header: 'Project',
                 accessor: 'name'
             }, {
-                Header: 'Type',
-                accessor: 'type',
+                Header: 'Phases',
+                accessor: 'id',
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.returnPhaseCount(props.value)); }
+            }, {
+                Header: '',
+                accessor: 'id',
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.deleteTimelineItem(props.value); }, className: 'btn btn-danger' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon glyphicon-remove' })); },
+                maxWidth: 100
             }, {
                 Header: '',
                 accessor: 'id',

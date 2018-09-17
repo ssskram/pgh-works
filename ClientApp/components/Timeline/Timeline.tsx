@@ -15,7 +15,7 @@ export default class Line extends React.Component<any, any> {
 
     componentWillMount() {
         let self = this
-        this.redraw()
+        this.redraw(this.props)
         setTimeout(function () {
             self.setState({
                 hidden: false
@@ -23,14 +23,14 @@ export default class Line extends React.Component<any, any> {
         }, 10);
     }
 
-    componentWillReceiveProps() {
-        this.redraw()
+    componentWillReceiveProps(nextProps) {
+        this.redraw(nextProps)
     }
 
-    redraw() {
+    redraw(props) {
         this.setState({
-            groups: this.props.groups,
-            items: this.props.items
+            groups: props.groups,
+            items: props.items
         })
     }
 

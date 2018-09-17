@@ -35,9 +35,14 @@ export const actionCreators = {
         }
     },
 
-    deleteTimeline: (item): AppThunkAction<any> => (dispatch, getState) => {
-        dispatch({
-            type: deleteTimeline, item
+    deleteTimeline: (projectID): AppThunkAction<any> => (dispatch, getState) => {
+        let itemsToDelete = getState().timeline.timeline.filter(function (timeline) {
+            return timeline.id == projectID || timeline.parentProjectID == projectID
+        })
+        itemsToDelete.forEach (function (timelineItem) {
+            dispatch({
+                type: deleteTimeline, timelineItem
+            })
         })
     }
 }

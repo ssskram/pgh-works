@@ -8,17 +8,43 @@ import TL from './Timeline'
 import Table from 'react-table'
 
 export class Timeline extends React.Component<any, any> {
-
+    constructor () {
+        super()
+        this.state = {
+            timeline: [],
+            items: [],
+            groups: []
+        }
+    }
     componentDidMount() {
         // ping server
         this.props.ping()
-        console.log(this.props)
+        this.setState ({
+            timeline: this.props.timeline
+        })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState ({
+            timeline: nextProps.timeline
+        })
+    }
+
+    returnPhaseCount(projectID) {
+        const phases = this.state.timeline.filter(function (item) {
+            return item.parentProjectID == projectID
+        }) 
+        return phases.length
+    }
+
+    deleteTimelineItem (projectID) {
+        this.props.deleteTimeline(projectID)
     }
 
     public render() {
         const {
             timeline
-        } = this.props
+        } = this.state
 
         let groups = [] as any
         let items = [] as any
@@ -83,8 +109,14 @@ export class Timeline extends React.Component<any, any> {
             Header: 'Project',
             accessor: 'name'
         }, {
-            Header: 'Type',
-            accessor: 'type',
+            Header: 'Phases',
+            accessor: 'id',
+            Cell: props => <div>{this.returnPhaseCount(props.value)}</div>
+        }, {
+            Header: '',
+            accessor: 'id',
+            Cell: props => <button onClick={() => this.deleteTimelineItem(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon glyphicon-remove'></span></button>,
+            maxWidth: 100
         }, {
             Header: '',
             accessor: 'id',
