@@ -17,7 +17,8 @@ export default class ProjectTimeline extends React.Component<any, any> {
             id: 1,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
-            end: expectedEndDate
+            end: expectedEndDate,
+            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
         }
         items.push(expected)
 
@@ -27,7 +28,7 @@ export default class ProjectTimeline extends React.Component<any, any> {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink'
+                style: 'background-color: pink; border-color: pink'
             }
             items.push(actual)
         }

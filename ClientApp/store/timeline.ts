@@ -14,6 +14,7 @@ export interface TimelineState {
 
 export interface TimelineItem {
     id: string
+    parentProjectID: string
     type: string
     name: string
     expectedStartDate: string

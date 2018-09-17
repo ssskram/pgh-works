@@ -148,6 +148,7 @@ export class Phase extends React.Component<any, any> {
             id: this.state.phaseID,
             type: 'Phase',
             name: this.state.phaseName,
+            parentProjectID: this.state.projectID,
             expectedStartDate: this.state.expectedStartDate,
             expectedEndDate: this.state.expectedEndDate,
             actualStartDate: this.state.actualStartDate,

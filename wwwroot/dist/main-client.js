@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f38d2ee1a329f085646d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b2a40b3c82bb56db3ffd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11522,8 +11522,6 @@ module.exports = CurrencyFormat;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline__ = __webpack_require__(741);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -11536,7 +11534,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 
 
-
 var Line = (function (_super) {
     __extends(Line, _super);
     function Line() {
@@ -11544,8 +11541,7 @@ var Line = (function (_super) {
         _this.state = {
             groups: [],
             items: [],
-            hidden: true,
-            timelineHeight: 0
+            hidden: true
         };
         _this.redraw = _this.redraw.bind(_this);
         return _this;
@@ -11566,54 +11562,14 @@ var Line = (function (_super) {
         this.setState({
             groups: this.props.groups,
             items: this.props.items
-        }, function () {
-            this.setTimelineHeight();
         });
-    };
-    Line.prototype.setTimelineHeight = function () {
-        var timelineHeight = 135;
-        var self = this;
-        var indexes = [];
-        this.state.items.forEach(function (date) {
-            var start = __WEBPACK_IMPORTED_MODULE_2_moment__(date.start);
-            var end = __WEBPACK_IMPORTED_MODULE_2_moment__(date.end);
-            var isBetween = self.checkRange(start, end, indexes);
-            if (isBetween == true) {
-                timelineHeight = timelineHeight + 40;
-                indexes.push(date.id);
-            }
-        });
-        this.setState({
-            timelineHeight: timelineHeight
-        });
-    };
-    Line.prototype.checkRange = function (startDate, endDate, indexes) {
-        var stacked = false;
-        this.state.items.forEach(function (check) {
-            if (indexes.includes(check.id)) {
-                return;
-            }
-            else {
-                var startCheck = __WEBPACK_IMPORTED_MODULE_2_moment__(check.start);
-                var endCheck = __WEBPACK_IMPORTED_MODULE_2_moment__(check.end);
-                if (startDate.isBetween(startCheck, endCheck)) {
-                    stacked = true;
-                }
-                if (endDate.isBetween(startCheck, endCheck)) {
-                    stacked = true;
-                }
-            }
-        });
-        return stacked;
     };
     Line.prototype.render = function () {
-        var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden, timelineHeight = _a.timelineHeight;
+        var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden;
         var timelineOptions = {
             width: '100%',
-            height: timelineHeight + 'px',
             stack: true,
             autoResize: true,
-            zoomable: false,
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,
@@ -65401,6 +65357,7 @@ var Phase = (function (_super) {
             id: this.state.phaseID,
             type: 'Phase',
             name: this.state.phaseName,
+            parentProjectID: this.state.projectID,
             expectedStartDate: this.state.expectedStartDate,
             expectedEndDate: this.state.expectedEndDate,
             actualStartDate: this.state.actualStartDate,
@@ -65858,7 +65815,8 @@ var PhaseTimeline = (function (_super) {
             id: 1,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
-            end: expectedEndDate
+            end: expectedEndDate,
+            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -65867,7 +65825,7 @@ var PhaseTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink'
+                style: 'background-color: pink; border-color: pink'
             };
             items.push(actual);
         }
@@ -67107,9 +67065,10 @@ var Phases = (function (_super) {
         phases.forEach(function (phase) {
             var expected = {
                 id: counter,
-                content: phase.phaseName + ', ' + phase.expectedStartDate + ' - ' + phase.expectedEndDate,
+                content: phase.phaseName,
                 start: phase.expectedStartDate,
-                end: phase.expectedEndDate
+                end: phase.expectedEndDate,
+                style: 'background-color: #d5ddf6; border-color: #d5ddf6'
             };
             counter++;
             items.push(expected);
@@ -67118,10 +67077,10 @@ var Phases = (function (_super) {
             if (phase.actualStartDate && phase.actualEndDate) {
                 var actual = {
                     id: counter,
-                    content: phase.phaseName + ', ' + phase.actualStartDate + ' - ' + phase.actualEndDate,
+                    content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
-                    style: 'background-color: pink'
+                    style: 'background-color: pink; border-color: pink'
                 };
                 counter++;
                 items.push(actual);
@@ -67194,7 +67153,8 @@ var ProjectTimeline = (function (_super) {
             id: 1,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
-            end: expectedEndDate
+            end: expectedEndDate,
+            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -67203,7 +67163,7 @@ var ProjectTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink'
+                style: 'background-color: pink; border-color: pink'
             };
             items.push(actual);
         }
@@ -68511,16 +68471,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var groups = [
-    { id: 'Project A', content: 'Project A' },
-    { id: 'Project B', content: 'Project B' }
-];
-var items = [
-    { id: 1, group: 'Project A', content: 'Phase A', start: '04/20/2018', end: '09/20/2018' },
-    { id: 2, group: 'Project A', content: 'Phase b', start: '05/22/2017', end: '06/03/2018' },
-    { id: 3, group: 'Project B', content: 'Phase A', start: '01/31/2018', end: '04/18/2018' },
-    { id: 4, group: 'Project B', content: 'Phase B', start: '03/08/2017', end: '09/19/2018' },
-    { id: 5, group: 'Project B', content: 'Phase C', start: '12/03/2017', end: '12/03/2018' },
-    { id: 6, group: 'Project A', content: 'Phase C', start: '08/03/2018', end: '09/19/2018' },
+    { id: 'Project', content: 'Projects' },
+    { id: 'Phase', content: 'Phases' }
 ];
 var Timeline = (function (_super) {
     __extends(Timeline, _super);
@@ -68533,10 +68485,77 @@ var Timeline = (function (_super) {
         console.log(this.props);
     };
     Timeline.prototype.render = function () {
+        var timeline = this.props.timeline;
+        var groups = [];
+        var items = [];
+        var index = 1;
+        timeline.forEach(function (item) {
+            if (item.type == 'Project') {
+                var group = {
+                    id: item.id,
+                    content: item.name
+                };
+                groups.push(group);
+                var expected = {
+                    id: index,
+                    content: item.expectedStartDate + ' - ' + item.expectedEndDate,
+                    start: item.expectedStartDate,
+                    end: item.expectedEndDate,
+                    group: item.id,
+                    style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+                };
+                index = index + 1;
+                items.push(expected);
+                if (item.actualStartDate && item.actualEndDate) {
+                    var actual = {
+                        id: index,
+                        content: item.actualStartDate + ' - ' + item.actualEndDate,
+                        start: item.actualStartDate,
+                        end: item.actualEndDate,
+                        group: item.id,
+                        style: 'background-color: pink; border-color: pink'
+                    };
+                    index = index + 1;
+                    items.push(actual);
+                }
+            }
+            else {
+                var expected = {
+                    id: index,
+                    content: "Phase: " + item.name,
+                    start: item.expectedStartDate,
+                    end: item.expectedEndDate,
+                    group: item.parentProjectID,
+                    style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+                };
+                index = index + 1;
+                items.push(expected);
+                if (item.actualStartDate && item.actualEndDate) {
+                    var actual = {
+                        id: index,
+                        content: "Phase: " + item.name,
+                        start: item.actualStartDate,
+                        end: item.actualEndDate,
+                        group: item.parentProjectID,
+                        style: 'background-color: pink; border-color: pink'
+                    };
+                    index = index + 1;
+                    items.push(actual);
+                }
+            }
+        });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "Timeline"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Timeline__["a" /* default */], { groups: groups, items: items })));
+            timeline.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'pink', padding: '8px' } }, "Actual")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Timeline__["a" /* default */], { groups: groups, items: items })),
+            timeline.length == 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "Your timeline is empty"))));
     };
     return Timeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
