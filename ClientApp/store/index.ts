@@ -11,6 +11,7 @@ import * as Tags from './tags'
 import * as Statuses from './GETS/status'
 import * as TaggableAssets from './GETS/taggableAssets'
 import * as Personnel from './GETS/personnel'
+import * as Timeline from './timeline'
 
 export interface ApplicationState {
     user: User.UserState
@@ -25,7 +26,8 @@ export interface ApplicationState {
     tags: Tags.TagState
     statuses: Statuses.StatusState,
     taggableAssets: TaggableAssets.AssetState
-    personnel: Personnel.PersonnelState
+    personnel: Personnel.PersonnelState,
+    timeline: Timeline.TimelineState
 }
 
 export const reducers = {
@@ -41,7 +43,8 @@ export const reducers = {
     tags: Tags.reducer,
     statuses: Statuses.reducer,
     taggableAssets: TaggableAssets.reducer,
-    personnel: Personnel.reducer
+    personnel: Personnel.reducer,
+    timeline: Timeline.reducer
 };
 
 export interface AppThunkAction<TAction> {
