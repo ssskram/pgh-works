@@ -15,6 +15,7 @@ import * as User from '../../store/GETS/user'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as TagStore from '../../store/tags'
 import * as Timeline from '../../store/timeline'
+import * as PhasesStore from '../../store/phases'
 import ProjectFields from '../Inputs/Project'
 import Tags from '../Tags/Tags'
 import * as moment from 'moment'
@@ -249,16 +250,33 @@ export class Project extends React.Component<any, any> {
     }
 
     addToTimeline() {
+        let self = this
         const timelineLoad = {
-            id: this.state.projectID,
+            id: self.state.projectID,
             type: 'Project',
-            name: this.state.projectName,
-            expectedStartDate: this.state.expectedStartDate,
-            expectedEndDate: this.state.expectedEndDate,
-            actualStartDate: this.state.actualStartDate,
-            actualEndDate: this.state.actualEndDate
+            name: self.state.projectName,
+            expectedStartDate: self.state.expectedStartDate,
+            expectedEndDate: self.state.expectedEndDate,
+            actualStartDate: self.state.actualStartDate,
+            actualEndDate: self.state.actualEndDate
         }
         this.props.addTimeline(timelineLoad)
+        const phases = this.props.phases.filter(function (phase) {
+            return phase.projectID == self.state.projectID
+        })
+        phases.forEach(function (phase) {
+            const phaseLoad = {
+                id: phase.phaseID,
+                type: 'Phase',
+                name: phase.phaseName,
+                parentProjectID: phase.projectID,
+                expectedStartDate: phase.expectedStartDate,
+                expectedEndDate: phase.expectedEndDate,
+                actualStartDate: phase.actualStartDate,
+                actualEndDate: phase.actualEndDate
+            }
+            self.props.addTimeline(phaseLoad)
+        })
     }
 
     public render() {
@@ -362,7 +380,8 @@ export default connect(
         ...state.taggableAssets,
         ...state.user,
         ...state.tags,
-        ...state.timeline
+        ...state.timeline,
+        ...state.phases
     }),
     ({
         ...Ping.actionCreators,
@@ -370,6 +389,7 @@ export default connect(
         ...Projects.actionCreators,
         ...Assets.actionCreators,
         ...TagStore.actionCreators,
-        ...Timeline.actionCreators
+        ...Timeline.actionCreators,
+        ...PhasesStore.actionCreators
     })
 )(Project as any) as typeof Project
