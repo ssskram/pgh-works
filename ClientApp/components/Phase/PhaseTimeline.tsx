@@ -35,18 +35,16 @@ export default class PhaseTimeline extends React.Component<any, any> {
 
         return (
             <div>
+                <br />
+                <br />
+                <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
+                    <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
+                    <span style={{ backgroundColor: 'pink', padding: '8px' }}>Actual</span>
+                </div>
                 <div className='col-md-12'>
-                    <br />
-                    <br />
-                    <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                        <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
-                        <span style={{ backgroundColor: 'pink', padding: '8px' }}>Actual</span>
-                    </div>
-                    <div className='col-md-12'>
-                        {this.props.phase &&
-                            <TL items={items} />
-                        }
-                    </div>
+                    {this.props.phase &&
+                        <TL items={items} />
+                    }
                 </div>
             </div>
         )

@@ -315,16 +315,16 @@ export class Project extends React.Component<any, any> {
                         <ProjectTimeline project={this.state} />
                     </div>
                 }
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Phases projectID={projectID} />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Drawdowns parentID={projectID} parentType={'Project'} />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Attachments parentID={projectID} parentType={'Project'} />
                 </div>
 
