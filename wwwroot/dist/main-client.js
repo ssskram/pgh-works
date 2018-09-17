@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "500e3d0cbe869f5226a2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "84c6db04e584d2c2403d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -16268,13 +16268,8 @@ var actionCreators = {
         }
     }; },
     deleteTimeline: function (projectID) { return function (dispatch, getState) {
-        var itemsToDelete = getState().timeline.timeline.filter(function (timeline) {
-            return timeline.id == projectID || timeline.parentProjectID == projectID;
-        });
-        itemsToDelete.forEach(function (timelineItem) {
-            dispatch({
-                type: deleteTimeline, timelineItem: timelineItem
-            });
+        dispatch({
+            type: deleteTimeline, projectID: projectID
         });
     }; }
 };
@@ -16285,7 +16280,11 @@ var reducer = function (state, incomingAction) {
             return __assign({}, state, { timeline: state.timeline.concat(action.item) });
         case deleteTimeline:
             var timelineCopy = state.timeline.slice();
-            timelineCopy.splice(timelineCopy.indexOf(action.item), 1);
+            state.timeline.forEach(function (timeline) {
+                if (timeline.id == action.projectID || timeline.parentProjectID == action.projectID) {
+                    timelineCopy.splice(timelineCopy.indexOf(timeline), 1);
+                }
+            });
             return __assign({}, state, { timeline: timelineCopy });
     }
     return state || unloadedState;
@@ -68448,10 +68447,11 @@ var TaggedAssetReport = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_timeline__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Timeline__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_table__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_timeline__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Timeline__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_table__ = __webpack_require__(36);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -68470,6 +68470,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -68585,8 +68586,9 @@ var Timeline = (function (_super) {
             }, {
                 Header: '',
                 accessor: 'id',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/Project/id=' + props.value },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))); },
                 maxWidth: 100
             }];
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
@@ -68598,9 +68600,9 @@ var Timeline = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #d5ddf6', backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid pink', backgroundColor: 'pink', padding: '8px' } }, "Actual"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid green', padding: '8px' } }, "Phase")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Timeline__["a" /* default */], { groups: groups, items: items }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Timeline__["a" /* default */], { groups: groups, items: items }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: timeline.filter(function (item) {
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_table__["a" /* default */], { data: timeline.filter(function (item) {
                             return item.type == 'Project';
                         }), columns: columns, loading: false, minRows: 0, pageSize: 50, showPageJump: false, showPagination: timeline > 50, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                             style: {
@@ -68617,7 +68619,7 @@ var Timeline = (function (_super) {
     return Timeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.timeline)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_timeline__["a" /* actionCreators */])))(Timeline));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.timeline)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_timeline__["a" /* actionCreators */])))(Timeline));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Timeline/Container.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Timeline/Container.tsx"); } } })();

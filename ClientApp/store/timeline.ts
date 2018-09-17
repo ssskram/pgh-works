@@ -36,13 +36,8 @@ export const actionCreators = {
     },
 
     deleteTimeline: (projectID): AppThunkAction<any> => (dispatch, getState) => {
-        let itemsToDelete = getState().timeline.timeline.filter(function (timeline) {
-            return timeline.id == projectID || timeline.parentProjectID == projectID
-        })
-        itemsToDelete.forEach (function (timelineItem) {
-            dispatch({
-                type: deleteTimeline, timelineItem
-            })
+        dispatch({
+            type: deleteTimeline, projectID
         })
     }
 }
@@ -57,7 +52,11 @@ export const reducer: Reducer<TimelineState> = (state: TimelineState, incomingAc
             };
         case deleteTimeline:
             var timelineCopy = state.timeline.slice()
-            timelineCopy.splice(timelineCopy.indexOf(action.item), 1);
+            state.timeline.forEach(function (timeline) {
+                if (timeline.id == action.projectID || timeline.parentProjectID == action.projectID) {
+                    timelineCopy.splice(timelineCopy.indexOf(timeline), 1);
+                }
+            })
             return {
                 ...state,
                 timeline: timelineCopy

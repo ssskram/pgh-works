@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
+import { Link } from 'react-router-dom' 
 import * as Ping from '../../store/GETS/ping'
 import * as TimelineStore from '../../store/timeline'
 import TL from './Timeline'
@@ -120,7 +121,7 @@ export class Timeline extends React.Component<any, any> {
         }, {
             Header: '',
             accessor: 'id',
-            Cell: props => <button className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
+            Cell: props => <Link to={'/Project/id=' + props.value}><button className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button></Link>,
             maxWidth: 100
         }]
 
