@@ -30,6 +30,10 @@ const marginBottom = {
     marginBottom: '70px'
 }
 
+const iconStyle = {
+    height: '28px',
+}
+
 export class Project extends React.Component<any, any> {
     constructor() {
         super();
@@ -263,8 +267,9 @@ export class Project extends React.Component<any, any> {
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-info-sign'></span></button></span>
-                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-map-marker'></span></button></span>
+                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button></span>
+                    <span><button style={btnMargin} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />
@@ -281,7 +286,7 @@ export class Project extends React.Component<any, any> {
                     <Phases projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
-                    <Drawdowns parentID={projectID} parentType={'Project'}/>
+                    <Drawdowns parentID={projectID} parentType={'Project'} />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "42911c9d90e1502e96ef"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "164778d46be27acbbe4d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65021,9 +65021,6 @@ var __extends = (this && this.__extends) || (function () {
 var btnWidth = {
     width: '93%'
 };
-var imgSize = {
-    height: '50px'
-};
 var marginTop = {
     marginTop: '18px',
 };
@@ -65232,6 +65229,9 @@ var btnMargin = {
 var marginBottom = {
     marginBottom: '70px'
 };
+var iconStyle = {
+    height: '28px',
+};
 var Phase = (function (_super) {
     __extends(Phase, _super);
     function Phase() {
@@ -65352,10 +65352,16 @@ var Phase = (function (_super) {
                 projectName,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, className: 'btn pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '25px' }, className: 'glyphicon glyphicon-info-sign' }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, title: 'Add to timeline', className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timelineDark.png' })))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, className: 'btn pull-right' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '25px' }, className: 'glyphicon glyphicon-arrow-left' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { className: 'text-center' },
@@ -66652,6 +66658,9 @@ var btnMargin = {
 var marginBottom = {
     marginBottom: '70px'
 };
+var iconStyle = {
+    height: '28px',
+};
 var Project = (function (_super) {
     __extends(Project, _super);
     function Project() {
@@ -66862,10 +66871,16 @@ var Project = (function (_super) {
                 projectName,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', className: 'btn pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '25px' }, className: 'glyphicon glyphicon-info-sign' }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editLocation.bind(this), style: btnMargin, title: 'Modify location', className: 'btn pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '25px' }, className: 'glyphicon glyphicon-map-marker' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/mapDark.png' })))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, title: 'Add to timeline', className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timelineDark.png' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Map_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

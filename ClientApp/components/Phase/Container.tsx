@@ -25,6 +25,10 @@ const marginBottom = {
     marginBottom: '70px'
 }
 
+const iconStyle = {
+    height: '28px',
+}
+
 export class Phase extends React.Component<any, any> {
     constructor() {
         super();
@@ -153,7 +157,7 @@ export class Phase extends React.Component<any, any> {
         } = this.state
 
         const link = "/Project/id=" + projectID
-        
+
         if (redirect) {
             return <Redirect to={link} />
         }
@@ -167,8 +171,9 @@ export class Phase extends React.Component<any, any> {
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} className='btn pull-right hidden-xs'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-info-sign'></span></button></span>
-                    <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} className='btn pull-right'><span style={{fontSize: '25px'}} className='glyphicon glyphicon-arrow-left'></span></button></span>
+                    <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                    <span><button style={btnMargin} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span>
+                    <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} className='btn pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
                 </h2>
                 <hr />
                 <br />
@@ -192,7 +197,7 @@ export class Phase extends React.Component<any, any> {
                     <Subphases phaseID={phaseID} projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
-                    <Drawdowns parentID={phaseID} projectID={projectID} parentType={'Phase'}/>
+                    <Drawdowns parentID={phaseID} projectID={projectID} parentType={'Phase'} />
                 </div>
                 <div style={marginBottom} className='col-md-12'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />

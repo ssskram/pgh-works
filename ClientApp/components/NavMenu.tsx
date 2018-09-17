@@ -9,10 +9,6 @@ const btnWidth = {
     width: '93%'
 }
 
-const imgSize = {
-    height: '50px'
-}
-
 const marginTop = {
     marginTop: '18px',
 }
