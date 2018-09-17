@@ -120,7 +120,7 @@ export class Attachments extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button title='Upload an attachment' onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 <div className='col-md-12'>
                     {attachments.length == 0 &&

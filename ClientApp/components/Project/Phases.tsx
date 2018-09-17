@@ -99,7 +99,7 @@ export class Phases extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} title='Add a phase' className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 {phases.length == 0 &&
                     <h4 className='text-center'><i>No phases</i></h4>
