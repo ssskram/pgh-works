@@ -189,19 +189,19 @@ export class Phase extends React.Component<any, any> {
                         <Timeline phase={this.state} />
                     </div>
                 }
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Milestones phaseID={phaseID} projectID={projectID} />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Subphases phaseID={phaseID} projectID={projectID} />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Drawdowns parentID={phaseID} projectID={projectID} parentType={'Phase'} />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
                 </div>
-                <div style={marginBottom} className='col-md-12'>
+                <div style={marginBottom} className='col-md-12 row'>
                     <Attachments parentID={phaseID} parentType={'Phase'} />
                 </div>
                 {spinner == true &&

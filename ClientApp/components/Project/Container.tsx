@@ -299,7 +299,8 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{ letterSpacing: '2px' }}>{projectName}
+                <h2 style={{ letterSpacing: '2px' }}>
+                    <span>{projectName}</span>
                     <span><button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
                     <span><button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button></span>
                     <span><Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link></span>

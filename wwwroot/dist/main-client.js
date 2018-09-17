@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fb915d8a8a30e811e7d3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f10afbf0577d7a2e42a4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65405,15 +65405,15 @@ var Phase = (function (_super) {
             expectedStartDate && expectedEndDate &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__PhaseTimeline__["a" /* default */], { phase: this.state })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Milestones__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__SubPhases__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__ProgramsFunds_Drawdowns__["a" /* default */], { parentID: phaseID, projectID: projectID, parentType: 'Phase' })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Tags_Tags__["a" /* default */], { parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Attachments_Attachments__["a" /* default */], { parentID: phaseID, parentType: 'Phase' })),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the phase...' }),
@@ -66928,7 +66928,7 @@ var Project = (function (_super) {
             projectStatus != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
-                projectName,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, projectName),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', className: 'btn pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
