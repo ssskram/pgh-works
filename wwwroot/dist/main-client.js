@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "28a91a8fbf92ee4dc0b9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f9949f87367b912d31a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64074,13 +64074,13 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
-var projects = [];
-var phases = [];
 var PhaseFollows = (function (_super) {
     __extends(PhaseFollows, _super);
     function PhaseFollows() {
         var _this = _super.call(this) || this;
         _this.state = {
+            projects: [],
+            phases: [],
             project: '',
             phase: ''
         };
@@ -64088,10 +64088,19 @@ var PhaseFollows = (function (_super) {
         return _this;
     }
     PhaseFollows.prototype.componentDidMount = function () {
-        projects = [];
-        this.props.projects.forEach(function (project) {
+        this.setProjectDropdowns(this.props);
+    };
+    PhaseFollows.prototype.componentWillReceiveProps = function (nextProps) {
+        this.setProjectDropdowns(nextProps);
+    };
+    PhaseFollows.prototype.setProjectDropdowns = function (props) {
+        var projects = [];
+        props.projects.forEach(function (project) {
             var json = { "value": project.projectName, "label": project.projectName, "name": 'project', "ID": project.projectID };
             projects.push(json);
+        });
+        this.setState({
+            projects: projects
         });
     };
     PhaseFollows.prototype.handleChildSelect = function (event) {
@@ -64105,7 +64114,7 @@ var PhaseFollows = (function (_super) {
         var _a;
     };
     PhaseFollows.prototype.setPhases = function (projectID) {
-        phases = [];
+        var phases = [];
         var relevantPhases = this.props.phases.filter(function (item) {
             return item.projectID == projectID;
         });
@@ -64113,13 +64122,16 @@ var PhaseFollows = (function (_super) {
             var json = { "value": phase.phaseID, "label": phase.phaseName, "name": 'phase' };
             phases.push(json);
         });
+        this.setState({
+            phases: phases
+        });
     };
     PhaseFollows.prototype.returnWork = function (phase) {
         var precedingWork = 'Phase "' + phase + '" of project "' + this.state.project + '"';
         this.props.passFollows(precedingWork);
     };
     PhaseFollows.prototype.render = function () {
-        var _a = this.state, project = _a.project, phase = _a.phase;
+        var _a = this.state, project = _a.project, phase = _a.phase, projects = _a.projects, phases = _a.phases;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),

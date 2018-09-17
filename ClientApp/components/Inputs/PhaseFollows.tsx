@@ -9,13 +9,12 @@ import { Helmet } from "react-helmet"
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
-let projects = [] as any
-let phases = [] as any
-
 export class PhaseFollows extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            projects: [],
+            phases: [],
             project: '',
             phase: ''
         }
@@ -23,10 +22,21 @@ export class PhaseFollows extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        projects = []
-        this.props.projects.forEach(function (project) {
+        this.setProjectDropdowns(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setProjectDropdowns(nextProps)
+    }
+
+    setProjectDropdowns (props) {
+        let projects = [] as any
+        props.projects.forEach(function (project) {
             let json = { "value": project.projectName, "label": project.projectName, "name": 'project', "ID": project.projectID }
             projects.push(json)
+        })
+        this.setState ({
+            projects: projects
         })
     }
 
@@ -41,13 +51,16 @@ export class PhaseFollows extends React.Component<any, any> {
     }
 
     setPhases(projectID) {
-        phases = []
+        let phases = [] as any
         let relevantPhases = this.props.phases.filter(function (item) {
             return item.projectID == projectID
         })
         relevantPhases.forEach(function (phase) {
             let json = { "value": phase.phaseID, "label": phase.phaseName, "name": 'phase' }
             phases.push(json)
+        })
+        this.setState ({
+            phases: phases
         })
     }
 
@@ -59,8 +72,11 @@ export class PhaseFollows extends React.Component<any, any> {
     public render() {
         const {
             project,
-            phase
+            phase,
+            projects,
+            phases
         } = this.state
+
         return (
             <div>
                 <Helmet>
