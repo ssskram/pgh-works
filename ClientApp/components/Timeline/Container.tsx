@@ -8,6 +8,21 @@ import * as TimelineStore from '../../store/timeline'
 import TL from './Timeline'
 import Table from 'react-table'
 
+const iconStyle = {
+    height: '28px',
+}
+
+const imgStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+}
+
+const btnMargin = {
+    margin: '8px 5px'
+}
+
 export class Timeline extends React.Component<any, any> {
     constructor () {
         super()
@@ -162,8 +177,10 @@ export class Timeline extends React.Component<any, any> {
                     </div>
                 }
                 {timeline.length == 0 &&
-                    <div className='col-md-12'>
-                        <h1>Your timeline is empty</h1>
+                    <div className='col-md-12 text-center'>
+                        <h1>The timeline is empty</h1>
+                        <h1><span><img style={imgStyle} src='./images/nothing.png' /></span></h1>
+                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span></h3>
                     </div>
                 }
             </div>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "84c6db04e584d2c2403d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "28a91a8fbf92ee4dc0b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -68477,6 +68477,18 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var iconStyle = {
+    height: '28px',
+};
+var imgStyle = {
+    color: '#fff',
+    marginTop: '-5px',
+    paddingRight: '15px',
+    paddingLeft: '15px'
+};
+var btnMargin = {
+    margin: '8px 5px'
+};
 var Timeline = (function (_super) {
     __extends(Timeline, _super);
     function Timeline() {
@@ -68613,8 +68625,21 @@ var Timeline = (function (_super) {
                             }
                         }); } })),
             timeline.length == 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "Your timeline is empty"))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "The timeline is empty"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgStyle, src: './images/nothing.png' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                        "To add to the timeline, ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        " navigate to a ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/AllProjects' }, "project"),
+                        " and click ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, className: 'btn' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timelineDark.png' }))))))));
     };
     return Timeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
