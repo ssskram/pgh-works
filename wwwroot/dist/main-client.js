@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "99d25f795a6e5b001e1c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f38d2ee1a329f085646d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11816,9 +11816,14 @@ var unloadedState = {
 };
 var actionCreators = {
     addTimeline: function (item) { return function (dispatch, getState) {
-        dispatch({
-            type: addTimeline, item: item
+        var match = getState().timeline.timeline.filter(function (timeline) {
+            return timeline.id == item.id;
         });
+        if (match.length == 0) {
+            dispatch({
+                type: addTimeline, item: item
+            });
+        }
     }; },
     deleteTimeline: function (item) { return function (dispatch, getState) {
         dispatch({

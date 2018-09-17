@@ -24,9 +24,14 @@ export interface TimelineItem {
 
 export const actionCreators = {
     addTimeline: (item): AppThunkAction<any> => (dispatch, getState) => {
-        dispatch({
-            type: addTimeline, item
+        let match = getState().timeline.timeline.filter(function (timeline) {
+            return timeline.id == item.id
         })
+        if (match.length == 0) {
+            dispatch({
+                type: addTimeline, item
+            })
+        }
     },
 
     deleteTimeline: (item): AppThunkAction<any> => (dispatch, getState) => {
