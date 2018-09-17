@@ -1,5 +1,6 @@
 
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Modal from 'react-responsive-modal'
@@ -13,6 +14,7 @@ import Attachments from '../Attachments/Attachments'
 import * as User from '../../store/GETS/user'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as TagStore from '../../store/tags'
+import * as Timeline from '../../store/timeline'
 import ProjectFields from '../Inputs/Project'
 import Tags from '../Tags/Tags'
 import * as moment from 'moment'
@@ -246,6 +248,19 @@ export class Project extends React.Component<any, any> {
         this.props.addTag(tagLoad)
     }
 
+    addToTimeline() {
+        const timelineLoad = {
+            id: this.state.projectID,
+            type: 'Project',
+            name: this.state.projectName,
+            expectedStartDate: this.state.expectedStartDate,
+            expectedEndDate: this.state.expectedEndDate,
+            actualStartDate: this.state.actualStartDate,
+            actualEndDate: this.state.actualEndDate
+        }
+        this.props.addTimeline(timelineLoad)
+    }
+
     public render() {
         const {
             modalIsOpen,
@@ -269,7 +284,7 @@ export class Project extends React.Component<any, any> {
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
                     <span><button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
                     <span><button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button></span>
-                    <span><button style={btnMargin} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span>
+                    <span><Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link></span>
                 </h2>
                 <hr />
                 <Map shape={shape} />
@@ -346,13 +361,15 @@ export default connect(
         ...state.projects,
         ...state.taggableAssets,
         ...state.user,
-        ...state.tags
+        ...state.tags,
+        ...state.timeline
     }),
     ({
         ...Ping.actionCreators,
         ...User.actionCreators,
         ...Projects.actionCreators,
         ...Assets.actionCreators,
-        ...TagStore.actionCreators
+        ...TagStore.actionCreators,
+        ...Timeline.actionCreators
     })
 )(Project as any) as typeof Project

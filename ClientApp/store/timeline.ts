@@ -13,6 +13,7 @@ export interface TimelineState {
 }
 
 export interface TimelineItem {
+    id: string
     type: string
     name: string
     expectedStartDate: string

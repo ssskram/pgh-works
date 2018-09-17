@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
+import * as TimelineStore from '../../store/timeline'
 import TL from './Timeline'
 
 const groups = [
@@ -24,6 +25,7 @@ export class Timeline extends React.Component<any, any> {
     componentDidMount() {
         // ping server
         this.props.ping()
+        console.log(this.props)
     }
 
     public render() {
@@ -39,9 +41,11 @@ export class Timeline extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.ping
+        ...state.ping,
+        ...state.timeline
     }),
     ({
-        ...Ping.actionCreators
+        ...Ping.actionCreators,
+        ...TimelineStore.actionCreators
     })
   )(Timeline as any) as typeof Timeline
