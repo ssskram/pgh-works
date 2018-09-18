@@ -48,7 +48,7 @@ export class Attachment extends React.Component<any, any> {
             parentID: this.state.parentID,
             parentType: this.state.parentType,
             attachmentID: this.state.attachmentID,
-            dateCrewated: this.state.dateCreated,
+            dateCreated: this.state.dateCreated,
             attachmentName: this.state.attachmentName,
             attachmentDescription: this.state.attachmentDescription,
             attachmentLink: this.state.file[0].preview,

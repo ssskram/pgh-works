@@ -7,6 +7,10 @@ import Modal from 'react-responsive-modal'
 import AttachmentModule from '../Inputs/Attachment'
 import Table from 'react-table'
 import DeleteAttachment from './DeleteAttachment'
+import Viewer from 'react-viewer';
+import 'react-viewer/dist/index.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 const iconStyle = {
     marginRight: '5px',
@@ -21,6 +25,8 @@ export class Attachments extends React.Component<any, any> {
             // utilities
             modalIsOpen: false,
             modalType: '',
+            visible: false,
+            imageIndex: 0,
 
             // attachments
             selectedAttachment: {},
@@ -68,7 +74,7 @@ export class Attachments extends React.Component<any, any> {
 
     // delete attachment from store
     deleteAttachment(attachment) {
-        this.setState ({
+        this.setState({
             selectedAttachment: attachment,
             modalType: 'delete',
             modalIsOpen: true
@@ -80,8 +86,22 @@ export class Attachments extends React.Component<any, any> {
         // done in step with mutable delete from redux store
         var attachmentsCopy = this.state.attachments.slice()
         attachmentsCopy.splice(attachmentsCopy.indexOf(attachment), 1);
-        this.setState ({
+        this.setState({
             attachments: attachmentsCopy
+        })
+    }
+
+    setActiveImageIndex(index) {
+        this.setState({
+            imageIndex: index,
+            visible: true
+        })
+    }
+
+    closeImageModal() {
+        this.setState({
+            imageIndex: 0,
+            visible: false
         })
     }
 
@@ -90,7 +110,9 @@ export class Attachments extends React.Component<any, any> {
             modalIsOpen,
             modalType,
             selectedAttachment,
-            attachments
+            attachments,
+            visible,
+            imageIndex
         } = this.state
 
         const {
@@ -99,7 +121,7 @@ export class Attachments extends React.Component<any, any> {
         } = this.props
 
         const columns = [{
-            Header: 'Attachment',
+            Header: 'File name',
             accessor: 'attachmentName'
         }, {
             Header: 'Description',
@@ -119,17 +141,52 @@ export class Attachments extends React.Component<any, any> {
             maxWidth: 75
         }]
 
+        let files = [] as any
+        let images = [] as any
+        attachments.forEach(function (attachment) {
+            if (attachment.fileName.endsWith(".jpg") || attachment.fileName.endsWith(".jpeg") || attachment.fileName.endsWith(".png")) {
+                const image = { src: attachment.attachmentLink, name: attachment.attachmentName, description: attachment.attachmentDescription }
+                images.push(image)
+            } else {
+                files.push(attachment)
+            }
+            console.log(images)
+        })
+
+        const carouselImages = images.map((image, index) =>
+            <div key={index}>
+                <img style={{ maxWidth: '300px' }} className='img-responsive' src={image.src} />
+                <p className="legend">{image.name}</p>
+            </div>
+        )
+
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button title='Upload an attachment' onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button title='Upload an attachment' onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 <div className='col-md-12'>
                     {attachments.length == 0 &&
                         <h4 className='text-center'><i>No attachments</i></h4>
                     }
-                    {attachments.length > 0 &&
+                    {images.length > 0 &&
+                        <div>
+                            <Carousel
+                                dynamicHeight
+                                onClickItem={(index) => this.setActiveImageIndex(index)}>
+                                {carouselImages}
+                            </Carousel>
+                            <Viewer
+                                visible={visible}
+                                onClose={this.closeImageModal.bind(this)}
+                                images={images}
+                                activeIndex={imageIndex}
+                                downloadable
+                            />
+                        </div>
+                    }
+                    {files.length > 0 &&
                         <Table
-                            data={attachments}
+                            data={files}
                             columns={columns}
                             loading={false}
                             minRows={0}
