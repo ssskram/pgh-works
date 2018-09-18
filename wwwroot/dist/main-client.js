@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c5a31f5360fcb20f9a3d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0a37401735e5382be4e4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64441,8 +64441,7 @@ var Attachment = (function (_super) {
     Attachment.prototype.render = function () {
         var _a = this.state, file = _a.file, attachmentName = _a.attachmentName, attachmentDescription = _a.attachmentDescription;
         // validation
-        var isEnabled = attachmentName != '' &&
-            attachmentDescription != '';
+        var isEnabled = attachmentName != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
             file.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "dropzone" },
@@ -64460,7 +64459,7 @@ var Attachment = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: attachmentName, name: "attachmentName", header: "Attachment name", placeholder: "Enter a name", required: true, callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: attachmentDescription, name: "attachmentDescription", header: "Description", required: true, placeholder: "Provide context for the attachment", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: attachmentDescription, name: "attachmentDescription", header: "Description", placeholder: "Provide context for the attachment", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12  text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.save.bind(this), className: 'btn btn-success' }, "Save")))));
     };
