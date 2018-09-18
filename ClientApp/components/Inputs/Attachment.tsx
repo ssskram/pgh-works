@@ -20,7 +20,8 @@ export class Attachment extends React.Component<any, any> {
             dateCreated: '',
             attachmentName: '',
             attachmentDescription: '',
-            attachmentLink: ''
+            attachmentLink: '',
+            fileName: '',
         }
     }
 
@@ -43,11 +44,17 @@ export class Attachment extends React.Component<any, any> {
     }
 
     save() {
-        this.setState({
-            attachmentLink: this.state.file[0].preview
-        }, function (this) {
-            this.props.addAttachment(this.state)
-        })
+        let attachmentLoad = {
+            parentID: this.state.parentID,
+            parentType: this.state.parentType,
+            attachmentID: this.state.attachmentID,
+            dateCrewated: this.state.dateCreated,
+            attachmentName: this.state.attachmentName,
+            attachmentDescription: this.state.attachmentDescription,
+            attachmentLink: this.state.file[0].preview,
+            fileName: this.state.file[0].name
+        }
+        this.props.addAttachment(attachmentLoad)
         this.props.closeModal()
     }
 

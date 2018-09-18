@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "79eb9b8fac10f28275e9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2ba624b349bdefdd1a46"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -34694,6 +34694,7 @@ var Attachments = (function (_super) {
         this.getAttachments(nextProps);
     };
     Attachments.prototype.getAttachments = function (props) {
+        console.log(props);
         if (props.attachments) {
             var attachments = props.attachments.filter(function (item) {
                 return item.parentID == props.parentID;
@@ -63497,7 +63498,8 @@ var Attachment = (function (_super) {
             dateCreated: '',
             attachmentName: '',
             attachmentDescription: '',
-            attachmentLink: ''
+            attachmentLink: '',
+            fileName: '',
         };
         return _this;
     }
@@ -63518,11 +63520,17 @@ var Attachment = (function (_super) {
         });
     };
     Attachment.prototype.save = function () {
-        this.setState({
-            attachmentLink: this.state.file[0].preview
-        }, function () {
-            this.props.addAttachment(this.state);
-        });
+        var attachmentLoad = {
+            parentID: this.state.parentID,
+            parentType: this.state.parentType,
+            attachmentID: this.state.attachmentID,
+            dateCrewated: this.state.dateCreated,
+            attachmentName: this.state.attachmentName,
+            attachmentDescription: this.state.attachmentDescription,
+            attachmentLink: this.state.file[0].preview,
+            fileName: this.state.file[0].name
+        };
+        this.props.addAttachment(attachmentLoad);
         this.props.closeModal();
     };
     Attachment.prototype.render = function () {

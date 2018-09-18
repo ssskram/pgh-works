@@ -38,6 +38,7 @@ export class Attachments extends React.Component<any, any> {
     }
 
     getAttachments(props) {
+        console.log(props)
         if (props.attachments) {
             let attachments = props.attachments.filter(function (item) {
                 return item.parentID == props.parentID

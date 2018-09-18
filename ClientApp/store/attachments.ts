@@ -22,6 +22,7 @@ export interface AttachmentItem {
     attachmentName: string
     attachmentDescription: string
     attachmentLink: string
+    fileName: string
 }
 
 export const actionCreators = {
