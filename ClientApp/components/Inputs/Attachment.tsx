@@ -67,8 +67,7 @@ export class Attachment extends React.Component<any, any> {
 
         // validation
         const isEnabled =
-            attachmentName != '' &&
-            attachmentDescription != ''
+            attachmentName != ''
 
         return (
             <div className='col-md-12'>
@@ -101,7 +100,6 @@ export class Attachment extends React.Component<any, any> {
                                 value={attachmentDescription}
                                 name="attachmentDescription"
                                 header="Description"
-                                required={true}
                                 placeholder="Provide context for the attachment"
                                 callback={this.handleChildChange.bind(this)}
                             />
