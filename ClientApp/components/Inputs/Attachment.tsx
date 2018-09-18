@@ -20,7 +20,7 @@ export class Attachment extends React.Component<any, any> {
             dateCreated: '',
             attachmentName: '',
             attachmentDescription: '',
-            attachmentLink: '',
+            src: '',
             fileName: '',
         }
     }
@@ -51,7 +51,7 @@ export class Attachment extends React.Component<any, any> {
             dateCreated: this.state.dateCreated,
             attachmentName: this.state.attachmentName,
             attachmentDescription: this.state.attachmentDescription,
-            attachmentLink: this.state.file[0].preview,
+            src: this.state.file[0].preview,
             fileName: this.state.file[0].name
         }
         this.props.addAttachment(attachmentLoad)

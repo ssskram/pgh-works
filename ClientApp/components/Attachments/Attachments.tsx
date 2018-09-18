@@ -26,7 +26,7 @@ export class Attachments extends React.Component<any, any> {
             modalIsOpen: false,
             modalType: '',
             visible: false,
-            imageIndex: 0,
+            imageIndex: 1,
 
             // attachments
             selectedAttachment: {},
@@ -44,7 +44,6 @@ export class Attachments extends React.Component<any, any> {
     }
 
     getAttachments(props) {
-        console.log(props)
         if (props.attachments) {
             let attachments = props.attachments.filter(function (item) {
                 return item.parentID == props.parentID
@@ -72,9 +71,11 @@ export class Attachments extends React.Component<any, any> {
         })
     }
 
-    // delete attachment from store
+    // open delete modal
     deleteAttachment(attachment) {
         this.setState({
+            visible: false,
+            imageIndex: 0,
             selectedAttachment: attachment,
             modalType: 'delete',
             modalIsOpen: true
@@ -131,7 +132,7 @@ export class Attachments extends React.Component<any, any> {
             accessor: 'dateCreated',
         }, {
             Header: '',
-            accessor: 'attachmentLink',
+            accessor: 'src',
             Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
             maxWidth: 75
         }, {
@@ -145,18 +146,16 @@ export class Attachments extends React.Component<any, any> {
         let images = [] as any
         attachments.forEach(function (attachment) {
             if (attachment.fileName.endsWith(".jpg") || attachment.fileName.endsWith(".jpeg") || attachment.fileName.endsWith(".png")) {
-                const image = { src: attachment.attachmentLink, name: attachment.attachmentName, description: attachment.attachmentDescription }
-                images.push(image)
+                images.push(attachment)
             } else {
                 files.push(attachment)
             }
-            console.log(images)
         })
 
         const carouselImages = images.map((image, index) =>
-            <div key={index}>
+            <div onClick={() => this.setActiveImageIndex(index)} key={index}>
                 <img style={{ maxWidth: '300px' }} className='img-responsive' src={image.src} />
-                <p className="legend">{image.name}</p>
+                <p className="legend">{image.attachmentName}</p>
             </div>
         )
 
@@ -172,7 +171,7 @@ export class Attachments extends React.Component<any, any> {
                         <div>
                             <Carousel
                                 dynamicHeight
-                                onClickItem={(index) => this.setActiveImageIndex(index)}>
+                                showThumbs={false}>
                                 {carouselImages}
                             </Carousel>
                             <Viewer
@@ -180,8 +179,18 @@ export class Attachments extends React.Component<any, any> {
                                 onClose={this.closeImageModal.bind(this)}
                                 images={images}
                                 activeIndex={imageIndex}
-                                downloadable
+                                customToolbar={(toolbars) => {
+                                    return toolbars.concat([{
+                                        key: 'dlt',
+                                        render: <div><b>X</b></div>,
+                                        onClick: (attachment) => {
+                                            this.deleteAttachment(attachment)
+                                        },
+                                    }]);
+                                }}
                             />
+                            <br/>
+                            <br/>
                         </div>
                     }
                     {files.length > 0 &&

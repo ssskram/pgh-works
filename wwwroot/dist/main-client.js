@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "19e4ad2f30b555bb0125"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b80884950ea4ab401cfe"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -34730,7 +34730,7 @@ var Attachments = (function (_super) {
             modalIsOpen: false,
             modalType: '',
             visible: false,
-            imageIndex: 0,
+            imageIndex: 1,
             // attachments
             selectedAttachment: {},
             attachments: [],
@@ -34745,7 +34745,6 @@ var Attachments = (function (_super) {
         this.getAttachments(nextProps);
     };
     Attachments.prototype.getAttachments = function (props) {
-        console.log(props);
         if (props.attachments) {
             var attachments = props.attachments.filter(function (item) {
                 return item.parentID == props.parentID;
@@ -34770,9 +34769,11 @@ var Attachments = (function (_super) {
             modalType: 'add'
         });
     };
-    // delete attachment from store
+    // open delete modal
     Attachments.prototype.deleteAttachment = function (attachment) {
         this.setState({
+            visible: false,
+            imageIndex: 0,
             selectedAttachment: attachment,
             modalType: 'delete',
             modalIsOpen: true
@@ -34814,7 +34815,7 @@ var Attachments = (function (_super) {
                 accessor: 'dateCreated',
             }, {
                 Header: '',
-                accessor: 'attachmentLink',
+                accessor: 'src',
                 Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: props.value, target: '_blank', className: 'btn btn-success' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
                 maxWidth: 75
@@ -34829,18 +34830,16 @@ var Attachments = (function (_super) {
         var images = [];
         attachments.forEach(function (attachment) {
             if (attachment.fileName.endsWith(".jpg") || attachment.fileName.endsWith(".jpeg") || attachment.fileName.endsWith(".png")) {
-                var image = { src: attachment.attachmentLink, name: attachment.attachmentName, description: attachment.attachmentDescription };
-                images.push(image);
+                images.push(attachment);
             }
             else {
                 files.push(attachment);
             }
-            console.log(images);
         });
         var carouselImages = images.map(function (image, index) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.setActiveImageIndex(index); }, key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { maxWidth: '300px' }, className: 'img-responsive', src: image.src }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "legend" }, image.name));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", { className: "legend" }, image.attachmentName));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
@@ -34856,8 +34855,19 @@ var Attachments = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No attachments")),
                 images.length > 0 &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_responsive_carousel__["Carousel"], { dynamicHeight: true, onClickItem: function (index) { return _this.setActiveImageIndex(index); } }, carouselImages),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_viewer___default.a, { visible: visible, onClose: this.closeImageModal.bind(this), images: images, activeIndex: imageIndex, downloadable: true })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_responsive_carousel__["Carousel"], { dynamicHeight: true, showThumbs: false }, carouselImages),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_viewer___default.a, { visible: visible, onClose: this.closeImageModal.bind(this), images: images, activeIndex: imageIndex, customToolbar: function (toolbars) {
+                                return toolbars.concat([{
+                                        key: 'dlt',
+                                        render: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "X")),
+                                        onClick: function (attachment) {
+                                            _this.deleteAttachment(attachment);
+                                        },
+                                    }]);
+                            } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
                 files.length > 0 &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_table__["a" /* default */], { data: files, columns: columns, loading: false, minRows: 0, showPageJump: false, showPagination: false, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
                             style: {
@@ -64393,7 +64403,7 @@ var Attachment = (function (_super) {
             dateCreated: '',
             attachmentName: '',
             attachmentDescription: '',
-            attachmentLink: '',
+            src: '',
             fileName: '',
         };
         return _this;
@@ -64422,7 +64432,7 @@ var Attachment = (function (_super) {
             dateCreated: this.state.dateCreated,
             attachmentName: this.state.attachmentName,
             attachmentDescription: this.state.attachmentDescription,
-            attachmentLink: this.state.file[0].preview,
+            src: this.state.file[0].preview,
             fileName: this.state.file[0].name
         };
         this.props.addAttachment(attachmentLoad);
