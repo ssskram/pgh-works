@@ -13,12 +13,9 @@ export default class ImportShapes extends React.Component<any, any> {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            selectedAsset: {}
         }
         this.polygonSelection = this.polygonSelection.bind(this)
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return this.state.value == nextState.value;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -83,7 +80,7 @@ export default class ImportShapes extends React.Component<any, any> {
             withGoogleMap
         )((props) =>
             <GoogleMap
-                defaultZoom={zoom}
+                zoom={zoom}
                 defaultCenter={center}
             >
                 {assets &&

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6400b96c99c78a65453f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "af28b559bbbc30c0fe80"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65706,13 +65706,11 @@ var ImportShapes = (function (_super) {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            selectedAsset: {}
         };
         _this.polygonSelection = _this.polygonSelection.bind(_this);
         return _this;
     }
-    ImportShapes.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        return this.state.value == nextState.value;
-    };
     ImportShapes.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.assets.length === 1) {
             var foundAsset = nextProps.assets[0];
@@ -65763,7 +65761,7 @@ var ImportShapes = (function (_super) {
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: zoom, defaultCenter: center },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { zoom: zoom, defaultCenter: center },
                 assets &&
                     assets.map(function (asset, index) {
                         if (asset.shape) {
@@ -69674,8 +69672,7 @@ var LoadingMap = (function (_super) {
     LoadingMap.prototype.render = function () {
         var notice = this.props.notice;
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/mapSpinnerDark.png' }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, notice));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { style: { padding: '100px 0px' } }, notice));
     };
     return LoadingMap;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
