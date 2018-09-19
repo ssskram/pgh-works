@@ -6,6 +6,7 @@ namespace pghworks.Models {
         public string assetOID { get; set; }
         public string assetName { get; set; }
         public Shape shape { get; set; }
+        public Points center { get; set; }
     }
 
     public class Shape {
