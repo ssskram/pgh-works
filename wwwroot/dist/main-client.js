@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0a37401735e5382be4e4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0dc56450dd4b40e4e22d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35055,7 +35055,6 @@ var PhaseInputs = (function (_super) {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
-                percentComplete: phase.percentComplete,
                 notes: phase.notes,
                 created: phase.created,
                 createdBy: phase.createdBy,
@@ -35098,16 +35097,6 @@ var PhaseInputs = (function (_super) {
         this.setState((_a = {}, _a[event.name] = event.value, _a));
         var _a;
     };
-    PhaseInputs.prototype.handlePercent = function (event, maskedvalue, floatvalue) {
-        var value = 0;
-        if (floatvalue > 100) {
-            value = 100;
-        }
-        else {
-            value = floatvalue;
-        }
-        this.setState({ percentComplete: value });
-    };
     PhaseInputs.prototype.post = function () {
         if (this.props.phaseID) {
             // update
@@ -35140,7 +35129,7 @@ var PhaseInputs = (function (_super) {
     };
     PhaseInputs.prototype.render = function () {
         var _this = this;
-        var _a = this.state, redirect = _a.redirect, phaseID = _a.phaseID, phaseName = _a.phaseName, phaseType = _a.phaseType, phaseFollows = _a.phaseFollows, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, percentComplete = _a.percentComplete, notes = _a.notes, modalIsOpen = _a.modalIsOpen;
+        var _a = this.state, redirect = _a.redirect, phaseID = _a.phaseID, phaseName = _a.phaseName, phaseType = _a.phaseType, phaseFollows = _a.phaseFollows, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes, modalIsOpen = _a.modalIsOpen;
         // validation
         var isEnabled = phaseName != '' &&
             expectedStartDate != '' &&

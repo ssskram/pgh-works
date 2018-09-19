@@ -75,7 +75,6 @@ export class PhaseInputs extends React.Component<any, any> {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
-                percentComplete: phase.percentComplete,
                 notes: phase.notes,
                 created: phase.created,
                 createdBy: phase.createdBy,
@@ -117,16 +116,6 @@ export class PhaseInputs extends React.Component<any, any> {
 
     handleChildSelect(event) {
         this.setState({ [event.name]: event.value });
-    }
-
-    handlePercent(event, maskedvalue, floatvalue) {
-        let value = 0
-        if (floatvalue > 100) {
-            value = 100
-        } else {
-            value = floatvalue
-        }
-        this.setState({ percentComplete: value })
     }
 
     post() {
@@ -175,7 +164,6 @@ export class PhaseInputs extends React.Component<any, any> {
             actualEndDate,
             phaseDescription,
             phaseStatus,
-            percentComplete,
             notes,
             modalIsOpen
         } = this.state

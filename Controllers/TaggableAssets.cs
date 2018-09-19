@@ -25,6 +25,7 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public async Task<object> loadTaggableAssets () {
             Task parks = getParks ();
+            Task streets = getStreetsRecursively ();
             await getFacilities ();
             await getProjects ();
             await getSteps ();
@@ -35,8 +36,8 @@ namespace pghworks.Controllers {
             await getBridges ();
             await getFields ();
             await getCourts ();
-            await getStreets ();
             await parks;
+            await streets;
             return AllAssets;
         }
 
@@ -264,23 +265,32 @@ namespace pghworks.Controllers {
             }
         }
 
-        public async Task getStreets () {
-            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField";
+        public async Task getStreetsRecursively () {
+            var offset = 0;
+            var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField&limit=1000";
+            await getStreets (url, offset);
+        }
+        public async Task getStreets (string url, int offset) {
+            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
+            var cartegraphUrl = url + "&offset=" + offset;
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string content = await client.GetStringAsync (cartegraphUrl);
             dynamic streets = JObject.Parse (content) ["cgPavementClass"];
-            foreach (var item in streets) {
-                TaggableAssets ta = new TaggableAssets () {
-                    assetType = "Street",
-                    assetOID = item.Oid,
-                    assetName = item.StreetField,
-                    shape = item.CgShape.ToObject<Shape> ()
-                };
-                AllAssets.Add (ta);
-            }
+            if (streets.Count > 0) {
+                foreach (var item in streets) {
+                    TaggableAssets ta = new TaggableAssets () {
+                        assetType = "Street",
+                        assetOID = item.Oid,
+                        assetName = item.StreetField,
+                        shape = item.CgShape.ToObject<Shape> ()
+                    };
+                    AllAssets.Add (ta);
+                }
+                offset = offset + 1000;
+                await getStreets (url, offset);
+            } else return;
         }
 
         // calculating convex hull for park shapes
