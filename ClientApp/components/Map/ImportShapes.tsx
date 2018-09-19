@@ -1,6 +1,10 @@
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
+import LoadingMap from './../Utilities/LoadingMap'
+
+let selectedAsset = {} as any
+let showInfoWindow = false
 
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
@@ -9,10 +13,12 @@ export default class ImportShapes extends React.Component<any, any> {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedAsset: {},
-            showInfowindow: false
         }
         this.polygonSelection = this.polygonSelection.bind(this)
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.state.value == nextState.value;
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,10 +42,8 @@ export default class ImportShapes extends React.Component<any, any> {
 
     polygonSelection(asset) {
         this.setCenter(asset.shape.points)
-        this.setState({
-            selectedAsset: asset,
-            showInfowindow: true
-        })
+        selectedAsset = asset
+        showInfoWindow = true
     }
 
     setCenter(points) {
@@ -56,10 +60,9 @@ export default class ImportShapes extends React.Component<any, any> {
         })
     }
 
-    closeWindow () {
-        this.setState({
-            showInfowindow: false
-        })
+    closeWindow() {
+        showInfoWindow = false
+        selectedAsset = {}
     }
 
     render() {
@@ -67,14 +70,12 @@ export default class ImportShapes extends React.Component<any, any> {
             assets,
             zoom,
             center,
-            showInfowindow,
-            selectedAsset
         } = this.state
 
         const MapComponent = compose(
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
-                loadingElement: <div style={{ height: `100%`, }} />,
+                loadingElement: <div style={{ height: `100%`, }}><LoadingMap notice={"...loading map..."} /></div>,
                 containerElement: <div style={{ height: `100%` }} />,
                 mapElement: <div style={{ height: `100%` }} />,
             }),
@@ -100,11 +101,12 @@ export default class ImportShapes extends React.Component<any, any> {
                         }
                     })
                 }
-                {showInfowindow == true &&
+
+                {showInfoWindow == true &&
                     <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
                         <div className='col-md-12'>
-                        <h4>{selectedAsset.assetName}</h4>
-                        <button onClick={() => this.props.receiveAsset(selectedAsset)} className='btn btn-success'>Save & continue</button>
+                            <h4>{selectedAsset.assetName}</h4>
+                            <button onClick={() => this.props.receiveAsset(selectedAsset)} className='btn btn-success'>Save & continue</button>
                         </div>
                     </InfoWindow>
                 }
@@ -112,7 +114,7 @@ export default class ImportShapes extends React.Component<any, any> {
         )
 
         return (
-            <div id='polygon-draw' style={{margin: '0 auto'}}>
+            <div id='polygon-draw' style={{ margin: '0 auto' }}>
                 <MapComponent />
             </div>
         )
