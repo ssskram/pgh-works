@@ -13,7 +13,8 @@ export class SelectAsset extends React.Component<any, any> {
         this.state = {
             search: '',
             assets: [],
-            showMap: true
+            showMap: true,
+            grabby: false
         }
     }
 
@@ -51,7 +52,8 @@ export class SelectAsset extends React.Component<any, any> {
         console.log(streetName)
         this.setState ({
             assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType).filter(asset => asset.assetName == streetName.value),
-            showMap: true
+            showMap: true,
+            grabby: true
         })
     }
 
@@ -64,7 +66,8 @@ export class SelectAsset extends React.Component<any, any> {
         const {
             assets,
             search,
-            showMap
+            showMap,
+            grabby
         } = this.state
 
         var searchPlaceholder = "Search for " + assetType
@@ -88,7 +91,7 @@ export class SelectAsset extends React.Component<any, any> {
                             />
                         </div>
                         <div className='col-md-12 text-center'>
-                            <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset} />
+                            <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset} grabby={grabby}/>
                         </div>
                     </div>
                 }

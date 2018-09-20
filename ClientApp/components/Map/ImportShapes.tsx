@@ -2,6 +2,7 @@ import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
 import LoadingMap from './../Utilities/LoadingMap'
+import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 
 let selectedAsset = {} as any
 let showInfoWindow = false
@@ -62,12 +63,29 @@ export default class ImportShapes extends React.Component<any, any> {
         selectedAsset = {}
     }
 
+    handleOverlayComplete = (evt) => {
+        let shape: any[] = []
+        let vertices = evt.overlay.getPath()
+
+        for (var i = 0; i < vertices.getLength(); i++) {
+            var xy = vertices.getAt(i);
+            var coord = { lat : xy.lat(), lng: xy.lng() }
+            shape.push(coord)
+        }
+
+        this.props.passShape(shape)
+    }
+    
     render() {
         const {
             assets,
             zoom,
             center,
         } = this.state
+
+        const {
+            grabby
+        } = this.props
 
         const MapComponent = compose(
             withProps({
@@ -83,7 +101,7 @@ export default class ImportShapes extends React.Component<any, any> {
                 zoom={zoom}
                 defaultCenter={center}
             >
-                {assets &&
+                {assets && grabby != true &&
                     assets.map((asset, index) => {
                         if (asset.shape) {
                             return (
@@ -97,6 +115,37 @@ export default class ImportShapes extends React.Component<any, any> {
                             )
                         }
                     })
+                }
+                {assets && grabby == true &&
+                    assets.map((asset, index) => {
+                        if (asset.shape) {
+                            return (
+                                <div key={index}>
+                                    <Polygon
+                                        paths={[asset.shape.points]}>
+                                    </Polygon>
+                                </div>
+
+                            )
+                        }
+                    })
+                }
+
+                {grabby == true &&
+                    <DrawingManager
+                        defaultDrawingMode={google.maps.drawing.OverlayType.POLYGON}
+                        defaultOptions={{
+                            drawingControl: true,
+                            drawingControlOptions: {
+                                position: google.maps.ControlPosition.TOP_CENTER,
+                                drawingModes: [
+                                    google.maps.drawing.OverlayType.POLYGON
+                                ]
+                            }
+                        }}
+                        {...props}
+                        onOverlayComplete={this.handleOverlayComplete}
+                    />
                 }
 
                 {showInfoWindow == true &&
