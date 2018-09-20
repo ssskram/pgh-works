@@ -9,7 +9,6 @@ export class DeleteDrawdown extends React.Component<any, any> {
 
     deleteDrawdown() {
         const drawdown = this.props.drawdown
-        console.log(drawdown)
         const allDrawdowns = this.props.drawdowns
         const phases = this.props.phases
         let self = this
@@ -19,7 +18,6 @@ export class DeleteDrawdown extends React.Component<any, any> {
         this.props.removeDrawdown(drawdown)
         if (drawdown.parentType == 'Project') {
             let relevantPhases = phases.filter(phase => phase.projectID == drawdown.parentID)
-            console.log(relevantPhases)
             let phaseDrawdowns = [] as any
             relevantPhases.forEach(function (phase) {
                 const phaseDrawdown = allDrawdowns.find(function (drawdown) {

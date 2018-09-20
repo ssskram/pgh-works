@@ -9,11 +9,7 @@ export class SelectAssetType extends React.Component<any, any> {
     constructor() {
         super()
     }
-
-    componentDidMount() {
-        console.log(this.props.parentComponent)
-    }
-
+    
     passType(type) {
         this.props.receiveType(type)
     }

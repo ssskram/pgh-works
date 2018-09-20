@@ -5,13 +5,27 @@ import { ApplicationState } from '../../store'
 import * as Assets from '../../store/GETS/taggableAssets'
 import Input from '../FormElements/input'
 import SelectionMap from './../Map/ImportShapes'
+import { StreetSelection } from './../Inputs/StreetSelection'
 
 export class SelectAsset extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             search: '',
-            assets: props.assets.filter(asset => asset.assetType == props.assetType)
+            assets: [],
+            showMap: true
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.assetType == 'Street') {
+            this.setState ({
+                showMap: false
+            })
+        } else {
+            this.setState ({
+                assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType)
+            })
         }
     }
 
@@ -32,7 +46,15 @@ export class SelectAsset extends React.Component<any, any> {
             })
         }
     }
-    
+
+    handleStreetSelection (streetName) {
+        console.log(streetName)
+        this.setState ({
+            assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType).filter(asset => asset.assetName == streetName.value),
+            showMap: true
+        })
+    }
+
     public render() {
         const {
             assetType,
@@ -41,30 +63,38 @@ export class SelectAsset extends React.Component<any, any> {
 
         const {
             assets,
-            search
+            search,
+            showMap
         } = this.state
 
         var searchPlaceholder = "Search for " + assetType
 
         return (
             <div>
-                <div className='col-md-12'>
-                    <br />
-                    <h3 className='pull-left'>Select {assetType}</h3>
-                    <button onClick={back} className='btn btn-warning' style={{marginLeft: '25px'}}>Back</button>
-                </div>
-                <div className='col-md-12'>
-                    <Input
-                        value={search}
-                        name="search"
-                        header=""
-                        placeholder={searchPlaceholder}
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
-                <div className='col-md-12 text-center'>
-                    <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset}/>
-                </div>
+                {showMap == true &&
+                    <div>
+                        <div className='col-md-12'>
+                            <br />
+                            <h3 className='pull-left'>Select {assetType}</h3>
+                            <button onClick={back} className='btn btn-warning' style={{ marginLeft: '25px' }}>Back</button>
+                        </div>
+                        <div className='col-md-12'>
+                            <Input
+                                value={search}
+                                name="search"
+                                header=""
+                                placeholder={searchPlaceholder}
+                                callback={this.handleChildChange.bind(this)}
+                            />
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset} />
+                        </div>
+                    </div>
+                }
+                {showMap == false &&
+                    <StreetSelection assets={this.props.assets} returnStreet={this.handleStreetSelection.bind(this)}/>
+                }
             </div>
         )
     }
