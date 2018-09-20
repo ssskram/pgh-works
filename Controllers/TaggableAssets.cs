@@ -269,31 +269,6 @@ namespace pghworks.Controllers {
             var offset = 0;
             var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField&limit=1000";
             await getStreets (url, offset);
-            var sameStreets = AllStreetSegments.GroupBy (x => x.assetName)
-                .Select (x => new { Name = x.Key, Street = x.ToList () });
-            foreach (var street in sameStreets) {
-                var relevantStreetSegments = AllStreetSegments.Where (x => x.assetName == street.Name);
-                Shape sp = new Shape ();
-                List<Points> allPoints = new List<Points> ();
-                foreach (var segment in relevantStreetSegments) {
-                    if (segment.shape != null) {
-                        foreach (var point in segment.shape.Points) {
-                        Points pt = new Points () {
-                        Lat = point.Lat,
-                        Lng = point.Lng
-                            };
-                            allPoints.Add (pt);
-                        }
-                    }
-                }
-                sp.Points = allPoints;
-                TaggableAssets ta = new TaggableAssets () {
-                    assetType = "Street",
-                    assetName = street.Name,
-                    shape = sp
-                };
-                AllAssets.Add (ta);
-            }
         }
 
         List<TaggableAssets> AllStreetSegments = new List<TaggableAssets> ();
@@ -313,7 +288,7 @@ namespace pghworks.Controllers {
                         assetName = item.StreetField,
                         shape = item.CgShape.ToObject<Shape> ()
                     };
-                    AllStreetSegments.Add (ta);
+                    AllAssets.Add (ta);
                 }
                 offset = offset + 1000;
                 await getStreets (url, offset);
