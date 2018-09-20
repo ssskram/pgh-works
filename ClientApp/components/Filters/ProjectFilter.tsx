@@ -93,8 +93,6 @@ export default class ProjectFilter extends React.Component<any, any> {
                     }}
                     center>
                     <div>
-                        <h2>Filter projects</h2>
-                        <hr />
                         <div className='col-md-12'>
                             <Input
                                 value={projectName}

@@ -110,9 +110,7 @@ export class PhaseFilter extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <div>
-                        <h2>Filter phases</h2>
-                        <hr />
+                    <div>s
                         <div className='col-md-12'>
                             <Input
                                 value={phaseName}

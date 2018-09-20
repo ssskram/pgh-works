@@ -284,8 +284,8 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                     <Input
                                         value={fundSearch}
                                         name="fundSearch"
-                                        header="Search by name"
-                                        placeholder="Enter a program/fund name"
+                                        header=""
+                                        placeholder="Search by name"
                                         callback={this.handleChildChange.bind(this)}
                                     />
                                 </div>

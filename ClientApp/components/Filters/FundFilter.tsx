@@ -89,8 +89,6 @@ export default class FundFilter extends React.Component<any, any> {
                     }}
                     center>
                     <div>
-                        <h2>Filter funds</h2>
-                        <hr />
                         <div className='col-md-12'>
                             <Input
                                 value={fundName}
