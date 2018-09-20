@@ -10,6 +10,10 @@ export class SelectAssetType extends React.Component<any, any> {
         super()
     }
 
+    componentDidMount() {
+        console.log(this.props.parentComponent)
+    }
+
     passType(type) {
         this.props.receiveType(type)
     }
@@ -18,6 +22,7 @@ export class SelectAssetType extends React.Component<any, any> {
         const {
             parentComponent
         } = this.props
+
         return (
             <div>
                 {this.props.assets.length == 0 &&
@@ -86,12 +91,14 @@ export class SelectAssetType extends React.Component<any, any> {
                             Playing Field
                         </button>
                     </div>
-                    <div className='col-md-4 text-center'>
-                        <button onClick={() => this.passType('Street')} className='btn btn-assetType'>
-                            <span><img src='./images/assetTypes/street.png' /></span><br />
-                            Street Segment
+                    {parentComponent == 'asset' &&
+                        <div className='col-md-4 text-center'>
+                            <button onClick={() => this.passType('Street')} className='btn btn-assetType'>
+                                <span><img src='./images/assetTypes/street.png' /></span><br />
+                                Street Segment
                         </button>
-                    </div>
+                        </div>
+                    }
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.passType('Park')} className='btn btn-assetType'>
                             <span><img src='./images/assetTypes/parks.png' /></span><br />

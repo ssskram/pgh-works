@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "43bfe43cc6f71bb607a9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8bae4d37833f10e11b33"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -68911,6 +68911,9 @@ var SelectAssetType = (function (_super) {
     function SelectAssetType() {
         return _super.call(this) || this;
     }
+    SelectAssetType.prototype.componentDidMount = function () {
+        console.log(this.props.parentComponent);
+    };
     SelectAssetType.prototype.passType = function (type) {
         this.props.receiveType(type);
     };
@@ -68983,12 +68986,13 @@ var SelectAssetType = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/baseball.png' })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                         "Playing Field")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Street'); }, className: 'btn btn-assetType' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/street.png' })),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        "Street Segment")),
+                parentComponent == 'asset' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Street'); }, className: 'btn btn-assetType' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/street.png' })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                            "Street Segment")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-assetType' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
