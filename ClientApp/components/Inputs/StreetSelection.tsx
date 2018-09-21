@@ -6,31 +6,27 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
 
-let streets = [] as any
-
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 export class StreetSelection extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            street: ''
+            street: '',
+            streets: []
         }
     }
 
     componentDidMount() {
-        const streetsObjects = this.props.assets.filter(function (asset) {
-            return asset.assetType == 'Street'
-        })
-        const streetNames = streetsObjects.map(function (street) {
-            return street.assetName
-        })
-        const uniqueNames = streetNames.filter((v, i, a) => a.indexOf(v) === i);
-        this.setStreetsDropdown(uniqueNames)
+        this.gatherStreets(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
-        const streetsObjects = nextProps.assets.filter(function (asset) {
+        this.gatherStreets(nextProps)
+    }
+
+    gatherStreets (props) {
+        const streetsObjects = props.assets.filter(function (asset) {
             return asset.assetType == 'Street'
         })
         const streetNames = streetsObjects.map(function (street) {
@@ -40,17 +36,16 @@ export class StreetSelection extends React.Component<any, any> {
         this.setStreetsDropdown(uniqueNames)
     }
 
-    onlyUnique(value, index, self) {
-        return self.indexOf(value) === index;
-    }
-
     setStreetsDropdown(props) {
-        streets = []
+        let streets = [] as any
         props.forEach(function (street) {
             if (street != '') {
                 let json = { "value": street, "label": street, "name": 'street' }
                 streets.push(json)
             }
+        })
+        this.setState ({
+            streets: streets
         })
     }
 
@@ -61,7 +56,8 @@ export class StreetSelection extends React.Component<any, any> {
 
     public render() {
         const {
-            street
+            street,
+            streets
         } = this.state
 
         return (

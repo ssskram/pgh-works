@@ -8,9 +8,6 @@ export class TagDescription extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            taggedAssetName: props.asset.assetName,
-            taggedAssetOID: props.asset.assetOID,
-            tagType: props.asset.assetType,
             tagDescription: ''
         }
     }
@@ -20,23 +17,28 @@ export class TagDescription extends React.Component<any, any> {
     }
 
     postTag() {
-        this.props.receiveDescription(this.state)
+        if (this.props.asset) {
+            const tagLoad =  {
+                taggedAssetName: this.props.asset.assetName,
+                taggedAssetOID: this.props.asset.assetOID,
+                tagType: this.props.asset.assetType,
+                tagDescription: this.state.tagDescription
+            }
+            this.props.receiveDescription(tagLoad)
+        } else {
+            this.props.receiveDescription(this.state.tagDescription)
+        }
     }
 
     public render() {
         const {
-            tagDescription,
-            taggedAssetName
+            tagDescription
         } = this.state
 
         const isEnabled = tagDescription != ''
 
         return (
             <div>
-                <div className='col-md-12 text-center'>
-                    <h3>{taggedAssetName}</h3>
-                    <hr />
-                </div>
                 <div className='col-md-12'>
                     <TextArea
                         value={tagDescription}

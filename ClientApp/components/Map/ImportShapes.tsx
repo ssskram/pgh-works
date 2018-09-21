@@ -72,7 +72,6 @@ export default class ImportShapes extends React.Component<any, any> {
             var coord = { lat : xy.lat(), lng: xy.lng() }
             shape.push(coord)
         }
-
         this.props.passShape(shape)
     }
     

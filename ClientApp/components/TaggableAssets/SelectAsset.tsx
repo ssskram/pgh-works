@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Assets from '../../store/GETS/taggableAssets'
+import * as TagStore from '../../store/tags'
 import Input from '../FormElements/input'
 import SelectionMap from './../Map/ImportShapes'
 import { StreetSelection } from './../Inputs/StreetSelection'
@@ -20,11 +21,11 @@ export class SelectAsset extends React.Component<any, any> {
 
     componentDidMount() {
         if (this.props.assetType == 'Street') {
-            this.setState ({
+            this.setState({
                 showMap: false
             })
         } else {
-            this.setState ({
+            this.setState({
                 assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType)
             })
         }
@@ -48,9 +49,9 @@ export class SelectAsset extends React.Component<any, any> {
         }
     }
 
-    handleStreetSelection (streetName) {
-        console.log(streetName)
-        this.setState ({
+    handleStreetSelection(streetName) {
+        this.props.setStreetName(streetName)
+        this.setState({
             assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType).filter(asset => asset.assetName == streetName.value),
             showMap: true,
             grabby: true
@@ -91,12 +92,18 @@ export class SelectAsset extends React.Component<any, any> {
                             />
                         </div>
                         <div className='col-md-12 text-center'>
-                            <SelectionMap assets={assets} receiveAsset={this.props.receiveAsset} grabby={grabby}/>
+                            <SelectionMap
+                                assets={assets}
+                                receiveAsset={this.props.receiveAsset}
+                                grabby={grabby}
+                                passShape={this.props.receiveShape.bind(this)} />
                         </div>
                     </div>
                 }
                 {showMap == false &&
-                    <StreetSelection assets={this.props.assets} returnStreet={this.handleStreetSelection.bind(this)}/>
+                    <StreetSelection
+                        assets={this.props.assets}
+                        returnStreet={this.handleStreetSelection.bind(this)} />
                 }
             </div>
         )
@@ -105,9 +112,11 @@ export class SelectAsset extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.taggableAssets
+        ...state.taggableAssets,
+        ...state.tags,
     }),
     ({
-        ...Assets.actionCreators
+        ...Assets.actionCreators,
+        ...TagStore.actionCreators,
     })
 )(SelectAsset as any) as typeof SelectAsset

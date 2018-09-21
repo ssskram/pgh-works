@@ -85,7 +85,7 @@ export class Tags extends React.Component<any, any> {
         // done in step with mutable delete from redux store
         var tagsCopy = this.state.tags.slice()
         tagsCopy.splice(tagsCopy.indexOf(tag), 1);
-        this.setState ({
+        this.setState({
             tags: tagsCopy
         })
     }
@@ -98,7 +98,7 @@ export class Tags extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/tag.png' /> Relevant Assets<span><button onClick={this.openModal.bind(this)} title='Tag an asset' className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2><img style={iconStyle} src='./images/tag.png' /> Relevant Assets<span><button onClick={this.openModal.bind(this)} title='Tag an asset' className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
                 <div className='col-md-12'>
                     {tags.length == 0 &&
@@ -108,9 +108,9 @@ export class Tags extends React.Component<any, any> {
                         tags.map((tag) => {
                             return (
                                 <TagCard
-                                    tag={tag} 
+                                    tag={tag}
                                     key={tag.tagID}
-                                    removeTag={this.removeTag.bind(this)}/>
+                                    removeTag={this.removeTag.bind(this)} />
                             )
                         })
                     }
@@ -123,7 +123,12 @@ export class Tags extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <TagInput postTag={this.postTag.bind(this)} />
+                    <TagInput
+                        postTag={this.postTag.bind(this)}
+                        parentName={this.props.parentName}
+                        parentID={this.props.parentID} 
+                        parentType={this.props.parentType}
+                        closeModal={this.closeModal.bind(this)}/>
                 </Modal>
             </div>
         )
