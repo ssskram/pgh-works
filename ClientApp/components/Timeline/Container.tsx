@@ -162,7 +162,7 @@ export class Timeline extends React.Component<any, any> {
                             minRows={0}
                             pageSize={50}
                             showPageJump={false}
-                            showPagination={timeline > 50}
+                            showPagination={timeline.length > 50}
                             showPageSizeOptions={false}
                             noDataText=''
                             getTdProps={() => ({

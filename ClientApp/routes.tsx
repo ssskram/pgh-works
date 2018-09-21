@@ -13,6 +13,7 @@ import Timeline from './components/Timeline/Container'
 import ProjectRecord from './components/Project/Container'
 import PhaseRecord from './components/Phase/Container'
 import ProgramFund from './components/ProgramsFunds/FundViewer'
+import AssetReport from './components/TaggableAssets/AssetReport'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
@@ -26,5 +27,7 @@ export const routes = <Layout>
     <Route exact path='/Project/id=:id' component={ ProjectRecord } />
     <Route exact path='/Phase/id=:id' component={ PhaseRecord } />
     <Route exact path='/Fund/id=:id' component={ ProgramFund } />
+    <Route exact path='/Asset/id=:id' component={ AssetReport } />
+    <Route exact path='/Asset/street=:street' component={ AssetReport } />
     <Route path='/Account/Login' component={ Login } />
 </Layout>;

@@ -90,7 +90,7 @@ export class AllPhases extends React.Component<any, any> {
                         minRows={0}
                         pageSize={50}
                         showPageJump={false}
-                        showPagination={phases > 50}
+                        showPagination={phases.length > 50}
                         showPageSizeOptions={false}
                         noDataText=''
                         getTdProps={() => ({

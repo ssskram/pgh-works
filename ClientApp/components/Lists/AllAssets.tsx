@@ -37,7 +37,9 @@ export class AllAssets extends React.Component<any, any> {
         // filter out duplicate streets
         var uniqueAssetNames = this.removeDuplicates(props.assets, "assetName")
         this.setState({
-            assets: uniqueAssetNames
+            assets: uniqueAssetNames.filter(function (asset) {
+                return asset.assetName != ''
+            }) 
         })
     }
     removeDuplicates(originalArray, prop) {
@@ -99,7 +101,7 @@ export class AllAssets extends React.Component<any, any> {
             Header: 'Cartegraph ID',
             accessor: 'assetOID'
         }, {
-            Header: 'Number of tags',
+            Header: 'Number of references',
             id: 'count',
             accessor: props => this.returnCountTags(props)
         }, {
@@ -124,13 +126,17 @@ export class AllAssets extends React.Component<any, any> {
                         minRows={0}
                         pageSize={50}
                         showPageJump={false}
-                        showPagination={assets > 50}
+                        showPagination={assets.length >= 50}
                         showPageSizeOptions={false}
                         noDataText=''
                         defaultSorted={[
                             {
                                 id: 'count',
                                 desc: true
+                            },
+                            {
+                                id: 'assetName',
+                                asc: true
                             }
                         ]}
                         getTdProps={() => ({
