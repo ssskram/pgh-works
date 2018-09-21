@@ -24,7 +24,6 @@ export default class ImportShapes extends React.Component<any, any> {
                 this.setCenter(foundSegment.shape.points, 16)
             } else {
                 var middle = Math.floor(this.props.assets.length / 2);
-                console.log(middle)
                 const middleSegment = this.props.assets[middle]
                 this.setCenter(middleSegment.shape.points, 13)
             }

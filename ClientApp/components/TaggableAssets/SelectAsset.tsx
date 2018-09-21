@@ -15,7 +15,8 @@ export class SelectAsset extends React.Component<any, any> {
             search: '',
             assets: [],
             showMap: true,
-            grabby: false
+            grabby: false,
+            streetName: ''
         }
     }
 
@@ -54,7 +55,8 @@ export class SelectAsset extends React.Component<any, any> {
         this.setState({
             assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType).filter(asset => asset.assetName == streetName.value),
             showMap: true,
-            grabby: true
+            grabby: true,
+            streetName: streetName.value
         })
     }
 
@@ -68,7 +70,8 @@ export class SelectAsset extends React.Component<any, any> {
             assets,
             search,
             showMap,
-            grabby
+            grabby,
+            streetName
         } = this.state
 
         var searchPlaceholder = "Search for " + assetType
@@ -77,26 +80,35 @@ export class SelectAsset extends React.Component<any, any> {
             <div>
                 {showMap == true &&
                     <div>
-                        <div className='col-md-12'>
+                        <div className='col-md-12 text-center'>
                             <br />
-                            <h3 className='pull-left'>Select {assetType}</h3>
-                            <button onClick={back} className='btn btn-warning' style={{ marginLeft: '25px' }}>Back</button>
+                            {grabby != true &&
+                                <h3>Select {assetType}</h3>
+                            }
+                            {grabby == true &&
+                                <h3>Outline the relevant portion of {streetName}</h3>
+                            }
                         </div>
-                        <div className='col-md-12'>
-                            <Input
-                                value={search}
-                                name="search"
-                                header=""
-                                placeholder={searchPlaceholder}
-                                callback={this.handleChildChange.bind(this)}
-                            />
-                        </div>
+                        {grabby != true &&
+                            <div className='col-md-12'>
+                                <Input
+                                    value={search}
+                                    name="search"
+                                    header=""
+                                    placeholder={searchPlaceholder}
+                                    callback={this.handleChildChange.bind(this)}
+                                />
+                            </div>
+                        }
                         <div className='col-md-12 text-center'>
                             <SelectionMap
                                 assets={assets}
                                 receiveAsset={this.props.receiveAsset}
                                 grabby={grabby}
                                 passShape={this.props.receiveShape.bind(this)} />
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <button onClick={back} className='btn btn-warning'>Back</button>
                         </div>
                     </div>
                 }
