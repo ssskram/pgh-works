@@ -79,11 +79,9 @@ export class TaggableAssetSelection extends React.Component<any, any> {
             const shapeArray = [point.lat, point.lng]
             shapeTransform.push(shapeArray)
         })
-        console.log(shapeTransform)
         const streetSegments = this.props.assets.filter(function (asset) {
             return asset.assetName == self.state.streetName
         })
-        console.log(streetSegments)
         streetSegments.forEach(function (segment) {
             if (segment.shape) {
                 segment.shape.points.forEach(function (point) {
@@ -94,7 +92,6 @@ export class TaggableAssetSelection extends React.Component<any, any> {
                 })
             }
         })
-        console.log(componentAssets)
         if (componentAssets.length > 0) {
             componentAssets.forEach(function (asset) {
                 self.createTag(asset, description)
