@@ -4,9 +4,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "rea
 import LoadingMap from './../Utilities/LoadingMap'
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 
-let selectedAsset = {} as any
-let showInfoWindow = false
-
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -14,15 +11,30 @@ export default class ImportShapes extends React.Component<any, any> {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedAsset: {}
+            selectedAsset: {},
+            shoeInfowindow: false,
         }
         this.polygonSelection = this.polygonSelection.bind(this)
+    }
+
+    componentDidMount() {
+        if (this.props.grabby == true) {
+            if (this.props.assets.length === 1) {
+                let foundSegment = this.props.assets[0]
+                this.setCenter(foundSegment.shape.points, 16)
+            } else {
+                var middle = Math.floor(this.props.assets.length / 2);
+                console.log(middle)
+                const middleSegment = this.props.assets[middle]
+                this.setCenter(middleSegment.shape.points, 13)
+            }
+        }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.assets.length === 1) {
             let foundAsset = nextProps.assets[0]
-            this.setCenter(foundAsset.shape.points)
+            this.setCenter(foundAsset.shape.points, 16)
             this.setState({
                 assets: nextProps.assets,
                 selectedAsset: foundAsset,
@@ -39,12 +51,14 @@ export default class ImportShapes extends React.Component<any, any> {
     }
 
     polygonSelection(asset) {
-        this.setCenter(asset.shape.points)
-        selectedAsset = asset
-        showInfoWindow = true
+        this.setCenter(asset.shape.points, 16)
+        this.setState({
+            selectedAsset: asset,
+            showInfoWindow: true
+        })
     }
 
-    setCenter(points) {
+    setCenter(points, zoom) {
         const bounds = new google.maps.LatLngBounds()
         var i
         for (i = 0; i < points.length; i++) {
@@ -54,13 +68,15 @@ export default class ImportShapes extends React.Component<any, any> {
         let lng = bounds.getCenter().lng()
         this.setState({
             center: { lat: lat, lng: lng },
-            zoom: 16
+            zoom: zoom
         })
     }
 
     closeWindow() {
-        showInfoWindow = false
-        selectedAsset = {}
+        this.setState({
+            selectedAsset: {},
+            showInfoWindow: false
+        })
     }
 
     handleOverlayComplete = (evt) => {
@@ -69,17 +85,19 @@ export default class ImportShapes extends React.Component<any, any> {
 
         for (var i = 0; i < vertices.getLength(); i++) {
             var xy = vertices.getAt(i);
-            var coord = { lat : xy.lat(), lng: xy.lng() }
+            var coord = { lat: xy.lat(), lng: xy.lng() }
             shape.push(coord)
         }
         this.props.passShape(shape)
     }
-    
+
     render() {
         const {
             assets,
             zoom,
             center,
+            selectedAsset,
+            showInfoWindow
         } = this.state
 
         const {

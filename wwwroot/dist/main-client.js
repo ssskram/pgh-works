@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4937a48f0800bd933ea6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d0453b6bc242a32ca05c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65864,8 +65864,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var selectedAsset = {};
-var showInfoWindow = false;
 var ImportShapes = (function (_super) {
     __extends(ImportShapes, _super);
     function ImportShapes(props) {
@@ -65884,15 +65882,30 @@ var ImportShapes = (function (_super) {
             assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedAsset: {}
+            selectedAsset: {},
+            shoeInfowindow: false,
         };
         _this.polygonSelection = _this.polygonSelection.bind(_this);
         return _this;
     }
+    ImportShapes.prototype.componentDidMount = function () {
+        if (this.props.grabby == true) {
+            if (this.props.assets.length === 1) {
+                var foundSegment = this.props.assets[0];
+                this.setCenter(foundSegment.shape.points, 16);
+            }
+            else {
+                var middle = Math.floor(this.props.assets.length / 2);
+                console.log(middle);
+                var middleSegment = this.props.assets[middle];
+                this.setCenter(middleSegment.shape.points, 13);
+            }
+        }
+    };
     ImportShapes.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.assets.length === 1) {
             var foundAsset = nextProps.assets[0];
-            this.setCenter(foundAsset.shape.points);
+            this.setCenter(foundAsset.shape.points, 16);
             this.setState({
                 assets: nextProps.assets,
                 selectedAsset: foundAsset,
@@ -65908,11 +65921,13 @@ var ImportShapes = (function (_super) {
         }
     };
     ImportShapes.prototype.polygonSelection = function (asset) {
-        this.setCenter(asset.shape.points);
-        selectedAsset = asset;
-        showInfoWindow = true;
+        this.setCenter(asset.shape.points, 16);
+        this.setState({
+            selectedAsset: asset,
+            showInfoWindow: true
+        });
     };
-    ImportShapes.prototype.setCenter = function (points) {
+    ImportShapes.prototype.setCenter = function (points, zoom) {
         var bounds = new google.maps.LatLngBounds();
         var i;
         for (i = 0; i < points.length; i++) {
@@ -65922,16 +65937,18 @@ var ImportShapes = (function (_super) {
         var lng = bounds.getCenter().lng();
         this.setState({
             center: { lat: lat, lng: lng },
-            zoom: 16
+            zoom: zoom
         });
     };
     ImportShapes.prototype.closeWindow = function () {
-        showInfoWindow = false;
-        selectedAsset = {};
+        this.setState({
+            selectedAsset: {},
+            showInfoWindow: false
+        });
     };
     ImportShapes.prototype.render = function () {
         var _this = this;
-        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center;
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, selectedAsset = _a.selectedAsset, showInfoWindow = _a.showInfoWindow;
         var grabby = this.props.grabby;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
