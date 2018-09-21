@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e5f2f683423dfbf57622"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e1541ea9fa2082ce5bf7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -36413,12 +36413,25 @@ var Tags = (function (_super) {
             var tags = props.tags.filter(function (item) {
                 return item.parentID == props.parentID;
             });
+            // take unique to prohibit duplicate street segments
+            var unique = this.removeDuplicates(tags, "taggedAssetName");
             if (tags.length > 0) {
                 this.setState({
-                    tags: tags
+                    tags: unique
                 });
             }
         }
+    };
+    Tags.prototype.removeDuplicates = function (originalArray, prop) {
+        var newArray = [];
+        var lookupObject = {};
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i];
+        }
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i]);
+        }
+        return newArray;
     };
     Tags.prototype.postTag = function (tag) {
         var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_uuid__["v1"])();

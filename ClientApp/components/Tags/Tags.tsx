@@ -41,14 +41,29 @@ export class Tags extends React.Component<any, any> {
             let tags = props.tags.filter(function (item) {
                 return item.parentID == props.parentID
             })
+            // take unique to prohibit duplicate street segments
+            var unique = this.removeDuplicates(tags, "taggedAssetName")
             if (tags.length > 0) {
                 this.setState({
-                    tags: tags
+                    tags: unique
                 })
             }
         }
     }
+    removeDuplicates(originalArray, prop) {
+        var newArray = [] as any
+        var lookupObject = {}
 
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i]
+        }
+
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i])
+        }
+        return newArray;
+    }
+    
     postTag(tag) {
         const guid: string = uuid()
         let tagLoad = {
@@ -126,9 +141,9 @@ export class Tags extends React.Component<any, any> {
                     <TagInput
                         postTag={this.postTag.bind(this)}
                         parentName={this.props.parentName}
-                        parentID={this.props.parentID} 
+                        parentID={this.props.parentID}
                         parentType={this.props.parentType}
-                        closeModal={this.closeModal.bind(this)}/>
+                        closeModal={this.closeModal.bind(this)} />
                 </Modal>
             </div>
         )
