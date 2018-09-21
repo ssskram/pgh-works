@@ -14,7 +14,6 @@ import PhaseCard from './PhaseCard'
 import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
 import Subphases from './SubPhases'
-import Attachments from './../Attachments/Attachments'
 import Timeline from './PhaseTimeline'
 
 const btnMargin = {
@@ -200,9 +199,6 @@ export class Phase extends React.Component<any, any> {
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Attachments parentID={phaseID} parentType={'Phase'} />
                 </div>
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />

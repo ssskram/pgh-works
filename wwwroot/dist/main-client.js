@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e1541ea9fa2082ce5bf7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8bd4b302ed2faccd7fa0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66344,8 +66344,7 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Tags_Tags__ = __webpack_require__(358);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Milestones__ = __webpack_require__(680);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__SubPhases__ = __webpack_require__(683);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Attachments_Attachments__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__PhaseTimeline__ = __webpack_require__(682);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__PhaseTimeline__ = __webpack_require__(682);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66364,7 +66363,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -66532,7 +66530,7 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__PhaseCard__["a" /* default */], { phase: this.state })),
             expectedStartDate && expectedEndDate &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__PhaseTimeline__["a" /* default */], { phase: this.state })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__PhaseTimeline__["a" /* default */], { phase: this.state })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Milestones__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
@@ -66541,8 +66539,6 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__ProgramsFunds_Drawdowns__["a" /* default */], { parentID: phaseID, projectID: projectID, parentType: 'Phase' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Tags_Tags__["a" /* default */], { parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Attachments_Attachments__["a" /* default */], { parentID: phaseID, parentType: 'Phase' })),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the phase...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
