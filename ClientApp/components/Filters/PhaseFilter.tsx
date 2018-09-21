@@ -8,6 +8,9 @@ import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import * as Projects from '../../store/projects'
+import { Helmet } from "react-helmet"
+
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 const btnStyle = {
     fontSize: '25px',
@@ -101,6 +104,9 @@ export class PhaseFilter extends React.Component<any, any> {
         } = this.state
         return (
             <div>
+                <Helmet>
+                    <style>{dropdownStyle}</style>
+                </Helmet>
                 <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
                 <Modal
                     open={modalIsOpen}
@@ -110,7 +116,7 @@ export class PhaseFilter extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <div>s
+                    <div>
                         <div className='col-md-12'>
                             <Input
                                 value={phaseName}
@@ -132,7 +138,7 @@ export class PhaseFilter extends React.Component<any, any> {
                                 options={projects}
                             />
                         </div>
-                        
+
                         <div className='col-md-12'>
                             <Select
                                 value={phaseStatus}

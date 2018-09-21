@@ -7,6 +7,7 @@ import ProjectDefinition from './components/ProjectDefinition/Container'
 import ProgramsFunds from './components/ProgramsFunds/ProgramsFunds'
 import AllProjects from './components/Lists/AllProjects'
 import AllPhases from './components/Lists/AllPhases'
+import AllAssets from './components/Lists/AllAssets'
 import MyProjects from './components/Lists/MyProjects'
 import Timeline from './components/Timeline/Container'
 import ProjectRecord from './components/Project/Container'
@@ -19,6 +20,7 @@ export const routes = <Layout>
     <Route exact path='/Programs' component={ ProgramsFunds } />
     <Route exact path='/AllProjects' component={ AllProjects } />
     <Route exact path='/AllPhases' component={ AllPhases } />
+    <Route exact path='/AllAssets' component={ AllAssets } />
     <Route exact path='/MyProjects' component={ MyProjects } />
     <Route exact path='/Timeline' component={ Timeline } />
     <Route exact path='/Project/id=:id' component={ ProjectRecord } />
