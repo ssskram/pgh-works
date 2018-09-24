@@ -1,11 +1,11 @@
 
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import DeleteTag from './DeleteTag'
-import TaggedAssetReport from './TaggedAssetReport'
 
 const imgHeight = {
     height: '50px'
@@ -18,36 +18,40 @@ export class TagsCard extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
-            modalType: '',
-            modalIsOpen: false
+            modalIsOpen: false,
+            redirectLink: ''
+        }
+    }
+
+    componentDidMount() {
+        const tag = this.props.tag
+        if (tag.tagType == 'Street') {
+            this.setState ({
+                redirectLink: '/Asset/street='+ tag.taggedAssetName
+            })
+        } else {
+            this.setState ({
+                redirectLink: '/Asset/id=' + tag.taggedAssetOID
+            })
         }
     }
 
     deleteTag() {
         this.setState({
-            modalIsOpen: true,
-            modalType: 'delete'
-        })
-    }
-
-    inspectFacility() {
-        this.setState({
-            modalIsOpen: true,
-            modalType: 'inspect'
+            modalIsOpen: true
         })
     }
 
     closeModal() {
         this.setState({
-            modalIsOpen: false,
-            modalType: ''
+            modalIsOpen: false
         })
     }
 
     public render() {
         const {
             modalIsOpen,
-            modalType
+            redirectLink
         } = this.state
 
         const {
@@ -106,7 +110,7 @@ export class TagsCard extends React.Component<any, any> {
                             <h4><i>"{tag.tagDescription}"</i></h4>
                         </div>
                         <div className='col-md-3'>
-                            <button onClick={this.inspectFacility.bind(this)} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-search'></span></button>
+                            <Link to={redirectLink} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
                         </div>
                     </div>
                 </div>
@@ -118,16 +122,10 @@ export class TagsCard extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    {modalType == 'delete' &&
-                        <DeleteTag
-                            tag={tag}
-                            removeTag={this.props.removeTag}
-                            closeModal={this.closeModal.bind(this)} />
-                    }
-                    {modalType == 'inspect' &&
-                        <TaggedAssetReport
-                            tag={tag}/>
-                    }
+                    <DeleteTag
+                        tag={tag}
+                        removeTag={this.props.removeTag}
+                        closeModal={this.closeModal.bind(this)} />
                 </Modal>
             </div>
         )
