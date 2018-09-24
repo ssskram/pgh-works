@@ -62,8 +62,22 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     findTags(props, street) {
+        console.log(props)
+        console.log(street)
         if (street) {
-
+            const tags = this.props.tags.filter(tag => {
+                return tag.taggedAssetName == props
+            })
+            this.setState({
+                tags: tags
+            })
+        } else {
+            const tags = this.props.tags.filter(tag => {
+                return tag.taggedAssetOID == props
+            })
+            this.setState({
+                tags: tags
+            })
         }
     }
 
@@ -93,11 +107,14 @@ export class AssetReport extends React.Component<any, any> {
                     <StreetMap street={assetName} />
                 }
                 {tags.length == 0 &&
-                    <div className='col-md-12' style= {{ margin: '50px 0px'}}>
+                    <div className='col-md-12' style={{ margin: '50px 0px' }}>
                         <div className='text-center alert alert-info'>
                             <h2 style={emptyNotice} >No related projects or phases</h2>
                         </div>
                     </div>
+                }
+                {tags.length > 0 &&
+                    <h2>Return tags now</h2>
                 }
             </div>
         )

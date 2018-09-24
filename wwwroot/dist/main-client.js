@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c78b013f80559300b264"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "85931ddea7de5a07ce1d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -69562,7 +69562,23 @@ var AssetReport = (function (_super) {
         }
     };
     AssetReport.prototype.findTags = function (props, street) {
+        console.log(props);
+        console.log(street);
         if (street) {
+            var tags = this.props.tags.filter(function (tag) {
+                return tag.taggedAssetName == props;
+            });
+            this.setState({
+                tags: tags
+            });
+        }
+        else {
+            var tags = this.props.tags.filter(function (tag) {
+                return tag.taggedAssetOID == props;
+            });
+            this.setState({
+                tags: tags
+            });
         }
     };
     AssetReport.prototype.render = function () {
@@ -69582,7 +69598,9 @@ var AssetReport = (function (_super) {
             tags.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { margin: '50px 0px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: emptyNotice }, "No related projects or phases")))));
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: emptyNotice }, "No related projects or phases"))),
+            tags.length > 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "Return tags now")));
     };
     return AssetReport;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
