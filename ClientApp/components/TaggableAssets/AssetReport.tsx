@@ -27,7 +27,6 @@ export class AssetReport extends React.Component<any, any> {
             assetName: '',
             assetType: '',
             assetShape: '',
-            streetShapes: [],
             tags: []
         }
     }
@@ -49,22 +48,9 @@ export class AssetReport extends React.Component<any, any> {
 
     findAsset(prop, street) {
         if (street) {
-            const points = [] as any
-            const streetSegs = this.props.assets.filter(function (asset) {
-                return asset.assetName == prop
-            })
-            streetSegs.forEach(seg => {
-                if (seg.shape) {
-                    seg.shape.points.forEach(point => {
-                        points.push(point)
-                    })
-                }
-            })
-            console.log(points)
             this.setState({
                 assetName: prop,
-                assetType: "Street",
-                streetShapes: points
+                assetType: "Street"
             })
         } else {
             const asset = this.props.assets.find(function (asset) {
@@ -91,7 +77,6 @@ export class AssetReport extends React.Component<any, any> {
             assetName,
             assetType,
             assetShape,
-            streetShapes,
             tags
         } = this.state
 
@@ -108,14 +93,14 @@ export class AssetReport extends React.Component<any, any> {
                     <Map shape={assetShape} />
                 }
                 {assetType == 'Street' &&
-                    <StreetMap shapes={streetShapes} />
+                    <StreetMap street={assetName}/>
                 }
                 {tags.length == 0 &&
                     <div className='col-md-12 text-center'>
                         <br />
                         <br />
                         <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h2><i>{assetName} has not been tagged by any project or phase</i></h2>
+                        <h2><i>{assetName} is not related to any project or phase</i></h2>
                     </div>
                 }
             </div>

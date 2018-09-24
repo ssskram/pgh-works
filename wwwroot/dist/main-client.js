@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "757d36fe410cb415a36a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ad5dc87c933c66e0b58c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66438,14 +66438,17 @@ var PolygonGeneration = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export StreetMap */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_recompose__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_google_maps__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_google_maps__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_LoadingMap__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps_lib_components_drawing_DrawingManager__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps_lib_components_drawing_DrawingManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_google_maps_lib_components_drawing_DrawingManager__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_taggableAssets__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_recompose__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_google_maps__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Utilities_LoadingMap__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66469,6 +66472,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
+
 var StreetMap = (function (_super) {
     __extends(StreetMap, _super);
     function StreetMap(props) {
@@ -66484,120 +66489,61 @@ var StreetMap = (function (_super) {
             _this.props.passShape(shape);
         };
         _this.state = {
-            assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedAsset: {},
-            shoeInfowindow: false,
+            assets: []
         };
-        _this.polygonSelection = _this.polygonSelection.bind(_this);
         return _this;
     }
     StreetMap.prototype.componentDidMount = function () {
-        if (this.props.grabby == true) {
-            if (this.props.assets.length === 1) {
-                var foundSegment = this.props.assets[0];
-                this.setCenter(foundSegment.shape.points, 16);
-            }
-            else {
-                var middle = Math.floor(this.props.assets.length / 2);
-                var middleSegment = this.props.assets[middle];
-                this.setCenter(middleSegment.shape.points, 13);
-            }
-        }
+        this.collectSegmentShapes(this.props.street);
     };
     StreetMap.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps.assets.length === 1) {
-            var foundAsset = nextProps.assets[0];
-            this.setCenter(foundAsset.shape.points, 16);
-            this.setState({
-                assets: nextProps.assets,
-                selectedAsset: foundAsset,
-                showInfowindow: true
-            });
-        }
-        else {
-            this.setState({
-                assets: nextProps.assets,
-                zoom: 13,
-                center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            });
-        }
+        this.collectSegmentShapes(nextProps.street);
     };
-    StreetMap.prototype.polygonSelection = function (asset) {
-        this.setCenter(asset.shape.points, 16);
-        this.setState({
-            selectedAsset: asset,
-            showInfoWindow: true
+    StreetMap.prototype.collectSegmentShapes = function (street) {
+        var assets = this.props.assets.filter(function (asset) {
+            return asset.assetName == street;
         });
-    };
-    StreetMap.prototype.setCenter = function (points, zoom) {
-        var bounds = new google.maps.LatLngBounds();
-        var i;
-        for (i = 0; i < points.length; i++) {
-            bounds.extend(points[i]);
-        }
-        var lat = bounds.getCenter().lat();
-        var lng = bounds.getCenter().lng();
         this.setState({
-            center: { lat: lat, lng: lng },
-            zoom: zoom
-        });
-    };
-    StreetMap.prototype.closeWindow = function () {
-        this.setState({
-            selectedAsset: {},
-            showInfoWindow: false
+            assets: assets
         });
     };
     StreetMap.prototype.render = function () {
         var _this = this;
-        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, selectedAsset = _a.selectedAsset, showInfoWindow = _a.showInfoWindow;
-        var grabby = this.props.grabby;
-        var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center;
+        var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_LoadingMap__["a" /* default */], { notice: "...loading map..." })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Utilities_LoadingMap__["a" /* default */], { notice: "...loading map..." })),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
-        }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { zoom: zoom, defaultCenter: center },
-                assets && grabby != true &&
+        }), __WEBPACK_IMPORTED_MODULE_4_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_4_react_google_maps__["withGoogleMap"])(function (props) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_google_maps__["GoogleMap"], { zoom: zoom, defaultCenter: center },
+                assets &&
                     assets.map(function (asset, index) {
                         if (asset.shape) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], onClick: function () { return _this.polygonSelection(asset); } })));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_google_maps__["Polygon"], { paths: [asset.shape.points] })));
                         }
                     }),
-                assets && grabby == true &&
-                    assets.map(function (asset, index) {
-                        if (asset.shape) {
-                            return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points] })));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager___default.a, __assign({ defaultDrawingMode: google.maps.drawing.OverlayType.POLYGON, defaultOptions: {
+                        drawingControl: true,
+                        drawingControlOptions: {
+                            position: google.maps.ControlPosition.TOP_CENTER,
+                            drawingModes: [
+                                google.maps.drawing.OverlayType.POLYGON
+                            ]
                         }
-                    }),
-                grabby == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_google_maps_lib_components_drawing_DrawingManager___default.a, __assign({ defaultDrawingMode: google.maps.drawing.OverlayType.POLYGON, defaultOptions: {
-                            drawingControl: true,
-                            drawingControlOptions: {
-                                position: google.maps.ControlPosition.TOP_CENTER,
-                                drawingModes: [
-                                    google.maps.drawing.OverlayType.POLYGON
-                                ]
-                            }
-                        } }, props, { onOverlayComplete: _this.handleOverlayComplete })),
-                showInfoWindow == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center, onCloseClick: _this.closeWindow.bind(_this) },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedAsset.assetName),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveAsset(selectedAsset); }, className: 'btn btn-success' }, "Save & continue"))));
+                    } }, props, { onOverlayComplete: _this.handleOverlayComplete })));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
     };
     return StreetMap;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (StreetMap);
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.taggableAssets)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_GETS_taggableAssets__["a" /* actionCreators */])))(StreetMap));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Map/StreetMap.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Map/StreetMap.tsx"); } } })();
@@ -69584,7 +69530,6 @@ var AssetReport = (function (_super) {
             assetName: '',
             assetType: '',
             assetShape: '',
-            streetShapes: [],
             tags: []
         };
         return _this;
@@ -69603,22 +69548,9 @@ var AssetReport = (function (_super) {
     };
     AssetReport.prototype.findAsset = function (prop, street) {
         if (street) {
-            var points_1 = [];
-            var streetSegs = this.props.assets.filter(function (asset) {
-                return asset.assetName == prop;
-            });
-            streetSegs.forEach(function (seg) {
-                if (seg.shape) {
-                    seg.shape.points.forEach(function (point) {
-                        points_1.push(point);
-                    });
-                }
-            });
-            console.log(points_1);
             this.setState({
                 assetName: prop,
-                assetType: "Street",
-                streetShapes: points_1
+                assetType: "Street"
             });
         }
         else {
@@ -69637,7 +69569,7 @@ var AssetReport = (function (_super) {
         }
     };
     AssetReport.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, streetShapes = _a.streetShapes, tags = _a.tags;
+        var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
         if (redirect) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
         }
@@ -69649,7 +69581,7 @@ var AssetReport = (function (_super) {
             assetType != 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_ProjectMap__["a" /* default */], { shape: assetShape }),
             assetType == 'Street' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { shapes: streetShapes }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName }),
             tags.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -69660,7 +69592,7 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
                             assetName,
-                            " has not been tagged by any project or phase")))));
+                            " is not related to any project or phase")))));
     };
     return AssetReport;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

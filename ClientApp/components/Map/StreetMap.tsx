@@ -1,80 +1,36 @@
 import * as React from "react";
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as Assets from '../../store/GETS/taggableAssets'
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import LoadingMap from './../Utilities/LoadingMap'
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 
-export default class StreetMap extends React.Component<any, any> {
+export class StreetMap extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            assets: props.assets,
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            selectedAsset: {},
-            shoeInfowindow: false,
+            assets: []
         }
-        this.polygonSelection = this.polygonSelection.bind(this)
     }
 
     componentDidMount() {
-        if (this.props.grabby == true) {
-            if (this.props.assets.length === 1) {
-                let foundSegment = this.props.assets[0]
-                this.setCenter(foundSegment.shape.points, 16)
-            } else {
-                var middle = Math.floor(this.props.assets.length / 2);
-                const middleSegment = this.props.assets[middle]
-                this.setCenter(middleSegment.shape.points, 13)
-            }
-        }
+        this.collectSegmentShapes(this.props.street)
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.assets.length === 1) {
-            let foundAsset = nextProps.assets[0]
-            this.setCenter(foundAsset.shape.points, 16)
-            this.setState({
-                assets: nextProps.assets,
-                selectedAsset: foundAsset,
-                showInfowindow: true
-            })
-        } else {
-            this.setState({
-                assets: nextProps.assets,
-                zoom: 13,
-                center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            })
-        }
-
+        this.collectSegmentShapes(nextProps.street)
     }
 
-    polygonSelection(asset) {
-        this.setCenter(asset.shape.points, 16)
-        this.setState({
-            selectedAsset: asset,
-            showInfoWindow: true
+    collectSegmentShapes(street) {
+        const assets = this.props.assets.filter(asset => {
+            return asset.assetName == street
         })
-    }
-
-    setCenter(points, zoom) {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < points.length; i++) {
-            bounds.extend(points[i]);
-        }
-        let lat = bounds.getCenter().lat()
-        let lng = bounds.getCenter().lng()
-        this.setState({
-            center: { lat: lat, lng: lng },
-            zoom: zoom
-        })
-    }
-
-    closeWindow() {
-        this.setState({
-            selectedAsset: {},
-            showInfoWindow: false
+        this.setState ({
+            assets: assets
         })
     }
 
@@ -94,14 +50,8 @@ export default class StreetMap extends React.Component<any, any> {
         const {
             assets,
             zoom,
-            center,
-            selectedAsset,
-            showInfoWindow
+            center
         } = this.state
-
-        const {
-            grabby
-        } = this.props
 
         const MapComponent = compose(
             withProps({
@@ -117,22 +67,7 @@ export default class StreetMap extends React.Component<any, any> {
                 zoom={zoom}
                 defaultCenter={center}
             >
-                {assets && grabby != true &&
-                    assets.map((asset, index) => {
-                        if (asset.shape) {
-                            return (
-                                <div key={index}>
-                                    <Polygon
-                                        paths={[asset.shape.points]}
-                                        onClick={() => this.polygonSelection(asset)}>
-                                    </Polygon>
-                                </div>
-
-                            )
-                        }
-                    })
-                }
-                {assets && grabby == true &&
+                {assets &&
                     assets.map((asset, index) => {
                         if (asset.shape) {
                             return (
@@ -146,32 +81,20 @@ export default class StreetMap extends React.Component<any, any> {
                         }
                     })
                 }
-
-                {grabby == true &&
-                    <DrawingManager
-                        defaultDrawingMode={google.maps.drawing.OverlayType.POLYGON}
-                        defaultOptions={{
-                            drawingControl: true,
-                            drawingControlOptions: {
-                                position: google.maps.ControlPosition.TOP_CENTER,
-                                drawingModes: [
-                                    google.maps.drawing.OverlayType.POLYGON
-                                ]
-                            }
-                        }}
-                        {...props}
-                        onOverlayComplete={this.handleOverlayComplete}
-                    />
-                }
-
-                {showInfoWindow == true &&
-                    <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
-                        <div className='col-md-12'>
-                            <h4>{selectedAsset.assetName}</h4>
-                            <button onClick={() => this.props.receiveAsset(selectedAsset)} className='btn btn-success'>Save & continue</button>
-                        </div>
-                    </InfoWindow>
-                }
+                <DrawingManager
+                    defaultDrawingMode={google.maps.drawing.OverlayType.POLYGON}
+                    defaultOptions={{
+                        drawingControl: true,
+                        drawingControlOptions: {
+                            position: google.maps.ControlPosition.TOP_CENTER,
+                            drawingModes: [
+                                google.maps.drawing.OverlayType.POLYGON
+                            ]
+                        }
+                    }}
+                    {...props}
+                    onOverlayComplete={this.handleOverlayComplete}
+                />
             </GoogleMap>
         )
 
@@ -182,3 +105,12 @@ export default class StreetMap extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.taggableAssets
+    }),
+    ({
+        ...Assets.actionCreators
+    })
+)(StreetMap as any) as typeof StreetMap
