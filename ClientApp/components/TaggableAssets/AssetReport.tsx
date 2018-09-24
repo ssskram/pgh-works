@@ -11,11 +11,8 @@ import * as Phases from '../../store/phases'
 import Map from '../Map/ProjectMap'
 import StreetMap from '../Map/StreetMap'
 
-const iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
+const emptyNotice = {
+    letterSpacing: '2px'
 }
 
 export class AssetReport extends React.Component<any, any> {
@@ -93,14 +90,13 @@ export class AssetReport extends React.Component<any, any> {
                     <Map shape={assetShape} />
                 }
                 {assetType == 'Street' &&
-                    <StreetMap street={assetName}/>
+                    <StreetMap street={assetName} />
                 }
                 {tags.length == 0 &&
-                    <div className='col-md-12 text-center'>
-                        <br />
-                        <br />
-                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h2><i>{assetName} is not related to any project or phase</i></h2>
+                    <div className='col-md-12' style= {{ margin: '50px 0px'}}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice} >No related projects or phases</h2>
+                        </div>
                     </div>
                 }
             </div>
