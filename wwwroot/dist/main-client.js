@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "85931ddea7de5a07ce1d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "eaa6c6710e475437c8b8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -69514,8 +69514,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var emptyNotice = {
     letterSpacing: '2px'
+};
+var marginTop = {
+    marginTop: '25px'
 };
 var AssetReport = (function (_super) {
     __extends(AssetReport, _super);
@@ -69541,8 +69545,6 @@ var AssetReport = (function (_super) {
             this.findTags(this.props.match.params.street, true);
         }
     };
-    AssetReport.prototype.componentWillReceiveProps = function (nextProps) {
-    };
     AssetReport.prototype.findAsset = function (prop, street) {
         if (street) {
             this.setState({
@@ -69562,8 +69564,6 @@ var AssetReport = (function (_super) {
         }
     };
     AssetReport.prototype.findTags = function (props, street) {
-        console.log(props);
-        console.log(street);
         if (street) {
             var tags = this.props.tags.filter(function (tag) {
                 return tag.taggedAssetName == props;
@@ -69571,6 +69571,7 @@ var AssetReport = (function (_super) {
             this.setState({
                 tags: tags
             });
+            console.log(tags);
         }
         else {
             var tags = this.props.tags.filter(function (tag) {
@@ -69579,6 +69580,7 @@ var AssetReport = (function (_super) {
             this.setState({
                 tags: tags
             });
+            console.log(tags);
         }
     };
     AssetReport.prototype.render = function () {
@@ -69592,15 +69594,37 @@ var AssetReport = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, assetType)),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             assetType != 'Street' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_ProjectMap__["a" /* default */], { shape: assetShape }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_ProjectMap__["a" /* default */], { shape: assetShape }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             assetType == 'Street' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             tags.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { margin: '50px 0px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: emptyNotice }, "No related projects or phases"))),
             tags.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "Return tags now")));
+                tags.map(function (tag, index) {
+                    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.parentName)),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, tag.parentType),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                            "\"",
+                                            tag.tagDescription,
+                                            "\""))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/' + tag.parentType + '/id=' + tag.parentID, style: marginTop, className: 'btn btn-success' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))));
+                })));
     };
     return AssetReport;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

@@ -14,6 +14,7 @@ const imgHeight = {
 const marginTop = {
     marginTop: '15px'
 }
+
 export class TagsCard extends React.Component<any, any> {
     constructor() {
         super()

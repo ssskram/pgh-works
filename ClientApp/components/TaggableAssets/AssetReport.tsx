@@ -3,7 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import { Redirect } from 'react-router-dom'
-import Table from 'react-table'
+import { Link } from 'react-router-dom'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as Tags from '../../store/tags'
 import * as Projects from '../../store/projects'
@@ -13,6 +13,10 @@ import StreetMap from '../Map/StreetMap'
 
 const emptyNotice = {
     letterSpacing: '2px'
+}
+
+const marginTop = {
+    marginTop: '25px'
 }
 
 export class AssetReport extends React.Component<any, any> {
@@ -39,10 +43,6 @@ export class AssetReport extends React.Component<any, any> {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-
-    }
-
     findAsset(prop, street) {
         if (street) {
             this.setState({
@@ -62,8 +62,6 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     findTags(props, street) {
-        console.log(props)
-        console.log(street)
         if (street) {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetName == props
@@ -71,6 +69,7 @@ export class AssetReport extends React.Component<any, any> {
             this.setState({
                 tags: tags
             })
+            console.log(tags)
         } else {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetOID == props
@@ -78,6 +77,7 @@ export class AssetReport extends React.Component<any, any> {
             this.setState({
                 tags: tags
             })
+            console.log(tags)
         }
     }
 
@@ -101,10 +101,18 @@ export class AssetReport extends React.Component<any, any> {
                 <h4><b>{assetType}</b></h4>
                 <hr />
                 {assetType != 'Street' &&
-                    <Map shape={assetShape} />
+                    <div className='col-md-12'>
+                        <Map shape={assetShape} />
+                        <br/>
+                        <br/>
+                    </div>
                 }
                 {assetType == 'Street' &&
-                    <StreetMap street={assetName} />
+                    <div className='col-md-12'>
+                        <StreetMap street={assetName} />
+                        <br/>
+                        <br/>
+                    </div>
                 }
                 {tags.length == 0 &&
                     <div className='col-md-12' style={{ margin: '50px 0px' }}>
@@ -114,7 +122,22 @@ export class AssetReport extends React.Component<any, any> {
                     </div>
                 }
                 {tags.length > 0 &&
-                    <h2>Return tags now</h2>
+                    tags.map((tag, index) =>
+                        <div className='col-md-12' key={index}>
+                            <div className='panel'>
+                                <div className='panel-body text-center'>
+                                    <div className='col-md-8'>
+                                        <h3><b>{tag.parentName}</b></h3>
+                                        <h4>{tag.parentType}</h4>
+                                        <h4><i>"{tag.tagDescription}"</i></h4>
+                                    </div>
+                                    <div className='col-md-3'>
+                                        <Link to={'/' + tag.parentType + '/id=' + tag.parentID} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
                 }
             </div>
         )
