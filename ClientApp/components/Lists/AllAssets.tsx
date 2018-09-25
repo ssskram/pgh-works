@@ -39,21 +39,8 @@ export class AllAssets extends React.Component<any, any> {
         this.setState({
             assets: uniqueAssetNames.filter(function (asset) {
                 return asset.assetName != ''
-            }) 
+            })
         })
-    }
-    removeDuplicates(originalArray, prop) {
-        var newArray = [] as any
-        var lookupObject = {}
-
-        for (var i in originalArray) {
-            lookupObject[originalArray[i][prop]] = originalArray[i]
-        }
-
-        for (i in lookupObject) {
-            newArray.push(lookupObject[i])
-        }
-        return newArray;
     }
 
     getAssetLink(props) {
@@ -80,8 +67,22 @@ export class AllAssets extends React.Component<any, any> {
             const relevantTags = this.props.tags.filter(function (tag) {
                 return tag.taggedAssetName == props.assetName
             })
-            return relevantTags.length
+            // filter out duplicate streets
+            var uniqueTags = this.removeDuplicates(relevantTags, "parentID")
+            return uniqueTags.length
         }
+    }
+
+    removeDuplicates(originalArray, prop) {
+        var newArray = [] as any
+        var lookupObject = {}
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i]
+        }
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i])
+        }
+        return newArray;
     }
 
     public render() {
