@@ -60,7 +60,7 @@ export class ProjectInputs extends React.Component<any, any> {
         super()
         this.handleDate = this.handleDate.bind(this)
     }
-    
+
     componentDidMount() {
         // set personnel dropdowns
         // set status dropdowns
@@ -103,17 +103,19 @@ export class ProjectInputs extends React.Component<any, any> {
         } = this.props.description
 
         return (
-            <div style={{padding: '10px'}}>
-                <div className='col-md-12'>
-                    <Input
-                        value={projectName}
-                        name="projectName"
-                        required={true}
-                        header="Project name"
-                        placeholder="Enter a name"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
+            <div style={{ padding: '10px' }}>
+                {!update &&
+                    <div className='col-md-12'>
+                        <Input
+                            value={projectName}
+                            name="projectName"
+                            required={true}
+                            header="Project name"
+                            placeholder="Enter a name"
+                            callback={this.handleChildChange.bind(this)}
+                        />
+                    </div>
+                }
 
                 <div className='col-md-12'>
                     <Select

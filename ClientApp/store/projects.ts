@@ -53,8 +53,16 @@ export const actionCreators = {
             });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
-        
-        // post to cartegraph
+        let data = JSON.stringify(item)
+        fetch('/api/projects/addProject', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addProject, item
         })
@@ -62,7 +70,7 @@ export const actionCreators = {
     updateProject: (item): AppThunkAction<any> => (dispatch, getState) => {
 
         // put to cartegraph
-        
+
         dispatch({
             type: updateProject, item
         })
@@ -85,7 +93,8 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
         case updateProject:
             return {
                 ...state,
-                projects: state.projects.map(project => project.projectID === action.item.projectID ? { ...project,
+                projects: state.projects.map(project => project.projectID === action.item.projectID ? {
+                    ...project,
                     cartegraphID: action.item.cartegraphID,
                     projectID: action.item.projectID,
                     projectName: action.item.projectName,
@@ -103,7 +112,7 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     createdBy: action.item.createdBy,
                     lastModifiedBy: action.item.lastModifiedBy,
                     shape: action.item.shape
-                    } : project
+                } : project
                 )
             };
     }

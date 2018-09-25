@@ -18,6 +18,11 @@ namespace pghworks {
         string _MSClientSecret = null;
         string _sendgrid = null;
         string _CartegraphAPIkey = null;
+        string _refreshtoken = null;
+        string _SPClientSecret = null;
+        string _SPClientID = null;
+        string _redirecturi = null;
+        string _spresourceid = null;
 
         private readonly IHostingEnvironment _currentEnvironment;
         public IConfiguration HostingConfig { get; private set; }
@@ -44,6 +49,11 @@ namespace pghworks {
             _MSClientSecret = Configuration["MSClientSecret"];
             _sendgrid = Configuration["sendgrid"];
             _CartegraphAPIkey = Configuration["CartegraphAPIkey"];
+            _refreshtoken = Configuration["refreshtoken"];
+            _SPClientSecret = Configuration["SPClientSecret"];
+            _SPClientID = Configuration["SPClientID"];
+            _redirecturi = Configuration["redirecturi"];
+            _spresourceid = Configuration["spresourceid"];
 
             // add application services
             services.AddDbContext<ApplicationDbContext> (options =>
@@ -72,6 +82,11 @@ namespace pghworks {
 
             Environment.SetEnvironmentVariable ("sendgrid", Configuration["sendgrid"]);
             Environment.SetEnvironmentVariable ("CartegraphAPIkey", Configuration["CartegraphAPIkey"]);
+            Environment.SetEnvironmentVariable ("refreshtoken", Configuration["refreshtoken"]);
+            Environment.SetEnvironmentVariable ("SPClientSecret", Configuration["SPClientSecret"]);
+            Environment.SetEnvironmentVariable ("SPClientID", Configuration["SPClientID"]);
+            Environment.SetEnvironmentVariable ("redirecturi", Configuration["redirecturi"]);
+            Environment.SetEnvironmentVariable ("spresourceid", Configuration["spresourceid"]);
 
             services.AddMvc ()
                 .AddSessionStateTempDataProvider ();
@@ -86,8 +101,8 @@ namespace pghworks {
                 app.UseDeveloperExceptionPage ();
                 app.UseWebpackDevMiddleware (new WebpackDevMiddlewareOptions {
                     HotModuleReplacement = true,
-                    ReactHotModuleReplacement = true,
-                    HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
+                        ReactHotModuleReplacement = true,
+                        HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
                 });
             } else {
                 app.UseExceptionHandler ("/Home/Error");

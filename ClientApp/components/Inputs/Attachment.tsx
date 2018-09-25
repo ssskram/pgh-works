@@ -3,11 +3,20 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Dropzone from 'react-dropzone'
-import Input from '../FormElements/input'
-import TextArea from '../FormElements/textarea'
+import Select from '../FormElements/select'
 import * as AttachmentsStore from '../../store/attachments'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
+import { Helmet } from "react-helmet"
+
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+
+const types = [
+    { value: 'Final contract', label: 'Final contract', name: 'attachmentName' },
+    { value: 'Final legislation', label: 'Final legislation', name: 'attachmentName' },
+    { value: 'Before', label: 'Before (img)', name: 'attachmentName' },
+    { value: 'After', label: 'After (img)', name: 'attachmentName' }
+]
 
 export class Attachment extends React.Component<any, any> {
     constructor(props) {
@@ -19,7 +28,6 @@ export class Attachment extends React.Component<any, any> {
             attachmentID: '',
             dateCreated: '',
             attachmentName: '',
-            attachmentDescription: '',
             src: '',
             fileName: '',
         }
@@ -33,8 +41,8 @@ export class Attachment extends React.Component<any, any> {
         })
     }
 
-    handleChildChange(event) {
-        this.setState({ [event.target.name]: event.target.value })
+    handleChildSelect(event) {
+        this.setState({ [event.name]: event.value });
     }
 
     onDrop(file) {
@@ -50,7 +58,6 @@ export class Attachment extends React.Component<any, any> {
             attachmentID: this.state.attachmentID,
             dateCreated: this.state.dateCreated,
             attachmentName: this.state.attachmentName,
-            attachmentDescription: this.state.attachmentDescription,
             src: this.state.file[0].preview,
             fileName: this.state.file[0].name
         }
@@ -61,8 +68,7 @@ export class Attachment extends React.Component<any, any> {
     public render() {
         const {
             file,
-            attachmentName,
-            attachmentDescription,
+            attachmentName
         } = this.state
 
         // validation
@@ -71,6 +77,9 @@ export class Attachment extends React.Component<any, any> {
 
         return (
             <div className='col-md-12'>
+                <Helmet>
+                    <style>{dropdownStyle}</style>
+                </Helmet>
                 {file.length == 0 &&
                     <div className="dropzone">
                         <br />
@@ -82,26 +91,16 @@ export class Attachment extends React.Component<any, any> {
                 }
                 {file.length > 0 &&
                     <div className='col-md-12'>
-                        <h3>Attachment description</h3>
-                        <hr />
                         <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={attachmentName}
                                 name="attachmentName"
-                                header="Attachment name"
-                                placeholder="Enter a name"
+                                header='Select attachment type'
+                                placeholder='Select type'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
                                 required={true}
-                                callback={this.handleChildChange.bind(this)}
-                            />
-                        </div>
-
-                        <div className='col-md-12'>
-                            <TextArea
-                                value={attachmentDescription}
-                                name="attachmentDescription"
-                                header="Description"
-                                placeholder="Provide context for the attachment"
-                                callback={this.handleChildChange.bind(this)}
+                                options={types}
                             />
                         </div>
 

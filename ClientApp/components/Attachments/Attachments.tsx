@@ -118,7 +118,8 @@ export class Attachments extends React.Component<any, any> {
 
         const {
             parentID,
-            parentType
+            parentType,
+            parentName
         } = this.props
 
         const columns = [{
@@ -161,7 +162,18 @@ export class Attachments extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/attachment.png' /> Attachments<span><button title='Upload an attachment' onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2>
+                    <img style={iconStyle} src='./images/attachment.png' />
+                    Attachments
+                    <span>
+                        <button style={{marginLeft: '10px'}} className='btn btn-secondary pull-right'>
+                            <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName}  target='_blank'><span style={{ fontSize: '18px' }}>Document library</span></a>
+                        </button>
+                        <button title='Upload an attachment' onClick={this.addAttachment.bind(this)} className='btn pull-right hidden-xs'>
+                            <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
+                        </button>
+                    </span>
+                </h2>
                 <hr />
                 <div className='col-md-12'>
                     {attachments.length == 0 &&
@@ -189,8 +201,8 @@ export class Attachments extends React.Component<any, any> {
                                     }]);
                                 }}
                             />
-                            <br/>
-                            <br/>
+                            <br />
+                            <br />
                         </div>
                     }
                     {files.length > 0 &&

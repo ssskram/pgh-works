@@ -20,7 +20,6 @@ export interface AttachmentItem {
     attachmentID: string
     dateCreated: string
     attachmentName: string
-    attachmentDescription: string
     attachmentLink: string
     fileName: string
 }

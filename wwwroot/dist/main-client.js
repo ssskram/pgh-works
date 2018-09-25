@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2d795f0c177152a4c9c2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "055412fa9f8bfb57d361"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6293,7 +6293,16 @@ var actionCreators = {
         });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
-        // post to cartegraph
+        var data = JSON.stringify(item);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/addProject', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         dispatch({
             type: addProject, item: item
         });
@@ -35309,8 +35318,9 @@ var ProjectInputs = (function (_super) {
         var _this = this;
         var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, update = _a.update;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' } },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", required: true, header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+            !update &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", required: true, header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, required: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -63922,7 +63932,7 @@ var Attachments = (function (_super) {
     Attachments.prototype.render = function () {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, selectedAttachment = _a.selectedAttachment, attachments = _a.attachments, visible = _a.visible, imageIndex = _a.imageIndex;
-        var _b = this.props, parentID = _b.parentID, parentType = _b.parentType;
+        var _b = this.props, parentID = _b.parentID, parentType = _b.parentType, parentName = _b.parentName;
         var columns = [{
                 Header: 'File name',
                 accessor: 'attachmentName'
@@ -63963,8 +63973,11 @@ var Attachments = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/attachment.png' }),
-                " Attachments",
+                "Attachments",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { marginLeft: '10px' }, className: 'btn btn-secondary pull-right' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName, target: '_blank' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '18px' } }, "Document library"))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), className: 'btn pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
@@ -64591,13 +64604,14 @@ var Home = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dropzone__ = __webpack_require__(627);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_input__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_attachments__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_uuid__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_attachments__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_uuid__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_uuid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64624,6 +64638,13 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var types = [
+    { value: 'Final contract', label: 'Final contract', name: 'attachmentName' },
+    { value: 'Final legislation', label: 'Final legislation', name: 'attachmentName' },
+    { value: 'Before', label: 'Before (img)', name: 'attachmentName' },
+    { value: 'After', label: 'After (img)', name: 'attachmentName' }
+];
 var Attachment = (function (_super) {
     __extends(Attachment, _super);
     function Attachment(props) {
@@ -64635,21 +64656,20 @@ var Attachment = (function (_super) {
             attachmentID: '',
             dateCreated: '',
             attachmentName: '',
-            attachmentDescription: '',
             src: '',
             fileName: '',
         };
         return _this;
     }
     Attachment.prototype.componentDidMount = function () {
-        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_uuid__["v1"])();
+        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_uuid__["v1"])();
         this.setState({
             attachmentID: guid,
-            dateCreated: __WEBPACK_IMPORTED_MODULE_7_moment__().format('MM/DD/YYYY')
+            dateCreated: __WEBPACK_IMPORTED_MODULE_6_moment__().format('MM/DD/YYYY')
         });
     };
-    Attachment.prototype.handleChildChange = function (event) {
-        this.setState((_a = {}, _a[event.target.name] = event.target.value, _a));
+    Attachment.prototype.handleChildSelect = function (event) {
+        this.setState((_a = {}, _a[event.name] = event.value, _a));
         var _a;
     };
     Attachment.prototype.onDrop = function (file) {
@@ -64664,7 +64684,6 @@ var Attachment = (function (_super) {
             attachmentID: this.state.attachmentID,
             dateCreated: this.state.dateCreated,
             attachmentName: this.state.attachmentName,
-            attachmentDescription: this.state.attachmentDescription,
             src: this.state.file[0].preview,
             fileName: this.state.file[0].name
         };
@@ -64672,10 +64691,12 @@ var Attachment = (function (_super) {
         this.props.closeModal();
     };
     Attachment.prototype.render = function () {
-        var _a = this.state, file = _a.file, attachmentName = _a.attachmentName, attachmentDescription = _a.attachmentDescription;
+        var _a = this.state, file = _a.file, attachmentName = _a.attachmentName;
         // validation
         var isEnabled = attachmentName != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             file.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "dropzone" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -64687,19 +64708,15 @@ var Attachment = (function (_super) {
                             "or click to select a file"))),
             file.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Attachment description"),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: attachmentName, name: "attachmentName", header: "Attachment name", placeholder: "Enter a name", required: true, callback: this.handleChildChange.bind(this) })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: attachmentDescription, name: "attachmentDescription", header: "Description", placeholder: "Provide context for the attachment", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_select__["a" /* default */], { value: attachmentName, name: "attachmentName", header: 'Select attachment type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, required: true, options: types })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12  text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.save.bind(this), className: 'btn btn-success' }, "Save")))));
     };
     return Attachment;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.attachments)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_5__store_attachments__["a" /* actionCreators */])))(Attachment));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.attachments)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_4__store_attachments__["a" /* actionCreators */])))(Attachment));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Inputs/Attachment.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Inputs/Attachment.tsx"); } } })();
@@ -68624,7 +68641,7 @@ var Project = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_17__Tags_Tags__["a" /* default */], { parentID: projectID, parentName: projectName, parentType: 'Project' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Attachments_Attachments__["a" /* default */], { parentID: projectID, parentType: 'Project' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Attachments_Attachments__["a" /* default */], { parentID: projectID, parentType: 'Project', parentName: projectName })),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the project...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {

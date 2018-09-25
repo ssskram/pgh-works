@@ -326,7 +326,7 @@ export class Project extends React.Component<any, any> {
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Attachments parentID={projectID} parentType={'Project'} />
+                    <Attachments parentID={projectID} parentType={'Project'} parentName={projectName}/>
                 </div>
 
                 {spinner == true &&
