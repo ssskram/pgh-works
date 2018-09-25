@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "47d0bce7cdeb259e7956"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ef91561577ba136887a2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6380,7 +6380,7 @@ var input = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
                     this.props.header,
                     this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], { autoFocus: this.state.autoFocus, placeholder: this.props.placeholder, name: this.props.name, value: this.props.value, onChange: this.props.onChange.bind(this), options: this.props.options, closeOnSelect: !this.props.multi, simpleValue: this.props.multi, removeSelected: this.props.multi, multi: this.props.multi, clearable: this.props.multi, delimiter: ', ' }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_select__["a" /* default */], { autoFocus: this.state.autoFocus, placeholder: this.props.placeholder, name: this.props.name, value: this.props.value, onChange: this.props.onChange.bind(this), options: this.props.options, closeOnSelect: !this.props.multi, simpleValue: this.props.multi, removeSelected: this.props.multi, multi: this.props.multi, clearable: this.props.multi, delimiter: this.props.delimiter ? this.props.delimiter : ', ' }))));
     };
     return input;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -16445,11 +16445,11 @@ var actionCreators = {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+            dispatch({ type: loadPersonnel, personnel: data });
         });
-        // .then(response => response.json())
-        // .then(data => {
-        //     dispatch({ type: loadPersonnel, personnel: data.items });
-        // });
     }; }
 };
 var reducer = function (state, incomingAction) {
@@ -35250,14 +35250,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var managers = [
-    { value: 'John Smith', label: 'John Smith', name: 'projectManager' },
-    { value: 'Jane Doe', label: 'Jane Doe', name: 'projectManager' }
-];
-var members = [
-    { value: 'John Smith', label: 'John Smith', name: 'projectMembers' },
-    { value: 'Jane Doe', label: 'Jane Doe', name: 'projectMembers' }
-];
 var statuses = [
     { value: 'In progress', label: 'In progress', name: 'projectStatus' },
     { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
@@ -35292,12 +35284,21 @@ var ProjectInputs = (function (_super) {
     __extends(ProjectInputs, _super);
     function ProjectInputs() {
         var _this = _super.call(this) || this;
+        _this.state = {
+            personnel: []
+        };
         _this.handleDate = _this.handleDate.bind(_this);
         return _this;
     }
     ProjectInputs.prototype.componentDidMount = function () {
-        // set personnel dropdowns
-        // set status dropdowns
+        var personnel = [];
+        this.props.personnel.forEach(function (user) {
+            var personnelSelect = { value: user.title, label: user.title, name: 'projectManager' };
+            personnel.push(personnelSelect);
+        });
+        this.setState({
+            personnel: personnel
+        });
     };
     ProjectInputs.prototype.handleChildChange = function (event) {
         this.props.handleInput(event);
@@ -35317,6 +35318,7 @@ var ProjectInputs = (function (_super) {
     ProjectInputs.prototype.render = function () {
         var _this = this;
         var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, update = _a.update;
+        var personnel = this.state.personnel;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' } },
             !update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -35348,9 +35350,9 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", required: true, header: 'Department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: managers })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: members })))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: personnel, delimiter: '; ' })))));
     };
     return ProjectInputs;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

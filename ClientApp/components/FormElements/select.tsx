@@ -26,7 +26,7 @@ export default class input extends React.Component<any, any> {
                         removeSelected={this.props.multi}
                         multi={this.props.multi}
                         clearable={this.props.multi}
-                        delimiter=', '
+                        delimiter={this.props.delimiter ? this.props.delimiter : ', '}
                     />
                 </div>
             </div>

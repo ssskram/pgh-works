@@ -9,16 +9,6 @@ import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
 
-const managers = [
-    { value: 'John Smith', label: 'John Smith', name: 'projectManager' },
-    { value: 'Jane Doe', label: 'Jane Doe', name: 'projectManager' }
-]
-
-const members = [
-    { value: 'John Smith', label: 'John Smith', name: 'projectMembers' },
-    { value: 'Jane Doe', label: 'Jane Doe', name: 'projectMembers' }
-]
-
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'projectStatus' },
     { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
@@ -58,12 +48,21 @@ const glyphs = {
 export class ProjectInputs extends React.Component<any, any> {
     constructor() {
         super()
+        this.state = {
+            personnel: []
+        }
         this.handleDate = this.handleDate.bind(this)
     }
 
     componentDidMount() {
-        // set personnel dropdowns
-        // set status dropdowns
+        const personnel = [] as any
+        this.props.personnel.forEach(user => {
+            const personnelSelect = { value: user.title, label: user.title, name: 'projectManager' }
+            personnel.push(personnelSelect)
+        })
+        this.setState ({
+            personnel: personnel
+        })
     }
 
     handleChildChange(event) {
@@ -102,6 +101,9 @@ export class ProjectInputs extends React.Component<any, any> {
             update
         } = this.props.description
 
+        const {
+            personnel
+        } = this.state
         return (
             <div style={{ padding: '10px' }}>
                 {!update &&
@@ -224,7 +226,7 @@ export class ProjectInputs extends React.Component<any, any> {
                             placeholder='Select manager'
                             onChange={this.handleChildSelect.bind(this)}
                             multi={false}
-                            options={managers}
+                            options={personnel}
                         />
                     </div>
 
@@ -236,7 +238,8 @@ export class ProjectInputs extends React.Component<any, any> {
                             placeholder='Select team members'
                             onChange={this.handleMembersMulti.bind(this)}
                             multi={true}
-                            options={members}
+                            options={personnel}
+                            delimiter='; '
                         />
                     </div>
                 </div>
