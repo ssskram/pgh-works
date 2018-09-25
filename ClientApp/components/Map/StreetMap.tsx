@@ -90,6 +90,15 @@ export class StreetMap extends React.Component<any, any> {
         })
     }
 
+    reset() {
+        this.setState({
+            onFilter: false
+        }, function (this) {
+            this.collectSegmentShapes(this.props.street)
+            this.props.reset()
+        })
+    }
+
     render() {
         const {
             assets,
@@ -158,7 +167,7 @@ export class StreetMap extends React.Component<any, any> {
                         }
                         {onFilter == true &&
                             <div className='text-center'>
-                                <button className='btn btn-warning'>Clear filter</button>
+                                <button className='btn btn-warning' onClick={this.reset.bind(this)}>Clear filter</button>
                             </div>
                         }
                     </div>

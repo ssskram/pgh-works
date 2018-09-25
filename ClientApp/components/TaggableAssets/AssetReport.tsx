@@ -95,7 +95,7 @@ export class AssetReport extends React.Component<any, any> {
         return newArray;
     }
 
-    filterTagsByStreetSegment(shape) {   
+    filterTagsByStreetSegment(shape) {
         const allTags = this.props.tags.filter(tag => {
             return tag.taggedAssetName == this.props.match.params.street
         })
@@ -117,6 +117,11 @@ export class AssetReport extends React.Component<any, any> {
         this.setState({
             tags: uniqueTags
         })
+    }
+
+    reset() {
+        this.findAsset(this.props.match.params.street, true)
+        this.findTags(this.props.match.params.street, true)
     }
 
     public render() {
@@ -141,15 +146,18 @@ export class AssetReport extends React.Component<any, any> {
                 {assetType != 'Street' &&
                     <div className='col-md-12'>
                         <Map shape={assetShape} />
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                     </div>
                 }
                 {assetType == 'Street' &&
                     <div className='col-md-12'>
-                        <StreetMap street={assetName} passShape={this.filterTagsByStreetSegment.bind(this)}/>
-                        <br/>
-                        <br/>
+                        <StreetMap
+                            street={assetName}
+                            passShape={this.filterTagsByStreetSegment.bind(this)}
+                            reset={this.reset.bind(this)} />
+                        <br />
+                        <br />
                     </div>
                 }
                 {tags.length == 0 &&
