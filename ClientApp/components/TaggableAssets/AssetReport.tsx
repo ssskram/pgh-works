@@ -95,12 +95,7 @@ export class AssetReport extends React.Component<any, any> {
         return newArray;
     }
 
-    filterTagsByStreetSegment(shape) {
-        let formattedShape = [] as any
-        shape.forEach(point => {
-            const shapeArray = [point.lat, point.lng]
-            formattedShape.push(shapeArray)
-        })       
+    filterTagsByStreetSegment(shape) {   
         const allTags = this.props.tags.filter(tag => {
             return tag.taggedAssetName == this.props.match.params.street
         })
@@ -111,7 +106,7 @@ export class AssetReport extends React.Component<any, any> {
             })
             if (asset.shape) {
                 asset.shape.points.forEach(function (point) {
-                    const ins = inside([point.lat, point.lng], formattedShape)
+                    const ins = inside([point.lat, point.lng], shape)
                     if (ins == true && !newTags.includes(tag)) {
                         newTags.push(tag)
                     }

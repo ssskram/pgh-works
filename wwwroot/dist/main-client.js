@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "adbd4cbd4fcc41f9e229"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e56852148ad8d75ca315"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66449,6 +66449,8 @@ var PolygonGeneration = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Utilities_LoadingMap__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_point_in_polygon__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_point_in_polygon__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66474,6 +66476,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var StreetMap = (function (_super) {
     __extends(StreetMap, _super);
     function StreetMap(props) {
@@ -66486,10 +66489,33 @@ var StreetMap = (function (_super) {
                 var coord = { lat: xy.lat(), lng: xy.lng() };
                 shape.push(coord);
             }
+            var formattedShape = [];
+            shape.forEach(function (point) {
+                var shapeArray = [point.lat, point.lng];
+                formattedShape.push(shapeArray);
+            });
+            _this.props.passShape(formattedShape);
+            var filteredAssets = [];
+            var assets = _this.props.assets.filter(function (asset) {
+                return asset.assetName == _this.props.street;
+            });
+            assets.forEach(function (asset) {
+                if (asset.shape) {
+                    asset.shape.points.forEach(function (point) {
+                        var ins = __WEBPACK_IMPORTED_MODULE_7_point_in_polygon___default()([point.lat, point.lng], formattedShape);
+                        if (ins == true && !filteredAssets.includes(asset)) {
+                            filteredAssets.push(asset);
+                        }
+                    });
+                }
+            });
+            var middle = Math.floor(filteredAssets.length / 2);
+            var middleSegment = filteredAssets[middle];
+            _this.setCenter(middleSegment.shape.points, 13);
             _this.setState({
+                assets: filteredAssets,
                 onFilter: true
             });
-            _this.props.passShape(shape);
         };
         _this.state = {
             zoom: 13,
@@ -69635,11 +69661,6 @@ var AssetReport = (function (_super) {
     };
     AssetReport.prototype.filterTagsByStreetSegment = function (shape) {
         var _this = this;
-        var formattedShape = [];
-        shape.forEach(function (point) {
-            var shapeArray = [point.lat, point.lng];
-            formattedShape.push(shapeArray);
-        });
         var allTags = this.props.tags.filter(function (tag) {
             return tag.taggedAssetName == _this.props.match.params.street;
         });
@@ -69650,7 +69671,7 @@ var AssetReport = (function (_super) {
             });
             if (asset.shape) {
                 asset.shape.points.forEach(function (point) {
-                    var ins = __WEBPACK_IMPORTED_MODULE_9_point_in_polygon___default()([point.lat, point.lng], formattedShape);
+                    var ins = __WEBPACK_IMPORTED_MODULE_9_point_in_polygon___default()([point.lat, point.lng], shape);
                     if (ins == true && !newTags.includes(tag)) {
                         newTags.push(tag);
                     }

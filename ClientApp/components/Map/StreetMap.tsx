@@ -56,16 +56,38 @@ export class StreetMap extends React.Component<any, any> {
     handleOverlayComplete = (evt) => {
         let shape: any[] = []
         let vertices = evt.overlay.getPath()
-
         for (var i = 0; i < vertices.getLength(); i++) {
             var xy = vertices.getAt(i);
             var coord = { lat: xy.lat(), lng: xy.lng() }
             shape.push(coord)
         }
+        let formattedShape = [] as any
+        shape.forEach(point => {
+            const shapeArray = [point.lat, point.lng]
+            formattedShape.push(shapeArray)
+        })
+        this.props.passShape(formattedShape)
+        const filteredAssets = [] as any
+        const assets = this.props.assets.filter(asset => {
+            return asset.assetName == this.props.street
+        })
+        assets.forEach(asset => {
+            if (asset.shape) {
+                asset.shape.points.forEach(function (point) {
+                    const ins = inside([point.lat, point.lng], formattedShape)
+                    if (ins == true && !filteredAssets.includes(asset)) {
+                        filteredAssets.push(asset)
+                    }
+                })
+            }
+        })
+        var middle = Math.floor(filteredAssets.length / 2);
+        const middleSegment = filteredAssets[middle]
+        this.setCenter(middleSegment.shape.points, 13)
         this.setState({
+            assets: filteredAssets,
             onFilter: true
         })
-        this.props.passShape(shape)
     }
 
     render() {
