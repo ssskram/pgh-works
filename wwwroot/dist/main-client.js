@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "da7a4b7b8af70da8d10a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "47d0bce7cdeb259e7956"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66429,11 +66429,10 @@ var PolygonGeneration = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_recompose__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_google_maps__);
-throw new Error("Cannot find module \"./../Utilities/LoadingMap\"");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_point_in_polygon__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_point_in_polygon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_google_maps_lib_components_drawing_DrawingManager__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_google_maps_lib_components_drawing_DrawingManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_google_maps_lib_components_drawing_DrawingManager__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_point_in_polygon__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_point_in_polygon__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66452,7 +66451,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -66485,7 +66483,7 @@ var StreetMap = (function (_super) {
             assets.forEach(function (asset) {
                 if (asset.shape) {
                     asset.shape.points.forEach(function (point) {
-                        var ins = __WEBPACK_IMPORTED_MODULE_7_point_in_polygon___default()([point.lat, point.lng], formattedShape);
+                        var ins = __WEBPACK_IMPORTED_MODULE_6_point_in_polygon___default()([point.lat, point.lng], formattedShape);
                         if (ins == true && !filteredAssets.includes(asset)) {
                             filteredAssets.push(asset);
                         }
@@ -66552,8 +66550,7 @@ var StreetMap = (function (_super) {
         var assetName = this.props.assetName;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
-            loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Utilities_LoadingMap___default.a, { notice: "...loading map..." })),
+            loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_4_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_4_react_google_maps__["withGoogleMap"])(function (props) {
@@ -66565,7 +66562,7 @@ var StreetMap = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_google_maps__["Polygon"], { paths: [asset.shape.points] })));
                         }
                     }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_google_maps_lib_components_drawing_DrawingManager___default.a, __assign({ defaultDrawingMode: google.maps.drawing.OverlayType.POLYGON, defaultOptions: {
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_google_maps_lib_components_drawing_DrawingManager___default.a, __assign({ defaultDrawingMode: google.maps.drawing.OverlayType.POLYGON, defaultOptions: {
                         drawingControl: true,
                         drawingControlOptions: {
                             position: google.maps.ControlPosition.TOP_CENTER,
