@@ -14,8 +14,7 @@ export interface PersonnelState {
 
 export interface PersonnelItem {
     email: string
-    firstName: string
-    lastName: string
+    title: string
 }
 
 export const actionCreators = {
