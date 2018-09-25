@@ -14,6 +14,8 @@ import Map from '../Map/ProjectMap'
 import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 import inside from 'point-in-polygon'
+import Modal from 'react-responsive-modal'
+import TaggableAssetSelection from './AssetTypeSelection'
 
 export class ProjectDefinition extends React.Component<any, any> {
     constructor(props) {
@@ -22,6 +24,10 @@ export class ProjectDefinition extends React.Component<any, any> {
             // utilities
             step: 1,
             redirect: false,
+            shapeType: '',
+            relevantAssetTypes: [],
+            assetTypeCheck: false,
+            modalIsOpen: false,
 
             // project state
             projectID: '',
@@ -54,9 +60,10 @@ export class ProjectDefinition extends React.Component<any, any> {
         })
     }
 
-    setShape(shape) {
+    setShape(shape, type) {
         this.setState({
-            shape: shape
+            shape: shape,
+            shapeType: type
         })
     }
 
@@ -92,27 +99,90 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectStatus: projectDesc.projectStatus,
             notes: projectDesc.notes
         }, function (this) {
-            // add to project store 
-            this.props.addProject(this.state)
-            this.pointsInPolygon()
+            if (this.state.shapeType == 'new' && this.state.assetTypeCheck == false) {
+                this.setState({
+                    modalIsOpen: true
+                })
+            } else {
+                const projectLoad = {
+                    projectID: this.state.projectID,
+                    projectName: this.state.projectName,
+                    expectedStartDate: this.state.expectedStartDate,
+                    expectedEndDate: this.state.expectedEndDate,
+                    actualStartDate: this.state.actualStartDate,
+                    actualEndDate: this.state.actualEndDate,
+                    projectManager: this.state.projectManager,
+                    projectMembers: this.state.projectMembers,
+                    projectDepartment: this.state.projectDepartment,
+                    projectDescription: this.state.projectDescription,
+                    projectStatus: this.state.projectStatus,
+                    notes: this.state.notes,
+                    created: this.state.created,
+                    createdBy: this.state.createdBy,
+                    lastModifiedBy: this.state.lastModifiedBy,
+                    shape: this.state.shape
+                }
+                this.props.addProject(projectLoad)
+                this.pointsInPolygon('import')
+                this.setState({
+                    redirect: true
+                })
+            }
+        })
+    }
+
+    receiveTypes(typeArray) {
+        this.setState({
+            relevantAssetTypes: typeArray,
+            assetTypeCheck: true,
+            modalIsOpen: false
+        }, function (this) {
+            const projectLoad = {
+                projectID: this.state.projectID,
+                projectName: this.state.projectName,
+                expectedStartDate: this.state.expectedStartDate,
+                expectedEndDate: this.state.expectedEndDate,
+                actualStartDate: this.state.actualStartDate,
+                actualEndDate: this.state.actualEndDate,
+                projectManager: this.state.projectManager,
+                projectMembers: this.state.projectMembers,
+                projectDepartment: this.state.projectDepartment,
+                projectDescription: this.state.projectDescription,
+                projectStatus: this.state.projectStatus,
+                notes: this.state.notes,
+                created: this.state.created,
+                createdBy: this.state.createdBy,
+                lastModifiedBy: this.state.lastModifiedBy,
+                shape: this.state.shape
+            }
+            this.props.addProject(projectLoad)
+            this.pointsInPolygon('new')
         })
         this.setState({
             redirect: true
         })
     }
 
-    pointsInPolygon () {
+    pointsInPolygon(type) {
         const self = this
         let shape = [] as any
         let componentAssets = [] as any
         this.state.shape.forEach(function (point) {
-            const shapeArray = [ point.lat, point.lng ]
+            const shapeArray = [point.lat, point.lng]
             shape.push(shapeArray)
         })
-        this.props.assets.forEach(function(asset) {
+        let assets = [] as any
+        if (type == 'new') {
+            assets = this.props.assets.filter(asset => {
+                return this.state.relevantAssetTypes.includes(asset.assetType)
+            })
+        } else {
+            assets = this.props.assets
+        }
+        assets.forEach(function (asset) {
             if (asset.shape) {
-                asset.shape.points.forEach(function(point) {
-                    const ins = inside([ point.lat, point.lng], shape)
+                asset.shape.points.forEach(function (point) {
+                    const ins = inside([point.lat, point.lng], shape)
                     if (ins == true && !componentAssets.includes(asset)) {
                         componentAssets.push(asset)
                     }
@@ -121,12 +191,18 @@ export class ProjectDefinition extends React.Component<any, any> {
         })
         if (componentAssets.length > 0) {
             componentAssets.forEach(function (component) {
-                self.createTag (component)
+                self.createTag(component)
             })
         }
     }
 
-    createTag (asset) {
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        });
+    }
+
+    createTag(asset) {
         const guid: string = uuid()
         let tagLoad = {
             tagID: guid,
@@ -140,7 +216,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             tagDescription: 'Within project bounds',
         }
         this.props.addTag(tagLoad)
-    } 
+    }
 
     public render() {
         const {
@@ -148,6 +224,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             redirect,
             projectID,
             shape,
+            modalIsOpen
         } = this.state
 
         const link = "/Project/id=" + projectID
@@ -179,17 +256,30 @@ export class ProjectDefinition extends React.Component<any, any> {
                         />
                     }
                     {step == 2 &&
-                    <div>
-                        <Map shape={shape} />
-                        <br/>
-                        <ProjectDescription
-                            back={this.back.bind(this)}
-                            post={this.post.bind(this)}
-                            shape={shape}
-                        />
-                    </div>
+                        <div>
+                            <Map shape={shape} />
+                            <br />
+                            <ProjectDescription
+                                back={this.back.bind(this)}
+                                post={this.post.bind(this)}
+                                shape={shape}
+                            />
+                        </div>
                     }
                 </div>
+                <Modal
+                    open={modalIsOpen}
+                    onClose={this.closeModal.bind(this)}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                    <div>
+                        <TaggableAssetSelection
+                            receiveTypes={this.receiveTypes.bind(this)} />
+                    </div>
+                </Modal>
             </div>
         )
     }

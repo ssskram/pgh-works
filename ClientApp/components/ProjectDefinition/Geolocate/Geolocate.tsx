@@ -58,7 +58,7 @@ export default class Geolocate extends React.Component<any, any> {
     }
 
     setShape(shape) {
-        this.props.setShape(shape)
+        this.props.setShape(shape, this.state.type)
         this.setState({
             shape: shape,
             modalIsOpen: false
