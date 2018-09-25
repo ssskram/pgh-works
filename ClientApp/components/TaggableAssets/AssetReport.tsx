@@ -155,7 +155,8 @@ export class AssetReport extends React.Component<any, any> {
                         <StreetMap
                             street={assetName}
                             passShape={this.filterTagsByStreetSegment.bind(this)}
-                            reset={this.reset.bind(this)} />
+                            reset={this.reset.bind(this)} 
+                            assetName={assetName}/>
                         <br />
                         <br />
                     </div>

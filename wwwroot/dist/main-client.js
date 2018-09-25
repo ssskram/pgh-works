@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6398cad80e8e618ee8cd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5bd017a2856bba0a7a39"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66337,7 +66337,9 @@ var ImportShapes = (function (_super) {
                             },
                             polygonOptions: {
                                 fillColor: 'red',
-                                strokeColor: 'red'
+                                strokeColor: 'red',
+                                strokeOpacity: 1,
+                                strokeWeight: 3
                             }
                         } }, props, { onOverlayComplete: _this.handleOverlayComplete })),
                 showInfoWindow == true &&
@@ -66570,6 +66572,7 @@ var StreetMap = (function (_super) {
     StreetMap.prototype.render = function () {
         var _this = this;
         var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, onFilter = _a.onFilter;
+        var assetName = this.props.assetName;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } },
@@ -66595,7 +66598,9 @@ var StreetMap = (function (_super) {
                         },
                         polygonOptions: {
                             fillColor: 'red',
-                            strokeColor: 'red'
+                            strokeColor: 'red',
+                            strokeOpacity: 1,
+                            strokeWeight: 3
                         }
                     } }, props, { onOverlayComplete: _this.handleOverlayComplete })));
         });
@@ -66606,9 +66611,11 @@ var StreetMap = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                    "To filter relevant projects/phases by specific street area,",
+                                    "To filter by specific span of ",
+                                    assetName,
+                                    ",",
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                                    "use the drawing tool to select street segment"))),
+                                    "use the drawing tool to outline a segment"))),
                     onFilter == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: this.reset.bind(this) }, "Clear filter")))),
@@ -69943,7 +69950,7 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             assetType == 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName, passShape: this.filterTagsByStreetSegment.bind(this), reset: this.reset.bind(this) }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName, passShape: this.filterTagsByStreetSegment.bind(this), reset: this.reset.bind(this), assetName: assetName }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             tags.length == 0 &&

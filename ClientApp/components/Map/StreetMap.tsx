@@ -107,6 +107,10 @@ export class StreetMap extends React.Component<any, any> {
             onFilter
         } = this.state
 
+        const {
+            assetName
+        } = this.props
+
         const MapComponent = compose(
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
@@ -147,7 +151,9 @@ export class StreetMap extends React.Component<any, any> {
                         },
                         polygonOptions: {
                             fillColor: 'red',
-                            strokeColor: 'red'
+                            strokeColor: 'red',
+                            strokeOpacity: 1,
+                            strokeWeight: 3
                         }
                     }}
                     {...props}
@@ -162,7 +168,7 @@ export class StreetMap extends React.Component<any, any> {
                     <div>
                         {onFilter == false &&
                             <div className='text-center'>
-                                <h4><i>To filter relevant projects/phases by specific street area,<br />use the drawing tool to select street segment</i></h4>
+                                <h4><i>To filter by specific span of {assetName},<br />use the drawing tool to outline a segment</i></h4>
                             </div>
                         }
                         {onFilter == true &&

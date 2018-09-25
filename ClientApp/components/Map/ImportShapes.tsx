@@ -160,7 +160,9 @@ export default class ImportShapes extends React.Component<any, any> {
                             },
                             polygonOptions: {
                                 fillColor: 'red',
-                                strokeColor: 'red'
+                                strokeColor: 'red',
+                                strokeOpacity: 1,
+                                strokeWeight: 3
                             }
                         }}
                         {...props}
