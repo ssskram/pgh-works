@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5bd017a2856bba0a7a39"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2d795f0c177152a4c9c2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -69004,7 +69004,7 @@ var TaggableAssetSelection = (function (_super) {
         var _this = this;
         var selectedTypes = this.state.selectedTypes;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'text-center' }, "Which assets within the project bounds should be tagged with this project?"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'text-center' }, "Which assets within the project bounds should be tagged by this project?"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
