@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "eaa6c6710e475437c8b8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b8419bab7204280b55cc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -69568,10 +69568,10 @@ var AssetReport = (function (_super) {
             var tags = this.props.tags.filter(function (tag) {
                 return tag.taggedAssetName == props;
             });
+            var uniqueTags = this.removeDuplicates(tags, "parentID");
             this.setState({
-                tags: tags
+                tags: uniqueTags
             });
-            console.log(tags);
         }
         else {
             var tags = this.props.tags.filter(function (tag) {
@@ -69580,8 +69580,18 @@ var AssetReport = (function (_super) {
             this.setState({
                 tags: tags
             });
-            console.log(tags);
         }
+    };
+    AssetReport.prototype.removeDuplicates = function (originalArray, prop) {
+        var newArray = [];
+        var lookupObject = {};
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i];
+        }
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i]);
+        }
+        return newArray;
     };
     AssetReport.prototype.render = function () {
         var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;

@@ -66,10 +66,10 @@ export class AssetReport extends React.Component<any, any> {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetName == props
             })
+            var uniqueTags = this.removeDuplicates(tags, "parentID")
             this.setState({
-                tags: tags
+                tags: uniqueTags
             })
-            console.log(tags)
         } else {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetOID == props
@@ -77,8 +77,21 @@ export class AssetReport extends React.Component<any, any> {
             this.setState({
                 tags: tags
             })
-            console.log(tags)
         }
+    }
+
+    removeDuplicates(originalArray, prop) {
+        var newArray = [] as any
+        var lookupObject = {}
+
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i]
+        }
+
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i])
+        }
+        return newArray;
     }
 
     public render() {
