@@ -10,6 +10,7 @@ import * as Projects from '../../store/projects'
 import * as Phases from '../../store/phases'
 import Map from '../Map/ProjectMap'
 import StreetMap from '../Map/StreetMap'
+import inside from 'point-in-polygon'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -94,6 +95,35 @@ export class AssetReport extends React.Component<any, any> {
         return newArray;
     }
 
+    filterTagsByStreetSegment(shape) {
+        let formattedShape = [] as any
+        shape.forEach(point => {
+            const shapeArray = [point.lat, point.lng]
+            formattedShape.push(shapeArray)
+        })       
+        const allTags = this.props.tags.filter(tag => {
+            return tag.taggedAssetName == this.props.match.params.street
+        })
+        let newTags = [] as any
+        allTags.forEach(tag => {
+            const asset = this.props.assets.find(asset => {
+                return asset.assetOID == tag.taggedAssetOID
+            })
+            if (asset.shape) {
+                asset.shape.points.forEach(function (point) {
+                    const ins = inside([point.lat, point.lng], formattedShape)
+                    if (ins == true && !newTags.includes(tag)) {
+                        newTags.push(tag)
+                    }
+                })
+            }
+        })
+        var uniqueTags = this.removeDuplicates(newTags, "parentID")
+        this.setState({
+            tags: uniqueTags
+        })
+    }
+
     public render() {
         const {
             redirect,
@@ -122,7 +152,7 @@ export class AssetReport extends React.Component<any, any> {
                 }
                 {assetType == 'Street' &&
                     <div className='col-md-12'>
-                        <StreetMap street={assetName} />
+                        <StreetMap street={assetName} passShape={this.filterTagsByStreetSegment.bind(this)}/>
                         <br/>
                         <br/>
                     </div>

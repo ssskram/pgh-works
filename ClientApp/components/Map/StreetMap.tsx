@@ -6,6 +6,7 @@ import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import LoadingMap from './../Utilities/LoadingMap'
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
+import inside from 'point-in-polygon'
 
 export class StreetMap extends React.Component<any, any> {
     constructor(props) {
@@ -13,7 +14,8 @@ export class StreetMap extends React.Component<any, any> {
         this.state = {
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            assets: []
+            assets: [],
+            onFilter: false
         }
     }
 
@@ -29,8 +31,25 @@ export class StreetMap extends React.Component<any, any> {
         const assets = this.props.assets.filter(asset => {
             return asset.assetName == street
         })
-        this.setState ({
+        var middle = Math.floor(assets.length / 2);
+        const middleSegment = assets[middle]
+        this.setCenter(middleSegment.shape.points, 13)
+        this.setState({
             assets: assets
+        })
+    }
+
+    setCenter(points, zoom) {
+        const bounds = new google.maps.LatLngBounds()
+        var i
+        for (i = 0; i < points.length; i++) {
+            bounds.extend(points[i]);
+        }
+        let lat = bounds.getCenter().lat()
+        let lng = bounds.getCenter().lng()
+        this.setState({
+            center: { lat: lat, lng: lng },
+            zoom: zoom
         })
     }
 
@@ -43,6 +62,9 @@ export class StreetMap extends React.Component<any, any> {
             var coord = { lat: xy.lat(), lng: xy.lng() }
             shape.push(coord)
         }
+        this.setState({
+            onFilter: true
+        })
         this.props.passShape(shape)
     }
 
@@ -50,7 +72,8 @@ export class StreetMap extends React.Component<any, any> {
         const {
             assets,
             zoom,
-            center
+            center,
+            onFilter
         } = this.state
 
         const MapComponent = compose(
@@ -90,6 +113,10 @@ export class StreetMap extends React.Component<any, any> {
                             drawingModes: [
                                 google.maps.drawing.OverlayType.POLYGON
                             ]
+                        },
+                        polygonOptions: {
+                            fillColor: 'red',
+                            strokeColor: 'red'
                         }
                     }}
                     {...props}
@@ -99,8 +126,24 @@ export class StreetMap extends React.Component<any, any> {
         )
 
         return (
-            <div id='single-project'>
-                <MapComponent />
+            <div>
+                <div>
+                    <div>
+                        {onFilter == false &&
+                            <div className='text-center'>
+                                <h4><i>To filter relevant projects/phases by specific street area,<br />use the drawing tool to select street segment</i></h4>
+                            </div>
+                        }
+                        {onFilter == true &&
+                            <div className='text-center'>
+                                <button className='btn btn-warning'>Clear filter</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div id='single-project'>
+                    <MapComponent />
+                </div>
             </div>
         )
     }

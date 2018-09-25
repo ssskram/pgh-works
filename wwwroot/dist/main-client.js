@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b8419bab7204280b55cc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "adbd4cbd4fcc41f9e229"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66486,12 +66486,16 @@ var StreetMap = (function (_super) {
                 var coord = { lat: xy.lat(), lng: xy.lng() };
                 shape.push(coord);
             }
+            _this.setState({
+                onFilter: true
+            });
             _this.props.passShape(shape);
         };
         _this.state = {
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
-            assets: []
+            assets: [],
+            onFilter: false
         };
         return _this;
     }
@@ -66505,13 +66509,29 @@ var StreetMap = (function (_super) {
         var assets = this.props.assets.filter(function (asset) {
             return asset.assetName == street;
         });
+        var middle = Math.floor(assets.length / 2);
+        var middleSegment = assets[middle];
+        this.setCenter(middleSegment.shape.points, 13);
         this.setState({
             assets: assets
         });
     };
+    StreetMap.prototype.setCenter = function (points, zoom) {
+        var bounds = new google.maps.LatLngBounds();
+        var i;
+        for (i = 0; i < points.length; i++) {
+            bounds.extend(points[i]);
+        }
+        var lat = bounds.getCenter().lat();
+        var lng = bounds.getCenter().lng();
+        this.setState({
+            center: { lat: lat, lng: lng },
+            zoom: zoom
+        });
+    };
     StreetMap.prototype.render = function () {
         var _this = this;
-        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center;
+        var _a = this.state, assets = _a.assets, zoom = _a.zoom, center = _a.center, onFilter = _a.onFilter;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } },
@@ -66534,11 +66554,28 @@ var StreetMap = (function (_super) {
                             drawingModes: [
                                 google.maps.drawing.OverlayType.POLYGON
                             ]
+                        },
+                        polygonOptions: {
+                            fillColor: 'red',
+                            strokeColor: 'red'
                         }
                     } }, props, { onOverlayComplete: _this.handleOverlayComplete })));
         });
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    onFilter == false &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                    "To filter relevant projects/phases by specific street area,",
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                                    "use the drawing tool to select street segment"))),
+                    onFilter == true &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning' }, "Clear filter")))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null))));
     };
     return StreetMap;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -69487,6 +69524,8 @@ var Subphase = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_phases__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Map_ProjectMap__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__ = __webpack_require__(680);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_point_in_polygon__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_point_in_polygon__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -69505,6 +69544,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -69593,6 +69633,35 @@ var AssetReport = (function (_super) {
         }
         return newArray;
     };
+    AssetReport.prototype.filterTagsByStreetSegment = function (shape) {
+        var _this = this;
+        var formattedShape = [];
+        shape.forEach(function (point) {
+            var shapeArray = [point.lat, point.lng];
+            formattedShape.push(shapeArray);
+        });
+        var allTags = this.props.tags.filter(function (tag) {
+            return tag.taggedAssetName == _this.props.match.params.street;
+        });
+        var newTags = [];
+        allTags.forEach(function (tag) {
+            var asset = _this.props.assets.find(function (asset) {
+                return asset.assetOID == tag.taggedAssetOID;
+            });
+            if (asset.shape) {
+                asset.shape.points.forEach(function (point) {
+                    var ins = __WEBPACK_IMPORTED_MODULE_9_point_in_polygon___default()([point.lat, point.lng], formattedShape);
+                    if (ins == true && !newTags.includes(tag)) {
+                        newTags.push(tag);
+                    }
+                });
+            }
+        });
+        var uniqueTags = this.removeDuplicates(newTags, "parentID");
+        this.setState({
+            tags: uniqueTags
+        });
+    };
     AssetReport.prototype.render = function () {
         var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
         if (redirect) {
@@ -69610,7 +69679,7 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             assetType == 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Map_StreetMap__["a" /* default */], { street: assetName, passShape: this.filterTagsByStreetSegment.bind(this) }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             tags.length == 0 &&
