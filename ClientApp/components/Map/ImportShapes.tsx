@@ -1,7 +1,6 @@
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
-import LoadingMap from './../Utilities/LoadingMap'
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 
 export default class ImportShapes extends React.Component<any, any> {
@@ -106,7 +105,7 @@ export default class ImportShapes extends React.Component<any, any> {
         const MapComponent = compose(
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
-                loadingElement: <div style={{ height: `100%`, }}><LoadingMap notice={"...loading map..."} /></div>,
+                loadingElement: <div style={{ height: `100%`, }}></div>,
                 containerElement: <div style={{ height: `100%` }} />,
                 mapElement: <div style={{ height: `100%` }} />,
             }),

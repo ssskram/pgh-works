@@ -126,9 +126,6 @@ export class Attachments extends React.Component<any, any> {
             Header: 'File name',
             accessor: 'attachmentName'
         }, {
-            Header: 'Description',
-            accessor: 'attachmentDescription',
-        }, {
             Header: 'Uploaded',
             accessor: 'dateCreated',
         }, {
