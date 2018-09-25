@@ -5,13 +5,26 @@ import { ApplicationState } from '../../store'
 import * as Tags from '../../store/tags'
 
 export class DeleteTag extends React.Component<any, any> {
-
-    deleteTag () {
-        // remove from store
-        this.props.deleteTag(this.props.tag)
-        // then delete locally
-        this.props.removeTag(this.props.tag)
-        this.props.closeModal()
+    
+    deleteTag() {
+        if (this.props.tag.tagType != 'Street') {
+            // remove from store
+            this.props.deleteTag(this.props.tag)
+            // then delete locally
+            this.props.removeTag(this.props.tag)
+            this.props.closeModal()
+        } else {
+            const allTagsPerStreet = this.props.tags.filter(tag => {
+                return (tag.parentID == this.props.tag.parentID) && (tag.taggedAssetName == this.props.tag.taggedAssetName)
+            })
+            allTagsPerStreet.forEach(streetSegmentTag => {
+                // remove from store
+                this.props.deleteTag(streetSegmentTag)
+                // then delete locally
+                this.props.removeTag(streetSegmentTag)
+            })
+            this.props.closeModal()
+        }
     }
 
     public render() {
@@ -31,4 +44,4 @@ export default connect(
     ({
         ...Tags.actionCreators
     })
-  )(DeleteTag as any) as typeof DeleteTag
+)(DeleteTag as any) as typeof DeleteTag

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3b27d6826a348f6ab2fa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6398cad80e8e618ee8cd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -70347,11 +70347,26 @@ var DeleteTag = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DeleteTag.prototype.deleteTag = function () {
-        // remove from store
-        this.props.deleteTag(this.props.tag);
-        // then delete locally
-        this.props.removeTag(this.props.tag);
-        this.props.closeModal();
+        var _this = this;
+        if (this.props.tag.tagType != 'Street') {
+            // remove from store
+            this.props.deleteTag(this.props.tag);
+            // then delete locally
+            this.props.removeTag(this.props.tag);
+            this.props.closeModal();
+        }
+        else {
+            var allTagsPerStreet = this.props.tags.filter(function (tag) {
+                return (tag.parentID == _this.props.tag.parentID) && (tag.taggedAssetName == _this.props.tag.taggedAssetName);
+            });
+            allTagsPerStreet.forEach(function (streetSegmentTag) {
+                // remove from store
+                _this.props.deleteTag(streetSegmentTag);
+                // then delete locally
+                _this.props.removeTag(streetSegmentTag);
+            });
+            this.props.closeModal();
+        }
     };
     DeleteTag.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
