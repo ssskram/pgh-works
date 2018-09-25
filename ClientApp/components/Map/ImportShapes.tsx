@@ -157,6 +157,10 @@ export default class ImportShapes extends React.Component<any, any> {
                                 drawingModes: [
                                     google.maps.drawing.OverlayType.POLYGON
                                 ]
+                            },
+                            polygonOptions: {
+                                fillColor: 'red',
+                                strokeColor: 'red'
                             }
                         }}
                         {...props}

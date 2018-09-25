@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "68ca0ec05d77a34b6c26"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3b27d6826a348f6ab2fa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66334,6 +66334,10 @@ var ImportShapes = (function (_super) {
                                 drawingModes: [
                                     google.maps.drawing.OverlayType.POLYGON
                                 ]
+                            },
+                            polygonOptions: {
+                                fillColor: 'red',
+                                strokeColor: 'red'
                             }
                         } }, props, { onOverlayComplete: _this.handleOverlayComplete })),
                 showInfoWindow == true &&
