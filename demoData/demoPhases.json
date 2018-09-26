@@ -13,7 +13,7 @@
             "phaseFollows": "",
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
             "phaseName": "Installation",
-            "phaseStatus": "Mobilizing",
+            "phaseStatus": "In Progress",
             "phaseType": "Construction",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
@@ -31,7 +31,7 @@
             "phaseFollows": "",
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
             "phaseName": "Stilt Construction",
-            "phaseStatus": "Mobilizing",
+            "phaseStatus": "In Progress",
             "phaseType": "Construction",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
@@ -49,7 +49,7 @@
             "phaseFollows": "",
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
             "phaseName": "Stilt Design",
-            "phaseStatus": "Mobilizing",
+            "phaseStatus": "On hold",
             "phaseType": "Design",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },

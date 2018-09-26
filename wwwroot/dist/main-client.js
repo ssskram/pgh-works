@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "46c9ba46228d8627d38d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d0faab2c19b9ff881248"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35021,7 +35021,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ];
 var types = [
@@ -35119,9 +35119,6 @@ var PhaseInputs = (function (_super) {
         }
         var _a, _b;
     };
-    PhaseInputs.prototype.handleStatusMulti = function (value) {
-        this.setState({ phaseStatus: value });
-    };
     PhaseInputs.prototype.handleChildSelect = function (event) {
         this.setState((_a = {}, _a[event.name] = event.value, _a));
         var _a;
@@ -35178,7 +35175,7 @@ var PhaseInputs = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", required: true, header: 'Phase status', placeholder: 'Select statuses', onChange: this.handleStatusMulti.bind(this), multi: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", required: true, header: 'Phase status', placeholder: 'Select statuses', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
             !this.props.update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },

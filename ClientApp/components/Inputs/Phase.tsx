@@ -16,7 +16,7 @@ import PhaseFollows from './PhaseFollows'
 
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'phaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
 
@@ -61,6 +61,7 @@ export class PhaseInputs extends React.Component<any, any> {
         }
         this.handleDate = this.handleDate.bind(this)
     }
+
     componentDidMount() {
         if (this.props.phaseID) {
             // update phase
@@ -115,11 +116,7 @@ export class PhaseInputs extends React.Component<any, any> {
             });
         }
     }
-
-    handleStatusMulti(value) {
-        this.setState({ phaseStatus: value });
-    }
-
+    
     handleChildSelect(event) {
         this.setState({ [event.name]: event.value });
     }
@@ -239,8 +236,8 @@ export class PhaseInputs extends React.Component<any, any> {
                         required={true}
                         header='Phase status'
                         placeholder='Select statuses'
-                        onChange={this.handleStatusMulti.bind(this)}
-                        multi={true}
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
                         options={statuses}
                     />
                 </div>
