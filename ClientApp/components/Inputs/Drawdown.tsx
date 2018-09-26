@@ -11,16 +11,9 @@ import TextArea from '../FormElements/textarea'
 import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
-import * as CurrencyFormat from 'react-currency-format'
-import Tooltip from 'react-tooltip'
 import { v1 as uuid } from 'uuid'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
-
-const tooltipStyle = {
-    marginLeft: '20px',
-    fontSize: '16px'
-}
 
 let types = [] as any
 
@@ -28,10 +21,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            amountRemaining: 0,
-            maxDrawdown: 0,
-            projectDrawdowns: [],
-            expenditureTooltips: [],
             funds: props.funds,
             fundSearch: '',
             fundName: '',
@@ -51,18 +40,11 @@ export class ProgramFundInputs extends React.Component<any, any> {
 
     componentDidMount() {
         let allFunds = this.props.funds
-        let projectID = this.props.projectID
         if (this.props.edit) {
             console.log(this.props)
             const fund = allFunds.find(fund => {
                 return fund.fundID == this.props.drawdown.fundID
             })
-            types = []
-            types = [
-                { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
-                { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
-                { value: 'Spent', label: 'Spent', name: 'drawdownType' }
-            ]
             this.setState({
                 fundName: fund.fundName,
                 fundYear: fund.fundYear,
@@ -75,34 +57,16 @@ export class ProgramFundInputs extends React.Component<any, any> {
             })
         } else {
             const guid: string = uuid()
-            this.setState ({
+            this.setState({
                 drawdownID: guid
             })
         }
-        if (this.props.parentType == 'Phase') {
-            const projectDrawdowns = this.props.drawdowns.filter(function (drawdown) {
-                return (drawdown.parentID == projectID) && (drawdown.parentType == 'Project')
-            })
-            // set available list of funds derived from project drawdown
-            let funds = [] as any
-            projectDrawdowns.forEach(function (drawdown) {
-                const fund = allFunds.find(function (fund) {
-                    return fund.fundID == drawdown.fundID
-                })
-                funds.push(fund)
-            })
-            this.setState({
-                projectDrawdowns: projectDrawdowns,
-                funds: funds
-            })
-        } else if (this.props.parentType == 'Project') {
-            types = []
-            types = [
-                { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
-                { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
-                { value: 'Spent', label: 'Spent', name: 'drawdownType' }
-            ]
-        }
+        types = []
+        types = [
+            { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
+            { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
+            { value: 'Spent', label: 'Spent', name: 'drawdownType' }
+        ]
     }
 
     handleChildChange(event) {
@@ -113,47 +77,14 @@ export class ProgramFundInputs extends React.Component<any, any> {
     }
 
     handleChildSelect(event) {
-        if (this.props.parentType == 'Phase') {
-            const fundID = this.state.fundID
-            const allDrawdowns = this.props.drawdowns
-            const projectID = this.props.projectID
-            let sumSiblingDrawdowns = 0
-            let expenditureTooltips = [] as any
-            let siblingPhases = this.props.phases.filter(function (phase) {
-                return phase.projectID == projectID
-            })
-            siblingPhases.forEach(function (phase) {
-                const drawdowns = allDrawdowns.filter(function (drawdown) {
-                    return drawdown.parentID == phase.phaseID && drawdown.parentType == 'Phase'
-                })
-                drawdowns.forEach(function (drawdown) {
-                    if (drawdown.fundID == fundID && drawdown.drawdownType == event.value) {
-                        sumSiblingDrawdowns = sumSiblingDrawdowns + drawdown.drawdownAmount
-                        expenditureTooltips.push({ phaseName: phase.phaseName, drawdownAmount: drawdown.drawdownAmount })
-                    }
-                })
-            })
-            const amountRemaining = this.state.maxDrawdown - sumSiblingDrawdowns
-            this.setState({
-                [event.name]: event.value,
-                amountRemaining: amountRemaining,
-                expenditureTooltips: expenditureTooltips
-            })
-        } else {
-            this.setState({
-                [event.name]: event.value
-            })
-        }
+        this.setState({
+            [event.name]: event.value
+        })
     }
 
     handleCurrency(event, maskedvalue, floatvalue) {
         this.setState({
             drawdownAmount: floatvalue
-        }, function (this) {
-            if (this.state.amountRemaining > 0 && this.state.drawdownAmount > this.state.amountRemaining) {
-                alert('You cannot exceed the remaining balance of this fund & drawdown type for this project: $' + this.state.amountRemaining)
-                this.setState({ drawdownAmount: '' })
-            }
         })
     }
 
@@ -167,21 +98,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundType: fund.fundType,
             fundYear: fund.fundYear
         })
-        if (this.props.parentType == 'Phase') {
-            types = []
-            let maxDrawdown = 0
-            let projectFundDrawdowns = this.state.projectDrawdowns.filter(function (item) {
-                return item.fundID == fundID
-            })
-            projectFundDrawdowns.forEach(function (drawdown) {
-                const ts = { value: drawdown.drawdownType, label: drawdown.drawdownType, name: 'drawdownType' }
-                types.push(ts)
-                maxDrawdown = maxDrawdown + drawdown.drawdownAmount
-            })
-            this.setState({
-                maxDrawdown: maxDrawdown
-            })
-        }
     }
 
     filterFunds(input) {
@@ -247,10 +163,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundID,
             drawdownAmount,
             drawdownType,
-            notes,
-            maxDrawdown,
-            expenditureTooltips,
-            amountRemaining
+            notes
         } = this.state
 
         const {
@@ -278,25 +191,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
             Cell: props => <button onClick={() => this.selectFund(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
             maxWidth: 75
         }]
-
-        const siblingExpenditures = expenditureTooltips.map((item, index) => {
-            return (
-                <div key={index}><b>{item.phaseName}</b>: -<CurrencyFormat value={item.drawdownAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
-            );
-        });
-
-        const tooltip =
-            <div className='col-md-12'>
-                <div>
-                    <b>Attributed to project:  </b><CurrencyFormat value={maxDrawdown} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-                </div>
-                {expenditureTooltips.length > 0 &&
-                    <div>
-                        <i>Sub other phases:</i>
-                        {siblingExpenditures}
-                    </div>
-                }
-            </div>
 
         return (
             <div>
@@ -367,23 +261,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 options={types}
                             />
                         </div>
-                        {!edit && parentType == 'Phase' && drawdownType != '' &&
-                            <div className='col-md-12'>
-                                <Currency
-                                    value={drawdownAmount}
-                                    name="drawdownAmount"
-                                    header="Drawdown amount"
-                                    required={true}
-                                    placeholder="Enter an amount"
-                                    prefix="$"
-                                    callback={this.handleCurrency.bind(this)}
-                                />
-                                <a style={tooltipStyle} data-tip data-for='siblings'>Amount remaining: <b style={{ color: 'red' }}><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></a>
-                                <br />
-                                <br />
-                                <Tooltip id='siblings'>{tooltip}</Tooltip>
-                            </div>
-                        }
                         {!edit && parentType == 'Project' &&
                             <div className='col-md-12'>
                                 <Currency
