@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "12451cd5aa0e95460c8f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4c673c0983de3c26f42a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35403,9 +35403,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
-    { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'subphaseStatus' },
-    { value: 'Complete', label: 'Complete', name: 'subphaseStatus' }
+    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ];
 var SubphaseInput = (function (_super) {
     __extends(SubphaseInput, _super);

@@ -13,9 +13,9 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'subphaseStatus' },
-    { value: 'Complete', label: 'Complete', name: 'subphaseStatus' }
+    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
 
 export class SubphaseInput extends React.Component<any, any> {

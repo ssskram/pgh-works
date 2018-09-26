@@ -13,7 +13,7 @@
             "subphaseDescription": "Find and hire the finest carpenter in the land",
             "subphaseID": "ec579190-b69e-11e8-930d-dd084cae8ed3",
             "subphaseName": "Search for carpenter",
-            "subphaseStatus": "Mobilizing"
+            "subphaseStatus": "On hold"
         },
         {
             "cartegraphID": "",
@@ -77,7 +77,7 @@
             "subphaseDescription": "",
             "subphaseID": "f09593f0-b69f-11e8-930d-dd084cae8ed3",
             "subphaseName": "Reseed again",
-            "subphaseStatus": "Mobilizing"
+            "subphaseStatus": "On hold"
         },
         {
             "cartegraphID": "",
