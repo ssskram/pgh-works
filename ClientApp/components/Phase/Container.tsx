@@ -161,12 +161,6 @@ export class Phase extends React.Component<any, any> {
             return <Redirect to={link} />
         }
 
-        function lowerFirstLetter(string) {
-            return string.charAt(0).toLowerCase() + string.slice(1);
-        }
-
-        const phaseFollowsFormatted = lowerFirstLetter(phaseFollows)
-
         return (
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
@@ -176,9 +170,6 @@ export class Phase extends React.Component<any, any> {
                 <hr />
                 <br />
                 <h2 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
-                {phaseFollows &&
-                    <h4 className='text-center'><i>Follows {phaseFollowsFormatted}</i></h4>
-                }
                 <h4></h4>
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />

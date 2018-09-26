@@ -43,7 +43,8 @@ export default class TaggableAssetSelection extends React.Component<any, any> {
 
         return (
             <div>
-                <h3 className='text-center'>Which assets within the project bounds should be tagged by this project?</h3>
+                <h3>Which assets matter?</h3>
+                <h5><i>Relevant assets within the project bounds will be tagged</i></h5>
                 <hr />
                 <div className='row col-md-12'>
                     <div className='col-md-4 text-center'>

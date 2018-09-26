@@ -27,6 +27,12 @@ const types = [
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
 ]
 
+const iconStyle = {
+    marginRight: '5px',
+    marginTop: '-8px',
+    height: '40px'
+}
+
 export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()
@@ -41,7 +47,7 @@ export class PhaseInputs extends React.Component<any, any> {
             cartegraphID: '',
             phaseName: '',
             phaseType: '',
-            phaseFollows: '',
+            // phaseFollows: {},
             expectedStartDate: '',
             expectedEndDate: '',
             actualStartDate: '',
@@ -68,7 +74,7 @@ export class PhaseInputs extends React.Component<any, any> {
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
                 phaseType: phase.phaseType,
-                phaseFollows: phase.phaseFollows,
+                // phaseFollows: phase.phaseFollows,
                 expectedStartDate: phase.expectedStartDate,
                 expectedEndDate: phase.expectedEndDate,
                 actualStartDate: phase.actualStartDate,
@@ -138,9 +144,9 @@ export class PhaseInputs extends React.Component<any, any> {
         })
     }
 
-    setPhaseFollows(string) {
+    setPhaseFollows(project, phase) {
         this.setState({
-            phaseFollows: string,
+            phaseFollows: { project: project, phase: phase},
             modalIsOpen: false
         })
     }
@@ -239,22 +245,6 @@ export class PhaseInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                <div className='col-md-12'>
-                    <div className="form-group">
-                        <div className="col-md-12 form-element">
-                            <h4 className="form-h4">Phase follows</h4>
-                            <input
-                                className='form-control button-input'
-                                onClick={this.phaseFollows.bind(this)}
-                                value={phaseFollows}
-                                name='phaseFollows'
-                                id='phaseFollows'
-                                placeholder='Identify preceding work'>
-                            </input>
-                        </div>
-                    </div>
-                </div>
-
                 {!this.props.update &&
                     <div>
                         <div className='col-md-6'>
@@ -300,6 +290,34 @@ export class PhaseInputs extends React.Component<any, any> {
                         callback={(value) => this.handleDate(value, 'actualEndDate')}
                     />
                 </div>
+
+                {/* PHASE FOLLOWS */}
+                {/* <div className='col-md-12'>
+                    <div className="form-group">
+                        <div className="col-md-12 form-element">
+                            {phaseFollows == '' &&
+                                <div>
+                                    <h4 className="form-h4">Phase follows</h4>
+                                    <input
+                                        className='form-control button-input'
+                                        onClick={this.phaseFollows.bind(this)}
+                                        value={phaseFollows}
+                                        name='phaseFollows'
+                                        id='phaseFollows'
+                                        placeholder='Identify preceding work'>
+                                    </input>
+                                </div>
+                            }
+                            {phaseFollows != '' &&
+                            <div>
+                                <h3 className='text-center'><img style={iconStyle} src='./images/phaseGrey.png' />{phaseFollows.phase}</h3>
+                                <h4 className='text-center'>{phaseFollows.project}</h4>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div> */}
+
                 <div className='row'>
                     <div className='col-md-12 text-center'>
                         <div>

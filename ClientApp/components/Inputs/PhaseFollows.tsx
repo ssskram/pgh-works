@@ -65,8 +65,7 @@ export class PhaseFollows extends React.Component<any, any> {
     }
 
     returnWork(phase) {
-        let precedingWork = 'Phase "' + phase + '" of project "' + this.state.project + '"'
-        this.props.passFollows(precedingWork)
+        this.props.passFollows(this.state.project, phase)
     }
 
     public render() {
