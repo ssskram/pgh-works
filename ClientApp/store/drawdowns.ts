@@ -20,7 +20,7 @@ export interface DrawdownItem {
     fundID: string
     drawdownAmount: number
     drawdownType: string
-    contractorVendor: string
+    notes: string
 }
 
 export const actionCreators = {

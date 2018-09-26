@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5088038ecccc68be9f09"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bb1effafc9e2e42d02e3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35658,14 +35658,13 @@ var MapThumbnail = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_table__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_drawdowns__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_responsive_modal__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Inputs_Drawdown__ = __webpack_require__(666);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__DeleteDrawdown__ = __webpack_require__(687);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_currency_format__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_currency_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Inputs_Drawdown__ = __webpack_require__(666);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__DeleteDrawdown__ = __webpack_require__(687);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_currency_format__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -35693,7 +35692,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-
 var iconStyle = {
     marginRight: '5px',
     marginTop: '-8px',
@@ -35707,8 +35705,7 @@ var ProgramsFunds = (function (_super) {
             // utilities
             modalType: '',
             modalIsOpen: false,
-            drawdownToDelete: {},
-            redirect: false,
+            selectedDrawdown: {},
             selectedFundID: '',
             // drawdowns
             drawdowns: [],
@@ -35757,7 +35754,14 @@ var ProgramsFunds = (function (_super) {
         this.setState({
             modalType: 'delete',
             modalIsOpen: true,
-            drawdownToDelete: drawdown
+            selectedDrawdown: drawdown
+        });
+    };
+    ProgramsFunds.prototype.editModal = function (drawdown) {
+        this.setState({
+            modalType: 'edit',
+            modalIsOpen: true,
+            selectedDrawdown: drawdown
         });
     };
     ProgramsFunds.prototype.removeDrawdown = function (drawdown) {
@@ -35787,7 +35791,7 @@ var ProgramsFunds = (function (_super) {
     };
     ProgramsFunds.prototype.render = function () {
         var _this = this;
-        var _a = this.state, modalType = _a.modalType, modalIsOpen = _a.modalIsOpen, drawdownToDelete = _a.drawdownToDelete, redirect = _a.redirect, selectedFundID = _a.selectedFundID, drawdowns = _a.drawdowns;
+        var _a = this.state, modalType = _a.modalType, modalIsOpen = _a.modalIsOpen, selectedDrawdown = _a.selectedDrawdown, selectedFundID = _a.selectedFundID, drawdowns = _a.drawdowns;
         var columns = [{
                 Header: 'Fund/Program',
                 accessor: 'fundID',
@@ -35803,10 +35807,13 @@ var ProgramsFunds = (function (_super) {
             }, {
                 Header: 'Drawdown Amount',
                 accessor: 'drawdownAmount',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
             }, {
                 Header: 'Drawdown Type',
                 accessor: 'drawdownType'
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
             }, {
                 Header: '',
                 accessor: 'fundID',
@@ -35816,8 +35823,8 @@ var ProgramsFunds = (function (_super) {
             }, {
                 Header: '',
                 accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.redirectToFund(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })); },
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.editModal(props.original); }, className: 'btn btn-success' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon glyphicon-info-sign' })); },
                 maxWidth: 75
             }];
         // calculating project costs
@@ -35835,10 +35842,6 @@ var ProgramsFunds = (function (_super) {
                 preencumbered = preencumbered + item.drawdownAmount;
             }
         });
-        var redirectLink = "/Fund/id=" + selectedFundID;
-        if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { to: redirectLink });
-        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/programsGrey.png' }),
@@ -35853,19 +35856,19 @@ var ProgramsFunds = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
             drawdowns.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: drawdowns.length > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
@@ -35876,19 +35879,21 @@ var ProgramsFunds = (function (_super) {
                                 fontSize: '16px'
                             }
                         }); } })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
                 }, center: true },
+                modalType == 'edit' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Inputs_Drawdown__["a" /* default */], { closeModal: this.closeModal.bind(this), parentID: this.props.parentID, projectID: this.props.projectID, parentType: this.props.parentType, drawdown: selectedDrawdown, edit: true }),
                 modalType == 'new' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Inputs_Drawdown__["a" /* default */], { closeModal: this.closeModal.bind(this), parentID: this.props.parentID, projectID: this.props.projectID, parentType: this.props.parentType }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Inputs_Drawdown__["a" /* default */], { closeModal: this.closeModal.bind(this), parentID: this.props.parentID, projectID: this.props.projectID, parentType: this.props.parentType }),
                 modalType == 'delete' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__DeleteDrawdown__["a" /* default */], { drawdown: drawdownToDelete, removeDrawdown: this.removeDrawdown.bind(this), closeModal: this.closeModal.bind(this) }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__DeleteDrawdown__["a" /* default */], { drawdown: selectedDrawdown, removeDrawdown: this.removeDrawdown.bind(this), closeModal: this.closeModal.bind(this) }))));
     };
     return ProgramsFunds;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns, state.funds)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_4__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__["a" /* actionCreators */])))(ProgramsFunds));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns, state.funds)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__["a" /* actionCreators */])))(ProgramsFunds));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/ProgramsFunds/Drawdowns.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/ProgramsFunds/Drawdowns.tsx"); } } })();
@@ -64718,14 +64723,15 @@ var Attachment = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_drawdowns__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_input__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_numbers__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__FormElements_select__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_helmet__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_helmet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_currency_format__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_currency_format__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_tooltip__ = __webpack_require__(749);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react_tooltip__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_textarea__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__FormElements_select__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_helmet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_currency_format__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_react_currency_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_tooltip__ = __webpack_require__(749);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_tooltip__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64756,13 +64762,13 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var tooltipStyle = {
     marginLeft: '20px',
     fontSize: '16px'
 };
 var types = [];
-var contractorVendors = [];
 var ProgramFundInputs = (function (_super) {
     __extends(ProgramFundInputs, _super);
     function ProgramFundInputs(props) {
@@ -64783,7 +64789,7 @@ var ProgramFundInputs = (function (_super) {
             fundID: '',
             drawdownAmount: '',
             drawdownType: '',
-            contractorVendor: ''
+            notes: ''
         };
         return _this;
     }
@@ -64813,15 +64819,6 @@ var ProgramFundInputs = (function (_super) {
                 { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
                 { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
                 { value: 'Spent', label: 'Spent', name: 'drawdownType' }
-            ];
-            contractorVendors = [];
-            contractorVendors = [
-                { value: 'Contractor A', label: 'Contractor A', name: 'contractorVendor' },
-                { value: 'Contractor B', label: 'Contractor B', name: 'contractorVendor' },
-                { value: 'Contractor C', label: 'Contractor C', name: 'contractorVendor' },
-                { value: 'Contractor D', label: 'Contractor D', name: 'contractorVendor' },
-                { value: 'Contractor E', label: 'Contractor E', name: 'contractorVendor' },
-                { value: 'Contractor F', label: 'Contractor F', name: 'contractorVendor' },
             ];
         }
     };
@@ -64889,7 +64886,6 @@ var ProgramFundInputs = (function (_super) {
         });
         if (this.props.parentType == 'Phase') {
             types = [];
-            contractorVendors = [];
             var maxDrawdown_1 = 0;
             var projectFundDrawdowns = this.state.projectDrawdowns.filter(function (item) {
                 return item.fundID == fundID;
@@ -64897,10 +64893,6 @@ var ProgramFundInputs = (function (_super) {
             projectFundDrawdowns.forEach(function (drawdown) {
                 var ts = { value: drawdown.drawdownType, label: drawdown.drawdownType, name: 'drawdownType' };
                 types.push(ts);
-                if (drawdown.contractorVendor) {
-                    var cv = { value: drawdown.contractorVendor, label: drawdown.contractorVendor, name: 'contractorVendor' };
-                    contractorVendors.push(cv);
-                }
                 maxDrawdown_1 = maxDrawdown_1 + drawdown.drawdownAmount;
             });
             this.setState({
@@ -64939,14 +64931,14 @@ var ProgramFundInputs = (function (_super) {
             fundID: this.state.fundID,
             drawdownAmount: this.state.drawdownAmount,
             drawdownType: this.state.drawdownType,
-            contractorVendor: this.state.contractorVendor
+            notes: this.state.notes
         };
         this.props.addDrawdown(drawdown);
         this.props.closeModal();
     };
     ProgramFundInputs.prototype.render = function () {
         var _this = this;
-        var _a = this.state, funds = _a.funds, fundSearch = _a.fundSearch, fundName = _a.fundName, fundYear = _a.fundYear, fundType = _a.fundType, fundID = _a.fundID, drawdownAmount = _a.drawdownAmount, drawdownType = _a.drawdownType, contractorVendor = _a.contractorVendor, maxDrawdown = _a.maxDrawdown, expenditureTooltips = _a.expenditureTooltips, amountRemaining = _a.amountRemaining;
+        var _a = this.state, funds = _a.funds, fundSearch = _a.fundSearch, fundName = _a.fundName, fundYear = _a.fundYear, fundType = _a.fundType, fundID = _a.fundID, drawdownAmount = _a.drawdownAmount, drawdownType = _a.drawdownType, notes = _a.notes, maxDrawdown = _a.maxDrawdown, expenditureTooltips = _a.expenditureTooltips, amountRemaining = _a.amountRemaining;
         var parentType = this.props.parentType;
         // validation
         var isEnabled = drawdownAmount != '' &&
@@ -64971,18 +64963,18 @@ var ProgramFundInputs = (function (_super) {
             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, item.phaseName),
                 ": -",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: item.drawdownAmount, displayType: 'text', thousandSeparator: true, prefix: '$' })));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_currency_format__, { value: item.drawdownAmount, displayType: 'text', thousandSeparator: true, prefix: '$' })));
         });
         var tooltip = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Attributed to project:  "),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: maxDrawdown, displayType: 'text', thousandSeparator: true, prefix: '$' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_currency_format__, { value: maxDrawdown, displayType: 'text', thousandSeparator: true, prefix: '$' })),
             expenditureTooltips.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Sub other phases:"),
                     siblingExpenditures));
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_helmet__["Helmet"], null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             fundID == '' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -65020,23 +65012,23 @@ var ProgramFundInputs = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundYear)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_select__["a" /* default */], { value: drawdownType, name: "drawdownType", header: 'Drawdown type', placeholder: 'Select type', required: true, onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__FormElements_select__["a" /* default */], { value: drawdownType, name: "drawdownType", header: 'Drawdown type', placeholder: 'Select type', required: true, onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
                     parentType == 'Phase' && drawdownType != '' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) }),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) }),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: tooltipStyle, "data-tip": true, "data-for": 'siblings' },
                                 "Amount remaining: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", { style: { color: 'red' } },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_tooltip___default.a, { id: 'siblings' }, tooltip)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12_react_tooltip___default.a, { id: 'siblings' }, tooltip)),
                     parentType == 'Project' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__["a" /* default */], { value: drawdownAmount, name: "drawdownAmount", header: "Drawdown amount", required: true, placeholder: "Enter an amount", prefix: "$", callback: this.handleCurrency.bind(this) })),
                     parentType == 'Project' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_select__["a" /* default */], { value: contractorVendor, name: "contractorVendor", header: 'Contractor or vendor', placeholder: 'Select contractor or vendor', onChange: this.handleChildSelect.bind(this), multi: false, options: contractorVendors })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Relevant information", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.back.bind(this), className: 'btn btn-warning' }, "Back")),

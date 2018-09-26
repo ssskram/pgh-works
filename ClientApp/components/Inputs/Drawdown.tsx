@@ -7,6 +7,7 @@ import * as Funds from '../../store/GETS/funds'
 import * as Drawdowns from '../../store/drawdowns'
 import * as Phases from '../../store/phases'
 import Input from '../FormElements/input'
+import TextArea from '../FormElements/textarea'
 import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
@@ -21,7 +22,6 @@ const tooltipStyle = {
 }
 
 let types = [] as any
-let contractorVendors = [] as any
 
 export class ProgramFundInputs extends React.Component<any, any> {
     constructor(props) {
@@ -43,7 +43,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundID: '',
             drawdownAmount: '',
             drawdownType: '',
-            contractorVendor: ''
+            notes: ''
         }
     }
 
@@ -72,15 +72,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
                 { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
                 { value: 'Spent', label: 'Spent', name: 'drawdownType' }
-            ]
-            contractorVendors = []
-            contractorVendors = [
-                { value: 'Contractor A', label: 'Contractor A', name: 'contractorVendor' },
-                { value: 'Contractor B', label: 'Contractor B', name: 'contractorVendor' },
-                { value: 'Contractor C', label: 'Contractor C', name: 'contractorVendor' },
-                { value: 'Contractor D', label: 'Contractor D', name: 'contractorVendor' },
-                { value: 'Contractor E', label: 'Contractor E', name: 'contractorVendor' },
-                { value: 'Contractor F', label: 'Contractor F', name: 'contractorVendor' },
             ]
         }
 
@@ -150,7 +141,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
         })
         if (this.props.parentType == 'Phase') {
             types = []
-            contractorVendors = []
             let maxDrawdown = 0
             let projectFundDrawdowns = this.state.projectDrawdowns.filter(function (item) {
                 return item.fundID == fundID
@@ -158,10 +148,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
             projectFundDrawdowns.forEach(function (drawdown) {
                 const ts = { value: drawdown.drawdownType, label: drawdown.drawdownType, name: 'drawdownType' }
                 types.push(ts)
-                if (drawdown.contractorVendor) {
-                    const cv = { value: drawdown.contractorVendor, label: drawdown.contractorVendor, name: 'contractorVendor' }
-                    contractorVendors.push(cv)
-                }
                 maxDrawdown = maxDrawdown + drawdown.drawdownAmount
             })
             this.setState({
@@ -202,7 +188,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundID: this.state.fundID,
             drawdownAmount: this.state.drawdownAmount,
             drawdownType: this.state.drawdownType,
-            contractorVendor: this.state.contractorVendor
+            notes: this.state.notes
         }
         this.props.addDrawdown(drawdown)
         this.props.closeModal()
@@ -218,7 +204,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundID,
             drawdownAmount,
             drawdownType,
-            contractorVendor,
+            notes,
             maxDrawdown,
             expenditureTooltips,
             amountRemaining
@@ -369,14 +355,12 @@ export class ProgramFundInputs extends React.Component<any, any> {
                         }
                         {parentType == 'Project' &&
                             <div className='col-md-12'>
-                                <Select
-                                    value={contractorVendor}
-                                    name="contractorVendor"
-                                    header='Contractor or vendor'
-                                    placeholder='Select contractor or vendor'
-                                    onChange={this.handleChildSelect.bind(this)}
-                                    multi={false}
-                                    options={contractorVendors}
+                                <TextArea
+                                    value={notes}
+                                    name="notes"
+                                    header="Notes"
+                                    placeholder="Relevant information"
+                                    callback={this.handleChildChange.bind(this)}
                                 />
                             </div>
                         }

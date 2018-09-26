@@ -3,7 +3,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Table from 'react-table'
-import { Redirect } from 'react-router-dom'
 import * as Drawdowns from '../../store/drawdowns'
 import * as Funds from '../../store/GETS/funds'
 import Modal from 'react-responsive-modal'
@@ -24,8 +23,7 @@ export class ProgramsFunds extends React.Component<any, any> {
             // utilities
             modalType: '',
             modalIsOpen: false,
-            drawdownToDelete: {},
-            redirect: false,
+            selectedDrawdown: {},
             selectedFundID: '',
 
             // drawdowns
@@ -81,7 +79,15 @@ export class ProgramsFunds extends React.Component<any, any> {
         this.setState({
             modalType: 'delete',
             modalIsOpen: true,
-            drawdownToDelete: drawdown
+            selectedDrawdown: drawdown
+        })
+    }
+
+    editModal(drawdown) {
+        this.setState ({
+            modalType: 'edit',
+            modalIsOpen: true,
+            selectedDrawdown: drawdown
         })
     }
 
@@ -119,8 +125,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         const {
             modalType,
             modalIsOpen,
-            drawdownToDelete,
-            redirect,
+            selectedDrawdown,
             selectedFundID,
             drawdowns
         } = this.state
@@ -145,6 +150,9 @@ export class ProgramsFunds extends React.Component<any, any> {
             Header: 'Drawdown Type',
             accessor: 'drawdownType'
         }, {
+            Header: 'Notes',
+            accessor: 'notes'
+        }, {
             Header: '',
             accessor: 'fundID',
             Cell: props => <button onClick={() => this.deleteModal(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
@@ -152,7 +160,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         }, {
             Header: '',
             accessor: 'fundID',
-            Cell: props => <button onClick={() => this.redirectToFund(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
+            Cell: props => <button onClick={() => this.editModal(props.original)} className='btn btn-success'><span className='glyphicon glyphicon glyphicon-info-sign'></span></button>,
             maxWidth: 75
         }]
 
@@ -172,14 +180,9 @@ export class ProgramsFunds extends React.Component<any, any> {
             }
         })
 
-        let redirectLink = "/Fund/id=" + selectedFundID
-        if (redirect) {
-            return <Redirect to={redirectLink} />
-        }
-
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
 
                 <div className='col-md-12'>
@@ -239,6 +242,15 @@ export class ProgramsFunds extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
+                    {modalType == 'edit' &&
+                        <DrawdownForm
+                            closeModal={this.closeModal.bind(this)}
+                            parentID={this.props.parentID}
+                            projectID={this.props.projectID}
+                            parentType={this.props.parentType} 
+                            drawdown={selectedDrawdown}
+                            edit/>
+                    }
                     {modalType == 'new' &&
                         <DrawdownForm
                             closeModal={this.closeModal.bind(this)}
@@ -248,7 +260,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                     }
                     {modalType == 'delete' &&
                         <DeleteDrawdown
-                            drawdown={drawdownToDelete}
+                            drawdown={selectedDrawdown}
                             removeDrawdown={this.removeDrawdown.bind(this)}
                             closeModal={this.closeModal.bind(this)} />
                     }
