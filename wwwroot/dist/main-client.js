@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e766a9cabf0eb82d1e26"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46c9ba46228d8627d38d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -35251,9 +35251,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'Programming', label: 'Programming', name: 'projectStatus' },
+    { value: 'Design', label: 'Design', name: 'projectStatus' },
+    { value: 'Construction', label: 'Construction', name: 'projectStatus' },
+    { value: 'Complete', label: 'Complete', name: 'projectStatus' },
 ];
 var departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
@@ -35309,9 +35310,6 @@ var ProjectInputs = (function (_super) {
     ProjectInputs.prototype.handleMembersMulti = function (value) {
         this.props.handleMulti("projectMembers", value);
     };
-    ProjectInputs.prototype.handleStatusMulti = function (value) {
-        this.props.handleMulti("projectStatus", value);
-    };
     ProjectInputs.prototype.handleDate = function (date, name) {
         this.props.handleDate(date, name);
     };
@@ -35324,7 +35322,7 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", required: true, header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleStatusMulti.bind(this), multi: true, required: true, options: statuses })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleChildSelect.bind(this), multi: false, required: true, options: statuses })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },

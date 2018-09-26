@@ -10,9 +10,10 @@ import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
 
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'Programming', label: 'Programming', name: 'projectStatus' },
+    { value: 'Design', label: 'Design', name: 'projectStatus' },
+    { value: 'Construction', label: 'Construction', name: 'projectStatus' },
+    { value: 'Complete', label: 'Complete', name: 'projectStatus' },
 ]
 
 const departments = [
@@ -77,10 +78,6 @@ export class ProjectInputs extends React.Component<any, any> {
         this.props.handleMulti("projectMembers", value)
     }
 
-    handleStatusMulti(value) {
-        this.props.handleMulti("projectStatus", value)
-    }
-
     handleDate(date, name) {
         this.props.handleDate(date, name)
     }
@@ -125,8 +122,8 @@ export class ProjectInputs extends React.Component<any, any> {
                         name="projectStatus"
                         header='Project status'
                         placeholder='Select status(es)'
-                        onChange={this.handleStatusMulti.bind(this)}
-                        multi={true}
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
                         required={true}
                         options={statuses}
                     />
