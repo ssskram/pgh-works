@@ -1,4 +1,4 @@
-import { fetch } from 'domain-task'
+import { fetch, addTask } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
 
@@ -18,7 +18,7 @@ export interface DrawdownItem {
     parentID: string
     parentType: string
     fundID: string
-    drawdownAmount: string
+    drawdownAmount: number
     drawdownType: string
     contractorVendor: string
 }
