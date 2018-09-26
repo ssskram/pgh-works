@@ -1,10 +1,16 @@
 
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as Personnel from '../../store/GETS/personnel'
 import Datepicker from '../FormElements/datepicker'
 import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
+import { Helmet } from "react-helmet"
+
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 const btnStyle = {
     fontSize: '25px',
@@ -23,17 +29,30 @@ const statuses = [
     { value: 'Complete', label: 'Complete', name: 'projectStatus' },
 ]
 
-export default class ProjectFilter extends React.Component<any, any> {
+export class ProjectFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            personnel: [],
             modalIsOpen: false,
             projectName: '',
             startDate: '',
             endDate: '',
             projectDepartment: '',
-            projectStatus: ''
+            projectStatus: '',
+            projectMember: ''
         }
+    }
+
+    componentDidMount() {
+        const personnel = [] as any
+        this.props.personnel.forEach(user => {
+            const personnelSelect = { value: user.title, label: user.title, name: 'projectMember' }
+            personnel.push(personnelSelect)
+        })
+        this.setState({
+            personnel: personnel
+        })
     }
 
     closeModal() {
@@ -68,23 +87,28 @@ export default class ProjectFilter extends React.Component<any, any> {
         }
     }
 
-    filter () {
-        this.setState ({
+    filter() {
+        this.setState({
             modalIsOpen: false
         })
     }
 
     public render() {
         const {
+            personnel,
             modalIsOpen,
             projectName,
             startDate,
             endDate,
             projectDepartment,
             projectStatus,
+            projectMember
         } = this.state
         return (
             <div>
+                <Helmet>
+                    <style>{dropdownStyle}</style>
+                </Helmet>
                 <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
                 <Modal
                     open={modalIsOpen}
@@ -149,6 +173,18 @@ export default class ProjectFilter extends React.Component<any, any> {
                             />
                         </div>
 
+                        <div className='col-md-12'>
+                            <Select
+                                value={projectMember}
+                                name="projectMember"
+                                header='Project manager/member'
+                                placeholder='Select user'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={personnel}
+                            />
+                        </div>
+
                         <div className='col-md-12 text-center'>
                             <button onClick={this.filter.bind(this)} className='btn btn-success'>Apply filter</button>
                         </div>
@@ -158,3 +194,12 @@ export default class ProjectFilter extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.personnel
+    }),
+    ({
+        ...Personnel.actionCreators
+    })
+)(ProjectFilter as any) as typeof ProjectFilter

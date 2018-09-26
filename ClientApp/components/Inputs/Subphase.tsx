@@ -104,8 +104,8 @@ export class SubphaseInput extends React.Component<any, any> {
         }
     }
 
-    handleStatusMulti(value) {
-        this.setState({ subphaseStatus: value });
+    handleChildSelect(event) {
+        this.props.handleSelect(event)
     }
 
     handlePercent(event, maskedvalue, floatvalue) {
@@ -191,8 +191,8 @@ export class SubphaseInput extends React.Component<any, any> {
                         header='Subphase status'
                         required={true}
                         placeholder='Select statuses'
-                        onChange={this.handleStatusMulti.bind(this)}
-                        multi={true}
+                        onChange={this.handleChildSelect.bind(this)}
+                        multi={false}
                         options={statuses}
                     />
                 </div>
