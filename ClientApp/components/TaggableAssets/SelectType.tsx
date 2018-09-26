@@ -54,7 +54,7 @@ export class SelectAssetType extends React.Component<any, any> {
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.passType('Pool')} className='btn btn-assetType'>
                             <span><img src='./images/assetTypes/pools.png' /></span><br />
-                            Pool
+                            Pool/Spray Park
                         </button>
                     </div>
                     <div className='col-md-4 text-center'>

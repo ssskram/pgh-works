@@ -74,7 +74,7 @@ export default class TaggableAssetSelection extends React.Component<any, any> {
                     <div className='col-md-4 text-center'>
                         <button onClick={() => this.addRemoveType('Pool')} className='btn btn-assetType'>
                             <span><img style={(selectedTypes.includes('Pool')) ? clicked : unclicked} src='./images/assetTypes/pools.png' /></span><br />
-                            Pools
+                            Pools & Spray Parks
                         </button>
                     </div>
                     <div className='col-md-4 text-center'>

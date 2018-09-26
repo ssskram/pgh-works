@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "07437b1e04bd3b08a178"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e766a9cabf0eb82d1e26"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -69004,7 +69004,7 @@ var TaggableAssetSelection = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: (selectedTypes.includes('Pool')) ? clicked : unclicked, src: './images/assetTypes/pools.png' })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        "Pools")),
+                        "Pools & Spray Parks")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.addRemoveType('Playground'); }, className: 'btn btn-assetType' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
@@ -70162,7 +70162,7 @@ var SelectAssetType = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/assetTypes/pools.png' })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        "Pool")),
+                        "Pool/Spray Park")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Playground'); }, className: 'btn btn-assetType' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
