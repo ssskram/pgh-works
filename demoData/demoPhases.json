@@ -13,7 +13,7 @@
             "phaseFollows": "",
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
             "phaseName": "Installation",
-            "phaseStatus": "In Progress",
+            "phaseStatus": "In progress",
             "phaseType": "Construction",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
@@ -31,7 +31,7 @@
             "phaseFollows": "",
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
             "phaseName": "Stilt Construction",
-            "phaseStatus": "In Progress",
+            "phaseStatus": "In progress",
             "phaseType": "Construction",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
