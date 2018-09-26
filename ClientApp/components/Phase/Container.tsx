@@ -9,7 +9,6 @@ import * as Phases from '../../store/phases'
 import Spinner from '../Utilities/Spinner'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
-import Drawdowns from '../ProgramsFunds/Drawdowns'
 import PhaseCard from './PhaseCard'
 import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
@@ -146,7 +145,6 @@ export class Phase extends React.Component<any, any> {
             modalIsOpen,
             phaseID,
             phaseName,
-            phaseFollows,
             projectID,
             projectName,
             expectedStartDate,
@@ -182,9 +180,6 @@ export class Phase extends React.Component<any, any> {
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
                     <Subphases phaseID={phaseID} projectID={projectID} />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Drawdowns parentID={phaseID} projectID={projectID} parentType={'Phase'} />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
                     <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />

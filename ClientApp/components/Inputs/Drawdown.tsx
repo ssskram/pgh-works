@@ -13,6 +13,7 @@ import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
 import * as CurrencyFormat from 'react-currency-format'
 import Tooltip from 'react-tooltip'
+import { v1 as uuid } from 'uuid'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
@@ -38,6 +39,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
             fundType: '',
 
             // drawdown state
+            drawdownID: '',
             parentID: props.parentID,
             parentType: props.parentType,
             fundID: '',
@@ -50,6 +52,33 @@ export class ProgramFundInputs extends React.Component<any, any> {
     componentDidMount() {
         let allFunds = this.props.funds
         let projectID = this.props.projectID
+        if (this.props.edit) {
+            console.log(this.props)
+            const fund = allFunds.find(fund => {
+                return fund.fundID == this.props.drawdown.fundID
+            })
+            types = []
+            types = [
+                { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
+                { value: 'Encumbered', label: 'Encumbered', name: 'drawdownType' },
+                { value: 'Spent', label: 'Spent', name: 'drawdownType' }
+            ]
+            this.setState({
+                fundName: fund.fundName,
+                fundYear: fund.fundYear,
+                fundType: fund.fundType,
+                fundID: fund.fundID,
+                drawdownID: this.props.drawdown.drawdownID,
+                drawdownAmount: this.props.drawdown.drawdownAmount,
+                drawdownType: this.props.drawdown.drawdownType,
+                notes: this.props.drawdown.notes
+            })
+        } else {
+            const guid: string = uuid()
+            this.setState ({
+                drawdownID: guid
+            })
+        }
         if (this.props.parentType == 'Phase') {
             const projectDrawdowns = this.props.drawdowns.filter(function (drawdown) {
                 return (drawdown.parentID == projectID) && (drawdown.parentType == 'Project')
@@ -66,7 +95,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 projectDrawdowns: projectDrawdowns,
                 funds: funds
             })
-        } else {
+        } else if (this.props.parentType == 'Project') {
             types = []
             types = [
                 { value: 'Pre-encumbered', label: 'Pre-encumbered', name: 'drawdownType' },
@@ -74,7 +103,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
                 { value: 'Spent', label: 'Spent', name: 'drawdownType' }
             ]
         }
-
     }
 
     handleChildChange(event) {
@@ -183,6 +211,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
 
     post() {
         const drawdown = {
+            drawdownID: this.state.drawdownID,
             parentID: this.state.parentID,
             parentType: this.state.parentType,
             fundID: this.state.fundID,
@@ -191,6 +220,20 @@ export class ProgramFundInputs extends React.Component<any, any> {
             notes: this.state.notes
         }
         this.props.addDrawdown(drawdown)
+        this.props.closeModal()
+    }
+
+    update() {
+        const drawdown = {
+            drawdownID: this.state.drawdownID,
+            parentID: this.state.parentID,
+            parentType: this.state.parentType,
+            fundID: this.state.fundID,
+            drawdownAmount: this.state.drawdownAmount,
+            drawdownType: this.state.drawdownType,
+            notes: this.state.notes
+        }
+        this.props.updateDrawdown(drawdown)
         this.props.closeModal()
     }
 
@@ -211,7 +254,8 @@ export class ProgramFundInputs extends React.Component<any, any> {
         } = this.state
 
         const {
-            parentType
+            parentType,
+            edit
         } = this.props
 
         // validation
@@ -323,7 +367,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 options={types}
                             />
                         </div>
-                        {parentType == 'Phase' && drawdownType != '' &&
+                        {!edit && parentType == 'Phase' && drawdownType != '' &&
                             <div className='col-md-12'>
                                 <Currency
                                     value={drawdownAmount}
@@ -340,7 +384,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 <Tooltip id='siblings'>{tooltip}</Tooltip>
                             </div>
                         }
-                        {parentType == 'Project' &&
+                        {!edit && parentType == 'Project' &&
                             <div className='col-md-12'>
                                 <Currency
                                     value={drawdownAmount}
@@ -353,7 +397,7 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 />
                             </div>
                         }
-                        {parentType == 'Project' &&
+                        {!edit && parentType == 'Project' &&
                             <div className='col-md-12'>
                                 <TextArea
                                     value={notes}
@@ -364,14 +408,23 @@ export class ProgramFundInputs extends React.Component<any, any> {
                                 />
                             </div>
                         }
-                        <div className='col-md-12 text-center'>
-                            <div className='col-md-6'>
-                                <button onClick={this.back.bind(this)} className='btn btn-warning'>Back</button>
+                        {!edit &&
+                            <div className='col-md-12 text-center'>
+                                <div className='col-md-6'>
+                                    <button onClick={this.back.bind(this)} className='btn btn-warning'>Back</button>
+                                </div>
+                                <div className='col-md-6'>
+                                    <button disabled={!isEnabled} onClick={this.post.bind(this)} className='btn btn-success'>Save</button>
+                                </div>
                             </div>
-                            <div className='col-md-6'>
-                                <button disabled={!isEnabled} onClick={this.post.bind(this)} className='btn btn-success'>Save</button>
+                        }
+                        {edit &&
+                            <div className='col-md-12 text-center'>
+                                <div className='col-md-12'>
+                                    <button disabled={!isEnabled} onClick={this.update.bind(this)} className='btn btn-success'>Update</button>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 }
             </div>

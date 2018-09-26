@@ -4,6 +4,7 @@ import { AppThunkAction } from './'
 
 const loadDrawdowns = 'loadDrawdowns'
 const addDrawdown = 'addDrawdowns'
+const updateDrawdown = 'updateDrawdown'
 const deleteDrawdown = 'deleteDrawdown'
 
 const unloadedState: DrawdownState = {
@@ -15,6 +16,7 @@ export interface DrawdownState {
 }
 
 export interface DrawdownItem {
+    drawdownID: string
     parentID: string
     parentType: string
     fundID: string
@@ -45,6 +47,11 @@ export const actionCreators = {
         dispatch({
             type: deleteDrawdown, item
         })
+    },
+    updateDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
+        dispatch({
+            type: updateDrawdown, item
+        })
     }
 }
 
@@ -61,6 +68,21 @@ export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAc
                 ...state,
                 drawdowns: state.drawdowns.concat(action.item)
             };
+        case updateDrawdown:
+            return {
+                ...state,
+                drawdowns: state.drawdowns.map(drawdown => drawdown.drawdownID === action.item.drawdownID ? {
+                    ...drawdown,
+                    drawdownID: action.item.drawdownID,
+                    parentID: action.item.parentID,
+                    parentType: action.item.parentType,
+                    fundID: action.item.fundID,
+                    drawdownAmount: action.item.drawdownAmount,
+                    drawdownType: action.item.drawdownType,
+                    notes: action.item.notes
+                } : drawdown
+                )
+            }
         case deleteDrawdown:
             var drawdownCopy = state.drawdowns.slice()
             drawdownCopy.splice(drawdownCopy.indexOf(action.item), 1);
