@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "65f4adba57e0932da8aa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7778eb7e763ef29de8a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62600,6 +62600,9 @@ var FundViewer = (function (_super) {
             }, {
                 Header: 'Drawdown Type',
                 accessor: 'drawdownType'
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
             }, {
                 Header: '',
                 accessor: 'parentID',

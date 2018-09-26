@@ -116,6 +116,9 @@ export class FundViewer extends React.Component<any, any> {
             Header: 'Drawdown Type',
             accessor: 'drawdownType'
         }, {
+            Header: 'Notes',
+            accessor: 'notes'
+        }, {
             Header: '',
             accessor: 'parentID',
             Cell: props => <button onClick={() => this.redirectToProject(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
