@@ -25,8 +25,6 @@ export interface SubphaseItem {
     percentComplete: number
     notes: string
     created: string
-    createdBy: string
-    lastModifiedBy: string
 }
 
 export const actionCreators = {
@@ -91,9 +89,7 @@ export const reducer: Reducer<SubphaseState> = (state: SubphaseState, incomingAc
                     subphaseStatus: action.item.subphaseStatus,
                     percentComplete: action.item.percentComplete,
                     notes: action.item.notes,
-                    created: action.item.created,
-                    createdBy: action.item.createdBy,
-                    lastModifiedBy: action.item.lastModifiedBy
+                    created: action.item.created
                 } : subphase
                 )
             };

@@ -29,8 +29,6 @@ export interface ProjectItem {
     projectStatus: string
     notes: string
     created: string
-    createdBy: string
-    lastModifiedBy: string
     shape: Coords[]
 }
 
@@ -109,8 +107,6 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectStatus: action.item.projectStatus,
                     notes: action.item.notes,
                     created: action.item.created,
-                    createdBy: action.item.createdBy,
-                    lastModifiedBy: action.item.lastModifiedBy,
                     shape: action.item.shape
                 } : project
                 )

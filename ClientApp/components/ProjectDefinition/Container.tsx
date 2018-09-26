@@ -43,9 +43,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectDescription: '',
             projectStatus: '',
             notes: '',
-            created: moment().format('MM/DD/YYYY'),
-            createdBy: props.user,
-            lastModifiedBy: props.user
+            created: moment().format('MM/DD/YYYY')
         }
     }
 
@@ -118,8 +116,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                     projectStatus: this.state.projectStatus,
                     notes: this.state.notes,
                     created: this.state.created,
-                    createdBy: this.state.createdBy,
-                    lastModifiedBy: this.state.lastModifiedBy,
                     shape: this.state.shape
                 }
                 this.props.addProject(projectLoad)
@@ -151,8 +147,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                 projectStatus: this.state.projectStatus,
                 notes: this.state.notes,
                 created: this.state.created,
-                createdBy: this.state.createdBy,
-                lastModifiedBy: this.state.lastModifiedBy,
                 shape: this.state.shape
             }
             this.props.addProject(projectLoad)

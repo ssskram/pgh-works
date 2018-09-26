@@ -20,9 +20,7 @@ namespace pghworks.Controllers {
         public class Subphase {
             public string cartegraphID { get; set; }
             public string created { get; set; }
-            public string createdBy { get; set; }
             public string endDate { get; set; }
-            public string lastModifiedBy { get; set; }
             public string notes { get; set; }
             public int percentComplete { get; set; }
             public string phaseID { get; set; }
@@ -44,12 +42,10 @@ namespace pghworks.Controllers {
                 Subphase sp = new Subphase () {
                     cartegraphID = item.cartegraphID,
                     created = item.created,
-                    createdBy = item.createdBy,
                     percentComplete = item.percentComplete,
                     phaseID = item.phaseID,
                     projectID = item.projectID,
                     endDate = item.endDate,
-                    lastModifiedBy = item.lastModifiedBy,
                     notes = item.notes,
                     startDate = item.startDate,
                     subphaseDescription = item.subphaseDescription,

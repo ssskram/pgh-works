@@ -61,8 +61,6 @@ export class Project extends React.Component<any, any> {
             projectStatus: '',
             notes: '',
             created: '',
-            createdBy: '',
-            lastModifiedBy: '',
             shape: []
         }
         this.setProjectState = this.setProjectState.bind(this);
@@ -109,8 +107,6 @@ export class Project extends React.Component<any, any> {
             projectStatus: project.projectStatus,
             notes: project.notes,
             created: project.created,
-            createdBy: project.createdBy,
-            lastModifiedBy: project.lastModifiedBy,
             shape: project.shape
         }, function (this) {
             this.setState({
@@ -176,7 +172,6 @@ export class Project extends React.Component<any, any> {
         let existingShape = this.state.shape
         this.setState({
             shape: shape,
-            lastModifiedBy: this.props.user,
             modalIsOpen: false,
             edit: ''
         }, function (this) {
@@ -226,11 +221,7 @@ export class Project extends React.Component<any, any> {
 
     put() {
         this.closeModal()
-        this.setState({
-            lastModifiedBy: this.props.user
-        }, function (this) {
-            this.props.updateProject(this.state)
-        })
+        this.props.updateProject(this.state)
     }
 
     createTag(asset) {

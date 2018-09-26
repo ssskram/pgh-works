@@ -22,10 +22,8 @@ namespace pghworks.Controllers {
             public string actualStartDate { get; set; }
             public string cartegraphID { get; set; }
             public string created { get; set; }
-            public string createdBy { get; set; }
             public string expectedStartDate { get; set; }
             public string expectedEndDate { get; set; }
-            public string lastModifiedBy { get; set; }
             public string notes { get; set; }
             public string projectDepartment { get; set; }
             public string projectDescription { get; set; }
@@ -52,9 +50,7 @@ namespace pghworks.Controllers {
                 Project pj = new Project () {
                     cartegraphID = item.cartegraphID,
                     created = item.created,
-                    createdBy = item.createdBy,
                     projectID = item.projectID,
-                    lastModifiedBy = item.lastModifiedBy,
                     notes = item.notes,
                     actualEndDate = item.actualEndDate,
                     actualStartDate = item.actualStartDate,

@@ -33,14 +33,10 @@ export default class PhaseCard extends React.Component<any, any> {
 
     public render() {
         const {
-            cartegraphID,
             phaseDescription,
             phaseStatus,
-            percentComplete,
             notes,
-            created,
-            createdBy,
-            lastModifiedBy,
+            created
         } = this.props.phase
 
         const settings = {

@@ -2,9 +2,7 @@
     "subphases": [{
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "05/26/2018",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 42,
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
@@ -18,9 +16,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "06/21/2018",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 40,
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
@@ -34,9 +30,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "11/16/2018",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 10,
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
@@ -50,9 +44,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "11/17/2018",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 15,
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
@@ -66,9 +58,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "12/01/2018",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 0,
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
@@ -82,9 +72,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "03/24/2017",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 85,
             "phaseID": "d1310240-b6a1-11e8-930d-dd084cae8ed3",
@@ -98,9 +86,7 @@
         {
             "cartegraphID": "",
             "created": "09/12/2018",
-            "createdBy": "paul.marks@pittsburghpa.gov",
             "endDate": "09/29/2017",
-            "lastModifiedBy": "paul.marks@pittsburghpa.gov",
             "notes": "",
             "percentComplete": 95,
             "phaseID": "ed90f490-b6a1-11e8-930d-dd084cae8ed3",

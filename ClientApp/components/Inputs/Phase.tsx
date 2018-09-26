@@ -54,9 +54,7 @@ export class PhaseInputs extends React.Component<any, any> {
             phaseDescription: '',
             phaseStatus: '',
             notes: '',
-            created: '',
-            createdBy: '',
-            lastModifiedBy: ''
+            created: ''
         }
         this.handleDate = this.handleDate.bind(this)
     }
@@ -81,9 +79,7 @@ export class PhaseInputs extends React.Component<any, any> {
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
                 notes: phase.notes,
-                created: phase.created,
-                createdBy: phase.createdBy,
-                lastModifiedBy: this.props.user,
+                created: phase.created
             })
         }
         else {
@@ -92,9 +88,7 @@ export class PhaseInputs extends React.Component<any, any> {
             this.setState({
                 projectID: this.props.projectID,
                 phaseID: guid,
-                created: moment().format('MM/DD/YYYY'),
-                createdBy: this.props.user,
-                lastModifiedBy: this.props.user
+                created: moment().format('MM/DD/YYYY')
             })
         }
     }

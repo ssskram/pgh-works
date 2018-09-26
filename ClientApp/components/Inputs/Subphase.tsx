@@ -33,9 +33,7 @@ export class SubphaseInput extends React.Component<any, any> {
             subphaseStatus: '',
             percentComplete: '',
             notes: '',
-            created: '',
-            createdBy: '',
-            lastModifiedBy: ''
+            created: ''
         }
     }
     componentDidMount() {
@@ -57,9 +55,7 @@ export class SubphaseInput extends React.Component<any, any> {
                 subphaseStatus: subphase.subphaseStatus,
                 percentComplete: subphase.percentComplete,
                 notes: subphase.notes,
-                created: subphase.created,
-                createdBy: subphase.createdBy,
-                lastModifiedBy: this.props.user,
+                created: subphase.created
             })
         }
         else {
@@ -69,9 +65,7 @@ export class SubphaseInput extends React.Component<any, any> {
                 projectID: this.props.projectID,
                 phaseID: this.props.phaseID,
                 subphaseID: guid,
-                created: moment().format('MM/DD/YYYY'),
-                createdBy: this.props.user,
-                lastModifiedBy: this.props.user
+                created: moment().format('MM/DD/YYYY')
             })
         }
     }

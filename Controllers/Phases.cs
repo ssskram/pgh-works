@@ -23,10 +23,8 @@ namespace pghworks.Controllers {
             public string actualStartDate { get; set; }
             public string cartegraphID { get; set; }
             public string created { get; set; }
-            public string createdBy { get; set; }
             public string expectedEndDate { get; set; }
             public string expectedStartDate { get; set; }
-            public string lastModifiedBy { get; set; }
             public string notes { get; set; }
             public string phaseDescription { get; set; }
             public string phaseFollows { get; set; }
@@ -49,10 +47,8 @@ namespace pghworks.Controllers {
                     actualStartDate = item.actualStartDate,
                     cartegraphID = item.cartegraphID,
                     created = item.created,
-                    createdBy = item.createdBy,
                     expectedEndDate = item.expectedEndDate,
                     expectedStartDate = item.expectedStartDate,
-                    lastModifiedBy = item.lastModifiedBy,
                     notes = item.notes,
                     phaseDescription = item.phaseDescription,
                     phaseFollows = item.phaseFollows,

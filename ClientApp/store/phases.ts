@@ -31,8 +31,6 @@ export interface PhaseItem {
     phaseStatus: string
     notes: string
     created: string
-    createdBy: string
-    lastModifiedBy: string
 }
 
 export const actionCreators = {
@@ -95,9 +93,7 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
                     phaseDescription: action.item.phaseDescription,
                     phaseStatus: action.item.phaseStatus,
                     notes: action.item.notes,
-                    created: action.item.created,
-                    createdBy: action.item.createdBy,
-                    lastModifiedBy: action.item.lastModifiedBy
+                    created: action.item.created
                 } : phase
                 )
             };
