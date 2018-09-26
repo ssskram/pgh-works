@@ -33,7 +33,6 @@ namespace pghworks.Controllers {
             public string phaseID { get; set; }
             public string phaseName { get; set; }
             public string phaseStatus { get; set; }
-            public string phaseType { get; set; }
             public string projectID { get; set; }
 
         }
@@ -60,7 +59,6 @@ namespace pghworks.Controllers {
                     phaseID = item.phaseID,
                     phaseName = item.phaseName,
                     phaseStatus = item.phaseStatus,
-                    phaseType = item.phaseType,
                     projectID = item.projectID
                 };
                 AllPhases.Add(ph);

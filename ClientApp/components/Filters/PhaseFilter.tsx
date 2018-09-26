@@ -3,7 +3,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Datepicker from '../FormElements/datepicker'
-import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
@@ -18,16 +17,16 @@ const btnStyle = {
 }
 
 const types = [
-    { value: 'Programming', label: 'Programming', name: 'phaseType' },
-    { value: 'Design', label: 'Design', name: 'phaseType' },
-    { value: 'Construction', label: 'Construction', name: 'phaseType' },
-    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
+    { value: 'Programming', label: 'Programming', name: 'phaseName' },
+    { value: 'Design', label: 'Design', name: 'phaseName' },
+    { value: 'Construction', label: 'Construction', name: 'phaseName' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseName' }
 ]
 
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
 ]
 
 let projects = [] as any
@@ -40,7 +39,6 @@ export class PhaseFilter extends React.Component<any, any> {
             phaseName: '',
             startDate: '',
             endDate: '',
-            phaseType: '',
             phaseStatus: '',
             projectName: ''
         }
@@ -98,7 +96,6 @@ export class PhaseFilter extends React.Component<any, any> {
             phaseName,
             startDate,
             endDate,
-            phaseType,
             phaseStatus,
             projectName
         } = this.state
@@ -118,12 +115,14 @@ export class PhaseFilter extends React.Component<any, any> {
                     center>
                     <div>
                         <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={phaseName}
                                 name="phaseName"
-                                header="Phase name"
-                                placeholder="Enter a name"
-                                callback={this.handleChildChange.bind(this)}
+                                header='Phase name'
+                                placeholder='Select phase'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={types}
                             />
                         </div>
 
@@ -148,18 +147,6 @@ export class PhaseFilter extends React.Component<any, any> {
                                 onChange={this.handleChildSelect.bind(this)}
                                 multi={false}
                                 options={statuses}
-                            />
-                        </div>
-
-                        <div className='col-md-12'>
-                            <Select
-                                value={phaseType}
-                                name="phaseType"
-                                header='Phase type'
-                                placeholder='Select type'
-                                onChange={this.handleChildSelect.bind(this)}
-                                multi={false}
-                                options={types}
                             />
                         </div>
 

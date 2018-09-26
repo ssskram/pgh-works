@@ -21,10 +21,10 @@ const statuses = [
 ]
 
 const types = [
-    { value: 'Programming', label: 'Programming', name: 'phaseType' },
-    { value: 'Design', label: 'Design', name: 'phaseType' },
-    { value: 'Construction', label: 'Construction', name: 'phaseType' },
-    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
+    { value: 'Programming', label: 'Programming', name: 'phaseName' },
+    { value: 'Design', label: 'Design', name: 'phaseName' },
+    { value: 'Construction', label: 'Construction', name: 'phaseName' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseName' }
 ]
 
 const iconStyle = {
@@ -46,7 +46,6 @@ export class PhaseInputs extends React.Component<any, any> {
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
-            phaseType: '',
             // phaseFollows: {},
             expectedStartDate: '',
             expectedEndDate: '',
@@ -74,7 +73,6 @@ export class PhaseInputs extends React.Component<any, any> {
                 phaseID: phase.phaseID,
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
-                phaseType: phase.phaseType,
                 // phaseFollows: phase.phaseFollows,
                 expectedStartDate: phase.expectedStartDate,
                 expectedEndDate: phase.expectedEndDate,
@@ -116,7 +114,7 @@ export class PhaseInputs extends React.Component<any, any> {
             });
         }
     }
-    
+
     handleChildSelect(event) {
         this.setState({ [event.name]: event.value });
     }
@@ -143,7 +141,7 @@ export class PhaseInputs extends React.Component<any, any> {
 
     setPhaseFollows(project, phase) {
         this.setState({
-            phaseFollows: { project: project, phase: phase},
+            phaseFollows: { project: project, phase: phase },
             modalIsOpen: false
         })
     }
@@ -159,7 +157,6 @@ export class PhaseInputs extends React.Component<any, any> {
             redirect,
             phaseID,
             phaseName,
-            phaseType,
             phaseFollows,
             expectedStartDate,
             expectedEndDate,
@@ -187,22 +184,11 @@ export class PhaseInputs extends React.Component<any, any> {
         return (
             <div>
                 <div className='col-md-12'>
-                    <Input
+                    <Select
                         value={phaseName}
                         name="phaseName"
-                        required={true}
-                        header="Phase name"
-                        placeholder="Enter a name"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
-
-                <div className='col-md-12'>
-                    <Select
-                        value={phaseType}
-                        name="phaseType"
-                        header='Phase type'
-                        placeholder='Select type'
+                        header='Phase name'
+                        placeholder='Select phase'
                         onChange={this.handleChildSelect.bind(this)}
                         multi={false}
                         options={types}

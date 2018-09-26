@@ -15,10 +15,12 @@ const departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
     { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
 ]
+
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'projectStatus' },
-    { value: 'Mobilizing', label: 'Mobilizing', name: 'projectStatus' },
-    { value: 'Complete', label: 'Complete', name: 'projectStatus' }
+    { value: 'Programming', label: 'Programming', name: 'projectStatus' },
+    { value: 'Design', label: 'Design', name: 'projectStatus' },
+    { value: 'Construction', label: 'Construction', name: 'projectStatus' },
+    { value: 'Complete', label: 'Complete', name: 'projectStatus' },
 ]
 
 export default class ProjectFilter extends React.Component<any, any> {

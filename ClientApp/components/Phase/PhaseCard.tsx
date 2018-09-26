@@ -36,7 +36,6 @@ export default class PhaseCard extends React.Component<any, any> {
             cartegraphID,
             phaseDescription,
             phaseStatus,
-            phaseType,
             percentComplete,
             notes,
             created,
@@ -60,14 +59,9 @@ export default class PhaseCard extends React.Component<any, any> {
                 <div className='row'>
                     <br />
                     <Slider {...settings}>
-
                         <div className='col-md-12 text-center'>
                             <h3><u>Phase status</u></h3>
                             <h2>{phaseStatus}</h2>
-                        </div>
-                        <div className='col-md-12 text-center'>
-                            <h3><u>Phase type</u></h3>
-                            <h2>{phaseType}</h2>
                         </div>
                         {phaseDescription &&
                             <div className='col-md-12 text-center'>

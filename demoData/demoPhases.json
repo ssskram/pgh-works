@@ -12,9 +12,8 @@
             "phaseDescription": "Stilts will be installed, and the park will be extended",
             "phaseFollows": "",
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
-            "phaseName": "Installation",
             "phaseStatus": "In progress",
-            "phaseType": "Construction",
+            "phaseName": "Programming",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
         {
@@ -30,9 +29,8 @@
             "phaseDescription": "The stilts will be constructed out of the finest mahogany",
             "phaseFollows": "",
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
-            "phaseName": "Stilt Construction",
             "phaseStatus": "In progress",
-            "phaseType": "Construction",
+            "phaseName": "Construction",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
         {
@@ -48,9 +46,8 @@
             "phaseDescription": "The stilts need to be designed by the finest engineer in the land",
             "phaseFollows": "",
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
-            "phaseName": "Stilt Design",
             "phaseStatus": "On hold",
-            "phaseType": "Design",
+            "phaseName": "Design",
             "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
         },
         {
@@ -66,9 +63,8 @@
             "phaseDescription": "Build the new bridge",
             "phaseFollows": "",
             "phaseID": "ed90f490-b6a1-11e8-930d-dd084cae8ed3",
-            "phaseName": "Construction",
             "phaseStatus": "Complete",
-            "phaseType": "Construction",
+            "phaseName": "Multi-faceted",
             "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
         },
         {
@@ -84,9 +80,8 @@
             "phaseDescription": "Tear down the old bridge",
             "phaseFollows": "",
             "phaseID": "d1310240-b6a1-11e8-930d-dd084cae8ed3",
-            "phaseName": "Demolition",
             "phaseStatus": "Complete",
-            "phaseType": "Construction",
+            "phaseName": "Construction",
             "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
         },
         {
@@ -102,9 +97,8 @@
             "phaseDescription": "The new bridge was designed",
             "phaseFollows": "",
             "phaseID": "976022d0-b6a1-11e8-930d-dd084cae8ed3",
-            "phaseName": "Design",
             "phaseStatus": "Complete",
-            "phaseType": "Design",
+            "phaseName": "Design",
             "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
         },
         {
@@ -120,9 +114,8 @@
             "phaseDescription": "We had a bunch of meetings",
             "phaseFollows": "",
             "phaseID": "615cc620-b6a1-11e8-930d-dd084cae8ed3",
-            "phaseName": "Meetings",
             "phaseStatus": "Complete",
-            "phaseType": "Programming",
+            "phaseName": "Programming",
             "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
         }
     ]
