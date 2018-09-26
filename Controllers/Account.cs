@@ -95,7 +95,7 @@ namespace pghworks.Controllers {
             var content = await response.Content.ReadAsStringAsync ();
             dynamic results = JsonConvert.DeserializeObject<dynamic> (content);
             string accesstoken = results.access_token.ToString ();
-            var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/sitegroups(5)/users?$select=Title,Email";
+            var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/sitegroups(4)/users?$select=Title,Email";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Bearer", accesstoken);

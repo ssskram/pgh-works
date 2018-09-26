@@ -60,7 +60,7 @@ export class ProjectInputs extends React.Component<any, any> {
             const personnelSelect = { value: user.title, label: user.title, name: 'projectManager' }
             personnel.push(personnelSelect)
         })
-        this.setState ({
+        this.setState({
             personnel: personnel
         })
     }
