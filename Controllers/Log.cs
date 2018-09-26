@@ -8,83 +8,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using pghworks.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using pghworks.Models;
 
 namespace pghworks.Controllers {
     [Authorize]
-    [Route ("api/[controller]")]
-    public class projects : Controller {
-        private readonly UserManager<ApplicationUser> _userManager;
-        public projects (UserManager<ApplicationUser> userManager) {
-            _userManager = userManager;
-        }
+    public class log : Controller {
         HttpClient client = new HttpClient ();
-
-        public class Project {
-            public string actualEndDate { get; set; }
-            public string actualStartDate { get; set; }
-            public string cartegraphID { get; set; }
-            public string created { get; set; }
-            public string expectedStartDate { get; set; }
-            public string expectedEndDate { get; set; }
-            public string notes { get; set; }
-            public string projectDepartment { get; set; }
-            public string projectDescription { get; set; }
-            public string projectID { get; set; }
-            public string projectManager { get; set; }
-            public string projectMembers { get; set; }
-            public string projectName { get; set; }
-            public string projectStatus { get; set; }
-            public List<Shape> shape { get; set; }
-        }
-
-        public class Shape {
-            public double lat { get; set; }
-            public double lng { get; set; }
-        }
-
-        // GET
-        [HttpGet ("[action]")]
-        public object loadProjects () {
-            string projects = System.IO.File.ReadAllText ("demoData/demoProjects.json");
-            dynamic projectsObject = JObject.Parse (projects) ["projects"];
-            List<Project> AllProjects = new List<Project> ();
-            foreach (var item in projectsObject) {
-                Project pj = new Project () {
-                    cartegraphID = item.cartegraphID,
-                    created = item.created,
-                    projectID = item.projectID,
-                    notes = item.notes,
-                    actualEndDate = item.actualEndDate,
-                    actualStartDate = item.actualStartDate,
-                    expectedEndDate = item.expectedEndDate,
-                    expectedStartDate = item.expectedStartDate,
-                    projectDepartment = item.projectDepartment,
-                    projectDescription = item.projectDescription,
-                    projectManager = item.projectManager,
-                    projectMembers = item.projectMembers,
-                    projectName = item.projectName,
-                    projectStatus = item.projectStatus,
-                    shape = item.shape.ToObject<List<Shape>> ()
-                };
-                AllProjects.Add (pj);
-            }
-            return AllProjects;
-        }
-
-        // POST
-        [HttpPost ("[action]")]
-        public async Task addProject ([FromBody] Project model) {
-            await new log ().postLog (_userManager.GetUserName(HttpContext.User), "Post", "Project", model.projectName, model.projectID);
-            await generateDocLibrary (model.projectName.ToString ());
-        }
-
-        public async Task generateDocLibrary (string projectName) {
+        public async Task postLog (string user, string ActivityType, string ObjectType, string ObjectName, string ObjectID) {
             await refreshtoken ();
             var token = refreshtoken ().Result;
-            var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists";
+            var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists/GetByTitle('Log')/items";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Bearer", token);
@@ -92,8 +27,12 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Add ("X-RequestDigest", "form digest value");
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
             var json =
-                String.Format ("{{ '__metadata': {{ 'type': 'SP.List' }}, 'AllowContentTypes': true, 'BaseTemplate': 101, 'ContentTypesEnabled': true, 'Description': 'Document library for {0}', 'Title': '{0}' }}",
-                    projectName);
+                String.Format ("{{'__metadata': {{ 'type': 'SP.Data.LogListItem' }}, 'ActivityType' : '{0}' , 'User' : '{1}', 'ObjectType' : '{2}', 'ObjectName' : '{3}', 'ObjectID' : '{4}' }}",
+                    ActivityType, // 0
+                    user, // 1
+                    ObjectType, //2
+                    ObjectName, // 3
+                    ObjectID); // 4
 
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try // post
@@ -107,6 +46,7 @@ namespace pghworks.Controllers {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
             }
         }
+
         private async Task<string> refreshtoken () {
             var MSurl = "https://accounts.accesscontrol.windows.net/f5f47917-c904-4368-9120-d327cf175591/tokens/OAuth/2";
             var clientid = Environment.GetEnvironmentVariable ("SPClientID");
