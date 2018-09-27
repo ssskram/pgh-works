@@ -53,15 +53,15 @@ export class StreetMap extends React.Component<any, any> {
     }
 
     handleOverlayComplete = (evt) => {
-        let shape: any[] = []
+        let shape = { points: [] as any }
         let vertices = evt.overlay.getPath()
         for (var i = 0; i < vertices.getLength(); i++) {
             var xy = vertices.getAt(i);
             var coord = { lat: xy.lat(), lng: xy.lng() }
-            shape.push(coord)
+            shape.points.push(coord)
         }
         let formattedShape = [] as any
-        shape.forEach(point => {
+        shape.points.forEach(point => {
             const shapeArray = [point.lat, point.lng]
             formattedShape.push(shapeArray)
         })

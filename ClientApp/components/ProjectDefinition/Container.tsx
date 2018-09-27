@@ -11,7 +11,6 @@ import * as TagStore from '../../store/tags'
 import Geolocate from './Geolocate/Geolocate'
 import ProjectDescription from './Description/Description'
 import Map from '../Map/ProjectMap'
-import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 import inside from 'point-in-polygon'
 import Modal from 'react-responsive-modal'
@@ -161,7 +160,7 @@ export class ProjectDefinition extends React.Component<any, any> {
         const self = this
         let shape = [] as any
         let componentAssets = [] as any
-        this.state.shape.forEach(function (point) {
+        this.state.shape.points.forEach(function (point) {
             const shapeArray = [point.lat, point.lng]
             shape.push(shapeArray)
         })

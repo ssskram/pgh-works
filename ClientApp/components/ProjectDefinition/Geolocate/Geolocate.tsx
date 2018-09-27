@@ -25,7 +25,7 @@ export default class Geolocate extends React.Component<any, any> {
         this.state = {
             type: '',
             modalIsOpen: false,
-            shape: []
+            shape: {}
         }
     }
 
@@ -74,7 +74,7 @@ export default class Geolocate extends React.Component<any, any> {
 
         return (
             <div className='text-center' >
-                {shape.length > 0 &&
+                {shape.points &&
                     <div>
                         <Map shape={shape} />
                         <br />
@@ -98,7 +98,7 @@ export default class Geolocate extends React.Component<any, any> {
                     </div>
 
                 }
-                {shape.length == 0 &&
+                {Object.keys(shape).length == 0 &&
                     <div>
                         <button onClick={this.newShape.bind(this)} className='btn btn-primary btn-big'>
                             <div className='row'>

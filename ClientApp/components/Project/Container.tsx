@@ -191,7 +191,7 @@ export class Project extends React.Component<any, any> {
                 // refresh geospatial tags with new shape
                 let shape = [] as any
                 let componentAssets = [] as any
-                this.state.shape.forEach(function (point) {
+                this.state.shape.points.forEach(function (point) {
                     const shapeArray = [point.lat, point.lng]
                     shape.push(shapeArray)
                 })

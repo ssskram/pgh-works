@@ -6,7 +6,6 @@ import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
 import TagCard from '../Tags/TagCard'
-import * as moment from 'moment'
 import { v1 as uuid } from 'uuid'
 
 const iconStyle = {

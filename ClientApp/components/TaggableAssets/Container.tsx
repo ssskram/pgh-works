@@ -33,7 +33,7 @@ export class TaggableAssetSelection extends React.Component<any, any> {
             assetType: '',
             tagDescription: false,
             selectedAsset: {},
-            selectedShape: []
+            selectedShape: {}
         })
     }
 
@@ -75,7 +75,7 @@ export class TaggableAssetSelection extends React.Component<any, any> {
         let self = this
         let shapeTransform = [] as any
         let componentAssets = [] as any
-        this.state.selectedShape.forEach(function (point) {
+        this.state.selectedShape.points.forEach(function (point) {
             const shapeArray = [point.lat, point.lng]
             shapeTransform.push(shapeArray)
         })
@@ -145,7 +145,7 @@ export class TaggableAssetSelection extends React.Component<any, any> {
                         receiveDescription={this.receiveDescription.bind(this)}
                         back={this.back.bind(this)} />
                 }
-                {tagDescription == true && selectedShape.length > 0 &&
+                {tagDescription == true && Object.keys(selectedShape).length > 0 &&
                     <DescribeTag
                         shape={selectedShape}
                         receiveDescription={this.generateTags.bind(this)}

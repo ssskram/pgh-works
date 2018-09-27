@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "39b29927622761124704"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e10d76525ba0fd214024"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -11831,6 +11831,9 @@ var ProjectMap = (function (_super) {
     function ProjectMap() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    ProjectMap.prototype.componentDidMount = function () {
+        console.log(this.props);
+    };
     ProjectMap.prototype.render = function () {
         var _this = this;
         var bounds = new google.maps.LatLngBounds();
@@ -31941,7 +31944,7 @@ var ImportShape = (function (_super) {
         return _super.call(this) || this;
     }
     ImportShape.prototype.receiveAsset = function (asset) {
-        this.props.passShape(asset.shape.points);
+        this.props.passShape(asset.shape);
     };
     ImportShape.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
@@ -32062,7 +32065,7 @@ var TaggableAssetSelection = (function (_super) {
             assetType: '',
             tagDescription: false,
             selectedAsset: {},
-            selectedShape: []
+            selectedShape: {}
         });
     };
     TaggableAssetSelection.prototype.receiveType = function (type) {
@@ -32099,7 +32102,7 @@ var TaggableAssetSelection = (function (_super) {
         var self = this;
         var shapeTransform = [];
         var componentAssets = [];
-        this.state.selectedShape.forEach(function (point) {
+        this.state.selectedShape.points.forEach(function (point) {
             var shapeArray = [point.lat, point.lng];
             shapeTransform.push(shapeArray);
         });
@@ -32146,7 +32149,7 @@ var TaggableAssetSelection = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__TaggableAssets_SelectAsset__["a" /* default */], { assetType: assetType, receiveAsset: this.receiveAsset.bind(this), back: this.back.bind(this), receiveShape: this.receiveShape.bind(this), setStreetName: this.setStreetName.bind(this) }),
             tagDescription == true && Object.keys(selectedAsset).length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__TagDescription__["a" /* default */], { asset: selectedAsset, receiveDescription: this.receiveDescription.bind(this), back: this.back.bind(this) }),
-            tagDescription == true && selectedShape.length > 0 &&
+            tagDescription == true && Object.keys(selectedShape).length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__TagDescription__["a" /* default */], { shape: selectedShape, receiveDescription: this.generateTags.bind(this), back: this.back.bind(this) })));
     };
     return TaggableAssetSelection;
@@ -60718,12 +60721,12 @@ var ImportShapes = (function (_super) {
     function ImportShapes(props) {
         var _this = _super.call(this, props) || this;
         _this.handleOverlayComplete = function (evt) {
-            var shape = [];
+            var shape = { points: [] };
             var vertices = evt.overlay.getPath();
             for (var i = 0; i < vertices.getLength(); i++) {
                 var xy = vertices.getAt(i);
                 var coord = { lat: xy.lat(), lng: xy.lng() };
-                shape.push(coord);
+                shape.points.push(coord);
             }
             _this.props.passShape(shape);
         };
@@ -60807,14 +60810,14 @@ var ImportShapes = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { zoom: zoom, defaultCenter: center },
                 assets && grabby != true &&
                     assets.map(function (asset, index) {
-                        if (asset.shape) {
+                        if (asset.shape.points) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], onClick: function () { return _this.polygonSelection(asset); } })));
                         }
                     }),
                 assets && grabby == true &&
                     assets.map(function (asset, index) {
-                        if (asset.shape) {
+                        if (asset.shape.points) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points] })));
                         }
@@ -60979,15 +60982,15 @@ var StreetMap = (function (_super) {
     function StreetMap(props) {
         var _this = _super.call(this, props) || this;
         _this.handleOverlayComplete = function (evt) {
-            var shape = [];
+            var shape = { points: [] };
             var vertices = evt.overlay.getPath();
             for (var i = 0; i < vertices.getLength(); i++) {
                 var xy = vertices.getAt(i);
                 var coord = { lat: xy.lat(), lng: xy.lng() };
-                shape.push(coord);
+                shape.points.push(coord);
             }
             var formattedShape = [];
-            shape.forEach(function (point) {
+            shape.points.forEach(function (point) {
                 var shapeArray = [point.lat, point.lng];
                 formattedShape.push(shapeArray);
             });
@@ -63247,7 +63250,7 @@ var Project = (function (_super) {
                 // refresh geospatial tags with new shape
                 var shape_1 = [];
                 var componentAssets_1 = [];
-                this.state.shape.forEach(function (point) {
+                this.state.shape.points.forEach(function (point) {
                     var shapeArray = [point.lat, point.lng];
                     shape_1.push(shapeArray);
                 });
@@ -64020,7 +64023,7 @@ var ProjectDefinition = (function (_super) {
         var self = this;
         var shape = [];
         var componentAssets = [];
-        this.state.shape.forEach(function (point) {
+        this.state.shape.points.forEach(function (point) {
             var shapeArray = [point.lat, point.lng];
             shape.push(shapeArray);
         });
@@ -64271,7 +64274,7 @@ var Geolocate = (function (_super) {
         _this.state = {
             type: '',
             modalIsOpen: false,
-            shape: []
+            shape: {}
         };
         return _this;
     }
@@ -64309,7 +64312,7 @@ var Geolocate = (function (_super) {
     Geolocate.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, shape = _a.shape, type = _a.type;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-            shape.length > 0 &&
+            shape.points &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Map_ProjectMap__["a" /* default */], { shape: shape }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -64320,7 +64323,7 @@ var Geolocate = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newShape.bind(this), className: 'btn btn-warning' }, "Draw a new shape")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.importShape.bind(this), className: 'btn btn-warning' }, "Import a different shape"))),
-            shape.length == 0 &&
+            Object.keys(shape).length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newShape.bind(this), className: 'btn btn-primary btn-big' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
