@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b4334e46a47cca8b41e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "43f26200cb1a63bbfb02"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61948,7 +61948,7 @@ var PhaseTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink; border-color: pink'
+                style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
             };
             items.push(actual);
         }
@@ -61957,7 +61957,7 @@ var PhaseTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'pink', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.phase &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
     };
@@ -62316,7 +62316,7 @@ var ProgramsFunds = (function (_super) {
     };
     ProgramsFunds.prototype.render = function () {
         var _this = this;
-        var _a = this.state, modalType = _a.modalType, modalIsOpen = _a.modalIsOpen, selectedDrawdown = _a.selectedDrawdown, selectedFundID = _a.selectedFundID, drawdowns = _a.drawdowns;
+        var _a = this.state, modalType = _a.modalType, modalIsOpen = _a.modalIsOpen, selectedDrawdown = _a.selectedDrawdown, drawdowns = _a.drawdowns;
         var columns = [{
                 Header: 'Fund/Program',
                 accessor: 'fundID',
@@ -62367,6 +62367,23 @@ var ProgramsFunds = (function (_super) {
                 preencumbered = preencumbered + item.drawdownAmount;
             }
         });
+        // calculating spend thermometer
+        var thermometer = {};
+        if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
+            var allocated = spent + encumbered + preencumbered;
+            console.log(allocated);
+            var percentBudgetAllocated = allocated / this.props.budget * 100;
+            console.log(percentBudgetAllocated);
+            var budgetRemaining = 100 - percentBudgetAllocated - 1 * 100;
+            console.log(budgetRemaining);
+            thermometer = {
+                background: 'linear-gradient(to right, rgba(255, 167, 167, .6), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid rgba(255, 167, 167, .6)',
+                borderRadius: '100px',
+                margin: '10px 0px 20px 0px',
+                paddingBottom: '8px'
+            };
+        }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/programsGrey.png' }),
@@ -62375,6 +62392,13 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', className: 'btn pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+            this.props.budget != null && this.props.budget != 0 && this.props.budget != '' &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            "Budget: ",
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: this.props.budget, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
@@ -63294,7 +63318,7 @@ var Project = (function (_super) {
         });
     };
     Project.prototype.render = function () {
-        var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, projectName = _a.projectName, projectStatus = _a.projectStatus, shape = _a.shape, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate;
+        var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, projectID = _a.projectID, projectName = _a.projectName, projectStatus = _a.projectStatus, shape = _a.shape, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectBudget = _a.projectBudget;
         // validation
         var isEnabled = projectName != '' &&
             projectStatus != '';
@@ -63325,7 +63349,7 @@ var Project = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Phases__["a" /* default */], { projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__ProgramsFunds_Drawdowns__["a" /* default */], { parentID: projectID, parentType: 'Project' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__ProgramsFunds_Drawdowns__["a" /* default */], { parentID: projectID, parentType: 'Project', budget: projectBudget })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_17__Tags_Tags__["a" /* default */], { parentID: projectID, parentName: projectName, parentType: 'Project' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
@@ -63466,7 +63490,7 @@ var Phases = (function (_super) {
                     content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
-                    style: 'background-color: pink; border-color: pink'
+                    style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
                 };
                 counter++;
                 items.push(actual);
@@ -63549,7 +63573,7 @@ var ProjectTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink; border-color: pink'
+                style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
             };
             items.push(actual);
         }
@@ -63558,7 +63582,7 @@ var ProjectTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'pink', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.project &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
     };
@@ -65359,7 +65383,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
-                        style: 'background-color: pink; border-color: pink'
+                        style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
                     };
                     index = index + 1;
                     items.push(actual);
@@ -65383,7 +65407,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: pink; border-color: green; border-width: 2px;'
+                        style: 'background-color: rgba(255, 167, 167, .6); border-color: green; border-width: 2px;'
                     };
                     index = index + 1;
                     items.push(actual);
@@ -65418,7 +65442,7 @@ var Timeline = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #d5ddf6', backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid pink', backgroundColor: 'pink', padding: '8px' } }, "Actual"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid rgba(255, 167, 167, .6)', backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid green', padding: '8px' } }, "Phase")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Timeline__["a" /* default */], { groups: groups, items: items }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

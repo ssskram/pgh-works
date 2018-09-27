@@ -90,7 +90,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
-                        style: 'background-color: pink; border-color: pink'
+                        style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
                     }
                     index = index + 1
                     items.push(actual)
@@ -113,7 +113,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: pink; border-color: green; border-width: 2px;'
+                        style: 'background-color: rgba(255, 167, 167, .6); border-color: green; border-width: 2px;'
                     }
                     index = index + 1
                     items.push(actual)
@@ -148,7 +148,7 @@ export class Timeline extends React.Component<any, any> {
                     <div>
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
                             <span style={{ border: '2px solid #d5ddf6', backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
-                            <span style={{ border: '2px solid pink', backgroundColor: 'pink', padding: '8px' }}>Actual</span>
+                            <span style={{ border: '2px solid rgba(255, 167, 167, .6)', backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
                             <span style={{ border: '2px solid green', padding: '8px' }}>Phase</span>
                         </div>
                         <TL groups={groups} items={items} />

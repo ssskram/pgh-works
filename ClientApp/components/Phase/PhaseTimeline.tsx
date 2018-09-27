@@ -28,7 +28,7 @@ export default class PhaseTimeline extends React.Component<any, any> {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: pink; border-color: pink'
+                style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
             }
             items.push(actual)
         }
@@ -39,7 +39,7 @@ export default class PhaseTimeline extends React.Component<any, any> {
                 <br />
                 <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
                     <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
-                    <span style={{ backgroundColor: 'pink', padding: '8px' }}>Actual</span>
+                    <span style={{ backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
                 </div>
                 <div className='col-md-12'>
                     {this.props.phase &&

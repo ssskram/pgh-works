@@ -84,7 +84,7 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     editModal(drawdown) {
-        this.setState ({
+        this.setState({
             modalType: 'edit',
             modalIsOpen: true,
             selectedDrawdown: drawdown
@@ -126,7 +126,6 @@ export class ProgramsFunds extends React.Component<any, any> {
             modalType,
             modalIsOpen,
             selectedDrawdown,
-            selectedFundID,
             drawdowns
         } = this.state
 
@@ -180,11 +179,35 @@ export class ProgramsFunds extends React.Component<any, any> {
             }
         })
 
+        // calculating spend thermometer
+        let thermometer = {}
+        if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
+            const allocated = spent + encumbered + preencumbered
+            console.log(allocated)
+            const percentBudgetAllocated = allocated / this.props.budget * 100
+            console.log(percentBudgetAllocated)
+            const budgetRemaining = 100 - percentBudgetAllocated - 1 * 100
+            console.log(budgetRemaining)
+            thermometer = {
+                background: 'linear-gradient(to right, rgba(255, 167, 167, .6), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid rgba(255, 167, 167, .6)',
+                borderRadius: '100px',
+                margin: '10px 0px 20px 0px',
+                paddingBottom: '8px'
+            }
+        }
+
         return (
             <div>
                 <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
-
+                {this.props.budget != null && this.props.budget != 0 && this.props.budget != '' &&
+                    <div style={thermometer} className='col-md-12'>
+                        <div className='text-center'>
+                            <h3>Budget: <b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                        </div>
+                    </div>
+                }
                 <div className='col-md-12'>
                     <div className='col-md-4 text-center'>
                         <div className='panel'>
@@ -247,9 +270,9 @@ export class ProgramsFunds extends React.Component<any, any> {
                             closeModal={this.closeModal.bind(this)}
                             parentID={this.props.parentID}
                             projectID={this.props.projectID}
-                            parentType={this.props.parentType} 
+                            parentType={this.props.parentType}
                             drawdown={selectedDrawdown}
-                            edit/>
+                            edit />
                     }
                     {modalType == 'new' &&
                         <DrawdownForm

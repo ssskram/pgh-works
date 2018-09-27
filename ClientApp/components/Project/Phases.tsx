@@ -91,7 +91,7 @@ export class Phases extends React.Component<any, any> {
                     content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
-                    style: 'background-color: pink; border-color: pink'
+                    style: 'background-color: rgba(255, 167, 167, .6); border-color: rgba(255, 167, 167, .6)'
                 }
                 counter++
                 items.push(actual)

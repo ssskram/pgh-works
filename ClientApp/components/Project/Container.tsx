@@ -282,7 +282,8 @@ export class Project extends React.Component<any, any> {
             projectStatus,
             shape,
             expectedStartDate,
-            expectedEndDate
+            expectedEndDate,
+            projectBudget
         } = this.state
 
         // validation
@@ -313,7 +314,7 @@ export class Project extends React.Component<any, any> {
                     <Phases projectID={projectID} />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Drawdowns parentID={projectID} parentType={'Project'} />
+                    <Drawdowns parentID={projectID} parentType={'Project'} budget={projectBudget}/>
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
                     <Tags parentID={projectID} parentName={projectName} parentType='Project' />
