@@ -42,7 +42,6 @@ export class ProgramFundInputs extends React.Component<any, any> {
     componentDidMount() {
         let allFunds = this.props.funds
         if (this.props.edit) {
-            console.log(this.props)
             const fund = allFunds.find(fund => {
                 return fund.fundID == this.props.drawdown.fundID
             })

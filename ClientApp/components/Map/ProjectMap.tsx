@@ -4,10 +4,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-ma
 
 export default class ProjectMap extends React.Component<any, any> {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     render() {
         const bounds = new google.maps.LatLngBounds()
         if (this.props.shape.points) {

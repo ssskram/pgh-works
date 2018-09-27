@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e10d76525ba0fd214024"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4c763884521a994dea6b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6289,13 +6289,11 @@ var actionCreators = {
         })
             .then(function (response) { return response.json(); })
             .then(function (data) {
-            console.log(data);
             dispatch({ type: loadProjects, projects: data });
         });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
         var data = JSON.stringify(item);
-        console.log(data);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -11831,9 +11829,6 @@ var ProjectMap = (function (_super) {
     function ProjectMap() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ProjectMap.prototype.componentDidMount = function () {
-        console.log(this.props);
-    };
     ProjectMap.prototype.render = function () {
         var _this = this;
         var bounds = new google.maps.LatLngBounds();
@@ -32300,7 +32295,7 @@ var Tags = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 tags.length == 0 &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No tags")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No relevant assets")),
                 tags.length > 0 &&
                     tags.map(function (tag) {
                         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__["a" /* default */], { tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this) }));
@@ -59344,7 +59339,6 @@ var ProgramFundInputs = (function (_super) {
         var _this = this;
         var allFunds = this.props.funds;
         if (this.props.edit) {
-            console.log(this.props);
             var fund = allFunds.find(function (fund) {
                 return fund.fundID == _this.props.drawdown.fundID;
             });
@@ -60754,13 +60748,13 @@ var ImportShapes = (function (_super) {
         }
     };
     ImportShapes.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps.assets.length === 1) {
+        if (nextProps.assets.length == 1) {
             var foundAsset = nextProps.assets[0];
             this.setCenter(foundAsset.shape.points, 16);
             this.setState({
                 assets: nextProps.assets,
                 selectedAsset: foundAsset,
-                showInfowindow: true
+                showInfoWindow: true
             });
         }
         else {
@@ -60810,14 +60804,14 @@ var ImportShapes = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { zoom: zoom, defaultCenter: center },
                 assets && grabby != true &&
                     assets.map(function (asset, index) {
-                        if (asset.shape.points) {
+                        if (asset.shape) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points], onClick: function () { return _this.polygonSelection(asset); } })));
                         }
                     }),
                 assets && grabby == true &&
                     assets.map(function (asset, index) {
-                        if (asset.shape.points) {
+                        if (asset.shape) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [asset.shape.points] })));
                         }
@@ -62384,11 +62378,8 @@ var ProgramsFunds = (function (_super) {
         var thermometer = {};
         if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
             var allocated = spent + encumbered + preencumbered;
-            console.log(allocated);
             var percentBudgetAllocated = allocated / this.props.budget * 100;
-            console.log(percentBudgetAllocated);
             var budgetRemaining = 100 - percentBudgetAllocated - 1 * 100;
-            console.log(budgetRemaining);
             thermometer = {
                 background: 'linear-gradient(to right, rgba(255, 167, 167, .4), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
                 border: '1px solid rgba(255, 167, 167, .4)',
@@ -65036,7 +65027,7 @@ var TagDescription = (function (_super) {
         var isEnabled = tagDescription != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: tagDescription, name: "tagDescription", header: "Description", required: true, placeholder: "Provide a brief explanation for the tag", callback: this.handleChildChange.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_textarea__["a" /* default */], { value: tagDescription, name: "tagDescription", header: "Description", required: true, placeholder: "Provide a brief explanation of the relationship", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.props.back, className: 'btn btn-warning pull-left' }, "Back"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.postTag.bind(this), className: 'btn btn-success pull-right' }, "Submit"))));

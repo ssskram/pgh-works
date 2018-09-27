@@ -47,13 +47,11 @@ export const actionCreators = {
         })
             .then(response => response.json() as Promise<ProjectItem[]>)
             .then(data => {
-                console.log(data)
                 dispatch({ type: loadProjects, projects: data });
             });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item)
-        console.log(data)
         fetch('/api/projects/addProject', {
             method: 'POST',
             body: data,

@@ -115,7 +115,7 @@ export class Tags extends React.Component<any, any> {
                 <hr />
                 <div className='col-md-12'>
                     {tags.length == 0 &&
-                        <h4 className='text-center'><i>No tags</i></h4>
+                        <h4 className='text-center'><i>No relevant assets</i></h4>
                     }
                     {tags.length > 0 &&
                         tags.map((tag) => {

@@ -30,13 +30,13 @@ export default class ImportShapes extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.assets.length === 1) {
+        if (nextProps.assets.length == 1) {
             let foundAsset = nextProps.assets[0]
             this.setCenter(foundAsset.shape.points, 16)
             this.setState({
                 assets: nextProps.assets,
                 selectedAsset: foundAsset,
-                showInfowindow: true
+                showInfoWindow: true
             })
         } else {
             this.setState({
@@ -118,7 +118,7 @@ export default class ImportShapes extends React.Component<any, any> {
             >
                 {assets && grabby != true &&
                     assets.map((asset, index) => {
-                        if (asset.shape.points) {
+                        if (asset.shape) {
                             return (
                                 <div key={index}>
                                     <Polygon
@@ -133,7 +133,7 @@ export default class ImportShapes extends React.Component<any, any> {
                 }
                 {assets && grabby == true &&
                     assets.map((asset, index) => {
-                        if (asset.shape.points) {
+                        if (asset.shape) {
                             return (
                                 <div key={index}>
                                     <Polygon

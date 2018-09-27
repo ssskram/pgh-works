@@ -183,11 +183,8 @@ export class ProgramsFunds extends React.Component<any, any> {
         let thermometer = {}
         if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
             const allocated = spent + encumbered + preencumbered
-            console.log(allocated)
             const percentBudgetAllocated = allocated / this.props.budget * 100
-            console.log(percentBudgetAllocated)
             const budgetRemaining = 100 - percentBudgetAllocated - 1 * 100
-            console.log(budgetRemaining)
             thermometer = {
                 background: 'linear-gradient(to right, rgba(255, 167, 167, .4), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
                 border: '1px solid rgba(255, 167, 167, .4)',

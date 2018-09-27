@@ -45,7 +45,7 @@ export class TagDescription extends React.Component<any, any> {
                         name="tagDescription"
                         header="Description"
                         required={true}
-                        placeholder="Provide a brief explanation for the tag"
+                        placeholder="Provide a brief explanation of the relationship"
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>
