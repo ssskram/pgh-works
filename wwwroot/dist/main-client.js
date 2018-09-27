@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bf279beb3fee9ae72b8c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f7b93e77237158a14e6a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60214,6 +60214,7 @@ var AllPhases = (function (_super) {
         return _this;
     }
     AllPhases.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         // ping server
         this.props.ping();
     };
@@ -60345,6 +60346,7 @@ var AllProjects = (function (_super) {
         return _this;
     }
     AllProjects.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         // ping server
         this.props.ping();
     };
@@ -60493,6 +60495,7 @@ var MyProjects = (function (_super) {
         return _this;
     }
     MyProjects.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         // ping server
         this.props.ping();
     };
@@ -62527,6 +62530,7 @@ var FundViewer = (function (_super) {
         return _this;
     }
     FundViewer.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         this.findFund(this.props);
     };
     FundViewer.prototype.componentWillReceiveProps = function (nextProps) {
@@ -64595,6 +64599,7 @@ var AssetReport = (function (_super) {
         return _this;
     }
     AssetReport.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         if (this.props.match.params.id) {
             this.findAsset(this.props.match.params.id, false);
             this.findTags(this.props.match.params.id, false);

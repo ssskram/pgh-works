@@ -34,6 +34,8 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
+
         if (this.props.match.params.id) {
             this.findAsset(this.props.match.params.id, false)
             this.findTags(this.props.match.params.id, false)

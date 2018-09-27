@@ -29,6 +29,8 @@ export class AllPhases extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
+
         // ping server
         this.props.ping()
     }
