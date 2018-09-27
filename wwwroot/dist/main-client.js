@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e5cf74b3e89d92c8acca"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bf279beb3fee9ae72b8c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59291,6 +59291,8 @@ var Attachment = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_uuid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_currency_format__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_currency_format__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59309,6 +59311,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -59515,6 +59518,18 @@ var ProgramFundInputs = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                         "Fund year: ",
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundYear)),
+                    edit &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                "Amount: ",
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12_react_currency_format__, { value: drawdownAmount, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                            notes != '' &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                        "\"",
+                                        notes,
+                                        "\""))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__FormElements_select__["a" /* default */], { value: drawdownType, name: "drawdownType", header: 'Drawdown type', placeholder: 'Select type', required: true, onChange: this.handleChildSelect.bind(this), multi: false, options: types })),

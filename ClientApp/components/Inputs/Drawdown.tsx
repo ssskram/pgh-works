@@ -12,6 +12,7 @@ import Currency from '../FormElements/numbers'
 import Select from '../FormElements/select'
 import { Helmet } from "react-helmet"
 import { v1 as uuid } from 'uuid'
+import * as CurrencyFormat from 'react-currency-format'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
@@ -248,6 +249,14 @@ export class ProgramFundInputs extends React.Component<any, any> {
                         <h4>Fund: <b>{fundName}</b></h4>
                         <h4>Fund type: <b>{fundType}</b></h4>
                         <h4>Fund year: <b>{fundYear}</b></h4>
+                        {edit &&
+                            <div>
+                                <h4>Amount: <b><CurrencyFormat value={drawdownAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h4>
+                                {notes != '' &&
+                                    <h4><i>"{notes}"</i></h4>
+                                }
+                            </div>
+                        }
                         <hr />
                         <div className='col-md-12'>
                             <Select
