@@ -29,10 +29,10 @@ export interface ProjectItem {
     projectStatus: string
     notes: string
     projectBudget: string
-    shape: Coords[]
+    shape: Points[]
 }
 
-export interface Coords {
+export interface Points {
     lat: string
     lng: string
 }
@@ -47,6 +47,7 @@ export const actionCreators = {
         })
             .then(response => response.json() as Promise<ProjectItem[]>)
             .then(data => {
+                console.log(data)
                 dispatch({ type: loadProjects, projects: data });
             });
     },

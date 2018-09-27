@@ -74,7 +74,7 @@ export class MyProjects extends React.Component<any, any> {
                             <h4>PM: <b>{project.projectManager}</b></h4>
                         </div>
                         <div className='col-md-3'>
-                            <MapThumbnail shape={project.shape} />
+                            <MapThumbnail shape={project.shape.points} />
                         </div>
                         <div style={{ paddingTop: '25px' }} className='col-md-3'>
                             <Link to={link} className='btn btn-success'><h2><span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></h2></Link>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bd4c1a43bc2837ecb991"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cfb57e4ada966c92765a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6289,6 +6289,7 @@ var actionCreators = {
         })
             .then(function (response) { return response.json(); })
             .then(function (data) {
+            console.log(data);
             dispatch({ type: loadProjects, projects: data });
         });
     }; },
@@ -11833,9 +11834,11 @@ var ProjectMap = (function (_super) {
     ProjectMap.prototype.render = function () {
         var _this = this;
         var bounds = new google.maps.LatLngBounds();
-        var i;
-        for (i = 0; i < this.props.shape.length; i++) {
-            bounds.extend(this.props.shape[i]);
+        if (this.props.shape.points) {
+            var i;
+            for (i = 0; i < this.props.shape.points.length; i++) {
+                bounds.extend(this.props.shape.points[i]);
+            }
         }
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
@@ -11845,7 +11848,7 @@ var ProjectMap = (function (_super) {
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 15, ref: function (map) { if (map)
                     map.fitBounds(bounds); } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [_this.props.shape] }));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [_this.props.shape.points] }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null)));
@@ -60381,7 +60384,7 @@ var AllProjects = (function (_super) {
                                 "PM: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_MapThumbnail__["a" /* default */], { shape: project.shape })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_MapThumbnail__["a" /* default */], { shape: project.shape.points })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '25px' }, className: 'col-md-3' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
@@ -60530,7 +60533,7 @@ var MyProjects = (function (_super) {
                                 "PM: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_MapThumbnail__["a" /* default */], { shape: project.shape })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Map_MapThumbnail__["a" /* default */], { shape: project.shape.points })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '25px' }, className: 'col-md-3' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
@@ -60616,7 +60619,7 @@ var HomeMap = (function (_super) {
         });
     };
     HomeMap.prototype.polygonSelection = function (project) {
-        this.setCenter(project.shape);
+        this.setCenter(project.shape.points);
         this.setState({
             selectedProject: project,
             showInfowindow: true
@@ -60653,9 +60656,9 @@ var HomeMap = (function (_super) {
                 projects &&
                     projects.map(function (project, index) {
                         var color = __WEBPACK_IMPORTED_MODULE_3_randomcolor___default()();
-                        if (project.shape) {
+                        if (project.shape.points) {
                             return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { options: { fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4 }, paths: [project.shape], onClick: function () { return _this.polygonSelection(project); } })));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { options: { fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4 }, paths: [project.shape.points], onClick: function () { return _this.polygonSelection(project); } })));
                         }
                     }),
                 showInfowindow == true &&

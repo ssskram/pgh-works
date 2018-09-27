@@ -22,7 +22,7 @@ export default class HomeMap extends React.Component<any, any> {
     }
 
     polygonSelection(project) {
-        this.setCenter(project.shape)
+        this.setCenter(project.shape.points)
         this.setState({
             selectedProject: project,
             showInfowindow: true
@@ -75,12 +75,12 @@ export default class HomeMap extends React.Component<any, any> {
                 {projects &&
                     projects.map((project, index) => {
                         let color = randomcolor()
-                        if (project.shape) {
+                        if (project.shape.points) {
                             return (
                                 <div key={index}>
                                     <Polygon
                                         options={{fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4}}
-                                        paths={[project.shape]}
+                                        paths={[project.shape.points]}
                                         onClick={() => this.polygonSelection(project)}>
                                     </Polygon>
                                 </div>

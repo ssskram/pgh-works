@@ -37,12 +37,16 @@ namespace pghworks.Controllers {
             public string projectName { get; set; }
             public string projectStatus { get; set; }
             public string projectBudget { get; set; }
-            public List<Shape> shape { get; set; }
+            public Shape shape { get; set; }
         }
 
         public class Shape {
-            public double lat { get; set; }
-            public double lng { get; set; }
+            public List<Points> Points { get; set; }
+        }
+
+        public class Points {
+            public double Lat { get; set; }
+            public double Lng { get; set; }
         }
 
         // GET
@@ -67,12 +71,13 @@ namespace pghworks.Controllers {
                     projectName = item.projectName,
                     projectStatus = item.projectStatus,
                     projectBudget = item.projectBudget,
-                    shape = item.shape.ToObject<List<Shape>> ()
+                    shape = item.shape.ToObject<Shape> ()
                 };
                 AllProjects.Add (pj);
             }
             string cartProjects = getProjects ().Result;
             dynamic cartProjectsObject = JObject.Parse (cartProjects) ["ProjectsClass"];
+            Console.WriteLine (cartProjectsObject);
             foreach (var item in cartProjectsObject) {
                 Project pj = new Project () {
                     cartegraphID = item.Oid,
@@ -89,7 +94,7 @@ namespace pghworks.Controllers {
                     projectName = item.projectNameField,
                     projectStatus = item.projectStatusField,
                     projectBudget = item.projectBudgetField,
-                    shape = item.shape.ToObject<List<Shape>> ()
+                    shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllProjects.Add (pj);
             }
@@ -97,7 +102,7 @@ namespace pghworks.Controllers {
         }
         public async Task<string> getProjects () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass?fields=Oid,CgShape,projectNameField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectsClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);

@@ -6,10 +6,13 @@ export default class ProjectMap extends React.Component<any, any> {
 
     render() {
         const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < this.props.shape.length; i++) {
-            bounds.extend(this.props.shape[i]);
+        if (this.props.shape.points) {
+            var i
+            for (i = 0; i < this.props.shape.points.length; i++) {
+                bounds.extend(this.props.shape.points[i]);
+            }
         }
+
 
         const MapComponent = compose(
             withProps({
@@ -26,7 +29,7 @@ export default class ProjectMap extends React.Component<any, any> {
                 ref={(map) => { if (map) map.fitBounds(bounds) }}
             >
                 <Polygon
-                    paths={[this.props.shape]}
+                    paths={[this.props.shape.points]}
                 />
             </GoogleMap>
         )
