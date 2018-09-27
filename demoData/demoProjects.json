@@ -14,6 +14,7 @@
             "projectMembers": "",
             "projectName": "Point Park Extension Project",
             "projectStatus": "Programming",
+            "projectBudget": 0,
             "shape": [{
                     "lat": 40.44318404233651,
                     "lng": -80.00829458514659
@@ -71,6 +72,7 @@
             "projectMembers": "Ketzel, Andrea; Jacob, Matthew",
             "projectName": "Ft Duquesne Pedestrian Bridge Reconstruction",
             "projectStatus": "Complete",
+            "projectBudget": 0,
             "shape": [{
                     "lat": 40.4424829031629,
                     "lng": -80.00928386821151
