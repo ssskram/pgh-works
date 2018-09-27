@@ -25,6 +25,7 @@ export interface MilestoneItem {
     percentComplete: number
     dateCompleted: string
     created: string
+    notes: string
 }
 
 export const actionCreators = {
@@ -87,7 +88,8 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
                     dueDate: action.item.dueDate,
                     dateCompleted: action.item.dateCompleted,
                     percentComplete: action.item.percentComplete,
-                    created: action.item.created
+                    created: action.item.created,
+                    notes: action.item.notes
                 } : milestone
                 )
             };

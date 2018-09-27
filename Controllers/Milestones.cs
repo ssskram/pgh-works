@@ -27,6 +27,7 @@ namespace pghworks.Controllers {
             public int percentComplete { get; set; }
             public string phaseID { get; set; }
             public string projectID { get; set; }
+            public string notes { get; set; }
         }
 
         // GET
@@ -45,7 +46,8 @@ namespace pghworks.Controllers {
                     milestoneName = item.milestoneName,
                     percentComplete = item.percentComplete,
                     phaseID = item.phaseID,
-                    projectID = item.projectID
+                    projectID = item.projectID,
+                    notes = item.notes
                 };
                 AllMilestones.Add(ms);
             }

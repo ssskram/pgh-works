@@ -125,6 +125,9 @@ export class Milestones extends React.Component<any, any> {
             accessor: 'dueDate',
             Cell: props => <span className={classnames({redText: moment(props.value).isBefore(moment().format('MM/DD/YYYY'))})}> {props.value}</span>
         }, {
+            Header: 'Notes',
+            accessor: 'notes'
+        }, {
             Header: '',
             accessor: 'milestoneID',
             Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
@@ -143,6 +146,10 @@ export class Milestones extends React.Component<any, any> {
         }, {
             Header: 'Due date',
             accessor: 'dueDate',
+            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
+        }, {
+            Header: 'Notes',
+            accessor: 'notes',
             Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
         }, {
             Header: 'Completed',

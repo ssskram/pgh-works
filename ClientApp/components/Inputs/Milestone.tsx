@@ -18,6 +18,7 @@ export class MilestoneInputs extends React.Component<any, any> {
             milestoneID: '',
             cartegraphID: '',
             milestoneName: '',
+            notes: '',
             percentComplete: 0,
             dueDate: '',
             dateCompleted: '',
@@ -67,6 +68,7 @@ export class MilestoneInputs extends React.Component<any, any> {
         const {
             milestoneName,
             dueDate,
+            notes
         } = this.state
 
         // validation
@@ -77,7 +79,7 @@ export class MilestoneInputs extends React.Component<any, any> {
         return (
             <div>
                 <h3>New milestone</h3>
-                <hr/>
+                <hr />
                 <div className='col-md-12'>
                     <Input
                         value={milestoneName}
@@ -97,6 +99,17 @@ export class MilestoneInputs extends React.Component<any, any> {
                         header="Due date"
                         placeholder="Select a date"
                         callback={this.handleDueDate.bind(this)}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Input
+                        value={notes}
+                        required={false}
+                        name="notes"
+                        header="Notes"
+                        placeholder="Other relevant information"
+                        callback={this.handleChildChange.bind(this)}
                     />
                 </div>
 
