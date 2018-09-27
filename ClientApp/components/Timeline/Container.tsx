@@ -79,7 +79,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
-                    style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
+                    style: 'background-color: rgba(0, 153, 255, 0.3); border-color: rgba(0, 153, 255, 0.3)'
                 }
                 index = index + 1
                 items.push(expected)
@@ -102,7 +102,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color:rgba(126, 177, 220, .4); border-color: green; border-width: 2px;'
+                    style: 'background-color:rgba(0, 153, 255, 0.3); border-color: green; border-width: 2px;'
                 }
                 index = index + 1
                 items.push(expected)
@@ -147,7 +147,7 @@ export class Timeline extends React.Component<any, any> {
                 {timeline.length > 0 &&
                     <div>
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                            <span style={{ border: '2px solid rgba(126, 177, 220, .4)', backgroundColor: 'rgba(126, 177, 220, .4)', padding: '8px' }}>Expected</span>
+                            <span style={{ border: '2px solid rgba(0, 153, 255, 0.3)', backgroundColor: 'rgba(0, 153, 255, 0.3)', padding: '8px' }}>Expected</span>
                             <span style={{ border: '2px solid rgba(255, 167, 167, .6)', backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
                             <span style={{ border: '2px solid green', padding: '8px' }}>Phase</span>
                         </div>

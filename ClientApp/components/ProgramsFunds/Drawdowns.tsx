@@ -189,8 +189,8 @@ export class ProgramsFunds extends React.Component<any, any> {
             const budgetRemaining = 100 - percentBudgetAllocated - 1 * 100
             console.log(budgetRemaining)
             thermometer = {
-                background: 'linear-gradient(to right, rgba(255, 167, 167, .6), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
-                border: '1px solid rgba(255, 167, 167, .6)',
+                background: 'linear-gradient(to right, rgba(255, 167, 167, .4), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid rgba(255, 167, 167, .4)',
                 borderRadius: '100px',
                 margin: '10px 0px 20px 0px',
                 paddingBottom: '8px'

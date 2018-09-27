@@ -78,7 +78,7 @@ export class Phases extends React.Component<any, any> {
                 content: phase.phaseName,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
-                style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
+                style: 'background-color: rgba(0, 153, 255, 0.3); border-color: rgba(0, 153, 255, 0.3)'
             }
             counter++
             items.push(expected)
