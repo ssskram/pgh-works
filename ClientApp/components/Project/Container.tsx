@@ -59,6 +59,7 @@ export class Project extends React.Component<any, any> {
             projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
+            projectBudget: '',
             notes: '',
             created: '',
             shape: []
@@ -105,6 +106,7 @@ export class Project extends React.Component<any, any> {
             projectDepartment: project.projectDepartment,
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
+            projectBudget: project.projectBudget,
             notes: project.notes,
             created: project.created,
             shape: project.shape
@@ -152,8 +154,8 @@ export class Project extends React.Component<any, any> {
         this.setState({ actualCost: value })
     }
 
-    handleExpectedCost(value) {
-        this.setState({ expectedCost: value })
+    handleCurrency(value) {
+        this.setState({ projectBudget: value })
     }
 
     handleDate(date, name) {
@@ -340,8 +342,7 @@ export class Project extends React.Component<any, any> {
                                 handleSelect={this.handleChildSelect.bind(this)}
                                 handleMulti={this.handleMultiSelect.bind(this)}
                                 handleDate={this.handleDate.bind(this)}
-                                handleExpectedCost={this.handleExpectedCost.bind(this)}
-                                handleActualCost={this.handleActualCost.bind(this)}
+                                handleCurrency={this.handleCurrency.bind(this)}
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>

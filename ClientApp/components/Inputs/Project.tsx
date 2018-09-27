@@ -8,6 +8,7 @@ import Input from '../FormElements/input'
 import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
+import Currency from '../FormElements/numbers'
 
 const statuses = [
     { value: 'Programming', label: 'Programming', name: 'projectStatus' },
@@ -82,6 +83,10 @@ export class ProjectInputs extends React.Component<any, any> {
         this.props.handleDate(date, name)
     }
 
+    handleCurrency(event, maskedvalue, floatvalue) {
+        this.props.handleCurrency(floatvalue)
+    }
+
     public render() {
         const {
             projectName,
@@ -94,6 +99,7 @@ export class ProjectInputs extends React.Component<any, any> {
             projectDepartment,
             projectDescription,
             projectStatus,
+            projectBudget,
             notes,
             update
         } = this.props.description
@@ -126,6 +132,18 @@ export class ProjectInputs extends React.Component<any, any> {
                         multi={false}
                         required={true}
                         options={statuses}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Currency
+                        value={projectBudget}
+                        name="projectBudget"
+                        header="Project budget"
+                        required={false}
+                        placeholder="Enter an amount"
+                        prefix="$"
+                        callback={this.handleCurrency.bind(this)}
                     />
                 </div>
 

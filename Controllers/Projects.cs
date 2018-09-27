@@ -37,6 +37,7 @@ namespace pghworks.Controllers {
             public string projectMembers { get; set; }
             public string projectName { get; set; }
             public string projectStatus { get; set; }
+            public string projectBudget { get; set; }
             public List<Shape> shape { get; set; }
         }
 

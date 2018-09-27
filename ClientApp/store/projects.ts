@@ -29,6 +29,7 @@ export interface ProjectItem {
     projectStatus: string
     notes: string
     created: string
+    projectBudget: string
     shape: Coords[]
 }
 
@@ -105,6 +106,7 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectDepartment: action.item.projectDepartment,
                     projectDescription: action.item.projectDescription,
                     projectStatus: action.item.projectStatus,
+                    projectBudget: action.item.projectBudget,
                     notes: action.item.notes,
                     created: action.item.created,
                     shape: action.item.shape

@@ -26,6 +26,7 @@ export class ProjectDescription extends React.Component<any, any> {
             projectMembers: '',
             projectDepartment: '',
             projectDescription: '',
+            projectBudget: '',
             notes: ''
         }
     }
@@ -54,6 +55,10 @@ export class ProjectDescription extends React.Component<any, any> {
         }
     }
 
+    handleCurrency(value) {
+        this.setState({ projectBudget: value })
+    }
+    
     post() {
         this.props.post(this.state)
     }
@@ -89,6 +94,7 @@ export class ProjectDescription extends React.Component<any, any> {
                     handleSelect={this.handleChildSelect.bind(this)}
                     handleMulti={this.handleMultiSelect.bind(this)}
                     handleDate={this.handleDate.bind(this)}
+                    handleCurrency={this.handleCurrency.bind(this)}
                 />
 
                 <div className='row'>
