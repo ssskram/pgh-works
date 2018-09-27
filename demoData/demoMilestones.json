@@ -8,7 +8,8 @@
             "milestoneName": "Acquire mahogany",
             "percentComplete": 100,
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
-            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "notes": "Make sure it's fresh"
         },
         {
             "cartegraphID": "",
@@ -19,7 +20,8 @@
             "milestoneName": "Carve mahagony",
             "percentComplete": 100,
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
-            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "notes": ""
         },
         {
             "cartegraphID": "",
@@ -30,7 +32,8 @@
             "milestoneName": "Hire engineer",
             "percentComplete": 100,
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
-            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "notes": ""
         },
         {
             "cartegraphID": "",
@@ -41,7 +44,8 @@
             "milestoneName": "Engineer completes design",
             "percentComplete": 0,
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
-            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3"
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "notes": "Dbl check work"
         },
         {
             "cartegraphID": "",
@@ -52,7 +56,8 @@
             "milestoneName": "Talk",
             "percentComplete": 100,
             "phaseID": "615cc620-b6a1-11e8-930d-dd084cae8ed3",
-            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
+            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "notes": "Loudly"
         },
         {
             "cartegraphID": "",
@@ -74,7 +79,8 @@
             "milestoneName": "Make designs",
             "percentComplete": 100,
             "phaseID": "976022d0-b6a1-11e8-930d-dd084cae8ed3",
-            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3"
+            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "notes": "Important ones"
         },
         {
             "cartegraphID": "",
