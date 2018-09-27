@@ -26,7 +26,6 @@ namespace pghworks.Controllers {
             public string actualEndDate { get; set; }
             public string actualStartDate { get; set; }
             public string cartegraphID { get; set; }
-            public string created { get; set; }
             public string expectedStartDate { get; set; }
             public string expectedEndDate { get; set; }
             public string notes { get; set; }
@@ -48,14 +47,13 @@ namespace pghworks.Controllers {
 
         // GET
         [HttpGet ("[action]")]
-        public async Task<object> loadProjects () {
+        public object loadProjects () {
             List<Project> AllProjects = new List<Project> ();
             string demoProjects = System.IO.File.ReadAllText ("demoData/demoProjects.json");
             dynamic demoProjectsObject = JObject.Parse (demoProjects) ["projects"];
             foreach (var item in demoProjectsObject) {
                 Project pj = new Project () {
                     cartegraphID = item.cartegraphID,
-                    created = item.created,
                     projectID = item.projectID,
                     notes = item.notes,
                     actualEndDate = item.actualEndDate,
@@ -73,25 +71,24 @@ namespace pghworks.Controllers {
                 };
                 AllProjects.Add (pj);
             }
-            string cartProjects = getProjects().Result;
+            string cartProjects = getProjects ().Result;
             dynamic cartProjectsObject = JObject.Parse (cartProjects) ["ProjectsClass"];
             foreach (var item in cartProjectsObject) {
                 Project pj = new Project () {
-                    cartegraphID = item.cartegraphID,
-                    created = item.created,
-                    projectID = item.projectID,
-                    notes = item.notes,
-                    actualEndDate = item.actualEndDate,
-                    actualStartDate = item.actualStartDate,
-                    expectedEndDate = item.expectedEndDate,
-                    expectedStartDate = item.expectedStartDate,
-                    projectDepartment = item.projectDepartment,
-                    projectDescription = item.projectDescription,
-                    projectManager = item.projectManager,
-                    projectMembers = item.projectMembers,
-                    projectName = item.projectName,
-                    projectStatus = item.projectStatus,
-                    projectBudget = item.projectBudget,
+                    cartegraphID = item.Oid,
+                    projectID = item.projectIDField,
+                    notes = item.projectNotesField,
+                    actualEndDate = item.projectEndDateField,
+                    actualStartDate = item.projectStartDateField,
+                    expectedEndDate = item.expectedEndDateField,
+                    expectedStartDate = item.expectedStartDateField,
+                    projectDepartment = item.projectDepartmentField,
+                    projectDescription = item.projectDescriptionField,
+                    projectManager = item.projectManagerField,
+                    projectMembers = item.projectMembersField,
+                    projectName = item.projectNameField,
+                    projectStatus = item.projectStatusField,
+                    projectBudget = item.projectBudgetField,
                     shape = item.shape.ToObject<List<Shape>> ()
                 };
                 AllProjects.Add (pj);
@@ -111,7 +108,39 @@ namespace pghworks.Controllers {
         // POST
         [HttpPost ("[action]")]
         public async Task addProject ([FromBody] Project model) {
-            await new log ().postLog (_userManager.GetUserName(HttpContext.User), "Post", "Project", model.projectName, model.projectID);
+            // var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            // var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
+            // client.DefaultRequestHeaders.Clear ();
+            // client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
+            // client.DefaultRequestHeaders.Authorization =
+            //     new AuthenticationHeaderValue ("Basic", key);
+            // var json =
+            //     String.Format ("{{ 'cgRequestsClass' : [ {{ 'BuildingNameField' : '{0}' , 'IssueField' : '{1}' , 'DescriptionField' : '{2}', 'SubmitterPhoneNumberField' : '{3}', 'SubmittedByField' : '{4}', 'LocationDescriptionField' : '{5}', 'InternalRequestDepartmentField' : '{6}' }} ] }}",
+            //         model.actualEndDate, // 0
+            //         model.actualEndDate, // 1
+            //         model.expectedStartDate, // 2
+            //         model.expectedEndDate, // 3
+            //         model.notes, // 4
+            //         model.projectDepartment, // 5
+            //         model.projectDescription, // 6
+            //         model.projectID, // 7
+            //         model.projectManager, // 8
+            //         model.projectMembers, // 9
+            //         model.projectName, // 10
+            //         model.projectStatus, // 11
+            //         model.projectBudget, // 12
+            //         model.shape); // 13
+            // client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
+            // try {
+            //     StringContent strContent = new StringContent (json);
+            //     strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
+            //     HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
+            //     response.EnsureSuccessStatusCode ();
+            //     var content = await response.Content.ReadAsStringAsync ();
+            // } catch (Exception ex) {
+            //     System.Diagnostics.Debug.WriteLine (ex.Message);
+            // }
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Project", model.projectName, model.projectID);
             await generateDocLibrary (model.projectName.ToString ());
         }
 

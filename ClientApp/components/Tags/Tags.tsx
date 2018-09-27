@@ -73,7 +73,6 @@ export class Tags extends React.Component<any, any> {
             parentName: this.props.parentName,
             taggedAssetOID: tag.taggedAssetOID,
             taggedAssetName: tag.taggedAssetName,
-            dateCreated: moment().format('MM/DD/YYYY'),
             tagType: tag.tagType,
             tagDescription: tag.tagDescription,
         }

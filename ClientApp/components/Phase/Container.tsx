@@ -49,7 +49,6 @@ export class Phase extends React.Component<any, any> {
             phaseStatus: '',
             percentComplete: '',
             notes: '',
-            created: '',
 
             // parent project
             projectID: '',
@@ -96,8 +95,7 @@ export class Phase extends React.Component<any, any> {
             phaseStatus: phase.phaseStatus,
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
-            notes: phase.notes,
-            created: phase.created
+            notes: phase.notes
         }, function (this) {
             this.findProject(this.state.projectID)
         })

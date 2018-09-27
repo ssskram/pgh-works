@@ -53,8 +53,7 @@ export class PhaseInputs extends React.Component<any, any> {
             actualEndDate: '',
             phaseDescription: '',
             phaseStatus: '',
-            notes: '',
-            created: ''
+            notes: ''
         }
         this.handleDate = this.handleDate.bind(this)
     }
@@ -78,8 +77,7 @@ export class PhaseInputs extends React.Component<any, any> {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
-                notes: phase.notes,
-                created: phase.created
+                notes: phase.notes
             })
         }
         else {
@@ -87,8 +85,7 @@ export class PhaseInputs extends React.Component<any, any> {
             const guid: string = uuid()
             this.setState({
                 projectID: this.props.projectID,
-                phaseID: guid,
-                created: moment().format('MM/DD/YYYY')
+                phaseID: guid
             })
         }
     }

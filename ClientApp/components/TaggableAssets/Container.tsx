@@ -108,7 +108,6 @@ export class TaggableAssetSelection extends React.Component<any, any> {
             parentName: this.props.parentName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: moment().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: description,
         }

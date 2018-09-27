@@ -17,8 +17,7 @@ export default class ProjectCard extends React.Component<any, any> {
             projectDepartment,
             projectDescription,
             projectStatus,
-            notes,
-            created
+            notes
         } = this.props.project
 
         const settings = {
@@ -62,10 +61,6 @@ export default class ProjectCard extends React.Component<any, any> {
                                 <h2>{projectMembers}</h2>
                             </div>
                         }
-                        <div className='col-md-12 text-center'>
-                            <h3><u>Project created</u></h3>
-                            <h2>{created}</h2>
-                        </div>
                         {notes &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Notes</u></h3>

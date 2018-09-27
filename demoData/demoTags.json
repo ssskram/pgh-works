@@ -1,6 +1,5 @@
 {
     "tags": [{
-            "dateCreated": "09/12/2018",
             "parentID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
             "parentName": "Ft Pitt Pedestrian Bridge Reconstruction",
             "parentType": "Project",
@@ -11,7 +10,6 @@
             "taggedAssetOID": "378927944"
         },
         {
-            "dateCreated": "09/12/2018",
             "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
             "parentName": "Point Park Extension Project",
             "parentType": "Project",
@@ -22,7 +20,6 @@
             "taggedAssetOID": "378927944"
         },
         {
-            "dateCreated": "09/12/2018",
             "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
             "parentName": "Point Park Extension Project",
             "parentType": "Project",

@@ -21,8 +21,7 @@ export class MilestoneInputs extends React.Component<any, any> {
             notes: '',
             percentComplete: 0,
             dueDate: '',
-            dateCompleted: '',
-            created: '',
+            dateCompleted: ''
         }
     }
     componentDidMount() {
@@ -31,8 +30,7 @@ export class MilestoneInputs extends React.Component<any, any> {
         this.setState({
             projectID: this.props.projectID,
             phaseID: this.props.phaseID,
-            milestoneID: guid,
-            created: moment().format('MM/DD/YYYY')
+            milestoneID: guid
         })
     }
 

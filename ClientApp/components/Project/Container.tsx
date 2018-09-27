@@ -61,7 +61,6 @@ export class Project extends React.Component<any, any> {
             projectStatus: '',
             projectBudget: '',
             notes: '',
-            created: '',
             shape: []
         }
         this.setProjectState = this.setProjectState.bind(this);
@@ -108,7 +107,6 @@ export class Project extends React.Component<any, any> {
             projectStatus: project.projectStatus,
             projectBudget: project.projectBudget,
             notes: project.notes,
-            created: project.created,
             shape: project.shape
         }, function (this) {
             this.setState({
@@ -235,7 +233,6 @@ export class Project extends React.Component<any, any> {
             parentName: this.state.projectName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: moment().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: 'Within project bounds',
         }

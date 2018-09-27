@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "452f58986024df92fc90"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd4c1a43bc2837ecb991"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6294,6 +6294,7 @@ var actionCreators = {
     }; },
     addProject: function (item) { return function (dispatch, getState) {
         var data = JSON.stringify(item);
+        console.log(data);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -6322,7 +6323,7 @@ var reducer = function (state, incomingAction) {
         case addProject:
             return __assign({}, state, { projects: state.projects.concat(action.item) });
         case updateProject:
-            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, projectBudget: action.item.projectBudget, notes: action.item.notes, created: action.item.created, shape: action.item.shape }) : project; }) });
+            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, projectBudget: action.item.projectBudget, notes: action.item.notes, shape: action.item.shape }) : project; }) });
     }
     return state || unloadedState;
 };
@@ -6501,7 +6502,7 @@ var reducer = function (state, incomingAction) {
         case addPhase:
             return __assign({}, state, { phases: state.phases.concat(action.item) });
         case updatePhase:
-            return __assign({}, state, { phases: state.phases.map(function (phase) { return phase.phaseID === action.item.phaseID ? __assign({}, phase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, phaseID: action.item.phaseID, phaseName: action.item.phaseName, phaseFollows: action.item.phaseFollows, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, phaseDescription: action.item.phaseDescription, phaseStatus: action.item.phaseStatus, notes: action.item.notes, created: action.item.created }) : phase; }) });
+            return __assign({}, state, { phases: state.phases.map(function (phase) { return phase.phaseID === action.item.phaseID ? __assign({}, phase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, phaseID: action.item.phaseID, phaseName: action.item.phaseName, phaseFollows: action.item.phaseFollows, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, phaseDescription: action.item.phaseDescription, phaseStatus: action.item.phaseStatus, notes: action.item.notes }) : phase; }) });
     }
     return state || unloadedState;
 };
@@ -9797,7 +9798,7 @@ var reducer = function (state, incomingAction) {
         case addMilestone:
             return __assign({}, state, { milestones: state.milestones.concat(action.item) });
         case updateMilestone:
-            return __assign({}, state, { milestones: state.milestones.map(function (milestone) { return milestone.milestoneID === action.item.milestoneID ? __assign({}, milestone, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, milestoneID: action.item.milestoneID, phaseID: action.item.phaseID, milestoneName: action.item.milestoneName, dueDate: action.item.dueDate, dateCompleted: action.item.dateCompleted, percentComplete: action.item.percentComplete, created: action.item.created, notes: action.item.notes }) : milestone; }) });
+            return __assign({}, state, { milestones: state.milestones.map(function (milestone) { return milestone.milestoneID === action.item.milestoneID ? __assign({}, milestone, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, milestoneID: action.item.milestoneID, phaseID: action.item.phaseID, milestoneName: action.item.milestoneName, dueDate: action.item.dueDate, dateCompleted: action.item.dateCompleted, percentComplete: action.item.percentComplete, notes: action.item.notes }) : milestone; }) });
         case deleteMilestone:
             var milestonesCopy = state.milestones.slice();
             milestonesCopy.splice(milestonesCopy.indexOf(action.item), 1);
@@ -9873,7 +9874,7 @@ var reducer = function (state, incomingAction) {
         case addSubphase:
             return __assign({}, state, { subphases: state.subphases.concat(action.item) });
         case updateSubphase:
-            return __assign({}, state, { subphases: state.subphases.map(function (subphase) { return subphase.subphaseID === action.item.subphaseID ? __assign({}, subphase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, subphaseID: action.item.subphaseID, subphaseName: action.item.subphaseName, startDate: action.item.startDate, endDate: action.item.endDate, subphaseDescription: action.item.subphaseDescription, subphaseStatus: action.item.subphaseStatus, percentComplete: action.item.percentComplete, notes: action.item.notes, created: action.item.created }) : subphase; }) });
+            return __assign({}, state, { subphases: state.subphases.map(function (subphase) { return subphase.subphaseID === action.item.subphaseID ? __assign({}, subphase, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, subphaseID: action.item.subphaseID, subphaseName: action.item.subphaseName, startDate: action.item.startDate, endDate: action.item.endDate, subphaseDescription: action.item.subphaseDescription, subphaseStatus: action.item.subphaseStatus, percentComplete: action.item.percentComplete, notes: action.item.notes }) : subphase; }) });
         case deleteSubphase:
             var subphasesCopy = state.subphases.slice();
             subphasesCopy.splice(subphasesCopy.indexOf(action.item), 1);
@@ -31349,8 +31350,7 @@ var PhaseInputs = (function (_super) {
             actualEndDate: '',
             phaseDescription: '',
             phaseStatus: '',
-            notes: '',
-            created: ''
+            notes: ''
         };
         _this.handleDate = _this.handleDate.bind(_this);
         return _this;
@@ -31374,8 +31374,7 @@ var PhaseInputs = (function (_super) {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
-                notes: phase.notes,
-                created: phase.created
+                notes: phase.notes
             });
         }
         else {
@@ -31383,8 +31382,7 @@ var PhaseInputs = (function (_super) {
             var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_uuid__["v1"])();
             this.setState({
                 projectID: this.props.projectID,
-                phaseID: guid,
-                created: __WEBPACK_IMPORTED_MODULE_9_moment__().format('MM/DD/YYYY')
+                phaseID: guid
             });
         }
     };
@@ -31718,8 +31716,7 @@ var SubphaseInput = (function (_super) {
             subphaseDescription: '',
             subphaseStatus: '',
             percentComplete: '',
-            notes: '',
-            created: ''
+            notes: ''
         };
         return _this;
     }
@@ -31741,8 +31738,7 @@ var SubphaseInput = (function (_super) {
                 subphaseDescription: subphase.subphaseDescription,
                 subphaseStatus: subphase.subphaseStatus,
                 percentComplete: subphase.percentComplete,
-                notes: subphase.notes,
-                created: subphase.created
+                notes: subphase.notes
             });
         }
         else {
@@ -31751,8 +31747,7 @@ var SubphaseInput = (function (_super) {
             this.setState({
                 projectID: this.props.projectID,
                 phaseID: this.props.phaseID,
-                subphaseID: guid,
-                created: __WEBPACK_IMPORTED_MODULE_10_moment__().format('MM/DD/YYYY')
+                subphaseID: guid
             });
         }
     };
@@ -32015,8 +32010,6 @@ var NewShape = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_point_in_polygon__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uuid__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_uuid__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -32035,7 +32028,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -32136,7 +32128,6 @@ var TaggableAssetSelection = (function (_super) {
             parentName: this.props.parentName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: __WEBPACK_IMPORTED_MODULE_9_moment__().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: description,
         };
@@ -32177,10 +32168,8 @@ var TaggableAssetSelection = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Tag__ = __webpack_require__(636);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__ = __webpack_require__(674);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_uuid__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_uuid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_uuid__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -32199,7 +32188,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -32257,7 +32245,7 @@ var Tags = (function (_super) {
         return newArray;
     };
     Tags.prototype.postTag = function (tag) {
-        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_uuid__["v1"])();
+        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_uuid__["v1"])();
         var tagLoad = {
             tagID: guid,
             parentID: this.props.parentID,
@@ -32265,7 +32253,6 @@ var Tags = (function (_super) {
             parentName: this.props.parentName,
             taggedAssetOID: tag.taggedAssetOID,
             taggedAssetName: tag.taggedAssetName,
-            dateCreated: __WEBPACK_IMPORTED_MODULE_6_moment__().format('MM/DD/YYYY'),
             tagType: tag.tagType,
             tagDescription: tag.tagDescription,
         };
@@ -59615,8 +59602,7 @@ var MilestoneInputs = (function (_super) {
             notes: '',
             percentComplete: 0,
             dueDate: '',
-            dateCompleted: '',
-            created: '',
+            dateCompleted: ''
         };
         return _this;
     }
@@ -59626,8 +59612,7 @@ var MilestoneInputs = (function (_super) {
         this.setState({
             projectID: this.props.projectID,
             phaseID: this.props.phaseID,
-            milestoneID: guid,
-            created: __WEBPACK_IMPORTED_MODULE_7_moment__().format('MM/DD/YYYY')
+            milestoneID: guid
         });
     };
     MilestoneInputs.prototype.handleChildChange = function (event) {
@@ -61454,7 +61439,6 @@ var Phase = (function (_super) {
             phaseStatus: '',
             percentComplete: '',
             notes: '',
-            created: '',
             // parent project
             projectID: '',
             projectName: '',
@@ -61498,8 +61482,7 @@ var Phase = (function (_super) {
             phaseStatus: phase.phaseStatus,
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
-            notes: phase.notes,
-            created: phase.created
+            notes: phase.notes
         }, function () {
             this.findProject(this.state.projectID);
         });
@@ -61889,7 +61872,7 @@ var PhaseCard = (function (_super) {
         window.scrollTo(0, 0);
     };
     PhaseCard.prototype.render = function () {
-        var _a = this.props.phase, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes, created = _a.created;
+        var _a = this.props.phase, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes;
         var settings = {
             dots: true,
             infinite: true,
@@ -61913,10 +61896,6 @@ var PhaseCard = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseDescription)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Phase created")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, created)),
                     notes &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
@@ -62981,7 +62960,7 @@ var ProjectCard = (function (_super) {
         window.scrollTo(0, 0);
     };
     ProjectCard.prototype.render = function () {
-        var _a = this.props.project, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, created = _a.created;
+        var _a = this.props.project, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes;
         var settings = {
             dots: true,
             infinite: true,
@@ -63018,10 +62997,6 @@ var ProjectCard = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project members")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectMembers)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project created")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, created)),
                     notes &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
@@ -63148,7 +63123,6 @@ var Project = (function (_super) {
             projectStatus: '',
             projectBudget: '',
             notes: '',
-            created: '',
             shape: []
         };
         _this.setProjectState = _this.setProjectState.bind(_this);
@@ -63192,7 +63166,6 @@ var Project = (function (_super) {
             projectStatus: project.projectStatus,
             projectBudget: project.projectBudget,
             notes: project.notes,
-            created: project.created,
             shape: project.shape
         }, function () {
             this.setState({
@@ -63311,7 +63284,6 @@ var Project = (function (_super) {
             parentName: this.state.projectName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: __WEBPACK_IMPORTED_MODULE_18_moment__().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: 'Within project bounds',
         };
@@ -63868,14 +63840,12 @@ var TaggableAssetSelection = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Geolocate_Geolocate__ = __webpack_require__(666);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Description_Description__ = __webpack_require__(665);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Map_ProjectMap__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_uuid__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_uuid__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_point_in_polygon__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_point_in_polygon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_react_responsive_modal__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__AssetTypeSelection__ = __webpack_require__(663);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_uuid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_point_in_polygon__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_point_in_polygon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__AssetTypeSelection__ = __webpack_require__(663);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -63894,7 +63864,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -63935,8 +63904,7 @@ var ProjectDefinition = (function (_super) {
             projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            notes: '',
-            created: __WEBPACK_IMPORTED_MODULE_11_moment__().format('MM/DD/YYYY')
+            notes: ''
         };
         return _this;
     }
@@ -63944,7 +63912,7 @@ var ProjectDefinition = (function (_super) {
         // ping server
         this.props.ping();
         // generate uuid for projectID
-        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12_uuid__["v1"])();
+        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11_uuid__["v1"])();
         this.setState({
             projectID: guid
         });
@@ -64005,7 +63973,6 @@ var ProjectDefinition = (function (_super) {
                     projectStatus: this.state.projectStatus,
                     projectBudget: this.state.projectBudget,
                     notes: this.state.notes,
-                    created: this.state.created,
                     shape: this.state.shape
                 };
                 this.props.addProject(projectLoad);
@@ -64036,7 +64003,6 @@ var ProjectDefinition = (function (_super) {
                 projectStatus: this.state.projectStatus,
                 projectBudget: this.state.projectBudget,
                 notes: this.state.notes,
-                created: this.state.created,
                 shape: this.state.shape
             };
             this.props.addProject(projectLoad);
@@ -64067,7 +64033,7 @@ var ProjectDefinition = (function (_super) {
         assets.forEach(function (asset) {
             if (asset.shape) {
                 asset.shape.points.forEach(function (point) {
-                    var ins = __WEBPACK_IMPORTED_MODULE_13_point_in_polygon___default()([point.lat, point.lng], shape);
+                    var ins = __WEBPACK_IMPORTED_MODULE_12_point_in_polygon___default()([point.lat, point.lng], shape);
                     if (ins == true && !componentAssets.includes(asset)) {
                         componentAssets.push(asset);
                     }
@@ -64086,7 +64052,7 @@ var ProjectDefinition = (function (_super) {
         });
     };
     ProjectDefinition.prototype.createTag = function (asset) {
-        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12_uuid__["v1"])();
+        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11_uuid__["v1"])();
         var tagLoad = {
             tagID: guid,
             parentID: this.state.projectID,
@@ -64094,7 +64060,6 @@ var ProjectDefinition = (function (_super) {
             parentName: this.state.projectName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: __WEBPACK_IMPORTED_MODULE_11_moment__().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: 'Within project bounds',
         };
@@ -64127,12 +64092,12 @@ var ProjectDefinition = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Map_ProjectMap__["a" /* default */], { shape: shape }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Description_Description__["a" /* default */], { back: this.back.bind(this), post: this.post.bind(this), shape: shape }))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
                 }, center: true },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__AssetTypeSelection__["a" /* default */], { receiveTypes: this.receiveTypes.bind(this) })))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__AssetTypeSelection__["a" /* default */], { receiveTypes: this.receiveTypes.bind(this) })))));
     };
     return ProjectDefinition;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

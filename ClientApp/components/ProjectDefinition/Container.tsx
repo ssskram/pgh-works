@@ -42,8 +42,7 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            notes: '',
-            created: moment().format('MM/DD/YYYY')
+            notes: ''
         }
     }
 
@@ -117,7 +116,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                     projectStatus: this.state.projectStatus,
                     projectBudget: this.state.projectBudget,
                     notes: this.state.notes,
-                    created: this.state.created,
                     shape: this.state.shape
                 }
                 this.props.addProject(projectLoad)
@@ -149,7 +147,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                 projectStatus: this.state.projectStatus,
                 projectBudget: this.state.projectBudget,
                 notes: this.state.notes,
-                created: this.state.created,
                 shape: this.state.shape
             }
             this.props.addProject(projectLoad)
@@ -208,7 +205,6 @@ export class ProjectDefinition extends React.Component<any, any> {
             parentName: this.state.projectName,
             taggedAssetOID: asset.assetOID,
             taggedAssetName: asset.assetName,
-            dateCreated: moment().format('MM/DD/YYYY'),
             tagType: asset.assetType,
             tagDescription: 'Within project bounds',
         }

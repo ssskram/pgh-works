@@ -19,7 +19,6 @@ namespace pghworks.Controllers {
         HttpClient client = new HttpClient ();
 
         public class Tag {
-            public string dateCreated { get; set; }
             public string parentID { get; set; }
             public string parentName { get; set; }
             public string parentType { get; set; }
@@ -38,7 +37,6 @@ namespace pghworks.Controllers {
             List<Tag> AllTags = new List<Tag> ();
             foreach (var item in tagObject) {
                 Tag tg = new Tag () {
-                    dateCreated = item.dateCreated,
                     parentID = item.parentID,
                     parentName = item.parentName,
                     parentType = item.parentType,

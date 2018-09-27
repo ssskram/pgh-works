@@ -19,7 +19,6 @@ namespace pghworks.Controllers {
 
         public class Milestone { 
             public string cartegraphID { get; set; }
-            public string created { get; set; }
             public string dateCompleted { get; set; }
             public string dueDate { get; set; }
             public string milestoneID { get; set; }
@@ -39,7 +38,6 @@ namespace pghworks.Controllers {
             foreach (var item in milestonesObject) {
                 Milestone ms = new Milestone () {
                     cartegraphID = item.cartegraphID,
-                    created = item.created,
                     dateCompleted = item.dateCompleted,
                     dueDate = item.dueDate,
                     milestoneID = item.milestoneID,

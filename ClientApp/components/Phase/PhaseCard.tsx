@@ -35,8 +35,7 @@ export default class PhaseCard extends React.Component<any, any> {
         const {
             phaseDescription,
             phaseStatus,
-            notes,
-            created
+            notes
         } = this.props.phase
 
         const settings = {
@@ -65,10 +64,6 @@ export default class PhaseCard extends React.Component<any, any> {
                                 <h2>{phaseDescription}</h2>
                             </div>
                         }
-                        <div className='col-md-12 text-center'>
-                            <h3><u>Phase created</u></h3>
-                            <h2>{created}</h2>
-                        </div>
                         {notes &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Notes</u></h3>

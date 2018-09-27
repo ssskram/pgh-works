@@ -28,7 +28,6 @@ export interface ProjectItem {
     projectDescription: string
     projectStatus: string
     notes: string
-    created: string
     projectBudget: string
     shape: Coords[]
 }
@@ -53,6 +52,7 @@ export const actionCreators = {
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item)
+        console.log(data)
         fetch('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -108,7 +108,6 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectStatus: action.item.projectStatus,
                     projectBudget: action.item.projectBudget,
                     notes: action.item.notes,
-                    created: action.item.created,
                     shape: action.item.shape
                 } : project
                 )

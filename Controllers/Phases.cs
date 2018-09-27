@@ -22,7 +22,6 @@ namespace pghworks.Controllers {
             public string actualEndDate { get; set; }
             public string actualStartDate { get; set; }
             public string cartegraphID { get; set; }
-            public string created { get; set; }
             public string expectedEndDate { get; set; }
             public string expectedStartDate { get; set; }
             public string notes { get; set; }
@@ -46,7 +45,6 @@ namespace pghworks.Controllers {
                     actualEndDate = item.actualEndDate,
                     actualStartDate = item.actualStartDate,
                     cartegraphID = item.cartegraphID,
-                    created = item.created,
                     expectedEndDate = item.expectedEndDate,
                     expectedStartDate = item.expectedStartDate,
                     notes = item.notes,

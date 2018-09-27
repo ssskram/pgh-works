@@ -1,7 +1,6 @@
 {
     "subphases": [{
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "05/26/2018",
             "notes": "",
             "percentComplete": 42,
@@ -15,7 +14,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "06/21/2018",
             "notes": "",
             "percentComplete": 40,
@@ -29,7 +27,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "11/16/2018",
             "notes": "",
             "percentComplete": 10,
@@ -43,7 +40,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "11/17/2018",
             "notes": "",
             "percentComplete": 15,
@@ -57,7 +53,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "12/01/2018",
             "notes": "",
             "percentComplete": 0,
@@ -71,7 +66,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "03/24/2017",
             "notes": "",
             "percentComplete": 85,
@@ -85,7 +79,6 @@
         },
         {
             "cartegraphID": "",
-            "created": "09/12/2018",
             "endDate": "09/29/2017",
             "notes": "",
             "percentComplete": 95,

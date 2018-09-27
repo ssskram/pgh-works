@@ -21,7 +21,6 @@ export interface TagItem {
     parentName: string
     taggedAssetOID: string
     taggedAssetName: string
-    dateCreated: string
     tagType: string
     tagDescription: string
 }
