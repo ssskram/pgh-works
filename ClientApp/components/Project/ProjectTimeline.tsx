@@ -18,7 +18,7 @@ export default class ProjectTimeline extends React.Component<any, any> {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+            style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
         }
         items.push(expected)
 
@@ -38,7 +38,7 @@ export default class ProjectTimeline extends React.Component<any, any> {
                 <br />
                 <br />
                 <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                    <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Expected</span>
+                    <span style={{ backgroundColor: 'rgba(126, 177, 220, .4)', padding: '8px' }}>Expected</span>
                     <span style={{ backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
                 </div>
                 <div className='col-md-12'>

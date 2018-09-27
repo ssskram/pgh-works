@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "34bbc959e3081b89fe39"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e5cf74b3e89d92c8acca"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61939,7 +61939,7 @@ var PhaseTimeline = (function (_super) {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+            style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -61956,8 +61956,8 @@ var PhaseTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(126, 177, 220, .4)', padding: '8px' } }, "Expected"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .4)', padding: '8px' } }, "Actual")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.phase &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
     };
@@ -63478,7 +63478,7 @@ var Phases = (function (_super) {
                 content: phase.phaseName,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
-                style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+                style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
             };
             counter++;
             items.push(expected);
@@ -63564,7 +63564,7 @@ var ProjectTimeline = (function (_super) {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+            style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -63581,7 +63581,7 @@ var ProjectTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(126, 177, 220, .4)', padding: '8px' } }, "Expected"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.project &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline_Timeline__["a" /* default */], { items: items }))));
@@ -65372,7 +65372,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
-                    style: 'background-color: #d5ddf6; border-color: #d5ddf6'
+                    style: 'background-color: rgba(126, 177, 220, .4); border-color: rgba(126, 177, 220, .4)'
                 };
                 index = index + 1;
                 items.push(expected);
@@ -65396,7 +65396,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color: #d5ddf6; border-color: green; border-width: 2px;'
+                    style: 'background-color:rgba(126, 177, 220, .4); border-color: green; border-width: 2px;'
                 };
                 index = index + 1;
                 items.push(expected);
@@ -65441,7 +65441,7 @@ var Timeline = (function (_super) {
             timeline.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #d5ddf6', backgroundColor: '#d5ddf6', padding: '8px' } }, "Expected"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid rgba(126, 177, 220, .4)', backgroundColor: 'rgba(126, 177, 220, .4)', padding: '8px' } }, "Expected"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid rgba(255, 167, 167, .6)', backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid green', padding: '8px' } }, "Phase")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Timeline__["a" /* default */], { groups: groups, items: items }),
