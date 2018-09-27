@@ -68,6 +68,7 @@ namespace pghworks.Controllers {
                     projectMembers = item.projectMembers,
                     projectName = item.projectName,
                     projectStatus = item.projectStatus,
+                    projectBudget = item.projectBudget,
                     shape = item.shape.ToObject<List<Shape>> ()
                 };
                 AllProjects.Add (pj);
