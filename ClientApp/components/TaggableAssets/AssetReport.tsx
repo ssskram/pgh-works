@@ -59,7 +59,7 @@ export class AssetReport extends React.Component<any, any> {
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
-                assetShape: asset.shape.points
+                assetShape: asset.shape
             })
         }
     }

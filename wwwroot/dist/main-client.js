@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cfb57e4ada966c92765a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "39b29927622761124704"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60891,12 +60891,12 @@ var PolygonGeneration = (function (_super) {
     function PolygonGeneration() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleOverlayComplete = function (evt) {
-            var shape = [];
+            var shape = { points: [] };
             var vertices = evt.overlay.getPath();
             for (var i = 0; i < vertices.getLength(); i++) {
                 var xy = vertices.getAt(i);
                 var coord = { lat: xy.lat(), lng: xy.lng() };
-                shape.push(coord);
+                shape.points.push(coord);
             }
             _this.props.passShape(shape);
         };
@@ -64601,7 +64601,7 @@ var AssetReport = (function (_super) {
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
-                assetShape: asset.shape.points
+                assetShape: asset.shape
             });
         }
     };

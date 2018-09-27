@@ -6,13 +6,13 @@ import DrawingManager from "react-google-maps/lib/components/drawing/DrawingMana
 export default class PolygonGeneration extends React.Component<any, any> {
 
     handleOverlayComplete = (evt) => {
-        let shape: any[] = []
+        let shape = { points: [] as any }
         let vertices = evt.overlay.getPath()
 
         for (var i = 0; i < vertices.getLength(); i++) {
             var xy = vertices.getAt(i);
-            var coord = { lat : xy.lat(), lng: xy.lng() }
-            shape.push(coord)
+            var coord = { lat: xy.lat(), lng: xy.lng() }
+            shape.points.push(coord)
         }
 
         this.props.passShape(shape)
