@@ -61,7 +61,7 @@ export class Project extends React.Component<any, any> {
             projectStatus: '',
             projectBudget: '',
             notes: '',
-            shape: []
+            shape: {}
         }
         this.setProjectState = this.setProjectState.bind(this);
         this.findProject = this.findProject.bind(this);

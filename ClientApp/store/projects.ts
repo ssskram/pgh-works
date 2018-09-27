@@ -29,7 +29,13 @@ export interface ProjectItem {
     projectStatus: string
     notes: string
     projectBudget: string
-    shape: Points[]
+    shape: Shape
+}
+
+export interface Shape {
+    points: Points[]
+    breaks: string[]
+    shapeType: "3"
 }
 
 export interface Points {
@@ -51,7 +57,8 @@ export const actionCreators = {
             });
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
-        let data = JSON.stringify(item)
+        let data = JSON.stringify(item).replace(/'/g, '')
+        console.log(data)
         fetch('/api/projects/addProject', {
             method: 'POST',
             body: data,

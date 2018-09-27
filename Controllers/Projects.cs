@@ -113,38 +113,39 @@ namespace pghworks.Controllers {
         // POST
         [HttpPost ("[action]")]
         public async Task addProject ([FromBody] Project model) {
-            // var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            // var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
-            // client.DefaultRequestHeaders.Clear ();
-            // client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
-            // client.DefaultRequestHeaders.Authorization =
-            //     new AuthenticationHeaderValue ("Basic", key);
-            // var json =
-            //     String.Format ("{{ 'cgRequestsClass' : [ {{ 'BuildingNameField' : '{0}' , 'IssueField' : '{1}' , 'DescriptionField' : '{2}', 'SubmitterPhoneNumberField' : '{3}', 'SubmittedByField' : '{4}', 'LocationDescriptionField' : '{5}', 'InternalRequestDepartmentField' : '{6}' }} ] }}",
-            //         model.actualEndDate, // 0
-            //         model.actualEndDate, // 1
-            //         model.expectedStartDate, // 2
-            //         model.expectedEndDate, // 3
-            //         model.notes, // 4
-            //         model.projectDepartment, // 5
-            //         model.projectDescription, // 6
-            //         model.projectID, // 7
-            //         model.projectManager, // 8
-            //         model.projectMembers, // 9
-            //         model.projectName, // 10
-            //         model.projectStatus, // 11
-            //         model.projectBudget, // 12
-            //         model.shape); // 13
-            // client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
-            // try {
-            //     StringContent strContent = new StringContent (json);
-            //     strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
-            //     HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
-            //     response.EnsureSuccessStatusCode ();
-            //     var content = await response.Content.ReadAsStringAsync ();
-            // } catch (Exception ex) {
-            //     System.Diagnostics.Debug.WriteLine (ex.Message);
-            // }
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            var json =
+                String.Format ("{{ 'ProjectsClass' : [ {{ 'projectEndDateField' : '{0}' , 'projectStartDateField' : '{1}' , 'expectedStartDateField' : '{2}', 'expectedEndDateField' : '{3}', 'projectNotesField' : '{4}', 'projectDepartmentField' : '{5}', 'projectDescriptionField' : '{6}', 'projectIDField' : '{7}', 'projectManagerField' : '{8}', 'projectMembersField' : '{9}', 'projectNameField' : '{10}', 'projectStatusField' : '{11}', 'projectBudgetField' : '{12}', 'CgShape' : {{ 'Points' : '{13}', 'Breaks' : '[]', 'ShapeType': '3' }}  }} ] }}",
+                    model.actualEndDate, // 0
+                    model.actualStartDate, // 1
+                    model.expectedStartDate, // 2
+                    model.expectedEndDate, // 3
+                    model.notes, // 4
+                    model.projectDepartment, // 5
+                    model.projectDescription, // 6
+                    model.projectID, // 7
+                    model.projectManager, // 8
+                    model.projectMembers, // 9
+                    model.projectName, // 10
+                    model.projectStatus, // 11
+                    model.projectBudget, // 12
+                    model.shape.Points); // 13
+            client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
+            try {
+                StringContent strContent = new StringContent (json);
+                strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
+                HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
+                response.EnsureSuccessStatusCode ();
+                var content = await response.Content.ReadAsStringAsync ();
+            } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine (ex.Message);
+                Console.WriteLine(ex);
+            }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Project", model.projectName, model.projectID);
             await generateDocLibrary (model.projectName.ToString ());
         }

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4c763884521a994dea6b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aff4a7d83f0078b1e732"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6293,7 +6293,8 @@ var actionCreators = {
         });
     }; },
     addProject: function (item) { return function (dispatch, getState) {
-        var data = JSON.stringify(item);
+        var data = JSON.stringify(item).replace(/'/g, '');
+        console.log(data);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -63120,7 +63121,7 @@ var Project = (function (_super) {
             projectStatus: '',
             projectBudget: '',
             notes: '',
-            shape: []
+            shape: {}
         };
         _this.setProjectState = _this.setProjectState.bind(_this);
         _this.findProject = _this.findProject.bind(_this);
@@ -63890,7 +63891,7 @@ var ProjectDefinition = (function (_super) {
             modalIsOpen: false,
             // project state
             projectID: '',
-            shape: [],
+            shape: {},
             projectName: '',
             expectedStartDate: '',
             expectedEndDate: '',
@@ -63915,9 +63916,13 @@ var ProjectDefinition = (function (_super) {
         });
     };
     ProjectDefinition.prototype.setShape = function (shape, type) {
+        shape.ShapeType = "3";
+        shape.Breaks = [];
         this.setState({
             shape: shape,
             shapeType: type
+        }, function () {
+            console.log(this.state);
         });
     };
     ProjectDefinition.prototype.setName = function (name) {

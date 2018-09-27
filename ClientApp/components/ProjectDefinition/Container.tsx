@@ -30,7 +30,7 @@ export class ProjectDefinition extends React.Component<any, any> {
 
             // project state
             projectID: '',
-            shape: [],
+            shape: {},
             projectName: '',
             expectedStartDate: '',
             expectedEndDate: '',
@@ -57,9 +57,13 @@ export class ProjectDefinition extends React.Component<any, any> {
     }
 
     setShape(shape, type) {
+        shape.ShapeType = "3"
+        shape.Breaks = []
         this.setState({
             shape: shape,
             shapeType: type
+        }, function (this) {
+            console.log(this.state)
         })
     }
 
