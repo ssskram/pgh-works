@@ -136,7 +136,6 @@ namespace pghworks.Controllers {
             CgProject cgModel = new CgProject () {
                 projectEndDateField = model.actualEndDate,
                 projectStartDateField = model.actualStartDate,
-                Oid = model.cartegraphID,
                 expectedStartDateField = model.expectedStartDate,
                 expectedEndDateField = model.expectedEndDate,
                 projectNotesField = model.notes,
@@ -151,7 +150,6 @@ namespace pghworks.Controllers {
                 CgShape = model.shape
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
-            Console.WriteLine (cgLoad);
             var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
             var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
             client.DefaultRequestHeaders.Clear ();
@@ -174,6 +172,48 @@ namespace pghworks.Controllers {
             await generateDocLibrary (model.projectName.ToString ());
         }
 
+        // PuUT
+        [HttpPut ("[action]")]
+        public async Task updateProject ([FromBody] Project model) {
+            CgProject cgModel = new CgProject () {
+                projectEndDateField = model.actualEndDate,
+                Oid = model.cartegraphID,
+                projectStartDateField = model.actualStartDate,
+                expectedStartDateField = model.expectedStartDate,
+                expectedEndDateField = model.expectedEndDate,
+                projectNotesField = model.notes,
+                projectDepartmentField = model.projectDepartment,
+                projectDescriptionField = model.projectDescription,
+                projectIDField = model.projectID,
+                projectManagerField = model.projectManager,
+                projectMembersField = model.projectMembers,
+                projectNameField = model.projectName,
+                projectStatusField = model.projectStatus,
+                projectBudgetField = model.projectBudget,
+                CgShape = model.shape
+            };
+            string cgLoad = JsonConvert.SerializeObject (cgModel);
+            Console.WriteLine(cgLoad);
+            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
+            var cartegraphUrl = String.Format("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass/");
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "PUT");
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string json = "{ 'ProjectsClass' : [" + cgLoad + "] }";
+            client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
+            try {
+                StringContent strContent = new StringContent (json);
+                strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
+                HttpResponseMessage response = client.PutAsync (cartegraphUrl, strContent).Result;
+                response.EnsureSuccessStatusCode ();
+                var content = await response.Content.ReadAsStringAsync ();
+            } catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine (ex.Message);
+                Console.WriteLine (ex);
+            }
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Project", model.projectName, model.projectID);
+        }
         public async Task generateDocLibrary (string projectName) {
             await refreshtoken ();
             var token = refreshtoken ().Result;

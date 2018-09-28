@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "caa4f075aaf0ba82aa43"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a61b2d89970b71279c17"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6294,7 +6294,6 @@ var actionCreators = {
     }; },
     addProject: function (item) { return function (dispatch, getState) {
         var data = JSON.stringify(item).replace(/'/g, '');
-        console.log(data);
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -6309,7 +6308,16 @@ var actionCreators = {
         });
     }; },
     updateProject: function (item) { return function (dispatch, getState) {
-        // put to cartegraph
+        var data = JSON.stringify(item).replace(/'/g, '');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/projects/updateProject', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         dispatch({
             type: updateProject, item: item
         });

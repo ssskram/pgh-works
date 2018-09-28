@@ -58,7 +58,6 @@ export const actionCreators = {
     },
     addProject: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item).replace(/'/g, '')
-        console.log(data)
         fetch('/api/projects/addProject', {
             method: 'POST',
             body: data,
@@ -73,9 +72,16 @@ export const actionCreators = {
         })
     },
     updateProject: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        // put to cartegraph
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/projects/updateProject', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updateProject, item
         })
