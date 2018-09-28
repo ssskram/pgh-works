@@ -181,13 +181,14 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         // calculating spend thermometer
         let thermometer = {}
+        let allocated = 0
         if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
-            const allocated = spent + encumbered + preencumbered
+            allocated = spent + encumbered + preencumbered
             const percentBudgetAllocated = allocated / this.props.budget * 100
             const budgetRemaining = 100 - percentBudgetAllocated - 1 * 100
             thermometer = {
-                background: 'linear-gradient(to right, rgba(255, 167, 167, .4), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
-                border: '1px solid rgba(255, 167, 167, .4)',
+                background: 'linear-gradient(to right, red, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid red',
                 borderRadius: '100px',
                 margin: '10px 0px 20px 0px',
                 paddingBottom: '8px'
@@ -198,10 +199,12 @@ export class ProgramsFunds extends React.Component<any, any> {
             <div>
                 <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
                 <hr />
-                {this.props.budget != null && this.props.budget != 0 && this.props.budget != '' &&
-                    <div style={thermometer} className='col-md-12'>
-                        <div className='text-center'>
-                            <h3>Budget: <b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                {this.props.budget != 0 &&
+                    <div>
+                        
+                        <h4 className='pull-right'><div className='text-center'>Budget</div><b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h4>
+                        <h4 className='pull-left'><div className='text-center'>Spent</div><CurrencyFormat value={allocated} displayType={'text'} thousandSeparator={true} prefix={'$'}/></h4>
+                        <div style={thermometer} className='col-md-12'>
                         </div>
                     </div>
                 }

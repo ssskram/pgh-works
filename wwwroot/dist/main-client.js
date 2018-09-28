@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a61b2d89970b71279c17"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1d2989c71fb49492df0f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62385,13 +62385,14 @@ var ProgramsFunds = (function (_super) {
         });
         // calculating spend thermometer
         var thermometer = {};
+        var allocated = 0;
         if (this.props.budget != null && this.props.budget != 0 && this.props.budget != '') {
-            var allocated = spent + encumbered + preencumbered;
+            allocated = spent + encumbered + preencumbered;
             var percentBudgetAllocated = allocated / this.props.budget * 100;
             var budgetRemaining = 100 - percentBudgetAllocated - 1 * 100;
             thermometer = {
-                background: 'linear-gradient(to right, rgba(255, 167, 167, .4), ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
-                border: '1px solid rgba(255, 167, 167, .4)',
+                background: 'linear-gradient(to right, red, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid red',
                 borderRadius: '100px',
                 margin: '10px 0px 20px 0px',
                 paddingBottom: '8px'
@@ -62405,13 +62406,16 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', className: 'btn pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            this.props.budget != null && this.props.budget != 0 && this.props.budget != '' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            "Budget: ",
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: this.props.budget, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
+            this.props.budget != 0 &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-right' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Budget"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: this.props.budget, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-left' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Spent"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: allocated, displayType: 'text', thousandSeparator: true, prefix: '$' })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
