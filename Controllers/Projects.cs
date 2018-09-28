@@ -40,8 +40,28 @@ namespace pghworks.Controllers {
             public Shape shape { get; set; }
         }
 
+        public class CgProject {
+            public string projectEndDateField { get; set; }
+            public string projectStartDateField { get; set; }
+            public string Oid { get; set; }
+            public string expectedStartDateField { get; set; }
+            public string expectedEndDateField { get; set; }
+            public string projectNotesField { get; set; }
+            public string projectDepartmentField { get; set; }
+            public string projectDescriptionField { get; set; }
+            public string projectIDField { get; set; }
+            public string projectManagerField { get; set; }
+            public string projectMembersField { get; set; }
+            public string projectNameField { get; set; }
+            public string projectStatusField { get; set; }
+            public string projectBudgetField { get; set; }
+            public Shape CgShape { get; set; }
+        }
+
         public class Shape {
             public List<Points> Points { get; set; }
+            public string[] Breaks { get; set; }
+            public string ShapeType { get; set; }
         }
 
         public class Points {
@@ -113,28 +133,32 @@ namespace pghworks.Controllers {
         // POST
         [HttpPost ("[action]")]
         public async Task addProject ([FromBody] Project model) {
-            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            CgProject cgModel = new CgProject () {
+                projectEndDateField = model.actualEndDate,
+                projectStartDateField = model.actualStartDate,
+                Oid = model.cartegraphID,
+                expectedStartDateField = model.expectedStartDate,
+                expectedEndDateField = model.expectedEndDate,
+                projectNotesField = model.notes,
+                projectDepartmentField = model.projectDepartment,
+                projectDescriptionField = model.projectDescription,
+                projectIDField = model.projectID,
+                projectManagerField = model.projectManager,
+                projectMembersField = model.projectMembers,
+                projectNameField = model.projectName,
+                projectStatusField = model.projectStatus,
+                projectBudgetField = model.projectBudget,
+                CgShape = model.shape
+            };
+            string cgLoad = JsonConvert.SerializeObject (cgModel);
+            Console.WriteLine (cgLoad);
+            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
             var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
-            var json =
-                String.Format ("{{ 'ProjectsClass' : [ {{ 'projectEndDateField' : '{0}' , 'projectStartDateField' : '{1}' , 'expectedStartDateField' : '{2}', 'expectedEndDateField' : '{3}', 'projectNotesField' : '{4}', 'projectDepartmentField' : '{5}', 'projectDescriptionField' : '{6}', 'projectIDField' : '{7}', 'projectManagerField' : '{8}', 'projectMembersField' : '{9}', 'projectNameField' : '{10}', 'projectStatusField' : '{11}', 'projectBudgetField' : '{12}', 'CgShape' : {{ 'Points' : '{13}', 'Breaks' : '[]', 'ShapeType': '3' }}  }} ] }}",
-                    model.actualEndDate, // 0
-                    model.actualStartDate, // 1
-                    model.expectedStartDate, // 2
-                    model.expectedEndDate, // 3
-                    model.notes, // 4
-                    model.projectDepartment, // 5
-                    model.projectDescription, // 6
-                    model.projectID, // 7
-                    model.projectManager, // 8
-                    model.projectMembers, // 9
-                    model.projectName, // 10
-                    model.projectStatus, // 11
-                    model.projectBudget, // 12
-                    model.shape.Points); // 13
+            string json = "{ 'ProjectsClass' : [" + cgLoad + "] }";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -144,7 +168,7 @@ namespace pghworks.Controllers {
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
-                Console.WriteLine(ex);
+                Console.WriteLine (ex);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Project", model.projectName, model.projectID);
             await generateDocLibrary (model.projectName.ToString ());
