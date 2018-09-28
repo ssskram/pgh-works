@@ -160,7 +160,6 @@ export class Phase extends React.Component<any, any> {
                 <hr />
                 <br />
                 <h2 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
-                <h4></h4>
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>

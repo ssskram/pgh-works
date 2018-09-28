@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1d2989c71fb49492df0f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bf09b9bbeedf989b6487"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61547,7 +61547,6 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px' }, src: './images/phaseGrey.png' })),
                 " ",
                 phaseName),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__PhaseCard__["a" /* default */], { phase: this.state })),
             expectedStartDate && expectedEndDate &&
