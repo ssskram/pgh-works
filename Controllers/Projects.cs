@@ -97,7 +97,6 @@ namespace pghworks.Controllers {
             }
             string cartProjects = getProjects ().Result;
             dynamic cartProjectsObject = JObject.Parse (cartProjects) ["ProjectsClass"];
-            Console.WriteLine (cartProjectsObject);
             foreach (var item in cartProjectsObject) {
                 Project pj = new Project () {
                     cartegraphID = item.Oid,
@@ -166,7 +165,6 @@ namespace pghworks.Controllers {
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
-                Console.WriteLine (ex);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Project", model.projectName, model.projectID);
             await generateDocLibrary (model.projectName.ToString ());
@@ -175,9 +173,27 @@ namespace pghworks.Controllers {
         // PuUT
         [HttpPut ("[action]")]
         public async Task updateProject ([FromBody] Project model) {
+            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
+            string id;
+            if (model.cartegraphID != null) {
+                id = model.cartegraphID;
+            } else {
+                Console.WriteLine("HERE!");
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectsClass?filter=(([projectID] is equal to \"{0}\"))",
+                        model.projectID); // 0
+                Console.WriteLine(getURL);
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                Console.WriteLine(content);
+                dynamic project = JObject.Parse (content) ["ProjectsClass"][0];
+                id = project.Oid;
+            }
             CgProject cgModel = new CgProject () {
                 projectEndDateField = model.actualEndDate,
-                Oid = model.cartegraphID,
+                Oid = id,
                 projectStartDateField = model.actualStartDate,
                 expectedStartDateField = model.expectedStartDate,
                 expectedEndDateField = model.expectedEndDate,
@@ -193,9 +209,7 @@ namespace pghworks.Controllers {
                 CgShape = model.shape
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
-            Console.WriteLine(cgLoad);
-            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
-            var cartegraphUrl = String.Format("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass/");
+            var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass/");
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "PUT");
             client.DefaultRequestHeaders.Authorization =
@@ -210,7 +224,6 @@ namespace pghworks.Controllers {
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
-                Console.WriteLine (ex);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Project", model.projectName, model.projectID);
         }
