@@ -45,6 +45,7 @@ namespace pghworks.Controllers {
             public string phaseIDField { get; set; }
             public string projectIDField { get; set; }
             public string NotesField { get; set; }
+            public string subphaseType = "Milestone";
         }
 
         // GET

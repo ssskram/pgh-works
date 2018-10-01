@@ -37,21 +37,37 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            .then(response => response.json())
+            .then(response => response.json() as Promise<SubphaseItem[]>)
             .then(data => {
                 dispatch({ type: loadSubphases, subphases: data });
             });
     },
     addSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/subphases/addSubphase', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addSubphase, item
         })
     },
     updateSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        // put to cartegraph
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/subphases/updateSubphase', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updateSubphase, item
         })
