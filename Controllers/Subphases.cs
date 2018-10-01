@@ -74,24 +74,24 @@ namespace pghworks.Controllers {
                 };
                 AllSubphases.Add (sp);
             }
-            string cartSubphases = getSubphases ().Result;
-            dynamic cartSubphasesObject = JObject.Parse (cartSubphases) ["cgTasksClass"];
-            foreach (var item in cartSubphasesObject) {
-                Subphase ph = new Subphase () {
-                    cartegraphID = item.Oid,
-                    percentComplete = item.perecentCompleteField,
-                    phaseID = item.phaseIDField,
-                    projectID = item.projectIDField,
-                    endDate = item.subphaseEndDate,
-                    notes = item.NotesField,
-                    startDate = item.subphaseStartDate,
-                    subphaseDescription = item.TaskDescriptionField,
-                    subphaseID = item.subphaseIDField,
-                    subphaseName = item.taskNameField,
-                    subphaseStatus = item.SubphaseStatusField
-                };
-                AllSubphases.Add (ph);
-            }
+            // string cartSubphases = getSubphases ().Result;
+            // dynamic cartSubphasesObject = JObject.Parse (cartSubphases) ["cgTasksClass"];
+            // foreach (var item in cartSubphasesObject) {
+            //     Subphase ph = new Subphase () {
+            //         cartegraphID = item.Oid,
+            //         percentComplete = item.perecentCompleteField,
+            //         phaseID = item.phaseIDField,
+            //         projectID = item.projectIDField,
+            //         endDate = item.subphaseEndDate,
+            //         notes = item.NotesField,
+            //         startDate = item.subphaseStartDate,
+            //         subphaseDescription = item.TaskDescriptionField,
+            //         subphaseID = item.subphaseIDField,
+            //         subphaseName = item.taskNameField,
+            //         subphaseStatus = item.SubphaseStatusField
+            //     };
+            //     AllSubphases.Add (ph);
+            // }
             return AllSubphases;
         }
         public async Task<string> getSubphases () {

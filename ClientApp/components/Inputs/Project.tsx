@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import * as Statuses from '../../store/GETS/status'
 import * as Personnel from '../../store/GETS/personnel'
 import Input from '../FormElements/input'
 import TextArea from '../FormElements/textarea'
@@ -265,11 +264,9 @@ export class ProjectInputs extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.statuses,
         ...state.personnel
     }),
     ({
-        ...Statuses.actionCreators,
         ...Personnel.actionCreators
     })
 )(ProjectInputs as any) as typeof ProjectInputs
