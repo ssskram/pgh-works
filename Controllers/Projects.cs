@@ -149,7 +149,7 @@ namespace pghworks.Controllers {
                 CgShape = model.shape
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
-            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
@@ -173,12 +173,11 @@ namespace pghworks.Controllers {
         // PuUT
         [HttpPut ("[action]")]
         public async Task updateProject ([FromBody] Project model) {
-            var key = "QVBJQWRtaW46Y2FydGVncmFwaDE=";
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
             if (model.cartegraphID != null) {
                 id = model.cartegraphID;
             } else {
-                Console.WriteLine("HERE!");
                 var getURL =
                     String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectsClass?filter=(([projectID] is equal to \"{0}\"))",
                         model.projectID); // 0
@@ -227,6 +226,7 @@ namespace pghworks.Controllers {
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Project", model.projectName, model.projectID);
         }
+        
         public async Task generateDocLibrary (string projectName) {
             await refreshtoken ();
             var token = refreshtoken ().Result;
