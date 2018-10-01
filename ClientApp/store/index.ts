@@ -8,7 +8,6 @@ import * as Milestones from './milestones'
 import * as Subphases from './subphases'
 import * as Attachments from './attachments'
 import * as Tags from './tags'
-import * as Statuses from './GETS/status'
 import * as TaggableAssets from './GETS/taggableAssets'
 import * as Personnel from './GETS/personnel'
 import * as Timeline from './timeline'
@@ -24,7 +23,6 @@ export interface ApplicationState {
     subphases: Subphases.SubphaseItem
     attachments: Attachments.AttachmentState
     tags: Tags.TagState
-    statuses: Statuses.StatusState,
     taggableAssets: TaggableAssets.AssetState
     personnel: Personnel.PersonnelState,
     timeline: Timeline.TimelineState
@@ -41,7 +39,6 @@ export const reducers = {
     subphases: Subphases.reducer,
     attachments: Attachments.reducer,
     tags: Tags.reducer,
-    statuses: Statuses.reducer,
     taggableAssets: TaggableAssets.reducer,
     personnel: Personnel.reducer,
     timeline: Timeline.reducer

@@ -33,13 +33,23 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            .then(response => response.json())
+            .then(response => response.json() as Promise<TagItem[]>)
             .then(data => {
                 dispatch({ type: loadTags, tags: data });
             });
     },
 
     addTag: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/tags/addTag', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addTag, item
         })
