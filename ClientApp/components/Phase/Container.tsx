@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
@@ -14,6 +14,7 @@ import Tags from '../Tags/Tags'
 import Milestones from './Milestones'
 import Subphases from './SubPhases'
 import Timeline from './PhaseTimeline'
+import PhaseFollows from './../Inputs/PhaseFollows'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -34,6 +35,7 @@ export class Phase extends React.Component<any, any> {
             // utilities
             spinner: true,
             modalIsOpen: false,
+            modalType: '',
             redirect: false,
 
             // phase state
@@ -45,15 +47,14 @@ export class Phase extends React.Component<any, any> {
             actualStartDate: '',
             actualEndDate: '',
             phaseDescription: '',
-            phaseFollows: '',
+            phaseFollows: { project: '', phase: '' },
             phaseStatus: '',
             percentComplete: '',
             notes: '',
 
             // parent project
             projectID: '',
-            projectName: '',
-            shape: []
+            projectName: ''
         }
         this.setPhaseState = this.setPhaseState.bind(this)
         this.findPhase = this.findPhase.bind(this)
@@ -108,7 +109,6 @@ export class Phase extends React.Component<any, any> {
         if (project) {
             this.setState({
                 projectName: project.projectName,
-                shape: project.shape,
                 spinner: false
             })
         }
@@ -116,7 +116,8 @@ export class Phase extends React.Component<any, any> {
 
     closeModal() {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: ''
         })
     }
 
@@ -126,9 +127,17 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
+    setPhaseFollows() {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'follows'
+        })
+    }
+
     editPhase() {
         this.setState({
             modalIsOpen: true,
+            modalType: 'edit'
         })
     }
 
@@ -137,6 +146,7 @@ export class Phase extends React.Component<any, any> {
             redirect,
             spinner,
             modalIsOpen,
+            modalType,
             phaseID,
             phaseName,
             projectID,
@@ -155,6 +165,7 @@ export class Phase extends React.Component<any, any> {
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
                     <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                    <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
                     <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} className='btn pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
                 </h2>
                 <hr />
@@ -188,11 +199,16 @@ export class Phase extends React.Component<any, any> {
                         modal: 'custom-modal'
                     }}
                     center>
-                    <PhaseForm
-                        phaseID={phaseID}
-                        closeModal={this.closeModal.bind(this)}
-                        update
-                    />
+                    {modalType == 'edit' &&
+                        <PhaseForm
+                            phaseID={phaseID}
+                            closeModal={this.closeModal.bind(this)}
+                            update
+                        />
+                    }
+                    {modalType == 'follows' &&
+                        <PhaseFollows />
+                    }
                 </Modal>
             </div>
         )

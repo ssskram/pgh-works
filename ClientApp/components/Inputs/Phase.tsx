@@ -5,14 +5,11 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Phases from '../../store/phases'
 import * as User from '../../store/GETS/user'
-import Input from '../FormElements/input'
 import TextArea from '../FormElements/textarea'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
-import Modal from 'react-responsive-modal'
-import PhaseFollows from './PhaseFollows'
 
 const statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
@@ -27,26 +24,18 @@ const types = [
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseName' }
 ]
 
-const iconStyle = {
-    marginRight: '5px',
-    marginTop: '-8px',
-    height: '40px'
-}
-
 export class PhaseInputs extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
             // utilities
             redirect: false,
-            modalIsOpen: false,
 
             // phase state
             projectID: '',
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
-            // phaseFollows: {},
             expectedStartDate: '',
             expectedEndDate: '',
             actualStartDate: '',
@@ -70,7 +59,6 @@ export class PhaseInputs extends React.Component<any, any> {
                 phaseID: phase.phaseID,
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
-                // phaseFollows: phase.phaseFollows,
                 expectedStartDate: phase.expectedStartDate,
                 expectedEndDate: phase.expectedEndDate,
                 actualStartDate: phase.actualStartDate,
@@ -124,39 +112,18 @@ export class PhaseInputs extends React.Component<any, any> {
         }
     }
 
-    phaseFollows() {
-        this.setState({
-            modalIsOpen: true,
-        })
-    }
-
-    setPhaseFollows(project, phase) {
-        this.setState({
-            phaseFollows: { project: project, phase: phase },
-            modalIsOpen: false
-        })
-    }
-
-    closeModal() {
-        this.setState({
-            modalIsOpen: false,
-        })
-    }
-
     public render() {
         const {
             redirect,
             phaseID,
             phaseName,
-            phaseFollows,
             expectedStartDate,
             expectedEndDate,
             actualStartDate,
             actualEndDate,
             phaseDescription,
             phaseStatus,
-            notes,
-            modalIsOpen
+            notes
         } = this.state
 
         // validation
@@ -265,33 +232,6 @@ export class PhaseInputs extends React.Component<any, any> {
                     />
                 </div>
 
-                {/* PHASE FOLLOWS */}
-                {/* <div className='col-md-12'>
-                    <div className="form-group">
-                        <div className="col-md-12 form-element">
-                            {phaseFollows == '' &&
-                                <div>
-                                    <h4 className="form-h4">Phase follows</h4>
-                                    <input
-                                        className='form-control button-input'
-                                        onClick={this.phaseFollows.bind(this)}
-                                        value={phaseFollows}
-                                        name='phaseFollows'
-                                        id='phaseFollows'
-                                        placeholder='Identify preceding work'>
-                                    </input>
-                                </div>
-                            }
-                            {phaseFollows != '' &&
-                            <div>
-                                <h3 className='text-center'><img style={iconStyle} src='./images/phaseGrey.png' />{phaseFollows.phase}</h3>
-                                <h4 className='text-center'>{phaseFollows.project}</h4>
-                            </div>
-                            }
-                        </div>
-                    </div>
-                </div> */}
-
                 <div className='row'>
                     <div className='col-md-12 text-center'>
                         <div>
@@ -299,17 +239,6 @@ export class PhaseInputs extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                <Modal
-                    open={modalIsOpen}
-                    onClose={this.closeModal.bind(this)}
-                    classNames={{
-                        overlay: 'custom-overlay',
-                        modal: 'custom-modal'
-                    }}
-                    center>
-                    <PhaseFollows
-                        passFollows={this.setPhaseFollows.bind(this)} />
-                </Modal>
             </div>
         )
     }

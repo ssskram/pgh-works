@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bf09b9bbeedf989b6487"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fc5d987cc2ab49912892"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -5258,6 +5258,122 @@ module.exports = vendor_1ae6bb0e5d67b07b40cd;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(380), __esModule: true };
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+exports.default = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _defineProperty = __webpack_require__(149);
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _setPrototypeOf = __webpack_require__(371);
+
+var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
+
+var _create = __webpack_require__(370);
+
+var _create2 = _interopRequireDefault(_create);
+
+var _typeof2 = __webpack_require__(151);
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : (0, _typeof3.default)(superClass)));
+  }
+
+  subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _typeof2 = __webpack_require__(151);
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
+};
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5721,122 +5837,6 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_lifecycles_compat__["pol
 /* harmony default export */ __webpack_exports__["a"] = (Modal);
 //# sourceMappingURL=index.es.js.map
 
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(380), __esModule: true };
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-exports.default = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _defineProperty = __webpack_require__(149);
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _setPrototypeOf = __webpack_require__(371);
-
-var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
-
-var _create = __webpack_require__(370);
-
-var _create2 = _interopRequireDefault(_create);
-
-var _typeof2 = __webpack_require__(151);
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : (0, _typeof3.default)(superClass)));
-  }
-
-  subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
-};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _typeof2 = __webpack_require__(151);
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
-};
 
 /***/ }),
 /* 13 */
@@ -6471,8 +6471,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var loadPhases = 'loadPhases';
 var addPhase = 'addPhases';
 var updatePhase = 'updatePhases';
-// TODO
-var deletePhase = 'deletePhases';
 var unloadedState = {
     phases: []
 };
@@ -10147,7 +10145,7 @@ var textarea = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(12);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -13890,25 +13888,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -14129,7 +14127,7 @@ var updaterMap = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_select__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_helmet__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_helmet__);
 var __extends = (this && this.__extends) || (function () {
@@ -31292,8 +31290,6 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_responsive_modal__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__PhaseFollows__ = __webpack_require__(634);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -31322,8 +31318,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-
-
 var statuses = [
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
     { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
@@ -31335,11 +31329,6 @@ var types = [
     { value: 'Construction', label: 'Construction', name: 'phaseName' },
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseName' }
 ];
-var iconStyle = {
-    marginRight: '5px',
-    marginTop: '-8px',
-    height: '40px'
-};
 var PhaseInputs = (function (_super) {
     __extends(PhaseInputs, _super);
     function PhaseInputs() {
@@ -31347,13 +31336,11 @@ var PhaseInputs = (function (_super) {
         _this.state = {
             // utilities
             redirect: false,
-            modalIsOpen: false,
             // phase state
             projectID: '',
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
-            // phaseFollows: {},
             expectedStartDate: '',
             expectedEndDate: '',
             actualStartDate: '',
@@ -31377,7 +31364,6 @@ var PhaseInputs = (function (_super) {
                 phaseID: phase.phaseID,
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
-                // phaseFollows: phase.phaseFollows,
                 expectedStartDate: phase.expectedStartDate,
                 expectedEndDate: phase.expectedEndDate,
                 actualStartDate: phase.actualStartDate,
@@ -31431,25 +31417,9 @@ var PhaseInputs = (function (_super) {
             });
         }
     };
-    PhaseInputs.prototype.phaseFollows = function () {
-        this.setState({
-            modalIsOpen: true,
-        });
-    };
-    PhaseInputs.prototype.setPhaseFollows = function (project, phase) {
-        this.setState({
-            phaseFollows: { project: project, phase: phase },
-            modalIsOpen: false
-        });
-    };
-    PhaseInputs.prototype.closeModal = function () {
-        this.setState({
-            modalIsOpen: false,
-        });
-    };
     PhaseInputs.prototype.render = function () {
         var _this = this;
-        var _a = this.state, redirect = _a.redirect, phaseID = _a.phaseID, phaseName = _a.phaseName, phaseFollows = _a.phaseFollows, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes, modalIsOpen = _a.modalIsOpen;
+        var _a = this.state, redirect = _a.redirect, phaseID = _a.phaseID, phaseName = _a.phaseName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes;
         // validation
         var isEnabled = phaseName != '' &&
             expectedStartDate != '' &&
@@ -31482,12 +31452,7 @@ var PhaseInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.post.bind(this) },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save"))))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
-                    overlay: 'custom-overlay',
-                    modal: 'custom-modal'
-                }, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__PhaseFollows__["a" /* default */], { passFollows: this.setPhaseFollows.bind(this) }))));
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save")))))));
     };
     return PhaseInputs;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -32175,7 +32140,7 @@ var TaggableAssetSelection = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_tags__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Tag__ = __webpack_require__(636);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__ = __webpack_require__(674);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid__ = __webpack_require__(33);
@@ -51817,25 +51782,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -51972,25 +51937,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -52354,25 +52319,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -52607,25 +52572,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -52789,25 +52754,25 @@ var _toConsumableArray2 = __webpack_require__(375)
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -53372,25 +53337,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -53621,25 +53586,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -53957,25 +53922,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -54232,25 +54197,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -54894,25 +54859,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -55204,25 +55169,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -55562,25 +55527,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -55899,25 +55864,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -56242,25 +56207,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -56688,25 +56653,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -56973,25 +56938,25 @@ var _defineProperty2 = __webpack_require__(14)
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2)
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -57181,25 +57146,25 @@ var _objectWithoutProperties3 = _interopRequireDefault(
   _objectWithoutProperties2
 )
 
-var _getPrototypeOf = __webpack_require__(8)
+var _getPrototypeOf = __webpack_require__(7)
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf)
 
-var _classCallCheck2 = __webpack_require__(9)
+var _classCallCheck2 = __webpack_require__(8)
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2)
 
-var _createClass2 = __webpack_require__(10)
+var _createClass2 = __webpack_require__(9)
 
 var _createClass3 = _interopRequireDefault(_createClass2)
 
-var _possibleConstructorReturn2 = __webpack_require__(12)
+var _possibleConstructorReturn2 = __webpack_require__(11)
 
 var _possibleConstructorReturn3 = _interopRequireDefault(
   _possibleConstructorReturn2
 )
 
-var _inherits2 = __webpack_require__(11)
+var _inherits2 = __webpack_require__(10)
 
 var _inherits3 = _interopRequireDefault(_inherits2)
 
@@ -58357,7 +58322,7 @@ var Login = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_attachments__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Attachment__ = __webpack_require__(631);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_table__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__DeleteAttachment__ = __webpack_require__(626);
@@ -58645,7 +58610,7 @@ var DeleteAttachment = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormElements_input__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_taggableAssets__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_helmet__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_helmet__);
@@ -58768,7 +58733,7 @@ var AssetFilter = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(12);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -58888,7 +58853,7 @@ var FundFilter = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_projects__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
@@ -59750,13 +59715,16 @@ var PhaseFollows = (function (_super) {
         });
     };
     PhaseFollows.prototype.handleChildSelect = function (event) {
-        this.setState((_a = {}, _a[event.name] = event.value, _a));
-        if (event.name == 'project') {
-            this.setPhases(event.ID);
-        }
-        if (event.name == 'phase') {
-            this.returnWork(event.label);
-        }
+        this.setState((_a = {},
+            _a[event.name] = event.value,
+            _a), function () {
+            if (event.name == 'project') {
+                this.setPhases(event.ID);
+            }
+            if (event.name == 'phase') {
+                this.returnPhaseFollows();
+            }
+        });
         var _a;
     };
     PhaseFollows.prototype.setPhases = function (projectID) {
@@ -59772,15 +59740,16 @@ var PhaseFollows = (function (_super) {
             phases: phases
         });
     };
-    PhaseFollows.prototype.returnWork = function (phase) {
-        this.props.passFollows(this.state.project, phase);
+    PhaseFollows.prototype.returnPhaseFollows = function () {
+        // this.props.passFollows(this.state.phaseFollows)
+        console.log(this.state);
     };
     PhaseFollows.prototype.render = function () {
         var _a = this.state, project = _a.project, phase = _a.phase, projects = _a.projects, phases = _a.phases;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Preceding work"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Phase follows"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_select__["a" /* default */], { value: project, name: "project", header: 'Select project', placeholder: 'Select preceding project', onChange: this.handleChildSelect.bind(this), multi: false, options: projects })),
@@ -61195,7 +61164,7 @@ var DeleteMilestone = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_user__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(12);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -61378,13 +61347,14 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_projects__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Inputs_Phase__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__PhaseCard__ = __webpack_require__(650);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Tags_Tags__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Milestones__ = __webpack_require__(649);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__SubPhases__ = __webpack_require__(652);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__PhaseTimeline__ = __webpack_require__(651);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Inputs_PhaseFollows__ = __webpack_require__(634);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -61417,6 +61387,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
 var btnMargin = {
     margin: '0px 5px'
 };
@@ -61434,6 +61405,7 @@ var Phase = (function (_super) {
             // utilities
             spinner: true,
             modalIsOpen: false,
+            modalType: '',
             redirect: false,
             // phase state
             phaseID: '',
@@ -61444,14 +61416,13 @@ var Phase = (function (_super) {
             actualStartDate: '',
             actualEndDate: '',
             phaseDescription: '',
-            phaseFollows: '',
+            phaseFollows: { project: '', phase: '' },
             phaseStatus: '',
             percentComplete: '',
             notes: '',
             // parent project
             projectID: '',
-            projectName: '',
-            shape: []
+            projectName: ''
         };
         _this.setPhaseState = _this.setPhaseState.bind(_this);
         _this.findPhase = _this.findPhase.bind(_this);
@@ -61503,14 +61474,14 @@ var Phase = (function (_super) {
         if (project) {
             this.setState({
                 projectName: project.projectName,
-                shape: project.shape,
                 spinner: false
             });
         }
     };
     Phase.prototype.closeModal = function () {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: ''
         });
     };
     Phase.prototype.returnToProject = function () {
@@ -61518,13 +61489,20 @@ var Phase = (function (_super) {
             redirect: true
         });
     };
+    Phase.prototype.setPhaseFollows = function () {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'follows'
+        });
+    };
     Phase.prototype.editPhase = function () {
         this.setState({
             modalIsOpen: true,
+            modalType: 'edit'
         });
     };
     Phase.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate;
+        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate;
         var link = "/Project/id=" + projectID;
         if (redirect) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
@@ -61536,6 +61514,10 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, className: 'btn pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, className: 'btn pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
@@ -61564,7 +61546,10 @@ var Phase = (function (_super) {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
                 }, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Inputs_Phase__["a" /* default */], { phaseID: phaseID, closeModal: this.closeModal.bind(this), update: true }))));
+                modalType == 'edit' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Inputs_Phase__["a" /* default */], { phaseID: phaseID, closeModal: this.closeModal.bind(this), update: true }),
+                modalType == 'follows' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Inputs_PhaseFollows__["a" /* default */], null))));
     };
     return Phase;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -61586,7 +61571,7 @@ var Phase = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_table__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_milestones__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Milestones_DeleteMilestone__ = __webpack_require__(646);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Inputs_Milestone__ = __webpack_require__(633);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(0);
@@ -61994,7 +61979,7 @@ var PhaseTimeline = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_subphases__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Subphases_SubphaseCard__ = __webpack_require__(668);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Inputs_Subphase__ = __webpack_require__(339);
 var __extends = (this && this.__extends) || (function () {
@@ -62200,7 +62185,7 @@ var DeleteDrawdown = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_table__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Inputs_Drawdown__ = __webpack_require__(632);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__DeleteDrawdown__ = __webpack_require__(653);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format__ = __webpack_require__(94);
@@ -63033,7 +63018,7 @@ var ProjectCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__ = __webpack_require__(72);
@@ -63400,7 +63385,7 @@ var Project = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_phases__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Phase__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Cards_PhaseCard__ = __webpack_require__(657);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Timeline_Timeline__ = __webpack_require__(96);
@@ -63853,7 +63838,7 @@ var TaggableAssetSelection = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_point_in_polygon__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_point_in_polygon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__AssetTypeSelection__ = __webpack_require__(663);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -64244,7 +64229,7 @@ var ProjectDescription = (function (_super) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImportShape__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewShape__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Map_ProjectMap__ = __webpack_require__(95);
@@ -64435,7 +64420,7 @@ var DeleteSubphase = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Inputs_Subphase__ = __webpack_require__(339);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__DeleteSubphase__ = __webpack_require__(667);
 var __extends = (this && this.__extends) || (function () {
@@ -65140,7 +65125,7 @@ var DeleteTag = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_tags__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DeleteTag__ = __webpack_require__(673);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||

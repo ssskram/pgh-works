@@ -29,25 +29,28 @@ export class PhaseFollows extends React.Component<any, any> {
         this.setProjectDropdowns(nextProps)
     }
 
-    setProjectDropdowns (props) {
+    setProjectDropdowns(props) {
         let projects = [] as any
         props.projects.forEach(function (project) {
             let json = { "value": project.projectName, "label": project.projectName, "name": 'project', "ID": project.projectID }
             projects.push(json)
         })
-        this.setState ({
+        this.setState({
             projects: projects
         })
     }
 
     handleChildSelect(event) {
-        this.setState({ [event.name]: event.value })
-        if (event.name == 'project') {
-            this.setPhases(event.ID)
-        }
-        if (event.name == 'phase') {
-            this.returnWork(event.label)
-        }
+        this.setState({
+            [event.name]: event.value
+        }, function (this) {
+            if (event.name == 'project') {
+                this.setPhases(event.ID)
+            }
+            if (event.name == 'phase') {
+                this.returnPhaseFollows()
+            }
+        })
     }
 
     setPhases(projectID) {
@@ -59,13 +62,14 @@ export class PhaseFollows extends React.Component<any, any> {
             let json = { "value": phase.phaseID, "label": phase.phaseName, "name": 'phase' }
             phases.push(json)
         })
-        this.setState ({
+        this.setState({
             phases: phases
         })
     }
 
-    returnWork(phase) {
-        this.props.passFollows(this.state.project, phase)
+    returnPhaseFollows() {
+        // this.props.passFollows(this.state.phaseFollows)
+        console.log(this.state)
     }
 
     public render() {
@@ -81,7 +85,7 @@ export class PhaseFollows extends React.Component<any, any> {
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <h3>Preceding work</h3>
+                <h3>Phase follows</h3>
                 <hr />
                 <div className='col-md-12'>
                     <Select

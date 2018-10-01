@@ -26,12 +26,17 @@ namespace pghworks.Controllers {
             public string expectedStartDate { get; set; }
             public string notes { get; set; }
             public string phaseDescription { get; set; }
-            public string phaseFollows { get; set; }
+            public PhaseFollows phaseFollows { get; set; }
             public string phaseID { get; set; }
             public string phaseName { get; set; }
             public string phaseStatus { get; set; }
             public string projectID { get; set; }
 
+        }
+
+        public class PhaseFollows {
+            public string project { get; set; }
+            public string phase { get; set; }
         }
 
         // GET
@@ -49,7 +54,7 @@ namespace pghworks.Controllers {
                     expectedStartDate = item.expectedStartDate,
                     notes = item.notes,
                     phaseDescription = item.phaseDescription,
-                    phaseFollows = item.phaseFollows,
+                    phaseFollows = item.phaseFollows.ToObject<PhaseFollows> (),
                     phaseID = item.phaseID,
                     phaseName = item.phaseName,
                     phaseStatus = item.phaseStatus,

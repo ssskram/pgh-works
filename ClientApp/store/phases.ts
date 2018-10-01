@@ -6,9 +6,6 @@ const loadPhases = 'loadPhases'
 const addPhase = 'addPhases'
 const updatePhase = 'updatePhases'
 
-// TODO
-const deletePhase = 'deletePhases'
-
 const unloadedState: PhaseState = {
     phases: []
 }
@@ -22,7 +19,7 @@ export interface PhaseItem {
     phaseID: string
     projectID: string
     phaseName: string
-    phaseFollows: string
+    phaseFollows: PhaseFollows
     phaseDescription: string
     expectedStartDate: string
     expectedEndDate: string
@@ -30,6 +27,11 @@ export interface PhaseItem {
     actualEndDate: string
     phaseStatus: string
     notes: string
+}
+
+export interface PhaseFollows {
+    project: string
+    phase: string
 }
 
 export const actionCreators = {

@@ -7,7 +7,10 @@
             "expectedStartDate": "08/28/2018",
             "notes": "",
             "phaseDescription": "Stilts will be installed, and the park will be extended",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "550ea030-b69e-11e8-930d-dd084cae8ed3",
             "phaseStatus": "In progress",
             "phaseName": "Programming",
@@ -21,7 +24,10 @@
             "expectedStartDate": "06/14/2018",
             "notes": "",
             "phaseDescription": "The stilts will be constructed out of the finest mahogany",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
             "phaseStatus": "In progress",
             "phaseName": "Construction",
@@ -35,7 +41,10 @@
             "expectedStartDate": "05/01/2018",
             "notes": "",
             "phaseDescription": "The stilts need to be designed by the finest engineer in the land",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
             "phaseStatus": "On hold",
             "phaseName": "Design",
@@ -49,7 +58,10 @@
             "expectedStartDate": "02/01/2017",
             "notes": "",
             "phaseDescription": "Build the new bridge",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "ed90f490-b6a1-11e8-930d-dd084cae8ed3",
             "phaseStatus": "Complete",
             "phaseName": "Multi-faceted",
@@ -63,7 +75,10 @@
             "expectedStartDate": "10/06/2016",
             "notes": "",
             "phaseDescription": "Tear down the old bridge",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "d1310240-b6a1-11e8-930d-dd084cae8ed3",
             "phaseStatus": "Complete",
             "phaseName": "Construction",
@@ -77,7 +92,10 @@
             "expectedStartDate": "08/03/2016",
             "notes": "",
             "phaseDescription": "The new bridge was designed",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "976022d0-b6a1-11e8-930d-dd084cae8ed3",
             "phaseStatus": "Complete",
             "phaseName": "Design",
@@ -91,7 +109,10 @@
             "expectedStartDate": "06/01/2016",
             "notes": "",
             "phaseDescription": "We had a bunch of meetings",
-            "phaseFollows": "",
+            "phaseFollows": {
+                "project": "",
+                "phase": ""
+            },
             "phaseID": "615cc620-b6a1-11e8-930d-dd084cae8ed3",
             "phaseStatus": "Complete",
             "phaseName": "Programming",
