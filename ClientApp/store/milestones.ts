@@ -35,21 +35,37 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-            .then(response => response.json())
+            .then(response => response.json() as Promise<MilestoneItem[]>)
             .then(data => {
                 dispatch({ type: loadMilestones, milestones: data });
             });
     },
     addMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/milestones/addMilestone', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addMilestone, item
         })
     },
     updateMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        // put to cartegraph
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/milestones/updateMilestone', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updateMilestone, item
         })

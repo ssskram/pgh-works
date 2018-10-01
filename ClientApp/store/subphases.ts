@@ -19,9 +19,12 @@ export interface SubphaseItem {
     cartegraphID: string
     subphaseID: string
     subphaseName: string
+    startDate: string
+    endDate: string
     phaseID: string
     projectID: string
     subphaseStatus: string
+    subphaseDescription: string
     percentComplete: number
     notes: string
 }
