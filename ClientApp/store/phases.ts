@@ -42,22 +42,37 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-        .then(response => response.json())
+        .then(response => response.json() as Promise<PhaseItem[]>)
         .then(data => {
             dispatch({ type: loadPhases, phases: data });
         });
     },
     addPhase: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        // post to cartegraph
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/phases/addPhase', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addPhase, item
         })
     },
     updatePhase: (item): AppThunkAction<any> => (dispatch, getState) => {
-
-        // put to cartegraph
-
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/phases/updatePhase', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updatePhase, item
         })
