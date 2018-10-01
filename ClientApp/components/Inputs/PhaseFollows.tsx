@@ -32,7 +32,7 @@ export class PhaseFollows extends React.Component<any, any> {
     setProjectDropdowns(props) {
         let projects = [] as any
         props.projects.forEach(function (project) {
-            let json = { "value": project.projectName, "label": project.projectName, "name": 'project', "ID": project.projectID }
+            let json = { "value": project.projectID, "label": project.projectName, "name": 'project' }
             projects.push(json)
         })
         this.setState({
@@ -45,7 +45,7 @@ export class PhaseFollows extends React.Component<any, any> {
             [event.name]: event.value
         }, function (this) {
             if (event.name == 'project') {
-                this.setPhases(event.ID)
+                this.setPhases(event.value)
             }
             if (event.name == 'phase') {
                 this.returnPhaseFollows()
@@ -68,8 +68,11 @@ export class PhaseFollows extends React.Component<any, any> {
     }
 
     returnPhaseFollows() {
-        // this.props.passFollows(this.state.phaseFollows)
-        console.log(this.state)
+        const phaseFollows = {
+            project: this.state.project,
+            phase: this.state.phase
+        }
+        this.props.passFollows(phaseFollows)
     }
 
     public render() {
@@ -91,8 +94,8 @@ export class PhaseFollows extends React.Component<any, any> {
                     <Select
                         value={project}
                         name="project"
-                        header='Select project'
-                        placeholder='Select preceding project'
+                        header='Select preceding project'
+                        placeholder='Select project'
                         onChange={this.handleChildSelect.bind(this)}
                         multi={false}
                         options={projects}
@@ -103,8 +106,8 @@ export class PhaseFollows extends React.Component<any, any> {
                         <Select
                             value={phase}
                             name="phase"
-                            header='Select phase'
-                            placeholder='Select preceding phase'
+                            header='Select preceding phase'
+                            placeholder='Select phase'
                             onChange={this.handleChildSelect.bind(this)}
                             multi={false}
                             options={phases}

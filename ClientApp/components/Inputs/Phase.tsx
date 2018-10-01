@@ -65,6 +65,7 @@ export class PhaseInputs extends React.Component<any, any> {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
+                phaseFollows: phase.phaseFollows,
                 notes: phase.notes
             })
         }

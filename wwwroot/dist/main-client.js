@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fc5d987cc2ab49912892"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3cb470fd2329a04aa009"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31370,6 +31370,7 @@ var PhaseInputs = (function (_super) {
                 actualEndDate: phase.actualEndDate,
                 phaseDescription: phase.phaseDescription,
                 phaseStatus: phase.phaseStatus,
+                phaseFollows: phase.phaseFollows,
                 notes: phase.notes
             });
         }
@@ -59707,7 +59708,7 @@ var PhaseFollows = (function (_super) {
     PhaseFollows.prototype.setProjectDropdowns = function (props) {
         var projects = [];
         props.projects.forEach(function (project) {
-            var json = { "value": project.projectName, "label": project.projectName, "name": 'project', "ID": project.projectID };
+            var json = { "value": project.projectID, "label": project.projectName, "name": 'project' };
             projects.push(json);
         });
         this.setState({
@@ -59719,7 +59720,7 @@ var PhaseFollows = (function (_super) {
             _a[event.name] = event.value,
             _a), function () {
             if (event.name == 'project') {
-                this.setPhases(event.ID);
+                this.setPhases(event.value);
             }
             if (event.name == 'phase') {
                 this.returnPhaseFollows();
@@ -59741,8 +59742,11 @@ var PhaseFollows = (function (_super) {
         });
     };
     PhaseFollows.prototype.returnPhaseFollows = function () {
-        // this.props.passFollows(this.state.phaseFollows)
-        console.log(this.state);
+        var phaseFollows = {
+            project: this.state.project,
+            phase: this.state.phase
+        };
+        this.props.passFollows(phaseFollows);
     };
     PhaseFollows.prototype.render = function () {
         var _a = this.state, project = _a.project, phase = _a.phase, projects = _a.projects, phases = _a.phases;
@@ -59752,10 +59756,10 @@ var PhaseFollows = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Phase follows"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_select__["a" /* default */], { value: project, name: "project", header: 'Select project', placeholder: 'Select preceding project', onChange: this.handleChildSelect.bind(this), multi: false, options: projects })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_select__["a" /* default */], { value: project, name: "project", header: 'Select preceding project', placeholder: 'Select project', onChange: this.handleChildSelect.bind(this), multi: false, options: projects })),
             project != '' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_select__["a" /* default */], { value: phase, name: "phase", header: 'Select phase', placeholder: 'Select preceding phase', onChange: this.handleChildSelect.bind(this), multi: false, options: phases }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_select__["a" /* default */], { value: phase, name: "phase", header: 'Select preceding phase', placeholder: 'Select phase', onChange: this.handleChildSelect.bind(this), multi: false, options: phases }))));
     };
     return PhaseFollows;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -61407,6 +61411,7 @@ var Phase = (function (_super) {
             modalIsOpen: false,
             modalType: '',
             redirect: false,
+            redirectLink: '',
             // phase state
             phaseID: '',
             cartegraphID: '',
@@ -61472,6 +61477,7 @@ var Phase = (function (_super) {
             return item.projectID == id;
         });
         if (project) {
+            console.log('here');
             this.setState({
                 projectName: project.projectName,
                 spinner: false
@@ -61486,7 +61492,14 @@ var Phase = (function (_super) {
     };
     Phase.prototype.returnToProject = function () {
         this.setState({
-            redirect: true
+            redirect: true,
+            redirectLink: "/Project/id=" + this.state.projectID
+        });
+    };
+    Phase.prototype.pfProjectRedirect = function () {
+        this.setState({
+            redirect: true,
+            redirectLink: "/Project/id=" + this.state.phaseFollows.project
         });
     };
     Phase.prototype.setPhaseFollows = function () {
@@ -61501,11 +61514,43 @@ var Phase = (function (_super) {
             modalType: 'edit'
         });
     };
+    Phase.prototype.putPhaseFollows = function (phaseFollows) {
+        this.setState({
+            phaseFollows: phaseFollows
+        }, function () {
+            var putLoad = {
+                phaseID: this.state.phaseID,
+                projectID: this.state.projectID,
+                cartegraphID: this.state.cartegraphID,
+                phaseName: this.state.phaseName,
+                expectedStartDate: this.state.expectedStartDate,
+                expectedEndDate: this.state.expectedEndDate,
+                actualStartDate: this.state.actualStartDate,
+                actualEndDate: this.state.actualEndDate,
+                phaseDescription: this.state.phaseDescription,
+                phaseFollows: this.state.phaseFollows,
+                phaseStatus: this.state.phaseStatus,
+                percentComplete: this.state.percentComplete,
+                notes: this.state.notes
+            };
+            this.props.updatePhase(putLoad);
+            this.closeModal();
+        });
+    };
     Phase.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate;
-        var link = "/Project/id=" + projectID;
+        var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, phaseFollows = _a.phaseFollows;
+        var pfProject = {};
+        var pfPhase = {};
+        if (phaseFollows.project != '' && phaseFollows.phase != '') {
+            pfProject = this.props.projects.find(function (project) {
+                return project.projectID == phaseFollows.project;
+            });
+            pfPhase = this.props.phases.find(function (phase) {
+                return phase.phaseID == phaseFollows.phase;
+            });
+        }
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
@@ -61529,6 +61574,14 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px' }, src: './images/phaseGrey.png' })),
                 " ",
                 phaseName),
+            pfProject.projectName && pfPhase.phaseName &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        "Follows ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfPhase.phaseName),
+                        " phase of ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: { cursor: 'pointer' }, onClick: this.pfProjectRedirect.bind(this) },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfProject.projectName)))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__PhaseCard__["a" /* default */], { phase: this.state })),
             expectedStartDate && expectedEndDate &&
@@ -61549,7 +61602,7 @@ var Phase = (function (_super) {
                 modalType == 'edit' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Inputs_Phase__["a" /* default */], { phaseID: phaseID, closeModal: this.closeModal.bind(this), update: true }),
                 modalType == 'follows' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Inputs_PhaseFollows__["a" /* default */], null))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__Inputs_PhaseFollows__["a" /* default */], { passFollows: this.putPhaseFollows.bind(this) }))));
     };
     return Phase;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

@@ -37,6 +37,7 @@ export class Phase extends React.Component<any, any> {
             modalIsOpen: false,
             modalType: '',
             redirect: false,
+            redirectLink: '',
 
             // phase state
             phaseID: '',
@@ -60,6 +61,7 @@ export class Phase extends React.Component<any, any> {
         this.findPhase = this.findPhase.bind(this)
         this.findProject = this.findProject.bind(this)
     }
+
     componentDidMount() {
         window.scrollTo(0, 0)
         // ping server
@@ -107,6 +109,7 @@ export class Phase extends React.Component<any, any> {
             return item.projectID == id
         })
         if (project) {
+            console.log('here')
             this.setState({
                 projectName: project.projectName,
                 spinner: false
@@ -123,7 +126,15 @@ export class Phase extends React.Component<any, any> {
 
     returnToProject() {
         this.setState({
-            redirect: true
+            redirect: true,
+            redirectLink: "/Project/id=" + this.state.projectID
+        })
+    }
+
+    pfProjectRedirect() {
+        this.setState ({
+            redirect: true,
+            redirectLink: "/Project/id=" + this.state.phaseFollows.project
         })
     }
 
@@ -141,9 +152,34 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
+    putPhaseFollows(phaseFollows) {
+        this.setState({
+            phaseFollows: phaseFollows
+        }, function (this) {
+            const putLoad = {
+                phaseID: this.state.phaseID,
+                projectID: this.state.projectID,
+                cartegraphID: this.state.cartegraphID,
+                phaseName: this.state.phaseName,
+                expectedStartDate: this.state.expectedStartDate,
+                expectedEndDate: this.state.expectedEndDate,
+                actualStartDate: this.state.actualStartDate,
+                actualEndDate: this.state.actualEndDate,
+                phaseDescription: this.state.phaseDescription,
+                phaseFollows: this.state.phaseFollows,
+                phaseStatus: this.state.phaseStatus,
+                percentComplete: this.state.percentComplete,
+                notes: this.state.notes
+            }
+            this.props.updatePhase(putLoad)
+            this.closeModal()
+        })
+    }
+
     public render() {
         const {
             redirect,
+            redirectLink,
             spinner,
             modalIsOpen,
             modalType,
@@ -152,13 +188,23 @@ export class Phase extends React.Component<any, any> {
             projectID,
             projectName,
             expectedStartDate,
-            expectedEndDate
+            expectedEndDate,
+            phaseFollows
         } = this.state
 
-        const link = "/Project/id=" + projectID
+        let pfProject = {} as any
+        let pfPhase = {} as any
+        if (phaseFollows.project != '' && phaseFollows.phase != '') {
+            pfProject = this.props.projects.find(project => {
+                return project.projectID == phaseFollows.project
+            })
+            pfPhase = this.props.phases.find(phase => {
+                return phase.phaseID == phaseFollows.phase
+            })
+        }
 
         if (redirect) {
-            return <Redirect to={link} />
+            return <Redirect to={redirectLink} />
         }
 
         return (
@@ -171,6 +217,11 @@ export class Phase extends React.Component<any, any> {
                 <hr />
                 <br />
                 <h2 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
+                {pfProject.projectName && pfPhase.phaseName &&
+                    <div className='text-center'>
+                        <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
+                    </div>
+                }
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
@@ -207,7 +258,7 @@ export class Phase extends React.Component<any, any> {
                         />
                     }
                     {modalType == 'follows' &&
-                        <PhaseFollows />
+                        <PhaseFollows passFollows={this.putPhaseFollows.bind(this)} />
                     }
                 </Modal>
             </div>
