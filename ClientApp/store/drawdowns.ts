@@ -33,12 +33,22 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-        // .then(response => response.json())
-        // .then(data => {
-        //     dispatch({ type: loadDrawdowns, drawdowns: data.items });
-        // });
+        .then(response => response.json() as Promise<DrawdownItem[]>)
+        .then(data => {
+            dispatch({ type: loadDrawdowns, drawdowns: data });
+        });
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/drawdowns/addDrawdown', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addDrawdown, item
         })
@@ -49,6 +59,16 @@ export const actionCreators = {
         })
     },
     updateDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/drawdowns/updateDrawdown', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updateDrawdown, item
         })
