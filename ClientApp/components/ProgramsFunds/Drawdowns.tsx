@@ -187,8 +187,8 @@ export class ProgramsFunds extends React.Component<any, any> {
             const percentBudgetAllocated = allocated / this.props.budget * 100
             const budgetRemaining = 100 - percentBudgetAllocated - 1 * 100
             thermometer = {
-                background: 'linear-gradient(to right, red, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
-                border: '1px solid red',
+                background: 'linear-gradient(to right, #d9534f, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid #d9534f',
                 borderRadius: '100px',
                 margin: '10px 0px 20px 0px',
                 paddingBottom: '8px'

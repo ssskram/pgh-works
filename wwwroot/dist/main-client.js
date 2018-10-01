@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3cb470fd2329a04aa009"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9aed17e180a8161ecb5e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62428,8 +62428,8 @@ var ProgramsFunds = (function (_super) {
             var percentBudgetAllocated = allocated / this.props.budget * 100;
             var budgetRemaining = 100 - percentBudgetAllocated - 1 * 100;
             thermometer = {
-                background: 'linear-gradient(to right, red, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
-                border: '1px solid red',
+                background: 'linear-gradient(to right, #d9534f, ' + percentBudgetAllocated + '%, transparent 1%, transparent ' + budgetRemaining + '%)',
+                border: '1px solid #d9534f',
                 borderRadius: '100px',
                 margin: '10px 0px 20px 0px',
                 paddingBottom: '8px'
