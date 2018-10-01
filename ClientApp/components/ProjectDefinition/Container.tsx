@@ -62,8 +62,6 @@ export class ProjectDefinition extends React.Component<any, any> {
         this.setState({
             shape: shape,
             shapeType: type
-        }, function (this) {
-            console.log(this.state)
         })
     }
 

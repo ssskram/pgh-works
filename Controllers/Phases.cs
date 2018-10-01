@@ -125,7 +125,6 @@ namespace pghworks.Controllers {
                 expectedStartDateField = model.expectedStartDate,
                 NotesField = model.notes,
                 phaseDescriptionField = model.phaseDescription,
-                phaseFollowsField = model.phaseFollows.ToString (),
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
@@ -163,12 +162,10 @@ namespace pghworks.Controllers {
                 var getURL =
                     String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass?filter=(([phaseID] is equal to \"{0}\"))",
                         model.phaseID); // 0
-                Console.WriteLine (getURL);
                 client.DefaultRequestHeaders.Clear ();
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
-                Console.WriteLine (content);
                 dynamic phase = JObject.Parse (content) ["cgWorkOrdersClass"][0];
                 id = phase.Oid;
             }

@@ -181,12 +181,10 @@ namespace pghworks.Controllers {
                 var getURL =
                     String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectsClass?filter=(([projectID] is equal to \"{0}\"))",
                         model.projectID); // 0
-                Console.WriteLine(getURL);
                 client.DefaultRequestHeaders.Clear ();
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
-                Console.WriteLine(content);
                 dynamic project = JObject.Parse (content) ["ProjectsClass"][0];
                 id = project.Oid;
             }

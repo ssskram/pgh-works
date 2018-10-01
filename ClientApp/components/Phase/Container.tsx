@@ -109,7 +109,6 @@ export class Phase extends React.Component<any, any> {
             return item.projectID == id
         })
         if (project) {
-            console.log('here')
             this.setState({
                 projectName: project.projectName,
                 spinner: false
