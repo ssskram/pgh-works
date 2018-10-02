@@ -359,6 +359,10 @@ textarea {
     font-weight: bold;
 }
 
+.btn-secondary {
+    border: 1px solid #383838;
+}
+
 .btn i {
     padding: 0px !important;
     padding-bottom: 5px;

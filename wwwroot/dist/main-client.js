@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bf8a466a7ad734148162"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b39b092ca1d588aad653"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -32266,7 +32266,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
     height: '35px'
 };
@@ -32360,7 +32360,7 @@ var Tags = (function (_super) {
                 "Relevant Assets",
                 canEdit &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Tag an asset', className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Tag an asset', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -58586,13 +58586,9 @@ var Attachments = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/attachment.png' }),
                 "Attachments",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { marginLeft: '10px' }, className: 'btn btn-secondary pull-right' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName, target: '_blank' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '18px' } }, "Document library"))),
-                    canEdit &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), className: 'btn pull-right hidden-xs' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 attachments.length == 0 &&
@@ -58621,7 +58617,13 @@ var Attachments = (function (_super) {
                                 justifyContent: 'center',
                                 fontSize: '16px'
                             }
-                        }); } })),
+                        }); } }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { marginTop: '65px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: 'button', className: 'btn btn-secondary' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName, target: '_blank' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '22px' } },
+                                "Document library",
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { margin: '4px 0px -10px 12px' }, className: 'glyphicon glyphicon-arrow-right' })))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -58990,7 +58992,7 @@ var ProgramsFunds = (function (_super) {
                 "Cost",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.budget != 0 &&
@@ -61443,9 +61445,9 @@ var HomeMap = (function (_super) {
                     }),
                 showInfowindow == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center, onCloseClick: _this.closeWindow.bind(_this) },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedProject.projectName),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveProject(selectedProject); }, className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { maxWidth: '250px' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, selectedProject.projectName),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveProject(selectedProject); }, className: 'btn btn-success', style: { width: '100%' } },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'home-map' },
@@ -62967,7 +62969,7 @@ var Phases = (function (_super) {
                 "Phases",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, title: 'Add a phase', className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length == 0 &&

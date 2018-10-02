@@ -91,9 +91,9 @@ export default class HomeMap extends React.Component<any, any> {
                 }
                 {showInfowindow == true &&
                     <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
-                        <div className='col-md-12 text-center'>
-                            <h4>{selectedProject.projectName}</h4>
-                            <button onClick={() => this.props.receiveProject(selectedProject)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
+                        <div className='col-md-12 text-center' style={{maxWidth: '250px'}}>
+                            <h3>{selectedProject.projectName}</h3>
+                            <button onClick={() => this.props.receiveProject(selectedProject)} className='btn btn-success' style={{width: '100%'}}><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </InfoWindow>
                 }

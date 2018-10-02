@@ -9,7 +9,7 @@ import TagCard from '../Tags/TagCard'
 import { v1 as uuid } from 'uuid'
 
 const iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
     height: '35px'
 }
@@ -119,7 +119,7 @@ export class Tags extends React.Component<any, any> {
                     Relevant Assets
                     {canEdit &&
                         <span>
-                            <button onClick={this.openModal.bind(this)} title='Tag an asset' className='btn pull-right hidden-xs'>
+                            <button onClick={this.openModal.bind(this)} title='Tag an asset' type='button' className='btn btn-secondary pull-right hidden-xs'>
                                 <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
                             </button>
                         </span>
