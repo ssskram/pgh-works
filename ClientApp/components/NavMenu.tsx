@@ -147,6 +147,9 @@ export class NavMenu extends React.Component<any, any>  {
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
                         </Link>
+                        <Link onClick={this.closeModal.bind(this)} to={'/AllAssets'} style={btnWidth} className='btn btn-primary'>
+                            <span><img style={iconStyle} src='./images/assets.png' /></span> Assets
+                        </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary hidden-xs'>
                             <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
                         </Link>
