@@ -229,10 +229,52 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
-            try {
+            await client.DeleteAsync (deleteUrl);
+            await deleteTasks (model.phaseID);
+            await deleteTags (model.phaseID);
+        }
+
+        public async Task deleteTasks (string phaseID) {
+            // grab child milestones/subphases and call up delete
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var getURL =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([phaseID] is equal to \"{0}\"))",
+                    phaseID); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (getURL);
+            dynamic tasks = JObject.Parse (content) ["cgTasksClass"];
+            foreach (var item in tasks) {
+                var deleteUrl =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass/{0}",
+                        item.Oid); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
                 await client.DeleteAsync (deleteUrl);
-            } catch (Exception e) {
-                Console.WriteLine (e);
+            }
+        }
+
+        public async Task deleteTags (string parentID) {
+            // grab child tags and call delete
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var getURL =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectTagsClass?filter=(([parentID] is equal to \"{0}\"))",
+                    parentID); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (getURL);
+            dynamic tags = JObject.Parse (content) ["ProjectTagsClass"];
+            foreach (var item in tags) {
+                var deleteUrl =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectTagsClass/{0}",
+                        item.Oid); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                await client.DeleteAsync (deleteUrl);
             }
         }
     }

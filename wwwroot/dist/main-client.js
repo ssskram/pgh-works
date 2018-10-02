@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cd41139bc2eca471487b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "57b9fca3e276aff4854d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9964,6 +9964,7 @@ var actionCreators = {
         });
     }; },
     addSubphase: function (item) { return function (dispatch, getState) {
+        console.log(item);
         var data = JSON.stringify(item).replace(/'/g, '');
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/subphases/addSubphase', {
             method: 'POST',
@@ -31776,7 +31777,7 @@ var SubphaseInput = (function (_super) {
             endDate: '',
             subphaseDescription: '',
             subphaseStatus: '',
-            percentComplete: '',
+            percentComplete: 0,
             notes: ''
         };
         return _this;
@@ -31867,7 +31868,7 @@ var SubphaseInput = (function (_super) {
         }
     };
     SubphaseInput.prototype.render = function () {
-        var _a = this.state, subphaseID = _a.subphaseID, subphaseName = _a.subphaseName, startDate = _a.startDate, endDate = _a.endDate, subphaseDescription = _a.subphaseDescription, subphaseStatus = _a.subphaseStatus, percentComplete = _a.percentComplete, notes = _a.notes;
+        var _a = this.state, subphaseName = _a.subphaseName, startDate = _a.startDate, endDate = _a.endDate, subphaseDescription = _a.subphaseDescription, subphaseStatus = _a.subphaseStatus, percentComplete = _a.percentComplete, notes = _a.notes;
         // validation
         var isEnabled = subphaseName != '' &&
             startDate != '' &&

@@ -31,7 +31,7 @@ export class SubphaseInput extends React.Component<any, any> {
             endDate: '',
             subphaseDescription: '',
             subphaseStatus: '',
-            percentComplete: '',
+            percentComplete: 0,
             notes: ''
         }
     }
@@ -123,7 +123,6 @@ export class SubphaseInput extends React.Component<any, any> {
 
     public render() {
         const {
-            subphaseID,
             subphaseName,
             startDate,
             endDate,
