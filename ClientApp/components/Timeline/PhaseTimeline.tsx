@@ -1,16 +1,16 @@
 
 import * as React from 'react'
-import TL from './../Timeline/Timeline'
+import TL from './Timeline'
 
-export default class ProjectTimeline extends React.Component<any, any> {
+export default class PhaseTimeline extends React.Component<any, any> {
 
     public render() {
         const {
             expectedStartDate,
             expectedEndDate,
             actualStartDate,
-            actualEndDate
-        } = this.props.project
+            actualEndDate,
+        } = this.props.phase
 
         const items = [] as any
         let expected = {
@@ -39,10 +39,10 @@ export default class ProjectTimeline extends React.Component<any, any> {
                 <br />
                 <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
                     <span style={{ backgroundColor: 'rgba(0, 153, 255, 0.3)', padding: '8px' }}>Expected</span>
-                    <span style={{ backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
+                    <span style={{ backgroundColor: 'rgba(255, 167, 167, .4)', padding: '8px' }}>Actual</span>
                 </div>
                 <div className='col-md-12'>
-                    {this.props.project &&
+                    {this.props.phase &&
                         <TL items={items} />
                     }
                 </div>

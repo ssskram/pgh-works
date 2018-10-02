@@ -3,7 +3,7 @@ import * as React from 'react'
 import Modal from 'react-responsive-modal'
 import Import from './ImportShape'
 import New from './NewShape'
-import Map from '../../Map/ProjectMap'
+import Map from '../../Maps/ProjectMap'
 
 const imgSize = {
     height: '120px',

@@ -8,8 +8,8 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import * as Tags from '../../store/tags'
 import * as Projects from '../../store/projects'
 import * as Phases from '../../store/phases'
-import Map from '../Map/ProjectMap'
-import StreetMap from '../Map/StreetMap'
+import Map from '../Maps/ProjectMap'
+import StreetMap from '../Maps/StreetMap'
 import inside from 'point-in-polygon'
 
 const emptyNotice = {

@@ -5,7 +5,7 @@ import { ApplicationState } from '../../store'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as TagStore from '../../store/tags'
 import Input from '../FormElements/input'
-import SelectionMap from './../Map/ImportShapes'
+import SelectionMap from './../Maps/ImportShapes'
 import { StreetSelection } from './../Inputs/StreetSelection'
 
 export class SelectAsset extends React.Component<any, any> {

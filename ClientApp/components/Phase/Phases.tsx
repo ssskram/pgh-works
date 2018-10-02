@@ -5,8 +5,8 @@ import { ApplicationState } from '../../store'
 import * as PhasesStore from '../../store/phases'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
-import PhaseCard from './Cards/PhaseCard'
-import TL from './../Timeline/Timeline'
+import PhaseCard from '../Project/Cards/PhaseCard'
+import TL from '../Timeline/Timeline'
 
 const iconStyle = {
     marginRight: '5px',

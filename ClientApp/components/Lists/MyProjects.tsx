@@ -7,7 +7,7 @@ import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
 import ProjectFilters from '../Filters/ProjectFilter'
 import Paging from '../Utilities/Paging'
-import MapThumbnail from '../Map/MapThumbnail'
+import MapThumbnail from '../Maps/MapThumbnail'
 
 const iconStyle = {
     color: '#fff',

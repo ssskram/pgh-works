@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
 import * as Ping from '../store/GETS/ping'
 import * as Projects from '../store/projects'
-import Map from './Map/HomeMap'
+import Map from './Maps/HomeMap'
 import { Helmet } from "react-helmet"
 import Filters from './Filters/ProjectFilter'
 import Spinner from './Utilities/Spinner'

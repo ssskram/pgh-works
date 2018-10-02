@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import Map from '../../Map/NewPolygon'
+import Map from '../../Maps/NewPolygon'
 
 export default class NewShape extends React.Component<any, any> {
 
