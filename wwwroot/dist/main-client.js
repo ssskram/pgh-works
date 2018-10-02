@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fd8c00140006a31f20c0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "211e5048c9068b9fc991"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58953,41 +58953,69 @@ var ProgramsFunds = (function (_super) {
         var _this = this;
         var _a = this.state, modalType = _a.modalType, modalIsOpen = _a.modalIsOpen, selectedDrawdown = _a.selectedDrawdown, drawdowns = _a.drawdowns;
         var canEdit = this.props.canEdit;
-        var columns = [{
-                Header: 'Fund/Program',
-                accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundName(props.value)); }
-            }, {
-                Header: 'Year',
-                accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundYear(props.value)); }
-            }, {
-                Header: 'Type',
-                accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundType(props.value)); }
-            }, {
-                Header: 'Drawdown Amount',
-                accessor: 'drawdownAmount',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
-            }, {
-                Header: 'Drawdown Type',
-                accessor: 'drawdownType'
-            }, {
-                Header: 'Notes',
-                accessor: 'notes'
-            }, {
-                Header: '',
-                accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.deleteModal(props.original); }, className: 'btn btn-danger' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
-                maxWidth: 75
-            }, {
-                Header: '',
-                accessor: 'fundID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.editModal(props.original); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon glyphicon-info-sign' })); },
-                maxWidth: 75
-            }];
+        var columns = [];
+        if (canEdit == true) {
+            columns = [{
+                    Header: 'Fund/Program',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundName(props.value)); }
+                }, {
+                    Header: 'Year',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundYear(props.value)); }
+                }, {
+                    Header: 'Type',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundType(props.value)); }
+                }, {
+                    Header: 'Drawdown Amount',
+                    accessor: 'drawdownAmount',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
+                }, {
+                    Header: 'Drawdown Type',
+                    accessor: 'drawdownType'
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes'
+                }, {
+                    Header: '',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.deleteModal(props.original); }, className: 'btn btn-danger' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
+                    maxWidth: 75
+                }, {
+                    Header: '',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.editModal(props.original); }, className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon glyphicon-info-sign' })); },
+                    maxWidth: 75
+                }];
+        }
+        else {
+            columns = [{
+                    Header: 'Fund/Program',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundName(props.value)); }
+                }, {
+                    Header: 'Year',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundYear(props.value)); }
+                }, {
+                    Header: 'Type',
+                    accessor: 'fundID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundType(props.value)); }
+                }, {
+                    Header: 'Drawdown Amount',
+                    accessor: 'drawdownAmount',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
+                }, {
+                    Header: 'Drawdown Type',
+                    accessor: 'drawdownType'
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes'
+                }];
+        }
         // calculating project costs
         var spent = 0;
         var encumbered = 0;

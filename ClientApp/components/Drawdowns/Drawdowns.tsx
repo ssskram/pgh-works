@@ -133,39 +133,66 @@ export class ProgramsFunds extends React.Component<any, any> {
             canEdit
         } = this.props
 
-        const columns = [{
-            Header: 'Fund/Program',
-            accessor: 'fundID',
-            Cell: props => <div>{this.getFundName(props.value)}</div>
-        }, {
-            Header: 'Year',
-            accessor: 'fundID',
-            Cell: props => <div>{this.getFundYear(props.value)}</div>
-        }, {
-            Header: 'Type',
-            accessor: 'fundID',
-            Cell: props => <div>{this.getFundType(props.value)}</div>
-        }, {
-            Header: 'Drawdown Amount',
-            accessor: 'drawdownAmount',
-            Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-        }, {
-            Header: 'Drawdown Type',
-            accessor: 'drawdownType'
-        }, {
-            Header: 'Notes',
-            accessor: 'notes'
-        }, {
-            Header: '',
-            accessor: 'fundID',
-            Cell: props => <button onClick={() => this.deleteModal(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
-            maxWidth: 75
-        }, {
-            Header: '',
-            accessor: 'fundID',
-            Cell: props => <button onClick={() => this.editModal(props.original)} className='btn btn-success'><span className='glyphicon glyphicon glyphicon-info-sign'></span></button>,
-            maxWidth: 75
-        }]
+        let columns = []as any
+        if (canEdit == true) {
+            columns = [{
+                Header: 'Fund/Program',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundName(props.value)}</div>
+            }, {
+                Header: 'Year',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundYear(props.value)}</div>
+            }, {
+                Header: 'Type',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundType(props.value)}</div>
+            }, {
+                Header: 'Drawdown Amount',
+                accessor: 'drawdownAmount',
+                Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+            }, {
+                Header: 'Drawdown Type',
+                accessor: 'drawdownType'
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
+            }, {
+                Header: '',
+                accessor: 'fundID',
+                Cell: props => <button onClick={() => this.deleteModal(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+                maxWidth: 75
+            }, {
+                Header: '',
+                accessor: 'fundID',
+                Cell: props => <button onClick={() => this.editModal(props.original)} className='btn btn-success'><span className='glyphicon glyphicon glyphicon-info-sign'></span></button>,
+                maxWidth: 75
+            }]
+        } else {
+            columns = [{
+                Header: 'Fund/Program',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundName(props.value)}</div>
+            }, {
+                Header: 'Year',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundYear(props.value)}</div>
+            }, {
+                Header: 'Type',
+                accessor: 'fundID',
+                Cell: props => <div>{this.getFundType(props.value)}</div>
+            }, {
+                Header: 'Drawdown Amount',
+                accessor: 'drawdownAmount',
+                Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+            }, {
+                Header: 'Drawdown Type',
+                accessor: 'drawdownType'
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
+            }]
+        }
 
         // calculating project costs
         let spent = 0
