@@ -68,8 +68,11 @@ export class Phases extends React.Component<any, any> {
             phases
         } = this.state
 
-        // timeline configs
+        const {
+            canEdit
+        } = this.props
 
+        // timeline configs
         const items = [] as any
         let counter = 0
         phases.forEach(function (phase) {
@@ -100,13 +103,23 @@ export class Phases extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/phaseGrey.png' /> Phases<span><button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} title='Add a phase' className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2>
+                    <img style={iconStyle} src='./images/phaseGrey.png' />
+                    Phases
+                    {canEdit == true &&
+                        <span>
+                            <button onClick={this.openModal.bind(this)} className='btn pull-right hidden-xs'>
+                                <span style={{ fontSize: '20px' }} title='Add a phase' className='glyphicon glyphicon-plus'></span>
+                            </button>
+                        </span>
+                    }
+                </h2>
                 <hr />
                 {phases.length == 0 &&
                     <h4 className='text-center'><i>No phases</i></h4>
                 }
                 {phases.length > 0 &&
-                    <div className='col-md-10 col-md-offset-1 hidden-xs'>
+                    <div className='col-md-12 hidden-xs'>
                         <TL items={items} />
                         <br />
                         <br />

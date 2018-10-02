@@ -26,7 +26,7 @@ import inside from 'point-in-polygon'
 import ProjectTimeline from '../Timeline/ProjectTimeline'
 
 const btnMargin = {
-    margin: '0px 5px'
+    margin: '20px 5px 0px 5px'
 }
 
 const marginBottom = {
@@ -45,6 +45,7 @@ export class Project extends React.Component<any, any> {
             spinner: true,
             modalIsOpen: false,
             update: 'true',
+            canEdit: true,
 
             // project state
             cartegraphID: '',
@@ -274,6 +275,7 @@ export class Project extends React.Component<any, any> {
             modalIsOpen,
             edit,
             spinner,
+            canEdit,
             projectID,
             projectName,
             projectStatus,
@@ -290,12 +292,18 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{ letterSpacing: '2px' }}>
-                    <span>{projectName}</span>
-                    <span><button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
-                    <span><button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button></span>
-                    <span><Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link></span>
-                </h2>
+                <div className='row'>
+                    <div className='col-md-8'>
+                        <h2 style={{ letterSpacing: '2px' }}>{projectName}</h2>
+                    </div>
+                    {canEdit == true &&
+                        <div className='col-md-4 hidden-sm hidden-xs'>
+                            <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
+                            <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
+                            <Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link>
+                        </div>
+                    }
+                </div>
                 <hr />
                 <Map shape={shape} />
                 <br />
@@ -308,16 +316,34 @@ export class Project extends React.Component<any, any> {
                     </div>
                 }
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Phases projectID={projectID} />
+                    <Phases
+                        canEdit={canEdit}
+                        projectID={projectID}
+                    />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Drawdowns parentID={projectID} parentType={'Project'} budget={projectBudget}/>
+                    <Drawdowns
+                        canEdit={canEdit}
+                        parentID={projectID}
+                        parentType={'Project'}
+                        budget={projectBudget}
+                    />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Tags parentID={projectID} parentName={projectName} parentType='Project' />
+                    <Tags
+                        canEdit={canEdit}
+                        parentID={projectID}
+                        parentName={projectName}
+                        parentType='Project'
+                    />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Attachments parentID={projectID} parentType={'Project'} parentName={projectName}/>
+                    <Attachments
+                        canEdit={canEdit}
+                        parentID={projectID}
+                        parentType={'Project'}
+                        parentName={projectName}
+                    />
                 </div>
 
                 {spinner == true &&

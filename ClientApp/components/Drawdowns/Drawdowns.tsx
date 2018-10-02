@@ -129,6 +129,10 @@ export class ProgramsFunds extends React.Component<any, any> {
             drawdowns
         } = this.state
 
+        const {
+            canEdit
+        } = this.props
+
         const columns = [{
             Header: 'Fund/Program',
             accessor: 'fundID',
@@ -197,13 +201,23 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/programsGrey.png' /> Cost<span><button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'><span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2>
+                    <img style={iconStyle} src='./images/programsGrey.png' />
+                    Cost
+                    {canEdit == true &&
+                        <span>
+                            <button onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn pull-right hidden-xs'>
+                                <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
+                            </button>
+                        </span>
+                    }
+                </h2>
                 <hr />
                 {this.props.budget != 0 &&
                     <div>
-                        
+
                         <h4 className='pull-right'><div className='text-center'>Budget</div><b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h4>
-                        <h4 className='pull-left'><div className='text-center'>Spent</div><CurrencyFormat value={allocated} displayType={'text'} thousandSeparator={true} prefix={'$'}/></h4>
+                        <h4 className='pull-left'><div className='text-center'>Spent</div><CurrencyFormat value={allocated} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
                         <div style={thermometer} className='col-md-12'>
                         </div>
                     </div>
