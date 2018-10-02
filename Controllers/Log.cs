@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using pghworks.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using pghworks.Models;
 
 namespace pghworks.Controllers {
     [Authorize]

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 using pghworks.Models;
 
 namespace pghworks.Controllers {
@@ -24,7 +24,7 @@ namespace pghworks.Controllers {
             await GetUserGroup ();
             var usergroup = GetUserGroup ().Result;
             dynamic userObject = JObject.Parse (usergroup) ["d"];
-            string backToJson = JsonConvert.SerializeObject(userObject);
+            string backToJson = JsonConvert.SerializeObject (userObject);
             var o = JObject.Parse (backToJson);
             var a = o.SelectToken ("results").Select (jt => jt.ToObject<Personnel> ()).ToList ();
             List<Personnel> AllPersonnel = new List<Personnel> ();

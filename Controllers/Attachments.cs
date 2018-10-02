@@ -5,11 +5,11 @@ using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using pghworks.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using pghworks.Models;
 
 namespace pghworks.Controllers {
     [Authorize]
@@ -21,7 +21,7 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public async Task<bool> loadAttachments () {
             bool bl = true;
-            await Task.Delay(1);
+            await Task.Delay (1);
             return bl;
         }
 

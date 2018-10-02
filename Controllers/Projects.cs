@@ -177,7 +177,7 @@ namespace pghworks.Controllers {
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Project", model.projectName, model.projectID);
         }
-        
+
         public async Task generateDocLibrary (string projectName) {
             await refreshtoken ();
             var token = refreshtoken ().Result;

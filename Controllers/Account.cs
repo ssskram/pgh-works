@@ -49,7 +49,7 @@ namespace pghworks.Controllers {
         public async Task<IActionResult> ExternalLoginCallback (string returnUrl = null, string remoteError = null) {
             // get user group from sp site
             await GetUserGroup ();
-            var usergroup = GetUserGroup().Result; 
+            var usergroup = GetUserGroup ().Result;
             var info = await _signInManager.GetExternalLoginInfoAsync ();
             // create user account, and log user in.
             var email = info.Principal.FindFirstValue (ClaimTypes.Email);
