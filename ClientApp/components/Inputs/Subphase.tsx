@@ -13,9 +13,9 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 
 const statuses = [
-    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
-    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
-    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
+    { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'subphaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'subphaseStatus' }
 ]
 
 export class SubphaseInput extends React.Component<any, any> {
@@ -96,7 +96,7 @@ export class SubphaseInput extends React.Component<any, any> {
     }
 
     handleChildSelect(event) {
-        this.props.handleSelect(event)
+        this.setState({ [event.name]: event.value });
     }
 
     handlePercent(event, maskedvalue, floatvalue) {
@@ -143,7 +143,7 @@ export class SubphaseInput extends React.Component<any, any> {
         return (
             <div>
                 <h3>Subphase</h3>
-                <hr/>
+                <hr />
                 <div className='col-md-12'>
                     <Input
                         value={subphaseName}

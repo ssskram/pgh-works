@@ -39,16 +39,16 @@ namespace pghworks.Controllers {
 
         public class CgSubphase {
             public string Oid { get; set; }
-            public string subphaseStartDate { get; set; }
-            public string subphaseEndDate { get; set; }
-            public int perecentCompleteField { get; set; }
+            public string subphaseStartDateField { get; set; }
+            public string subphaseEndDateField { get; set; }
+            public int percentCompleteField { get; set; }
             public string NotesField { get; set; }
             public string phaseIDField { get; set; }
             public string projectIDField { get; set; }
             public string TaskDescriptionField { get; set; }
             public string subphaseIDField { get; set; }
             public string taskNameField { get; set; }
-            public string SubphaseStatusField { get; set; }
+            public string SubPhaseStatusField { get; set; }
             public string subphaseTypeField = "Subphase";
 
             // req fields, tasks class
@@ -84,16 +84,16 @@ namespace pghworks.Controllers {
             foreach (var item in cartSubphasesObject) {
                 Subphase ph = new Subphase () {
                     cartegraphID = item.Oid,
-                    percentComplete = item.perecentCompleteField,
+                    percentComplete = item.percentCompleteField,
                     phaseID = item.phaseIDField,
                     projectID = item.projectIDField,
-                    endDate = item.subphaseEndDate,
+                    endDate = item.subphaseEndDateField,
                     notes = item.NotesField,
-                    startDate = item.subphaseStartDate,
+                    startDate = item.subphaseStartDateField,
                     subphaseDescription = item.TaskDescriptionField,
                     subphaseID = item.subphaseIDField,
                     subphaseName = item.taskNameField,
-                    subphaseStatus = item.SubphaseStatusField
+                    subphaseStatus = item.SubPhaseStatusField
                 };
                 AllSubphases.Add (ph);
             }
@@ -114,16 +114,16 @@ namespace pghworks.Controllers {
         public async Task addSubphase ([FromBody] Subphase model) {
             CgSubphase cgModel = new CgSubphase () {
                 Oid = model.cartegraphID,
-                subphaseStartDate = model.startDate,
-                subphaseEndDate = model.endDate,
-                perecentCompleteField = model.percentComplete,
+                subphaseStartDateField = model.startDate,
+                subphaseEndDateField = model.endDate,
+                percentCompleteField = model.percentComplete,
                 NotesField = model.notes,
                 phaseIDField = model.phaseID,
                 projectIDField = model.projectID,
                 TaskDescriptionField = model.subphaseDescription,
                 subphaseIDField = model.subphaseID,
                 taskNameField = model.subphaseName,
-                SubphaseStatusField = model.subphaseStatus
+                SubPhaseStatusField = model.subphaseStatus
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
@@ -133,6 +133,7 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
+            Console.WriteLine(json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -166,16 +167,16 @@ namespace pghworks.Controllers {
             }
             CgSubphase cgModel = new CgSubphase () {
                 Oid = id,
-                subphaseStartDate = model.startDate,
-                subphaseEndDate = model.endDate,
-                perecentCompleteField = model.percentComplete,
+                subphaseStartDateField = model.startDate,
+                subphaseEndDateField = model.endDate,
+                percentCompleteField = model.percentComplete,
                 NotesField = model.notes,
                 phaseIDField = model.phaseID,
                 projectIDField = model.projectID,
                 TaskDescriptionField = model.subphaseDescription,
                 subphaseIDField = model.subphaseID,
                 taskNameField = model.subphaseName,
-                SubphaseStatusField = model.subphaseStatus
+                SubPhaseStatusField = model.subphaseStatus
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgTasksClass/");

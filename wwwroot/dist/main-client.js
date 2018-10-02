@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7640c329173334dae343"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "25968424789ac2710a06"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31707,9 +31707,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
-    { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
-    { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
-    { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
+    { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
+    { value: 'On hold', label: 'On hold', name: 'subphaseStatus' },
+    { value: 'Complete', label: 'Complete', name: 'subphaseStatus' }
 ];
 var SubphaseInput = (function (_super) {
     __extends(SubphaseInput, _super);
@@ -31790,7 +31790,8 @@ var SubphaseInput = (function (_super) {
         }
     };
     SubphaseInput.prototype.handleChildSelect = function (event) {
-        this.props.handleSelect(event);
+        this.setState((_a = {}, _a[event.name] = event.value, _a));
+        var _a;
     };
     SubphaseInput.prototype.handlePercent = function (event, maskedvalue, floatvalue) {
         var value = 0;
