@@ -56,6 +56,7 @@ namespace pghworks.Controllers {
             public string phaseNameField { get; set; }
             public string phaseStatusField { get; set; }
             public string projectIDField { get; set; }
+            public string PriorityField = "None";
         }
 
         // GET
@@ -120,7 +121,6 @@ namespace pghworks.Controllers {
             CgPhase cgModel = new CgPhase () {
                 actualStartDateField = model.actualStartDate,
                 actualEndDateField = model.actualEndDate,
-                Oid = model.cartegraphID,
                 expectedEndDateField = model.expectedEndDate,
                 expectedStartDateField = model.expectedStartDate,
                 NotesField = model.notes,
@@ -128,21 +128,24 @@ namespace pghworks.Controllers {
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
-                projectIDField = model.projectID
+                projectIDField = model.projectID,
+                phaseFollowsField = model.phaseFollows.ToString ()
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgWorkOrdersClass";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgWorkOrdersClass' : [" + cgLoad + "] }";
+            Console.WriteLine (json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
                 strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
                 HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
+                Console.WriteLine (response);
                 response.EnsureSuccessStatusCode ();
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {

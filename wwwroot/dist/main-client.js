@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "309cf48807ce588bbbf0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7640c329173334dae343"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31381,7 +31381,8 @@ var PhaseInputs = (function (_super) {
             actualEndDate: '',
             phaseDescription: '',
             phaseStatus: '',
-            notes: ''
+            notes: '',
+            phaseFollows: {}
         };
         _this.handleDate = _this.handleDate.bind(_this);
         return _this;
@@ -31413,7 +31414,8 @@ var PhaseInputs = (function (_super) {
             var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_uuid__["v1"])();
             this.setState({
                 projectID: this.props.projectID,
-                phaseID: guid
+                phaseID: guid,
+                phaseFollows: { project: '', phase: '' }
             });
         }
     };

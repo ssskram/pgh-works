@@ -42,7 +42,8 @@ export class PhaseInputs extends React.Component<any, any> {
             actualEndDate: '',
             phaseDescription: '',
             phaseStatus: '',
-            notes: ''
+            notes: '',
+            phaseFollows: {}
         }
         this.handleDate = this.handleDate.bind(this)
     }
@@ -74,7 +75,8 @@ export class PhaseInputs extends React.Component<any, any> {
             const guid: string = uuid()
             this.setState({
                 projectID: this.props.projectID,
-                phaseID: guid
+                phaseID: guid,
+                phaseFollows: { project: '', phase: '' }
             })
         }
     }
