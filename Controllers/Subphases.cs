@@ -132,7 +132,6 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
-            Console.WriteLine(json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -184,7 +183,6 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
-            Console.WriteLine(json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);

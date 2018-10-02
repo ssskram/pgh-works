@@ -139,13 +139,11 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgWorkOrdersClass' : [" + cgLoad + "] }";
-            Console.WriteLine (json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
                 strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
                 HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
-                Console.WriteLine (response);
                 response.EnsureSuccessStatusCode ();
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {

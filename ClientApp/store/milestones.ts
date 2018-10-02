@@ -71,6 +71,16 @@ export const actionCreators = {
         })
     },
     deleteMilestone: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/milestones/deleteMilestone', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: deleteMilestone, item
         })

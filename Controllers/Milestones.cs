@@ -122,7 +122,6 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
-            Console.WriteLine (json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -136,16 +135,13 @@ namespace pghworks.Controllers {
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Milestone", model.milestoneName, model.milestoneID);
         }
 
-        // PuUT
+        // PUT
         [HttpPut ("[action]")]
         public async Task updateMilestone ([FromBody] Milestone model) {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
-            Console.WriteLine("Incoming cart ID, " + model.cartegraphID);
             if (model.cartegraphID != null && model.cartegraphID != "") {
                 id = model.cartegraphID;
-                Console.WriteLine ("Cart ID in model, " + model.cartegraphID);
-
             } else {
                 var getURL =
                     String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
@@ -154,9 +150,8 @@ namespace pghworks.Controllers {
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
-                dynamic phase = JObject.Parse (content) ["cgTasksClass"][0];
-                Console.WriteLine ("Cart ID not in model, had to grab, " + phase.Oid);
-                id = phase.Oid;
+                dynamic milestone = JObject.Parse (content) ["cgTasksClass"][0];
+                id = milestone.Oid;
             }
             CgMilestone cgModel = new CgMilestone () {
                 Oid = id,
@@ -187,6 +182,37 @@ namespace pghworks.Controllers {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Milestone", model.milestoneName, model.milestoneID);
+        }
+
+        // DELETE
+        [HttpDelete ("[action]")]
+        public async Task deleteMilestone ([FromBody] Milestone model) {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
+                        model.milestoneID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic milestone = JObject.Parse (content) ["cgTasksClass"][0];
+                id = milestone.Oid;
+            }
+            var deleteUrl =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass/{0}",
+                    id); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", "QVBJQWRtaW46Y2FydGVncmFwaDE=");
+            try {
+                await client.DeleteAsync (deleteUrl);
+            } catch (Exception e) {
+                Console.WriteLine (e);
+            }
         }
     }
 }
