@@ -7,8 +7,7 @@ import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 
 const btnStyle = {
-    fontSize: '25px',
-    border: '1px solid rgb(44, 62, 80)'
+    fontSize: '25px'
 }
 
 const types = [
@@ -79,7 +78,10 @@ export default class FundFilter extends React.Component<any, any> {
 
         return (
             <div>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
+                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                    <span className='hidden-sm hidden-xs'>Filter</span>
+                </button>
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}

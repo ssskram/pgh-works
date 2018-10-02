@@ -12,8 +12,7 @@ import { Helmet } from "react-helmet"
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 const btnStyle = {
-    fontSize: '25px',
-    border: '1px solid rgb(44, 62, 80)'
+    fontSize: '25px'
 }
 
 const types = [
@@ -104,7 +103,10 @@ export class PhaseFilter extends React.Component<any, any> {
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'><span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span><span className='hidden-sm hidden-xs'>Filter</span></button>
+                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                    <span className='hidden-sm hidden-xs'>Filter</span>
+                </button>
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
