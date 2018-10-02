@@ -40,6 +40,7 @@ export class Phase extends React.Component<any, any> {
             modalType: '',
             redirect: false,
             redirectLink: '',
+            canEdit: true,
 
             // phase state
             phaseID: '',
@@ -191,6 +192,7 @@ export class Phase extends React.Component<any, any> {
             spinner,
             modalIsOpen,
             modalType,
+            canEdit,
             phaseID,
             phaseName,
             projectID,
@@ -199,6 +201,7 @@ export class Phase extends React.Component<any, any> {
             expectedEndDate,
             phaseFollows
         } = this.state
+
 
         let pfProject = {} as any
         let pfPhase = {} as any
@@ -226,12 +229,14 @@ export class Phase extends React.Component<any, any> {
                         <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
                     </div>
                 }
-                <div className='text-center'>
-                    <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
-                    <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
-                    <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
-                    <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
-                </div>
+                {canEdit == true &&
+                    <div className='text-center'>
+                        <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
+                        <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
+                        <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                        <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
+                    </div>
+                }
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
@@ -241,13 +246,26 @@ export class Phase extends React.Component<any, any> {
                     </div>
                 }
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Milestones phaseID={phaseID} projectID={projectID} />
+                    <Milestones
+                        canEdit={canEdit}
+                        phaseID={phaseID}
+                        projectID={projectID}
+                    />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Subphases phaseID={phaseID} projectID={projectID} />
+                    <Subphases
+                        canEdit={canEdit}
+                        phaseID={phaseID}
+                        projectID={projectID}
+                    />
                 </div>
                 <div style={marginBottom} className='col-md-12 row'>
-                    <Tags parentID={phaseID} parentName={phaseName} parentType='Phase' />
+                    <Tags
+                        canEdit={canEdit}
+                        parentID={phaseID}
+                        parentName={phaseName}
+                        parentType='Phase'
+                    />
                 </div>
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />

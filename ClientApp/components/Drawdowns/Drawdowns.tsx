@@ -11,9 +11,9 @@ import DeleteDrawdown from './DeleteDrawdown'
 import * as CurrencyFormat from 'react-currency-format'
 
 const iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
-    height: '35px'
+    height: '40px'
 }
 
 export class ProgramsFunds extends React.Component<any, any> {

@@ -8,9 +8,9 @@ import SubphaseCard from './SubphaseCard'
 import SubphaseForm from '../Inputs/Subphase'
 
 const iconStyle = {
-    marginRight: '5px',
+    marginRight: '8px',
     marginTop: '-8px',
-    height: '35px'
+    height: '40px'
 }
 
 export class SubPhases extends React.Component<any, any> {
@@ -77,9 +77,24 @@ export class SubPhases extends React.Component<any, any> {
             subphases
         } = this.state
 
+        const {
+            canEdit
+        } = this.props
+
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/subphase.png' /> Subphases<span><button onClick={this.openModal.bind(this)} title='Add subphase' className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2>
+                    <img style={iconStyle} src='./images/subphase.png' />
+                    Subphases
+                    <span>
+                        {canEdit == true &&
+                            <button onClick={this.openModal.bind(this)} title='Add subphase' type='button' className='btn btn-secondary pull-right hidden-xs'>
+                                <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'>
+                                </span>
+                            </button>
+                        }
+                    </span>
+                </h2>
                 <hr />
                 {subphases.length == 0 &&
                     <h4 className='text-center'><i>No subphases</i></h4>
@@ -88,6 +103,7 @@ export class SubPhases extends React.Component<any, any> {
                     subphases.map((subphase) => {
                         return (
                             <SubphaseCard
+                                canEdit={canEdit}
                                 key={subphase.subphaseID}
                                 subphase={subphase}
                                 removeSubphase={this.removeSubphase.bind(this)} />
@@ -103,6 +119,7 @@ export class SubPhases extends React.Component<any, any> {
                     }}
                     center>
                     <SubphaseForm
+                        canEdit={canEdit}
                         phaseID={this.props.phaseID}
                         projectID={this.props.projectID}
                         closeModal={this.closeModal.bind(this)}

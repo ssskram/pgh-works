@@ -27,11 +27,11 @@ export class TagsCard extends React.Component<any, any> {
     componentDidMount() {
         const tag = this.props.tag
         if (tag.tagType == 'Street') {
-            this.setState ({
-                redirectLink: '/Asset/street='+ tag.taggedAssetName
+            this.setState({
+                redirectLink: '/Asset/street=' + tag.taggedAssetName
             })
         } else {
-            this.setState ({
+            this.setState({
                 redirectLink: '/Asset/id=' + tag.taggedAssetOID
             })
         }
@@ -56,7 +56,8 @@ export class TagsCard extends React.Component<any, any> {
         } = this.state
 
         const {
-            tag
+            tag,
+            canEdit
         } = this.props
 
         let src = ''
@@ -100,7 +101,9 @@ export class TagsCard extends React.Component<any, any> {
         return (
             <div className="col-sm-12">
                 <div className="panel">
-                    <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
+                    {canEdit == true &&
+                        <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
+                    }
                     <div className="panel-body text-center">
                         <div className='col-md-3'>
                             <img src={src} style={imgHeight} />

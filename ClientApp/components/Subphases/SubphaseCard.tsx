@@ -41,7 +41,8 @@ export class Subphase extends React.Component<any, any> {
         } = this.state
 
         const {
-            subphase
+            subphase,
+            canEdit
         } = this.props
 
         let percentRemaining = 100 - subphase.percentComplete - 1
@@ -52,7 +53,9 @@ export class Subphase extends React.Component<any, any> {
         return (
             <div className="col-sm-4" >
                 <div style={progressBackground} className="panel">
-                    <button onClick={this.setDelete.bind(this)} className='pull-right delete-btn'>X</button>
+                    {canEdit == true &&
+                        <button onClick={this.setDelete.bind(this)} className='pull-right delete-btn'>X</button>
+                    }
                     <div className="panel-body text-center">
                         <div className='col-md-12'>
                             <h2><b>{subphase.subphaseName}</b></h2>
@@ -78,6 +81,7 @@ export class Subphase extends React.Component<any, any> {
                     }
                     {modalType != 'delete' &&
                         <SubphaseForm
+                            canEdit={canEdit}
                             subphaseID={subphase.subphaseID}
                             closeModal={this.closeModal.bind(this)}
                         />

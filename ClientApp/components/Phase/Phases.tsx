@@ -9,7 +9,7 @@ import PhaseCard from '../Project/Cards/PhaseCard'
 import TL from '../Timeline/Timeline'
 
 const iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
     height: '40px'
 }

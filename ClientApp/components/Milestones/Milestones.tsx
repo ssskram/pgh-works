@@ -11,8 +11,8 @@ import * as moment from 'moment'
 import classnames from 'classnames'
 
 const iconStyle = {
-    marginRight: '5px',
-    marginTop: '-8px',
+    marginRight: '15px',
+    marginTop: '-10px',
     height: '35px'
 }
 
@@ -117,49 +117,88 @@ export class Milestones extends React.Component<any, any> {
             modalType
         } = this.state
 
-        const openColumns = [{
-            Header: 'Name',
-            accessor: 'milestoneName'
-        }, {
-            Header: 'Due date',
-            accessor: 'dueDate',
-            Cell: props => <span className={classnames({redText: moment(props.value).isBefore(moment().format('MM/DD/YYYY'))})}> {props.value}</span>
-        }, {
-            Header: 'Notes',
-            accessor: 'notes'
-        }, {
-            Header: '',
-            accessor: 'milestoneID',
-            Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
-            maxWidth: 100
-        }, {
-            Header: '',
-            accessor: 'milestoneID',
-            Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
-            maxWidth: 100
-        }]
+        const {
+            canEdit
+        } = this.props
 
-        const closedColumns = [{
-            Header: 'Name',
-            accessor: 'milestoneName',
-            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
-        }, {
-            Header: 'Due date',
-            accessor: 'dueDate',
-            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
-        }, {
-            Header: 'Notes',
-            accessor: 'notes',
-            Cell: props => <span style={{textDecoration: 'line-through'}}>{props.value}</span>
-        }, {
-            Header: 'Completed',
-            accessor: 'dateCompleted'
-        }, {
-            Header: '',
-            accessor: 'milestoneID',
-            Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-up'></span></button>,
-            maxWidth: 100
-        }]
+        let openColumns = [] as any
+        if (canEdit == true) {
+           openColumns = [{
+                Header: 'Name',
+                accessor: 'milestoneName'
+            }, {
+                Header: 'Due date',
+                accessor: 'dueDate',
+                Cell: props => <span className={classnames({ redText: moment(props.value).isBefore(moment().format('MM/DD/YYYY')) })}> {props.value}</span>
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
+            }, {
+                Header: '',
+                accessor: 'milestoneID',
+                Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
+                maxWidth: 100
+            }, {
+                Header: '',
+                accessor: 'milestoneID',
+                Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+                maxWidth: 100
+            }]
+        } else {
+            openColumns = [{
+                Header: 'Name',
+                accessor: 'milestoneName'
+            }, {
+                Header: 'Due date',
+                accessor: 'dueDate',
+                Cell: props => <span className={classnames({ redText: moment(props.value).isBefore(moment().format('MM/DD/YYYY')) })}> {props.value}</span>
+            }, {
+                Header: 'Notes',
+                accessor: 'notes'
+            }]
+        }
+
+        let closedColumns = [] as any
+        if (canEdit == true) {
+            closedColumns = [{
+                Header: 'Name',
+                accessor: 'milestoneName',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Due date',
+                accessor: 'dueDate',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Notes',
+                accessor: 'notes',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Completed',
+                accessor: 'dateCompleted'
+            }, {
+                Header: '',
+                accessor: 'milestoneID',
+                Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-up'></span></button>,
+                maxWidth: 100
+            }]
+        } else {
+            closedColumns = [{
+                Header: 'Name',
+                accessor: 'milestoneName',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Due date',
+                accessor: 'dueDate',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Notes',
+                accessor: 'notes',
+                Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
+            }, {
+                Header: 'Completed',
+                accessor: 'dateCompleted'
+            }]
+        }
 
         const openMilestones = milestones.filter(function (item) {
             return item.percentComplete < 100
@@ -171,7 +210,17 @@ export class Milestones extends React.Component<any, any> {
 
         return (
             <div>
-                <h2><img style={iconStyle} src='./images/milestoneGrey.png' /> Milestones<span><button onClick={this.openModal.bind(this)} title='Add milestone' className='btn pull-right hidden-xs'><span style={{fontSize: '20px'}} className='glyphicon glyphicon-plus'></span></button></span></h2>
+                <h2>
+                    <img style={iconStyle} src='./images/milestoneGrey.png' />
+                    Milestones
+                    <span>
+                        {canEdit == true &&
+                            <button onClick={this.openModal.bind(this)} title='Add milestone' type='button' className='btn btn-secondary pull-right hidden-xs'>
+                                <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
+                            </button>
+                        }
+                    </span>
+                </h2>
                 <hr />
                 {milestones.length == 0 &&
                     <h4 className='text-center'><i>No milestones</i></h4>
@@ -200,7 +249,7 @@ export class Milestones extends React.Component<any, any> {
                     </div>
                 }
                 {completedMilestones.length > 0 && openMilestones.length > 0 &&
-                    <div className='col-md-12'><br/><br/></div>
+                    <div className='col-md-12'><br /><br /></div>
                 }
                 {completedMilestones.length > 0 &&
                     <div className='col-md-12'>

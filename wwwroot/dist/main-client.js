@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "61df80c1d82246899ed1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fd8c00140006a31f20c0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31789,6 +31789,7 @@ var SubphaseInput = (function (_super) {
         return _this;
     }
     SubphaseInput.prototype.componentDidMount = function () {
+        console.log(this.props);
         if (this.props.subphaseID) {
             // update subphase
             var subphaseID_1 = this.props.subphaseID;
@@ -31875,6 +31876,7 @@ var SubphaseInput = (function (_super) {
     };
     SubphaseInput.prototype.render = function () {
         var _a = this.state, subphaseName = _a.subphaseName, startDate = _a.startDate, endDate = _a.endDate, subphaseDescription = _a.subphaseDescription, subphaseStatus = _a.subphaseStatus, percentComplete = _a.percentComplete, notes = _a.notes;
+        var canEdit = this.props.canEdit;
         // validation
         var isEnabled = subphaseName != '' &&
             startDate != '' &&
@@ -31883,25 +31885,56 @@ var SubphaseInput = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Subphase"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: subphaseName, name: "subphaseName", header: "Subphase name", required: true, placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: subphaseDescription, name: "subphaseDescription", header: "Subphase description", placeholder: "Provide a brief explanation of the subphase", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: subphaseStatus, name: "subphaseStatus", header: 'Subphase status', required: true, placeholder: 'Select statuses', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", required: true, header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", required: true, placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__["a" /* default */], { value: percentComplete, name: "percentComplete", header: "Percent complete", placeholder: "Enter a number", prefix: "% ", callback: this.handlePercent.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.post.bind(this) },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save")))))));
+            canEdit == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: subphaseName, name: "subphaseName", header: "Subphase name", required: true, placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: subphaseDescription, name: "subphaseDescription", header: "Subphase description", placeholder: "Provide a brief explanation of the subphase", callback: this.handleChildChange.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: subphaseStatus, name: "subphaseStatus", header: 'Subphase status', required: true, placeholder: 'Select statuses', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", required: true, header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "End date", required: true, placeholder: "Select a date", callback: this.handleEndDate.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__["a" /* default */], { value: percentComplete, name: "percentComplete", header: "Percent complete", placeholder: "Enter a number", prefix: "% ", callback: this.handlePercent.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.post.bind(this) },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save")))))),
+            canEdit != true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Name")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, subphaseName),
+                    subphaseDescription != '' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Description")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, subphaseDescription)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Status")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, subphaseStatus),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Start date")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, startDate),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "End date")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, endDate),
+                    percentComplete != '' && percentComplete != 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Percent complete")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, percentComplete)),
+                    notes != '' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Notes")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, notes)))));
     };
     return SubphaseInput;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -32265,9 +32298,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '10px',
+    marginRight: '14px',
     marginTop: '-8px',
-    height: '35px'
+    height: '38px'
 };
 var Tags = (function (_super) {
     __extends(Tags, _super);
@@ -32368,7 +32401,7 @@ var Tags = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No relevant assets")),
                 tags.length > 0 &&
                     tags.map(function (tag) {
-                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__["a" /* default */], { tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this) }));
+                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Tags_TagCard__["a" /* default */], { canEdit: canEdit, tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this) }));
                     })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
@@ -58820,9 +58853,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
-    height: '35px'
+    height: '40px'
 };
 var ProgramsFunds = (function (_super) {
     __extends(ProgramsFunds, _super);
@@ -62002,8 +62035,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '5px',
-    marginTop: '-8px',
+    marginRight: '15px',
+    marginTop: '-10px',
     height: '35px'
 };
 var Milestones = (function (_super) {
@@ -62092,53 +62125,93 @@ var Milestones = (function (_super) {
     Milestones.prototype.render = function () {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, milestones = _a.milestones, selectedMilestone = _a.selectedMilestone, modalType = _a.modalType;
-        var openColumns = [{
-                Header: 'Name',
-                accessor: 'milestoneName'
-            }, {
-                Header: 'Due date',
-                accessor: 'dueDate',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: __WEBPACK_IMPORTED_MODULE_8_classnames___default()({ redText: __WEBPACK_IMPORTED_MODULE_7_moment__(props.value).isBefore(__WEBPACK_IMPORTED_MODULE_7_moment__().format('MM/DD/YYYY')) }) },
-                    " ",
-                    props.value); }
-            }, {
-                Header: 'Notes',
-                accessor: 'notes'
-            }, {
-                Header: '',
-                accessor: 'milestoneID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.completeMilestone(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-ok' })); },
-                maxWidth: 100
-            }, {
-                Header: '',
-                accessor: 'milestoneID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setDelete(props.value); }, className: 'btn btn-danger' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
-                maxWidth: 100
-            }];
-        var closedColumns = [{
-                Header: 'Name',
-                accessor: 'milestoneName',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
-            }, {
-                Header: 'Due date',
-                accessor: 'dueDate',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
-            }, {
-                Header: 'Notes',
-                accessor: 'notes',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
-            }, {
-                Header: 'Completed',
-                accessor: 'dateCompleted'
-            }, {
-                Header: '',
-                accessor: 'milestoneID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.reopenMilestone(props.value); }, className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-up' })); },
-                maxWidth: 100
-            }];
+        var canEdit = this.props.canEdit;
+        var openColumns = [];
+        if (canEdit == true) {
+            openColumns = [{
+                    Header: 'Name',
+                    accessor: 'milestoneName'
+                }, {
+                    Header: 'Due date',
+                    accessor: 'dueDate',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: __WEBPACK_IMPORTED_MODULE_8_classnames___default()({ redText: __WEBPACK_IMPORTED_MODULE_7_moment__(props.value).isBefore(__WEBPACK_IMPORTED_MODULE_7_moment__().format('MM/DD/YYYY')) }) },
+                        " ",
+                        props.value); }
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes'
+                }, {
+                    Header: '',
+                    accessor: 'milestoneID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.completeMilestone(props.value); }, className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-ok' })); },
+                    maxWidth: 100
+                }, {
+                    Header: '',
+                    accessor: 'milestoneID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setDelete(props.value); }, className: 'btn btn-danger' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
+                    maxWidth: 100
+                }];
+        }
+        else {
+            openColumns = [{
+                    Header: 'Name',
+                    accessor: 'milestoneName'
+                }, {
+                    Header: 'Due date',
+                    accessor: 'dueDate',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: __WEBPACK_IMPORTED_MODULE_8_classnames___default()({ redText: __WEBPACK_IMPORTED_MODULE_7_moment__(props.value).isBefore(__WEBPACK_IMPORTED_MODULE_7_moment__().format('MM/DD/YYYY')) }) },
+                        " ",
+                        props.value); }
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes'
+                }];
+        }
+        var closedColumns = [];
+        if (canEdit == true) {
+            closedColumns = [{
+                    Header: 'Name',
+                    accessor: 'milestoneName',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Due date',
+                    accessor: 'dueDate',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Completed',
+                    accessor: 'dateCompleted'
+                }, {
+                    Header: '',
+                    accessor: 'milestoneID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.reopenMilestone(props.value); }, className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-up' })); },
+                    maxWidth: 100
+                }];
+        }
+        else {
+            closedColumns = [{
+                    Header: 'Name',
+                    accessor: 'milestoneName',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Due date',
+                    accessor: 'dueDate',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Notes',
+                    accessor: 'notes',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { textDecoration: 'line-through' } }, props.value); }
+                }, {
+                    Header: 'Completed',
+                    accessor: 'dateCompleted'
+                }];
+        }
         var openMilestones = milestones.filter(function (item) {
             return item.percentComplete < 100;
         });
@@ -62148,9 +62221,9 @@ var Milestones = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/milestoneGrey.png' }),
-                " Milestones",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add milestone', className: 'btn pull-right hidden-xs' },
+                "Milestones",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add milestone', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             milestones.length == 0 &&
@@ -62460,6 +62533,7 @@ var Phase = (function (_super) {
             modalType: '',
             redirect: false,
             redirectLink: '',
+            canEdit: true,
             // phase state
             phaseID: '',
             cartegraphID: '',
@@ -62591,7 +62665,7 @@ var Phase = (function (_super) {
         });
     };
     Phase.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, phaseFollows = _a.phaseFollows;
+        var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, spinner = _a.spinner, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, canEdit = _a.canEdit, phaseID = _a.phaseID, phaseName = _a.phaseName, projectID = _a.projectID, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, phaseFollows = _a.phaseFollows;
         var pfProject = {};
         var pfPhase = {};
         if (phaseFollows.project != '' && phaseFollows.phase != '') {
@@ -62622,34 +62696,35 @@ var Phase = (function (_super) {
                         " phase of ",
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: { cursor: 'pointer' }, onClick: this.pfProjectRedirect.bind(this) },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfProject.projectName)))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' })))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/delete.png' }))))),
+            canEdit == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/delete.png' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__PhaseCard__["a" /* default */], { phase: this.state })),
             expectedStartDate && expectedEndDate &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Timeline_PhaseTimeline__["a" /* default */], { phase: this.state })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Milestones_Milestones__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Milestones_Milestones__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Subphases_SubPhases__["a" /* default */], { phaseID: phaseID, projectID: projectID })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Subphases_SubPhases__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Tags_Tags__["a" /* default */], { parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Tags_Tags__["a" /* default */], { canEdit: canEdit, parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the phase...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -62882,7 +62957,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '5px',
+    marginRight: '10px',
     marginTop: '-8px',
     height: '40px'
 };
@@ -64430,9 +64505,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var iconStyle = {
-    marginRight: '5px',
+    marginRight: '8px',
     marginTop: '-8px',
-    height: '35px'
+    height: '40px'
 };
 var SubPhases = (function (_super) {
     __extends(SubPhases, _super);
@@ -64489,12 +64564,13 @@ var SubPhases = (function (_super) {
     SubPhases.prototype.render = function () {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, subphases = _a.subphases;
+        var canEdit = this.props.canEdit;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/subphase.png' }),
-                " Subphases",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add subphase', className: 'btn pull-right hidden-xs' },
+                "Subphases",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add subphase', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             subphases.length == 0 &&
@@ -64502,13 +64578,13 @@ var SubPhases = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No subphases")),
             subphases.length > 0 &&
                 subphases.map(function (subphase) {
-                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__SubphaseCard__["a" /* default */], { key: subphase.subphaseID, subphase: subphase, removeSubphase: _this.removeSubphase.bind(_this) }));
+                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__SubphaseCard__["a" /* default */], { canEdit: canEdit, key: subphase.subphaseID, subphase: subphase, removeSubphase: _this.removeSubphase.bind(_this) }));
                 }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
                 }, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Inputs_Subphase__["a" /* default */], { phaseID: this.props.phaseID, projectID: this.props.projectID, closeModal: this.closeModal.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Inputs_Subphase__["a" /* default */], { canEdit: canEdit, phaseID: this.props.phaseID, projectID: this.props.projectID, closeModal: this.closeModal.bind(this) }))));
     };
     return SubPhases;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -64574,14 +64650,15 @@ var Subphase = (function (_super) {
     };
     Subphase.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType;
-        var subphase = this.props.subphase;
+        var _b = this.props, subphase = _b.subphase, canEdit = _b.canEdit;
         var percentRemaining = 100 - subphase.percentComplete - 1;
         var progressBackground = {
             background: 'linear-gradient(to right, rgba(92, 184, 92, .08) ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setDelete.bind(this), className: 'pull-right delete-btn' }, "X"),
+                canEdit == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setDelete.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
@@ -64601,7 +64678,7 @@ var Subphase = (function (_super) {
                 modalType == 'delete' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__DeleteSubphase__["a" /* default */], { subphase: subphase, closeModal: this.closeModal.bind(this), removeSubphase: this.props.removeSubphase }),
                 modalType != 'delete' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Inputs_Subphase__["a" /* default */], { subphaseID: subphase.subphaseID, closeModal: this.closeModal.bind(this) }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Inputs_Subphase__["a" /* default */], { canEdit: canEdit, subphaseID: subphase.subphaseID, closeModal: this.closeModal.bind(this) }))));
     };
     return Subphase;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -65231,7 +65308,7 @@ var TagsCard = (function (_super) {
     };
     TagsCard.prototype.render = function () {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, redirectLink = _a.redirectLink;
-        var tag = this.props.tag;
+        var _b = this.props, tag = _b.tag, canEdit = _b.canEdit;
         var src = '';
         if (tag.tagType == "Steps") {
             src = './images/assetTypes/steps.png';
@@ -65271,7 +65348,8 @@ var TagsCard = (function (_super) {
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
+                canEdit == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src, style: imgHeight }),

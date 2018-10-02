@@ -36,6 +36,7 @@ export class SubphaseInput extends React.Component<any, any> {
         }
     }
     componentDidMount() {
+        console.log(this.props)
         if (this.props.subphaseID) {
             // update subphase
             let subphaseID = this.props.subphaseID
@@ -132,6 +133,10 @@ export class SubphaseInput extends React.Component<any, any> {
             notes,
         } = this.state
 
+        const {
+            canEdit
+        } = this.props
+
         // validation
         const isEnabled =
             subphaseName != '' &&
@@ -143,90 +148,124 @@ export class SubphaseInput extends React.Component<any, any> {
             <div>
                 <h3>Subphase</h3>
                 <hr />
-                <div className='col-md-12'>
-                    <Input
-                        value={subphaseName}
-                        name="subphaseName"
-                        header="Subphase name"
-                        required={true}
-                        placeholder="Enter a name"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
+                {canEdit == true &&
+                    <div>
+                        <div className='col-md-12'>
+                            <Input
+                                value={subphaseName}
+                                name="subphaseName"
+                                header="Subphase name"
+                                required={true}
+                                placeholder="Enter a name"
+                                callback={this.handleChildChange.bind(this)}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <TextArea
-                        value={subphaseDescription}
-                        name="subphaseDescription"
-                        header="Subphase description"
-                        placeholder="Provide a brief explanation of the subphase"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <TextArea
+                                value={subphaseDescription}
+                                name="subphaseDescription"
+                                header="Subphase description"
+                                placeholder="Provide a brief explanation of the subphase"
+                                callback={this.handleChildChange.bind(this)}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <TextArea
-                        value={notes}
-                        name="notes"
-                        header="Notes"
-                        placeholder="Enter any other relevant information"
-                        callback={this.handleChildChange.bind(this)}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <TextArea
+                                value={notes}
+                                name="notes"
+                                header="Notes"
+                                placeholder="Enter any other relevant information"
+                                callback={this.handleChildChange.bind(this)}
+                            />
+                        </div>
 
-                <div className='col-md-12'>
-                    <Select
-                        value={subphaseStatus}
-                        name="subphaseStatus"
-                        header='Subphase status'
-                        required={true}
-                        placeholder='Select statuses'
-                        onChange={this.handleChildSelect.bind(this)}
-                        multi={false}
-                        options={statuses}
-                    />
-                </div>
+                        <div className='col-md-12'>
+                            <Select
+                                value={subphaseStatus}
+                                name="subphaseStatus"
+                                header='Subphase status'
+                                required={true}
+                                placeholder='Select statuses'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={statuses}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={startDate}
-                        name="startDate"
-                        required={true}
-                        header="Start date"
-                        placeholder="Select a date"
-                        callback={this.handleStartDate.bind(this)}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={startDate}
+                                name="startDate"
+                                required={true}
+                                header="Start date"
+                                placeholder="Select a date"
+                                callback={this.handleStartDate.bind(this)}
+                            />
+                        </div>
 
-                <div className='col-md-6'>
-                    <Datepicker
-                        value={endDate}
-                        name="endDate"
-                        header="End date"
-                        required={true}
-                        placeholder="Select a date"
-                        callback={this.handleEndDate.bind(this)}
-                    />
-                </div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={endDate}
+                                name="endDate"
+                                header="End date"
+                                required={true}
+                                placeholder="Select a date"
+                                callback={this.handleEndDate.bind(this)}
+                            />
+                        </div>
 
-                <div className='col-md-12'>
-                    <Percent
-                        value={percentComplete}
-                        name="percentComplete"
-                        header="Percent complete"
-                        placeholder="Enter a number"
-                        prefix="% "
-                        callback={this.handlePercent.bind(this)}
-                    />
-                </div>
+                        <div className='col-md-12'>
+                            <Percent
+                                value={percentComplete}
+                                name="percentComplete"
+                                header="Percent complete"
+                                placeholder="Enter a number"
+                                prefix="% "
+                                callback={this.handlePercent.bind(this)}
+                            />
+                        </div>
 
-                <div className='row'>
-                    <div className='col-md-12 text-center'>
-                        <div>
-                            <button disabled={!isEnabled} className='btn btn-success' onClick={this.post.bind(this)}><b>Save</b></button>
+                        <div className='row'>
+                            <div className='col-md-12 text-center'>
+                                <div>
+                                    <button disabled={!isEnabled} className='btn btn-success' onClick={this.post.bind(this)}><b>Save</b></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+                {canEdit != true &&
+                    <div className='col-md-12'>
+                        <h4><b>Name</b></h4>
+                        <h4>{subphaseName}</h4>
+                        {subphaseDescription != '' &&
+                            <div>
+                                <h4><b>Description</b></h4>
+                                <h4>{subphaseDescription}</h4>
+                            </div>
+                        }
+                        <h4><b>Status</b></h4>
+                        <h4>{subphaseStatus}</h4>
+                        <h4><b>Start date</b></h4>
+                        <h4>{startDate}</h4>
+                        <h4><b>End date</b></h4>
+                        <h4>{endDate}</h4>
+                        {percentComplete != '' && percentComplete != 0 &&
+                            <div>
+                                <h4><b>Percent complete</b></h4>
+                                <h4>{percentComplete}</h4>
+                            </div>
+                        }
+                        {notes != '' &&
+                            <div>
+                                <h4><b>Notes</b></h4>
+                                <h4>{notes}</h4>
+                            </div>
+                        }
+                    </div>
+                }
             </div>
         )
     }

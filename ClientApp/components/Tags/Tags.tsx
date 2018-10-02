@@ -9,9 +9,9 @@ import TagCard from '../Tags/TagCard'
 import { v1 as uuid } from 'uuid'
 
 const iconStyle = {
-    marginRight: '10px',
+    marginRight: '14px',
     marginTop: '-8px',
-    height: '35px'
+    height: '38px'
 }
 
 export class Tags extends React.Component<any, any> {
@@ -134,6 +134,7 @@ export class Tags extends React.Component<any, any> {
                         tags.map((tag) => {
                             return (
                                 <TagCard
+                                    canEdit={canEdit}
                                     tag={tag}
                                     key={tag.tagID}
                                     removeTag={this.removeTag.bind(this)} />
