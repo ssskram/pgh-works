@@ -57,7 +57,8 @@ export class ProgramsFunds extends React.Component<any, any> {
 
     closeModal() {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: ''
         });
     }
 

@@ -16,6 +16,7 @@ export interface DrawdownState {
 }
 
 export interface DrawdownItem {
+    cartegraphID: string
     drawdownID: string
     parentID: string
     parentType: string
@@ -27,58 +28,58 @@ export interface DrawdownItem {
 
 export const actionCreators = {
     loadDrawdowns: (): AppThunkAction<any> => (dispatch, getState) => {
-        // fetch('/api/drawdowns/loadDrawdowns', {
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-        //     }
-        // })
-        // .then(response => response.json() as Promise<DrawdownItem[]>)
-        // .then(data => {
-        //     dispatch({ type: loadDrawdowns, drawdowns: data });
-        // });
+        fetch('/api/drawdowns/loadDrawdowns', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+            }
+        })
+        .then(response => response.json() as Promise<DrawdownItem[]>)
+        .then(data => {
+            dispatch({ type: loadDrawdowns, drawdowns: data });
+        });
     },
     addDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
-        // let data = JSON.stringify(item).replace(/'/g, '')
-        // fetch('/api/drawdowns/addDrawdown', {
-        //     method: 'POST',
-        //     body: data,
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/drawdowns/addDrawdown', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addDrawdown, item
         })
     },
     deleteDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
-        // let data = JSON.stringify(item).replace(/'/g, '')
-        // fetch('/api/drawdowns/deleteDrawdown', {
-        //     method: 'DELETE',
-        //     body: data,
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/drawdowns/deleteDrawdown', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: deleteDrawdown, item
         })
     },
     updateDrawdown: (item): AppThunkAction<any> => (dispatch, getState) => {
-        // let data = JSON.stringify(item).replace(/'/g, '')
-        // fetch('/api/drawdowns/updateDrawdown', {
-        //     method: 'PUT',
-        //     body: data,
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/drawdowns/updateDrawdown', {
+            method: 'PUT',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: updateDrawdown, item
         })
