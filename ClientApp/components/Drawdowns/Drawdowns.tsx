@@ -133,7 +133,7 @@ export class ProgramsFunds extends React.Component<any, any> {
             canEdit
         } = this.props
 
-        let columns = []as any
+        let columns = [] as any
         if (canEdit == true) {
             columns = [{
                 Header: 'Fund/Program',
@@ -242,11 +242,11 @@ export class ProgramsFunds extends React.Component<any, any> {
                 <hr />
                 {this.props.budget != 0 &&
                     <div>
-
-                        <h4 className='pull-right'><div className='text-center'>Budget</div><b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h4>
-                        <h4 className='pull-left'><div className='text-center'>Spent</div><CurrencyFormat value={allocated} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
-                        <div style={thermometer} className='col-md-12'>
+                        <div className='col-md-12 row'>
+                            <h4 className='pull-right'><div className='text-center'>Budget</div><b><CurrencyFormat value={this.props.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h4>
+                            <h4 className='pull-left'><div className='text-center'>Spent</div><CurrencyFormat value={allocated} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
                         </div>
+                        <div style={thermometer} className='col-md-12 row'></div>
                     </div>
                 }
                 <div className='col-md-12'>

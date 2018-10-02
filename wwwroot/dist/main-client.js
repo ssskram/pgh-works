@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "211e5048c9068b9fc991"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e8f8b88a6cc6d9eac6ba"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59057,14 +59057,15 @@ var ProgramsFunds = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.budget != 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-right' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Budget"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: this.props.budget, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-left' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Spent"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: allocated, displayType: 'text', thousandSeparator: true, prefix: '$' })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12' })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-right' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Budget"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: this.props.budget, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'pull-left' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, "Spent"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: allocated, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12 row' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
