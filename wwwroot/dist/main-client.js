@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8f89e4963dcf3e7f495a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "304203bb930478366807"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62549,7 +62549,7 @@ var Phase = (function (_super) {
             modalType: '',
             redirect: false,
             redirectLink: '',
-            canEdit: true,
+            canEdit: false,
             // phase state
             phaseID: '',
             cartegraphID: '',
@@ -65287,7 +65287,7 @@ var imgHeight = {
     height: '50px'
 };
 var marginTop = {
-    marginTop: '15px'
+    marginTop: '20px'
 };
 var TagsCard = (function (_super) {
     __extends(TagsCard, _super);

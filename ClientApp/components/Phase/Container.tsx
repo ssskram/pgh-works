@@ -40,7 +40,7 @@ export class Phase extends React.Component<any, any> {
             modalType: '',
             redirect: false,
             redirectLink: '',
-            canEdit: true,
+            canEdit: false,
 
             // phase state
             phaseID: '',
