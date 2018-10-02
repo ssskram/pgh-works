@@ -15,6 +15,7 @@ import Milestones from './Milestones'
 import Subphases from './SubPhases'
 import Timeline from './PhaseTimeline'
 import PhaseFollows from './../Inputs/PhaseFollows'
+import DeletePhase from './DeletePhase'
 
 const btnMargin = {
     margin: '0px 5px'
@@ -131,7 +132,7 @@ export class Phase extends React.Component<any, any> {
     }
 
     pfProjectRedirect() {
-        this.setState ({
+        this.setState({
             redirect: true,
             redirectLink: "/Project/id=" + this.state.phaseFollows.project
         })
@@ -148,6 +149,13 @@ export class Phase extends React.Component<any, any> {
         this.setState({
             modalIsOpen: true,
             modalType: 'edit'
+        })
+    }
+
+    deletePhase() {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'delete'
         })
     }
 
@@ -210,6 +218,7 @@ export class Phase extends React.Component<any, any> {
             <div>
                 <h2 style={{ letterSpacing: '2px' }}>{projectName}
                     <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                    <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
                     <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
                     <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} className='btn pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
                 </h2>
@@ -257,7 +266,15 @@ export class Phase extends React.Component<any, any> {
                         />
                     }
                     {modalType == 'follows' &&
-                        <PhaseFollows passFollows={this.putPhaseFollows.bind(this)} />
+                        <PhaseFollows
+                            passFollows={this.putPhaseFollows.bind(this)}
+                        />
+                    }
+                    {modalType == 'delete' &&
+                        <DeletePhase
+                            phase={this.state}
+                            returnToProject={this.returnToProject.bind(this)}
+                        />
                     }
                 </Modal>
             </div>

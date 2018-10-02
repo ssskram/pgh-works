@@ -5,6 +5,7 @@ import { AppThunkAction } from './'
 const loadPhases = 'loadPhases'
 const addPhase = 'addPhases'
 const updatePhase = 'updatePhases'
+const deletePhase = 'deletePhase'
 
 const unloadedState: PhaseState = {
     phases: []
@@ -42,10 +43,10 @@ export const actionCreators = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
             }
         })
-        .then(response => response.json() as Promise<PhaseItem[]>)
-        .then(data => {
-            dispatch({ type: loadPhases, phases: data });
-        });
+            .then(response => response.json() as Promise<PhaseItem[]>)
+            .then(data => {
+                dispatch({ type: loadPhases, phases: data });
+            });
     },
     addPhase: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item).replace(/'/g, '')
@@ -75,6 +76,22 @@ export const actionCreators = {
         })
         dispatch({
             type: updatePhase, item
+        })
+    },
+    deletePhase: (item): AppThunkAction<any> => (dispatch, getstate) => {
+        console.log(item)
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/phases/deletePhase', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        dispatch({
+            type: deletePhase, item
         })
     }
 }
@@ -111,6 +128,13 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
                     notes: action.item.notes,
                 } : phase
                 )
+            };
+        case deletePhase:
+            var phasesCopy = state.phases.slice()
+            phasesCopy.splice(phasesCopy.indexOf(action.item), 1);
+            return {
+                ...state,
+                phases: phasesCopy
             };
     }
 

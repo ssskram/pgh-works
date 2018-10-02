@@ -85,7 +85,7 @@ namespace pghworks.Controllers {
             string cartPhases = getPhases ().Result;
             dynamic cartPhasesObject = JObject.Parse (cartPhases) ["cgWorkOrdersClass"];
             foreach (var item in cartPhasesObject) {
-                PhaseFollows pf = JsonConvert.DeserializeObject<PhaseFollows>(item.phaseFollowsField.ToString());
+                PhaseFollows pf = JsonConvert.DeserializeObject<PhaseFollows> (item.phaseFollowsField.ToString ());
                 Phase ph = new Phase () {
                     actualEndDate = item.phaseActualEndDateField,
                     actualStartDate = item.phaseActualStartDateField,
@@ -203,6 +203,37 @@ namespace pghworks.Controllers {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Phase", model.phaseName, model.phaseID);
+        }
+
+        // DELETE
+        [HttpDelete ("[action]")]
+        public async Task deletePhase ([FromBody] Phase model) {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass?filter=(([phaseID] is equal to \"{0}\"))",
+                        model.phaseID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic phase = JObject.Parse (content) ["cgWorkOrdersClass"][0];
+                id = phase.Oid;
+            }
+            var deleteUrl =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass/{0}",
+                    id); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            try {
+                await client.DeleteAsync (deleteUrl);
+            } catch (Exception e) {
+                Console.WriteLine (e);
+            }
         }
     }
 }
