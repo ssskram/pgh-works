@@ -46,24 +46,28 @@ export class UpdateLocation extends React.Component<any, any> {
             <div>
                 <br />
                 {shapeType == '' &&
-                    <div className='text-center' style={minWidth}>
-                        <div className='row'>
-                            <button onClick={this.newShape.bind(this)} className='btn btn-primary btn-big'>
-                                <div className='row'>
-                                    <div className='col-md-12'>
-                                        <img style={imgSize} src='./images/polygon.png' />
+                    <div>
+                        <h3>Select shape type</h3>
+                        <hr />
+                        <div className='text-center' style={minWidth}>
+                            <div className='row'>
+                                <button onClick={this.newShape.bind(this)} title='Draw a new shape' className='btn btn-primary btn-big'>
+                                    <div className='row'>
+                                        <div className='col-md-12'>
+                                            <img style={imgSize} src='./images/polygon.png' />
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
-                        </div>
-                        <div className='row'>
-                            <button onClick={this.importShape.bind(this)} className='btn btn-primary btn-big'>
-                                <div className='row'>
-                                    <div className='col-md-12'>
-                                        <img style={imgSize} src='./images/importShape.png' />
+                                </button>
+                            </div>
+                            <div className='row'>
+                                <button onClick={this.importShape.bind(this)} title='Import from existing asset' className='btn btn-primary btn-big'>
+                                    <div className='row'>
+                                        <div className='col-md-12'>
+                                            <img style={imgSize} src='./images/importShape.png' />
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 }

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "076658a49a5d9c4d420d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b0891328588e52505e17"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58672,11 +58672,10 @@ var Attachments = (function (_super) {
                             }
                         }); } }),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { marginTop: '65px' } },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName, target: '_blank' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '22px' } },
-                                "Document library",
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { margin: '4px 0px -10px 12px' }, className: 'glyphicon glyphicon-arrow-right' })))))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName, target: '_blank' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '25px' } },
+                            "Document library",
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { margin: '4px 0px -12px 12px' }, className: 'glyphicon glyphicon-arrow-right' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -60078,7 +60077,10 @@ var Attachment = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "dropzone" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */], { onDrop: this.onDrop.bind(this), className: 'dropzone-style' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Coming soon!"))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */], { onDrop: this.onDrop.bind(this), disabled: true, className: 'dropzone-style' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             "Drop a file here,",
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -63743,17 +63745,20 @@ var UpdateLocation = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             shapeType == '' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: minWidth },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newShape.bind(this), className: 'btn btn-primary btn-big' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: './images/polygon.png' }))))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.importShape.bind(this), className: 'btn btn-primary btn-big' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: './images/importShape.png' })))))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Select shape type"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: minWidth },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newShape.bind(this), title: 'Draw a new shape', className: 'btn btn-primary btn-big' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: './images/polygon.png' }))))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.importShape.bind(this), title: 'Import from existing asset', className: 'btn btn-primary btn-big' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: './images/importShape.png' }))))))),
             shapeType == 'new' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__ProjectDefinition_Geolocate_NewShape__["a" /* default */], { passShape: this.setShape.bind(this) }),
             shapeType == 'import' &&
@@ -64745,6 +64750,7 @@ var Subphase = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Maps_StreetMap__ = __webpack_require__(648);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_point_in_polygon__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_point_in_polygon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_point_in_polygon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__ = __webpack_require__(739);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64763,6 +64769,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -64901,6 +64908,12 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Maps_StreetMap__["a" /* default */], { street: assetName, passShape: this.filterTagsByStreetSegment.bind(this), reset: this.reset.bind(this), assetName: assetName }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8 col-md-offset-1' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                    "Related projects & phases ",
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__["a" /* default */], null))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null)),
             tags.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { margin: '50px 0px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
@@ -82329,6 +82342,138 @@ __webpack_require__(363);
 __webpack_require__(362);
 module.exports = __webpack_require__(361);
 
+
+/***/ }),
+/* 738 */,
+/* 739 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export TagFilter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormElements_select__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_datepicker__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_tags__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+
+
+
+
+
+
+
+var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var btnStyle = {
+    fontSize: '25px'
+};
+var types = [
+    { value: 'Project', label: 'Project', name: 'parentType' },
+    { value: 'Phase', label: 'Phase', name: 'parentType' },
+];
+var TagFilter = (function (_super) {
+    __extends(TagFilter, _super);
+    function TagFilter() {
+        var _this = _super.call(this) || this;
+        _this.state = {
+            modalIsOpen: false,
+            parentType: '',
+            startDate: '',
+            endDate: ''
+        };
+        return _this;
+    }
+    TagFilter.prototype.closeModal = function () {
+        this.setState({
+            modalIsOpen: false
+        });
+    };
+    TagFilter.prototype.openModal = function () {
+        this.setState({
+            modalIsOpen: true
+        });
+    };
+    TagFilter.prototype.handleChildChange = function (event) {
+        this.setState((_a = {}, _a[event.target.name] = event.target.value, _a));
+        var _a;
+    };
+    TagFilter.prototype.handleChildSelect = function (event) {
+        this.setState((_a = {}, _a[event.name] = event.value, _a));
+        var _a;
+    };
+    TagFilter.prototype.handleDate = function (date, name) {
+        if (date) {
+            this.setState((_a = {},
+                _a[name] = __WEBPACK_IMPORTED_MODULE_5_moment__(date).format('MM/DD/YYYY'),
+                _a));
+        }
+        else {
+            this.setState((_b = {},
+                _b[name] = null,
+                _b));
+        }
+        var _a, _b;
+    };
+    TagFilter.prototype.filter = function () {
+        this.setState({
+            modalIsOpen: false
+        });
+    };
+    TagFilter.prototype.render = function () {
+        var _this = this;
+        var _a = this.state, modalIsOpen = _a.modalIsOpen, parentType = _a.parentType, startDate = _a.startDate, endDate = _a.endDate;
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
+                    overlay: 'custom-overlay',
+                    modal: 'custom-modal'
+                }, center: true },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_select__["a" /* default */], { value: parentType, name: "parentType", header: 'Filter by type', placeholder: 'Projects or phases', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "From", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'startDate'); } })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "To", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'endDate'); } })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.filter.bind(this), className: 'btn btn-success' }, "Apply filter"))))));
+    };
+    return TagFilter;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.tags)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_6__store_tags__["a" /* actionCreators */])))(TagFilter));
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Filters/TagFilter.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Filters/TagFilter.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);

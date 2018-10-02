@@ -11,6 +11,7 @@ import * as Phases from '../../store/phases'
 import Map from '../Maps/ProjectMap'
 import StreetMap from '../Maps/StreetMap'
 import inside from 'point-in-polygon'
+import TagFilter from '../Filters/TagFilter'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -157,12 +158,16 @@ export class AssetReport extends React.Component<any, any> {
                         <StreetMap
                             street={assetName}
                             passShape={this.filterTagsByStreetSegment.bind(this)}
-                            reset={this.reset.bind(this)} 
-                            assetName={assetName}/>
+                            reset={this.reset.bind(this)}
+                            assetName={assetName} />
                         <br />
                         <br />
                     </div>
                 }
+                <div className='col-md-8 col-md-offset-1'>
+                    <h3>Related projects & phases <span style={{ marginTop: '-10px' }} className='pull-right'><TagFilter /></span></h3>
+                    <hr />
+                </div>
                 {tags.length == 0 &&
                     <div className='col-md-12' style={{ margin: '50px 0px' }}>
                         <div className='text-center alert alert-info'>

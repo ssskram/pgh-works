@@ -239,9 +239,7 @@ export class Attachments extends React.Component<any, any> {
                         />
                     }
                     <div className='col-md-12 text-center' style={{ marginTop: '65px' }}>
-                        <button type='button' className='btn btn-secondary'>
-                            <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName} target='_blank'><span style={{ fontSize: '22px' }}>Document library<span style={{ margin: '4px 0px -10px 12px' }} className='glyphicon glyphicon-arrow-right'></span></span></a>
-                        </button>
+                        <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName} target='_blank'><span style={{ fontSize: '25px' }}>Document library<span style={{ margin: '4px 0px -12px 12px' }} className='glyphicon glyphicon-arrow-right'></span></span></a>
                     </div>
                 </div>
                 <Modal

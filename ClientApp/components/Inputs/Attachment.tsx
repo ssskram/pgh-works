@@ -84,7 +84,8 @@ export class Attachment extends React.Component<any, any> {
                     <div className="dropzone">
                         <br />
                         <br />
-                        <Dropzone onDrop={this.onDrop.bind(this)} className='dropzone-style'>
+                        <h3 className='text-center'><i><b>Coming soon!</b></i></h3>
+                        <Dropzone onDrop={this.onDrop.bind(this)} disabled={true} className='dropzone-style'>
                             <h3>Drop a file here,<br />or click to select a file</h3>
                         </Dropzone>
                     </div>
