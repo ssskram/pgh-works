@@ -45,7 +45,12 @@ namespace pghworks.Controllers {
             public string phaseIDField { get; set; }
             public string projectIDField { get; set; }
             public string NotesField { get; set; }
-            public string subphaseType = "Milestone";
+            public string subphaseTypeField = "Milestone";
+
+            // req fields, tasks class
+            public string ActivityField = "Project Management";
+            public string DepartmentField = "Administration";
+            public string PriorityField = "None";
         }
 
         // GET
@@ -118,6 +123,7 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
+            Console.WriteLine(json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);

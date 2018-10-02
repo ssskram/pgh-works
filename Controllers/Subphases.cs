@@ -49,7 +49,12 @@ namespace pghworks.Controllers {
             public string subphaseIDField { get; set; }
             public string taskNameField { get; set; }
             public string SubphaseStatusField { get; set; }
-            public string subphaseType = "Subphase";
+            public string subphaseTypeField = "Subphase";
+
+            // req fields, tasks class
+            public string ActivityField = "Project Management";
+            public string DepartmentField = "Administration";
+            public string PriorityField = "None";
         }
 
         // GET
