@@ -195,5 +195,36 @@ namespace pghworks.Controllers {
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Subphase", model.subphaseName, model.subphaseID);
         }
+
+        // DELETE
+        [HttpDelete ("[action]")]
+        public async Task deleteSubphase ([FromBody] Subphase model) {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
+                        model.subphaseID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic subphase = JObject.Parse (content) ["cgTasksClass"][0];
+                id = subphase.Oid;
+            }
+            var deleteUrl =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass/{0}",
+                    id); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", "QVBJQWRtaW46Y2FydGVncmFwaDE=");
+            try {
+                await client.DeleteAsync (deleteUrl);
+            } catch (Exception e) {
+                Console.WriteLine (e);
+            }
+        }
     }
 }

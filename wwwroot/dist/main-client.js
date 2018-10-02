@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "135dfb2dd489502f9a09"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "edc7e4c96be268611093"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9963,6 +9963,16 @@ var actionCreators = {
         });
     }; },
     deleteSubphase: function (item) { return function (dispatch, getState) {
+        var data = JSON.stringify(item).replace(/'/g, '');
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/subphases/deleteSubphase', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         dispatch({
             type: deleteSubphase, item: item
         });

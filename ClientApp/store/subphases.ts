@@ -73,6 +73,16 @@ export const actionCreators = {
         })
     },
     deleteSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/subphases/deleteSubphase', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: deleteSubphase, item
         })
