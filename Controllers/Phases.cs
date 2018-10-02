@@ -159,7 +159,7 @@ namespace pghworks.Controllers {
         public async Task updatePhase ([FromBody] Phase model) {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
-            if (model.cartegraphID != null) {
+            if (model.cartegraphID != null && model.cartegraphID != "") {
                 id = model.cartegraphID;
             } else {
                 var getURL =

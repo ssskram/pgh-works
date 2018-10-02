@@ -105,7 +105,6 @@ namespace pghworks.Controllers {
         [HttpPost ("[action]")]
         public async Task addMilestone ([FromBody] Milestone model) {
             CgMilestone cgModel = new CgMilestone () {
-                Oid = model.cartegraphID,
                 subphaseDateCompletedField = model.dateCompleted,
                 subphaseDueDateField = model.dueDate,
                 subphaseIDField = model.milestoneID,
@@ -123,7 +122,7 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
-            Console.WriteLine(json);
+            Console.WriteLine (json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -142,8 +141,11 @@ namespace pghworks.Controllers {
         public async Task updateMilestone ([FromBody] Milestone model) {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
-            if (model.cartegraphID != null) {
+            Console.WriteLine("Incoming cart ID, " + model.cartegraphID);
+            if (model.cartegraphID != null && model.cartegraphID != "") {
                 id = model.cartegraphID;
+                Console.WriteLine ("Cart ID in model, " + model.cartegraphID);
+
             } else {
                 var getURL =
                     String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
@@ -153,6 +155,7 @@ namespace pghworks.Controllers {
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
                 dynamic phase = JObject.Parse (content) ["cgTasksClass"][0];
+                Console.WriteLine ("Cart ID not in model, had to grab, " + phase.Oid);
                 id = phase.Oid;
             }
             CgMilestone cgModel = new CgMilestone () {

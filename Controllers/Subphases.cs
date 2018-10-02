@@ -113,7 +113,6 @@ namespace pghworks.Controllers {
         [HttpPost ("[action]")]
         public async Task addSubphase ([FromBody] Subphase model) {
             CgSubphase cgModel = new CgSubphase () {
-                Oid = model.cartegraphID,
                 subphaseStartDateField = model.startDate,
                 subphaseEndDateField = model.endDate,
                 percentCompleteField = model.percentComplete,
@@ -152,7 +151,7 @@ namespace pghworks.Controllers {
         public async Task updateSubphase ([FromBody] Subphase model) {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
-            if (model.cartegraphID != null) {
+            if (model.cartegraphID != null && model.cartegraphID != "") {
                 id = model.cartegraphID;
             } else {
                 var getURL =
@@ -185,6 +184,7 @@ namespace pghworks.Controllers {
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
             string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
+            Console.WriteLine(json);
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
