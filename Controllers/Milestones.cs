@@ -68,22 +68,22 @@ namespace pghworks.Controllers {
                 };
                 AllMilestones.Add (ms);
             }
-            // string cartMilestones = getMilestones ().Result;
-            // dynamic cartMilestonesObject = JObject.Parse (cartMilestones) ["cgTasksClass"];
-            // foreach (var item in cartMilestonesObject) {
-            //     Milestone ph = new Milestone () {
-            //         cartegraphID = item.Oid,
-            //         dateCompleted = item.subphaseDateCompletedField,
-            //         dueDate = item.subphaseDueDateField,
-            //         milestoneID = item.subphaseIDField,
-            //         milestoneName = item.taskNameField,
-            //         percentComplete = item.percentCompleteField,
-            //         phaseID = item.phaseIDField,
-            //         projectID = item.projectIDField,
-            //         notes = item.NotesField
-            //     };
-            //     AllMilestones.Add (ph);
-            // }
+            string cartMilestones = getMilestones ().Result;
+            dynamic cartMilestonesObject = JObject.Parse (cartMilestones) ["cgTasksClass"];
+            foreach (var item in cartMilestonesObject) {
+                Milestone ph = new Milestone () {
+                    cartegraphID = item.Oid,
+                    dateCompleted = item.subphaseDateCompletedField,
+                    dueDate = item.subphaseDueDateField,
+                    milestoneID = item.subphaseIDField,
+                    milestoneName = item.taskNameField,
+                    percentComplete = item.percentCompleteField,
+                    phaseID = item.phaseIDField,
+                    projectID = item.projectIDField,
+                    notes = item.NotesField
+                };
+                AllMilestones.Add (ph);
+            }
             return AllMilestones;
         }
         public async Task<string> getMilestones () {

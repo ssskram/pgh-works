@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f069b04d1b553deb76b2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "309cf48807ce588bbbf0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61509,7 +61509,6 @@ var Phase = (function (_super) {
             return item.projectID == id;
         });
         if (project) {
-            console.log('here');
             this.setState({
                 projectName: project.projectName,
                 spinner: false
@@ -64002,8 +64001,6 @@ var ProjectDefinition = (function (_super) {
         this.setState({
             shape: shape,
             shapeType: type
-        }, function () {
-            console.log(this.state);
         });
     };
     ProjectDefinition.prototype.setName = function (name) {
