@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ee764434ca92919921e0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "84a12c43e305403514b5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58583,25 +58583,43 @@ var Attachments = (function (_super) {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, modalType = _a.modalType, selectedAttachment = _a.selectedAttachment, attachments = _a.attachments, visible = _a.visible, imageIndex = _a.imageIndex;
         var _b = this.props, parentID = _b.parentID, parentType = _b.parentType, parentName = _b.parentName, canEdit = _b.canEdit;
-        var columns = [{
-                Header: 'File name',
-                accessor: 'attachmentName'
-            }, {
-                Header: 'Uploaded',
-                accessor: 'dateCreated',
-            }, {
-                Header: '',
-                accessor: 'src',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: props.value, target: '_blank', className: 'btn btn-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
-                maxWidth: 75
-            }, {
-                Header: '',
-                accessor: 'attachmentID',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.deleteAttachment(props.original); }, className: 'btn btn-danger' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
-                maxWidth: 75
-            }];
+        var columns = [];
+        if (canEdit == true) {
+            columns = [{
+                    Header: 'File name',
+                    accessor: 'attachmentName'
+                }, {
+                    Header: 'Uploaded',
+                    accessor: 'dateCreated',
+                }, {
+                    Header: '',
+                    accessor: 'src',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: props.value, target: '_blank', className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    maxWidth: 75
+                }, {
+                    Header: '',
+                    accessor: 'attachmentID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.deleteAttachment(props.original); }, className: 'btn btn-danger' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
+                    maxWidth: 75
+                }];
+        }
+        else {
+            columns = [{
+                    Header: 'File name',
+                    accessor: 'attachmentName'
+                }, {
+                    Header: 'Uploaded',
+                    accessor: 'dateCreated',
+                }, {
+                    Header: '',
+                    accessor: 'src',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: props.value, target: '_blank', className: 'btn btn-success' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-eye-open' })); },
+                    maxWidth: 75
+                }];
+        }
         var files = [];
         var images = [];
         attachments.forEach(function (attachment) {
@@ -62553,7 +62571,7 @@ var Phase = (function (_super) {
             modalType: '',
             redirect: false,
             redirectLink: '',
-            canEdit: false,
+            canEdit: true,
             // phase state
             phaseID: '',
             cartegraphID: '',

@@ -123,23 +123,39 @@ export class Attachments extends React.Component<any, any> {
             canEdit
         } = this.props
 
-        const columns = [{
-            Header: 'File name',
-            accessor: 'attachmentName'
-        }, {
-            Header: 'Uploaded',
-            accessor: 'dateCreated',
-        }, {
-            Header: '',
-            accessor: 'src',
-            Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
-            maxWidth: 75
-        }, {
-            Header: '',
-            accessor: 'attachmentID',
-            Cell: props => <button onClick={() => this.deleteAttachment(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
-            maxWidth: 75
-        }]
+        let columns = [] as any
+        if (canEdit == true) {
+            columns = [{
+                Header: 'File name',
+                accessor: 'attachmentName'
+            }, {
+                Header: 'Uploaded',
+                accessor: 'dateCreated',
+            }, {
+                Header: '',
+                accessor: 'src',
+                Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
+                maxWidth: 75
+            }, {
+                Header: '',
+                accessor: 'attachmentID',
+                Cell: props => <button onClick={() => this.deleteAttachment(props.original)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+                maxWidth: 75
+            }]
+        } else {
+            columns = [{
+                Header: 'File name',
+                accessor: 'attachmentName'
+            }, {
+                Header: 'Uploaded',
+                accessor: 'dateCreated',
+            }, {
+                Header: '',
+                accessor: 'src',
+                Cell: props => <a href={props.value} target='_blank' className='btn btn-success'><span className='glyphicon glyphicon-eye-open'></span></a>,
+                maxWidth: 75
+            }]
+        }
 
         let files = [] as any
         let images = [] as any
@@ -222,9 +238,9 @@ export class Attachments extends React.Component<any, any> {
                             })}
                         />
                     }
-                    <div className='col-md-12 text-center' style={{marginTop: '65px'}}>
+                    <div className='col-md-12 text-center' style={{ marginTop: '65px' }}>
                         <button type='button' className='btn btn-secondary'>
-                            <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName} target='_blank'><span style={{ fontSize: '22px' }}>Document library<span style={{margin: '4px 0px -10px 12px'}}className='glyphicon glyphicon-arrow-right'></span></span></a>
+                            <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + parentName} target='_blank'><span style={{ fontSize: '22px' }}>Document library<span style={{ margin: '4px 0px -10px 12px' }} className='glyphicon glyphicon-arrow-right'></span></span></a>
                         </button>
                     </div>
                 </div>
