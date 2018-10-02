@@ -7,6 +7,17 @@ namespace pghworks.Models {
         public string drawdownAmount { get; set; }
         public string drawdownType { get; set; }
         public string notes { get; set; }
-        public string spID { get; set; }
+        public string cartegraphID { get; set; }
+    }
+
+    public class CgDrawdown {
+        public string drawdownIDField { get; set; }
+        public string parentIDField { get; set; }
+        public string parentTypeField { get; set; }
+        public string fundIDField { get; set; }
+        public string drawdownAmountField { get; set; }
+        public string drawdownTypeField { get; set; }
+        public string notesField { get; set; }
+        public string Oid { get; set; }
     }
 }

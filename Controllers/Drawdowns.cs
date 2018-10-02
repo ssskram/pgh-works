@@ -27,51 +27,58 @@ namespace pghworks.Controllers {
         public object loadDrawdowns () {
             List<Drawdown> AllDrawdowns = new List<Drawdown> ();
             string drawdowns = getDrawdowns ().Result;
-            dynamic drawdownsObject = JObject.Parse (drawdowns) ["value"];
+            dynamic drawdownsObject = JObject.Parse (drawdowns) ["ProjectFundDrawdowns"];
             foreach (var item in drawdownsObject) {
                 Drawdown tg = new Drawdown () {
-                    drawdownID = item.drawdownID,
-                    parentID = item.parentID,
-                    parentType = item.parentType,
-                    fundID = item.fundID,
-                    drawdownAmount = item.drawdownAmount,
-                    drawdownType = item.drawdownType,
-                    notes = item.notes,
-                    spID = item.Id
-
+                    drawdownID = item.drawdownIDField,
+                    parentID = item.parentIDField,
+                    parentType = item.parentTypeField,
+                    fundID = item.fundIDField,
+                    drawdownAmount = item.drawdownAmountField,
+                    drawdownType = item.drawdownTypeField,
+                    notes = item.notesField,
+                    cartegraphID = item.Oid
                 };
                 AllDrawdowns.Add (tg);
             }
             return (AllDrawdowns);
         }
         public async Task<string> getDrawdowns () {
-            string token = refreshtoken ().Result;
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectFundDrawdowns";
             client.DefaultRequestHeaders.Clear ();
-            client.DefaultRequestHeaders.Add ("Accept", "application/json");
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue ("Bearer", token);
-            string listitems = await client.GetStringAsync ("https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists/GetByTitle('drawdowns')/items");
-            return listitems;
+                new AuthenticationHeaderValue ("Basic", key);
+            string content = await client.GetStringAsync (cartegraphUrl);
+            return content;
         }
 
         // POST
         [HttpPost ("[action]")]
         public async Task addDrawdown ([FromBody] Drawdown model) {
-            string drawdownLoad = JsonConvert.SerializeObject (model);
-            string token = refreshtoken ().Result;
-            var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists/GetByTitle('drawdowns')/items";
+            CgDrawdown cgModel = new CgDrawdown () {
+                drawdownIDField = model.drawdownID,
+                parentIDField = model.parentID,
+                parentTypeField = model.parentType,
+                fundIDField = model.fundID,
+                drawdownAmountField = model.drawdownAmount,
+                drawdownTypeField = model.drawdownType,
+                notesField = model.notes,
+                Oid = model.cartegraphID
+            };
+            string cgLoad = JsonConvert.SerializeObject (cgModel);
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectFundDrawdowns";
             client.DefaultRequestHeaders.Clear ();
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue ("Bearer", token);
-            client.DefaultRequestHeaders.Add ("Accept", "application/json;odata=verbose");
-            client.DefaultRequestHeaders.Add ("X-RequestDigest", "form digest value");
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
-            string json = "{ '__metadata': { 'type': 'SP.Data.DrawdownsListItem' }," + drawdownLoad + "}";
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            string json = "{ 'ProjectFundDrawdowns' : [" + cgLoad + "] }";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
                 strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
-                HttpResponseMessage response = client.PostAsync (sharepointUrl, strContent).Result;
+                HttpResponseMessage response = client.PostAsync (cartegraphUrl, strContent).Result;
                 response.EnsureSuccessStatusCode ();
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
@@ -83,22 +90,43 @@ namespace pghworks.Controllers {
         // PUT
         [HttpPut ("[action]")]
         public async Task updateDrawdown ([FromBody] Drawdown model) {
-            string drawdownLoad = JsonConvert.SerializeObject (model);
-            string token = refreshtoken ().Result;
-            var sharepointUrl = string.Format("https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists/GetByTitle('drawdowns')/items({0})", model.spID);
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectFundDrawdowns?filter=(([drawdownID] is equal to \"{0}\"))",
+                        model.drawdownID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic milestone = JObject.Parse (content) ["ProjectFundDrawdowns"][0];
+                id = milestone.Oid;
+            }
+            CgDrawdown cgModel = new CgDrawdown () {
+                drawdownIDField = model.drawdownID,
+                parentIDField = model.parentID,
+                parentTypeField = model.parentType,
+                fundIDField = model.fundID,
+                drawdownAmountField = model.drawdownAmount,
+                drawdownTypeField = model.drawdownType,
+                notesField = model.notes,
+                Oid = model.cartegraphID
+            };
+            string cgLoad = JsonConvert.SerializeObject (cgModel);
+            var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectFundDrawdowns/");
             client.DefaultRequestHeaders.Clear ();
-            client.DefaultRequestHeaders.Add ("Accept", "application/json;odata=verbose");
-            client.DefaultRequestHeaders.Add ("X-RequestDigest", "form digest value");
-            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "MERGE");
-            client.DefaultRequestHeaders.Add ("IF-MATCH", "*");
+            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "PUT");
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue ("Basic", token);
-            string json = "{ '__metadata': {{ 'type': 'SP.Data.drawdownsItem' }}," + drawdownLoad + "}";
+                new AuthenticationHeaderValue ("Basic", key);
+            string json = "{ 'ProjectFundDrawdowns' : [" + cgLoad + "] }";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
                 strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/json;odata=verbose");
-                HttpResponseMessage response = client.PostAsync (sharepointUrl, strContent).Result;
+                HttpResponseMessage response = client.PutAsync (cartegraphUrl, strContent).Result;
                 response.EnsureSuccessStatusCode ();
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
@@ -107,35 +135,36 @@ namespace pghworks.Controllers {
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Put", "Drawdown", model.parentType, model.drawdownID);
         }
 
-        private async Task<string> refreshtoken () {
-            var MSurl = "https://accounts.accesscontrol.windows.net/f5f47917-c904-4368-9120-d327cf175591/tokens/OAuth/2";
-            var clientid = Environment.GetEnvironmentVariable ("SPClientID");
-            var clientsecret = Environment.GetEnvironmentVariable ("SPClientSecret");
-            var refreshtoken = Environment.GetEnvironmentVariable ("refreshtoken");
-            var redirecturi = Environment.GetEnvironmentVariable ("redirecturi");
-            var SPresource = Environment.GetEnvironmentVariable ("spresourceid");
+        // DELETE
+        [HttpDelete ("[action]")]
+        public async Task deleteDrawdown ([FromBody] Drawdown model) {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectFundDrawdowns?filter=(([drawdownID] is equal to \"{0}\"))",
+                        model.drawdownID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic tag = JObject.Parse (content) ["ProjectFundDrawdowns"][0];
+                id = tag.Oid;
+            }
+            var deleteUrl =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectFundDrawdowns/{0}",
+                    id); // 0
             client.DefaultRequestHeaders.Clear ();
-            client.DefaultRequestHeaders.Add ("Accept", "application/x-www-form-urlencoded");
-            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
-
-            var json =
-                String.Format ("grant_type=refresh_token&client_id={0}&client_secret={1}&refresh_token={2}&redirect_uri={3}&resource={4}",
-                    clientid, // 0
-                    clientsecret, // 1
-                    refreshtoken, // 2
-                    redirecturi, // 3
-                    SPresource); // 4
-
-            client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
-            StringContent strContent = new StringContent (json);
-            strContent.Headers.ContentType = MediaTypeHeaderValue.Parse ("application/x-www-form-urlencoded");
-            HttpResponseMessage response = client.PostAsync (MSurl, strContent).Result;
-            response.EnsureSuccessStatusCode ();
-            var content = await response.Content.ReadAsStringAsync ();
-            dynamic results = JsonConvert.DeserializeObject<dynamic> (content);
-            string token = results.access_token.ToString ();
-            return token;
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            try {
+                await client.DeleteAsync (deleteUrl);
+            } catch (Exception e) {
+                Console.WriteLine (e);
+            }
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Delete", "Drawdown", model.parentType, model.drawdownID);
         }
-
     }
 }
