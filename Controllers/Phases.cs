@@ -197,6 +197,7 @@ namespace pghworks.Controllers {
             await client.DeleteAsync (deleteUrl);
             await deleteTasks (model.phaseID);
             await deleteTags (model.phaseID);
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Delete", "Phase", model.phaseName, model.phaseID);
         }
 
         public async Task deleteTasks (string phaseID) {

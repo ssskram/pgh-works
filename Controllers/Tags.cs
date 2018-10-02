@@ -134,6 +134,7 @@ namespace pghworks.Controllers {
             } catch (Exception e) {
                 Console.WriteLine (e);
             }
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Delete", "Tag", model.taggedAssetName, model.tagID);
         }
     }
 }

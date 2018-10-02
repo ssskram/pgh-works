@@ -191,6 +191,7 @@ namespace pghworks.Controllers {
             } catch (Exception e) {
                 Console.WriteLine (e);
             }
+            await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Delete", "Subphase", model.subphaseName, model.subphaseID);
         }
     }
 }
