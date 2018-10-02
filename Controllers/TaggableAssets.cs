@@ -17,22 +17,6 @@ namespace pghworks.Controllers {
     [Route ("api/[controller]")]
     public class assets : Controller {
 
-        public class TaggableAssets {
-            public string assetType { get; set; }
-            public string assetOID { get; set; }
-            public string assetName { get; set; }
-            public Shape shape { get; set; }
-        }
-
-        public class Shape {
-            public List<Points> Points { get; set; }
-        }
-
-        public class Points {
-            public double Lat { get; set; }
-            public double Lng { get; set; }
-        }
-
         HttpClient client = new HttpClient ();
 
         // empty list to write all assets

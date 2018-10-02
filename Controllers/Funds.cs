@@ -18,15 +18,6 @@ namespace pghworks.Controllers {
     public class funds : Controller {
         HttpClient client = new HttpClient ();
 
-        public class Fund {
-            public string fundID { get; set; }
-            public string fundName { get; set; }
-            public string fundYear { get; set; }
-            public string fundType { get; set; }
-            public string expirationDate { get; set; }
-            public string fundAmount { get; set; }
-        }
-
         // GET
         [HttpGet ("[action]")]
         public async Task<object> loadFunds () {

@@ -18,11 +18,6 @@ namespace pghworks.Controllers {
     public class personnel : Controller {
         HttpClient client = new HttpClient ();
 
-        public class Personnel {
-            public string email { get; set; }
-            public string title { get; set; }
-        }
-
         // GET
         [HttpGet ("[action]")]
         public async Task<object> loadPersonnel () {
