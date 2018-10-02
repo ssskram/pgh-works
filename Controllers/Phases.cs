@@ -44,11 +44,11 @@ namespace pghworks.Controllers {
         }
 
         public class CgPhase {
-            public string actualEndDateField { get; set; }
-            public string actualStartDateField { get; set; }
+            public string phaseActualEndDateField { get; set; }
+            public string phaseActualStartDateField { get; set; }
             public string Oid { get; set; }
-            public string expectedEndDateField { get; set; }
-            public string expectedStartDateField { get; set; }
+            public string phaseExpectedEndDateField { get; set; }
+            public string phaseExpectedStartDateField { get; set; }
             public string NotesField { get; set; }
             public string phaseDescriptionField { get; set; }
             public string phaseFollowsField { get; set; }
@@ -85,29 +85,28 @@ namespace pghworks.Controllers {
             string cartPhases = getPhases ().Result;
             dynamic cartPhasesObject = JObject.Parse (cartPhases) ["cgWorkOrdersClass"];
             foreach (var item in cartPhasesObject) {
-                if (item.projectIDField != "") {
-                    Phase ph = new Phase () {
-                    actualEndDate = item.actualEndDateField,
-                    actualStartDate = item.actualStartDateField,
+                PhaseFollows pf = JsonConvert.DeserializeObject<PhaseFollows>(item.phaseFollowsField.ToString());
+                Phase ph = new Phase () {
+                    actualEndDate = item.phaseActualEndDateField,
+                    actualStartDate = item.phaseActualStartDateField,
                     cartegraphID = item.Oid,
-                    expectedEndDate = item.expectedEndDateField,
-                    expectedStartDate = item.expectedStartDateField,
+                    expectedEndDate = item.phaseExpectedEndDateField,
+                    expectedStartDate = item.phaseExpectedStartDateField,
                     notes = item.NotesField,
                     phaseDescription = item.phaseDescriptionField,
-                    phaseFollows = item.phaseFollowsField.ToObject<PhaseFollows> (),
+                    phaseFollows = pf,
                     phaseID = item.phaseIDField,
                     phaseName = item.phaseNameField,
                     phaseStatus = item.phaseStatusField,
                     projectID = item.projectIDField
-                    };
-                    AllPhases.Add (ph);
-                }
+                };
+                AllPhases.Add (ph);
             }
             return AllPhases;
         }
         public async Task<string> getPhases () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgWorkOrdersClass?filter=([projectID] is not equal to \"\")";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -118,18 +117,19 @@ namespace pghworks.Controllers {
         // POST
         [HttpPost ("[action]")]
         public async Task addPhase ([FromBody] Phase model) {
+            var phaseFollows = JsonConvert.SerializeObject (model.phaseFollows);
             CgPhase cgModel = new CgPhase () {
-                actualStartDateField = model.actualStartDate,
-                actualEndDateField = model.actualEndDate,
-                expectedEndDateField = model.expectedEndDate,
-                expectedStartDateField = model.expectedStartDate,
+                phaseActualStartDateField = model.actualStartDate,
+                phaseActualEndDateField = model.actualEndDate,
+                phaseExpectedEndDateField = model.expectedEndDate,
+                phaseExpectedStartDateField = model.expectedStartDate,
                 NotesField = model.notes,
                 phaseDescriptionField = model.phaseDescription,
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
                 projectIDField = model.projectID,
-                phaseFollowsField = model.phaseFollows.ToString ()
+                phaseFollowsField = phaseFollows
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
@@ -172,15 +172,16 @@ namespace pghworks.Controllers {
                 dynamic phase = JObject.Parse (content) ["cgWorkOrdersClass"][0];
                 id = phase.Oid;
             }
+            var phaseFollows = JsonConvert.SerializeObject (model.phaseFollows);
             CgPhase cgModel = new CgPhase () {
                 Oid = id,
-                actualStartDateField = model.actualStartDate,
-                actualEndDateField = model.actualEndDate,
-                expectedEndDateField = model.expectedEndDate,
-                expectedStartDateField = model.expectedStartDate,
+                phaseActualStartDateField = model.actualStartDate,
+                phaseActualEndDateField = model.actualEndDate,
+                phaseExpectedEndDateField = model.expectedEndDate,
+                phaseExpectedStartDateField = model.expectedStartDate,
                 NotesField = model.notes,
                 phaseDescriptionField = model.phaseDescription,
-                phaseFollowsField = model.phaseFollows.ToString (),
+                phaseFollowsField = phaseFollows,
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
