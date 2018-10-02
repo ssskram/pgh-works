@@ -26,7 +26,8 @@ import inside from 'point-in-polygon'
 import ProjectTimeline from '../Timeline/ProjectTimeline'
 
 const btnMargin = {
-    margin: '20px 5px 0px 5px'
+    margin: '20px 5px 0px 5px',
+    border: '1px solid #383838'
 }
 
 const marginBottom = {
@@ -34,7 +35,7 @@ const marginBottom = {
 }
 
 const iconStyle = {
-    height: '28px',
+    height: '32px',
 }
 
 export class Project extends React.Component<any, any> {
@@ -292,15 +293,15 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <div className='row'>
-                    <div className='col-md-8'>
-                        <h2 style={{ letterSpacing: '2px' }}>{projectName}</h2>
+                <div className='row text-center'>
+                    <div className='col-md-12'>
+                        <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
                     </div>
                     {canEdit == true &&
-                        <div className='col-md-4 hidden-sm hidden-xs'>
-                            <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
-                            <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
-                            <Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn btn-secondary pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link>
+                        <div className='col-md-12'>
+                            <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
+                            <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
+                            <Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link>
                         </div>
                     }
                 </div>
@@ -311,7 +312,7 @@ export class Project extends React.Component<any, any> {
                     <ProjectCard project={this.state} />
                 </div>
                 {expectedStartDate && expectedEndDate &&
-                    <div style={marginBottom} className='col-md-12'>
+                    <div style={marginBottom} className='col-md-12 row'>
                         <ProjectTimeline project={this.state} />
                     </div>
                 }

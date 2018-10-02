@@ -41,11 +41,9 @@ export default class PhaseTimeline extends React.Component<any, any> {
                     <span style={{ backgroundColor: 'rgba(0, 153, 255, 0.3)', padding: '8px' }}>Expected</span>
                     <span style={{ backgroundColor: 'rgba(255, 167, 167, .4)', padding: '8px' }}>Actual</span>
                 </div>
-                <div className='col-md-12'>
-                    {this.props.phase &&
-                        <TL items={items} />
-                    }
-                </div>
+                {this.props.phase &&
+                    <TL items={items} />
+                }
             </div>
         )
     }

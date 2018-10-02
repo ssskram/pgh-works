@@ -66,8 +66,8 @@ export class PhaseCard extends React.Component<any, any> {
                             }
                         </div>
                         <div className='col-md-4'>
-                            <h2><i>{allMilestones.length} Milestone{allMilestones.length != 1 && 's'}</i></h2>
-                            <h3><i>{allSubphases.length} Subphase{allSubphases.length != 1 && 's'}</i></h3>
+                            <h2>{allMilestones.length} Milestone{allMilestones.length != 1 && 's'}</h2>
+                            <h3>{allSubphases.length} Subphase{allSubphases.length != 1 && 's'}</h3>
                         </div>
                         <div className='col-md-4'>
                         <Link to={link} className='btn btn-success'><h2><span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></h2></Link>

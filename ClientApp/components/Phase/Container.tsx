@@ -18,7 +18,8 @@ import PhaseFollows from './../Inputs/PhaseFollows'
 import DeletePhase from './DeletePhase'
 
 const btnMargin = {
-    margin: '0px 5px'
+    margin: '8px 5px',
+    border: '1px solid #383838'
 }
 
 const marginBottom = {
@@ -26,7 +27,7 @@ const marginBottom = {
 }
 
 const iconStyle = {
-    height: '28px',
+    height: '30px',
 }
 
 export class Phase extends React.Component<any, any> {
@@ -216,25 +217,26 @@ export class Phase extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{ letterSpacing: '2px' }}>{projectName}
-                    <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
-                    <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
-                    <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} className='btn pull-right hidden-xs'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
-                    <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} className='btn pull-right'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
-                </h2>
+                <h2 style={{ letterSpacing: '2px' }}>{projectName}</h2>
                 <hr />
                 <br />
-                <h2 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h2>
+                <h1 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h1>
                 {pfProject.projectName && pfPhase.phaseName &&
                     <div className='text-center'>
                         <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
                     </div>
                 }
+                <div className='text-center'>
+                    <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
+                    <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
+                    <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                    <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
+                </div>
                 <div className='col-md-12'>
                     <PhaseCard phase={this.state} />
                 </div>
                 {expectedStartDate && expectedEndDate &&
-                    <div style={marginBottom} className='col-md-12'>
+                    <div style={marginBottom} className='col-md-12 row'>
                         <Timeline phase={this.state} />
                     </div>
                 }
