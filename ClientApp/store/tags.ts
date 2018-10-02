@@ -56,6 +56,16 @@ export const actionCreators = {
     },
 
     deleteTag: (item): AppThunkAction<any> => (dispatch, getState) => {
+        let data = JSON.stringify(item).replace(/'/g, '')
+        fetch('/api/tags/deleteTag', {
+            method: 'DELETE',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: deleteTag, item
         })

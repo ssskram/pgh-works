@@ -207,7 +207,7 @@ namespace pghworks.Controllers {
                     id); // 0
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue ("Basic", "QVBJQWRtaW46Y2FydGVncmFwaDE=");
+                new AuthenticationHeaderValue ("Basic", key);
             try {
                 await client.DeleteAsync (deleteUrl);
             } catch (Exception e) {

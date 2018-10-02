@@ -25,6 +25,7 @@ namespace pghworks.Controllers {
         HttpClient client = new HttpClient ();
 
         public class Tag {
+            public string cartegraphID { get; set; }
             public string parentID { get; set; }
             public string parentName { get; set; }
             public string parentType { get; set; }
@@ -44,6 +45,7 @@ namespace pghworks.Controllers {
             public string taggedAssetOIDField { get; set; }
             public string tagTypeField { get; set; }
             public string tagIDField { get; set; }
+            public string Oid { get; set; }
         }
 
         // GET
@@ -76,7 +78,8 @@ namespace pghworks.Controllers {
                     tagID = item.tagIDField,
                     tagType = item.tagTypeField,
                     taggedAssetName = item.taggedAssetNameField,
-                    taggedAssetOID = item.taggedAssetOIDField
+                    taggedAssetOID = item.taggedAssetOIDField,
+                    cartegraphID = item.Oid
                 };
                 AllTags.Add (ph);
             }
@@ -124,6 +127,37 @@ namespace pghworks.Controllers {
                 System.Diagnostics.Debug.WriteLine (ex.Message);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Tag", model.taggedAssetName, model.tagID);
+        }
+
+        // DELETE
+        [HttpDelete ("[action]")]
+        public async Task deleteTag ([FromBody] Tag model) {
+            var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
+            string id;
+            if (model.cartegraphID != null && model.cartegraphID != "") {
+                id = model.cartegraphID;
+            } else {
+                var getURL =
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectTagsClass?filter=(([tagID] is equal to \"{0}\"))",
+                        model.tagID); // 0
+                client.DefaultRequestHeaders.Clear ();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue ("Basic", key);
+                string content = await client.GetStringAsync (getURL);
+                dynamic tag = JObject.Parse (content) ["ProjectTagsClass"][0];
+                id = tag.Oid;
+            }
+            var deleteUrl =
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/ProjectTagsClass/{0}",
+                    id); // 0
+            client.DefaultRequestHeaders.Clear ();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue ("Basic", key);
+            try {
+                await client.DeleteAsync (deleteUrl);
+            } catch (Exception e) {
+                Console.WriteLine (e);
+            }
         }
     }
 }
