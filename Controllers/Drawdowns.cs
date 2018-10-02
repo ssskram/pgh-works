@@ -72,10 +72,12 @@ namespace pghworks.Controllers {
             string token = refreshtoken ().Result;
             var sharepointUrl = "https://cityofpittsburgh.sharepoint.com/sites/pghworks/_api/web/lists/GetByTitle('drawdowns')/items";
             client.DefaultRequestHeaders.Clear ();
-            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
             client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue ("Basic", token);
-            string json = "{ '__metadata': {{ 'type': 'SP.Data.drawdownsItem' }}," + drawdownLoad + "}";
+                new AuthenticationHeaderValue ("Bearer", token);
+            client.DefaultRequestHeaders.Add ("Accept", "application/json;odata=verbose");
+            client.DefaultRequestHeaders.Add ("X-RequestDigest", "form digest value");
+            client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
+            string json = "{ '__metadata': { 'type': 'SP.Data.DrawdownsListItem' }," + drawdownLoad + "}";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -89,7 +91,7 @@ namespace pghworks.Controllers {
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Drawdown", model.parentType, model.drawdownID);
         }
 
-        // POST
+        // PUT
         [HttpPut ("[action]")]
         public async Task updateDrawdown ([FromBody] Drawdown model) {
             string drawdownLoad = JsonConvert.SerializeObject (model);
