@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom'
 import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
+import * as Personnel from '../../store/GETS/personnel'
+import * as User from '../../store/GETS/user'
 import ProjectFilters from '../Filters/ProjectFilter'
 import Paging from '../Utilities/Paging'
 import MapThumbnail from '../Maps/MapThumbnail'
+import getMyProjects from './../../functions/myProjects'
+import Spinner from './../Utilities/Spinner'
 
 const iconStyle = {
     color: '#fff',
@@ -20,18 +24,30 @@ export class MyProjects extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            projects: props.projects.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            projects: [],
             currentPage: 1,
             itemsPerPage: 30
         }
     }
     componentDidMount() {
         window.scrollTo(0, 0)
-
+        this.setState({
+            projects: getMyProjects(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
+                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+            })
+        })
         // ping server
         this.props.ping()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.personnel != nextProps.personnel && this.props.user != nextProps.user) {
+            this.setState({
+                projects: getMyProjects(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                })
+            })
+        }
     }
 
     handleNextClick() {
@@ -64,6 +80,11 @@ export class MyProjects extends React.Component<any, any> {
             currentPage,
             itemsPerPage
         } = this.state
+
+        const {
+            personnel,
+            user
+        } = this.props
 
         // Logic for paging
         const indexOfLastItem = currentPage * itemsPerPage;
@@ -136,6 +157,9 @@ export class MyProjects extends React.Component<any, any> {
                         <h1>No projects associated with your account</h1>
                     </div>
                 }
+                {personnel.length == 0 && user == null &&
+                    <Spinner notice='...loading your projects...' />
+                }
             </div>
         )
     }
@@ -144,10 +168,14 @@ export class MyProjects extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
-        ...state.projects
+        ...state.projects,
+        ...state.personnel,
+        ...state.user
     }),
     ({
         ...Ping.actionCreators,
-        ...Projects.actionCreators
+        ...Projects.actionCreators,
+        ...Personnel.actionCreators,
+        ...User.actionCreators
     })
 )(MyProjects as any) as typeof MyProjects
