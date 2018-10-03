@@ -50,6 +50,15 @@ export class AllProjects extends React.Component<any, any> {
         });
     }
 
+    receiveFilteredProjects(projects) {
+        console.log(projects)
+        this.setState({
+            projects: projects.sort(function (a, b) {
+                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
+            })
+        })
+    }
+
     public render() {
         const {
             projects,
@@ -92,7 +101,15 @@ export class AllProjects extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>All Projects <span style={{ marginTop: '-10px' }} className='pull-right'><ProjectFilters /></span></h2>
+                <h2>
+                    All Projects
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                        <ProjectFilters
+                            filterType="all"
+                            returnFiltered={this.receiveFilteredProjects.bind(this)}
+                        />
+                    </span>
+                </h2>
                 <hr />
                 {projects.length > 0 &&
                     <div>

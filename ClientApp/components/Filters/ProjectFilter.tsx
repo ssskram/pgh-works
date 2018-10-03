@@ -3,12 +3,15 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Personnel from '../../store/GETS/personnel'
+import * as User from '../../store/GETS/user'
+import * as Projects from '../../store/projects'
 import Datepicker from '../FormElements/datepicker'
 import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import { Helmet } from "react-helmet"
+import filterProjects from './../Functions/filterProjects'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
@@ -39,14 +42,14 @@ export class ProjectFilter extends React.Component<any, any> {
             endDate: '',
             projectDepartment: '',
             projectStatus: '',
-            projectMember: ''
+            projectManager: ''
         }
     }
 
     componentDidMount() {
         const personnel = [] as any
         this.props.personnel.forEach(user => {
-            const personnelSelect = { value: user.title, label: user.title, name: 'projectMember' }
+            const personnelSelect = { value: user.title, label: user.title, name: 'projectManager' }
             personnel.push(personnelSelect)
         })
         this.setState({
@@ -87,6 +90,19 @@ export class ProjectFilter extends React.Component<any, any> {
     }
 
     filter() {
+        const filterType = this.props.filterType
+        const projects = this.props.projects
+        const personnel = this.props.personnel
+        const user = this.props.user
+        const filterLoad = {
+            projectName: this.state.projectName,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            projectDepartment: this.state.projectDepartment,
+            projectStatus: this.state.projectStatus,
+            projectManager: this.state.projectManager
+        }
+        this.props.returnFiltered(filterProjects(projects, personnel, user, filterLoad, filterType))
         this.setState({
             modalIsOpen: false
         })
@@ -101,7 +117,7 @@ export class ProjectFilter extends React.Component<any, any> {
             endDate,
             projectDepartment,
             projectStatus,
-            projectMember
+            projectManager
         } = this.state
         return (
             <div>
@@ -177,9 +193,9 @@ export class ProjectFilter extends React.Component<any, any> {
 
                         <div className='col-md-12'>
                             <Select
-                                value={projectMember}
-                                name="projectMember"
-                                header='Project manager/member'
+                                value={projectManager}
+                                name="projectManager"
+                                header='Project manager'
                                 placeholder='Select user'
                                 onChange={this.handleChildSelect.bind(this)}
                                 multi={false}
@@ -199,9 +215,13 @@ export class ProjectFilter extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.personnel
+        ...state.personnel,
+        ...state.projects,
+        ...state.user
     }),
     ({
-        ...Personnel.actionCreators
+        ...Personnel.actionCreators,
+        ...Projects.actionCreators,
+        ...User.actionCreators
     })
 )(ProjectFilter as any) as typeof ProjectFilter
