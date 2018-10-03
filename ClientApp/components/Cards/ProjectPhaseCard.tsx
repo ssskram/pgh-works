@@ -2,9 +2,9 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../../../store'
-import * as MilestoneStore from '../../../store/milestones'
-import * as SubphaseStore from '../../../store/subphases'
+import { ApplicationState } from '../../store'
+import * as MilestoneStore from '../../store/milestones'
+import * as SubphaseStore from '../../store/subphases'
 
 const iconStyle = {
     color: '#fff',

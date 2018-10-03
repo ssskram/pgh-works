@@ -5,7 +5,7 @@ import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
-import TagCard from '../Tags/TagCard'
+import TagCard from '../Cards/TagCard'
 import { v1 as uuid } from 'uuid'
 import removeDuplicates from './../Functions/removeDuplicates'
 

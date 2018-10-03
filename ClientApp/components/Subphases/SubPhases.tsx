@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as SubphaseStore from '../../store/subphases'
 import Modal from 'react-responsive-modal'
-import SubphaseCard from './SubphaseCard'
+import SubphaseCard from '../Cards/SubphaseCard'
 import SubphaseForm from '../Inputs/Subphase'
 
 const iconStyle = {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
-import DeleteTag from './DeleteTag'
+import DeleteTag from '../DeleteConfirmations/DeleteTag'
 
 const imgHeight = {
     height: '50px'

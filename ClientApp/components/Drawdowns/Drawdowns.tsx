@@ -7,7 +7,7 @@ import * as Drawdowns from '../../store/drawdowns'
 import * as Funds from '../../store/GETS/funds'
 import Modal from 'react-responsive-modal'
 import DrawdownForm from '../Inputs/Drawdown'
-import DeleteDrawdown from './DeleteDrawdown'
+import DeleteDrawdown from '../DeleteConfirmations/DeleteDrawdown'
 import * as CurrencyFormat from 'react-currency-format'
 
 const iconStyle = {

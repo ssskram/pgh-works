@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import Modal from 'react-responsive-modal'
 import SubphaseForm from '../Inputs/Subphase'
-import DeleteSubphase from './DeleteSubphase'
+import DeleteSubphase from '../DeleteConfirmations/DeleteSubphase'
 
 export class Subphase extends React.Component<any, any> {
     constructor() {

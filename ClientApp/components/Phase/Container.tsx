@@ -9,13 +9,13 @@ import * as Phases from '../../store/phases'
 import Spinner from '../Utilities/Spinner'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../Inputs/Phase'
-import PhaseCard from './PhaseCard'
+import PhaseCard from '../Cards/PhaseCard'
 import Tags from '../Tags/Tags'
 import Milestones from '../Milestones/Milestones'
 import Subphases from '../Subphases/SubPhases'
 import Timeline from '../Timeline/PhaseTimeline'
 import PhaseFollows from './../Inputs/PhaseFollows'
-import DeletePhase from './DeletePhase'
+import DeletePhase from '../DeleteConfirmations/DeletePhase'
 
 const btnMargin = {
     margin: '8px 5px',

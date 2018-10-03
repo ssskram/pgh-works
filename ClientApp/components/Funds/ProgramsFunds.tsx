@@ -6,7 +6,7 @@ import { ApplicationState } from '../../store'
 import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
 import Table from 'react-table'
-import FundFilter from './../Filters/FundFilter'
+import FundFilter from '../Filters/FundFilter'
 import * as CurrencyFormat from 'react-currency-format'
 
 const iconStyle = {

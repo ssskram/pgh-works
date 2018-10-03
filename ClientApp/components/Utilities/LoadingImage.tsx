@@ -25,7 +25,6 @@ export default class LoadingImage extends React.Component<any, any> {
                     <img src={this.props.src} onLoad={this.onLoad.bind(this)} />
                 </div>
             </div>
-
         )
     }
 }

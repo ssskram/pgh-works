@@ -1,8 +1,8 @@
 
 import * as React from 'react'
 import Slider from "react-slick";
-import RightArrow from './../../Utilities/CarouselRight'
-import LeftArrow from './../../Utilities/CarouselLeft'
+import RightArrow from '../Utilities/CarouselRight'
+import LeftArrow from '../Utilities/CarouselLeft'
 
 export default class ProjectCard extends React.Component<any, any> {
 

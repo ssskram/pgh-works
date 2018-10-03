@@ -5,7 +5,7 @@ import ReactTable from "react-table";
 import { ApplicationState } from '../../store'
 import * as MilestoneStore from '../../store/milestones'
 import Modal from 'react-responsive-modal'
-import DeleteMilestone from './DeleteMilestone'
+import DeleteMilestone from '../DeleteConfirmations/DeleteMilestone'
 import MilestoneForm from '../Inputs/Milestone'
 import * as moment from 'moment'
 import classnames from 'classnames'

@@ -1,8 +1,8 @@
 
 import * as React from 'react'
 import Slider from "react-slick";
-import RightArrow from './../Utilities/CarouselRight'
-import LeftArrow from './../Utilities/CarouselLeft'
+import RightArrow from '../Utilities/CarouselRight'
+import LeftArrow from '../Utilities/CarouselLeft'
 
 const bigFont = {
     fontSize: '18px'
