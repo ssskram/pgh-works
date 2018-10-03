@@ -1,8 +1,5 @@
 
 export default function getMyProjects (allProjects, personnel, user) {
-    console.log(allProjects)
-    console.log(personnel)
-    console.log(user)
     const me = personnel.find(person => {
         return person.email == user
     })

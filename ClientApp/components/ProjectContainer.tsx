@@ -6,6 +6,7 @@ import { ApplicationState } from '../store'
 import Modal from 'react-responsive-modal'
 import * as Ping from '../store/GETS/ping'
 import * as Projects from '../store/projects'
+import * as Personnel from '../store/GETS/funds'
 import Spinner from './Utilities/Spinner'
 import Map from './Maps/ProjectMap'
 import Phases from './/Phases'
@@ -24,6 +25,7 @@ import ProjectCard from './Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
 import inside from 'point-in-polygon'
 import ProjectTimeline from './Timeline/ProjectTimeline'
+import canEdit from './../functions/canEdit'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
@@ -109,7 +111,8 @@ export class Project extends React.Component<any, any> {
             projectStatus: project.projectStatus,
             projectBudget: project.projectBudget,
             notes: project.notes,
-            shape: project.shape
+            shape: project.shape,
+            canEdit: canEdit(project, this.props.personnel, this.props.user)
         }, function (this) {
             this.setState({
                 spinner: false
@@ -399,7 +402,8 @@ export default connect(
         ...state.user,
         ...state.tags,
         ...state.timeline,
-        ...state.phases
+        ...state.phases,
+        ...state.personnel
     }),
     ({
         ...Ping.actionCreators,
@@ -408,6 +412,7 @@ export default connect(
         ...Assets.actionCreators,
         ...TagStore.actionCreators,
         ...Timeline.actionCreators,
-        ...PhasesStore.actionCreators
+        ...PhasesStore.actionCreators,
+        ...Personnel.actionCreators
     })
 )(Project as any) as typeof Project

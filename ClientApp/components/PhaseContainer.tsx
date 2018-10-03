@@ -6,6 +6,8 @@ import { ApplicationState } from '../store'
 import * as Ping from '../store/GETS/ping'
 import * as Projects from '../store/projects'
 import * as Phases from '../store/phases'
+import * as Personnel from '../store/GETS/personnel'
+import * as User from '../store/GETS/user'
 import Spinner from './Utilities/Spinner'
 import Modal from 'react-responsive-modal'
 import PhaseForm from './Inputs/Phase/Phase'
@@ -16,6 +18,7 @@ import Subphases from './SubPhases'
 import Timeline from './Timeline/PhaseTimeline'
 import PhaseFollows from './Inputs/Phase/PhaseFollows'
 import DeletePhase from './DeleteConfirmations/DeletePhase'
+import canEdit from './../functions/canEdit'
 
 const btnMargin = {
     margin: '8px 5px',
@@ -88,6 +91,9 @@ export class Phase extends React.Component<any, any> {
     }
 
     setPhaseState(phase) {
+        const project = this.props.projects.find(project => {
+            return project.projectID == phase.projectID
+        })
         this.setState({
             projectID: phase.projectID,
             phaseID: phase.phaseID,
@@ -101,7 +107,8 @@ export class Phase extends React.Component<any, any> {
             phaseStatus: phase.phaseStatus,
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
-            notes: phase.notes
+            notes: phase.notes,
+            canEdit: canEdit(project, this.props.personnel, this.props.user)
         }, function (this) {
             this.findProject(this.state.projectID)
         })
@@ -306,11 +313,15 @@ export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
         ...state.projects,
-        ...state.phases
+        ...state.phases,
+        ...state.user,
+        ...state.personnel
     }),
     ({
         ...Ping.actionCreators,
         ...Projects.actionCreators,
-        ...Phases.actionCreators
+        ...Phases.actionCreators,
+        ...User.actionCreators,
+        ...Personnel.actionCreators
     })
 )(Phase as any) as typeof Phase

@@ -29,9 +29,10 @@ const floatingPanelSmall = {
 }
 
 export class Home extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
+            projects: [],
             redirect: false,
             projectID: ''
         }
@@ -39,8 +40,20 @@ export class Home extends React.Component<any, any> {
     componentDidMount() {
         window.scrollTo(0, 0)
 
+        this.setState ({
+            projects: this.props.projects
+        })
+
         // ping server
         this.props.ping()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.projects.length == 0) {
+            this.setState ({
+                projects: nextProps.projects
+            })
+        }
     }
 
     receiveProject(project) {
@@ -50,14 +63,18 @@ export class Home extends React.Component<any, any> {
         })
     }
 
+    receiveFilteredProjects(projects) {
+        console.log(projects)
+        this.setState({
+            projects: projects
+        })
+    }
+
     public render() {
         const {
-            projects
-        } = this.props
-
-        const {
             redirect,
-            projectID
+            projectID,
+            projects
         } = this.state
 
         const link = "/Project/id=" + projectID
@@ -75,8 +92,18 @@ export class Home extends React.Component<any, any> {
                 <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } '}</style>
             </Helmet>
             <Map projects={projects} receiveProject={this.receiveProject.bind(this)} />
-            <div style={floatingPanelBig} className='hidden-sm hidden-xs'><Filters /></div>
-            <div style={floatingPanelSmall} className='hidden-md hidden-lg hidden-xl'><Filters /></div>
+            <div style={floatingPanelBig} className='hidden-sm hidden-xs'>
+                <Filters
+                    filterType="all"
+                    returnFiltered={this.receiveFilteredProjects.bind(this)}
+                />
+            </div>
+            <div style={floatingPanelSmall} className='hidden-md hidden-lg hidden-xl'>
+                <Filters
+                    filterType="all"
+                    returnFiltered={this.receiveFilteredProjects.bind(this)}
+                />
+            </div>
         </div>;
     }
 }
