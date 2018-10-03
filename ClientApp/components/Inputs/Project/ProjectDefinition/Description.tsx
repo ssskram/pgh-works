@@ -32,7 +32,16 @@ export class ProjectDescription extends React.Component<any, any> {
     }
 
     handleChildChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        if (event.target.name == 'projectName') {
+            this.setState({
+                projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
+            })
+        } else {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+
+        }
     }
 
     handleChildSelect(event) {
@@ -58,7 +67,7 @@ export class ProjectDescription extends React.Component<any, any> {
     handleCurrency(value) {
         this.setState({ projectBudget: value })
     }
-    
+
     post() {
         this.props.post(this.state)
     }
