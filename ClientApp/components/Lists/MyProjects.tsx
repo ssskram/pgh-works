@@ -154,7 +154,7 @@ export class MyProjects extends React.Component<any, any> {
                     <div className='col-md-12 text-center'>
                         <br />
                         <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h1>No projects associated with your account</h1>
+                        <h2><i>Nothing to see here</i></h2>
                     </div>
                 }
                 {personnel.length == 0 && user == null &&

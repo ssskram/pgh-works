@@ -1,6 +1,5 @@
 
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
 import Modal from 'react-responsive-modal'
@@ -9,14 +8,12 @@ import * as Projects from '../store/projects'
 import * as Personnel from '../store/GETS/funds'
 import Spinner from './Utilities/Spinner'
 import Map from './Maps/ProjectMap'
-import Phases from './/Phases'
+import Phases from './Phases'
 import Drawdowns from './Drawdowns'
 import Attachments from './/Attachments'
 import * as User from '../store/GETS/user'
 import * as Assets from '../store/GETS/taggableAssets'
 import * as TagStore from '../store/tags'
-import * as Timeline from '../store/timeline'
-import * as PhasesStore from '../store/phases'
 import ProjectFields from './Inputs/Project/ProjectFields'
 import Tags from './Tags'
 import * as moment from 'moment'
@@ -244,36 +241,6 @@ export class Project extends React.Component<any, any> {
         this.props.addTag(tagLoad)
     }
 
-    addToTimeline() {
-        let self = this
-        const timelineLoad = {
-            id: self.state.projectID,
-            type: 'Project',
-            name: self.state.projectName,
-            expectedStartDate: self.state.expectedStartDate,
-            expectedEndDate: self.state.expectedEndDate,
-            actualStartDate: self.state.actualStartDate,
-            actualEndDate: self.state.actualEndDate
-        }
-        this.props.addTimeline(timelineLoad)
-        const phases = this.props.phases.filter(function (phase) {
-            return phase.projectID == self.state.projectID
-        })
-        phases.forEach(function (phase) {
-            const phaseLoad = {
-                id: phase.phaseID,
-                type: 'Phase',
-                name: phase.phaseName,
-                parentProjectID: phase.projectID,
-                expectedStartDate: phase.expectedStartDate,
-                expectedEndDate: phase.expectedEndDate,
-                actualStartDate: phase.actualStartDate,
-                actualEndDate: phase.actualEndDate
-            }
-            self.props.addTimeline(phaseLoad)
-        })
-    }
-
     public render() {
         const {
             modalIsOpen,
@@ -302,9 +269,10 @@ export class Project extends React.Component<any, any> {
                     </div>
                     {canEdit == true &&
                         <div className='col-md-12'>
-                            <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
-                            <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
-                            <Link to={'/Timeline'}><button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></Link>
+                            <div>
+                                <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
+                                <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
+                            </div>
                         </div>
                     }
                 </div>
@@ -401,8 +369,6 @@ export default connect(
         ...state.taggableAssets,
         ...state.user,
         ...state.tags,
-        ...state.timeline,
-        ...state.phases,
         ...state.personnel
     }),
     ({
@@ -411,8 +377,6 @@ export default connect(
         ...Projects.actionCreators,
         ...Assets.actionCreators,
         ...TagStore.actionCreators,
-        ...Timeline.actionCreators,
-        ...PhasesStore.actionCreators,
         ...Personnel.actionCreators
     })
 )(Project as any) as typeof Project

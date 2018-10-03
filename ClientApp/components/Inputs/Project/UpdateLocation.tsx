@@ -47,7 +47,7 @@ export class UpdateLocation extends React.Component<any, any> {
                 <br />
                 {shapeType == '' &&
                     <div>
-                        <h3>Select shape type</h3>
+                        <h3 className='text-center'>Change the location</h3>
                         <hr />
                         <div className='text-center' style={minWidth}>
                             <div className='row'>

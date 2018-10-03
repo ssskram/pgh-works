@@ -237,8 +237,7 @@ export class SubphaseInput extends React.Component<any, any> {
                 }
                 {canEdit != true &&
                     <div className='col-md-12'>
-                        <h4><b>Name</b></h4>
-                        <h4>{subphaseName}</h4>
+                        <h2 className='text-center'>{subphaseName}</h2>
                         {subphaseDescription != '' &&
                             <div>
                                 <h4><b>Description</b></h4>
@@ -254,7 +253,7 @@ export class SubphaseInput extends React.Component<any, any> {
                         {percentComplete != '' && percentComplete != 0 &&
                             <div>
                                 <h4><b>Percent complete</b></h4>
-                                <h4>{percentComplete}</h4>
+                                <h4>{percentComplete}%</h4>
                             </div>
                         }
                         {notes != '' &&

@@ -227,10 +227,19 @@ export class Phase extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{ letterSpacing: '2px' }}>{projectName}</h2>
+                <h2 style={{ letterSpacing: '2px' }}>
+                    {projectName}
+                    <span className='pull-right hidden-sm hidden-xs' style={{ marginTop: '-10px' }}><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'>
+                        <span className='glyphicon'>
+                            <img style={iconStyle} src='./images/backDark.png'>
+                            </img>
+                        </span>
+                    </button>
+                    </span>
+                </h2>
                 <hr />
                 <br />
-                <h1 className='text-center'><b><img style={{ marginTop: '-12px' }} src='./images/phaseGrey.png' /></b> {phaseName}</h1>
+                <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src='./images/phaseGrey.png' /></b>{phaseName}</h1>
                 {pfProject.projectName && pfPhase.phaseName &&
                     <div className='text-center'>
                         <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
@@ -238,7 +247,6 @@ export class Phase extends React.Component<any, any> {
                 }
                 {canEdit == true &&
                     <div className='text-center'>
-                        <span><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/backDark.png'></img></span></button></span>
                         <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
                         <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
                         <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
