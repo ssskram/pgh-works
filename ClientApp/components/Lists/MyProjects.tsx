@@ -95,7 +95,7 @@ export class MyProjects extends React.Component<any, any> {
             return <div className='col-md-12' key={index}>
                 <div className='panel'>
                     <div className='panel-body text-center'>
-                        <div className='col-md-6'>
+                        <div className='col-md-6' style={{ padding: '15px' }}>
                             <h3><b>{project.projectName}</b></h3>
                             {project.actualStartDate && project.actualEndDate &&
                                 <h4><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
@@ -107,10 +107,10 @@ export class MyProjects extends React.Component<any, any> {
                             <h4>Department: <b>{project.projectDepartment}</b></h4>
                             <h4>PM: <b>{project.projectManager}</b></h4>
                         </div>
-                        <div className='col-md-3'>
+                        <div className='col-md-3' style={{ paddingTop: '15px' }}>
                             <MapThumbnail shape={project.shape.points} />
                         </div>
-                        <div style={{ paddingTop: '25px' }} className='col-md-3'>
+                        <div style={{ paddingTop: '40px' }} className='col-md-3'>
                             <Link to={link} className='btn btn-success'><h2><span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></h2></Link>
                         </div>
                     </div>

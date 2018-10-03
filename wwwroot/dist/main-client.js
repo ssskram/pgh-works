@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "df5f6776055137318f62"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "00a20ce103f23c92915f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63419,7 +63419,7 @@ var MyProjects = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { padding: '15px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                             project.actualStartDate && project.actualEndDate &&
@@ -63443,9 +63443,9 @@ var MyProjects = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "PM: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3', style: { paddingTop: '15px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points })),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '25px' }, className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '40px' }, className: 'col-md-3' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: iconStyle, className: 'glyphicon glyphicon-arrow-right' })))))));
