@@ -164,18 +164,16 @@ export class StreetMap extends React.Component<any, any> {
         return (
             <div>
                 <div>
-                    <div>
-                        {onFilter == false &&
-                            <div className='text-center'>
-                                <h4><i>To filter by specific span of {assetName},<br />use the drawing tool to outline a segment</i></h4>
-                            </div>
-                        }
-                        {onFilter == true &&
-                            <div className='text-center'>
-                                <button className='btn btn-warning' onClick={this.reset.bind(this)}>Clear filter</button>
-                            </div>
-                        }
-                    </div>
+                    {onFilter == false &&
+                        <div className='text-center'>
+                            <h4><i>To filter by specific span of {assetName},<br />use the drawing tool to outline a segment</i></h4>
+                        </div>
+                    }
+                    {onFilter == true &&
+                        <div className='text-center'>
+                            <button className='btn btn-warning' onClick={this.reset.bind(this)}>Clear filter</button>
+                        </div>
+                    }
                 </div>
                 <div id='single-project'>
                     <MapComponent />

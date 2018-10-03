@@ -27,24 +27,6 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadSubphases () {
             List<Subphase> AllSubphases = new List<Subphase> ();
-            string subphases = System.IO.File.ReadAllText ("demoData/demoSubphases.json");
-            dynamic subphasesObject = JObject.Parse (subphases) ["subphases"];
-            foreach (var item in subphasesObject) {
-                Subphase sp = new Subphase () {
-                    cartegraphID = item.cartegraphID,
-                    percentComplete = item.percentComplete,
-                    phaseID = item.phaseID,
-                    projectID = item.projectID,
-                    endDate = item.endDate,
-                    notes = item.notes,
-                    startDate = item.startDate,
-                    subphaseDescription = item.subphaseDescription,
-                    subphaseID = item.subphaseID,
-                    subphaseName = item.subphaseName,
-                    subphaseStatus = item.subphaseStatus
-                };
-                AllSubphases.Add (sp);
-            }
             string cartSubphases = getSubphases ().Result;
             dynamic cartSubphasesObject = JObject.Parse (cartSubphases) ["cgTasksClass"];
             foreach (var item in cartSubphasesObject) {

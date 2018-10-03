@@ -27,22 +27,6 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadMilestones () {
             List<Milestone> AllMilestones = new List<Milestone> ();
-            string milestones = System.IO.File.ReadAllText ("demoData/demoMilestones.json");
-            dynamic milestonesObject = JObject.Parse (milestones) ["milestones"];
-            foreach (var item in milestonesObject) {
-                Milestone ms = new Milestone () {
-                    cartegraphID = item.cartegraphID,
-                    dateCompleted = item.dateCompleted,
-                    dueDate = item.dueDate,
-                    milestoneID = item.milestoneID,
-                    milestoneName = item.milestoneName,
-                    percentComplete = item.percentComplete,
-                    phaseID = item.phaseID,
-                    projectID = item.projectID,
-                    notes = item.notes
-                };
-                AllMilestones.Add (ms);
-            }
             string cartMilestones = getMilestones ().Result;
             dynamic cartMilestonesObject = JObject.Parse (cartMilestones) ["cgTasksClass"];
             foreach (var item in cartMilestonesObject) {

@@ -26,28 +26,6 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadProjects () {
             List<Project> AllProjects = new List<Project> ();
-            string demoProjects = System.IO.File.ReadAllText ("demoData/demoProjects.json");
-            dynamic demoProjectsObject = JObject.Parse (demoProjects) ["projects"];
-            foreach (var item in demoProjectsObject) {
-                Project pj = new Project () {
-                    cartegraphID = item.cartegraphID,
-                    projectID = item.projectID,
-                    notes = item.notes,
-                    actualEndDate = item.actualEndDate,
-                    actualStartDate = item.actualStartDate,
-                    expectedEndDate = item.expectedEndDate,
-                    expectedStartDate = item.expectedStartDate,
-                    projectDepartment = item.projectDepartment,
-                    projectDescription = item.projectDescription,
-                    projectManager = item.projectManager,
-                    projectMembers = item.projectMembers,
-                    projectName = item.projectName,
-                    projectStatus = item.projectStatus,
-                    projectBudget = item.projectBudget,
-                    shape = item.shape.ToObject<Shape> ()
-                };
-                AllProjects.Add (pj);
-            }
             string cartProjects = getProjects ().Result;
             dynamic cartProjectsObject = JObject.Parse (cartProjects) ["ProjectsClass"];
             foreach (var item in cartProjectsObject) {

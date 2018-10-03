@@ -86,9 +86,9 @@ export class Home extends React.Component<any, any> {
         }
 
         return <div>
-            {projects.length == 0 && onFilter == false &&
+            {/* {projects.length == 0 && onFilter == false &&
                 <Spinner notice='...loading the projects...' />
-            }
+            } */}
             <Hydrate />
             <Helmet>
                 <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } '}</style>

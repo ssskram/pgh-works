@@ -28,21 +28,6 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadTags () {
             List<Tag> AllTags = new List<Tag> ();
-            string tags = System.IO.File.ReadAllText ("demoData/demoTags.json");
-            dynamic tagObject = JObject.Parse (tags) ["tags"];
-            foreach (var item in tagObject) {
-                Tag tg = new Tag () {
-                    parentID = item.parentID,
-                    parentName = item.parentName,
-                    parentType = item.parentType,
-                    tagDescription = item.tagDescription,
-                    tagID = item.tagID,
-                    tagType = item.tagType,
-                    taggedAssetName = item.taggedAssetName,
-                    taggedAssetOID = item.taggedAssetOID
-                };
-                AllTags.Add (tg);
-            }
             string cartTags = getTags ().Result;
             dynamic cartTagsObject = JObject.Parse (cartTags) ["ProjectTagsClass"];
             foreach (var item in cartTagsObject) {

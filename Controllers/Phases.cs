@@ -28,25 +28,6 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadPhases () {
             List<Phase> AllPhases = new List<Phase> ();
-            string phases = System.IO.File.ReadAllText ("demoData/demoPhases.json");
-            dynamic phasesObject = JObject.Parse (phases) ["phases"];
-            foreach (var item in phasesObject) {
-                Phase ph = new Phase () {
-                    actualEndDate = item.actualEndDate,
-                    actualStartDate = item.actualStartDate,
-                    cartegraphID = item.cartegraphID,
-                    expectedEndDate = item.expectedEndDate,
-                    expectedStartDate = item.expectedStartDate,
-                    notes = item.notes,
-                    phaseDescription = item.phaseDescription,
-                    phaseFollows = item.phaseFollows.ToObject<PhaseFollows> (),
-                    phaseID = item.phaseID,
-                    phaseName = item.phaseName,
-                    phaseStatus = item.phaseStatus,
-                    projectID = item.projectID
-                };
-                AllPhases.Add (ph);
-            }
             string cartPhases = getPhases ().Result;
             dynamic cartPhasesObject = JObject.Parse (cartPhases) ["cgWorkOrdersClass"];
             foreach (var item in cartPhasesObject) {
