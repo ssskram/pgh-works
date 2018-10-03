@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b9fee54f200797da442e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fcaaaadb85414222f3a6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60729,42 +60729,42 @@ function applyFilter(projects, filters) {
                 return false;
             }
         }
-        if (filters.startDate) {
+        if (filters.startDate || filters.endDate) {
             if (project.actualStartDate && project.actualEndDate) {
-                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
-                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
-                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
-                var targetIsBetween = target.isBetween(start, end);
-                if (targetIsBetween == false) {
+                var startIsBetweeon = false;
+                var endIsBetween = false;
+                if (filters.startDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                    startIsBetweeon = target.isBetween(start, end);
+                }
+                if (filters.endDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                    endIsBetween = target.isBetween(start, end);
+                }
+                if (startIsBetweeon == false && endIsBetween == false) {
                     return false;
                 }
             }
             else {
-                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
-                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
-                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
-                var targetIsBetween = target.isBetween(start, end);
-                if (targetIsBetween == false) {
-                    return false;
+                var startIsBetweeon = false;
+                var endIsBetween = false;
+                if (filters.startDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                    startIsBetweeon = target.isBetween(start, end);
                 }
-            }
-        }
-        if (filters.endDate) {
-            if (project.actualStartDate && project.actualEndDate) {
-                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
-                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
-                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
-                var targetIsBetween = target.isBetween(start, end);
-                if (targetIsBetween == false) {
-                    return false;
+                if (filters.endDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                    endIsBetween = target.isBetween(start, end);
                 }
-            }
-            else {
-                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
-                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
-                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
-                var targetIsBetween = target.isBetween(start, end);
-                if (targetIsBetween == false) {
+                if (startIsBetweeon == false && endIsBetween == false) {
                     return false;
                 }
             }

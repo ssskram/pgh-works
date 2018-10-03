@@ -38,40 +38,41 @@ export function applyFilter (projects, filters) {
                 return false
             }
         }
-        if (filters.startDate) {
+        if (filters.startDate || filters.endDate) {
             if (project.actualStartDate && project.actualEndDate) {
-                const start = moment(project.actualStartDate)
-                const end = moment(project.actualEndDate)
-                const target = moment(filters.startDate)
-                const targetIsBetween  = target.isBetween(start, end)
-                if (targetIsBetween == false) {
+                let startIsBetweeon = false
+                let endIsBetween = false
+                if (filters.startDate) {
+                    const start = moment(project.actualStartDate)
+                    const end = moment(project.actualEndDate)
+                    const target = moment(filters.startDate)
+                    startIsBetweeon  = target.isBetween(start, end)
+                }
+                if (filters.endDate) {
+                    const start = moment(project.actualStartDate)
+                    const end = moment(project.actualEndDate)
+                    const target = moment(filters.endDate)
+                    endIsBetween  = target.isBetween(start, end)
+                }
+                if (startIsBetweeon == false && endIsBetween == false) {
                     return false
                 }
             } else {
-                const start = moment(project.expectedStartDate)
-                const end = moment(project.expectedEndDate)
-                const target = moment(filters.startDate)
-                const targetIsBetween  = target.isBetween(start, end)
-                if (targetIsBetween == false) {
-                    return false
+                let startIsBetweeon = false
+                let endIsBetween = false
+                if (filters.startDate) {
+                    const start = moment(project.expectedStartDate)
+                    const end = moment(project.actualStartDate)
+                    const target = moment(filters.startDate)
+                    startIsBetweeon = target.isBetween(start, end)
                 }
-            }
-        }
-        if (filters.endDate) {
-            if (project.actualStartDate && project.actualEndDate) {
-                const start = moment(project.actualStartDate)
-                const end = moment(project.actualEndDate)
-                const target = moment(filters.endDate)
-                const targetIsBetween  = target.isBetween(start, end)
-                if (targetIsBetween == false) {
-                    return false
+                if (filters.endDate) {
+                    const start = moment(project.expectedStartDate)
+                    const end = moment(project.expectedEndDate)
+                    const target = moment(filters.endDate)
+                    endIsBetween = target.isBetween(start, end)
                 }
-            } else {
-                const start = moment(project.expectedStartDate)
-                const end = moment(project.expectedEndDate)
-                const target = moment(filters.endDate)
-                const targetIsBetween  = target.isBetween(start, end)
-                if (targetIsBetween == false) {
+                if (startIsBetweeon == false && endIsBetween == false) {
                     return false
                 }
             }
