@@ -4,7 +4,7 @@ namespace pghworks.Models {
         public string parentID { get; set; }
         public string parentType { get; set; }
         public string fundID { get; set; }
-        public string drawdownAmount { get; set; }
+        public int drawdownAmount { get; set; }
         public string drawdownType { get; set; }
         public string notes { get; set; }
         public string cartegraphID { get; set; }
@@ -15,7 +15,7 @@ namespace pghworks.Models {
         public string parentIDField { get; set; }
         public string parentTypeField { get; set; }
         public string fundIDField { get; set; }
-        public string drawdownAmountField { get; set; }
+        public int drawdownAmountField { get; set; }
         public string drawdownTypeField { get; set; }
         public string notesField { get; set; }
         public string Oid { get; set; }

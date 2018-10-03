@@ -34,6 +34,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
     componentDidMount() {
         this.getDrawdowns(this.props)
+        console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
