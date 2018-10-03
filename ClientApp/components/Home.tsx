@@ -32,6 +32,7 @@ export class Home extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
+            onFilter: false,
             projects: [],
             redirect: false,
             projectID: ''
@@ -64,14 +65,15 @@ export class Home extends React.Component<any, any> {
     }
 
     receiveFilteredProjects(projects) {
-        console.log(projects)
         this.setState({
-            projects: projects
+            projects: projects,
+            onFilter: true
         })
     }
 
     public render() {
         const {
+            onFilter,
             redirect,
             projectID,
             projects
@@ -84,7 +86,7 @@ export class Home extends React.Component<any, any> {
         }
 
         return <div>
-            {projects.length == 0 &&
+            {projects.length == 0 && onFilter == false &&
                 <Spinner notice='...loading the projects...' />
             }
             <Hydrate />

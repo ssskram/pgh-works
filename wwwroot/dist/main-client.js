@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "72308215819507e7c8d4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "df5f6776055137318f62"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60833,6 +60833,7 @@ var Home = (function (_super) {
     function Home(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
+            onFilter: false,
             projects: [],
             redirect: false,
             projectID: ''
@@ -60861,19 +60862,19 @@ var Home = (function (_super) {
         });
     };
     Home.prototype.receiveFilteredProjects = function (projects) {
-        console.log(projects);
         this.setState({
-            projects: projects
+            projects: projects,
+            onFilter: true
         });
     };
     Home.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, projectID = _a.projectID, projects = _a.projects;
+        var _a = this.state, onFilter = _a.onFilter, redirect = _a.redirect, projectID = _a.projectID, projects = _a.projects;
         var link = "/Project/id=" + projectID;
         if (redirect) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
         }
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            projects.length == 0 &&
+            projects.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__["a" /* default */], { notice: '...loading the projects...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Utilities_HydrateStore__["a" /* default */], null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
@@ -63233,7 +63234,7 @@ var AllProjects = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { padding: '15px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                             project.actualStartDate && project.actualEndDate &&
@@ -63257,9 +63258,9 @@ var AllProjects = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "PM: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3', style: { paddingTop: '15px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points })),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '25px' }, className: 'col-md-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '40px' }, className: 'col-md-3' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: iconStyle, className: 'glyphicon glyphicon-arrow-right' })))))));
@@ -64661,6 +64662,7 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Inputs_Phase_PhaseFollows__ = __webpack_require__(648);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DeleteConfirmations_DeletePhase__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__functions_canEdit__ = __webpack_require__(743);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64679,6 +64681,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -64778,6 +64781,7 @@ var Phase = (function (_super) {
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_18__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
         }, function () {
             this.findProject(this.state.projectID);
         });
