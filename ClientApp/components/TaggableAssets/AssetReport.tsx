@@ -12,6 +12,7 @@ import Map from '../Maps/ProjectMap'
 import StreetMap from '../Maps/StreetMap'
 import inside from 'point-in-polygon'
 import TagFilter from '../Filters/TagFilter'
+import removeDuplicates from './../Functions/removeDuplicates'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -70,7 +71,7 @@ export class AssetReport extends React.Component<any, any> {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetName == props
             })
-            var uniqueTags = this.removeDuplicates(tags, "parentID")
+            var uniqueTags = removeDuplicates(tags, "parentID")
             this.setState({
                 tags: uniqueTags
             })
@@ -82,20 +83,6 @@ export class AssetReport extends React.Component<any, any> {
                 tags: tags
             })
         }
-    }
-
-    removeDuplicates(originalArray, prop) {
-        var newArray = [] as any
-        var lookupObject = {}
-
-        for (var i in originalArray) {
-            lookupObject[originalArray[i][prop]] = originalArray[i]
-        }
-
-        for (i in lookupObject) {
-            newArray.push(lookupObject[i])
-        }
-        return newArray;
     }
 
     filterTagsByStreetSegment(shape) {
@@ -116,7 +103,7 @@ export class AssetReport extends React.Component<any, any> {
                 })
             }
         })
-        var uniqueTags = this.removeDuplicates(newTags, "parentID")
+        var uniqueTags = removeDuplicates(newTags, "parentID")
         this.setState({
             tags: uniqueTags
         })

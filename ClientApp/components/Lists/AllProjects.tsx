@@ -21,7 +21,7 @@ export class AllProjects extends React.Component<any, any> {
         super(props)
         this.state = {
             projects: props.projects.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
             }),
             currentPage: 1,
             itemsPerPage: 30

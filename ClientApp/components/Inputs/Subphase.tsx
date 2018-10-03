@@ -36,7 +36,6 @@ export class SubphaseInput extends React.Component<any, any> {
         }
     }
     componentDidMount() {
-        console.log(this.props)
         if (this.props.subphaseID) {
             // update subphase
             let subphaseID = this.props.subphaseID

@@ -9,6 +9,7 @@ import * as Tags from '../../store/tags'
 import Table from 'react-table'
 import AssetFilter from './../Filters/AssetFilter'
 import Spinner from '../Utilities/Spinner'
+import removeDuplicates from './../Functions/removeDuplicates'
 
 export class AllAssets extends React.Component<any, any> {
     constructor() {
@@ -35,7 +36,7 @@ export class AllAssets extends React.Component<any, any> {
 
     setAssets(props) {
         // filter out duplicate streets
-        var uniqueAssetNames = this.removeDuplicates(props.assets, "assetName")
+        var uniqueAssetNames = removeDuplicates(props.assets, "assetName")
         this.setState({
             assets: uniqueAssetNames.filter(function (asset) {
                 return asset.assetName != ''
@@ -68,21 +69,9 @@ export class AllAssets extends React.Component<any, any> {
                 return tag.taggedAssetName == props.assetName
             })
             // filter out duplicate streets
-            var uniqueTags = this.removeDuplicates(relevantTags, "parentID")
+            var uniqueTags = removeDuplicates(relevantTags, "parentID")
             return uniqueTags.length
         }
-    }
-
-    removeDuplicates(originalArray, prop) {
-        var newArray = [] as any
-        var lookupObject = {}
-        for (var i in originalArray) {
-            lookupObject[originalArray[i][prop]] = originalArray[i]
-        }
-        for (i in lookupObject) {
-            newArray.push(lookupObject[i])
-        }
-        return newArray;
     }
 
     public render() {

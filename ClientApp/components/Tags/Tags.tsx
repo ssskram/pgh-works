@@ -7,6 +7,7 @@ import Modal from 'react-responsive-modal'
 import TagInput from '../Inputs/Tag'
 import TagCard from '../Tags/TagCard'
 import { v1 as uuid } from 'uuid'
+import removeDuplicates from './../Functions/removeDuplicates'
 
 const iconStyle = {
     marginRight: '14px',
@@ -41,26 +42,13 @@ export class Tags extends React.Component<any, any> {
                 return item.parentID == props.parentID
             })
             // take unique to prohibit duplicate street segments
-            var unique = this.removeDuplicates(tags, "taggedAssetName")
+            var unique = removeDuplicates(tags, "taggedAssetName")
             if (tags.length > 0) {
                 this.setState({
                     tags: unique
                 })
             }
         }
-    }
-    removeDuplicates(originalArray, prop) {
-        var newArray = [] as any
-        var lookupObject = {}
-
-        for (var i in originalArray) {
-            lookupObject[originalArray[i][prop]] = originalArray[i]
-        }
-
-        for (i in lookupObject) {
-            newArray.push(lookupObject[i])
-        }
-        return newArray;
     }
 
     postTag(tag) {
