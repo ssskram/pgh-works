@@ -12,7 +12,7 @@ import Map from './Maps/ProjectMap'
 import StreetMap from './Maps/StreetMap'
 import inside from 'point-in-polygon'
 import TagFilter from './Filters/TagFilter'
-import removeDuplicates from './../functions/removeDuplicates'
+import removeDuplicates from '../functions/removeDuplicates'
 
 const emptyNotice = {
     letterSpacing: '2px'

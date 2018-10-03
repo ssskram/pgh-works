@@ -12,6 +12,7 @@ import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import { Helmet } from "react-helmet"
 import filterProjects from './../../functions/filterProjects'
+import getMyProjects from './../../functions/myProjects'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
@@ -35,6 +36,7 @@ export class ProjectFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            onFilter: false,
             personnel: [],
             modalIsOpen: false,
             projectName: '',
@@ -90,10 +92,14 @@ export class ProjectFilter extends React.Component<any, any> {
     }
 
     filter() {
-        const filterType = this.props.filterType
-        const projects = this.props.projects
-        const personnel = this.props.personnel
-        const user = this.props.user
+        let projects = [] as any
+        if (this.props.filterType == 'all') {
+            projects = this.props.projects
+        } else {
+            const personnel = this.props.personnel
+            const user = this.props.user
+            projects = getMyProjects(this.props.projects, personnel, user)
+        }
         const filterLoad = {
             projectName: this.state.projectName,
             startDate: this.state.startDate,
@@ -102,14 +108,29 @@ export class ProjectFilter extends React.Component<any, any> {
             projectStatus: this.state.projectStatus,
             projectManager: this.state.projectManager
         }
-        this.props.returnFiltered(filterProjects(projects, personnel, user, filterLoad, filterType))
+        this.props.returnFiltered(filterProjects(projects, filterLoad))
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            onFilter: true
+        })
+    }
+
+    clearFilter () {
+        this.props.returnFiltered(this.props.projects)
+        this.setState({
+            onFilter: false,
+            projectName: '',
+            startDate: '',
+            endDate: '',
+            projectDepartment: '',
+            projectStatus: '',
+            projectManager: ''
         })
     }
 
     public render() {
         const {
+            onFilter,
             personnel,
             modalIsOpen,
             projectName,
@@ -124,10 +145,18 @@ export class ProjectFilter extends React.Component<any, any> {
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                    <span className='hidden-sm hidden-xs'>Filter</span>
-                </button>
+                {onFilter == false &&
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                        <span className='hidden-sm hidden-xs'>Filter</span>
+                    </button>
+                }
+                {onFilter == true &&
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
+                        <span className='hidden-sm hidden-xs'>Clear</span>
+                    </button>
+                }
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
