@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2435155eeef8f16f85d1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b9fee54f200797da442e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60688,6 +60688,9 @@ var TagFilter = (function (_super) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = filterProjects;
 /* unused harmony export applyFilter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+
 function filterProjects(projects, personnel, user, filters, type) {
     var filteredProjects = [];
     if (type == "all") {
@@ -60726,10 +60729,46 @@ function applyFilter(projects, filters) {
                 return false;
             }
         }
-        // if (filters.startDate) {
-        // }
-        // if (filters.endDate) {
-        // }
+        if (filters.startDate) {
+            if (project.actualStartDate && project.actualEndDate) {
+                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
+                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
+                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                var targetIsBetween = target.isBetween(start, end);
+                if (targetIsBetween == false) {
+                    return false;
+                }
+            }
+            else {
+                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
+                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
+                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                var targetIsBetween = target.isBetween(start, end);
+                if (targetIsBetween == false) {
+                    return false;
+                }
+            }
+        }
+        if (filters.endDate) {
+            if (project.actualStartDate && project.actualEndDate) {
+                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
+                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
+                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                var targetIsBetween = target.isBetween(start, end);
+                if (targetIsBetween == false) {
+                    return false;
+                }
+            }
+            else {
+                var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
+                var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
+                var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                var targetIsBetween = target.isBetween(start, end);
+                if (targetIsBetween == false) {
+                    return false;
+                }
+            }
+        }
         return true;
     });
     return filtered;
@@ -63193,11 +63232,18 @@ var AllProjects = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                    project.expectedStartDate,
-                                    " - ",
-                                    project.expectedEndDate)),
+                            project.actualStartDate && project.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                        project.actualStartDate,
+                                        " - ",
+                                        project.actualEndDate)),
+                            !project.actualStartDate && project.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                        project.expectedStartDate,
+                                        " - ",
+                                        project.expectedEndDate)),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "Status: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),
@@ -63342,11 +63388,18 @@ var MyProjects = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                    project.expectedStartDate,
-                                    " - ",
-                                    project.expectedEndDate)),
+                            project.actualStartDate && project.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                        project.actualStartDate,
+                                        " - ",
+                                        project.actualEndDate)),
+                            !project.actualStartDate && project.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                        project.expectedStartDate,
+                                        " - ",
+                                        project.expectedEndDate)),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "Status: ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),

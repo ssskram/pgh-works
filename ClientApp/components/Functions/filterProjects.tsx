@@ -1,4 +1,4 @@
-
+import * as moment from 'moment'
 
 export default function filterProjects(projects, personnel, user, filters, type) {
     let filteredProjects = [] as any
@@ -38,12 +38,44 @@ export function applyFilter (projects, filters) {
                 return false
             }
         }
-        // if (filters.startDate) {
-
-        // }
-        // if (filters.endDate) {
-
-        // }
+        if (filters.startDate) {
+            if (project.actualStartDate && project.actualEndDate) {
+                const start = moment(project.actualStartDate)
+                const end = moment(project.actualEndDate)
+                const target = moment(filters.startDate)
+                const targetIsBetween  = target.isBetween(start, end)
+                if (targetIsBetween == false) {
+                    return false
+                }
+            } else {
+                const start = moment(project.expectedStartDate)
+                const end = moment(project.expectedEndDate)
+                const target = moment(filters.startDate)
+                const targetIsBetween  = target.isBetween(start, end)
+                if (targetIsBetween == false) {
+                    return false
+                }
+            }
+        }
+        if (filters.endDate) {
+            if (project.actualStartDate && project.actualEndDate) {
+                const start = moment(project.actualStartDate)
+                const end = moment(project.actualEndDate)
+                const target = moment(filters.endDate)
+                const targetIsBetween  = target.isBetween(start, end)
+                if (targetIsBetween == false) {
+                    return false
+                }
+            } else {
+                const start = moment(project.expectedStartDate)
+                const end = moment(project.expectedEndDate)
+                const target = moment(filters.endDate)
+                const targetIsBetween  = target.isBetween(start, end)
+                if (targetIsBetween == false) {
+                    return false
+                }
+            }
+        }
         return true
     })
     return filtered
