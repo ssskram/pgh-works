@@ -9,7 +9,7 @@ import * as Tags from '../../store/tags'
 import Table from 'react-table'
 import AssetFilter from './../Filters/AssetFilter'
 import Spinner from '../Utilities/Spinner'
-import removeDuplicates from './../Functions/removeDuplicates'
+import removeDuplicates from './../../functions/removeDuplicates'
 
 export class AllAssets extends React.Component<any, any> {
     constructor() {

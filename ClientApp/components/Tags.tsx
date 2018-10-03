@@ -7,7 +7,7 @@ import Modal from 'react-responsive-modal'
 import TagInput from './Inputs/Tag/Tag'
 import TagCard from './Cards/TagCard'
 import { v1 as uuid } from 'uuid'
-import removeDuplicates from './Functions/removeDuplicates'
+import removeDuplicates from './../functions/removeDuplicates'
 
 const iconStyle = {
     marginRight: '14px',

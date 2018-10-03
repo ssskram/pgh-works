@@ -51,7 +51,6 @@ export class AllProjects extends React.Component<any, any> {
     }
 
     receiveFilteredProjects(projects) {
-        console.log(projects)
         this.setState({
             projects: projects.sort(function (a, b) {
                 return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)

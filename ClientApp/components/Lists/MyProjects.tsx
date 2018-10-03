@@ -50,6 +50,14 @@ export class MyProjects extends React.Component<any, any> {
         });
     }
 
+    receiveFilteredProjects(projects) {
+        this.setState({
+            projects: projects.sort(function (a, b) {
+                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
+            })
+        })
+    }
+
     public render() {
         const {
             projects,
@@ -97,7 +105,15 @@ export class MyProjects extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>My Projects <span style={{ marginTop: '-10px' }} className='pull-right'><ProjectFilters /></span></h2>
+                <h2>
+                    My Projects
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                        <ProjectFilters
+                            filterType="mine"
+                            returnFiltered={this.receiveFilteredProjects.bind(this)}
+                        />
+                    </span>
+                </h2>
                 <hr />
                 {projects.length > 0 &&
                     <div>
