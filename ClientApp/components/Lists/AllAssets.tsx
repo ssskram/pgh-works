@@ -106,7 +106,7 @@ export class AllAssets extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>All Assets <span style={{ marginTop: '-10px' }} className='pull-right'><AssetFilter /></span></h2>
+                <h2>All Assets <span style={{ marginTop: '-5px' }} className='pull-right'><AssetFilter /></span></h2>
                 <hr />
                 {assets.length > 0 &&
                     <Table

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9763abeffebd33033573"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "72308215819507e7c8d4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14308,7 +14308,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 };
 var departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
@@ -58675,16 +58675,28 @@ var AssetReport = (function (_super) {
         this.findAsset(this.props.match.params.street, true);
         this.findTags(this.props.match.params.street, true);
     };
+    AssetReport.prototype.getProject = function (phaseID) {
+        var phase = this.props.phases.find(function (phase) {
+            return phase.phaseID == phaseID;
+        });
+        var project = this.props.projects.find(function (project) {
+            return project.projectID == phase.projectID;
+        });
+        return project.projectName;
+    };
     AssetReport.prototype.render = function () {
+        var _this = this;
         var _a = this.state, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
         if (redirect) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, assetName),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, assetType)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, assetName),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, assetType))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             assetType != 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Maps_ProjectMap__["a" /* default */], { shape: assetShape }),
@@ -58695,14 +58707,14 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Maps_StreetMap__["a" /* default */], { street: assetName, passShape: this.filterTagsByStreetSegment.bind(this), reset: this.reset.bind(this), assetName: assetName }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8 col-md-offset-1' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                     "Related projects & phases ",
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__["a" /* default */], null))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null)),
             tags.length == 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { margin: '50px 0px' } },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { margin: '20px 0px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: emptyNotice }, "No related projects or phases"))),
             tags.length > 0 &&
@@ -58710,10 +58722,26 @@ var AssetReport = (function (_super) {
                     return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.parentName)),
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, tag.parentType),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                                    tag.parentType == 'Project' &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/project.png' }),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.parentType)))),
+                                    tag.parentType == 'Phase' &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: './images/phaseGrey.png' }),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.parentName))))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { paddingTop: '15px' }, className: 'col-md-6' },
+                                    tag.parentType == "Project" &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.parentName)),
+                                    tag.parentType == "Phase" &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, _this.getProject(tag.parentID))),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
                                             "\"",
@@ -60258,7 +60286,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 };
 var types = [
     { value: 'Facility', label: 'Facility', name: 'assetType' },
@@ -60367,7 +60395,7 @@ var __extends = (this && this.__extends) || (function () {
 
 
 var btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 };
 var types = [
     { value: 'Bond', label: 'Bond', name: 'fundType' },
@@ -60500,7 +60528,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 };
 var types = [
     { value: 'Programming', label: 'Programming', name: 'phaseName' },
@@ -60652,7 +60680,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 };
 var types = [
     { value: 'Project', label: 'Project', name: 'parentType' },
@@ -62942,7 +62970,7 @@ var AllAssets = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Assets ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Filters_AssetFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             assets.length > 0 &&
@@ -63078,7 +63106,7 @@ var AllPhases = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Phases ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_PhaseFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length > 0 &&
@@ -63244,7 +63272,7 @@ var AllProjects = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             projects.length > 0 &&
@@ -63373,7 +63401,7 @@ var MyProjects = (function (_super) {
     };
     MyProjects.prototype.receiveFilteredProjects = function (projects) {
         this.setState({
-            projects: projects.sort(function (a, b) {
+            projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_myProjects__["a" /* default */])(projects, this.props.personnel, this.props.user).sort(function (a, b) {
                 return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
             })
         });
@@ -63429,7 +63457,7 @@ var MyProjects = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "My Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Filters_ProjectFilter__["a" /* default */], { filterType: "mine", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             projects.length > 0 &&
@@ -63561,7 +63589,7 @@ var ProgramsFunds = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "Programs & Funds ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-5px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_FundFilter__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
@@ -64633,7 +64661,6 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Inputs_Phase_PhaseFollows__ = __webpack_require__(648);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DeleteConfirmations_DeletePhase__ = __webpack_require__(636);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__functions_canEdit__ = __webpack_require__(743);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64652,7 +64679,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -64752,7 +64778,6 @@ var Phase = (function (_super) {
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
-            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_18__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
         }, function () {
             this.findProject(this.state.projectID);
         });

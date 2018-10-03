@@ -17,7 +17,7 @@ import getMyProjects from './../../functions/myProjects'
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 const btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 }
 
 const departments = [

@@ -75,7 +75,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>Programs & Funds <span style={{ marginTop: '-10px' }} className='pull-right'><FundFilter /></span></h2>
+                <h2>Programs & Funds <span style={{ marginTop: '-5px' }} className='pull-right'><FundFilter /></span></h2>
                 <hr />
                 {funds.length > 0 &&
                     <Table

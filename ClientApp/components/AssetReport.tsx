@@ -114,6 +114,16 @@ export class AssetReport extends React.Component<any, any> {
         this.findTags(this.props.match.params.street, true)
     }
 
+    getProject (phaseID) {
+        let phase = this.props.phases.find(phase => {
+            return phase.phaseID == phaseID
+        })
+        let project = this.props.projects.find(project => {
+            return project.projectID == phase.projectID
+        })
+        return project.projectName
+    }
+
     public render() {
         const {
             redirect,
@@ -130,9 +140,12 @@ export class AssetReport extends React.Component<any, any> {
 
         return (
             <div>
-                <h2>{assetName}</h2>
-                <h4><b>{assetType}</b></h4>
-                <hr />
+                <div className='text-center'>
+                    <h1>{assetName}</h1>
+                    <h3><b>{assetType}</b></h3>
+                </div>
+                <br />
+                <br />
                 {assetType != 'Street' &&
                     <div className='col-md-12'>
                         <Map shape={assetShape} />
@@ -151,12 +164,12 @@ export class AssetReport extends React.Component<any, any> {
                         <br />
                     </div>
                 }
-                <div className='col-md-8 col-md-offset-1'>
-                    <h3>Related projects & phases <span style={{ marginTop: '-10px' }} className='pull-right'><TagFilter /></span></h3>
+                <div className='col-md-12'>
+                    <h3>Related projects & phases <span style={{ marginTop: '-5px' }} className='pull-right'><TagFilter /></span></h3>
                     <hr />
                 </div>
                 {tags.length == 0 &&
-                    <div className='col-md-12' style={{ margin: '50px 0px' }}>
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
                         <div className='text-center alert alert-info'>
                             <h2 style={emptyNotice} >No related projects or phases</h2>
                         </div>
@@ -167,9 +180,27 @@ export class AssetReport extends React.Component<any, any> {
                         <div className='col-md-12' key={index}>
                             <div className='panel'>
                                 <div className='panel-body text-center'>
-                                    <div className='col-md-8'>
-                                        <h3><b>{tag.parentName}</b></h3>
-                                        <h4>{tag.parentType}</h4>
+                                    <div className='col-md-3'>
+                                        {tag.parentType == 'Project' &&
+                                            <div>
+                                                <img src='./images/project.png'></img>
+                                                <div><h4><b>{tag.parentType}</b></h4></div>
+                                            </div>
+                                        }
+                                        {tag.parentType == 'Phase' &&
+                                            <div>
+                                                <img src='./images/phaseGrey.png'></img>
+                                                <div><h4><b>{tag.parentName}</b></h4></div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div style={{ paddingTop: '15px' }} className='col-md-6'>
+                                        {tag.parentType == "Project" &&
+                                            <h3><b>{tag.parentName}</b></h3>
+                                        }
+                                        {tag.parentType == "Phase" &&
+                                            <h3><b>{this.getProject(tag.parentID)}</b></h3>
+                                        }
                                         <h4><i>"{tag.tagDescription}"</i></h4>
                                     </div>
                                     <div className='col-md-3'>

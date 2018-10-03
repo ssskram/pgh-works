@@ -7,7 +7,7 @@ import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 
 const btnStyle = {
-    fontSize: '25px'
+    fontSize: '22px'
 }
 
 const types = [
