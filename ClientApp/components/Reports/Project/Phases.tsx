@@ -1,12 +1,12 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../store'
-import * as PhasesStore from '../store/phases'
+import { ApplicationState } from '../../../store'
+import * as PhasesStore from '../../../store/phases'
 import Modal from 'react-responsive-modal'
-import PhaseForm from './Inputs/Phase/Phase'
-import PhaseCard from './Cards/ProjectPhaseCard'
-import TL from './Timeline/Timeline'
+import PhaseForm from '../../Inputs/Phase/Phase'
+import PhaseCard from '../../Cards/ProjectPhaseCard'
+import TL from '../../Timeline/Timeline'
 
 const iconStyle = {
     marginRight: '10px',

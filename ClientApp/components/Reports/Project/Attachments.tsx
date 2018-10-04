@@ -1,12 +1,12 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../store'
-import * as AttachmentsStore from '../store/attachments'
+import { ApplicationState } from '../../../store'
+import * as AttachmentsStore from '../../../store/attachments'
 import Modal from 'react-responsive-modal'
-import AttachmentModule from './Inputs/Attachment'
+import AttachmentModule from '../../Inputs/Attachment'
 import Table from 'react-table'
-import DeleteAttachment from './DeleteConfirmations/DeleteAttachment'
+import DeleteAttachment from '../../DeleteConfirmations/DeleteAttachment'
 import Viewer from 'react-viewer';
 import 'react-viewer/dist/index.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";

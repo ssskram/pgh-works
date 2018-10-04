@@ -1,13 +1,13 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../store'
-import * as TagStore from '../store/tags'
+import { ApplicationState } from '../../store'
+import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
-import TagInput from './Inputs/Tag/Tag'
-import TagCard from './Cards/TagCard'
+import TagInput from '../Inputs/Tag/Tag'
+import TagCard from '../Cards/TagCard'
 import { v1 as uuid } from 'uuid'
-import removeDuplicates from './../functions/removeDuplicates'
+import removeDuplicates from '../../functions/removeDuplicates'
 
 const iconStyle = {
     marginRight: '14px',

@@ -1,13 +1,13 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { ApplicationState } from '../store'
+import { ApplicationState } from '../../../store'
 import Table from 'react-table'
-import * as Drawdowns from '../store/drawdowns'
-import * as Funds from '../store/GETS/funds'
+import * as Drawdowns from '../../../store/drawdowns'
+import * as Funds from '../../../store/GETS/funds'
 import Modal from 'react-responsive-modal'
-import DrawdownForm from './Inputs/Drawdown'
-import DeleteDrawdown from './DeleteConfirmations/DeleteDrawdown'
+import DrawdownForm from '../../Inputs/Drawdown'
+import DeleteDrawdown from '../../DeleteConfirmations/DeleteDrawdown'
 import * as CurrencyFormat from 'react-currency-format'
 
 const iconStyle = {

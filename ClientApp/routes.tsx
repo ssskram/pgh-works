@@ -10,10 +10,10 @@ import AllPhases from './components/Lists/AllPhases'
 import AllAssets from './components/Lists/AllAssets'
 import MyProjects from './components/Lists/MyProjects'
 import Timeline from './components/Timeline/Container'
-import ProjectRecord from './components/ProjectContainer'
-import PhaseRecord from './components/PhaseContainer'
-import ProgramFund from './components/ProgramFund'
-import AssetReport from './components/AssetReport'
+import ProjectRecord from './components/Reports/Project/ProjectReport'
+import PhaseRecord from './components/Reports/Phase/PhaseReport'
+import ProgramFund from './components/Reports/Fund/FundReport'
+import AssetReport from './components/Reports/Asset/AssetReport'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
