@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "461e2bf2b0c420a38f92"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2aa45a7ba04bae82390a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59298,6 +59298,7 @@ var ProjectCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_milestones__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_subphases__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__ = __webpack_require__(746);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59316,6 +59317,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -59340,20 +59342,7 @@ var PhaseCard = (function (_super) {
         var allSubphases = subphases.filter(function (subphase) {
             return subphase.phaseID == phase.phaseID;
         });
-        // calculating percent complete to color phase card with
-        var totalTaskValue = 0;
-        var completedTaskValue = 0;
-        allMilestones.forEach(function (milestone) {
-            totalTaskValue = totalTaskValue + 100;
-            if (milestone.percentComplete == 100) {
-                completedTaskValue = completedTaskValue + 100;
-            }
-        });
-        allSubphases.forEach(function (subphase) {
-            totalTaskValue = totalTaskValue + 100;
-            completedTaskValue = completedTaskValue + subphase.percentComplete;
-        });
-        var percentComplete = completedTaskValue / totalTaskValue * 100;
+        var percentComplete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__["a" /* default */])(allMilestones, allSubphases);
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {
             background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
@@ -82801,6 +82790,36 @@ __webpack_require__(368);
 __webpack_require__(367);
 module.exports = __webpack_require__(366);
 
+
+/***/ }),
+/* 745 */,
+/* 746 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = phasePercentComplete;
+// provided all relevant subphases and milestones, 
+// calculates percent complete of phase, and percent remaining
+function phasePercentComplete(milestones, subphases) {
+    var totalTaskValue = 0;
+    var completedTaskValue = 0;
+    milestones.forEach(function (milestone) {
+        totalTaskValue = totalTaskValue + 100;
+        if (milestone.percentComplete == 100) {
+            completedTaskValue = completedTaskValue + 100;
+        }
+    });
+    subphases.forEach(function (subphase) {
+        totalTaskValue = totalTaskValue + 100;
+        completedTaskValue = completedTaskValue + subphase.percentComplete;
+    });
+    var percentComplete = completedTaskValue / totalTaskValue * 100;
+    return percentComplete;
+}
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/functions/phasePercentComplete.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/functions/phasePercentComplete.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);

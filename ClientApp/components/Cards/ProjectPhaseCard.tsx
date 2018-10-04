@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as MilestoneStore from '../../store/milestones'
 import * as SubphaseStore from '../../store/subphases'
+import phasePercentComplete from './../../functions/phasePercentComplete'
 
 const iconStyle = {
     color: '#fff',
@@ -30,22 +31,8 @@ export class PhaseCard extends React.Component<any, any> {
             return subphase.phaseID == phase.phaseID
         })
 
-        // calculating percent complete to color phase card with
-        let totalTaskValue = 0
-        let completedTaskValue = 0
-        allMilestones.forEach(function (milestone) {
-            totalTaskValue = totalTaskValue + 100
-            if (milestone.percentComplete == 100) {
-                completedTaskValue = completedTaskValue + 100
-            }
-        })
-        allSubphases.forEach(function (subphase) {
-            totalTaskValue = totalTaskValue + 100
-            completedTaskValue = completedTaskValue + subphase.percentComplete
-        })
-        let percentComplete = completedTaskValue/totalTaskValue * 100
-        let percentRemaining = 100 - percentComplete - 1
-
+        const percentComplete = phasePercentComplete(allMilestones, allSubphases)
+        const percentRemaining = 100 - percentComplete - 1
         const progressBackground = {
             background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
