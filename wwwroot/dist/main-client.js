@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "01033ad66725a1816f6a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "153831fefc40c79f19e0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64045,13 +64045,15 @@ var AssetReport = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_table__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_drawdowns__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_GETS_funds__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_currency_format__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_currency_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_table__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_drawdowns__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_projects__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_funds__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_currency_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_HydrateStore__ = __webpack_require__(35);
 // returns fund/program data
 // and then returns all drawdowns on fund/program
 var __extends = (this && this.__extends) || (function () {
@@ -64080,19 +64082,20 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+
+
 var emptyNotice = {
     letterSpacing: '2px'
 };
 var FundViewer = (function (_super) {
     __extends(FundViewer, _super);
-    function FundViewer(props) {
-        var _this = _super.call(this, props) || this;
+    function FundViewer() {
+        var _this = _super.call(this) || this;
         _this.state = {
             redirect: false,
+            spinner: true,
             selectedProjectID: '',
-            drawdowns: props.drawdowns.filter(function (drawdown) {
-                return (drawdown.fundID == props.match.params.id) && (drawdown.parentType == 'Project');
-            }),
+            drawdowns: [],
             fundName: '',
             fundYear: '',
             fundAmount: '',
@@ -64103,10 +64106,32 @@ var FundViewer = (function (_super) {
     }
     FundViewer.prototype.componentDidMount = function () {
         window.scrollTo(0, 0);
-        this.findFund(this.props);
+        var self = this;
+        if (this.props.funds.length > 0) {
+            this.findFund(this.props);
+        }
+        if (this.props.drawdowns.length > 0) {
+            this.setState({
+                drawdowns: this.props.drawdowns.filter(function (drawdown) {
+                    return (drawdown.fundID == self.props.match.params.id) && (drawdown.parentType == 'Project');
+                })
+            });
+        }
     };
     FundViewer.prototype.componentWillReceiveProps = function (nextProps) {
-        this.findFund(nextProps);
+        var self = this;
+        if (this.props != nextProps) {
+            if (nextProps.funds.length > 0) {
+                this.findFund(nextProps);
+            }
+            if (nextProps.drawdowns.length > 0) {
+                this.setState({
+                    drawdowns: nextProps.drawdowns.filter(function (drawdown) {
+                        return (drawdown.fundID == self.props.match.params.id) && (drawdown.parentType == 'Project');
+                    })
+                });
+            }
+        }
     };
     FundViewer.prototype.findFund = function (props) {
         var id = this.props.match.params.id;
@@ -64119,6 +64144,7 @@ var FundViewer = (function (_super) {
     };
     FundViewer.prototype.setFundState = function (fund) {
         this.setState({
+            spinner: false,
             fundName: fund.fundName,
             fundYear: fund.fundYear,
             fundAmount: fund.fundAmount,
@@ -64144,7 +64170,7 @@ var FundViewer = (function (_super) {
     };
     FundViewer.prototype.render = function () {
         var _this = this;
-        var _a = this.state, redirect = _a.redirect, selectedProjectID = _a.selectedProjectID, drawdowns = _a.drawdowns, fundName = _a.fundName, fundYear = _a.fundYear, fundAmount = _a.fundAmount, expirationDate = _a.expirationDate, fundType = _a.fundType;
+        var _a = this.state, redirect = _a.redirect, spinner = _a.spinner, selectedProjectID = _a.selectedProjectID, drawdowns = _a.drawdowns, fundName = _a.fundName, fundYear = _a.fundYear, fundAmount = _a.fundAmount, expirationDate = _a.expirationDate, fundType = _a.fundType;
         var spent = 0;
         var encumbered = 0;
         var preencumbered = 0;
@@ -64167,7 +64193,7 @@ var FundViewer = (function (_super) {
             }, {
                 Header: 'Drawdown Amount',
                 accessor: 'drawdownAmount',
-                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
+                Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
             }, {
                 Header: 'Drawdown Type',
                 accessor: 'drawdownType'
@@ -64183,74 +64209,79 @@ var FundViewer = (function (_super) {
             }];
         var redirectLink = "/Project/id=" + selectedProjectID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, fundName),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                "Year: ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundYear)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                "Type: ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundType)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                "Original amount: ",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: fundAmount, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
-            expirationDate &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                        "Expires on ",
-                        expirationDate)),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            drawdowns.length == 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { style: emptyNotice }, "No drawdowns on this fund")),
-            amountRemaining >= 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-success' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }),
-                        " unencumbered")),
-            amountRemaining < 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-danger' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Overdrawn")),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_HydrateStore__["a" /* default */], null),
+            spinner == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Utilities_Spinner__["a" /* default */], { notice: '...loading the fund report...' }),
+            spinner == false &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, fundName),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        "Year: ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundYear)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        "Type: ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, fundType)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        "Original amount: ",
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: fundAmount, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                    expirationDate &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                "Expires on ",
+                                expirationDate)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+                    drawdowns.length == 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-info' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { style: emptyNotice }, "No drawdowns on this fund")),
+                    amountRemaining >= 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-success' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }),
+                                " unencumbered")),
+                    amountRemaining < 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center alert alert-danger' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Overdrawn")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
-            drawdowns.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: drawdowns.length > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
-                        style: {
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            fontSize: '16px'
-                        }
-                    }); } })));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: preencumbered, displayType: 'text', thousandSeparator: true, prefix: '$' })))))),
+                    drawdowns.length > 0 &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_table__["a" /* default */], { data: drawdowns, columns: columns, loading: false, minRows: 0, pageSize: 10, showPageJump: false, showPagination: drawdowns.length > 10, showPageSizeOptions: false, noDataText: '', getTdProps: function () { return ({
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    fontSize: '16px'
+                                }
+                            }); } }))));
     };
     return FundViewer;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns, state.projects, state.funds)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_4__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_GETS_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_projects__["a" /* actionCreators */])))(FundViewer));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.drawdowns, state.projects, state.funds)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_5__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_7__store_GETS_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_projects__["a" /* actionCreators */])))(FundViewer));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Reports/Fund/FundReport.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Reports/Fund/FundReport.tsx"); } } })();
