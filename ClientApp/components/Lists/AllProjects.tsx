@@ -33,7 +33,7 @@ export class AllProjects extends React.Component<any, any> {
         window.scrollTo(0, 0)
         if (this.props.projects.length > 0) {
             this.setState({
-                projects: this.props.projects.sort.sort(function (a, b) {
+                projects: this.props.projects.sort(function (a, b) {
                     return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
                 })
             })

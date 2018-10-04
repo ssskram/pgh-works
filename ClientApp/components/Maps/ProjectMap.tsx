@@ -14,11 +14,18 @@ export default class ProjectMap extends React.Component<any, any> {
         }
     }
 
-    shouldComponentUpdate (nextProps, nextSate) {
-        if (this.props.shape == nextProps.shape) {
-            return false
+    shouldComponentUpdate (nextProps, nextState) {
+        if (this.props.asset) {
+            if (this.state == nextState) {
+                return false
+            }
+            else return true
+        } else {
+            if (this.props.shape == nextProps.shape) {
+                return false
+            }
+            else return true
         }
-        else return true
     }
 
     componentDidMount () {
