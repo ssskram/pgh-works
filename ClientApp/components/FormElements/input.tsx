@@ -5,7 +5,7 @@ export default class input extends React.Component<any, any> {
 
     public render() {
 
-        var conditionalClass = classNames({
+        const conditionalClass = classNames({
             'form-control': true,
         });
 

@@ -85,7 +85,7 @@ export class Attachments extends React.Component<any, any> {
     removeAttachment(attachment) {
         // removes tag locally from state
         // done in step with mutable delete from redux store
-        var attachmentsCopy = this.state.attachments.slice()
+        const attachmentsCopy = this.state.attachments.slice()
         attachmentsCopy.splice(attachmentsCopy.indexOf(attachment), 1);
         this.setState({
             attachments: attachmentsCopy

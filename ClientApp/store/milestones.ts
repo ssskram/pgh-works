@@ -118,7 +118,7 @@ export const reducer: Reducer<MilestoneState> = (state: MilestoneState, incoming
                 )
             };
         case deleteMilestone:
-            var milestonesCopy = state.milestones.slice()
+            let milestonesCopy = state.milestones.slice()
             milestonesCopy.splice(milestonesCopy.indexOf(action.item), 1);
             return {
                 ...state,

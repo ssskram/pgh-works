@@ -122,7 +122,7 @@ export const reducer: Reducer<SubphaseState> = (state: SubphaseState, incomingAc
                 )
             };
         case deleteSubphase:
-            var subphasesCopy = state.subphases.slice()
+            let subphasesCopy = state.subphases.slice()
             subphasesCopy.splice(subphasesCopy.indexOf(action.item), 1);
             return {
                 ...state,

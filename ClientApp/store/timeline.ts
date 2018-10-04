@@ -51,7 +51,7 @@ export const reducer: Reducer<TimelineState> = (state: TimelineState, incomingAc
                 timeline: state.timeline.concat(action.item)
             };
         case deleteTimeline:
-            var timelineCopy = state.timeline.slice()
+            let timelineCopy = state.timeline.slice()
             state.timeline.forEach(function (timeline) {
                 if (timeline.id == action.projectID || timeline.parentProjectID == action.projectID) {
                     timelineCopy.splice(timelineCopy.indexOf(timeline), 1);

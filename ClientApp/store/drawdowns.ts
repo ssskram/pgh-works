@@ -115,7 +115,7 @@ export const reducer: Reducer<DrawdownState> = (state: DrawdownState, incomingAc
                 )
             }
         case deleteDrawdown:
-            var drawdownCopy = state.drawdowns.slice()
+            let drawdownCopy = state.drawdowns.slice()
             drawdownCopy.splice(drawdownCopy.indexOf(action.item), 1);
             return {
                 ...state,

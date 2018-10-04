@@ -42,7 +42,7 @@ export class Tags extends React.Component<any, any> {
                 return item.parentID == props.parentID
             })
             // take unique to prohibit duplicate street segments
-            var unique = removeDuplicates(tags, "taggedAssetName")
+            const unique = removeDuplicates(tags, "taggedAssetName")
             if (tags.length > 0) {
                 this.setState({
                     tags: unique
@@ -84,7 +84,7 @@ export class Tags extends React.Component<any, any> {
     removeTag(tag) {
         // removes tag locally from state
         // done in step with mutable delete from redux store
-        var tagsCopy = this.state.tags.slice()
+        const tagsCopy = this.state.tags.slice()
         tagsCopy.splice(tagsCopy.indexOf(tag), 1);
         this.setState({
             tags: tagsCopy

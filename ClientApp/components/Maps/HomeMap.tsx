@@ -2,6 +2,7 @@ import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
 import randomcolor from 'randomcolor'
+import setCenter from './../../functions/setCenter'
 
 export default class HomeMap extends React.Component<any, any> {
     constructor(props) {
@@ -22,24 +23,11 @@ export default class HomeMap extends React.Component<any, any> {
     }
 
     polygonSelection(project) {
-        this.setCenter(project.shape.points)
         this.setState({
+            center: setCenter(project.shape.points),
+            zoom: 16,
             selectedProject: project,
             showInfowindow: true
-        })
-    }
-
-    setCenter(points) {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < points.length; i++) {
-            bounds.extend(points[i]);
-        }
-        let lat = bounds.getCenter().lat()
-        let lng = bounds.getCenter().lng()
-        this.setState({
-            center: { lat: lat, lng: lng },
-            zoom: 16
         })
     }
 

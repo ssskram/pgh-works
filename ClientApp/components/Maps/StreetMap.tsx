@@ -6,6 +6,7 @@ import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 import inside from 'point-in-polygon'
+import setCenter from './../../functions/setCenter'
 
 export class StreetMap extends React.Component<any, any> {
     constructor(props) {
@@ -30,34 +31,21 @@ export class StreetMap extends React.Component<any, any> {
         const assets = this.props.assets.filter(asset => {
             return asset.assetName == street
         })
-        var middle = Math.floor(assets.length / 2);
+        const middle = Math.floor(assets.length / 2);
         const middleSegment = assets[middle]
-        this.setCenter(middleSegment.shape.points, 13)
         this.setState({
+            center: setCenter(middleSegment.shape.points),
+            zoom: 13,
             assets: assets
-        })
-    }
-
-    setCenter(points, zoom) {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < points.length; i++) {
-            bounds.extend(points[i]);
-        }
-        let lat = bounds.getCenter().lat()
-        let lng = bounds.getCenter().lng()
-        this.setState({
-            center: { lat: lat, lng: lng },
-            zoom: zoom
         })
     }
 
     handleOverlayComplete = (evt) => {
         let shape = { points: [] as any }
         let vertices = evt.overlay.getPath()
-        for (var i = 0; i < vertices.getLength(); i++) {
-            var xy = vertices.getAt(i);
-            var coord = { lat: xy.lat(), lng: xy.lng() }
+        for (let i = 0; i < vertices.getLength(); i++) {
+            let xy = vertices.getAt(i);
+            let coord = { lat: xy.lat(), lng: xy.lng() }
             shape.points.push(coord)
         }
         let formattedShape = [] as any
@@ -80,10 +68,11 @@ export class StreetMap extends React.Component<any, any> {
                 })
             }
         })
-        var middle = Math.floor(filteredAssets.length / 2);
+        const middle = Math.floor(filteredAssets.length / 2);
         const middleSegment = filteredAssets[middle]
-        this.setCenter(middleSegment.shape.points, 13)
         this.setState({
+            center: setCenter(middleSegment.shape.points),
+            zoom: 13,
             assets: filteredAssets,
             onFilter: true
         })

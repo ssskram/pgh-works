@@ -45,7 +45,7 @@ export default class datepicker extends React.Component<any, any> {
 
     public render() {
 
-        var conditionalClass = classNames({
+        const conditionalClass = classNames({
             'btn': true,
             'btn-datepicker': true,
         });

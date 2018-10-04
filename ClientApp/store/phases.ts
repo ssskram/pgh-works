@@ -130,7 +130,7 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
                 )
             };
         case deletePhase:
-            var phasesCopy = state.phases.slice()
+            let phasesCopy = state.phases.slice()
             phasesCopy.splice(phasesCopy.indexOf(action.item), 1);
             return {
                 ...state,

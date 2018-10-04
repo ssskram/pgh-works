@@ -63,7 +63,7 @@ export const reducer: Reducer<AttachmentState> = (state: AttachmentState, incomi
                 attachments: state.attachments.concat(action.item)
             };
         case deleteAttachment:
-            var attachmentCopy = state.attachments.slice()
+            let attachmentCopy = state.attachments.slice()
             attachmentCopy.splice(attachmentCopy.indexOf(action.item), 1);
             return {
                 ...state,

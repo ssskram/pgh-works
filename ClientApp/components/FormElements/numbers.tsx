@@ -5,10 +5,9 @@ import classNames from 'classnames'
 export default class currency extends React.Component<any, any> {
 
     public render() {
-
-        var conditionalClass = classNames({
+        const conditionalClass = classNames({
             'form-control': true,
-        });
+        })
 
         return (
             <div className="form-group">

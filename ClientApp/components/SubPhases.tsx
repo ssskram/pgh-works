@@ -64,7 +64,7 @@ export class SubPhases extends React.Component<any, any> {
     removeSubphase(subphase) {
         // removes subphase locally from state
         // done in step with mutable delete from redux store
-        var subphasesCopy = this.state.subphases.slice()
+        const subphasesCopy = this.state.subphases.slice()
         subphasesCopy.splice(subphasesCopy.indexOf(subphase), 1);
         this.setState({
             subphases: subphasesCopy

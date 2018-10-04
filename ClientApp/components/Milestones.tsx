@@ -83,7 +83,7 @@ export class Milestones extends React.Component<any, any> {
     removeMilestone(milestone) {
         // removes milestone locally from state
         // done in step with mutable delete from redux store
-        var milestonesCopy = this.state.milestones.slice()
+        const milestonesCopy = this.state.milestones.slice()
         milestonesCopy.splice(milestonesCopy.indexOf(milestone), 1);
         this.setState({
             milestones: milestonesCopy,

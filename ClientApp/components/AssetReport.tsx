@@ -71,7 +71,7 @@ export class AssetReport extends React.Component<any, any> {
             const tags = this.props.tags.filter(tag => {
                 return tag.taggedAssetName == props
             })
-            var uniqueTags = removeDuplicates(tags, "parentID")
+            const uniqueTags = removeDuplicates(tags, "parentID")
             this.setState({
                 tags: uniqueTags
             })
@@ -103,7 +103,7 @@ export class AssetReport extends React.Component<any, any> {
                 })
             }
         })
-        var uniqueTags = removeDuplicates(newTags, "parentID")
+        const uniqueTags = removeDuplicates(newTags, "parentID")
         this.setState({
             tags: uniqueTags
         })

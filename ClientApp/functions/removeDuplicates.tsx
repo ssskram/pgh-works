@@ -1,7 +1,7 @@
 
 export default function removeDuplicates(originalArray, prop) {
-    var newArray = [] as any
-    var lookupObject = {}
+    let newArray = [] as any
+    let lookupObject = {}
     for (var i in originalArray) {
         lookupObject[originalArray[i][prop]] = originalArray[i]
     }

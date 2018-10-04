@@ -86,7 +86,7 @@ export const reducer: Reducer<TagState> = (state: TagState, incomingAction: Acti
                 tags: state.tags.concat(action.item)
             };
         case deleteTag:
-            var tagsCopy = state.tags.slice()
+            let tagsCopy = state.tags.slice()
             tagsCopy.splice(tagsCopy.indexOf(action.item), 1);
             return {
                 ...state,

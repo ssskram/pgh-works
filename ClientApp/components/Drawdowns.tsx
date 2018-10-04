@@ -94,7 +94,7 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     removeDrawdown(drawdown) {
-        var drawdownCopy = this.state.drawdowns.slice()
+        const drawdownCopy = this.state.drawdowns.slice()
         drawdownCopy.splice(drawdownCopy.indexOf(drawdown), 1);
         this.setState({
             drawdowns: drawdownCopy
