@@ -2,19 +2,12 @@ import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
+import handleOverlayComplete from './../../functions/handleOverlayComplete'
 
 export default class PolygonGeneration extends React.Component<any, any> {
 
-    handleOverlayComplete = (evt) => {
-        let shape = { points: [] as any }
-        let vertices = evt.overlay.getPath()
-
-        for (var i = 0; i < vertices.getLength(); i++) {
-            var xy = vertices.getAt(i);
-            var coord = { lat: xy.lat(), lng: xy.lng() }
-            shape.points.push(coord)
-        }
-        this.props.passShape(shape)
+    handleShape = (evt) => {
+        this.props.passShape(handleOverlayComplete(evt))
     }
 
     render() {
@@ -44,7 +37,7 @@ export default class PolygonGeneration extends React.Component<any, any> {
                         }
                     }}
                     {...props}
-                    onOverlayComplete={this.handleOverlayComplete}
+                    onOverlayComplete={this.handleShape}
                 />
             </GoogleMap>
         )

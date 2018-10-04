@@ -3,6 +3,7 @@ import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 import setCenter from './../../functions/setCenter'
+import handleOverlayComplete from './../../functions/handleOverlayComplete'
 
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
@@ -72,16 +73,8 @@ export default class ImportShapes extends React.Component<any, any> {
         })
     }
 
-    handleOverlayComplete = (evt) => {
-        let shape = { points: [] as any }
-        let vertices = evt.overlay.getPath()
-
-        for (let i = 0; i < vertices.getLength(); i++) {
-            let xy = vertices.getAt(i);
-            const coord = { lat: xy.lat(), lng: xy.lng() }
-            shape.points.push(coord)
-        }
-        this.props.passShape(shape)
+    handleShape = (evt) => {
+        this.props.passShape(handleOverlayComplete(evt))
     }
 
     render() {
@@ -160,7 +153,7 @@ export default class ImportShapes extends React.Component<any, any> {
                             }
                         }}
                         {...props}
-                        onOverlayComplete={this.handleOverlayComplete}
+                        onOverlayComplete={this.handleShape}
                     />
                 }
 

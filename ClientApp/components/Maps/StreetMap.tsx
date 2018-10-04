@@ -7,6 +7,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-ma
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 import inside from 'point-in-polygon'
 import setCenter from './../../functions/setCenter'
+import handleOverlayComplete from './../../functions/handleOverlayComplete'
 
 export class StreetMap extends React.Component<any, any> {
     constructor(props) {
@@ -40,14 +41,8 @@ export class StreetMap extends React.Component<any, any> {
         })
     }
 
-    handleOverlayComplete = (evt) => {
-        let shape = { points: [] as any }
-        let vertices = evt.overlay.getPath()
-        for (let i = 0; i < vertices.getLength(); i++) {
-            let xy = vertices.getAt(i);
-            let coord = { lat: xy.lat(), lng: xy.lng() }
-            shape.points.push(coord)
-        }
+    handleShape = (evt) => {
+        const shape = handleOverlayComplete(evt)
         let formattedShape = [] as any
         shape.points.forEach(point => {
             const shapeArray = [point.lat, point.lng]
@@ -145,7 +140,7 @@ export class StreetMap extends React.Component<any, any> {
                         }
                     }}
                     {...props}
-                    onOverlayComplete={this.handleOverlayComplete}
+                    onOverlayComplete={this.handleShape}
                 />
             </GoogleMap>
         )
