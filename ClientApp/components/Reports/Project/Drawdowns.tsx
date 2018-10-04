@@ -1,4 +1,8 @@
 
+// returns all program/fund drawdowns per project
+// also serves as container of budget thermometer
+// and general spend data
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

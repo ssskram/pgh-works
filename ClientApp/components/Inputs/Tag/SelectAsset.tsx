@@ -1,4 +1,8 @@
 
+// after asset type is selected, user is directed here to select asset from map
+// or, if asset type == street, user must first select street name
+// to render relevant segments
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

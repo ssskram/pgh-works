@@ -1,3 +1,6 @@
+
+// returns all projects to home map
+
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"

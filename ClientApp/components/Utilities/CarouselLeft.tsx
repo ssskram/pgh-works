@@ -1,4 +1,7 @@
 
+// the "left" arrow on carousel
+// project/phase cards
+
 import * as React from 'react'
 
 const arrowStyle = {

@@ -1,4 +1,10 @@
 
+// top level phase report
+// parent of Phasecard.tsx
+// parent of Milestones.tsx
+// parent of SubPhases.tsx
+// co-parent of Tags.tsx
+
 import * as React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'

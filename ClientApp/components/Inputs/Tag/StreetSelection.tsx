@@ -1,4 +1,8 @@
 
+// when importing a shape from a street, 
+// user is directed here to select which street
+// they want to draw over
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

@@ -1,7 +1,7 @@
 
+// module to update the location of an existing project
+
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { ApplicationState } from '../../../store'
 import Import from '../Shapes/ImportShape'
 import New from '../Shapes/NewShape'
 
@@ -13,7 +13,7 @@ const minWidth = {
     minWidth: '250px'
 }
 
-export class UpdateLocation extends React.Component<any, any> {
+export default class UpdateLocation extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
@@ -81,10 +81,3 @@ export class UpdateLocation extends React.Component<any, any> {
         )
     }
 }
-
-export default connect(
-    (state: ApplicationState) => ({
-    }),
-    ({
-    })
-)(UpdateLocation as any) as typeof UpdateLocation

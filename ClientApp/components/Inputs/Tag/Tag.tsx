@@ -1,4 +1,6 @@
 
+// passes tag back to parent container
+
 import * as React from 'react'
 import TaggableAssetSelection from './NewTag'
 

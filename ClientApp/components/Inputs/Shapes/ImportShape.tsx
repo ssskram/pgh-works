@@ -1,4 +1,6 @@
 
+// module to import a shape from an existing Cartegraph asset
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

@@ -1,4 +1,6 @@
 
+// returns all milestones per phase
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import ReactTable from "react-table";

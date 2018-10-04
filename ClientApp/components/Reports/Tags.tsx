@@ -1,4 +1,6 @@
 
+// returns all tags of relevant assets per project/phase
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

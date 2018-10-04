@@ -1,3 +1,10 @@
+
+// when user is drawing a new shape for a new project, 
+// before project is created they are directed here
+// to select which assets are relevant to the project.
+// the array of relevant types is passed on
+// for new tag generation
+
 import * as React from 'react'
 
 const clicked = {

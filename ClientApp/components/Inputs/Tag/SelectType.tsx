@@ -1,4 +1,9 @@
 
+
+// when user is importing shape or tagging an existing asset, 
+// directed here first to select asset type
+// then, all corresponding assets render on map
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

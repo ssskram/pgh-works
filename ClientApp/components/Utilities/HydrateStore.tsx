@@ -1,4 +1,6 @@
 
+// hydrates the wholeeeeee store
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

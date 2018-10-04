@@ -1,4 +1,8 @@
 
+// project generation container
+// parent of both Description.tsx
+// and Geolocate.tsx
+
 import * as React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -13,7 +17,7 @@ import ProjectDescription from './Description'
 import Map from '../../../Maps/ProjectMap'
 import { v1 as uuid } from 'uuid'
 import Modal from 'react-responsive-modal'
-import TaggableAssetSelection from './../../Tag/AssetTypeSelection'
+import TaggableAssetSelection from '../../Tag/RelevantAssetTypes'
 import assetsInPolygon from './../../../../functions/assetsInPolygon'
 
 export class ProjectDefinition extends React.Component<any, any> {

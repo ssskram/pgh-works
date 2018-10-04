@@ -1,4 +1,6 @@
 
+// timeline component rendered on project report
+
 import * as React from 'react'
 import TL from './Timeline'
 import { Link } from 'react-router-dom'

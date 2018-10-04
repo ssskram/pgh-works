@@ -1,4 +1,7 @@
 
+// project geolocation module
+// import a shape, or create a new shape
+
 import * as React from 'react'
 import Modal from 'react-responsive-modal'
 import Import from '../../Shapes/ImportShape'

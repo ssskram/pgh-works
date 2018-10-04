@@ -2,13 +2,11 @@
 // subphase card on phase page
 
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { ApplicationState } from '../../store'
 import Modal from 'react-responsive-modal'
 import SubphaseForm from '../Inputs/Subphase'
 import DeleteSubphase from '../DeleteConfirmations/DeleteSubphase'
 
-export class Subphase extends React.Component<any, any> {
+export default class Subphase extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
@@ -93,10 +91,3 @@ export class Subphase extends React.Component<any, any> {
         )
     }
 }
-
-export default connect(
-    (state: ApplicationState) => ({
-    }),
-    ({
-    })
-)(Subphase as any) as typeof Subphase

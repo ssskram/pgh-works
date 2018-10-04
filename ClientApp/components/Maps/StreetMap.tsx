@@ -1,3 +1,8 @@
+
+// map that renders on asset report where asset type == street
+// handles user input through polygon tool to filter 
+// tags by certain segment of street
+
 import * as React from "react";
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

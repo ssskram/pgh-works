@@ -1,4 +1,7 @@
 
+// accepts document uplaods
+// and after upload, prompts user to provide name of doc
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

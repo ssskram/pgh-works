@@ -1,7 +1,8 @@
 
+// project input/update form
+// parent of ProjectFields.tsx
+
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { ApplicationState } from '../../../../store'
 import ProjectFields from './../ProjectFields'
 import * as moment from 'moment'
 
@@ -13,7 +14,7 @@ const paddingRight = {
     paddingRight: '25px'
 }
 
-export class ProjectDescription extends React.Component<any, any> {
+export default class ProjectDescription extends React.Component<any, any> {
     constructor() {
         super();
         this.state = {
@@ -120,12 +121,3 @@ export class ProjectDescription extends React.Component<any, any> {
         )
     }
 }
-
-export default connect(
-    (state: ApplicationState) => ({
-
-    }),
-    ({
-
-    })
-)(ProjectDescription as any) as typeof ProjectDescription

@@ -1,4 +1,6 @@
 
+// Module to draw a new shape
+
 import * as React from 'react'
 import Map from '../../Maps/NewPolygon'
 

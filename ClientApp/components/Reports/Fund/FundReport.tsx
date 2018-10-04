@@ -1,4 +1,7 @@
 
+// returns fund/program data
+// and then returns all drawdowns on fund/program
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

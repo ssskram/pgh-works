@@ -1,3 +1,6 @@
+
+// thumbnail map on project cards
+
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"

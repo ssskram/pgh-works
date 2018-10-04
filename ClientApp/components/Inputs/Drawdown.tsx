@@ -1,4 +1,8 @@
 
+// generates a record in the drawdown store 
+// that corresponds to an existing program or fund
+// stored in the system
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

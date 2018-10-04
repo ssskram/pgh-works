@@ -1,4 +1,8 @@
 
+// main timeline module
+// returns timeline items added to timeline store 
+// directly from project record
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'

@@ -1,4 +1,9 @@
 
+// parent container for new tag creation
+// parent of SelectType.tsx
+// parent of SelectAsset.tsx
+// parent of TagDescription.tsx
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

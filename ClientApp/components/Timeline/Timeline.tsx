@@ -1,4 +1,6 @@
 
+// core timeline component
+
 import * as React from 'react'
 import TL from 'react-visjs-timeline'
 

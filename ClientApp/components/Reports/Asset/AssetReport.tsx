@@ -1,4 +1,7 @@
 
+// returns asset on map
+// and then returns all projects/phases that have tagged asset
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'

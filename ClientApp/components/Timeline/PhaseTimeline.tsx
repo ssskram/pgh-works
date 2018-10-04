@@ -1,4 +1,6 @@
 
+// timeline component rendered on phase report
+
 import * as React from 'react'
 import TL from './Timeline'
 

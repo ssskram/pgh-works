@@ -1,7 +1,7 @@
 
+// tag description form
+
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { ApplicationState } from '../../../store'
 import TextArea from '../../FormElements/textarea'
 
 export class TagDescription extends React.Component<any, any> {
@@ -57,10 +57,3 @@ export class TagDescription extends React.Component<any, any> {
         )
     }
 }
-
-export default connect(
-    (state: ApplicationState) => ({
-    }),
-    ({
-    })
-)(TagDescription as any) as typeof TagDescription

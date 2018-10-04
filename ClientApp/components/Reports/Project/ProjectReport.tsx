@@ -1,4 +1,10 @@
 
+// top level project report
+// parent of ProjectCard.tsx
+// parent of Attachments.tsx
+// parent of Drawdowns.tsx
+// co-parent of Tags.tsx
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
