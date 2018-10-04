@@ -258,63 +258,66 @@ export class Project extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                <div className='row text-center'>
-                    <div className='col-md-12'>
-                        <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
-                    </div>
-                    {canEdit == true &&
+                {spinner == false &&
+                    <div className='row text-center'>
                         <div className='col-md-12'>
-                            <div>
-                                <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
-                                <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
-                            </div>
+                            <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
                         </div>
-                    }
-                </div>
-                <hr />
-                {shape &&
-                    <Map shape={shape} />
-                }
-                <br />
-                <div className='col-md-12'>
-                    <ProjectCard project={this.state} />
-                </div>
-                {expectedStartDate && expectedEndDate &&
-                    <div style={marginBottom} className='col-md-12 row'>
-                        <ProjectTimeline project={this.state} />
+                        {canEdit == true &&
+                            <div className='col-md-12'>
+                                <div>
+                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
+                                    <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
+                                </div>
+                            </div>
+                        }
                     </div>
                 }
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Phases
-                        canEdit={canEdit}
-                        projectID={projectID}
-                    />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Drawdowns
-                        canEdit={canEdit}
-                        parentID={projectID}
-                        parentType={'Project'}
-                        budget={projectBudget}
-                    />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Tags
-                        canEdit={canEdit}
-                        parentID={projectID}
-                        parentName={projectName}
-                        parentType='Project'
-                    />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Attachments
-                        canEdit={canEdit}
-                        parentID={projectID}
-                        parentType={'Project'}
-                        parentName={projectName}
-                    />
-                </div>
-
+                <hr />
+                <Map shape={shape} />
+                <br />
+                {spinner == false &&
+                    <div>
+                        <div className='col-md-12'>
+                            <ProjectCard project={this.state} />
+                        </div>
+                        {expectedStartDate && expectedEndDate &&
+                            <div style={marginBottom} className='col-md-12 row'>
+                                <ProjectTimeline project={this.state} />
+                            </div>
+                        }
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Phases
+                                canEdit={canEdit}
+                                projectID={projectID}
+                            />
+                        </div>
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Drawdowns
+                                canEdit={canEdit}
+                                parentID={projectID}
+                                parentType={'Project'}
+                                budget={projectBudget}
+                            />
+                        </div>
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Tags
+                                canEdit={canEdit}
+                                parentID={projectID}
+                                parentName={projectName}
+                                parentType='Project'
+                            />
+                        </div>
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Attachments
+                                canEdit={canEdit}
+                                parentID={projectID}
+                                parentType={'Project'}
+                                parentName={projectName}
+                            />
+                        </div>
+                    </div>
+                }
                 {spinner == true &&
                     <Spinner notice='...loading the project...' />
                 }
