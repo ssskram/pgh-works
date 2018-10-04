@@ -4,7 +4,7 @@
 import * as React from 'react'
 import TextArea from '../../FormElements/textarea'
 
-export class TagDescription extends React.Component<any, any> {
+export default class TagDescription extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {

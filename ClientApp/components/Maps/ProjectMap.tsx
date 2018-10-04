@@ -14,10 +14,19 @@ export default class ProjectMap extends React.Component<any, any> {
         }
     }
 
+    shouldComponentUpdate (nextProps, nextSate) {
+        if (this.props.shape == nextProps.shape) {
+            return false
+        }
+        else return true
+    }
+
     componentDidMount () {
-        this.setState ({
-            center: setCenter(this.props.shape.points)
-        })
+        if (this.props.shape.points) {
+            this.setState ({
+                center: setCenter(this.props.shape.points)
+            })
+        }
     }
 
     componentWillReceiveProps (nextProps) {

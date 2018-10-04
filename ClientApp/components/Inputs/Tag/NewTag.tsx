@@ -76,7 +76,6 @@ export class TaggableAssetSelection extends React.Component<any, any> {
     }
 
     generateTags(description) {
-        console.log('here')
         let self = this
         const streetSegments = this.props.assets.filter(function (asset) {
             return asset.assetName == self.state.streetName

@@ -79,7 +79,6 @@ export const actionCreators = {
         })
     },
     deletePhase: (item): AppThunkAction<any> => (dispatch, getstate) => {
-        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
         fetch('/api/phases/deletePhase', {
             method: 'DELETE',

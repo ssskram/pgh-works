@@ -34,10 +34,7 @@ export class Hydrate extends React.Component<any, any> {
     }
 
     public render() {
-        return (
-            <div>
-            </div>
-        )
+        return null
     }
 }
 

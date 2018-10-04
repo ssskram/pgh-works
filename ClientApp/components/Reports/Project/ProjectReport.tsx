@@ -28,6 +28,7 @@ import ProjectCard from '../../Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
 import ProjectTimeline from '../../Timeline/ProjectTimeline'
 import assetsInPolygon from '../../../functions/assetsInPolygon'
+import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
 
 const btnMargin = {
@@ -82,7 +83,9 @@ export class Project extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.findProject(nextProps)
+        if (this.props != nextProps) {
+            this.findProject(nextProps)
+        }
     }
 
     findProject(props) {
@@ -197,7 +200,7 @@ export class Project extends React.Component<any, any> {
                 })
 
                 // refresh geospatial tags with new shape
-                const componentAssets = assetsInPolygon (this.state.shape.points, this.props.assets)
+                const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
                 if (componentAssets.length > 0) {
                     componentAssets.forEach(function (component) {
                         self.createTag(component)
@@ -254,6 +257,7 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
                 <div className='row text-center'>
                     <div className='col-md-12'>
                         <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
@@ -268,7 +272,9 @@ export class Project extends React.Component<any, any> {
                     }
                 </div>
                 <hr />
-                <Map shape={shape} />
+                {shape &&
+                    <Map shape={shape} />
+                }
                 <br />
                 <div className='col-md-12'>
                     <ProjectCard project={this.state} />

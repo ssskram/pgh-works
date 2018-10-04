@@ -43,7 +43,6 @@ export const actionCreators = {
             });
     },
     addSubphase: (item): AppThunkAction<any> => (dispatch, getState) => {
-        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
         fetch('/api/subphases/addSubphase', {
             method: 'POST',
