@@ -19,6 +19,12 @@ export default class HomeMap extends React.Component<any, any> {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state == nextState) {
+            return false
+        } else return true
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState ({
             projects: nextProps.projects

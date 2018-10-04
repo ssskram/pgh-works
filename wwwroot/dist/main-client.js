@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ad9afe9e2697cd32089e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "92154d3ce3117339dd2c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63077,6 +63077,13 @@ var HomeMap = (function (_super) {
         };
         return _this;
     }
+    HomeMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+        if (this.state == nextState) {
+            return false;
+        }
+        else
+            return true;
+    };
     HomeMap.prototype.componentWillReceiveProps = function (nextProps) {
         this.setState({
             projects: nextProps.projects
