@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b9bcf43ce3a9302fe2b3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b7ef65c0ce6d0535959f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63531,6 +63531,13 @@ var StreetMap = (function (_super) {
         };
         return _this;
     }
+    StreetMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+        if (this.state == nextState) {
+            return false;
+        }
+        else
+            return true;
+    };
     StreetMap.prototype.componentDidMount = function () {
         this.collectSegmentShapes(this.props.street);
     };
@@ -63942,10 +63949,31 @@ var AssetReport = (function (_super) {
     };
     AssetReport.prototype.filterTagsByStreetSegment = function (shape) {
         var _this = this;
+        // empty array to push tagged street segments
+        var assets = [];
+        // get all tags by street name
         var allTags = this.props.tags.filter(function (tag) {
             return tag.taggedAssetName == _this.props.match.params.street;
         });
-        var newTags = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_assetsInPolygon__["a" /* default */])(shape, allTags);
+        // for each tag, push the corresponding asset to array
+        allTags.forEach(function (tag) {
+            var taggedAsset = _this.props.assets.find(function (asset) {
+                return asset.assetOID == tag.taggedAssetOID;
+            });
+            assets.push(taggedAsset);
+        });
+        // get assets within the shape
+        var assetsInside = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_assetsInPolygon__["a" /* default */])(shape, assets);
+        // empty array to push corresponding tags on assetsInside
+        var newTags = [];
+        // for each asset inside, get the corresponding tags
+        assetsInside.forEach(function (asset) {
+            _this.props.tags.filter(function (tag) {
+                if (tag.taggedAssetOID == asset.assetOID) {
+                    newTags.push(tag);
+                }
+            });
+        });
         var uniqueTags = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_removeDuplicates__["a" /* default */])(newTags, "parentID");
         this.setState({
             tags: uniqueTags
@@ -63967,6 +63995,7 @@ var AssetReport = (function (_super) {
     AssetReport.prototype.render = function () {
         var _this = this;
         var _a = this.state, spinner = _a.spinner, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
+        console.log(tags);
         if (redirect) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
         }

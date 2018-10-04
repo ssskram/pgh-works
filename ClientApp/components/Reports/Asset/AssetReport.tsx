@@ -108,10 +108,31 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     filterTagsByStreetSegment(shape) {
+        // empty array to push tagged street segments
+        let assets = [] as any
+        // get all tags by street name
         const allTags = this.props.tags.filter(tag => {
             return tag.taggedAssetName == this.props.match.params.street
         })
-        const newTags = assetsInPolygon(shape, allTags)
+        // for each tag, push the corresponding asset to array
+        allTags.forEach(tag => {
+            const taggedAsset = this.props.assets.find(asset => {
+                return asset.assetOID == tag.taggedAssetOID
+            })
+            assets.push(taggedAsset)
+        })
+        // get assets within the shape
+        const assetsInside = assetsInPolygon(shape, assets)
+        // empty array to push corresponding tags on assetsInside
+        let newTags = [] as any
+        // for each asset inside, get the corresponding tags
+        assetsInside.forEach(asset => {
+            this.props.tags.filter(tag => {
+                if (tag.taggedAssetOID == asset.assetOID) {
+                    newTags.push(tag)
+                }
+            })
+        }); 
         const uniqueTags = removeDuplicates(newTags, "parentID")
         this.setState({
             tags: uniqueTags
@@ -144,6 +165,8 @@ export class AssetReport extends React.Component<any, any> {
             tags
         } = this.state
 
+        console.log(tags)
+
         if (redirect) {
             <Redirect to={redirectLink} />
         }
@@ -164,7 +187,7 @@ export class AssetReport extends React.Component<any, any> {
                         <br />
                         {assetType != 'Street' &&
                             <div className='col-md-12'>
-                                <Map shape={assetShape} asset/>
+                                <Map shape={assetShape} asset />
                                 <br />
                                 <br />
                             </div>

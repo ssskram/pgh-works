@@ -26,6 +26,12 @@ export class StreetMap extends React.Component<any, any> {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state == nextState) {
+            return false
+        } else return true
+    }
+
     componentDidMount() {
         this.collectSegmentShapes(this.props.street)
     }
