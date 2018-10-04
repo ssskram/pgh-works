@@ -3,11 +3,13 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { ApplicationState } from '../../store'
+import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
 import Table from 'react-table'
 import FundFilter from '../Filters/FundFilter'
 import * as CurrencyFormat from 'react-currency-format'
+import Spinner from './../Utilities/Spinner'
 
 const iconStyle = {
     color: '#fff',
@@ -20,6 +22,7 @@ export class ProgramsFunds extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
+            onFilter: false,
             funds: props.funds,
             selectedFundID: '',
             redirect: false
@@ -31,6 +34,16 @@ export class ProgramsFunds extends React.Component<any, any> {
         this.props.ping()
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props != nextProps) {
+            if (nextProps.funds.length > 0) {
+                this.setState({
+                    funds: nextProps.funds
+                })
+            }
+        }
+    }
+
     viewFund(fund) {
         this.setState({
             selectedFundID: fund.fundID,
@@ -40,6 +53,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
     public render() {
         const {
+            onFilter,
             funds,
             redirect,
             selectedFundID
@@ -75,6 +89,10 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
+                {funds.length == 0 && onFilter == false &&
+                    <Spinner notice='...loading the funds...' />
+                }
                 <h2>Programs & Funds <span style={{ marginTop: '-5px' }} className='pull-right'><FundFilter /></span></h2>
                 <hr />
                 {funds.length > 0 &&
@@ -98,7 +116,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         })}
                     />
                 }
-                {funds.length == 0 &&
+                {funds.length == 0 && onFilter == true &&
                     <div className='col-md-12 text-center'>
                         <br />
                         <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>

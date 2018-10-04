@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { ApplicationState } from '../../store'
+import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
 import * as Personnel from '../../store/GETS/personnel'
@@ -29,24 +30,29 @@ export class MyProjects extends React.Component<any, any> {
             itemsPerPage: 30
         }
     }
+    
     componentDidMount() {
         window.scrollTo(0, 0)
-        this.setState({
-            projects: getMyProjects(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            })
-        })
-        // ping server
-        this.props.ping()
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.personnel != nextProps.personnel && this.props.user != nextProps.user) {
+        if (this.props.projects.length > 0 && this.props.personnel.length > 0 && this.props.user != '') {
             this.setState({
                 projects: getMyProjects(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
                     return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
                 })
             })
+        }
+        // ping server
+        this.props.ping()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props != nextProps) {
+            if (nextProps.projects.length > 0 && nextProps.personnel.length > 0 && nextProps.user != '') {
+                this.setState({
+                    projects: getMyProjects(nextProps.projects, nextProps.personnel, nextProps.user).sort(function (a, b) {
+                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                    })
+                })
+            }
         }
     }
 
@@ -126,6 +132,7 @@ export class MyProjects extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
                 <h2>
                     My Projects
                     <span style={{ marginTop: '-5px' }} className='pull-right'>
@@ -136,6 +143,9 @@ export class MyProjects extends React.Component<any, any> {
                     </span>
                 </h2>
                 <hr />
+                {personnel.length == 0 && user == null &&
+                    <Spinner notice='...loading your projects...' />
+                }
                 {projects.length > 0 &&
                     <div>
                         {renderItems}
@@ -156,9 +166,6 @@ export class MyProjects extends React.Component<any, any> {
                         <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
                         <h2><i>Nothing to see here</i></h2>
                     </div>
-                }
-                {personnel.length == 0 && user == null &&
-                    <Spinner notice='...loading your projects...' />
                 }
             </div>
         )

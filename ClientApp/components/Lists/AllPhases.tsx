@@ -3,11 +3,13 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { ApplicationState } from '../../store'
+import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Phases from '../../store/phases'
 import * as Projects from '../../store/projects'
 import PhaseFilters from '../Filters/PhaseFilter'
 import Table from 'react-table'
+import Spinner from './../Utilities/Spinner'
 
 const iconStyle = {
     color: '#fff',
@@ -79,6 +81,10 @@ export class AllPhases extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
+                {phases.length == 0 &&
+                    <Spinner notice='...loading the phases...' />
+                }
                 <h2>All Phases <span style={{ marginTop: '-5px' }} className='pull-right'><PhaseFilters /></span></h2>
                 <hr />
                 {phases.length > 0 &&
@@ -101,13 +107,6 @@ export class AllPhases extends React.Component<any, any> {
                             }
                         })}
                     />
-                }
-                {phases.length == 0 &&
-                    <div className='col-md-12 text-center'>
-                        <br />
-                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h2><i>Nothing to see here</i></h2>
-                    </div>
                 }
             </div>
         )

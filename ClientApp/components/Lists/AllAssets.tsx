@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { ApplicationState } from '../../store'
+import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as Tags from '../../store/tags'
@@ -31,7 +32,9 @@ export class AllAssets extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setAssets(nextProps)
+        if (this.props != nextProps) {
+            this.setAssets(nextProps)
+        }
     }
 
     setAssets(props) {
@@ -106,6 +109,10 @@ export class AllAssets extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
+                {assets.length == 0 &&
+                    <Spinner notice='...loading the assets...' />
+                }
                 <h2>All Assets <span style={{ marginTop: '-5px' }} className='pull-right'><AssetFilter /></span></h2>
                 <hr />
                 {assets.length > 0 &&
@@ -138,9 +145,6 @@ export class AllAssets extends React.Component<any, any> {
                             }
                         })}
                     />
-                }
-                {assets.length == 0 &&
-                    <Spinner notice='...loading assets...' />
                 }
             </div>
         )

@@ -14,6 +14,12 @@ export default class MapThumbnail extends React.Component<any, any> {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state == nextState) {
+            return false
+        } else return true
+    }
+
     componentDidMount () {
         this.setState ({
             center: setCenter(this.props.shape)
@@ -42,7 +48,7 @@ export default class MapThumbnail extends React.Component<any, any> {
             withGoogleMap
         )((props) =>
             <GoogleMap
-                defaultZoom={13}
+                defaultZoom={14}
                 defaultCenter={center}
             >
                 <Polygon

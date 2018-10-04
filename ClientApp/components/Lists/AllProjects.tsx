@@ -3,11 +3,13 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { ApplicationState } from '../../store'
+import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Projects from '../../store/projects'
 import ProjectFilters from '../Filters/ProjectFilter'
 import Paging from '../Utilities/Paging'
 import MapThumbnail from '../Maps/MapThumbnail'
+import Spinner from './../Utilities/Spinner'
 
 const iconStyle = {
     color: '#fff',
@@ -20,18 +22,36 @@ export class AllProjects extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            projects: props.projects.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
-            }),
+            onFilter: false,
+            projects: [],
             currentPage: 1,
             itemsPerPage: 30
         }
     }
+
     componentDidMount() {
         window.scrollTo(0, 0)
-
+        if (this.props.projects.length > 0) {
+            this.setState({
+                projects: this.props.projects.sort.sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                })
+            })
+        }
         // ping server
         this.props.ping()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props != nextProps) {
+            if (nextProps.projects.length > 0) {
+                this.setState({
+                    projects: nextProps.projects.sort(function (a, b) {
+                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                    })
+                })
+            }
+        }
     }
 
     handleNextClick() {
@@ -54,12 +74,14 @@ export class AllProjects extends React.Component<any, any> {
         this.setState({
             projects: projects.sort(function (a, b) {
                 return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
-            })
+            }),
+            onFilter: true
         })
     }
 
     public render() {
         const {
+            onFilter,
             projects,
             currentPage,
             itemsPerPage
@@ -105,6 +127,10 @@ export class AllProjects extends React.Component<any, any> {
 
         return (
             <div>
+                <Hydrate />
+                {projects.length == 0 && onFilter == false &&
+                    <Spinner notice='...loading the projects...' />
+                }
                 <h2>
                     All Projects
                     <span style={{ marginTop: '-5px' }} className='pull-right'>
@@ -129,7 +155,7 @@ export class AllProjects extends React.Component<any, any> {
                         <br />
                     </div>
                 }
-                {projects.length == 0 &&
+                {projects.length == 0 && onFilter == true &&
                     <div className='col-md-12 text-center'>
                         <br />
                         <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
