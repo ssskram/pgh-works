@@ -11,20 +11,11 @@ import PhaseFilters from '../Filters/PhaseFilter'
 import Table from 'react-table'
 import Spinner from './../Utilities/Spinner'
 
-const iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
-}
-
 export class AllPhases extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
-            phases: props.phases.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            phases: [],
             redirectLink: '',
             redirect: false
         }
@@ -35,8 +26,27 @@ export class AllPhases extends React.Component<any, any> {
 
         // ping server
         this.props.ping()
+
+        if (this.props.phases.length > 0) {
+            this.setState ({
+                phases: this.props.phases.sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                }),
+            })
+        }
     }
 
+    componentWillReceiveProps (nextProps) {
+        if (this.props != nextProps) {
+            if (nextProps.phases.length > 0) {
+                this.setState ({
+                    phases: nextProps.phases.sort(function (a, b) {
+                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                    }),
+                })
+            }
+        }
+    }
     getPhaseLink(phaseID) {
         this.setState({
             redirectLink: "/Phase/id=" + phaseID,

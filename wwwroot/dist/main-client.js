@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "153831fefc40c79f19e0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cb26e78b36c44df89c0e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6596,6 +6596,52 @@ module.exports = (__webpack_require__(6))(146);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__ = __webpack_require__(7);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var Spinner = (function (_super) {
+    __extends(Spinner, _super);
+    function Spinner() {
+        return _super.call(this) || this;
+    }
+    Spinner.prototype.closeModal = function () {
+        // just required for modal lib
+    };
+    Spinner.prototype.render = function () {
+        var notice = this.props.notice;
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: true, onClose: this.closeModal.bind(this), classNames: {
+                    overlay: 'spinner-overlay',
+                    modal: 'spinner-modal'
+                }, animationDuration: 1000, closeOnEsc: false, closeOnOverlayClick: false, showCloseIcon: false, center: true },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "loader" }),
+                notice));
+    };
+    return Spinner;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+/* harmony default export */ __webpack_exports__["a"] = (Spinner);
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/Spinner.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/Spinner.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionCreators; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return reducer; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_domain_task__ = __webpack_require__(27);
@@ -6643,7 +6689,7 @@ var reducer = function (state, incomingAction) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(111)('wks');
@@ -6660,7 +6706,7 @@ $exports.store = store;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 /**
@@ -6695,13 +6741,25 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export Hydrate */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_projects__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_milestones__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_attachments__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_tags__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_GETS_taggableAssets__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_GETS_personnel__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_subphases__ = __webpack_require__(63);
+// hydrates the wholeeeeee store
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -6712,36 +6770,59 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
-
-var Spinner = (function (_super) {
-    __extends(Spinner, _super);
-    function Spinner() {
-        return _super.call(this) || this;
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
     }
-    Spinner.prototype.closeModal = function () {
-        // just required for modal lib
+    return t;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+var Hydrate = (function (_super) {
+    __extends(Hydrate, _super);
+    function Hydrate() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Hydrate.prototype.componentDidMount = function () {
+        var props = this.props;
+        // load all stores
+        props.loadProjects();
+        props.loadDrawdowns();
+        props.loadFunds();
+        props.loadPhases();
+        props.loadMilestones();
+        props.loadAttachments();
+        props.loadTags();
+        props.loadTaggableAssets();
+        props.loadPersonnel();
+        props.loadSubphases();
     };
-    Spinner.prototype.render = function () {
-        var notice = this.props.notice;
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: true, onClose: this.closeModal.bind(this), classNames: {
-                    overlay: 'spinner-overlay',
-                    modal: 'spinner-modal'
-                }, animationDuration: 1000, closeOnEsc: false, closeOnOverlayClick: false, showCloseIcon: false, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "loader" }),
-                notice));
+    Hydrate.prototype.render = function () {
+        return null;
     };
-    return Spinner;
+    return Hydrate;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (Spinner);
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.projects, state.drawdowns, state.funds, state.phases, state.milestones, state.attachments, state.tags, state.taggableAssets, state.personnel, state.subphases)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_projects__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_phases__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_milestones__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_7__store_attachments__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_8__store_tags__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_9__store_GETS_taggableAssets__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_personnel__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_11__store_subphases__["a" /* actionCreators */])))(Hydrate));
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/Spinner.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/Spinner.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6788,7 +6869,7 @@ var reducer = function (state, incomingAction) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /**
@@ -6825,7 +6906,7 @@ module.exports = isObject;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {exports.__esModule = true;
@@ -7121,87 +7202,6 @@ HelmetExport.renderStatic = HelmetExport.rewind;
 exports.Helmet = HelmetExport;
 exports.default = HelmetExport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export Hydrate */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_projects__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_milestones__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_attachments__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_tags__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_GETS_taggableAssets__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_GETS_personnel__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_subphases__ = __webpack_require__(63);
-// hydrates the wholeeeeee store
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-var Hydrate = (function (_super) {
-    __extends(Hydrate, _super);
-    function Hydrate() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Hydrate.prototype.componentDidMount = function () {
-        var props = this.props;
-        // load all stores
-        props.loadProjects();
-        props.loadDrawdowns();
-        props.loadFunds();
-        props.loadPhases();
-        props.loadMilestones();
-        props.loadAttachments();
-        props.loadTags();
-        props.loadTaggableAssets();
-        props.loadPersonnel();
-        props.loadSubphases();
-    };
-    Hydrate.prototype.render = function () {
-        return null;
-    };
-    return Hydrate;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.projects, state.drawdowns, state.funds, state.phases, state.milestones, state.attachments, state.tags, state.taggableAssets, state.personnel, state.subphases)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_2__store_projects__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_3__store_drawdowns__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_4__store_GETS_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_phases__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_milestones__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_7__store_attachments__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_8__store_tags__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_9__store_GETS_taggableAssets__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_10__store_GETS_personnel__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_11__store_subphases__["a" /* actionCreators */])))(Hydrate));
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/components/Utilities/HydrateStore.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
 /* 36 */
@@ -10680,7 +10680,7 @@ module.exports = assocIndexOf;
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(33);
+var isObject = __webpack_require__(34);
 
 /** Built-in value references. */
 var objectCreate = Object.create;
@@ -10744,7 +10744,7 @@ module.exports = castPath;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(84),
-    isObject = __webpack_require__(33);
+    isObject = __webpack_require__(34);
 
 /**
  * Creates a function that produces an instance of `Ctor` regardless of
@@ -11083,7 +11083,7 @@ module.exports = eq;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(57),
-    isObject = __webpack_require__(33);
+    isObject = __webpack_require__(34);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -11126,7 +11126,7 @@ module.exports = isFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(57),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -12343,8 +12343,8 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return reducers; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GETS_ping__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GETS_ping__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__drawdowns__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__GETS_funds__ = __webpack_require__(49);
@@ -13255,7 +13255,7 @@ exports.f = Object.getOwnPropertySymbols;
 
 var def = __webpack_require__(40).f;
 var has = __webpack_require__(46);
-var TAG = __webpack_require__(29)('toStringTag');
+var TAG = __webpack_require__(30)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -13340,7 +13340,7 @@ module.exports = function (name) {
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(29);
+exports.f = __webpack_require__(30);
 
 
 /***/ }),
@@ -14010,7 +14010,7 @@ module.exports = assign;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(467),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -14402,7 +14402,7 @@ var updaterMap = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_personnel__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_input__ = __webpack_require__(43);
@@ -14410,7 +14410,7 @@ var updaterMap = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_responsive_modal__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__functions_filterProjects__ = __webpack_require__(685);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__functions_myProjects__ = __webpack_require__(352);
@@ -15097,7 +15097,7 @@ var Iterators = __webpack_require__(66);
 var $iterCreate = __webpack_require__(399);
 var setToStringTag = __webpack_require__(109);
 var getPrototypeOf = __webpack_require__(161);
-var ITERATOR = __webpack_require__(29)('iterator');
+var ITERATOR = __webpack_require__(30)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -15829,7 +15829,7 @@ module.exports = baseGetAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(468),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -16465,7 +16465,7 @@ module.exports = hasUnicode;
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(33);
+var isObject = __webpack_require__(34);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -16802,7 +16802,7 @@ module.exports = forEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(48),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /**
  * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -16982,7 +16982,7 @@ module.exports = toInteger;
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(33),
+var isObject = __webpack_require__(34),
     isSymbol = __webpack_require__(96);
 
 /** Used as references for various `Number` constants. */
@@ -31603,7 +31603,7 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_phases__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_select__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__ = __webpack_require__(42);
@@ -32051,7 +32051,7 @@ var NewShape = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_subphases__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_input__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormElements_select__ = __webpack_require__(24);
@@ -34457,7 +34457,7 @@ module.exports = function (IS_INCLUDES) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = __webpack_require__(103);
-var TAG = __webpack_require__(29)('toStringTag');
+var TAG = __webpack_require__(30)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () { return arguments; }()) == 'Arguments';
 
@@ -34530,7 +34530,7 @@ module.exports = document && document.documentElement;
 
 // check on default Array iterator
 var Iterators = __webpack_require__(66);
-var ITERATOR = __webpack_require__(29)('iterator');
+var ITERATOR = __webpack_require__(30)('iterator');
 var ArrayProto = Array.prototype;
 
 module.exports = function (it) {
@@ -34579,7 +34579,7 @@ var setToStringTag = __webpack_require__(109);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(53)(IteratorPrototype, __webpack_require__(29)('iterator'), function () { return this; });
+__webpack_require__(53)(IteratorPrototype, __webpack_require__(30)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -34591,7 +34591,7 @@ module.exports = function (Constructor, NAME, next) {
 /* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR = __webpack_require__(29)('iterator');
+var ITERATOR = __webpack_require__(30)('iterator');
 var SAFE_CLOSING = false;
 
 try {
@@ -34856,7 +34856,7 @@ module.exports = function (index, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__(392);
-var ITERATOR = __webpack_require__(29)('iterator');
+var ITERATOR = __webpack_require__(30)('iterator');
 var Iterators = __webpack_require__(66);
 module.exports = __webpack_require__(23).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
@@ -35025,7 +35025,7 @@ var $fails = __webpack_require__(52);
 var shared = __webpack_require__(111);
 var setToStringTag = __webpack_require__(109);
 var uid = __webpack_require__(81);
-var wks = __webpack_require__(29);
+var wks = __webpack_require__(30);
 var wksExt = __webpack_require__(115);
 var wksDefine = __webpack_require__(114);
 var enumKeys = __webpack_require__(394);
@@ -35271,7 +35271,7 @@ __webpack_require__(412);
 var global = __webpack_require__(39);
 var hide = __webpack_require__(53);
 var Iterators = __webpack_require__(66);
-var TO_STRING_TAG = __webpack_require__(29)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(30)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
   'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
@@ -41112,7 +41112,7 @@ var Stack = __webpack_require__(120),
     isArray = __webpack_require__(21),
     isBuffer = __webpack_require__(140),
     isMap = __webpack_require__(573),
-    isObject = __webpack_require__(33),
+    isObject = __webpack_require__(34),
     isSet = __webpack_require__(575),
     keys = __webpack_require__(41);
 
@@ -41566,7 +41566,7 @@ module.exports = baseIntersection;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(57),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -41679,7 +41679,7 @@ module.exports = baseIsEqualDeep;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(88),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]';
@@ -41790,7 +41790,7 @@ module.exports = baseIsNaN;
 
 var isFunction = __webpack_require__(95),
     isMasked = __webpack_require__(529),
-    isObject = __webpack_require__(33),
+    isObject = __webpack_require__(34),
     toSource = __webpack_require__(203);
 
 /**
@@ -41842,7 +41842,7 @@ module.exports = baseIsNative;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(88),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var setTag = '[object Set]';
@@ -41867,7 +41867,7 @@ module.exports = baseIsSet;
 
 var baseGetTag = __webpack_require__(57),
     isLength = __webpack_require__(141),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -41967,7 +41967,7 @@ module.exports = baseKeys;
 /* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(33),
+var isObject = __webpack_require__(34),
     isPrototype = __webpack_require__(90),
     nativeKeysIn = __webpack_require__(544);
 
@@ -43729,7 +43729,7 @@ module.exports = isFlattenable;
 var eq = __webpack_require__(94),
     isArrayLike = __webpack_require__(48),
     isIndex = __webpack_require__(89),
-    isObject = __webpack_require__(33);
+    isObject = __webpack_require__(34);
 
 /**
  * Checks if the given arguments are from an iteratee call.
@@ -45198,7 +45198,7 @@ module.exports = isMap;
 
 var baseGetTag = __webpack_require__(57),
     getPrototype = __webpack_require__(133),
-    isObjectLike = __webpack_require__(30);
+    isObjectLike = __webpack_require__(31);
 
 /** `Object#toString` result references. */
 var objectTag = '[object Object]';
@@ -45687,7 +45687,7 @@ var LazyWrapper = __webpack_require__(116),
     LodashWrapper = __webpack_require__(169),
     baseLodash = __webpack_require__(128),
     isArray = __webpack_require__(21),
-    isObjectLike = __webpack_require__(30),
+    isObjectLike = __webpack_require__(31),
     wrapperClone = __webpack_require__(562);
 
 /** Used for built-in method references. */
@@ -59667,7 +59667,7 @@ var DeleteTag = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_taggableAssets__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_helmet__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -59908,7 +59908,7 @@ var FundFilter = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_projects__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -60060,7 +60060,7 @@ var PhaseFilter = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_tags__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -60185,15 +60185,15 @@ var TagFilter = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_HydrateStore__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_HydrateStore__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Maps_HomeMap__ = __webpack_require__(667);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -60320,7 +60320,7 @@ var Home = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 // accepts document uplaods
 // and after upload, prompts user to provide name of doc
@@ -60454,7 +60454,7 @@ var Attachment = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FormElements_textarea__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__FormElements_numbers__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__FormElements_select__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_uuid__);
@@ -60738,7 +60738,7 @@ var ProgramFundInputs = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_milestones__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_input__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uuid__ = __webpack_require__(37);
@@ -60867,7 +60867,7 @@ var MilestoneInputs = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_phases__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormElements_select__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_helmet__);
 // phase follows form 
 var __extends = (this && this.__extends) || (function () {
@@ -61246,8 +61246,8 @@ var Geolocate = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_GETS_taggableAssets__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_tags__ = __webpack_require__(26);
@@ -61889,7 +61889,7 @@ var SelectAsset = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_taggableAssets__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__ = __webpack_require__(28);
 // when user is importing shape or tagging an existing asset, 
 // directed here first to select asset type
 // then, all corresponding assets render on map
@@ -62026,7 +62026,7 @@ var SelectAssetType = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_taggableAssets__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormElements_select__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_helmet__);
 // when importing a shape from a street, 
 // user is directed here to select which street
@@ -62274,13 +62274,13 @@ var Layout = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_taggableAssets__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_tags__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_table__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Filters_AssetFilter__ = __webpack_require__(642);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__functions_removeDuplicates__ = __webpack_require__(147);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -62444,13 +62444,13 @@ var AllAssets = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Filters_PhaseFilter__ = __webpack_require__(644);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_table__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -62479,20 +62479,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
-};
 var AllPhases = (function (_super) {
     __extends(AllPhases, _super);
     function AllPhases(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            phases: props.phases.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            phases: [],
             redirectLink: '',
             redirect: false
         };
@@ -62502,6 +62494,24 @@ var AllPhases = (function (_super) {
         window.scrollTo(0, 0);
         // ping server
         this.props.ping();
+        if (this.props.phases.length > 0) {
+            this.setState({
+                phases: this.props.phases.sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                }),
+            });
+        }
+    };
+    AllPhases.prototype.componentWillReceiveProps = function (nextProps) {
+        if (this.props != nextProps) {
+            if (nextProps.phases.length > 0) {
+                this.setState({
+                    phases: nextProps.phases.sort(function (a, b) {
+                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                    }),
+                });
+            }
+        }
     };
     AllPhases.prototype.getPhaseLink = function (phaseID) {
         this.setState({
@@ -62576,13 +62586,13 @@ var AllPhases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Filters_ProjectFilter__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Utilities_Paging__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Maps_MapThumbnail__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -62765,16 +62775,16 @@ var AllProjects = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_GETS_personnel__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Paging__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Maps_MapThumbnail__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__functions_myProjects__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Utilities_Spinner__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -62959,14 +62969,14 @@ var MyProjects = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_table__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Filters_FundFilter__ = __webpack_require__(643);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_currency_format__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -63614,7 +63624,7 @@ var StreetMap = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
 var __extends = (this && this.__extends) || (function () {
@@ -63799,7 +63809,7 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_taggableAssets__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_tags__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_projects__ = __webpack_require__(19);
@@ -63809,7 +63819,7 @@ var NavMenu = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__functions_removeDuplicates__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__functions_assetsInPolygon__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Utilities_HydrateStore__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Utilities_HydrateStore__ = __webpack_require__(32);
 // returns asset on map
 // and then returns all projects/phases that have tagged asset
 var __extends = (this && this.__extends) || (function () {
@@ -64045,7 +64055,7 @@ var AssetReport = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_Spinner__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_table__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_drawdowns__ = __webpack_require__(61);
@@ -64053,7 +64063,7 @@ var AssetReport = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_funds__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_currency_format__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_HydrateStore__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_HydrateStore__ = __webpack_require__(32);
 // returns fund/program data
 // and then returns all drawdowns on fund/program
 var __extends = (this && this.__extends) || (function () {
@@ -64584,12 +64594,12 @@ var Milestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_phases__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_GETS_personnel__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_user__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_GETS_user__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Utilities_Spinner__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Inputs_Phase_Phase__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__ = __webpack_require__(631);
@@ -64599,7 +64609,7 @@ var Milestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__ = __webpack_require__(681);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Inputs_Phase_PhaseFollows__ = __webpack_require__(650);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DeleteConfirmations_DeletePhase__ = __webpack_require__(639);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__ = __webpack_require__(32);
 // top level phase report
 // parent of Phasecard.tsx
 // parent of Milestones.tsx
@@ -65744,15 +65754,15 @@ var Phases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_projects__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Maps_ProjectMap__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Phases__ = __webpack_require__(679);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Drawdowns__ = __webpack_require__(678);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Attachments__ = __webpack_require__(677);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_GETS_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__store_GETS_user__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__store_GETS_taggableAssets__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__store_tags__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Inputs_Project_ProjectFields__ = __webpack_require__(341);
@@ -65765,7 +65775,7 @@ var Phases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__Timeline_ProjectTimeline__ = __webpack_require__(682);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__functions_assetsInPolygon__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__Utilities_HydrateStore__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__Utilities_HydrateStore__ = __webpack_require__(32);
 // top level project report
 // parent of ProjectCard.tsx
 // parent of Attachments.tsx
@@ -66261,7 +66271,7 @@ var ProjectTimeline = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_GETS_ping__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_timeline__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Timeline__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_table__ = __webpack_require__(36);
