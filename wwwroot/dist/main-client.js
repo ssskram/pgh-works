@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3149531267cd8545ac78"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b7e3d0ceea53c28cc42d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14479,14 +14479,26 @@ var ProjectFilter = (function (_super) {
             personnel.push(personnelSelect);
         });
         var projects = [];
-        this.props.projects.forEach(function (project) {
-            var projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' };
-            projects.push(projectSelect);
-        });
-        this.setState({
-            personnel: personnel,
-            projects: projects
-        });
+        if (this.props.filterType == 'all') {
+            this.props.projects.forEach(function (project) {
+                var projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' };
+                projects.push(projectSelect);
+            });
+            this.setState({
+                personnel: personnel,
+                projects: projects
+            });
+        }
+        else {
+            this.props.projects.forEach(function (project) {
+                var projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' };
+                projects.push(projectSelect);
+            });
+            this.setState({
+                personnel: personnel,
+                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(projects, this.props.personnel, this.props.user)
+            });
+        }
     };
     ProjectFilter.prototype.closeModal = function () {
         this.setState({

@@ -63,14 +63,25 @@ export class ProjectFilter extends React.Component<any, any> {
             personnel.push(personnelSelect)
         })
         const projects = [] as any
-        this.props.projects.forEach(project => {
-            const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
-            projects.push(projectSelect)
-        })
-        this.setState({
-            personnel: personnel,
-            projects: projects
-        })
+        if (this.props.filterType == 'all') {
+            this.props.projects.forEach(project => {
+                const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
+                projects.push(projectSelect)
+            })
+            this.setState({
+                personnel: personnel,
+                projects: projects
+            })
+        } else {
+            this.props.projects.forEach(project => {
+                const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
+                projects.push(projectSelect)
+            })
+            this.setState({
+                personnel: personnel,
+                projects: getMyProjects(projects, this.props.personnel, this.props.user)
+            })
+        }
     }
 
     closeModal() {
