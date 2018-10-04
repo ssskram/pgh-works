@@ -6,7 +6,6 @@ import * as Personnel from '../../store/GETS/personnel'
 import * as User from '../../store/GETS/user'
 import * as Projects from '../../store/projects'
 import Datepicker from '../FormElements/datepicker'
-import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
@@ -38,6 +37,7 @@ export class ProjectFilter extends React.Component<any, any> {
         this.state = {
             onFilter: false,
             personnel: [],
+            projects: [],
             modalIsOpen: false,
             projectName: '',
             startDate: '',
@@ -49,13 +49,27 @@ export class ProjectFilter extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        this.setDropdowns()
+    }
+
+    componentWillReceiveProps() {
+        this.setDropdowns()
+    }
+
+    setDropdowns() {
         const personnel = [] as any
         this.props.personnel.forEach(user => {
             const personnelSelect = { value: user.title, label: user.title, name: 'projectManager' }
             personnel.push(personnelSelect)
         })
+        const projects = [] as any
+        this.props.projects.forEach(project => {
+            const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
+            projects.push(projectSelect)
+        })
         this.setState({
-            personnel: personnel
+            personnel: personnel,
+            projects: projects
         })
     }
 
@@ -115,7 +129,7 @@ export class ProjectFilter extends React.Component<any, any> {
         })
     }
 
-    clearFilter () {
+    clearFilter() {
         this.props.returnFiltered(this.props.projects)
         this.setState({
             onFilter: false,
@@ -132,6 +146,7 @@ export class ProjectFilter extends React.Component<any, any> {
         const {
             onFilter,
             personnel,
+            projects,
             modalIsOpen,
             projectName,
             startDate,
@@ -167,12 +182,14 @@ export class ProjectFilter extends React.Component<any, any> {
                     center>
                     <div>
                         <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={projectName}
                                 name="projectName"
                                 header="Project name"
-                                placeholder="Enter a name"
-                                callback={this.handleChildChange.bind(this)}
+                                placeholder="Search for a project name"
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={projects}
                             />
                         </div>
 
