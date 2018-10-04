@@ -1,4 +1,7 @@
 
+// provided the project, list of personnel, and logged in user,
+// this returns whether user has write access to project & phases
+
 export default function canEdit(project, personnel, user) {
     const me = personnel.find(person => {
         return person.email == user

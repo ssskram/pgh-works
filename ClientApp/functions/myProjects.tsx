@@ -1,4 +1,7 @@
 
+// provided array of projects, personnel, and logged in user,
+// returns the projects where user is a manager, or a member
+
 export default function getMyProjects (allProjects, personnel, user) {
     const me = personnel.find(person => {
         return person.email == user

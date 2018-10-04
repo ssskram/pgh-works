@@ -1,4 +1,6 @@
 
+// removes duplicate items from array
+
 export default function removeDuplicates(originalArray, prop) {
     let newArray = [] as any
     let lookupObject = {}

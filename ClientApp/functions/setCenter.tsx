@@ -1,4 +1,7 @@
 
+// provided an array of points from a polygon, 
+// returns the center of the shape for rendering on map
+
 export default function setCenter(points) {
     const bounds = new google.maps.LatLngBounds()
     if (points) {

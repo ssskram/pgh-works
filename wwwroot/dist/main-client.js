@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e2afeb8c2465cd814bb5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "461e2bf2b0c420a38f92"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12152,6 +12152,8 @@ var Line = (function (_super) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = setCenter;
+// provided an array of points from a polygon, 
+// returns the center of the shape for rendering on map
 function setCenter(points) {
     var bounds = new google.maps.LatLngBounds();
     if (points) {
@@ -14543,6 +14545,8 @@ var currency = (function (_super) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = handleOverlayComplete;
+// fired when user is finished drawing a polygon
+// returns the shape to be rendered
 function handleOverlayComplete(evt) {
     var shape = { points: [] };
     var vertices = evt.overlay.getPath();
@@ -14564,6 +14568,7 @@ function handleOverlayComplete(evt) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = removeDuplicates;
+// removes duplicate items from array
 function removeDuplicates(originalArray, prop) {
     var newArray = [];
     var lookupObject = {};
@@ -32701,6 +32706,8 @@ var Paging = (function (_super) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = findMiddleSegment;
+// provided a list of street segments, this returns the center most segment
+// which will be provided as center point for map rendering
 function findMiddleSegment(segments) {
     var middle = Math.floor(segments.length / 2);
     var middleSegment = segments[middle];
@@ -32717,6 +32724,8 @@ function findMiddleSegment(segments) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = getMyProjects;
+// provided array of projects, personnel, and logged in user,
+// returns the projects where user is a manager, or a member
 function getMyProjects(allProjects, personnel, user) {
     var me = personnel.find(function (person) {
         return person.email == user;
@@ -66336,6 +66345,7 @@ function buildRootReducer(allReducers) {
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = filterProjects;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+// project filter
 
 function filterProjects(projects, filters) {
     var filtered = projects.filter(function (project) {

@@ -1,4 +1,7 @@
 
+// fired when user is finished drawing a polygon
+// returns the shape to be rendered
+
 export default function handleOverlayComplete (evt) {
     let shape = { points: [] as any }
     let vertices = evt.overlay.getPath()
