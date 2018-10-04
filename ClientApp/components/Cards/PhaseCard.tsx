@@ -1,29 +1,10 @@
 
+// carousel on phase page
+
 import * as React from 'react'
 import Slider from "react-slick";
 import RightArrow from '../Utilities/CarouselRight'
 import LeftArrow from '../Utilities/CarouselLeft'
-
-const bigFont = {
-    fontSize: '18px'
-}
-
-const borderNone = {
-    border: 'none'
-}
-
-const phaseContainer = {
-    backgroundColor: '#f3fafe',
-    borderRadius: '10px',
-    padding: '10px',
-    margin: '5px 0px',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-}
-
-const metaContainer = {
-    margin: '5px 0px',
-    padding: '0px 0px 0px 30px'
-}
 
 export default class PhaseCard extends React.Component<any, any> {
 

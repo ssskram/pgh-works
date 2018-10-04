@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2aa45a7ba04bae82390a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "708ee0892f26ba010b31"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -32335,6 +32335,7 @@ var TaggableAssetSelection = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_recompose__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_google_maps__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_google_maps__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__functions_setCenter__ = __webpack_require__(98);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -32348,26 +32349,36 @@ var __extends = (this && this.__extends) || (function () {
 
 
 
+
 var MapThumbnail = (function (_super) {
     __extends(MapThumbnail, _super);
-    function MapThumbnail() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function MapThumbnail(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            center: { lat: 40.437470539681442, lng: -79.987124601795273 }
+        };
+        return _this;
     }
+    MapThumbnail.prototype.componentDidMount = function () {
+        this.setState({
+            center: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__functions_setCenter__["a" /* default */])(this.props.shape)
+        });
+    };
+    MapThumbnail.prototype.componentWillReceiveProps = function (nextProps) {
+        this.setState({
+            center: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__functions_setCenter__["a" /* default */])(nextProps.shape)
+        });
+    };
     MapThumbnail.prototype.render = function () {
         var _this = this;
-        var bounds = new google.maps.LatLngBounds();
-        var i;
-        for (i = 0; i < this.props.shape.length; i++) {
-            bounds.extend(this.props.shape[i]);
-        }
+        var center = this.state.center;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
             containerElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
             mapElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%" } }),
         }), __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withScriptjs"], __WEBPACK_IMPORTED_MODULE_2_react_google_maps__["withGoogleMap"])(function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 15, ref: function (map) { if (map)
-                    map.fitBounds(bounds); } },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["GoogleMap"], { defaultZoom: 13, defaultCenter: center },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["Polygon"], { paths: [_this.props.shape] }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'project-thumbnail', style: { margin: '0 auto' } },
@@ -58596,6 +58607,7 @@ var Login = (function (_super) {
     function Login() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    // calls up server endpoint, renders login page
     Login.prototype.componentWillMount = function () {
         window.location.reload();
     };
@@ -59101,6 +59113,7 @@ var Attachments = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_slick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__ = __webpack_require__(347);
+// carousel on phase page
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59123,23 +59136,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var bigFont = {
-    fontSize: '18px'
-};
-var borderNone = {
-    border: 'none'
-};
-var phaseContainer = {
-    backgroundColor: '#f3fafe',
-    borderRadius: '10px',
-    padding: '10px',
-    margin: '5px 0px',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.1)'
-};
-var metaContainer = {
-    margin: '5px 0px',
-    padding: '0px 0px 0px 30px'
-};
 var PhaseCard = (function (_super) {
     __extends(PhaseCard, _super);
     function PhaseCard() {
@@ -59201,6 +59197,7 @@ var PhaseCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_slick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__ = __webpack_require__(347);
+// carousel on project page
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59299,6 +59296,7 @@ var ProjectCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_milestones__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_subphases__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__ = __webpack_require__(746);
+// phase card on project page
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59399,6 +59397,7 @@ var PhaseCard = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Inputs_Subphase__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__DeleteConfirmations_DeleteSubphase__ = __webpack_require__(640);
+// subphase card on phase page
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59494,6 +59493,7 @@ var Subphase = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_tags__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DeleteConfirmations_DeleteTag__ = __webpack_require__(641);
+// related asset card for both project and phase pages
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -59970,6 +59970,7 @@ var DeleteTag = (function (_super) {
     }
     DeleteTag.prototype.deleteTag = function () {
         var _this = this;
+        // one-off tag
         if (this.props.tag.tagType != 'Street') {
             // remove from store
             this.props.deleteTag(this.props.tag);
@@ -59978,6 +59979,7 @@ var DeleteTag = (function (_super) {
             this.props.closeModal();
         }
         else {
+            // street segment tags...gotta loop through em all
             var allTagsPerStreet = this.props.tags.filter(function (tag) {
                 return (tag.parentID == _this.props.tag.parentID) && (tag.taggedAssetName == _this.props.tag.taggedAssetName);
             });

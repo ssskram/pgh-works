@@ -7,6 +7,7 @@ import * as Tags from '../../store/tags'
 export class DeleteTag extends React.Component<any, any> {
     
     deleteTag() {
+            // one-off tag
         if (this.props.tag.tagType != 'Street') {
             // remove from store
             this.props.deleteTag(this.props.tag)
@@ -14,6 +15,7 @@ export class DeleteTag extends React.Component<any, any> {
             this.props.removeTag(this.props.tag)
             this.props.closeModal()
         } else {
+            // street segment tags...gotta loop through em all
             const allTagsPerStreet = this.props.tags.filter(tag => {
                 return (tag.parentID == this.props.tag.parentID) && (tag.taggedAssetName == this.props.tag.taggedAssetName)
             })

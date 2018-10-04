@@ -1,15 +1,32 @@
 import * as React from "react";
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
+import setCenter from './../../functions/setCenter'
 
 export default class MapThumbnail extends React.Component<any, any> {
+    constructor(props) {
+        super(props)
+        this.state = {
+            center: { lat: 40.437470539681442, lng: -79.987124601795273 }
+        }
+    }
+
+    componentDidMount () {
+        this.setState ({
+            center: setCenter(this.props.shape)
+        })
+    }
+
+    componentWillReceiveProps (nextProps) {
+        this.setState ({
+            center: setCenter(nextProps.shape)
+        })
+    }
 
     render() {
-        const bounds = new google.maps.LatLngBounds()
-        var i
-        for (i = 0; i < this.props.shape.length; i++) {
-            bounds.extend(this.props.shape[i]);
-        }
+        const {
+            center
+        } = this.state
 
         const MapComponent = compose(
             withProps({
@@ -22,8 +39,8 @@ export default class MapThumbnail extends React.Component<any, any> {
             withGoogleMap
         )((props) =>
             <GoogleMap
-                defaultZoom={15}
-                ref={(map) => { if (map) map.fitBounds(bounds) }}
+                defaultZoom={13}
+                defaultCenter={center}
             >
                 <Polygon
                     paths={[this.props.shape]}

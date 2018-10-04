@@ -1,4 +1,6 @@
 
+// carousel on project page
+
 import * as React from 'react'
 import Slider from "react-slick";
 import RightArrow from '../Utilities/CarouselRight'
