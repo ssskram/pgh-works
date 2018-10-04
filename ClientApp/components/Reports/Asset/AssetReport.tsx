@@ -164,9 +164,7 @@ export class AssetReport extends React.Component<any, any> {
             assetShape,
             tags
         } = this.state
-
-        console.log(tags)
-
+        
         if (redirect) {
             <Redirect to={redirectLink} />
         }

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b7ef65c0ce6d0535959f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d980e9a8dcd33dc3d1ed"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63507,8 +63507,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var StreetMap = (function (_super) {
     __extends(StreetMap, _super);
-    function StreetMap(props) {
-        var _this = _super.call(this, props) || this;
+    function StreetMap() {
+        var _this = _super.call(this) || this;
         _this.handleShape = function (evt) {
             var shape = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_handleOverlayComplete__["a" /* default */])(evt);
             _this.props.passShape(shape.points);
@@ -63532,11 +63532,14 @@ var StreetMap = (function (_super) {
         return _this;
     }
     StreetMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        if (this.state == nextState) {
-            return false;
+        if (nextState.center.lat != this.state.center.lat) {
+            return true;
+        }
+        else if (this.state.onFilter != nextState.onFilter) {
+            return true;
         }
         else
-            return true;
+            return false;
     };
     StreetMap.prototype.componentDidMount = function () {
         this.collectSegmentShapes(this.props.street);
@@ -63551,16 +63554,13 @@ var StreetMap = (function (_super) {
         this.setState({
             center: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_setCenter__["a" /* default */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_findMiddleSegment__["a" /* default */])(assets).shape.points),
             zoom: 13,
-            assets: assets
+            assets: assets,
+            onFilter: false
         });
     };
     StreetMap.prototype.reset = function () {
-        this.setState({
-            onFilter: false
-        }, function () {
-            this.collectSegmentShapes(this.props.street);
-            this.props.reset();
-        });
+        this.collectSegmentShapes(this.props.street);
+        this.props.reset();
     };
     StreetMap.prototype.render = function () {
         var _this = this;
@@ -63995,7 +63995,6 @@ var AssetReport = (function (_super) {
     AssetReport.prototype.render = function () {
         var _this = this;
         var _a = this.state, spinner = _a.spinner, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
-        console.log(tags);
         if (redirect) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
         }

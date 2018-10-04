@@ -16,8 +16,8 @@ import findMiddleSegment from './../../functions/findMiddleSegment'
 import assetsInPolygon from './../../functions/assetsInPolygon'
 
 export class StreetMap extends React.Component<any, any> {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },
@@ -27,9 +27,12 @@ export class StreetMap extends React.Component<any, any> {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.state == nextState) {
-            return false
-        } else return true
+        if (nextState.center.lat != this.state.center.lat) {
+            return true
+        } else if (this.state.onFilter != nextState.onFilter) {
+            return true
+        }
+        else return false
     }
 
     componentDidMount() {
@@ -47,7 +50,8 @@ export class StreetMap extends React.Component<any, any> {
         this.setState({
             center: setCenter(findMiddleSegment(assets).shape.points),
             zoom: 13,
-            assets: assets
+            assets: assets,
+            onFilter: false
         })
     }
 
@@ -67,12 +71,8 @@ export class StreetMap extends React.Component<any, any> {
     }
 
     reset() {
-        this.setState({
-            onFilter: false
-        }, function (this) {
-            this.collectSegmentShapes(this.props.street)
-            this.props.reset()
-        })
+        this.collectSegmentShapes(this.props.street)
+        this.props.reset()
     }
 
     render() {
