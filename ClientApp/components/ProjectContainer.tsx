@@ -20,8 +20,8 @@ import * as moment from 'moment'
 import UpdateLocation from './Inputs/Project/UpdateLocation'
 import ProjectCard from './Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
-import inside from 'point-in-polygon'
 import ProjectTimeline from './Timeline/ProjectTimeline'
+import assetsInPolygon from './../functions/assetsInPolygon'
 import canEdit from './../functions/canEdit'
 
 const btnMargin = {
@@ -191,22 +191,7 @@ export class Project extends React.Component<any, any> {
                 })
 
                 // refresh geospatial tags with new shape
-                let shape = [] as any
-                let componentAssets = [] as any
-                this.state.shape.points.forEach(function (point) {
-                    const shapeArray = [point.lat, point.lng]
-                    shape.push(shapeArray)
-                })
-                this.props.assets.forEach(function (asset) {
-                    if (asset.shape) {
-                        asset.shape.points.forEach(function (point) {
-                            const ins = inside([point.lat, point.lng], shape)
-                            if (ins == true && !componentAssets.includes(asset)) {
-                                componentAssets.push(asset)
-                            }
-                        })
-                    }
-                })
+                const componentAssets = assetsInPolygon (this.state.shape.points, this.props.assets)
                 if (componentAssets.length > 0) {
                     componentAssets.forEach(function (component) {
                         self.createTag(component)

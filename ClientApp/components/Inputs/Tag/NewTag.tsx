@@ -7,8 +7,8 @@ import * as TagStore from '../../../store/tags'
 import SelectType from './SelectType'
 import SelectAsset from './SelectAsset'
 import DescribeTag from './TagDescription'
-import inside from 'point-in-polygon'
 import { v1 as uuid } from 'uuid'
+import assetsInPolygon from './../../../functions/assetsInPolygon'
 
 export class TaggableAssetSelection extends React.Component<any, any> {
     constructor(props) {
@@ -71,26 +71,13 @@ export class TaggableAssetSelection extends React.Component<any, any> {
     }
 
     generateTags(description) {
+        console.log('here')
         let self = this
-        let shapeTransform = [] as any
-        let componentAssets = [] as any
-        this.state.selectedShape.points.forEach(function (point) {
-            const shapeArray = [point.lat, point.lng]
-            shapeTransform.push(shapeArray)
-        })
         const streetSegments = this.props.assets.filter(function (asset) {
             return asset.assetName == self.state.streetName
         })
-        streetSegments.forEach(function (segment) {
-            if (segment.shape) {
-                segment.shape.points.forEach(function (point) {
-                    const ins = inside([point.lat, point.lng], shapeTransform)
-                    if (ins == true && !componentAssets.includes(segment)) {
-                        componentAssets.push(segment)
-                    }
-                })
-            }
-        })
+        // for each street segment within shape, generate it's own tag
+        const componentAssets = assetsInPolygon (this.state.selectedShape.points, streetSegments)
         if (componentAssets.length > 0) {
             componentAssets.forEach(function (asset) {
                 self.createTag(asset, description)

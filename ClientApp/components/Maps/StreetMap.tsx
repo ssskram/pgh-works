@@ -5,10 +5,10 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
-import inside from 'point-in-polygon'
 import setCenter from './../../functions/setCenter'
 import handleOverlayComplete from './../../functions/handleOverlayComplete'
 import findMiddleSegment from './../../functions/findMiddleSegment'
+import assetsInPolygon from './../../functions/assetsInPolygon'
 
 export class StreetMap extends React.Component<any, any> {
     constructor(props) {
@@ -42,26 +42,11 @@ export class StreetMap extends React.Component<any, any> {
 
     handleShape = (evt) => {
         const shape = handleOverlayComplete(evt)
-        let formattedShape = [] as any
-        shape.points.forEach(point => {
-            const shapeArray = [point.lat, point.lng]
-            formattedShape.push(shapeArray)
-        })
-        this.props.passShape(formattedShape)
-        const filteredAssets = [] as any
+        this.props.passShape(shape.points)
         const assets = this.props.assets.filter(asset => {
             return asset.assetName == this.props.street
         })
-        assets.forEach(asset => {
-            if (asset.shape) {
-                asset.shape.points.forEach(function (point) {
-                    const ins = inside([point.lat, point.lng], formattedShape)
-                    if (ins == true && !filteredAssets.includes(asset)) {
-                        filteredAssets.push(asset)
-                    }
-                })
-            }
-        })
+        const filteredAssets = assetsInPolygon(shape.points, assets)
         this.setState({
             center: setCenter(findMiddleSegment(filteredAssets).shape.points),
             zoom: 13,

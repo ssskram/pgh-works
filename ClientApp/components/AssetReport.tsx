@@ -10,9 +10,9 @@ import * as Projects from '../store/projects'
 import * as Phases from '../store/phases'
 import Map from './Maps/ProjectMap'
 import StreetMap from './Maps/StreetMap'
-import inside from 'point-in-polygon'
 import TagFilter from './Filters/TagFilter'
 import removeDuplicates from '../functions/removeDuplicates'
+import assetsInPolygon from './../functions/assetsInPolygon'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -89,20 +89,7 @@ export class AssetReport extends React.Component<any, any> {
         const allTags = this.props.tags.filter(tag => {
             return tag.taggedAssetName == this.props.match.params.street
         })
-        let newTags = [] as any
-        allTags.forEach(tag => {
-            const asset = this.props.assets.find(asset => {
-                return asset.assetOID == tag.taggedAssetOID
-            })
-            if (asset.shape) {
-                asset.shape.points.forEach(function (point) {
-                    const ins = inside([point.lat, point.lng], shape)
-                    if (ins == true && !newTags.includes(tag)) {
-                        newTags.push(tag)
-                    }
-                })
-            }
-        })
+        const newTags = assetsInPolygon(shape, allTags)
         const uniqueTags = removeDuplicates(newTags, "parentID")
         this.setState({
             tags: uniqueTags
