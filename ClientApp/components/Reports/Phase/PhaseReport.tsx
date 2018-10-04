@@ -24,6 +24,7 @@ import Subphases from './SubPhases'
 import Timeline from '../../Timeline/PhaseTimeline'
 import PhaseFollows from '../../Inputs/Phase/PhaseFollows'
 import DeletePhase from '../../DeleteConfirmations/DeletePhase'
+import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
 
 const btnMargin = {
@@ -82,7 +83,9 @@ export class Phase extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.findPhase(nextProps)
+        if (this.props != nextProps) {
+            this.findPhase(nextProps)
+        }
     }
 
     findPhase(props) {
@@ -233,63 +236,68 @@ export class Phase extends React.Component<any, any> {
 
         return (
             <div>
-                <h2 style={{ letterSpacing: '2px' }}>
-                    {projectName}
-                    <span className='pull-right hidden-sm hidden-xs' style={{ marginTop: '-10px' }}><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'>
-                        <span className='glyphicon'>
-                            <img style={iconStyle} src='./images/backDark.png'>
-                            </img>
-                        </span>
-                    </button>
-                    </span>
-                </h2>
-                <hr />
-                <br />
-                <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src='./images/phaseGrey.png' /></b>{phaseName}</h1>
-                {pfProject.projectName && pfPhase.phaseName &&
-                    <div className='text-center'>
-                        <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
-                    </div>
-                }
-                {canEdit == true &&
-                    <div className='text-center'>
-                        <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
-                        <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
-                        <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
-                    </div>
-                }
-                <div className='col-md-12'>
-                    <PhaseCard phase={this.state} />
-                </div>
-                {expectedStartDate && expectedEndDate &&
-                    <div style={marginBottom} className='col-md-12 row'>
-                        <Timeline phase={this.state} />
-                    </div>
-                }
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Milestones
-                        canEdit={canEdit}
-                        phaseID={phaseID}
-                        projectID={projectID}
-                    />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Subphases
-                        canEdit={canEdit}
-                        phaseID={phaseID}
-                        projectID={projectID}
-                    />
-                </div>
-                <div style={marginBottom} className='col-md-12 row'>
-                    <Tags
-                        canEdit={canEdit}
-                        parentID={phaseID}
-                        parentName={phaseName}
-                        parentType='Phase'
-                    />
-                </div>
+                <Hydrate />
                 {spinner == true &&
                     <Spinner notice='...loading the phase...' />
+                }
+                {spinner == false &&
+                    <div>
+                        <h2 style={{ letterSpacing: '2px' }}>
+                            {projectName}
+                            <span className='pull-right hidden-sm hidden-xs' style={{ marginTop: '-10px' }}><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'>
+                                <span className='glyphicon'>
+                                    <img style={iconStyle} src='./images/backDark.png'>
+                                    </img>
+                                </span>
+                            </button>
+                            </span>
+                        </h2>
+                        <hr />
+                        <br />
+                        <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src='./images/phaseGrey.png' /></b>{phaseName}</h1>
+                        {pfProject.projectName && pfPhase.phaseName &&
+                            <div className='text-center'>
+                                <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
+                            </div>
+                        }
+                        {canEdit == true &&
+                            <div className='text-center'>
+                                <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
+                                <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
+                            </div>
+                        }
+                        <div className='col-md-12'>
+                            <PhaseCard phase={this.state} />
+                        </div>
+                        {expectedStartDate && expectedEndDate &&
+                            <div style={marginBottom} className='col-md-12 row'>
+                                <Timeline phase={this.state} />
+                            </div>
+                        }
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Milestones
+                                canEdit={canEdit}
+                                phaseID={phaseID}
+                                projectID={projectID}
+                            />
+                        </div>
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Subphases
+                                canEdit={canEdit}
+                                phaseID={phaseID}
+                                projectID={projectID}
+                            />
+                        </div>
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Tags
+                                canEdit={canEdit}
+                                parentID={phaseID}
+                                parentName={phaseName}
+                                parentType='Phase'
+                            />
+                        </div>
+                    </div>
                 }
                 <Modal
                     open={modalIsOpen}

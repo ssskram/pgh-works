@@ -258,6 +258,9 @@ export class Project extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
+                {spinner == true &&
+                    <Spinner notice='...loading the project...' />
+                }
                 {spinner == false &&
                     <div className='row text-center'>
                         <div className='col-md-12'>
@@ -318,10 +321,6 @@ export class Project extends React.Component<any, any> {
                         </div>
                     </div>
                 }
-                {spinner == true &&
-                    <Spinner notice='...loading the project...' />
-                }
-
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}

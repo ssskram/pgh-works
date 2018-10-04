@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f517e02cd25282b51376"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "da31766fa7c7c09f7f42"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64473,6 +64473,7 @@ var Milestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__ = __webpack_require__(681);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Inputs_Phase_PhaseFollows__ = __webpack_require__(650);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DeleteConfirmations_DeletePhase__ = __webpack_require__(639);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__ = __webpack_require__(349);
 // top level phase report
 // parent of Phasecard.tsx
 // parent of Milestones.tsx
@@ -64496,6 +64497,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -64565,7 +64567,9 @@ var Phase = (function (_super) {
         this.findPhase(this.props);
     };
     Phase.prototype.componentWillReceiveProps = function (nextProps) {
-        this.findPhase(nextProps);
+        if (this.props != nextProps) {
+            this.findPhase(nextProps);
+        }
     };
     Phase.prototype.findPhase = function (props) {
         // set phase, and pass phase to setProjectState
@@ -64685,53 +64689,56 @@ var Phase = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
-                projectName,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right hidden-sm hidden-xs', style: { marginTop: '-10px' } },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' }))))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px', marginRight: '5px' }, src: './images/phaseGrey.png' })),
-                phaseName),
-            pfProject.projectName && pfPhase.phaseName &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                        "Follows ",
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfPhase.phaseName),
-                        " phase of ",
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: { cursor: 'pointer' }, onClick: this.pfProjectRedirect.bind(this) },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfProject.projectName)))),
-            canEdit == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/delete.png' }))))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__["a" /* default */], { phase: this.state })),
-            expectedStartDate && expectedEndDate &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__["a" /* default */], { phase: this.state })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Milestones__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__SubPhases__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Tags__["a" /* default */], { canEdit: canEdit, parentID: phaseID, parentName: phaseName, parentType: 'Phase' })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__["a" /* default */], null),
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Utilities_Spinner__["a" /* default */], { notice: '...loading the phase...' }),
+            spinner == false &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
+                        projectName,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right hidden-sm hidden-xs', style: { marginTop: '-10px' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' }))))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px', marginRight: '5px' }, src: './images/phaseGrey.png' })),
+                        phaseName),
+                    pfProject.projectName && pfPhase.phaseName &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                "Follows ",
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfPhase.phaseName),
+                                " phase of ",
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { style: { cursor: 'pointer' }, onClick: this.pfProjectRedirect.bind(this) },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfProject.projectName)))),
+                    canEdit == true &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/delete.png' }))))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__["a" /* default */], { phase: this.state })),
+                    expectedStartDate && expectedEndDate &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__["a" /* default */], { phase: this.state })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Milestones__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__SubPhases__["a" /* default */], { canEdit: canEdit, phaseID: phaseID, projectID: projectID })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Tags__["a" /* default */], { canEdit: canEdit, parentID: phaseID, parentName: phaseName, parentType: 'Phase' }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -65874,6 +65881,8 @@ var Project = (function (_super) {
             projectStatus != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_22__Utilities_HydrateStore__["a" /* default */], null),
+            spinner == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the project...' }),
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -65905,8 +65914,6 @@ var Project = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Tags__["a" /* default */], { canEdit: canEdit, parentID: projectID, parentName: projectName, parentType: 'Project' })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Attachments__["a" /* default */], { canEdit: canEdit, parentID: projectID, parentType: 'Project', parentName: projectName }))),
-            spinner == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the project...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
