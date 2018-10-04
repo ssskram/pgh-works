@@ -14,30 +14,23 @@ export default class ProjectMap extends React.Component<any, any> {
         }
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
-        if (this.props.asset) {
-            if (this.state == nextState) {
-                return false
-            }
-            else return true
-        } else {
-            if (this.props.shape == nextProps.shape) {
-                return false
-            }
-            else return true
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.center.lat == nextState.center.lat) {
+            return false
         }
+        else return true
     }
 
-    componentDidMount () {
+    componentDidMount() {
         if (this.props.shape.points) {
-            this.setState ({
+            this.setState({
                 center: setCenter(this.props.shape.points)
             })
         }
     }
 
-    componentWillReceiveProps (nextProps) {
-        this.setState ({
+    componentWillReceiveProps(nextProps) {
+        this.setState({
             center: setCenter(nextProps.shape.points)
         })
     }

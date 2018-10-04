@@ -148,7 +148,7 @@ export class StreetMap extends React.Component<any, any> {
                     }
                     {onFilter == true &&
                         <div className='text-center'>
-                            <button className='btn btn-warning' onClick={this.reset.bind(this)}>Clear filter</button>
+                            <button className='btn btn-warning' onClick={this.reset.bind(this)}>Clear segment selection</button>
                         </div>
                     }
                 </div>

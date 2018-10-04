@@ -20,9 +20,12 @@ export default class HomeMap extends React.Component<any, any> {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.state == nextState) {
-            return false
-        } else return true
+        if (this.state.projects != nextState.projects) {
+            return true
+        }
+        if (this.state.center.lat != nextState.center.lat) {
+            return true
+        } else return false
     }
 
     componentWillReceiveProps(nextProps) {
@@ -42,7 +45,9 @@ export default class HomeMap extends React.Component<any, any> {
 
     closeWindow() {
         this.setState({
-            showInfowindow: false
+            showInfowindow: false,
+            zoom: 13,
+            center: { lat: 40.437470539681442, lng: -79.987124601795273 }
         })
     }
 

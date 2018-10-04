@@ -15,7 +15,7 @@ export default class MapThumbnail extends React.Component<any, any> {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.state == nextState) {
+        if (this.state.center.lat == nextState.center.lat) {
             return false
         } else return true
     }

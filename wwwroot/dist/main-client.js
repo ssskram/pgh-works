@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d980e9a8dcd33dc3d1ed"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "556296a50178dccbbfde"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12153,20 +12153,11 @@ var ProjectMap = (function (_super) {
         return _this;
     }
     ProjectMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        if (this.props.asset) {
-            if (this.state == nextState) {
-                return false;
-            }
-            else
-                return true;
+        if (this.state.center.lat == nextState.center.lat) {
+            return false;
         }
-        else {
-            if (this.props.shape == nextProps.shape) {
-                return false;
-            }
-            else
-                return true;
-        }
+        else
+            return true;
     };
     ProjectMap.prototype.componentDidMount = function () {
         if (this.props.shape.points) {
@@ -32459,7 +32450,7 @@ var MapThumbnail = (function (_super) {
         return _this;
     }
     MapThumbnail.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        if (this.state == nextState) {
+        if (this.state.center.lat == nextState.center.lat) {
             return false;
         }
         else
@@ -63151,11 +63142,14 @@ var HomeMap = (function (_super) {
         return _this;
     }
     HomeMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-        if (this.state == nextState) {
-            return false;
+        if (this.state.projects != nextState.projects) {
+            return true;
+        }
+        if (this.state.center.lat != nextState.center.lat) {
+            return true;
         }
         else
-            return true;
+            return false;
     };
     HomeMap.prototype.componentWillReceiveProps = function (nextProps) {
         this.setState({
@@ -63172,7 +63166,9 @@ var HomeMap = (function (_super) {
     };
     HomeMap.prototype.closeWindow = function () {
         this.setState({
-            showInfowindow: false
+            showInfowindow: false,
+            zoom: 13,
+            center: { lat: 40.437470539681442, lng: -79.987124601795273 }
         });
     };
     HomeMap.prototype.render = function () {
@@ -63609,7 +63605,7 @@ var StreetMap = (function (_super) {
                                 "use the drawing tool to outline a segment"))),
                 onFilter == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: this.reset.bind(this) }, "Clear filter"))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: this.reset.bind(this) }, "Clear segment selection"))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'single-project' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](MapComponent, null))));
     };
