@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cb26e78b36c44df89c0e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b9bcf43ce3a9302fe2b3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63927,7 +63927,7 @@ var AssetReport = (function (_super) {
             var uniqueTags = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_removeDuplicates__["a" /* default */])(allTags, "parentID");
             this.setState({
                 tags: uniqueTags,
-                spiner: false
+                spinner: false
             });
         }
         else {

@@ -94,7 +94,7 @@ export class AssetReport extends React.Component<any, any> {
             const uniqueTags = removeDuplicates(allTags, "parentID")
             this.setState({
                 tags: uniqueTags,
-                spiner: false
+                spinner: false
             })
         } else {
             const allTags = tags.filter(tag => {
