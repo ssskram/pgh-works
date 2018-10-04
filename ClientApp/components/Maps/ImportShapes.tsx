@@ -4,6 +4,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "rea
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 import setCenter from './../../functions/setCenter'
 import handleOverlayComplete from './../../functions/handleOverlayComplete'
+import findMiddleSegment from './../../functions/findMiddleSegment'
 
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class ImportShapes extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        // if user is grabbing street segments, grabby == true
         if (this.props.grabby == true) {
             if (this.props.assets.length === 1) {
                 let foundSegment = this.props.assets[0]
@@ -27,10 +29,8 @@ export default class ImportShapes extends React.Component<any, any> {
                     zoom: 16
                 })
             } else {
-                const middle = Math.floor(this.props.assets.length / 2);
-                const middleSegment = this.props.assets[middle]
                 this.setState ({
-                    center: setCenter(middleSegment.shape.points),
+                    center: setCenter(findMiddleSegment(this.props.assets).shape.points),
                     zoom: 13
                 })
             }

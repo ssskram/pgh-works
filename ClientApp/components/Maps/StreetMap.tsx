@@ -8,6 +8,7 @@ import DrawingManager from "react-google-maps/lib/components/drawing/DrawingMana
 import inside from 'point-in-polygon'
 import setCenter from './../../functions/setCenter'
 import handleOverlayComplete from './../../functions/handleOverlayComplete'
+import findMiddleSegment from './../../functions/findMiddleSegment'
 
 export class StreetMap extends React.Component<any, any> {
     constructor(props) {
@@ -32,10 +33,8 @@ export class StreetMap extends React.Component<any, any> {
         const assets = this.props.assets.filter(asset => {
             return asset.assetName == street
         })
-        const middle = Math.floor(assets.length / 2);
-        const middleSegment = assets[middle]
         this.setState({
-            center: setCenter(middleSegment.shape.points),
+            center: setCenter(findMiddleSegment(assets).shape.points),
             zoom: 13,
             assets: assets
         })
@@ -63,10 +62,8 @@ export class StreetMap extends React.Component<any, any> {
                 })
             }
         })
-        const middle = Math.floor(filteredAssets.length / 2);
-        const middleSegment = filteredAssets[middle]
         this.setState({
-            center: setCenter(middleSegment.shape.points),
+            center: setCenter(findMiddleSegment(filteredAssets).shape.points),
             zoom: 13,
             assets: filteredAssets,
             onFilter: true
