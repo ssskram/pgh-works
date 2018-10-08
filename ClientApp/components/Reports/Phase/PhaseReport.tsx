@@ -231,7 +231,7 @@ export class Phase extends React.Component<any, any> {
         }
 
         if (redirect) {
-            return <Redirect to={redirectLink} />
+            return <Redirect push to={redirectLink} />
         }
 
         return (

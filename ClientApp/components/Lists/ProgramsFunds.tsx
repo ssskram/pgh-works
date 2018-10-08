@@ -80,7 +80,7 @@ export class ProgramsFunds extends React.Component<any, any> {
 
         let redirectLink = "/Fund/id=" + selectedFundID
         if (redirect) {
-            return <Redirect to={redirectLink} />
+            return <Redirect push to={redirectLink} />
         }
 
         const currentItems = returnCurrentItems(funds, currentPage)

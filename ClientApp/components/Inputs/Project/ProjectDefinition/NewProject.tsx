@@ -216,7 +216,7 @@ export class ProjectDefinition extends React.Component<any, any> {
         const link = "/Project/id=" + projectID
 
         if (redirect) {
-            return <Redirect to={link} />
+            return <Redirect push to={link} />
         }
 
         return (

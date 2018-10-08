@@ -117,7 +117,7 @@ export class AllAssets extends React.Component<any, any> {
         } = this.state
 
         if (redirect) {
-            return <Redirect to={redirectLink} />
+            return <Redirect push to={redirectLink} />
         }
 
         const currentItems = returnCurrentItems(assets, currentPage)

@@ -166,7 +166,7 @@ export class AssetReport extends React.Component<any, any> {
         } = this.state
         
         if (redirect) {
-            <Redirect to={redirectLink} />
+            <Redirect push to={redirectLink} />
         }
 
         return (

@@ -141,7 +141,7 @@ export class PhaseInputs extends React.Component<any, any> {
         const link = "/Phase/id=" + phaseID
 
         if (redirect) {
-            return <Redirect to={link} />
+            return <Redirect push to={link} />
         }
 
         return (

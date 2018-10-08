@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a81ea87e733207e06862"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a967a01027f9473afb9e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31869,7 +31869,7 @@ var PhaseInputs = (function (_super) {
             phaseStatus != '';
         var link = "/Phase/id=" + phaseID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { push: true, to: link });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -60340,7 +60340,7 @@ var Home = (function (_super) {
         var _a = this.state, onFilter = _a.onFilter, redirect = _a.redirect, projectID = _a.projectID, projects = _a.projects;
         var link = "/Project/id=" + projectID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { push: true, to: link });
         }
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Utilities_HydrateStore__["a" /* default */], null),
@@ -61534,7 +61534,7 @@ var ProjectDefinition = (function (_super) {
         var _a = this.state, step = _a.step, redirect = _a.redirect, projectID = _a.projectID, shape = _a.shape, modalIsOpen = _a.modalIsOpen;
         var link = "/Project/id=" + projectID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: link });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { push: true, to: link });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
@@ -62465,7 +62465,7 @@ var AllAssets = (function (_super) {
         var _this = this;
         var _a = this.state, assets = _a.assets, redirectLink = _a.redirectLink, redirect = _a.redirect, currentPage = _a.currentPage;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_paging__["a" /* returnCurrentItems */])(assets, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_paging__["b" /* returnPageNumber */])(assets);
@@ -62647,7 +62647,7 @@ var AllPhases = (function (_super) {
         var _this = this;
         var _a = this.state, phases = _a.phases, currentPage = _a.currentPage, redirectLink = _a.redirectLink, redirect = _a.redirect;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__functions_paging__["a" /* returnCurrentItems */])(phases, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__functions_paging__["b" /* returnPageNumber */])(phases);
@@ -63168,7 +63168,7 @@ var ProgramsFunds = (function (_super) {
         var _a = this.state, onFilter = _a.onFilter, currentPage = _a.currentPage, funds = _a.funds, redirect = _a.redirect, selectedFundID = _a.selectedFundID;
         var redirectLink = "/Fund/id=" + selectedFundID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_paging__["a" /* returnCurrentItems */])(funds, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_paging__["b" /* returnPageNumber */])(funds);
@@ -64114,7 +64114,7 @@ var AssetReport = (function (_super) {
         var _this = this;
         var _a = this.state, spinner = _a.spinner, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
         if (redirect) {
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { to: redirectLink });
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Utilities_HydrateStore__["a" /* default */], null),
@@ -64365,7 +64365,7 @@ var FundViewer = (function (_super) {
             }];
         var redirectLink = "/Project/id=" + selectedProjectID;
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_HydrateStore__["a" /* default */], null),
@@ -64968,7 +64968,7 @@ var Phase = (function (_super) {
             });
         }
         if (redirect) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { to: redirectLink });
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__["a" /* default */], null),

@@ -156,7 +156,7 @@ export class FundViewer extends React.Component<any, any> {
 
         let redirectLink = "/Project/id=" + selectedProjectID
         if (redirect) {
-            return <Redirect to={redirectLink} />
+            return <Redirect push to={redirectLink} />
         }
 
         return (
