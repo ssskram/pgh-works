@@ -62,24 +62,25 @@ export class ProjectFilter extends React.Component<any, any> {
             const personnelSelect = { value: user.title, label: user.title, name: 'projectManager' }
             personnel.push(personnelSelect)
         })
-        const projects = [] as any
+        const projectDropdown = [] as any
         if (this.props.filterType == 'all') {
             this.props.projects.forEach(project => {
                 const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
-                projects.push(projectSelect)
+                projectDropdown.push(projectSelect)
             })
             this.setState({
                 personnel: personnel,
-                projects: projects
+                projects: projectDropdown
             })
-        } else {
-            this.props.projects.forEach(project => {
+        } else { // only set my projects to dropdown
+            const myProjects = getMyProjects(this.props.projects, this.props.personnel, this.props.user)
+            myProjects.forEach(project => {
                 const projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' }
-                projects.push(projectSelect)
+                projectDropdown.push(projectSelect)
             })
             this.setState({
                 personnel: personnel,
-                projects: getMyProjects(projects, this.props.personnel, this.props.user)
+                projects: projectDropdown
             })
         }
     }

@@ -101,7 +101,7 @@ export class AllProjects extends React.Component<any, any> {
                             {project.actualStartDate && project.actualEndDate &&
                                 <h4><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
                             }
-                            {!project.actualStartDate && project.actualEndDate &&
+                            {!project.actualStartDate && !project.actualEndDate &&
                                 <h4><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
                             }
                             <h4>Status: <b>{project.projectStatus}</b></h4>

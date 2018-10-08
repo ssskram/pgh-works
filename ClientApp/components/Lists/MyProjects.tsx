@@ -30,29 +30,26 @@ export class MyProjects extends React.Component<any, any> {
             itemsPerPage: 30
         }
     }
-    
+
     componentDidMount() {
         window.scrollTo(0, 0)
-        if (this.props.projects.length > 0 && this.props.personnel.length > 0 && this.props.user != '') {
-            this.setState({
-                projects: getMyProjects(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
-            })
-        }
-        // ping server
+        this.setMyProjects(this.props)
         this.props.ping()
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props != nextProps) {
-            if (nextProps.projects.length > 0 && nextProps.personnel.length > 0 && nextProps.user != '') {
-                this.setState({
-                    projects: getMyProjects(nextProps.projects, nextProps.personnel, nextProps.user).sort(function (a, b) {
-                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                    })
+            this.setMyProjects(nextProps)
+        }
+    }
+
+    setMyProjects(props) {
+        if (props.projects.length > 0 && props.personnel.length > 0 && props.user != '') {
+            this.setState({
+                projects: getMyProjects(props.projects, props.personnel, props.user).sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
                 })
-            }
+            })
         }
     }
 
@@ -106,7 +103,7 @@ export class MyProjects extends React.Component<any, any> {
                             {project.actualStartDate && project.actualEndDate &&
                                 <h4><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
                             }
-                            {!project.actualStartDate && project.actualEndDate &&
+                            {!project.actualStartDate && !project.actualEndDate &&
                                 <h4><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
                             }
                             <h4>Status: <b>{project.projectStatus}</b></h4>

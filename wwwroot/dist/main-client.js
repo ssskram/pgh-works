@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b7e3d0ceea53c28cc42d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "19fd6dc7476e1aa0e21d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14478,25 +14478,26 @@ var ProjectFilter = (function (_super) {
             var personnelSelect = { value: user.title, label: user.title, name: 'projectManager' };
             personnel.push(personnelSelect);
         });
-        var projects = [];
+        var projectDropdown = [];
         if (this.props.filterType == 'all') {
             this.props.projects.forEach(function (project) {
                 var projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' };
-                projects.push(projectSelect);
+                projectDropdown.push(projectSelect);
             });
             this.setState({
                 personnel: personnel,
-                projects: projects
+                projects: projectDropdown
             });
         }
         else {
-            this.props.projects.forEach(function (project) {
+            var myProjects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(this.props.projects, this.props.personnel, this.props.user);
+            myProjects.forEach(function (project) {
                 var projectSelect = { value: project.projectName, label: project.projectName, name: 'projectName' };
-                projects.push(projectSelect);
+                projectDropdown.push(projectSelect);
             });
             this.setState({
                 personnel: personnel,
-                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(projects, this.props.personnel, this.props.user)
+                projects: projectDropdown
             });
         }
     };
@@ -62718,7 +62719,7 @@ var AllProjects = (function (_super) {
                                         project.actualStartDate,
                                         " - ",
                                         project.actualEndDate)),
-                            !project.actualStartDate && project.actualEndDate &&
+                            !project.actualStartDate && !project.actualEndDate &&
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
                                         project.expectedStartDate,
@@ -62849,25 +62850,21 @@ var MyProjects = (function (_super) {
     }
     MyProjects.prototype.componentDidMount = function () {
         window.scrollTo(0, 0);
-        if (this.props.projects.length > 0 && this.props.personnel.length > 0 && this.props.user != '') {
-            this.setState({
-                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(this.props.projects, this.props.personnel, this.props.user).sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
-            });
-        }
-        // ping server
+        this.setMyProjects(this.props);
         this.props.ping();
     };
     MyProjects.prototype.componentWillReceiveProps = function (nextProps) {
         if (this.props != nextProps) {
-            if (nextProps.projects.length > 0 && nextProps.personnel.length > 0 && nextProps.user != '') {
-                this.setState({
-                    projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(nextProps.projects, nextProps.personnel, nextProps.user).sort(function (a, b) {
-                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                    })
-                });
-            }
+            this.setMyProjects(nextProps);
+        }
+    };
+    MyProjects.prototype.setMyProjects = function (props) {
+        if (props.projects.length > 0 && props.personnel.length > 0 && props.user != '') {
+            this.setState({
+                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__functions_myProjects__["a" /* default */])(props.projects, props.personnel, props.user).sort(function (a, b) {
+                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+                })
+            });
         }
     };
     MyProjects.prototype.handleNextClick = function () {
@@ -62912,7 +62909,7 @@ var MyProjects = (function (_super) {
                                         project.actualStartDate,
                                         " - ",
                                         project.actualEndDate)),
-                            !project.actualStartDate && project.actualEndDate &&
+                            !project.actualStartDate && !project.actualEndDate &&
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
                                         project.expectedStartDate,
