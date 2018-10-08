@@ -131,11 +131,11 @@ export class AllAssets extends React.Component<any, any> {
                             <h4><b>{asset.assetType}</b></h4>
                         </div>
                         <div style={padding15}>
-                            <div className='col-md-4'>
+                            <div className='col-md-5'>
                                 <h3><b>{asset.assetName}</b></h3>
                                 <h4>Cartegraph ID: <b>{asset.assetOID}</b></h4>
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-3'>
                                 <div className='hidden-sm hidden-xs'>
                                     <h3><b>{asset.countReferences}</b></h3>
                                     <h4>Reference{asset.countReferences != 1 && 's'}</h4>
