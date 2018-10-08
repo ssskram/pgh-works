@@ -6,7 +6,8 @@ import { ApplicationState } from '../../store'
 import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
-import Table from 'react-table'
+import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
+import Paging from '../Utilities/Paging'
 import FundFilter from '../Filters/FundFilter'
 import * as CurrencyFormat from 'react-currency-format'
 import Spinner from './../Utilities/Spinner'
@@ -24,6 +25,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         this.state = {
             onFilter: false,
             funds: props.funds,
+            currentPage: 1,
             selectedFundID: '',
             redirect: false
         }
@@ -44,6 +46,22 @@ export class ProgramsFunds extends React.Component<any, any> {
         }
     }
 
+    handleNextClick() {
+        window.scrollTo(0, 0)
+        let current = this.state.currentPage
+        this.setState({
+            currentPage: current + 1
+        });
+    }
+
+    handlePreviousClick() {
+        window.scrollTo(0, 0)
+        let current = this.state.currentPage
+        this.setState({
+            currentPage: current - 1
+        });
+    }
+
     viewFund(fund) {
         this.setState({
             selectedFundID: fund.fundID,
@@ -54,38 +72,35 @@ export class ProgramsFunds extends React.Component<any, any> {
     public render() {
         const {
             onFilter,
+            currentPage,
             funds,
             redirect,
             selectedFundID
         } = this.state
 
-        const columns = [{
-            Header: 'Fund/Program',
-            accessor: 'fundName'
-        }, {
-            Header: 'Year',
-            accessor: 'fundYear',
-        }, {
-            Header: 'Type',
-            accessor: 'fundType',
-        }, {
-            Header: 'Exp.',
-            accessor: 'expirationDate',
-        }, {
-            Header: 'Original Amount',
-            accessor: 'fundAmount',
-            Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
-        }, {
-            Header: '',
-            accessor: 'fundID',
-            Cell: props => <button onClick={() => this.viewFund(props.original)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
-            maxWidth: 100
-        }]
-
         let redirectLink = "/Fund/id=" + selectedFundID
         if (redirect) {
             return <Redirect to={redirectLink} />
         }
+
+        const currentItems = returnCurrentItems(funds, currentPage)
+        const pageNumbers = returnPageNumber(funds)
+        const renderItems = currentItems.map((fund, index) => {
+            return <div className='col-md-12' key={index}>
+                <div className='panel'>
+                    <div className='panel-body text-center'>
+                        <div className='col-md-8'>
+                            <h3><b>{fund.fundName}</b></h3>
+                            <h4>{fund.fundYear}</h4>
+                            <h4><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
+                        </div>
+                        <div className='col-md-4' style={{paddingTop: '15px'}}>
+                            <button onClick={() => this.viewFund(fund)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        })
 
         return (
             <div>
@@ -96,25 +111,19 @@ export class ProgramsFunds extends React.Component<any, any> {
                 <h2>Programs & Funds <span style={{ marginTop: '-5px' }} className='pull-right'><FundFilter /></span></h2>
                 <hr />
                 {funds.length > 0 &&
-                    <Table
-                        data={funds}
-                        columns={columns}
-                        loading={false}
-                        minRows={0}
-                        pageSize={50}
-                        showPageJump={false}
-                        showPagination={funds.length > 50}
-                        showPageSizeOptions={false}
-                        noDataText=''
-                        getTdProps={() => ({
-                            style: {
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                fontSize: '16px'
-                            }
-                        })}
-                    />
+                    <div className='col-md-12'>
+                        {renderItems}
+                        <br />
+                        <br />
+                        <Paging
+                            count={funds}
+                            currentPage={currentPage}
+                            totalPages={pageNumbers}
+                            next={this.handleNextClick.bind(this)}
+                            prev={this.handlePreviousClick.bind(this)} />
+                        <br />
+                        <br />
+                    </div>
                 }
                 {funds.length == 0 && onFilter == true &&
                     <div className='col-md-12 text-center'>
