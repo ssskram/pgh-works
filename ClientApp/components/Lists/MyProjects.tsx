@@ -10,6 +10,7 @@ import * as Personnel from '../../store/GETS/personnel'
 import * as User from '../../store/GETS/user'
 import ProjectFilters from '../Filters/ProjectFilter'
 import Paging from '../Utilities/Paging'
+import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import MapThumbnail from '../Maps/MapThumbnail'
 import getMyProjects from './../../functions/myProjects'
 import Spinner from './../Utilities/Spinner'
@@ -26,8 +27,7 @@ export class MyProjects extends React.Component<any, any> {
         super(props)
         this.state = {
             projects: [],
-            currentPage: 1,
-            itemsPerPage: 30
+            currentPage: 1
         }
     }
 
@@ -80,8 +80,7 @@ export class MyProjects extends React.Component<any, any> {
     public render() {
         const {
             projects,
-            currentPage,
-            itemsPerPage
+            currentPage
         } = this.state
 
         const {
@@ -89,10 +88,9 @@ export class MyProjects extends React.Component<any, any> {
             user
         } = this.props
 
-        // Logic for paging
-        const indexOfLastItem = currentPage * itemsPerPage;
-        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-        const currentItems = projects.slice(indexOfFirstItem, indexOfLastItem);
+        const currentItems = returnCurrentItems(projects, currentPage)
+        const pageNumbers = returnPageNumber(projects)
+        
         const renderItems = currentItems.map((project, index) => {
             const link = "/Project/id=" + project.projectID
             return <div className='col-md-12' key={index}>
@@ -120,12 +118,6 @@ export class MyProjects extends React.Component<any, any> {
                 </div>
             </div>
         })
-
-        // Logic for displaying page numbers
-        const pageNumbers: any[] = []
-        for (let i = 1; i <= Math.ceil(projects.length / itemsPerPage); i++) {
-            pageNumbers.push(i);
-        }
 
         return (
             <div>
