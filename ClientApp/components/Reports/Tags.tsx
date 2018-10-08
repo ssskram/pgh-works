@@ -31,6 +31,7 @@ export class Tags extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.getTags(this.props)
     }
 

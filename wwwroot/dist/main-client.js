@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a967a01027f9473afb9e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "979357b503d535f900d0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -32677,6 +32677,7 @@ var Tags = (function (_super) {
         return _this;
     }
     Tags.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         this.getTags(this.props);
     };
     Tags.prototype.componentWillReceiveProps = function (nextProps) {
@@ -63131,6 +63132,7 @@ var ProgramsFunds = (function (_super) {
         return _this;
     }
     ProgramsFunds.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         // ping server
         this.props.ping();
     };
@@ -66473,6 +66475,7 @@ var Timeline = (function (_super) {
         return _this;
     }
     Timeline.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
         // ping server
         this.props.ping();
         this.setState({
