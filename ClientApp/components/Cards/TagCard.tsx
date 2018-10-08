@@ -8,6 +8,7 @@ import { ApplicationState } from '../../store'
 import * as TagStore from '../../store/tags'
 import Modal from 'react-responsive-modal'
 import DeleteTag from '../DeleteConfirmations/DeleteTag'
+import returnAssetIcon from './../../functions/getAssetIcon'
 
 const imgHeight = {
     height: '50px'
@@ -62,44 +63,8 @@ export class TagsCard extends React.Component<any, any> {
             canEdit
         } = this.props
 
-        let src = ''
-        if (tag.tagType == "Steps") {
-            src = './images/assetTypes/steps.png'
-        }
-        if (tag.tagType == "Facility") {
-            src = './images/assetTypes/facilities.png'
-        }
-        if (tag.tagType == "Project") {
-            src = './images/assetTypes/projects.png'
-        }
-        if (tag.tagType == "Retaining Wall") {
-            src = './images/assetTypes/wall.png'
-        }
-        if (tag.tagType == "Pool") {
-            src = './images/assetTypes/pools.png'
-        }
-        if (tag.tagType == "Playground") {
-            src = './images/assetTypes/playground.png'
-        }
-        if (tag.tagType == "Intersection") {
-            src = './images/assetTypes/signal.png'
-        }
-        if (tag.tagType == "Bridge") {
-            src = './images/assetTypes/bridges.png'
-        }
-        if (tag.tagType == "Court") {
-            src = './images/assetTypes/courts.png'
-        }
-        if (tag.tagType == "Playing Field") {
-            src = './images/assetTypes/baseball.png'
-        }
-        if (tag.tagType == "Park") {
-            src = './images/assetTypes/parks.png'
-        }
-        if (tag.tagType == "Street") {
-            src = './images/assetTypes/street.png'
-        }
-
+        let src = returnAssetIcon(tag.tagType)
+        
         return (
             <div className="col-sm-12">
                 <div className="panel">

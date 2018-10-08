@@ -7,16 +7,27 @@ import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Assets from '../../store/GETS/taggableAssets'
 import * as Tags from '../../store/tags'
-import Table from 'react-table'
+import Paging from '../Utilities/Paging'
+import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import AssetFilter from './../Filters/AssetFilter'
 import Spinner from '../Utilities/Spinner'
 import removeDuplicates from './../../functions/removeDuplicates'
+import returnAssetIcon from './../../functions/getAssetIcon'
+
+const imgHeight = {
+    height: '50px'
+}
+
+const padding15 = {
+    padding: '15px'
+}
 
 export class AllAssets extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
             assets: [],
+            currentPage: 1,
             redirectLink: '',
             redirect: false
         }
@@ -40,9 +51,12 @@ export class AllAssets extends React.Component<any, any> {
     setAssets(props) {
         // filter out duplicate streets
         var uniqueAssetNames = removeDuplicates(props.assets, "assetName")
+        uniqueAssetNames.forEach(item => {
+            item.countReferences = this.returnCountTags(item)
+        })
         this.setState({
-            assets: uniqueAssetNames.filter(function (asset) {
-                return asset.assetName != ''
+            assets: uniqueAssetNames.filter(asset => asset.assetName != '').sort(function (a, b) {
+                return b.countReferences - a.countReferences
             })
         })
     }
@@ -77,35 +91,67 @@ export class AllAssets extends React.Component<any, any> {
         }
     }
 
+    handleNextClick() {
+        window.scrollTo(0, 0)
+        let current = this.state.currentPage
+        this.setState({
+            currentPage: current + 1
+        });
+    }
+
+    handlePreviousClick() {
+        window.scrollTo(0, 0)
+        let current = this.state.currentPage
+        this.setState({
+            currentPage: current - 1
+        });
+    }
+
     public render() {
         const {
             assets,
             redirectLink,
-            redirect
+            redirect,
+            currentPage
         } = this.state
-
-        const columns = [{
-            Header: 'Asset',
-            accessor: 'assetName'
-        }, {
-            Header: 'Type',
-            accessor: 'assetType',
-        }, {
-            Header: 'Cartegraph ID',
-            accessor: 'assetOID'
-        }, {
-            Header: 'Number of references',
-            id: 'count',
-            accessor: props => this.returnCountTags(props)
-        }, {
-            Header: '',
-            Cell: props => <button onClick={() => this.getAssetLink(props.original)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>,
-            maxWidth: 100
-        }]
 
         if (redirect) {
             return <Redirect to={redirectLink} />
         }
+
+        const currentItems = returnCurrentItems(assets, currentPage)
+        const pageNumbers = returnPageNumber(assets)
+        const renderItems = currentItems.map((asset, index) => {
+            const src = returnAssetIcon(asset.assetType)
+            return <div className='col-md-12' key={index}>
+                <div className='panel'>
+                    <div className='panel-body text-center'>
+                        <div className='col-md-2'>
+                            <img src={src} style={imgHeight} />
+                            <h4><b>{asset.assetType}</b></h4>
+                        </div>
+                        <div style={padding15}>
+                            <div className='col-md-4'>
+                                <h3><b>{asset.assetName}</b></h3>
+                                <h4>Cartegraph ID: <b>{asset.assetOID}</b></h4>
+                            </div>
+                            <div className='col-md-4'>
+                                <div className='hidden-sm hidden-xs'>
+                                    <h3><b>{asset.countReferences}</b></h3>
+                                    <h4>Reference{asset.countReferences != 1 && 's'}</h4>
+                                </div>
+                                <div className='hidden-md hidden-lg hidden-xl'>
+                                    <h4>Reference{asset.countReferences != 1 && 's'}: <b>{asset.countReferences}</b></h4>
+                                </div>
+                            </div>
+                            <div className='col-md-2'>
+                                <button onClick={() => this.getAssetLink(asset)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        })
 
         return (
             <div>
@@ -113,38 +159,27 @@ export class AllAssets extends React.Component<any, any> {
                 {assets.length == 0 &&
                     <Spinner notice='...loading the assets...' />
                 }
-                <h2>All Assets <span style={{ marginTop: '-5px' }} className='pull-right'><AssetFilter /></span></h2>
+                <h2>
+                    All Assets
+                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                        <AssetFilter />
+                    </span>
+                </h2>
                 <hr />
                 {assets.length > 0 &&
-                    <Table
-                        data={assets}
-                        columns={columns}
-                        loading={false}
-                        minRows={0}
-                        pageSize={50}
-                        showPageJump={false}
-                        showPagination={assets.length >= 50}
-                        showPageSizeOptions={false}
-                        noDataText=''
-                        defaultSorted={[
-                            {
-                                id: 'count',
-                                desc: true
-                            },
-                            {
-                                id: 'assetName',
-                                asc: true
-                            }
-                        ]}
-                        getTdProps={() => ({
-                            style: {
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                fontSize: '16px'
-                            }
-                        })}
-                    />
+                    <div className='col-md-12'>
+                        {renderItems}
+                        <br />
+                        <br />
+                        <Paging
+                            count={assets}
+                            currentPage={currentPage}
+                            totalPages={pageNumbers}
+                            next={this.handleNextClick.bind(this)}
+                            prev={this.handlePreviousClick.bind(this)} />
+                        <br />
+                        <br />
+                    </div>
                 }
             </div>
         )
