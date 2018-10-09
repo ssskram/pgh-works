@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "979357b503d535f900d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "08c797d2e32e2733771c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14505,6 +14505,7 @@ var updaterMap = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_helmet__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__functions_filterProjects__ = __webpack_require__(687);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__functions_filterProjects___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__functions_filterProjects__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__functions_myProjects__ = __webpack_require__(354);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -14652,7 +14653,7 @@ var ProjectFilter = (function (_super) {
             projectStatus: this.state.projectStatus,
             projectManager: this.state.projectManager
         };
-        this.props.returnFiltered(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_filterProjects__["a" /* default */])(projects, filterLoad));
+        this.props.returnFiltered(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_filterProjects__["default"])(projects, filterLoad));
         this.setState({
             modalIsOpen: false,
             onFilter: true
@@ -66668,84 +66669,9 @@ function buildRootReducer(allReducers) {
 
 /***/ }),
 /* 687 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = filterProjects;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-// project filter
-
-function filterProjects(projects, filters) {
-    var filtered = projects.filter(function (project) {
-        if (filters.projectName) {
-            if (!project.projectName.toLowerCase().includes(filters.projectName.toLowerCase())) {
-                return false;
-            }
-        }
-        if (filters.projectDepartment) {
-            if (!project.projectDepartment.toLowerCase().includes(filters.projectDepartment.toLowerCase())) {
-                return false;
-            }
-        }
-        if (filters.projectStatus) {
-            if (!project.projectStatus.toLowerCase().includes(filters.projectStatus.toLowerCase())) {
-                return false;
-            }
-        }
-        if (filters.projectManager) {
-            if (!project.projectManager.toLowerCase().includes(filters.projectManager.toLowerCase())) {
-                return false;
-            }
-        }
-        if (filters.startDate || filters.endDate) {
-            if (project.actualStartDate && project.actualEndDate) {
-                var startIsBetweeon = false;
-                var endIsBetween = false;
-                if (filters.startDate) {
-                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
-                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
-                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
-                    startIsBetweeon = target.isBetween(start, end);
-                }
-                if (filters.endDate) {
-                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
-                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualEndDate);
-                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
-                    endIsBetween = target.isBetween(start, end);
-                }
-                if (startIsBetweeon == false && endIsBetween == false) {
-                    return false;
-                }
-            }
-            else {
-                var startIsBetweeon = false;
-                var endIsBetween = false;
-                if (filters.startDate) {
-                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
-                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.actualStartDate);
-                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
-                    startIsBetweeon = target.isBetween(start, end);
-                }
-                if (filters.endDate) {
-                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedStartDate);
-                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(project.expectedEndDate);
-                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
-                    endIsBetween = target.isBetween(start, end);
-                }
-                if (startIsBetweeon == false && endIsBetween == false) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    });
-    return filtered;
-}
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/ssskram/Applications/pghworks/ClientApp/functions/filterProjects.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/ssskram/Applications/pghworks/ClientApp/functions/filterProjects.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/ssskram/Applications/pghworks/ClientApp/functions/filterProjects.tsx'");
 
 /***/ }),
 /* 688 */
