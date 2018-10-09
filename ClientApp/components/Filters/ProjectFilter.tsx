@@ -10,7 +10,7 @@ import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import { Helmet } from "react-helmet"
-import filterProjects from './../../functions/filterProjects'
+import filterProjects from './../../functions/filters/filterProjects'
 import getMyProjects from './../../functions/myProjects'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
