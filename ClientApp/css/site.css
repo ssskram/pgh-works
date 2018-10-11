@@ -569,6 +569,7 @@ td {
     font-size: 22px;
     text-align: center;
     letter-spacing: 2px;
+    margin: 0 auto !important;
 }
 
 .loader, .loader:before, .loader:after {
@@ -650,6 +651,7 @@ td {
     overflow-y: scroll;
     margin-top: 25px !important;
     padding: 25px;
+    margin: 0 auto !important;
 }
 
 .styles_closeButton__20ID4 {

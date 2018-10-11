@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c12f23896c1283c3b167"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0d160d225443c10750c6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61980,7 +61980,6 @@ var AllAssets = (function (_super) {
         uniqueAssetNames.forEach(function (item) {
             item.countReferences = _this.returnCountTags(item);
         });
-        console.log(uniqueAssetNames);
         this.setState({
             assets: uniqueAssetNames.filter(function (asset) { return asset.assetName != ''; }).sort(function (a, b) {
                 return b.countReferences - a.countReferences;

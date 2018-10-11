@@ -54,7 +54,6 @@ export class AllAssets extends React.Component<any, any> {
         uniqueAssetNames.forEach(item => {
             item.countReferences = this.returnCountTags(item)
         })
-        console.log(uniqueAssetNames)
         this.setState({
             assets: uniqueAssetNames.filter(asset => asset.assetName != '').sort(function (a, b) {
                 return b.countReferences - a.countReferences
