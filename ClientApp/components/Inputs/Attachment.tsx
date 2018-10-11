@@ -11,7 +11,6 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 import { Helmet } from "react-helmet"
 
-
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 const types = [
@@ -86,8 +85,8 @@ export class Attachment extends React.Component<any, any> {
                 {file.length == 0 &&
                     <div className="dropzone">
                         <br />
-                        <br />
                         <h3 className='text-center'><i><b>Coming soon!</b></i></h3>
+                        <br />
                     </div>
                 }
                 {file.length > 0 &&

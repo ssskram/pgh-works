@@ -643,7 +643,7 @@ td {
 }
 
 .custom-modal {
-    margin: 5px !important;
+    margin: 0 auto !important;
     background: #fffcf5;
     max-height: 100vh;
     min-width: 35vw;
@@ -651,7 +651,6 @@ td {
     overflow-y: scroll;
     margin-top: 25px !important;
     padding: 25px;
-    margin: 0 auto !important;
 }
 
 .styles_closeButton__20ID4 {

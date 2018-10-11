@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0d160d225443c10750c6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a7ac749299aa72469b82"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60046,10 +60046,10 @@ var Attachment = (function (_super) {
             file.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "dropzone" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Coming soon!")))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Coming soon!"))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             file.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
