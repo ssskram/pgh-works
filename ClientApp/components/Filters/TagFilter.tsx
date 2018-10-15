@@ -104,14 +104,12 @@ export class TagFilter extends React.Component<any, any> {
                 </Helmet>
                 {onFilter == false &&
                     <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                        <span className='hidden-sm hidden-xs'>Filter</span>
+                        <span>Filter</span>
                     </button>
                 }
                 {onFilter == true &&
                     <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
-                        <span className='hidden-sm hidden-xs'>Clear</span>
+                        <span>Clear</span>
                     </button>
                 }
                 <Modal

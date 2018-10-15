@@ -188,7 +188,6 @@ export class AssetReport extends React.Component<any, any> {
 
         return (
             <div>
-                <Hydrate />
                 {spinner == true &&
                     <Spinner notice='...loading the asset report...' />
                 }
@@ -219,7 +218,7 @@ export class AssetReport extends React.Component<any, any> {
                             </div>
                         }
                         <div className='col-md-12'>
-                            <h3>
+                            <h3 className='hidden-xs'>
                                 Related projects & phases
                                 <span style={{ marginTop: '-5px' }} className='pull-right'>
                                     <TagFilter
@@ -228,16 +227,27 @@ export class AssetReport extends React.Component<any, any> {
                                         returnFiltered={this.receiveFilteredTags.bind(this)} />
                                 </span>
                             </h3>
+                            <h3 className='hidden-sm hidden-md hidden-lg hidden-xl text-center'>
+                                Related projects & phases
+                                <div className='col-md-12' style={{ paddingTop: '15px' }}>
+                                    <span>
+                                        <TagFilter
+                                            tags={tags}
+                                            reset={this.reset.bind(this)}
+                                            returnFiltered={this.receiveFilteredTags.bind(this)} />
+                                    </span>
+                                </div>
+                            </h3>
                             <hr />
                         </div>
                         {tags.length == 0 &&
                             <div className='col-md-12' style={{ margin: '20px 0px' }}>
                                 <div className='text-center alert alert-info'>
                                     {onFilter == false &&
-                                        <h2 style={emptyNotice} >No related projects or phases</h2>
+                                        <h2 style={emptyNotice}>No related projects or phases</h2>
                                     }
                                     {onFilter == true &&
-                                        <h2 style={emptyNotice} >Nothing matches those criteria</h2>
+                                        <h2 style={emptyNotice}>Nothing matches those criteria</h2>
                                     }
                                 </div>
                             </div>
@@ -280,6 +290,7 @@ export class AssetReport extends React.Component<any, any> {
                         }
                     </div>
                 }
+                <Hydrate />
             </div>
         )
     }

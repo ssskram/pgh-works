@@ -257,7 +257,6 @@ export class Project extends React.Component<any, any> {
 
         return (
             <div>
-                <Hydrate />
                 {spinner == true &&
                     <Spinner notice='...loading the project...' />
                 }
@@ -356,6 +355,7 @@ export class Project extends React.Component<any, any> {
                         />
                     }
                 </Modal>
+                <Hydrate />
             </div>
         )
     }

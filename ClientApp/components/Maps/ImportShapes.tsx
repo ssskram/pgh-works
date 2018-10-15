@@ -23,6 +23,7 @@ export default class ImportShapes extends React.Component<any, any> {
         this.polygonSelection = this.polygonSelection.bind(this)
     }
 
+
     componentDidMount() {
         // if user is grabbing street segments, grabby == true
         if (this.props.grabby == true) {

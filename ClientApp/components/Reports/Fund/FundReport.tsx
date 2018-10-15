@@ -161,7 +161,6 @@ export class FundViewer extends React.Component<any, any> {
 
         return (
             <div>
-                <Hydrate />
                 {spinner == true &&
                     <Spinner notice='...loading the fund report...' />
                 }
@@ -241,6 +240,7 @@ export class FundViewer extends React.Component<any, any> {
                         }
                     </div>
                 }
+                <Hydrate />
             </div>
         )
     }
