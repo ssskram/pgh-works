@@ -185,7 +185,7 @@ export class Attachments extends React.Component<any, any> {
                     Attachments
                     <span>
                         {canEdit &&
-                            <button title='Upload an attachment' onClick={this.addAttachment.bind(this)} type='button' className='btn btn-secondary pull-right hidden-xs'>
+                            <button title='Upload an attachment' onClick={this.addAttachment.bind(this)} type='button' className='btn  btn-primary pull-right hidden-xs'>
                                 <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
                             </button>
                         }

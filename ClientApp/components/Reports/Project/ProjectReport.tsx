@@ -268,8 +268,8 @@ export class Project extends React.Component<any, any> {
                         {canEdit == true &&
                             <div className='col-md-12'>
                                 <div>
-                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
-                                    <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
+                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button>
+                                    <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/mapDark.png'></img></span></button>
                                 </div>
                             </div>
                         }

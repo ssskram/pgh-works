@@ -110,14 +110,24 @@ export class AllPhases extends React.Component<any, any> {
         const pageNumbers = returnPageNumber(phases)
         const renderItems = currentItems.map((phase, index) => {
             let src = ''
-            if (phase.phaseStatus == "On hold") {
-                src = './images/onHold.png'
+            if (phase.phaseName == "Programming") {
+                src = './images/programming.png'
             }
-            return <div className='col-lg-4 col-md-6 col-sm-12 col-xs-12' key={index}>
+            if (phase.phaseName == "Construction") {
+                src= './images/construction.png'
+            }
+            if (phase.phaseName == "Design") {
+                src= './images/design.png'
+            }
+            if (phase.phaseName == "Multi-faceted") {
+                src= './images/multifaceted.png'
+            }
+            return <div className='col-lg-4 col-md-6 col-sm-12 col-xs-12 clearfix' key={index}>
                 <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel panel-button'>
                     <div className='panel-body text-center'>
                         <div>
                             <div className='col-md-12'>
+                                <img src={src}></img>
                                 <h2><b>{phase.phaseName}</b></h2>
                                 <h6><i>Project</i></h6>
                                 <h4>{this.returnProjectName(phase.projectID)}</h4>

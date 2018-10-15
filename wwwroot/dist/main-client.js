@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fb4d6d5bacf76d843539"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "be179c63bc9fc5f53be5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10738,33 +10738,33 @@ var Paging = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: prev.bind(this), disabled: true },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: prev.bind(this), disabled: true },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingRight, className: 'glyphicon glyphicon-arrow-left' }),
                                     "Previous")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: next.bind(this) },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: next.bind(this) },
                                     "Next",
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingLeft, className: 'glyphicon glyphicon-arrow-right' }))))),
                 (currentPage - 1 > 0) && (totalPages.includes(currentPage + 1)) &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: prev.bind(this) },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: prev.bind(this) },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingRight, className: 'glyphicon glyphicon-arrow-left' }),
                                     "Previous")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: next.bind(this) },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: next.bind(this) },
                                     "Next",
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingLeft, className: 'glyphicon glyphicon-arrow-right' }))))),
                 !totalPages.includes(currentPage + 1) &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: prev.bind(this) },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: prev.bind(this) },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingRight, className: 'glyphicon glyphicon-arrow-left' }),
                                     "Previous")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-6 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-secondary', onClick: next.bind(this), disabled: true },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn  btn-primary', onClick: next.bind(this), disabled: true },
                                     "Next",
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: paddingLeft, className: 'glyphicon glyphicon-arrow-right' }))))))));
     };
@@ -14825,9 +14825,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
-var btnStyle = {
-    fontSize: '22px'
-};
 var departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
     { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
@@ -14965,11 +14962,11 @@ var ProjectFilter = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
             onFilter == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), className: 'btn btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Clear")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -33008,7 +33005,7 @@ var Tags = (function (_super) {
                 "Relevant Assets",
                 canEdit &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Tag an asset', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Tag an asset', type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -59324,9 +59321,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
-var btnStyle = {
-    fontSize: '22px'
-};
 var types = [
     { value: 'Facility', label: 'Facility', name: 'assetType' },
     { value: 'Project', label: 'Project', name: 'assetType' },
@@ -59396,11 +59390,11 @@ var AssetFilter = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
             onFilter == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Clear")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -59470,9 +59464,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var btnStyle = {
-    fontSize: '22px'
-};
 var types = [
     { value: 'Bond', label: 'Bond', name: 'fundType' },
     { value: 'Paygo', label: 'Paygo', name: 'fundType' },
@@ -59572,11 +59563,11 @@ var FundFilter = (function (_super) {
         var _a = this.state, onFilter = _a.onFilter, funds = _a.funds, modalIsOpen = _a.modalIsOpen, fundName = _a.fundName, fundYear = _a.fundYear, fundType = _a.fundType, startDate = _a.startDate, endDate = _a.endDate;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
             onFilter == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Clear")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -59757,11 +59748,11 @@ var PhaseFilter = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
             onFilter == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Clear")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -59918,10 +59909,10 @@ var TagFilter = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), style: btnStyle, className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "Filter")),
             onFilter == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn btn-secondary' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.clearFilter.bind(this), style: btnStyle, className: 'btn  btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "Clear")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
@@ -62374,14 +62365,24 @@ var AllPhases = (function (_super) {
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__functions_paging__["b" /* returnPageNumber */])(phases);
         var renderItems = currentItems.map(function (phase, index) {
             var src = '';
-            if (phase.phaseStatus == "On hold") {
-                src = './images/onHold.png';
+            if (phase.phaseName == "Programming") {
+                src = './images/programming.png';
             }
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-lg-4 col-md-6 col-sm-12 col-xs-12', key: index },
+            if (phase.phaseName == "Construction") {
+                src = './images/construction.png';
+            }
+            if (phase.phaseName == "Design") {
+                src = './images/design.png';
+            }
+            if (phase.phaseName == "Multi-faceted") {
+                src = './images/multifaceted.png';
+            }
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-lg-4 col-md-6 col-sm-12 col-xs-12 clearfix', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getPhaseLink(phase.phaseID); }, className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src }),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h6", null,
@@ -62534,12 +62535,13 @@ var AllProjects = (function (_super) {
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_paging__["b" /* returnPageNumber */])(projects);
         var renderItems = currentItems.map(function (project, index) {
             var link = "/Project/id=" + project.projectID;
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { borderRadius: '15px' }, className: 'panel panel-button' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { padding: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                                 project.actualStartDate && project.actualEndDate &&
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
@@ -62561,9 +62563,7 @@ var AllProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     "PM: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { paddingTop: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }))))));
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager)))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
@@ -62710,12 +62710,13 @@ var MyProjects = (function (_super) {
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_paging__["b" /* returnPageNumber */])(projects);
         var renderItems = currentItems.map(function (project, index) {
             var link = "/Project/id=" + project.projectID;
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { borderRadius: '15px' }, className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center panel-button' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { padding: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                                 project.actualStartDate && project.actualEndDate &&
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
@@ -62737,9 +62738,7 @@ var MyProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     "PM: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { paddingTop: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }))))));
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager)))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
@@ -64404,7 +64403,7 @@ var Milestones = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/milestoneGrey.png' }),
                 "Milestones",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add milestone', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add milestone', type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             milestones.length == 0 &&
@@ -64704,7 +64703,7 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                         projectName,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right hidden-sm hidden-xs', style: { marginTop: '-10px' } },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn  btn-primary' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/backDark.png' }))))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
@@ -64724,15 +64723,15 @@ var Phase = (function (_super) {
                     canEdit == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setPhaseFollows.bind(this), title: 'Phase follows', style: btnMargin, type: 'button', className: 'btn  btn-primary' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/steps.png' })))),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn  btn-primary' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' })))),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn  btn-primary' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/delete.png' }))))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -64872,7 +64871,7 @@ var SubPhases = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/subphase.png' }),
                 "Subphases",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add subphase', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add subphase', type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             subphases.length == 0 &&
@@ -65096,7 +65095,7 @@ var Attachments = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/attachment.png' }),
                 "Attachments",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -65398,7 +65397,7 @@ var ProgramsFunds = (function (_super) {
                 "Cost",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.budget != 0 &&
@@ -65586,7 +65585,7 @@ var Phases = (function (_super) {
                 "Phases",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), type: 'button', className: 'btn  btn-primary pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, title: 'Add a phase', className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length == 0 &&
@@ -65897,10 +65896,10 @@ var Project = (function (_super) {
                     canEdit == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/infoDark.png' }))),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editLocation.bind(this), style: btnMargin, title: 'Modify location', type: 'button', className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editLocation.bind(this), style: btnMargin, title: 'Modify location', type: 'button', className: 'btn  btn-primary' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/mapDark.png' })))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
@@ -66118,7 +66117,7 @@ var ProjectTimeline = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(0, 153, 255, 0.3)', padding: '8px' } }, "Expected"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' } }, "Actual")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/Timeline' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, onClick: this.addToTimeline.bind(this), title: 'Add to timeline', type: 'button', className: 'btn btn-secondary pull-right' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, onClick: this.addToTimeline.bind(this), title: 'Add to timeline', type: 'button', className: 'btn  btn-primary pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timelineDark.png' }))))),
             this.props.project &&
@@ -66336,7 +66335,7 @@ var Timeline = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/AllProjects' }, "project"),
                         " and click ",
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, className: 'btn btn-secondary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, className: 'btn  btn-primary' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: './images/timelineDark.png' }))))))));
     };

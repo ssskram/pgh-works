@@ -243,7 +243,7 @@ export class Phase extends React.Component<any, any> {
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
                             {projectName}
-                            <span className='pull-right hidden-sm hidden-xs' style={{ marginTop: '-10px' }}><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-secondary'>
+                            <span className='pull-right hidden-sm hidden-xs' style={{ marginTop: '-10px' }}><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn  btn-primary'>
                                 <span className='glyphicon'>
                                     <img style={iconStyle} src='./images/backDark.png'>
                                     </img>
@@ -261,9 +261,9 @@ export class Phase extends React.Component<any, any> {
                         }
                         {canEdit == true &&
                             <div className='text-center'>
-                                <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
-                                <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
-                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
+                                <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/steps.png'></img></span></button></span>
+                                <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/infoDark.png'></img></span></button></span>
+                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/delete.png'></img></span></button></span>
                             </div>
                         }
                         <div className='col-md-12'>

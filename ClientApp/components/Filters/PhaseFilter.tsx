@@ -130,13 +130,13 @@ export class PhaseFilter extends React.Component<any, any> {
                     <style>{dropdownStyle}</style>
                 </Helmet>
                 {onFilter == false &&
-                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn  btn-primary'>
                         <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
                         <span className='hidden-sm hidden-xs'>Filter</span>
                     </button>
                 }
                 {onFilter == true &&
-                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn  btn-primary'>
                         <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
                         <span className='hidden-sm hidden-xs'>Clear</span>
                     </button>

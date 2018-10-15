@@ -103,12 +103,12 @@ export class TagFilter extends React.Component<any, any> {
                     <style>{dropdownStyle}</style>
                 </Helmet>
                 {onFilter == false &&
-                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn  btn-primary'>
                         <span>Filter</span>
                     </button>
                 }
                 {onFilter == true &&
-                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn  btn-primary'>
                         <span>Clear</span>
                     </button>
                 }
