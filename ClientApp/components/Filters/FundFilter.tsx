@@ -1,10 +1,14 @@
 
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as Funds from '../../store/GETS/funds'
 import Datepicker from '../FormElements/datepicker'
 import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
+import filterFunds from './../../functions/filters/filterFunds'
 
 const btnStyle = {
     fontSize: '22px'
@@ -17,15 +21,17 @@ const types = [
     { value: 'CDBG', label: 'CDBG', name: 'fundType' }
 ]
 
-export default class FundFilter extends React.Component<any, any> {
+export class FundFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            onFilter: false,
             modalIsOpen: false,
             fundName: '',
             fundYear: '',
             fundType: '',
-            expirationDate: ''
+            startDate: '',
+            endDate: ''
         }
     }
 
@@ -62,26 +68,57 @@ export default class FundFilter extends React.Component<any, any> {
     }
 
     filter() {
+        const filterLoad = {
+            fundName: this.state.fundName,
+            fundYear: this.state.fundYear,
+            fundType: this.state.fundType,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate
+        }
+        this.props.returnFiltered(filterFunds(this.props.funds, filterLoad))
         this.setState({
+            onFilter: true,
             modalIsOpen: false
+        })
+    }
+
+    clearFilter() {
+        this.props.returnFiltered(this.props.funds)
+        this.setState({
+            onFilter: false,
+            fundName: '',
+            fundYear: '',
+            fundType: '',
+            startDate: '',
+            endDate: ''
         })
     }
 
     public render() {
         const {
+            onFilter,
             modalIsOpen,
             fundName,
             fundYear,
             fundType,
-            expirationDate
+            startDate,
+            endDate
         } = this.state
 
         return (
             <div>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                    <span className='hidden-sm hidden-xs'>Filter</span>
-                </button>
+                {onFilter == false &&
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                        <span className='hidden-sm hidden-xs'>Filter</span>
+                    </button>
+                }
+                {onFilter == true &&
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
+                        <span className='hidden-sm hidden-xs'>Clear</span>
+                    </button>
+                }
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
@@ -122,14 +159,21 @@ export default class FundFilter extends React.Component<any, any> {
                                 options={types}
                             />
                         </div>
-
-                        <div className='col-md-12'>
+                        <div className='col-md-12'>Expiration</div>
+                        <div className='col-md-6'>
                             <Datepicker
-                                value={expirationDate}
-                                name="expirationDate"
-                                header="Expiration date"
-                                placeholder="Select a date"
-                                callback={(value) => this.handleDate(value, 'expirationDate')}
+                                value={startDate}
+                                name="startDate"
+                                placeholder="Select a start date"
+                                callback={(value) => this.handleDate(value, 'startDate')}
+                            />
+                        </div>
+                        <div className='col-md-6'>
+                            <Datepicker
+                                value={endDate}
+                                name="endDate"
+                                placeholder="Select an end date"
+                                callback={(value) => this.handleDate(value, 'endDate')}
                             />
                         </div>
 
@@ -142,3 +186,12 @@ export default class FundFilter extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.funds
+    }),
+    ({
+        ...Funds.actionCreators
+    })
+)(FundFilter as any) as typeof FundFilter

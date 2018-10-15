@@ -70,6 +70,12 @@ export class ProgramsFunds extends React.Component<any, any> {
         })
     }
 
+    receiveFilteredFunds(funds) {
+        this.setState({
+            funds: funds
+        })
+    }
+
     public render() {
         const {
             onFilter,
@@ -95,7 +101,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                             <h4>{fund.fundYear}</h4>
                             <h4><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
                         </div>
-                        <div className='col-md-4' style={{paddingTop: '15px'}}>
+                        <div className='col-md-4' style={{ paddingTop: '15px' }}>
                             <button onClick={() => this.viewFund(fund)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </div>
@@ -109,7 +115,13 @@ export class ProgramsFunds extends React.Component<any, any> {
                 {funds.length == 0 && onFilter == false &&
                     <Spinner notice='...loading the funds...' />
                 }
-                <h2>Programs & Funds <span style={{ marginTop: '-5px' }} className='pull-right'><FundFilter /></span></h2>
+                <h2>
+                    Programs & Funds
+                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                        <FundFilter
+                            returnFiltered={this.receiveFilteredFunds.bind(this)} />
+                    </span>
+                </h2>
                 <hr />
                 {funds.length > 0 &&
                     <div className='col-md-12'>

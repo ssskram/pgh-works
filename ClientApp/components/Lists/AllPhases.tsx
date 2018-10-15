@@ -94,6 +94,7 @@ export class AllPhases extends React.Component<any, any> {
             })
         })
     }
+    
     public render() {
         const {
             phases,

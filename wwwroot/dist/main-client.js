@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2d76c1f2c01451d2d97d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "83e0ddb3e8b814189c67"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66277,10 +66277,77 @@ function buildRootReducer(allReducers) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = filterPhases;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+// phase filter
+
 function filterPhases(phases, projects, filters) {
-    console.log(phases);
-    console.log(projects);
-    console.log(filters);
+    var projectID = '';
+    if (filters.projectName) {
+        var project = projects.find(function (project) {
+            return project.projectName == filters.projectName;
+        });
+        projectID = project.projectID;
+    }
+    var filtered = phases.filter(function (phase) {
+        if (filters.phaseName) {
+            if (!phase.phaseName.includes(filters.phaseName)) {
+                return false;
+            }
+        }
+        if (filters.phaseStatus) {
+            if (!phase.phaseStatus.includes(filters.phaseStatus)) {
+                return false;
+            }
+        }
+        if (filters.startDate || filters.endDate) {
+            if (phase.actualStartDate && phase.actualEndDate) {
+                var startIsBetweeon = false;
+                var endIsBetween = false;
+                if (filters.startDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.actualStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.actualEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                    startIsBetweeon = target.isBetween(start, end);
+                }
+                if (filters.endDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.actualStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.actualEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                    endIsBetween = target.isBetween(start, end);
+                }
+                if (startIsBetweeon == false && endIsBetween == false) {
+                    return false;
+                }
+            }
+            else {
+                var startIsBetweeon = false;
+                var endIsBetween = false;
+                if (filters.startDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.expectedStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.actualStartDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.startDate);
+                    startIsBetweeon = target.isBetween(start, end);
+                }
+                if (filters.endDate) {
+                    var start = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.expectedStartDate);
+                    var end = __WEBPACK_IMPORTED_MODULE_0_moment__(phase.expectedEndDate);
+                    var target = __WEBPACK_IMPORTED_MODULE_0_moment__(filters.endDate);
+                    endIsBetween = target.isBetween(start, end);
+                }
+                if (startIsBetweeon == false && endIsBetween == false) {
+                    return false;
+                }
+            }
+        }
+        if (projectID != '') {
+            if (!phase.projectID.includes(projectID)) {
+                return false;
+            }
+        }
+        return true;
+    });
+    return filtered;
 }
 
 
@@ -66305,17 +66372,17 @@ function filterProjects(projects, filters) {
             }
         }
         if (filters.projectDepartment) {
-            if (!project.projectDepartment.toLowerCase().includes(filters.projectDepartment.toLowerCase())) {
+            if (!project.projectDepartment.includes(filters.projectDepartment)) {
                 return false;
             }
         }
         if (filters.projectStatus) {
-            if (!project.projectStatus.toLowerCase().includes(filters.projectStatus.toLowerCase())) {
+            if (!project.projectStatus.includes(filters.projectStatus)) {
                 return false;
             }
         }
         if (filters.projectManager) {
-            if (!project.projectManager.toLowerCase().includes(filters.projectManager.toLowerCase())) {
+            if (!project.projectManager.includes(filters.projectManager)) {
                 return false;
             }
         }
