@@ -256,34 +256,33 @@ export class AssetReport extends React.Component<any, any> {
                             tags.map((tag, index) =>
                                 <div className='col-md-12' key={index}>
                                     <div className='panel'>
-                                        <div className='panel-body text-center'>
-                                            <div className='col-md-3'>
-                                                {tag.parentType == 'Project' &&
-                                                    <div>
-                                                        <img src='./images/project.png'></img>
-                                                        <div><h4><b>{tag.parentType}</b></h4></div>
-                                                    </div>
-                                                }
-                                                {tag.parentType == 'Phase' &&
-                                                    <div>
-                                                        <img src='./images/phaseGrey.png'></img>
-                                                        <div><h4><b>{tag.parentName}</b></h4></div>
-                                                    </div>
-                                                }
+                                        <Link to={'/' + tag.parentType + '/id=' + tag.parentID}>
+                                            <div className='panel-body text-center panel-button'>
+                                                <div className='col-md-4'>
+                                                    {tag.parentType == 'Project' &&
+                                                        <div>
+                                                            <img src='./images/project.png'></img>
+                                                            <div><h4><b>{tag.parentType}</b></h4></div>
+                                                        </div>
+                                                    }
+                                                    {tag.parentType == 'Phase' &&
+                                                        <div>
+                                                            <img src='./images/phaseGrey.png'></img>
+                                                            <div><h4><b>{tag.parentName}</b></h4></div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div style={{ paddingTop: '15px' }} className='col-md-8'>
+                                                    {tag.parentType == "Project" &&
+                                                        <h3><b>{tag.parentName}</b></h3>
+                                                    }
+                                                    {tag.parentType == "Phase" &&
+                                                        <h3><b>{this.getProject(tag.parentID)}</b></h3>
+                                                    }
+                                                    <h4><i>"{tag.tagDescription}"</i></h4>
+                                                </div>
                                             </div>
-                                            <div style={{ paddingTop: '15px' }} className='col-md-6'>
-                                                {tag.parentType == "Project" &&
-                                                    <h3><b>{tag.parentName}</b></h3>
-                                                }
-                                                {tag.parentType == "Phase" &&
-                                                    <h3><b>{this.getProject(tag.parentID)}</b></h3>
-                                                }
-                                                <h4><i>"{tag.tagDescription}"</i></h4>
-                                            </div>
-                                            <div className='col-md-3'>
-                                                <Link to={'/' + tag.parentType + '/id=' + tag.parentID} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
-                                            </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             )

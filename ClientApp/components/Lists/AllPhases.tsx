@@ -119,18 +119,15 @@ export class AllPhases extends React.Component<any, any> {
         const renderItems = currentItems.map((phase, index) => {
             return <div className='col-md-12' key={index}>
                 <div className='panel'>
-                    <div className='panel-body text-center'>
-                        <div className='col-md-3'>
+                    <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel-body text-center panel-button'>
+                        <div className='col-md-5'>
                             <img src='./images/phaseGrey.png' style={imgHeight} />
                             <h4><b>{phase.phaseName}</b></h4>
                         </div>
                         <div style={padding15}>
-                            <div className='col-md-6'>
+                            <div className='col-md-7'>
                                 <h3><b>{this.returnProjectName(phase.projectID)}</b></h3>
                                 <h5><i>Project</i></h5>
-                            </div>
-                            <div className='col-md-3'>
-                                <button onClick={() => this.getPhaseLink(phase.phaseID)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
                             </div>
                         </div>
                     </div>

@@ -93,14 +93,11 @@ export class ProgramsFunds extends React.Component<any, any> {
         const renderItems = currentItems.map((fund, index) => {
             return <div className='col-md-12' key={index}>
                 <div className='panel'>
-                    <div className='panel-body text-center'>
-                        <div className='col-md-8'>
+                    <div onClick={() => this.viewFund(fund)} className='panel-body text-center panel-button'>
+                        <div className='col-md-12'>
                             <h3><b>{fund.fundName}</b></h3>
                             <h4>{fund.fundYear}</h4>
                             <h4><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
-                        </div>
-                        <div className='col-md-4' style={{ paddingTop: '15px' }}>
-                            <button onClick={() => this.viewFund(fund)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </div>
                 </div>

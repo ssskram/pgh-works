@@ -139,13 +139,13 @@ export class AllAssets extends React.Component<any, any> {
             const src = returnAssetIcon(asset.assetType)
             return <div className='col-md-12' key={index}>
                 <div className='panel'>
-                    <div className='panel-body text-center'>
-                        <div className='col-md-2'>
+                    <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center panel-button'>
+                        <div className='col-md-3'>
                             <img src={src} style={imgHeight} />
                             <h4><b>{asset.assetType}</b></h4>
                         </div>
                         <div style={padding15}>
-                            <div className='col-md-5'>
+                            <div className='col-md-6'>
                                 <h3><b>{asset.assetName}</b></h3>
                                 <h4>Cartegraph ID: <b>{asset.assetOID}</b></h4>
                             </div>
@@ -157,9 +157,6 @@ export class AllAssets extends React.Component<any, any> {
                                 <div className='hidden-md hidden-lg hidden-xl'>
                                     <h4>Reference{asset.countReferences != 1 && 's'}: <b>{asset.countReferences}</b></h4>
                                 </div>
-                            </div>
-                            <div className='col-md-2'>
-                                <button onClick={() => this.getAssetLink(asset)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
                             </div>
                         </div>
                     </div>

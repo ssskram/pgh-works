@@ -462,6 +462,7 @@ textarea {
 
 .panel-button:hover {
     background-color: rgba(92, 184, 92, .09);
+    cursor: pointer;
 }
 
 /* Datatables
