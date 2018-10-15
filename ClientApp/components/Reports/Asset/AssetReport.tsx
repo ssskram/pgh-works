@@ -37,6 +37,10 @@ export class AssetReport extends React.Component<any, any> {
             assetName: '',
             assetType: '',
             assetShape: '',
+            // because incoming tags are manipulated so much, 
+            // cache the original array returned from processing
+            // to return to on filter clear
+            tagsImmutable: [],
             tags: []
         }
     }
@@ -94,6 +98,7 @@ export class AssetReport extends React.Component<any, any> {
             const uniqueTags = removeDuplicates(allTags, "parentID")
             this.setState({
                 tags: uniqueTags,
+                tagsImmutable: uniqueTags,
                 spinner: false
             })
         } else {
@@ -102,6 +107,7 @@ export class AssetReport extends React.Component<any, any> {
             })
             this.setState({
                 tags: allTags,
+                tagsImmutable: allTags,
                 spinner: false
             })
         }
@@ -132,7 +138,7 @@ export class AssetReport extends React.Component<any, any> {
                     newTags.push(tag)
                 }
             })
-        }); 
+        });
         const uniqueTags = removeDuplicates(newTags, "parentID")
         this.setState({
             tags: uniqueTags
@@ -140,8 +146,9 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     reset() {
-        this.findAsset(this.props.match.params.street, this.props.assets, true)
-        this.findTags(this.props.match.params.street, this.props.tags, true)
+        this.setState ({
+            tags: this.state.tagsImmutable
+        })
     }
 
     getProject(phaseID) {
@@ -154,6 +161,10 @@ export class AssetReport extends React.Component<any, any> {
         return project.projectName
     }
 
+    receiveFilteredTags(tags) {
+
+    }
+
     public render() {
         const {
             spinner,
@@ -164,7 +175,7 @@ export class AssetReport extends React.Component<any, any> {
             assetShape,
             tags
         } = this.state
-        
+
         if (redirect) {
             <Redirect push to={redirectLink} />
         }
@@ -202,7 +213,15 @@ export class AssetReport extends React.Component<any, any> {
                             </div>
                         }
                         <div className='col-md-12'>
-                            <h3>Related projects & phases <span style={{ marginTop: '-5px' }} className='pull-right'><TagFilter /></span></h3>
+                            <h3>
+                                Related projects & phases
+                                <span style={{ marginTop: '-5px' }} className='pull-right'>
+                                    <TagFilter
+                                        tags={tags}
+                                        reset={this.reset.bind(this)}
+                                        returnFiltered={this.receiveFilteredTags.bind(this)} />
+                                </span>
+                            </h3>
                             <hr />
                         </div>
                         {tags.length == 0 &&

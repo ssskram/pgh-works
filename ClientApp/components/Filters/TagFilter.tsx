@@ -2,12 +2,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
+import * as Projects from '../../store/projects'
+import * as Phases from '../../store/phases'
 import Select from '../FormElements/select'
 import Datepicker from '../FormElements/datepicker'
 import Modal from 'react-responsive-modal'
 import * as moment from 'moment'
-import * as Tags from '../../store/tags'
 import { Helmet } from "react-helmet"
+import filterTags from './../../functions/filters/filterTags'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
@@ -24,6 +26,7 @@ export class TagFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            onFilter: false,
             modalIsOpen: false,
             parentType: '',
             startDate: '',
@@ -64,13 +67,31 @@ export class TagFilter extends React.Component<any, any> {
     }
 
     filter() {
+        const filterLoad = {
+            parentType: this.state.parentType,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate
+        }
+        this.props.returnFiltered(filterTags(this.props.tags, this.props.projects, this.props.phases, filterLoad))
         this.setState({
+            onFilter: true,
             modalIsOpen: false
+        })
+    }
+
+    clearFilter() {
+        this.props.reset()
+        this.setState({
+            onFilter: false,
+            parentType: '',
+            startDate: '',
+            endDate: ''
         })
     }
 
     public render() {
         const {
+            onFilter,
             modalIsOpen,
             parentType,
             startDate,
@@ -81,10 +102,18 @@ export class TagFilter extends React.Component<any, any> {
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                    <span className='hidden-sm hidden-xs'>Filter</span>
-                </button>
+                {onFilter == false &&
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                        <span className='hidden-sm hidden-xs'>Filter</span>
+                    </button>
+                }
+                {onFilter == true &&
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
+                        <span className='hidden-sm hidden-xs'>Clear</span>
+                    </button>
+                }
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
@@ -138,9 +167,11 @@ export class TagFilter extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.tags,
+        ...state.projects,
+        ...state.phases
     }),
     ({
-        ...Tags.actionCreators,
+        ...Projects.actionCreators,
+        ...Phases.actionCreators
     })
 )(TagFilter as any) as typeof TagFilter
