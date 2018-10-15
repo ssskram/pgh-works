@@ -11,17 +11,17 @@ export default function filterProjects(projects, filters) {
             }
         }
         if (filters.projectDepartment) {
-            if (!project.projectDepartment.toLowerCase().includes(filters.projectDepartment.toLowerCase())) {
+            if (!project.projectDepartment.includes(filters.projectDepartment)) {
                 return false
             }
         }
         if (filters.projectStatus) {
-            if (!project.projectStatus.toLowerCase().includes(filters.projectStatus.toLowerCase())) {
+            if (!project.projectStatus.includes(filters.projectStatus)) {
                 return false
             }
         }
         if (filters.projectManager) {
-            if (!project.projectManager.toLowerCase().includes(filters.projectManager.toLowerCase())) {
+            if (!project.projectManager.includes(filters.projectManager)) {
                 return false
             }
         }

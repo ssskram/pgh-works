@@ -6,7 +6,9 @@ import Datepicker from '../FormElements/datepicker'
 import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
+import * as Phases from '../../store/phases'
 import * as Projects from '../../store/projects'
+import filterPhases from './../../functions/filters/filterPhases'
 import { Helmet } from "react-helmet"
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
@@ -34,6 +36,7 @@ export class PhaseFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            onFilter: false,
             modalIsOpen: false,
             phaseName: '',
             startDate: '',
@@ -84,13 +87,35 @@ export class PhaseFilter extends React.Component<any, any> {
     }
 
     filter() {
+        const filterLoad = {
+            phaseName: this.state.phaseName,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            phaseStatus: this.state.phaseStatus,
+            projectName: this.state.projectName
+        }
+        this.props.returnFiltered(filterPhases(this.props.phases, this.props.projects, filterLoad))
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            onFilter: true
+        })
+    }
+
+    clearFilter() {
+        this.props.returnFiltered(this.props.phases)
+        this.setState({
+            onFilter: false,
+            phaseName: '',
+            startDate: '',
+            endDate: '',
+            phaseStatus: '',
+            projectName: ''
         })
     }
 
     public render() {
         const {
+            onFilter,
             modalIsOpen,
             phaseName,
             startDate,
@@ -98,15 +123,24 @@ export class PhaseFilter extends React.Component<any, any> {
             phaseStatus,
             projectName
         } = this.state
+
         return (
             <div>
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                    <span className='hidden-sm hidden-xs'>Filter</span>
-                </button>
+                {onFilter == false &&
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                        <span className='hidden-sm hidden-xs'>Filter</span>
+                    </button>
+                }
+                {onFilter == true &&
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
+                        <span className='hidden-sm hidden-xs'>Clear</span>
+                    </button>
+                }
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
@@ -185,8 +219,10 @@ export class PhaseFilter extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.projects,
+        ...state.phases
     }),
     ({
         ...Projects.actionCreators,
+        ...Phases.actionCreators
     })
 )(PhaseFilter as any) as typeof PhaseFilter

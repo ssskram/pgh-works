@@ -41,7 +41,7 @@ export class AllPhases extends React.Component<any, any> {
             this.setState({
                 phases: this.props.phases.sort(function (a, b) {
                     return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                }),
+                })
             })
         }
     }
@@ -87,6 +87,13 @@ export class AllPhases extends React.Component<any, any> {
         });
     }
 
+    receiveFilteredPhases(phases) {
+        this.setState({
+            phases: phases.sort(function (a, b) {
+                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
+            })
+        })
+    }
     public render() {
         const {
             phases,
@@ -122,7 +129,7 @@ export class AllPhases extends React.Component<any, any> {
                 </div>
             </div>
         })
-        
+
         return (
             <div>
                 <Hydrate />
@@ -132,7 +139,8 @@ export class AllPhases extends React.Component<any, any> {
                 <h2>
                     All Phases
                     <span style={{ marginTop: '-5px' }} className='pull-right'>
-                        <PhaseFilters />
+                        <PhaseFilters
+                            returnFiltered={this.receiveFilteredPhases.bind(this)} />
                     </span>
                 </h2>
                 <hr />
