@@ -12,11 +12,8 @@ import FundFilter from '../Filters/FundFilter'
 import * as CurrencyFormat from 'react-currency-format'
 import Spinner from './../Utilities/Spinner'
 
-const iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
+const emptyNotice = {
+    letterSpacing: '2px'
 }
 
 export class ProgramsFunds extends React.Component<any, any> {
@@ -38,7 +35,7 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
+        if (this.props != nextProps && this.state.onFilter == false) {
             if (nextProps.funds.length > 0) {
                 this.setState({
                     funds: nextProps.funds
@@ -72,7 +69,8 @@ export class ProgramsFunds extends React.Component<any, any> {
 
     receiveFilteredFunds(funds) {
         this.setState({
-            funds: funds
+            funds: funds,
+            onFilter: true
         })
     }
 
@@ -139,10 +137,10 @@ export class ProgramsFunds extends React.Component<any, any> {
                     </div>
                 }
                 {funds.length == 0 && onFilter == true &&
-                    <div className='col-md-12 text-center'>
-                        <br />
-                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h2><i>Nothing to see here</i></h2>
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice}>No funds matching those criteria</h2>
+                        </div>
                     </div>
                 }
             </div>

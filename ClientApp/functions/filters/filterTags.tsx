@@ -4,8 +4,6 @@
 import * as moment from 'moment'
 
 export default function filterTags(tags, projects, phases, filters) {
-    console.log(tags)
-    console.log(filters)
     const filtered = tags.filter(tag => {
         let parent = {} as any
         if (tag.parentType == 'Project') {

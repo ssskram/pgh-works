@@ -22,10 +22,15 @@ const iconStyle = {
     paddingLeft: '15px'
 }
 
+const emptyNotice = {
+    letterSpacing: '2px'
+}
+
 export class MyProjects extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
+            onFilter: false,
             projects: [],
             currentPage: 1
         }
@@ -38,7 +43,7 @@ export class MyProjects extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
+        if (this.props != nextProps && this.state.onFilter == false) {
             this.setMyProjects(nextProps)
         }
     }
@@ -73,12 +78,14 @@ export class MyProjects extends React.Component<any, any> {
         this.setState({
             projects: getMyProjects(projects, this.props.personnel, this.props.user).sort(function (a, b) {
                 return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            })
+            }),
+            onFilter: true
         })
     }
 
     public render() {
         const {
+            onFilter,
             projects,
             currentPage
         } = this.state
@@ -90,7 +97,7 @@ export class MyProjects extends React.Component<any, any> {
 
         const currentItems = returnCurrentItems(projects, currentPage)
         const pageNumbers = returnPageNumber(projects)
-        
+
         const renderItems = currentItems.map((project, index) => {
             const link = "/Project/id=" + project.projectID
             return <div className='col-md-12' key={index}>
@@ -149,11 +156,11 @@ export class MyProjects extends React.Component<any, any> {
                         <br />
                     </div>
                 }
-                {projects.length == 0 &&
-                    <div className='col-md-12 text-center'>
-                        <br />
-                        <h1><span><img style={iconStyle} src='./images/nothing.png' /></span></h1>
-                        <h2><i>Nothing to see here</i></h2>
+                {projects.length == 0 && onFilter == true &&
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice}>No projects matching those criteria</h2>
+                        </div>
                     </div>
                 }
             </div>

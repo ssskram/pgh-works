@@ -20,11 +20,16 @@ const padding15 = {
     padding: '15px'
 }
 
+const emptyNotice = {
+    letterSpacing: '2px'
+}
+
 export class AllPhases extends React.Component<any, any> {
     constructor(props) {
         super(props)
         this.state = {
             phases: [],
+            onFilter: false,
             currentPage: 1,
             redirectLink: '',
             redirect: false
@@ -47,7 +52,7 @@ export class AllPhases extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
+        if (this.props != nextProps && this.state.onFilter == false) {
             if (nextProps.phases.length > 0) {
                 this.setState({
                     phases: nextProps.phases.sort(function (a, b) {
@@ -91,16 +96,18 @@ export class AllPhases extends React.Component<any, any> {
         this.setState({
             phases: phases.sort(function (a, b) {
                 return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            })
+            }),
+            onFilter: true
         })
     }
-    
+
     public render() {
         const {
             phases,
             currentPage,
             redirectLink,
-            redirect
+            redirect,
+            onFilter
         } = this.state
 
         if (redirect) {
@@ -134,7 +141,7 @@ export class AllPhases extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                {phases.length == 0 &&
+                {phases.length == 0 && onFilter == false &&
                     <Spinner notice='...loading the phases...' />
                 }
                 <h2>
@@ -158,6 +165,13 @@ export class AllPhases extends React.Component<any, any> {
                             prev={this.handlePreviousClick.bind(this)} />
                         <br />
                         <br />
+                    </div>
+                }
+                {phases.length == 0 && onFilter == true &&
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice}>No phases matching those criteria</h2>
+                        </div>
                     </div>
                 }
             </div>

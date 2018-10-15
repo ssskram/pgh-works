@@ -22,6 +22,10 @@ const padding15 = {
     padding: '15px'
 }
 
+const emptyNotice = {
+    letterSpacing: '2px'
+}
+
 export class AllAssets extends React.Component<any, any> {
     constructor() {
         super()
@@ -29,7 +33,8 @@ export class AllAssets extends React.Component<any, any> {
             assets: [],
             currentPage: 1,
             redirectLink: '',
-            redirect: false
+            redirect: false,
+            onFilter: false
         }
     }
 
@@ -43,7 +48,7 @@ export class AllAssets extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
+        if (this.props != nextProps && this.state.onFilter == false) {
             this.setAssets(nextProps.assets)
         }
     }
@@ -108,12 +113,17 @@ export class AllAssets extends React.Component<any, any> {
     }
 
     receiveFilteredAssets(assets) {
-        this.setAssets(assets)
+        this.setState({
+            onFilter: true
+        }, function (this) {
+            this.setAssets(assets)
+        })
     }
 
     public render() {
         const {
             assets,
+            onFilter,
             redirectLink,
             redirect,
             currentPage
@@ -160,7 +170,7 @@ export class AllAssets extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                {assets.length == 0 &&
+                {assets.length == 0 && onFilter == false &&
                     <Spinner notice='...loading the assets...' />
                 }
                 <h2>
@@ -184,6 +194,13 @@ export class AllAssets extends React.Component<any, any> {
                             prev={this.handlePreviousClick.bind(this)} />
                         <br />
                         <br />
+                    </div>
+                }
+                {assets.length == 0 && onFilter == true &&
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice}>No assets matching those criteria</h2>
+                        </div>
                     </div>
                 }
             </div>

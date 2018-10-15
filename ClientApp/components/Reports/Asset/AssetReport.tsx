@@ -32,6 +32,7 @@ export class AssetReport extends React.Component<any, any> {
         super()
         this.state = {
             spinner: true,
+            onFilter: false,
             redirect: false,
             redirectLink: '',
             assetName: '',
@@ -60,7 +61,7 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.assets.length > 0 && nextProps.tags.length > 0) {
+        if (nextProps.assets.length > 0 && nextProps.tags.length > 0 && this.state.onFilter == false) {
             if (this.props.match.params.id) {
                 this.findAsset(this.props.match.params.id, nextProps.assets, false)
                 this.findTags(this.props.match.params.id, nextProps.tags, false)
@@ -146,8 +147,9 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     reset() {
-        this.setState ({
-            tags: this.state.tagsImmutable
+        this.setState({
+            tags: this.state.tagsImmutable,
+            onFilter: false
         })
     }
 
@@ -162,12 +164,16 @@ export class AssetReport extends React.Component<any, any> {
     }
 
     receiveFilteredTags(tags) {
-
+        this.setState({
+            tags: tags,
+            onFilter: true
+        })
     }
 
     public render() {
         const {
             spinner,
+            onFilter,
             redirect,
             redirectLink,
             assetName,
@@ -227,7 +233,12 @@ export class AssetReport extends React.Component<any, any> {
                         {tags.length == 0 &&
                             <div className='col-md-12' style={{ margin: '20px 0px' }}>
                                 <div className='text-center alert alert-info'>
-                                    <h2 style={emptyNotice} >No related projects or phases</h2>
+                                    {onFilter == false &&
+                                        <h2 style={emptyNotice} >No related projects or phases</h2>
+                                    }
+                                    {onFilter == true &&
+                                        <h2 style={emptyNotice} >Nothing matches those criteria</h2>
+                                    }
                                 </div>
                             </div>
                         }
