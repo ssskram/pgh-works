@@ -9,6 +9,7 @@ import Select from '../FormElements/select'
 import * as moment from 'moment'
 import Modal from 'react-responsive-modal'
 import filterFunds from './../../functions/filters/filterFunds'
+import removeDuplicates from './../../functions/removeDuplicates'
 
 const btnStyle = {
     fontSize: '22px'
@@ -25,6 +26,7 @@ export class FundFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            funds: [],
             onFilter: false,
             modalIsOpen: false,
             fundName: '',
@@ -33,6 +35,25 @@ export class FundFilter extends React.Component<any, any> {
             startDate: '',
             endDate: ''
         }
+    }
+
+    componentDidMount() {
+        this.setDropdowns()
+    }
+
+    componentWillReceiveProps() {
+        this.setDropdowns()
+    }
+
+    setDropdowns() {
+        const funds = [] as any
+        this.props.funds.forEach(fund => {
+            const fundSelect = { value: fund.fundName, label: fund.fundName, name: 'fundName' }
+            funds.push(fundSelect)
+        })
+        this.setState ({
+            funds: removeDuplicates(funds, "value")
+        })
     }
 
     closeModal() {
@@ -97,6 +118,7 @@ export class FundFilter extends React.Component<any, any> {
     public render() {
         const {
             onFilter,
+            funds,
             modalIsOpen,
             fundName,
             fundYear,
@@ -129,12 +151,14 @@ export class FundFilter extends React.Component<any, any> {
                     center>
                     <div>
                         <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={fundName}
                                 name="fundName"
-                                header="Fund/Program name"
-                                placeholder="Enter a name"
-                                callback={this.handleChildChange.bind(this)}
+                                header='Fund/Program name'
+                                placeholder='Select fund'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={funds}
                             />
                         </div>
 
