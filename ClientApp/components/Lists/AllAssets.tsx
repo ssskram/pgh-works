@@ -39,18 +39,18 @@ export class AllAssets extends React.Component<any, any> {
         // ping server
         this.props.ping()
 
-        this.setAssets(this.props)
+        this.setAssets(this.props.assets)
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props != nextProps) {
-            this.setAssets(nextProps)
+            this.setAssets(nextProps.assets)
         }
     }
 
-    setAssets(props) {
+    setAssets(assets) {
         // filter out duplicate streets
-        var uniqueAssetNames = removeDuplicates(props.assets, "assetName")
+        var uniqueAssetNames = removeDuplicates(assets, "assetName")
         uniqueAssetNames.forEach(item => {
             item.countReferences = this.returnCountTags(item)
         })
@@ -105,6 +105,10 @@ export class AllAssets extends React.Component<any, any> {
         this.setState({
             currentPage: current - 1
         });
+    }
+
+    receiveFilteredAssets(assets) {
+        this.setAssets(assets)
     }
 
     public render() {
@@ -162,7 +166,8 @@ export class AllAssets extends React.Component<any, any> {
                 <h2>
                     All Assets
                     <span style={{ marginTop: '-5px' }} className='pull-right'>
-                        <AssetFilter />
+                        <AssetFilter
+                            returnFiltered={this.receiveFilteredAssets.bind(this)} />
                     </span>
                 </h2>
                 <hr />

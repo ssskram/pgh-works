@@ -6,6 +6,7 @@ import Input from '../FormElements/input'
 import Select from '../FormElements/select'
 import Modal from 'react-responsive-modal'
 import * as Assets from '../../store/GETS/taggableAssets'
+import filterAssets from './../../functions/filters/filterAssets'
 import { Helmet } from "react-helmet"
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
@@ -33,6 +34,7 @@ export class AssetFilter extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            onFilter: false,
             modalIsOpen: false,
             assetName: '',
             assetType: ''
@@ -60,13 +62,29 @@ export class AssetFilter extends React.Component<any, any> {
     }
 
     filter() {
+        const filterLoad = {
+            assetName: this.state.assetName,
+            assetType: this.state.assetType
+        }
+        this.props.returnFiltered(filterAssets(this.props.assets, filterLoad))
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            onFilter: true
+        })
+    }
+
+    clearFilter() {
+        this.props.returnFiltered(this.props.assets)
+        this.setState({
+            onFilter: false,
+            assetName: '',
+            assetType: ''
         })
     }
 
     public render() {
         const {
+            onFilter,
             modalIsOpen,
             assetName,
             assetType,
@@ -76,10 +94,18 @@ export class AssetFilter extends React.Component<any, any> {
                 <Helmet>
                     <style>{dropdownStyle}</style>
                 </Helmet>
-                <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
-                    <span style={{padding: '3px'}} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                    <span className='hidden-sm hidden-xs'>Filter</span>
-                </button>
+                {onFilter == false &&
+                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
+                        <span className='hidden-sm hidden-xs'>Filter</span>
+                    </button>
+                }
+                {onFilter == true &&
+                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn btn-secondary'>
+                        <span className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-remove'></span>
+                        <span className='hidden-sm hidden-xs'>Clear</span>
+                    </button>
+                }
                 <Modal
                     open={modalIsOpen}
                     onClose={this.closeModal.bind(this)}
