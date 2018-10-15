@@ -16,7 +16,7 @@ export default function filterFunds(funds, filters) {
             }
         }
         if (filters.fundType) {
-            if (!fund.fundType.includes(filters.fundType)) {
+            if (!fund.fundType.toLowerCase().includes(filters.fundType.toLowerCase())) {
                 return false
             }
         }

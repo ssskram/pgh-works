@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "15764b38987916f48677"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aa83e2ff75ae80c3b883"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66457,7 +66457,7 @@ function filterFunds(funds, filters) {
             }
         }
         if (filters.fundType) {
-            if (!fund.fundType.includes(filters.fundType)) {
+            if (!fund.fundType.toLowerCase().includes(filters.fundType.toLowerCase())) {
                 return false;
             }
         }
