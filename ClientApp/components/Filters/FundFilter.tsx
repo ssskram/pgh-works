@@ -51,7 +51,7 @@ export class FundFilter extends React.Component<any, any> {
             const fundSelect = { value: fund.fundName, label: fund.fundName, name: 'fundName' }
             funds.push(fundSelect)
         })
-        this.setState ({
+        this.setState({
             funds: removeDuplicates(funds, "value")
         })
     }
@@ -183,7 +183,11 @@ export class FundFilter extends React.Component<any, any> {
                                 options={types}
                             />
                         </div>
-                        <div className='col-md-12'>Expiration</div>
+                        <div>
+                            <div className="col-md-12" style={{paddingLeft: '30px'}}>
+                                <h4 className="form-h4">Expiration date</h4>
+                            </div>
+                        </div>
                         <div className='col-md-6'>
                             <Datepicker
                                 value={startDate}

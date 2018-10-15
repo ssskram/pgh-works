@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c1be3d6db7ba41c785fd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8f8e66b4a3771a2fe70d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59599,7 +59599,9 @@ var FundFilter = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: fundYear, name: "fundYear", header: "Fund year", placeholder: "Enter a year", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: fundType, name: "fundType", header: 'Fund type', placeholder: 'Select type', onChange: this.handleChildSelect.bind(this), multi: false, options: types })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, "Expiration"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-12", style: { paddingLeft: '30px' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" }, "Expiration date"))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", placeholder: "Select a start date", callback: function (value) { return _this.handleDate(value, 'startDate'); } })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
