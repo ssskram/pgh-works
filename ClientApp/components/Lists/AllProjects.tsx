@@ -89,9 +89,9 @@ export class AllProjects extends React.Component<any, any> {
         const renderItems = currentItems.map((project, index) => {
             const link = "/Project/id=" + project.projectID
             return <div className='col-md-12' key={index}>
-                <div className='panel'>
-                    <Link to={link}>
-                        <div className='panel-body text-center panel-button'>
+                <Link to={link}>
+                <div className='panel panel-button'>
+                        <div className='panel-body text-center'>
                             <div className='col-md-6' style={{ padding: '15px' }}>
                                 <h3><b>{project.projectName}</b></h3>
                                 {project.actualStartDate && project.actualEndDate &&
@@ -108,8 +108,8 @@ export class AllProjects extends React.Component<any, any> {
                                 <MapThumbnail shape={project.shape.points} />
                             </div>
                         </div>
-                    </Link>
                 </div>
+                </Link>
             </div>
         })
 

@@ -12,14 +12,6 @@ import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import Spinner from './../Utilities/Spinner'
 
-const imgHeight = {
-    height: '50px'
-}
-
-const padding15 = {
-    padding: '15px'
-}
-
 const emptyNotice = {
     letterSpacing: '2px'
 }
@@ -117,17 +109,20 @@ export class AllPhases extends React.Component<any, any> {
         const currentItems = returnCurrentItems(phases, currentPage)
         const pageNumbers = returnPageNumber(phases)
         const renderItems = currentItems.map((phase, index) => {
-            return <div className='col-md-12' key={index}>
-                <div className='panel'>
-                    <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel-body text-center panel-button'>
-                        <div className='col-md-5'>
-                            <img src='./images/phaseGrey.png' style={imgHeight} />
-                            <h4><b>{phase.phaseName}</b></h4>
-                        </div>
-                        <div style={padding15}>
-                            <div className='col-md-7'>
-                                <h3><b>{this.returnProjectName(phase.projectID)}</b></h3>
-                                <h5><i>Project</i></h5>
+            let src = ''
+            if (phase.phaseStatus == "On hold") {
+                src = './images/onHold.png'
+            }
+            return <div className='col-lg-4 col-md-6 col-sm-12 col-xs-12' key={index}>
+                <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel panel-button'>
+                    <div className='panel-body text-center'>
+                        <div>
+                            <div className='col-md-12'>
+                                <h2><b>{phase.phaseName}</b></h2>
+                                <h6><i>Project</i></h6>
+                                <h4>{this.returnProjectName(phase.projectID)}</h4>
+                                <h6><i>Status</i></h6>
+                                <h4>{phase.phaseStatus}</h4>
                             </div>
                         </div>
                     </div>

@@ -461,8 +461,35 @@ textarea {
 }
 
 .panel-button:hover {
-    background-color: rgba(92, 184, 92, .09);
+    background-color: rgb(44, 62, 80);
+    color: white !important;
     cursor: pointer;
+}
+
+.panel-button:active {
+    background-color: rgb(26, 36, 47);
+}
+
+.panel-button:hover h1, 
+.panel-button:hover h2, 
+.panel-button:hover h3, 
+.panel-button:hover h4, 
+.panel-button:hover h5, 
+.panel-button:hover h6 {
+    color: white;
+}
+
+.panel-img-container {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.panel-button:hover .panel-img-container {
+    background-color: #fffaee;
+    box-shadow: inset 0 0 10px #000000;
 }
 
 /* Datatables
