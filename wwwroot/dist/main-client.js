@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f2fd24cab2ffd2feca03"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4323113ae0e21115b366"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58643,12 +58643,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var iconStyle = {
-    color: '#fff',
-    marginTop: '-5px',
-    paddingRight: '15px',
-    paddingLeft: '15px'
-};
 var PhaseCard = (function (_super) {
     __extends(PhaseCard, _super);
     function PhaseCard() {
@@ -58670,33 +58664,30 @@ var PhaseCard = (function (_super) {
         var link = "/Phase/id=" + phase.phaseID;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
-                        phase.actualStartDate && phase.actualEndDate &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                phase.actualStartDate,
-                                " - ",
-                                phase.actualEndDate),
-                        !phase.actualStartDate && !phase.actualEndDate &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                phase.expectedStartDate,
-                                " - ",
-                                phase.expectedEndDate)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                            allMilestones.length,
-                            " Milestone",
-                            allMilestones.length != 1 && 's'),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            allSubphases.length,
-                            " Subphase",
-                            allSubphases.length != 1 && 's')),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link, className: 'btn btn-success' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center panel-button" },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: iconStyle, className: 'glyphicon glyphicon-arrow-right' }))))))));
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
+                            phase.actualStartDate && phase.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    phase.actualStartDate,
+                                    " - ",
+                                    phase.actualEndDate),
+                            !phase.actualStartDate && !phase.actualEndDate &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    phase.expectedStartDate,
+                                    " - ",
+                                    phase.expectedEndDate)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                                allMilestones.length,
+                                " Milestone",
+                                allMilestones.length != 1 && 's'),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                allSubphases.length,
+                                " Subphase",
+                                allSubphases.length != 1 && 's')))))));
     };
     return PhaseCard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
