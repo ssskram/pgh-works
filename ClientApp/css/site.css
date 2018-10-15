@@ -92,7 +92,7 @@ hr {
     }
     .main-nav .navbar li {
         float: none;
-        font-size: 20px;
+        font-size: 18px;
         margin: 10px;
     }
     .main-nav .navbar li a {
@@ -398,7 +398,7 @@ textarea {
 }
 
 .btn-big {
-    font-size: 22px;
+    font-size: 18px;
     padding: 15px 40px !important;
     width: 80%;
     line-height: 1.5em;
@@ -458,6 +458,10 @@ textarea {
 .panel-title {
     font-size: 18px;
     color: #424242;
+}
+
+.panel-button:hover {
+    background-color: rgba(92, 184, 92, .09);
 }
 
 /* Datatables

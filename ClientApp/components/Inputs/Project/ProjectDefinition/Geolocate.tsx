@@ -14,7 +14,7 @@ const imgSize = {
 }
 
 const bigFont = {
-    fontSize: '30px'
+    fontSize: '25px'
 }
 
 const saveBtn = {

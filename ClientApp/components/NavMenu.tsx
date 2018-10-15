@@ -14,7 +14,7 @@ const marginTop = {
 }
 
 const iconStyle = {
-    height: '28px',
+    height: '25px',
     marginTop: '-3px',
     marginLeft: '5px',
     marginRight: '15px'
