@@ -459,7 +459,7 @@ textarea {
 }
 
 .panel-button:hover {
-    background-color: #337ab7 !important;
+    background-color: #286090 !important;
     color: white !important;
     cursor: pointer;
 }
@@ -684,7 +684,7 @@ td {
     margin: 0 auto !important;
     background: #fffcf5;
     max-height: 100vh;
-    min-width: 35vw;
+    min-width: 350px;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-top: 25px !important;
