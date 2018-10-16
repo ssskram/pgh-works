@@ -260,23 +260,35 @@ export class AssetReport extends React.Component<any, any> {
                                                 <div className='col-md-4'>
                                                     {tag.parentType == 'Project' &&
                                                         <div>
-                                                            <img src={projectImg as string}></img>
-                                                            <div><h4><b>{tag.parentType}</b></h4></div>
+                                                            <div className='panel-img-container'>
+                                                                <span className='panel-img-helper'>
+                                                                </span>
+                                                                <img src={projectImg as string}></img>
+                                                            </div>
                                                         </div>
                                                     }
                                                     {tag.parentType == 'Phase' &&
                                                         <div>
-                                                            <img src={phaseImg as string}></img>
-                                                            <div><h4><b>{tag.parentName}</b></h4></div>
+                                                            <div className='panel-img-container'>
+                                                                <span className='panel-img-helper'>
+                                                                </span>
+                                                                <img src={phaseImg as string}></img>
+                                                            </div>
                                                         </div>
                                                     }
                                                 </div>
                                                 <div style={{ paddingTop: '15px' }} className='col-md-8'>
                                                     {tag.parentType == "Project" &&
-                                                        <h3><b>{tag.parentName}</b></h3>
+                                                        <div>
+                                                            <h3><b>{tag.parentName}</b></h3>
+                                                            <div><h4>{tag.parentType}</h4></div>
+                                                        </div>
                                                     }
                                                     {tag.parentType == "Phase" &&
-                                                        <h3><b>{this.getProject(tag.parentID)}</b></h3>
+                                                        <div>
+                                                            <h3><b>{this.getProject(tag.parentID)}</b></h3>
+                                                            <div><h4><b>{tag.parentName}</b></h4></div>
+                                                        </div>
                                                     }
                                                     <h4><i>"{tag.tagDescription}"</i></h4>
                                                 </div>

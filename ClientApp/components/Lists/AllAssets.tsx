@@ -14,10 +14,6 @@ import Spinner from '../Utilities/Spinner'
 import removeDuplicates from './../../functions/removeDuplicates'
 import returnAssetIcon from './../../functions/getAssetIcon'
 
-const imgHeight = {
-    height: '50px'
-}
-
 const padding15 = {
     padding: '15px'
 }
@@ -141,15 +137,19 @@ export class AllAssets extends React.Component<any, any> {
                 <div className='panel panel-button'>
                     <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center'>
                         <div className='col-md-3'>
-                            <img src={src} style={imgHeight} />
-                            <h4><b>{asset.assetType}</b></h4>
+                            <div className='panel-img-container'>
+                                <span className='panel-img-helper'>
+                                </span>
+                                <img src={src}></img>
+                            </div>
                         </div>
                         <div style={padding15}>
                             <div className='col-md-6'>
                                 <h3><b>{asset.assetName}</b></h3>
+                                <h4>{asset.assetType}</h4>
                                 <h4>Cartegraph ID: <b>{asset.assetOID}</b></h4>
                             </div>
-                            <div className='col-md-3'>
+                            <div className='col-md-3' style={padding15}>
                                 <div className='hidden-sm hidden-xs'>
                                     <h3><b>{asset.countReferences}</b></h3>
                                     <h4>Reference{asset.countReferences != 1 && 's'}</h4>

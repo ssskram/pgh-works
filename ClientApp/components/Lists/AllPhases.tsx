@@ -119,20 +119,24 @@ export class AllPhases extends React.Component<any, any> {
                 src = programmingImg
             }
             if (phase.phaseName == "Construction") {
-                src= constructionImg
+                src = constructionImg
             }
             if (phase.phaseName == "Design") {
-                src= designImg
+                src = designImg
             }
             if (phase.phaseName == "Multi-faceted") {
-                src= multiImg
+                src = multiImg
             }
             return <div className='col-lg-4 col-md-6 col-sm-12 col-xs-12 clearfix' key={index}>
                 <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel panel-button'>
                     <div className='panel-body text-center'>
                         <div>
                             <div className='col-md-12'>
-                                <img src={src}></img>
+                                <div className='panel-img-container'>
+                                    <span className='panel-img-helper'>
+                                    </span>
+                                    <img src={src}></img>
+                                </div>
                                 <h2><b>{phase.phaseName}</b></h2>
                                 <h6><i>Project</i></h6>
                                 <h4>{this.returnProjectName(phase.projectID)}</h4>

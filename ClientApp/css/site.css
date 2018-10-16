@@ -477,7 +477,20 @@ textarea {
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    margin-top: 40px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.panel-img-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.panel-img-container img {
+    vertical-align: middle;
+    max-height: 70px;
+    max-width: 70px;
 }
 
 .panel-button:hover .panel-img-container {
