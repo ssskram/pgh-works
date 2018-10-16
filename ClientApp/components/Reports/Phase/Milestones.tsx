@@ -217,7 +217,7 @@ export class Milestones extends React.Component<any, any> {
                     Milestones
                     <span>
                         {canEdit == true &&
-                            <button onClick={this.openModal.bind(this)} title='Add milestone' type='button' className='btn  btn-primary pull-right hidden-xs'>
+                            <button onClick={this.openModal.bind(this)} title='Add milestone' type='button' className='btn  btn-secondary pull-right hidden-xs'>
                                 <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
                             </button>
                         }

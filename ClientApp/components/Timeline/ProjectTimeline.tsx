@@ -89,7 +89,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                         <span style={{ backgroundColor: 'rgba(255, 167, 167, .6)', padding: '8px' }}>Actual</span>
                     </div>
                     <Link to={'/Timeline'}>
-                        <button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn  btn-primary pull-right'>
+                        <button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn  btn-secondary pull-right'>
                             <span className='glyphicon'>
                                 <img style={iconStyle} src='./images/timelineDark.png'></img>
                             </span>

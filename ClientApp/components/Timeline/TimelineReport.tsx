@@ -185,7 +185,7 @@ export class Timeline extends React.Component<any, any> {
                     <div className='col-md-12 text-center'>
                         <h1>The timeline is empty</h1>
                         <h1><span><img style={imgStyle} src='./images/nothing.png' /></span></h1>
-                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn  btn-primary'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span></h3>
+                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn  btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span></h3>
                     </div>
                 }
             </div>
