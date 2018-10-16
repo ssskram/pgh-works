@@ -2,43 +2,56 @@
 // provided the asset/tag type, will return a 
 // src string for relevant icon image
 
+const steps = require('./../images/assetTypes/steps.png')
+const facilities = require('./../images/assetTypes/facilities.png')
+const projects = require('./../images/assetTypes/projects.png')
+const wall = require('./../images/assetTypes/wall.png')
+const pools = require('./../images/assetTypes/pools.png')
+const playground = require('./../images/assetTypes/playground.png')
+const signal = require('./../images/assetTypes/signal.png')
+const bridge = require('./../images/assetTypes/bridges.png')
+const court = require('./../images/assetTypes/courts.png')
+const baseball = require('./../images/assetTypes/baseball.png')
+const park = require('./../images/assetTypes/parks.png')
+const street = require('./../images/assetTypes/street.png')
+
 export default function returnAssetIcon(type) {
     let src = ''
     if (type == "Steps") {
-        src = './images/assetTypes/steps.png'
+        src = steps as string
     }
     if (type == "Facility") {
-        src = './images/assetTypes/facilities.png'
+        src = facilities as string
     }
     if (type == "Project") {
-        src = './images/assetTypes/projects.png'
+        src = projects as string
     }
     if (type == "Retaining Wall") {
-        src = './images/assetTypes/wall.png'
+        src = wall as string
     }
     if (type == "Pool") {
-        src = './images/assetTypes/pools.png'
+        src = pools as string
     }
     if (type == "Playground") {
-        src = './images/assetTypes/playground.png'
+        src = playground as string
     }
     if (type == "Intersection") {
-        src = './images/assetTypes/signal.png'
+        src = signal as string
     }
     if (type == "Bridge") {
-        src = './images/assetTypes/bridges.png'
+        src = bridge as string
     }
     if (type == "Court") {
-        src = './images/assetTypes/courts.png'
+        src = court as string
     }
     if (type == "Playing Field") {
-        src = './images/assetTypes/baseball.png'
+        src = baseball as string
     }
     if (type == "Park") {
-        src = './images/assetTypes/parks.png'
+        src = park as string
     }
     if (type == "Street") {
-        src = './images/assetTypes/street.png'
+        src = street as string
     }
     return src
 }
