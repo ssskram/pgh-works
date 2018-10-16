@@ -13,10 +13,6 @@ import filterTags from './../../functions/filters/filterTags'
 
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
-const btnStyle = {
-    fontSize: '22px'
-}
-
 const types = [
     { value: 'Project', label: 'Project', name: 'parentType' },
     { value: 'Phase', label: 'Phase', name: 'parentType' },
@@ -103,12 +99,12 @@ export class TagFilter extends React.Component<any, any> {
                     <style>{dropdownStyle}</style>
                 </Helmet>
                 {onFilter == false &&
-                    <button onClick={this.openModal.bind(this)} style={btnStyle} className='btn  btn-primary'>
+                    <button onClick={this.openModal.bind(this)} className='btn  btn-primary'>
                         <span>Filter</span>
                     </button>
                 }
                 {onFilter == true &&
-                    <button onClick={this.clearFilter.bind(this)} style={btnStyle} className='btn  btn-primary'>
+                    <button onClick={this.clearFilter.bind(this)} className='btn  btn-primary'>
                         <span>Clear</span>
                     </button>
                 }

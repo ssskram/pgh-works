@@ -23,10 +23,6 @@ const emptyNotice = {
     letterSpacing: '2px'
 }
 
-const marginTop = {
-    marginTop: '25px'
-}
-
 export class AssetReport extends React.Component<any, any> {
     constructor() {
         super()
@@ -220,7 +216,7 @@ export class AssetReport extends React.Component<any, any> {
                         <div className='col-md-12'>
                             <h3 className='hidden-xs'>
                                 Related projects & phases
-                                <span style={{ marginTop: '-5px' }} className='pull-right'>
+                                <span className='pull-right'>
                                     <TagFilter
                                         tags={tags}
                                         reset={this.reset.bind(this)}

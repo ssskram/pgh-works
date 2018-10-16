@@ -340,7 +340,7 @@ textarea {
 
 .btn-primary {
     padding: 10px 10px !important;
-    margin: 0px !important;
+    /* margin: 0px !important; */
 }
 
 .btn-info {
