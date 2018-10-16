@@ -12,8 +12,11 @@ import * as TimelineStore from '../../store/timeline'
 import TL from './Timeline'
 import Table from 'react-table'
 
+const nothingImg = require('./../../images/nothing.png')
+const timelineImg = require('./../../images/timelineDark.png')
+
 const iconStyle = {
-    height: '28px',
+    height: '28px'
 }
 
 const imgStyle = {
@@ -184,8 +187,8 @@ export class Timeline extends React.Component<any, any> {
                 {timeline.length == 0 &&
                     <div className='col-md-12 text-center'>
                         <h1>The timeline is empty</h1>
-                        <h1><span><img style={imgStyle} src='./images/nothing.png' /></span></h1>
-                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn  btn-secondary'><span className='glyphicon'><img style={iconStyle} src='./images/timelineDark.png'></img></span></button></span></h3>
+                        <h1><span><img style={imgStyle} src={nothingImg as string} /></span></h1>
+                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn  btn-secondary'><span className='glyphicon'><img style={iconStyle} src={timelineImg as string}></img></span></button></span></h3>
                     </div>
                 }
             </div>

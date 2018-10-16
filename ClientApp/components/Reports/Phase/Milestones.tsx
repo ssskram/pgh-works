@@ -12,6 +12,8 @@ import MilestoneForm from '../../Inputs/Milestone'
 import * as moment from 'moment'
 import classnames from 'classnames'
 
+const milestonesImg = require('./../../../images/milestoneGrey.png')
+
 const iconStyle = {
     marginRight: '15px',
     marginTop: '-10px',
@@ -213,7 +215,7 @@ export class Milestones extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/milestoneGrey.png' />
+                    <img style={iconStyle} src={milestonesImg as string} />
                     Milestones
                     <span>
                         {canEdit == true &&

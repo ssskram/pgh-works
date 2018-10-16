@@ -10,6 +10,8 @@ import Modal from 'react-responsive-modal'
 import SubphaseCard from '../../Cards/SubphaseCard'
 import SubphaseForm from '../../Inputs/Subphase'
 
+const subphaseImg = require('./../../../images/subphase.png')
+
 const iconStyle = {
     marginRight: '8px',
     marginTop: '-8px',
@@ -87,7 +89,7 @@ export class SubPhases extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/subphase.png' />
+                    <img style={iconStyle} src={subphaseImg as string} />
                     Subphases
                     <span>
                         {canEdit == true &&

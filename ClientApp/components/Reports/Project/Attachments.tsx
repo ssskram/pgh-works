@@ -16,6 +16,8 @@ import 'react-viewer/dist/index.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+const attachmentImg = require('./../../../images/attachment.png')
+
 const iconStyle = {
     marginRight: '5px',
     marginTop: '-8px',
@@ -181,7 +183,7 @@ export class Attachments extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/attachment.png' />
+                    <img style={iconStyle} src={attachmentImg as string} />
                     Attachments
                     <span>
                         {canEdit &&

@@ -27,6 +27,8 @@ import DeletePhase from '../../DeleteConfirmations/DeletePhase'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
 
+const phaseImg = require('./../../../images/phaseGrey.png')
+
 const btnMargin = {
     margin: '5px',
     padding: '5px 12px'
@@ -250,7 +252,7 @@ export class Phase extends React.Component<any, any> {
                         </h2>
                         <hr />
                         <br />
-                        <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src='./images/phaseGrey.png' /></b>{phaseName}</h1>
+                        <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src={phaseImg as string} /></b>{phaseName}</h1>
                         {pfProject.projectName && pfPhase.phaseName &&
                             <div className='text-center'>
                                 <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>

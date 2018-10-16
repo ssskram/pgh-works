@@ -8,6 +8,9 @@ import Import from '../../Shapes/ImportShape'
 import New from '../../Shapes/NewShape'
 import Map from '../../../Maps/ProjectMap'
 
+const newShapeImg = require('./../../../../images/importShape.png')
+const polygonImg = require('./../../../../images/polygon.png')
+
 const imgSize = {
     height: '120px',
     margin: '10px'
@@ -106,7 +109,7 @@ export default class Geolocate extends React.Component<any, any> {
                         <button onClick={this.newShape.bind(this)} className='btn btn-primary btn-big'>
                             <div className='row'>
                                 <div className='col-md-12'>
-                                    <img style={imgSize} src='./images/polygon.png' />
+                                    <img style={imgSize} src={polygonImg as string} />
                                 </div>
                                 <div className='col-md-12'>
                                     <div className='row'>
@@ -121,7 +124,7 @@ export default class Geolocate extends React.Component<any, any> {
                         <button onClick={this.importShape.bind(this)} className='btn btn-primary btn-big'>
                             <div className='row'>
                                 <div className='col-md-12'>
-                                    <img style={imgSize} src='./images/importShape.png' />
+                                    <img style={imgSize} src={newShapeImg as string} />
                                 </div>
                                 <div className='col-md-12'>
                                     <div className='row'>

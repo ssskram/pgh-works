@@ -11,6 +11,8 @@ import PhaseForm from '../../Inputs/Phase/Phase'
 import PhaseCard from '../../Cards/ProjectPhaseCard'
 import TL from '../../Timeline/Timeline'
 
+const phaseImg = require('./../../../images/phaseGrey.png')
+
 const iconStyle = {
     marginRight: '10px',
     marginTop: '-8px',
@@ -107,7 +109,7 @@ export class Phases extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/phaseGrey.png' />
+                    <img style={iconStyle} src={phaseImg as string} />
                     Phases
                     {canEdit == true &&
                         <span>

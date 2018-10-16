@@ -11,6 +11,8 @@ import TagCard from '../Cards/TagCard'
 import { v1 as uuid } from 'uuid'
 import removeDuplicates from '../../functions/removeDuplicates'
 
+const tagImg = require('./../../images/tag.png')
+
 const iconStyle = {
     marginRight: '14px',
     marginTop: '-8px',
@@ -106,7 +108,7 @@ export class Tags extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/tag.png' />
+                    <img style={iconStyle} src={tagImg as string} />
                     Relevant Assets
                     {canEdit &&
                         <span>

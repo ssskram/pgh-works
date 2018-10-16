@@ -5,6 +5,9 @@ import * as React from 'react'
 import Import from '../Shapes/ImportShape'
 import New from '../Shapes/NewShape'
 
+const newShapeImg = require('./../../../images/importShape.png')
+const polygonImg = require('./../../../images/polygon.png')
+
 const imgSize = {
     height: '70px'
 }
@@ -54,7 +57,7 @@ export default class UpdateLocation extends React.Component<any, any> {
                                 <button onClick={this.newShape.bind(this)} title='Draw a new shape' className='btn btn-primary btn-big'>
                                     <div className='row'>
                                         <div className='col-md-12'>
-                                            <img style={imgSize} src='./images/polygon.png' />
+                                            <img style={imgSize} src={polygonImg as string} />
                                         </div>
                                     </div>
                                 </button>
@@ -63,7 +66,7 @@ export default class UpdateLocation extends React.Component<any, any> {
                                 <button onClick={this.importShape.bind(this)} title='Import from existing asset' className='btn btn-primary btn-big'>
                                     <div className='row'>
                                         <div className='col-md-12'>
-                                            <img style={imgSize} src='./images/importShape.png' />
+                                            <img style={imgSize} src={newShapeImg as string} />
                                         </div>
                                     </div>
                                 </button>

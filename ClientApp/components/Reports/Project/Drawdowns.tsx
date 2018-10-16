@@ -14,6 +14,8 @@ import DrawdownForm from '../../Inputs/Drawdown'
 import DeleteDrawdown from '../../DeleteConfirmations/DeleteDrawdown'
 import * as CurrencyFormat from 'react-currency-format'
 
+const moneyImg = require ('./../../../images/programsGrey.png')
+
 const iconStyle = {
     marginRight: '10px',
     marginTop: '-8px',
@@ -234,7 +236,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         return (
             <div>
                 <h2>
-                    <img style={iconStyle} src='./images/programsGrey.png' />
+                    <img style={iconStyle} src={moneyImg as string} />
                     Cost
                     {canEdit == true &&
                         <span>

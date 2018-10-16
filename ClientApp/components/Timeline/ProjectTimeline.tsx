@@ -9,6 +9,8 @@ import { ApplicationState } from '../../store'
 import * as Timeline from '../../store/timeline'
 import * as Phases from '../../store/phases'
 
+const timelineImg = require('./../../images/timelineDark.png')
+
 const btnMargin = {
     marginBottom: '10px',
     border: '1px solid #383838'
@@ -91,7 +93,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                     <Link to={'/Timeline'}>
                         <button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn  btn-secondary pull-right'>
                             <span className='glyphicon'>
-                                <img style={iconStyle} src='./images/timelineDark.png'></img>
+                                <img style={iconStyle} src={timelineImg as string}></img>
                             </span>
                         </button>
                     </Link>

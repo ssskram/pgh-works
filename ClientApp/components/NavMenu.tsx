@@ -11,6 +11,7 @@ const phaseImg = require('./../images/phase.png')
 const moneyImg = require('./../images/money.png')
 const assetsImg = require('./../images/assets.png')
 const timelineImg = require('./../images/timeline.png')
+const addImg = require('./../images/add.png')
 
 const btnWidth = {
     width: '93%'
@@ -143,25 +144,25 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <div className='text-center'>
                         <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/worker.png' /></span> My Projects
+                            <span><img style={iconStyle} src={workerImg as string} /></span> My Projects
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/projects.png' /></span> <b>All Projects</b>
+                            <span><img style={iconStyle} src={projectsImg as string} /></span> <b>All Projects</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllPhases'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/phase.png' /></span> <b>All Phases</b>
+                            <span><img style={iconStyle} src={phaseImg as string} /></span> <b>All Phases</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
+                            <span><img style={iconStyle} src={moneyImg as string} /></span> Programs/Funds
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllAssets'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src='./images/assets.png' /></span> Assets
+                            <span><img style={iconStyle} src={assetsImg as string} /></span> Assets
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary hidden-xs'>
-                            <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
+                            <span><img style={iconStyle} src={timelineImg as string} /></span> Timeline
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary hidden-xs'>
-                            <span><img style={iconStyle} src='./images/add.png' /></span> New Project
+                            <span><img style={iconStyle} src={addImg as string} /></span> New Project
                     </Link>
                     </div>
                     <div className='accountcontainer'>

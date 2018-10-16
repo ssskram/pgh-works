@@ -19,6 +19,9 @@ import removeDuplicates from '../../../functions/removeDuplicates'
 import assetsInPolygon from '../../../functions/assetsInPolygon'
 import Hydrate from './../../Utilities/HydrateStore'
 
+const projectImg = require('./../../../images/project.png')
+const phaseImg = require('./../../../images/phaseGrey.png')
+
 const emptyNotice = {
     letterSpacing: '2px'
 }
@@ -257,13 +260,13 @@ export class AssetReport extends React.Component<any, any> {
                                                 <div className='col-md-4'>
                                                     {tag.parentType == 'Project' &&
                                                         <div>
-                                                            <img src='./images/project.png'></img>
+                                                            <img src={projectImg as string}></img>
                                                             <div><h4><b>{tag.parentType}</b></h4></div>
                                                         </div>
                                                     }
                                                     {tag.parentType == 'Phase' &&
                                                         <div>
-                                                            <img src='./images/phaseGrey.png'></img>
+                                                            <img src={phaseImg as string}></img>
                                                             <div><h4><b>{tag.parentName}</b></h4></div>
                                                         </div>
                                                     }
