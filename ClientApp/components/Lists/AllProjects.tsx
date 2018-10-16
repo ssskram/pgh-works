@@ -119,7 +119,7 @@ export class AllProjects extends React.Component<any, any> {
                 }
                 <h2>
                     All Projects
-                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <ProjectFilters
                             filterType="all"
                             returnFiltered={this.receiveFilteredProjects.bind(this)}

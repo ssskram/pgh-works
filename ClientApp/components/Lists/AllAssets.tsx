@@ -138,8 +138,8 @@ export class AllAssets extends React.Component<any, any> {
         const renderItems = currentItems.map((asset, index) => {
             const src = returnAssetIcon(asset.assetType)
             return <div className='col-md-12' key={index}>
-                <div className='panel'>
-                    <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center panel-button'>
+                <div className='panel panel-button'>
+                    <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center'>
                         <div className='col-md-3'>
                             <img src={src} style={imgHeight} />
                             <h4><b>{asset.assetType}</b></h4>
@@ -172,7 +172,7 @@ export class AllAssets extends React.Component<any, any> {
                 }
                 <h2>
                     All Assets
-                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <AssetFilter
                             returnFiltered={this.receiveFilteredAssets.bind(this)} />
                     </span>

@@ -92,12 +92,14 @@ export class ProgramsFunds extends React.Component<any, any> {
         const pageNumbers = returnPageNumber(funds)
         const renderItems = currentItems.map((fund, index) => {
             return <div className='col-md-12' key={index}>
-                <div className='panel'>
-                    <div onClick={() => this.viewFund(fund)} className='panel-body text-center panel-button'>
-                        <div className='col-md-12'>
-                            <h3><b>{fund.fundName}</b></h3>
-                            <h4>{fund.fundYear}</h4>
-                            <h4><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
+                <div className='panel panel-button'>
+                    <div onClick={() => this.viewFund(fund)} className='panel-body text-center'>
+                        <div className='col-md-8'>
+                            <h3>{fund.fundName}</h3>
+                            <h4>{fund.fundYear}, {fund.fundType}</h4>
+                        </div>
+                        <div className='col-md-4' style={{ paddingTop: '15px' }}>
+                            <h3><b><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
                         </div>
                     </div>
                 </div>
@@ -112,7 +114,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                 }
                 <h2>
                     Programs & Funds
-                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <FundFilter
                             returnFiltered={this.receiveFilteredFunds.bind(this)} />
                     </span>

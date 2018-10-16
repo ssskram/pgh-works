@@ -124,11 +124,6 @@ hr {
     z-index: 2;
 }
 
-.main-nav li a.active:focus {
-    background-color: rgb(26, 36, 47);
-    color: #fffaee !important;
-}
-
 .navbar-inverse .navbar-nav>li>a {
     color: #fffaee;
     white-space: nowrap !important;
@@ -780,6 +775,10 @@ a[href^="https://maps.google.com/maps"] {
 
 /* Timeline
 /* ------------------------- */
+
+.vis-panel {
+    border: 0px solid white !important;
+}
 
 .vis-item-content {
     font-size: 18px;

@@ -148,7 +148,7 @@ export class AllPhases extends React.Component<any, any> {
                 }
                 <h2>
                     All Phases
-                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <PhaseFilters
                             returnFiltered={this.receiveFilteredPhases.bind(this)} />
                     </span>

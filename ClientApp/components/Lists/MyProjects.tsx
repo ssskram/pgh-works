@@ -123,7 +123,7 @@ export class MyProjects extends React.Component<any, any> {
                 <Hydrate />
                 <h2>
                     My Projects
-                    <span style={{ marginTop: '-5px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <ProjectFilters
                             filterType="mine"
                             returnFiltered={this.receiveFilteredProjects.bind(this)}
