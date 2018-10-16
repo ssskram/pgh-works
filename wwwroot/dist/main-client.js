@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "07bdb1851971fb95467a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b12d29b81a40a31ee095"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64763,10 +64763,7 @@ var Phase = (function (_super) {
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
-                        projectName,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right hidden-sm hidden-xs' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.returnToProject.bind(this), title: 'Return to project', style: btnMargin, type: 'button', className: 'btn btn-success' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'project-header-link', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },

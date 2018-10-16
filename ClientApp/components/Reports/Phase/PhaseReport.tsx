@@ -244,11 +244,7 @@ export class Phase extends React.Component<any, any> {
                 {spinner == false &&
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
-                            {projectName}
-                            <span className='pull-right hidden-sm hidden-xs'><button onClick={this.returnToProject.bind(this)} title='Return to project' style={btnMargin} type='button' className='btn btn-success'>
-                                <span className='glyphicon glyphicon-arrow-right'></span>
-                            </button>
-                            </span>
+                            <span className='project-header-link' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</span>
                         </h2>
                         <hr />
                         <br />
@@ -259,7 +255,7 @@ export class Phase extends React.Component<any, any> {
                             </div>
                         }
                         {canEdit == true &&
-                            <div className='text-center' style={{marginTop: '20px'}}>
+                            <div className='text-center' style={{ marginTop: '20px' }}>
                                 <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit</button></span>
                                 <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn  btn-primary'>Follows</button></span>
                                 <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'>Delete</button></span>
