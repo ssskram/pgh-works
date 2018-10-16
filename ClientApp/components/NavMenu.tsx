@@ -5,6 +5,13 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
 import Modal from 'react-responsive-modal'
 
+const workerImg = require('./../images/worker.png')
+const projectsImg = require('./../images/projects.png')
+const phaseImg = require('./../images/phase.png')
+const moneyImg = require('./../images/money.png')
+const assetsImg = require('./../images/assets.png')
+const timelineImg = require('./../images/timeline.png')
+
 const btnWidth = {
     width: '93%'
 }
@@ -79,32 +86,32 @@ export class NavMenu extends React.Component<any, any>  {
                     <ul className='nav navbar-nav'>
                         <li>
                             <NavLink to={'/MyProjects'}>
-                                <span><img style={iconStyle} src='./images/worker.png' /></span> My projects
+                                <span><img style={iconStyle} src={workerImg as string} /></span> My projects
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={'/AllProjects'}>
-                                <span><img style={iconStyle} src='./images/projects.png' /></span> All projects
+                                <span><img style={iconStyle} src={projectsImg as string} /></span> All projects
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={'/AllPhases'}>
-                                <span><img style={iconStyle} src='./images/phase.png' /></span> All phases
+                                <span><img style={iconStyle} src={phaseImg as string} /></span> Phases
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={'/Programs'}>
-                                <span><img style={iconStyle} src='./images/money.png' /></span> Programs/Funds
+                                <span><img style={iconStyle} src={moneyImg as string} /></span> Funds
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={'/AllAssets'}>
-                                <span><img style={iconStyle} src='./images/assets.png' /></span> Assets
+                                <span><img style={iconStyle} src={assetsImg as string} /></span> Assets
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={'/Timeline'} >
-                                <span><img style={iconStyle} src='./images/timeline.png' /></span> Timeline
+                                <span><img style={iconStyle} src={timelineImg as string} /></span> Timeline
                             </NavLink>
                         </li>
                         <div className='text-center'>

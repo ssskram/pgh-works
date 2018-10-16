@@ -244,7 +244,7 @@ export class Milestones extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '20px'
+                                    fontSize: '18px'
                                 }
                             })}
                         />
@@ -270,7 +270,7 @@ export class Milestones extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '20px'
+                                    fontSize: '16px'
                                 }
                             })}
                         />

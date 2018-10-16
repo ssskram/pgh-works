@@ -12,6 +12,11 @@ import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import Spinner from './../Utilities/Spinner'
 
+const programmingImg = require('./../../images/programming.png')
+const constructionImg = require('./../../images/construction.png')
+const designImg = require('./../../images/design.png')
+const multiImg = require('./../../images/multifaceted.png')
+
 const emptyNotice = {
     letterSpacing: '2px'
 }
@@ -109,18 +114,18 @@ export class AllPhases extends React.Component<any, any> {
         const currentItems = returnCurrentItems(phases, currentPage)
         const pageNumbers = returnPageNumber(phases)
         const renderItems = currentItems.map((phase, index) => {
-            let src = ''
+            let src = '' as any
             if (phase.phaseName == "Programming") {
-                src = './images/programming.png'
+                src = programmingImg
             }
             if (phase.phaseName == "Construction") {
-                src= './images/construction.png'
+                src= constructionImg
             }
             if (phase.phaseName == "Design") {
-                src= './images/design.png'
+                src= designImg
             }
             if (phase.phaseName == "Multi-faceted") {
-                src= './images/multifaceted.png'
+                src= multiImg
             }
             return <div className='col-lg-4 col-md-6 col-sm-12 col-xs-12 clearfix' key={index}>
                 <div onClick={() => this.getPhaseLink(phase.phaseID)} className='panel panel-button'>
