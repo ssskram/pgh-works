@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "55774a29e11c6580d1ff"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "02a7826ae0544535b2cb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6792,20 +6792,63 @@ var __extends = (this && this.__extends) || (function () {
 var Spinner = (function (_super) {
     __extends(Spinner, _super);
     function Spinner() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        _this.state = {
+            notice: '',
+            secondNotice: '',
+            thirdNotice: '',
+        };
+        return _this;
     }
-    Spinner.prototype.closeModal = function () {
-        // just required for modal lib
+    Spinner.prototype.componentDidMount = function () {
+        if (this.props.secondNotice) {
+            this.setState({
+                notice: this.props.firstNotice
+            });
+            setTimeout(this.setSecond.bind(this), 3000);
+        }
+        else {
+            this.setState({
+                notice: this.props.notice
+            });
+        }
     };
+    Spinner.prototype.setSecond = function () {
+        this.setState({
+            secondNotice: this.props.secondNotice
+        });
+        if (this.props.thirdNotice) {
+            setTimeout(this.setThird.bind(this), 3000);
+        }
+    };
+    Spinner.prototype.setThird = function () {
+        this.setState({
+            thirdNotice: this.props.thirdNotice
+        });
+    };
+    Spinner.prototype.closeModal = function () { };
     Spinner.prototype.render = function () {
-        var notice = this.props.notice;
+        var _a = this.state, notice = _a.notice, secondNotice = _a.secondNotice, thirdNotice = _a.thirdNotice;
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_responsive_modal__["a" /* default */], { open: true, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'spinner-overlay',
                     modal: 'spinner-modal'
                 }, animationDuration: 1000, closeOnEsc: false, closeOnOverlayClick: false, showCloseIcon: false, center: true },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "loader" }),
-                notice));
+                secondNotice == '' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, notice),
+                secondNotice != '' && thirdNotice == '' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                        notice,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        secondNotice),
+                secondNotice != '' && thirdNotice != '' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                        notice,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        secondNotice,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        thirdNotice)));
     };
     return Spinner;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -62244,7 +62287,7 @@ var AllAssets = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             assets.length == 0 && onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the assets...' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { thirdNotice: '...you can blame Cartegraph, if you would like...', secondNotice: '...sorry, this one takes a while...', firstNotice: '...loading the assets...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Assets",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
@@ -63936,7 +63979,7 @@ var AssetReport = (function (_super) {
         }
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             spinner == true &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__["a" /* default */], { notice: '...loading the asset report...' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_Spinner__["a" /* default */], { firstNotice: '...loading the asset report...', thirdNotice: '...you can blame Cartegraph, if you would like...', secondNotice: '...sorry, this one takes a while...' }),
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },

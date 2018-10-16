@@ -188,7 +188,10 @@ export class AssetReport extends React.Component<any, any> {
         return (
             <div>
                 {spinner == true &&
-                    <Spinner notice='...loading the asset report...' />
+                    <Spinner
+                        firstNotice='...loading the asset report...'
+                        thirdNotice='...you can blame Cartegraph, if you would like...'
+                        secondNotice='...sorry, this one takes a while...' />
                 }
                 {spinner == false &&
                     <div>

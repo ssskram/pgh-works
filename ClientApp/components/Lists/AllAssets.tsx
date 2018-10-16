@@ -168,7 +168,11 @@ export class AllAssets extends React.Component<any, any> {
             <div>
                 <Hydrate />
                 {assets.length == 0 && onFilter == false &&
-                    <Spinner notice='...loading the assets...' />
+                    <Spinner
+                        thirdNotice='...you can blame Cartegraph, if you would like...'
+                        secondNotice='...sorry, this one takes a while...'
+                        firstNotice='...loading the assets...'
+                    />
                 }
                 <h2>
                     All Assets
