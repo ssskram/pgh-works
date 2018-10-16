@@ -16,6 +16,10 @@ const emptyNotice = {
     letterSpacing: '2px'
 }
 
+const linePadding = {
+    padding: '3px 0px'
+}
+
 export class AllProjects extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -96,14 +100,14 @@ export class AllProjects extends React.Component<any, any> {
                                 <MapThumbnail shape={project.shape.points} />
                                 <h2><b>{project.projectName}</b></h2>
                                 {project.actualStartDate && project.actualEndDate &&
-                                    <h4><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
+                                    <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
                                 }
                                 {!project.actualStartDate && !project.actualEndDate &&
-                                    <h4><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                    <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
                                 }
-                                <h4>Status: <b>{project.projectStatus}</b></h4>
-                                <h4>Department: <b>{project.projectDepartment}</b></h4>
-                                <h4>PM: <b>{project.projectManager}</b></h4>
+                                <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
+                                <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
+                                <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
                             </div>
                         </div>
                     </Link>

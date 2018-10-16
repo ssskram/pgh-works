@@ -837,5 +837,5 @@ a[href^="https://maps.google.com/maps"] {
 
 .project-header-link:hover,
 .project-header-link:active {
-    color: #286090;
+    color: rgb(44, 62, 80);
 }

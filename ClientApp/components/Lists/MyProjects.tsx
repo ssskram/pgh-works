@@ -19,6 +19,10 @@ const emptyNotice = {
     letterSpacing: '2px'
 }
 
+const linePadding = {
+    padding: '3px 0px'
+}
+
 export class MyProjects extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -36,10 +40,8 @@ export class MyProjects extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
-            if (this.state.onFilter == false) {
-                this.setMyProjects(nextProps)
-            }
+        if (this.state.onFilter == false) {
+            this.setMyProjects(nextProps)
         }
     }
 
@@ -85,11 +87,6 @@ export class MyProjects extends React.Component<any, any> {
             currentPage
         } = this.state
 
-        const {
-            personnel,
-            user
-        } = this.props
-
         const currentItems = returnCurrentItems(projects, currentPage)
         const pageNumbers = returnPageNumber(projects)
 
@@ -103,14 +100,14 @@ export class MyProjects extends React.Component<any, any> {
                                 <MapThumbnail shape={project.shape.points} />
                                 <h2><b>{project.projectName}</b></h2>
                                 {project.actualStartDate && project.actualEndDate &&
-                                    <h4><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
+                                    <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
                                 }
                                 {!project.actualStartDate && !project.actualEndDate &&
-                                    <h4><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                    <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
                                 }
-                                <h4>Status: <b>{project.projectStatus}</b></h4>
-                                <h4>Department: <b>{project.projectDepartment}</b></h4>
-                                <h4>PM: <b>{project.projectManager}</b></h4>
+                                <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
+                                <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
+                                <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
                             </div>
                         </div>
                     </Link>
@@ -131,7 +128,7 @@ export class MyProjects extends React.Component<any, any> {
                     </span>
                 </h2>
                 <hr />
-                {personnel.length == 0 && user == null &&
+                {this.props.projects.length == 0 &&
                     <Spinner notice='...loading your projects...' />
                 }
                 {projects.length > 0 &&
@@ -152,6 +149,13 @@ export class MyProjects extends React.Component<any, any> {
                     <div className='col-md-12' style={{ margin: '20px 0px' }}>
                         <div className='text-center alert alert-info'>
                             <h2 style={emptyNotice}>No projects matching those criteria</h2>
+                        </div>
+                    </div>
+                }
+                {this.props.projects.length > 0 && projects.length == 0 && onFilter == false &&
+                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
+                        <div className='text-center alert alert-info'>
+                            <h2 style={emptyNotice}>There are no projects associated with your account</h2>
                         </div>
                     </div>
                 }

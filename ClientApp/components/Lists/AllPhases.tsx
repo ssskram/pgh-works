@@ -133,7 +133,7 @@ export class AllPhases extends React.Component<any, any> {
                         <div>
                             <div className='col-md-12'>
                                 <h6><i>Project</i></h6>
-                                <h4>{this.returnProjectName(phase.projectID)}</h4>
+                                <h4 style={{marginBottom: '10px'}}>{this.returnProjectName(phase.projectID)}</h4>
                                 <div className='panel-img-container'>
                                     <span className='panel-img-helper'>
                                     </span>
