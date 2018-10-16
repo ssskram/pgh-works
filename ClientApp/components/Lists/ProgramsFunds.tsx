@@ -6,6 +6,7 @@ import { ApplicationState } from '../../store'
 import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Funds from '../../store/GETS/funds'
+import * as Drawdowns from '../../store/drawdowns'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import Paging from '../Utilities/Paging'
 import FundFilter from '../Filters/FundFilter'
@@ -74,6 +75,18 @@ export class ProgramsFunds extends React.Component<any, any> {
         })
     }
 
+    calculateAmountRemaining(fund) {
+        console.log(fund)
+        let sum = 0
+        const drawdowns = this.props.drawdowns.filter(drawdown => {
+            return drawdown.fundID == fund.fundID
+        })
+        drawdowns.forEach(drawdown => {
+            sum = sum + drawdown.drawdownAmount
+        })
+        return fund.fundAmount - sum
+    }
+
     public render() {
         const {
             onFilter,
@@ -91,15 +104,34 @@ export class ProgramsFunds extends React.Component<any, any> {
         const currentItems = returnCurrentItems(funds, currentPage)
         const pageNumbers = returnPageNumber(funds)
         const renderItems = currentItems.map((fund, index) => {
+            const amountRemaining = this.calculateAmountRemaining(fund)
             return <div className='col-md-12' key={index}>
                 <div className='panel panel-button'>
                     <div onClick={() => this.viewFund(fund)} className='panel-body text-center'>
-                        <div className='col-md-8'>
+                        <div className='col-md-3 hidden-sm hidden-xs'>
+                            <h4><i>Remaining</i></h4>
+                            {amountRemaining < 0 &&
+                                <h3 style={{color: 'red'}}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                            }
+                            {amountRemaining > 0 &&
+                                <h3 style={{color: 'green'}}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                            }
+                            {amountRemaining == 0 &&
+                                <h3><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                            }
+                        </div>
+                        <div className='col-md-6' style={{ paddingTop: '10px' }}>
                             <h3>{fund.fundName}</h3>
                             <h4>{fund.fundYear}, {fund.fundType}</h4>
                         </div>
-                        <div className='col-md-4' style={{ paddingTop: '15px' }}>
+                        <div className='col-md-3'>
+                            <h4><i>Original amount</i></h4>
                             <h3><b><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                            <div className='hidden-md hidden-lg hidden-xl'>
+                                <h4><i>Remaining</i></h4>
+                                <h3><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -150,10 +182,12 @@ export class ProgramsFunds extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
-        ...state.funds
+        ...state.funds,
+        ...state.drawdowns
     }),
     ({
         ...Ping.actionCreators,
-        ...Funds.actionCreators
+        ...Funds.actionCreators,
+        ...Drawdowns.actionCreators
     })
 )(ProgramsFunds as any) as typeof ProgramsFunds

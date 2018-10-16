@@ -248,9 +248,9 @@ export class Phase extends React.Component<any, any> {
                         </h2>
                         <hr />
                         <br />
-                        <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '5px' }} src={phaseImg as string} /></b>{phaseName}</h1>
+                        <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>
                         {pfProject.projectName && pfPhase.phaseName &&
-                            <div className='text-center'>
+                            <div className='text-center' style={{ padding: '10px' }}>
                                 <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
                             </div>
                         }

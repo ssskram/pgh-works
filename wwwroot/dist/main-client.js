@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b12d29b81a40a31ee095"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3a5cf5ebf52805bb0e64"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58693,7 +58693,7 @@ var PhaseCard = (function (_super) {
         var percentComplete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__["a" /* default */])(allMilestones, allSubphases);
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
+            background: 'linear-gradient(to right, rgba(255, 187, 95, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
             borderRadius: '15px'
         };
         var link = "/Phase/id=" + phase.phaseID;
@@ -58790,7 +58790,7 @@ var Subphase = (function (_super) {
         var _b = this.props, subphase = _b.subphase, canEdit = _b.canEdit;
         var percentRemaining = 100 - subphase.percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, rgba(92, 184, 92, .08) ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, rgba(255, 187, 95, .1) ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
@@ -62423,14 +62423,14 @@ var AllPhases = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h6", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Project")),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, _this.returnProjectName(phase.projectID)),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-img-container' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'panel-img-helper' }),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src })),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h6", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Project")),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, _this.returnProjectName(phase.projectID)),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h6", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Status")),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, phase.phaseStatus))))));
@@ -62828,12 +62828,13 @@ var MyProjects = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__functions_paging__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Utilities_Paging__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Filters_FundFilter__ = __webpack_require__(646);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_currency_format__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react_currency_format__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_drawdowns__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__functions_paging__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Utilities_Paging__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Filters_FundFilter__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_currency_format__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_currency_format___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_currency_format__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Utilities_Spinner__ = __webpack_require__(27);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -62852,6 +62853,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -62919,6 +62921,17 @@ var ProgramsFunds = (function (_super) {
             onFilter: true
         });
     };
+    ProgramsFunds.prototype.calculateAmountRemaining = function (fund) {
+        console.log(fund);
+        var sum = 0;
+        var drawdowns = this.props.drawdowns.filter(function (drawdown) {
+            return drawdown.fundID == fund.fundID;
+        });
+        drawdowns.forEach(function (drawdown) {
+            sum = sum + drawdown.drawdownAmount;
+        });
+        return fund.fundAmount - sum;
+    };
     ProgramsFunds.prototype.render = function () {
         var _this = this;
         var _a = this.state, onFilter = _a.onFilter, currentPage = _a.currentPage, funds = _a.funds, redirect = _a.redirect, selectedFundID = _a.selectedFundID;
@@ -62926,38 +62939,62 @@ var ProgramsFunds = (function (_super) {
         if (redirect) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
-        var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_paging__["a" /* returnCurrentItems */])(funds, currentPage);
-        var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_paging__["b" /* returnPageNumber */])(funds);
+        var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["a" /* returnCurrentItems */])(funds, currentPage);
+        var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["b" /* returnPageNumber */])(funds);
         var renderItems = currentItems.map(function (fund, index) {
+            var amountRemaining = _this.calculateAmountRemaining(fund);
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.viewFund(fund); }, className: 'panel-body text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3 hidden-sm hidden-xs' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Remaining")),
+                            amountRemaining < 0 &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: { color: 'red' } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                            amountRemaining > 0 &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: { color: 'green' } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                            amountRemaining == 0 &&
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: { paddingTop: '10px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, fund.fundName),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 fund.fundYear,
                                 ", ",
                                 fund.fundType)),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4', style: { paddingTop: '15px' } },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Original amount")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_currency_format__, { value: fund.fundAmount, displayType: 'text', thousandSeparator: true, prefix: '$' })))))));
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: fund.fundAmount, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-md hidden-lg hidden-xl' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Remaining")),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             funds.length == 0 && onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the funds...' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Utilities_Spinner__["a" /* default */], { notice: '...loading the funds...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "Programs & Funds",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_FundFilter__["a" /* default */], { returnFiltered: this.receiveFilteredFunds.bind(this) }))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_FundFilter__["a" /* default */], { returnFiltered: this.receiveFilteredFunds.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Utilities_Paging__["a" /* default */], { count: funds, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Utilities_Paging__["a" /* default */], { count: funds, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)),
             funds.length == 0 && onFilter == true &&
@@ -62968,7 +63005,7 @@ var ProgramsFunds = (function (_super) {
     return ProgramsFunds;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.funds)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__["a" /* actionCreators */])))(ProgramsFunds));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) { return (__assign({}, state.ping, state.funds, state.drawdowns)); }, (__assign({}, __WEBPACK_IMPORTED_MODULE_4__store_GETS_ping__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_5__store_GETS_funds__["a" /* actionCreators */], __WEBPACK_IMPORTED_MODULE_6__store_drawdowns__["a" /* actionCreators */])))(ProgramsFunds));
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Lists/ProgramsFunds.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Lists/ProgramsFunds.tsx"); } } })();
@@ -64768,10 +64805,10 @@ var Phase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px', marginRight: '5px' }, src: phaseImg })),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px', marginRight: '10px' }, src: phaseImg })),
                         phaseName),
                     pfProject.projectName && pfPhase.phaseName &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: { padding: '10px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "Follows ",
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, pfPhase.phaseName),
