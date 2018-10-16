@@ -29,31 +29,34 @@ export class PhaseCard extends React.Component<any, any> {
         const percentComplete = phasePercentComplete(allMilestones, allSubphases)
         const percentRemaining = 100 - percentComplete - 1
         const progressBackground = {
-            background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
+            borderRadius: '15px'
         }
 
         const link = "/Phase/id=" + phase.phaseID
 
         return (
-            <div className="col-sm-12" key={phase.phaseID}>
-                <div style={progressBackground} className="panel">
-                    <Link to={link}>
-                        <div className="panel-body text-center panel-button">
-                            <div className='col-md-6'>
-                                <h2><b>{phase.phaseName}</b></h2>
-                                {phase.actualStartDate && phase.actualEndDate &&
-                                    <h4>{phase.actualStartDate} - {phase.actualEndDate}</h4>
-                                }
-                                {!phase.actualStartDate && !phase.actualEndDate &&
-                                    <h4>{phase.expectedStartDate} - {phase.expectedEndDate}</h4>
-                                }
+            <div className="col-sm-12" key={phase.phaseID} >
+                <div className='panel' style={progressBackground}>
+                    <div className="panel-button">
+                        <Link to={link}>
+                            <div className="panel-body text-center">
+                                <div className='col-md-6'>
+                                    <h2><b>{phase.phaseName}</b></h2>
+                                    {phase.actualStartDate && phase.actualEndDate &&
+                                        <h4>{phase.actualStartDate} - {phase.actualEndDate}</h4>
+                                    }
+                                    {!phase.actualStartDate && !phase.actualEndDate &&
+                                        <h4>{phase.expectedStartDate} - {phase.expectedEndDate}</h4>
+                                    }
+                                </div>
+                                <div className='col-md-6'>
+                                    <h2>{allMilestones.length} Milestone{allMilestones.length != 1 && 's'}</h2>
+                                    <h3>{allSubphases.length} Subphase{allSubphases.length != 1 && 's'}</h3>
+                                </div>
                             </div>
-                            <div className='col-md-6'>
-                                <h2>{allMilestones.length} Milestone{allMilestones.length != 1 && 's'}</h2>
-                                <h3>{allSubphases.length} Subphase{allSubphases.length != 1 && 's'}</h3>
-                            </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 </div>
             </div>
         )

@@ -12,20 +12,18 @@ import Spinner from './Utilities/Spinner'
 
 const floatingPanelBig = {
     position: 'absolute' as any,
-    bottom: '17px',
+    bottom: '5px',
     left: '25%',
     zIndex: 99,
-    padding: '5px',
-    paddingLeft: '10px'
+    padding: '5px'
 }
 
 const floatingPanelSmall = {
     position: 'absolute' as any,
-    bottom: '17px',
-    left: '15px',
+    bottom: '5px',
+    left: '5px',
     zIndex: 99,
-    padding: '5px',
-    paddingLeft: '10px'
+    padding: '5px'
 }
 
 export class Home extends React.Component<any, any> {

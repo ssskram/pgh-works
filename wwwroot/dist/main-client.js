@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "52d7ff1450c5f4441e9f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e02db04b4ab2ab43cec8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58656,35 +58656,37 @@ var PhaseCard = (function (_super) {
         var percentComplete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__["a" /* default */])(allMilestones, allSubphases);
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, rgba(92, 184, 92, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
+            borderRadius: '15px'
         };
         var link = "/Phase/id=" + phase.phaseID;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center panel-button" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
-                            phase.actualStartDate && phase.actualEndDate &&
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                    phase.actualStartDate,
-                                    " - ",
-                                    phase.actualEndDate),
-                            !phase.actualStartDate && !phase.actualEndDate &&
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                    phase.expectedStartDate,
-                                    " - ",
-                                    phase.expectedEndDate)),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                allMilestones.length,
-                                " Milestone",
-                                allMilestones.length != 1 && 's'),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                allSubphases.length,
-                                " Subphase",
-                                allSubphases.length != 1 && 's')))))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel', style: progressBackground },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-button" },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
+                                phase.actualStartDate && phase.actualEndDate &&
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                        phase.actualStartDate,
+                                        " - ",
+                                        phase.actualEndDate),
+                                !phase.actualStartDate && !phase.actualEndDate &&
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                        phase.expectedStartDate,
+                                        " - ",
+                                        phase.expectedEndDate)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                                    allMilestones.length,
+                                    " Milestone",
+                                    allMilestones.length != 1 && 's'),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                    allSubphases.length,
+                                    " Subphase",
+                                    allSubphases.length != 1 && 's'))))))));
     };
     return PhaseCard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -59979,19 +59981,17 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var floatingPanelBig = {
     position: 'absolute',
-    bottom: '17px',
+    bottom: '5px',
     left: '25%',
     zIndex: 99,
-    padding: '5px',
-    paddingLeft: '10px'
+    padding: '5px'
 };
 var floatingPanelSmall = {
     position: 'absolute',
-    bottom: '17px',
-    left: '15px',
+    bottom: '5px',
+    left: '5px',
     zIndex: 99,
-    padding: '5px',
-    paddingLeft: '10px'
+    padding: '5px'
 };
 var Home = (function (_super) {
     __extends(Home, _super);
@@ -62530,7 +62530,7 @@ var AllProjects = (function (_super) {
         var renderItems = currentItems.map(function (project, index) {
             var link = "/Project/id=" + project.projectID;
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { borderRadius: '15px' }, className: 'panel panel-button' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
@@ -62662,8 +62662,10 @@ var MyProjects = (function (_super) {
         this.props.ping();
     };
     MyProjects.prototype.componentWillReceiveProps = function (nextProps) {
-        if (this.props != nextProps && this.state.onFilter == false) {
-            this.setMyProjects(nextProps);
+        if (this.props != nextProps) {
+            if (this.state.onFilter == false) {
+                this.setMyProjects(nextProps);
+            }
         }
     };
     MyProjects.prototype.setMyProjects = function (props) {
@@ -62705,7 +62707,7 @@ var MyProjects = (function (_super) {
         var renderItems = currentItems.map(function (project, index) {
             var link = "/Project/id=" + project.projectID;
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { borderRadius: '15px' }, className: 'panel panel-button' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
@@ -63850,7 +63852,7 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'hidden-xs' },
                             "Related projects & phases",
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__["a" /* default */], { tags: tags, reset: this.reset.bind(this), returnFiltered: this.receiveFilteredTags.bind(this) }))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'hidden-sm hidden-md hidden-lg hidden-xl text-center' },
                             "Related projects & phases",
@@ -63868,9 +63870,9 @@ var AssetReport = (function (_super) {
                     tags.length > 0 &&
                         tags.map(function (tag, index) {
                             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/' + tag.parentType + '/id=' + tag.parentID },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center panel-button' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
                                                 tag.parentType == 'Project' &&
                                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,

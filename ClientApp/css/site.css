@@ -459,22 +459,21 @@ textarea {
     color: #424242;
 }
 
+.panel-button {
+    border-radius: 15px;
+}
+
 .panel-button:hover {
-    background-color: rgb(44, 62, 80);
+    background-color: #337ab7 !important;
     color: white !important;
     cursor: pointer;
 }
 
 .panel-button:active {
-    background-color: rgb(26, 36, 47);
+    background-color: #286090;
 }
 
-.panel-button:hover h1, 
-.panel-button:hover h2, 
-.panel-button:hover h3, 
-.panel-button:hover h4, 
-.panel-button:hover h5, 
-.panel-button:hover h6 {
+.panel-button:hover h1, .panel-button:active h1, .panel-button:hover h2, .panel-button:active h2, .panel-button:hover h3, .panel-button:active h3, .panel-button:hover h4, .panel-button:active h4, .panel-button:hover h5, .panel-button:active h5, .panel-button:hover h6, .panel-button:active h6 {
     color: white;
 }
 

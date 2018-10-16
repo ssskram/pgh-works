@@ -89,7 +89,7 @@ export class AllProjects extends React.Component<any, any> {
         const renderItems = currentItems.map((project, index) => {
             const link = "/Project/id=" + project.projectID
             return <div className='col-md-6 col-sm-12' key={index}>
-                <div style={{ borderRadius: '15px' }} className='panel panel-button'>
+                <div className='panel panel-button'>
                     <Link to={link}>
                         <div className='panel-body text-center'>
                             <div className='col-md-12' style={{ padding: '15px' }}>

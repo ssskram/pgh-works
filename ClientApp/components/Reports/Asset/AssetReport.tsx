@@ -216,7 +216,7 @@ export class AssetReport extends React.Component<any, any> {
                         <div className='col-md-12'>
                             <h3 className='hidden-xs'>
                                 Related projects & phases
-                                <span className='pull-right'>
+                                <span style={{ marginTop: '-15px' }} className='pull-right'>
                                     <TagFilter
                                         tags={tags}
                                         reset={this.reset.bind(this)}
@@ -251,9 +251,9 @@ export class AssetReport extends React.Component<any, any> {
                         {tags.length > 0 &&
                             tags.map((tag, index) =>
                                 <div className='col-md-12' key={index}>
-                                    <div className='panel'>
+                                    <div className='panel panel-button'>
                                         <Link to={'/' + tag.parentType + '/id=' + tag.parentID}>
-                                            <div className='panel-body text-center panel-button'>
+                                            <div className='panel-body text-center'>
                                                 <div className='col-md-4'>
                                                     {tag.parentType == 'Project' &&
                                                         <div>
