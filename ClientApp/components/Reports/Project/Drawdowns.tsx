@@ -234,7 +234,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         }
 
         return (
-            <div>
+            <div className='row'>
                 <h2>
                     <img style={iconStyle} src={moneyImg as string} />
                     Cost

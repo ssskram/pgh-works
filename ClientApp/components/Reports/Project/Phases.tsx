@@ -107,7 +107,7 @@ export class Phases extends React.Component<any, any> {
         })
 
         return (
-            <div>
+            <div className='row'>
                 <h2>
                     <img style={iconStyle} src={phaseImg as string} />
                     Phases

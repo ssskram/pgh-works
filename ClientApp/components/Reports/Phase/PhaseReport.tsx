@@ -38,10 +38,6 @@ const marginBottom = {
     marginBottom: '70px'
 }
 
-const iconStyle = {
-    height: '30px',
-}
-
 export class Phase extends React.Component<any, any> {
     constructor() {
         super();

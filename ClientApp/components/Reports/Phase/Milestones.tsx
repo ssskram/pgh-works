@@ -213,7 +213,7 @@ export class Milestones extends React.Component<any, any> {
         })
 
         return (
-            <div>
+            <div className='row'>
                 <h2>
                     <img style={iconStyle} src={milestonesImg as string} />
                     Milestones

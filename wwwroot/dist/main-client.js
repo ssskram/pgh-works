@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6453c6c544e17f28c2c3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "55e2323dc5488aad8993"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33271,7 +33271,7 @@ var Tags = (function (_super) {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, tags = _a.tags;
         var canEdit = this.props.canEdit;
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: tagImg }),
                 "Relevant Assets",
@@ -59096,7 +59096,7 @@ var TagsCard = (function (_super) {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, redirectLink = _a.redirectLink;
         var _b = this.props, tag = _b.tag, canEdit = _b.canEdit;
         var src = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_getAssetIcon__["a" /* default */])(tag.tagType);
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-6 col-sm-12" },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-lg-4 col-md-6 col-sm-12" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
@@ -64576,7 +64576,7 @@ var Milestones = (function (_super) {
         var completedMilestones = milestones.filter(function (item) {
             return item.percentComplete == 100;
         });
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: milestonesImg }),
                 "Milestones",
@@ -64708,9 +64708,6 @@ var btnMargin = {
 };
 var marginBottom = {
     marginBottom: '70px'
-};
-var iconStyle = {
-    height: '30px',
 };
 var Phase = (function (_super) {
     __extends(Phase, _super);
@@ -65036,7 +65033,7 @@ var SubPhases = (function (_super) {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, subphases = _a.subphases;
         var canEdit = this.props.canEdit;
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: subphaseImg }),
                 "Subphases",
@@ -65563,7 +65560,7 @@ var ProgramsFunds = (function (_super) {
                 paddingBottom: '8px'
             };
         }
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: moneyImg }),
                 "Cost",
@@ -65752,7 +65749,7 @@ var Phases = (function (_super) {
                 items.push(actual);
             }
         });
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: phaseImg }),
                 "Phases",

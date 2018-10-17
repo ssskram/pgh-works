@@ -87,7 +87,7 @@ export class SubPhases extends React.Component<any, any> {
         } = this.props
 
         return (
-            <div>
+            <div className='row'>
                 <h2>
                     <img style={iconStyle} src={subphaseImg as string} />
                     Subphases

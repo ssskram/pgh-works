@@ -106,7 +106,7 @@ export class Tags extends React.Component<any, any> {
             canEdit
         } = this.props
         return (
-            <div>
+            <div className='row'>
                 <h2>
                     <img style={iconStyle} src={tagImg as string} />
                     Relevant Assets

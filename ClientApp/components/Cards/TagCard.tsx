@@ -66,7 +66,7 @@ export class TagsCard extends React.Component<any, any> {
         let src = returnAssetIcon(tag.tagType)
 
         return (
-            <div className="col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="panel">
                     {canEdit == true &&
                         <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
