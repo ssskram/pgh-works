@@ -111,10 +111,10 @@ export class ProgramsFunds extends React.Component<any, any> {
                         <div className='col-md-3 hidden-sm hidden-xs'>
                             <h4><i>Remaining</i></h4>
                             {amountRemaining < 0 &&
-                                <h3 style={{color: 'red'}}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                <h3 style={{ color: 'red' }}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
                             }
                             {amountRemaining > 0 &&
-                                <h3 style={{color: 'green'}}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                <h3 style={{ color: 'green' }}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
                             }
                             {amountRemaining == 0 &&
                                 <h3><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
@@ -129,7 +129,15 @@ export class ProgramsFunds extends React.Component<any, any> {
                             <h3><b><CurrencyFormat value={fund.fundAmount} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
                             <div className='hidden-md hidden-lg hidden-xl'>
                                 <h4><i>Remaining</i></h4>
-                                <h3><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                {amountRemaining < 0 &&
+                                    <h3 style={{ color: 'red' }}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                }
+                                {amountRemaining > 0 &&
+                                    <h3 style={{ color: 'green' }}><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                }
+                                {amountRemaining == 0 &&
+                                    <h3><b><CurrencyFormat value={amountRemaining} displayType={'text'} thousandSeparator={true} prefix={'$'} /></b></h3>
+                                }
                             </div>
 
                         </div>

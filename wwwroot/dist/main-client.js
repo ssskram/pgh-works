@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "02a7826ae0544535b2cb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b601d38caa460b0f169a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58835,7 +58835,7 @@ var Subphase = (function (_super) {
         var progressBackground = {
             background: 'linear-gradient(to right, rgba(255, 187, 95, .1) ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-4" },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-6 col-md-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setDelete.bind(this), className: 'pull-right delete-btn' }, "X"),
@@ -63026,9 +63026,18 @@ var ProgramsFunds = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-md hidden-lg hidden-xl' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Remaining")),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))))))));
+                                amountRemaining < 0 &&
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: { color: 'red' } },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                                amountRemaining > 0 &&
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: { color: 'green' } },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))),
+                                amountRemaining == 0 &&
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10_react_currency_format__, { value: amountRemaining, displayType: 'text', thousandSeparator: true, prefix: '$' }))))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
