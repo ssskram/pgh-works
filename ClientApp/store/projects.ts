@@ -72,7 +72,6 @@ export const actionCreators = {
         })
     },
     updateProject: (item): AppThunkAction<any> => (dispatch, getState) => {
-        console.log('now here')
         let data = JSON.stringify(item).replace(/'/g, '')
         fetch('/api/projects/updateProject', {
             method: 'PUT',

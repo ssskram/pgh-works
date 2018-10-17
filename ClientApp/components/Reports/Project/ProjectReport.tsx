@@ -23,11 +23,9 @@ import * as TagStore from '../../../store/tags'
 import ProjectFields from '../../Inputs/Project/ProjectFields'
 import Tags from '../Tags'
 import * as moment from 'moment'
-import UpdateLocation from '../../Inputs/Project/UpdateLocation'
 import ProjectCard from '../../Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
 import ProjectTimeline from '../../Timeline/ProjectTimeline'
-import assetsInPolygon from '../../../functions/assetsInPolygon'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
 
@@ -129,13 +127,6 @@ export class Project extends React.Component<any, any> {
         })
     }
 
-    editLocation() {
-        this.setState({
-            modalIsOpen: true,
-            edit: 'location'
-        })
-    }
-
     closeModal() {
         this.setState({
             modalIsOpen: false,
@@ -173,63 +164,6 @@ export class Project extends React.Component<any, any> {
                 [name]: null
             });
         }
-    }
-
-    setShape(shape, types) {
-        let existingShape = this.state.shape
-        this.setState({
-            shape: shape,
-            modalIsOpen: false,
-            edit: ''
-        }, function (this) {
-            if (existingShape != shape) {
-                // delete existing geospatial tags
-                let self = this
-                let tags = this.props.tags.filter(function (item) {
-                    return item.parentID == self.state.projectID
-                })
-                let tagsToDelete = tags.filter(function (tag) {
-                    return tag.tagDescription == 'Within project bounds'
-                })
-                tagsToDelete.forEach(function (tag) {
-                    self.props.deleteTag(tag)
-                })
-
-                if (types == 'all') {
-                    // refresh geospatial tags with new shape
-                    const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
-                    if (componentAssets.length > 0) {
-                        componentAssets.forEach(function (component) {
-                            console.log(component)
-                            console.log(self.state.projectName)
-                            if (component.assetName != self.state.projectName) {
-                                self.createTag(component)
-                            }
-                        })
-                    }
-                } else {
-                    const assets = this.props.assets.filter(asset => {
-                        return types.includes(asset.assetType)
-                    })
-                    const componentAssets = assetsInPolygon (this.state.shape.points, assets)
-                    // for each asset inside polygon, generate a tag
-                    if (componentAssets.length > 0) {
-                        componentAssets.forEach(function (component) {
-                            if (component.assetName != self.state.projectName) {
-                                self.createTag(component)
-                            }
-                        })
-                    }
-                }
-            }
-        })
-        this.setState({
-            shape: shape
-        }, function (this) {
-            console.log('here')
-            console.log(this.state)
-            this.props.updateProject(this.state)
-        })
     }
 
     put() {
@@ -286,7 +220,6 @@ export class Project extends React.Component<any, any> {
                             <div className='col-md-12'>
                                 <div>
                                     <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
-                                    <button onClick={this.editLocation.bind(this)} style={btnMargin} title='Modify location' type='button' className='btn  btn-primary'>Location</button>
                                 </div>
                             </div>
                         }
@@ -364,12 +297,6 @@ export class Project extends React.Component<any, any> {
                             </div>
                         </div>
 
-                    }
-                    {edit == 'location' &&
-                        <UpdateLocation
-                            setShape={this.setShape.bind(this)}
-                            put={this.put.bind(this)}
-                        />
                     }
                 </Modal>
                 <Hydrate />
