@@ -13,7 +13,7 @@ export default class HomeMap extends React.Component<any, any> {
         this.state = {
             projects: props.projects,
             zoom: 13,
-            center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            center: { lat: 40.453079, lng: -79.975481 },
             selectedProject: {},
             showInfowindow: false
         }

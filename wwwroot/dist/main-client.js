@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5fc969405365710e2af4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0540326ed3dad76f1de9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12640,6 +12640,9 @@ var Line = (function (_super) {
     Line.prototype.componentWillMount = function () {
         var self = this;
         this.redraw(this.props);
+        // I know, it's crazy
+        // but the timeline doesn't like rendering when it's supposed to
+        // so I call it up a second time and it always works
         setTimeout(function () {
             self.forceUpdate();
         }, 1000);
@@ -15146,7 +15149,7 @@ var currency = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
                     this.props.header,
                     this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { type: 'search', className: conditionalClass, prefix: this.props.prefix, precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { type: 'search', autoFocus: false, className: conditionalClass, prefix: this.props.prefix, precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
     };
     return currency;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -63121,7 +63124,7 @@ var HomeMap = (function (_super) {
         _this.state = {
             projects: props.projects,
             zoom: 13,
-            center: { lat: 40.437470539681442, lng: -79.987124601795273 },
+            center: { lat: 40.453079, lng: -79.975481 },
             selectedProject: {},
             showInfowindow: false
         };

@@ -17,6 +17,9 @@ export default class Line extends React.Component<any, any> {
     componentWillMount() {
         let self = this
         this.redraw(this.props)
+        // I know, it's crazy
+        // but the timeline doesn't like rendering when it's supposed to
+        // so I call it up a second time and it always works
         setTimeout(function () {
             self.forceUpdate()
         }, 1000);
