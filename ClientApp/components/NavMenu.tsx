@@ -150,10 +150,10 @@ export class NavMenu extends React.Component<any, any>  {
                             <span><img style={iconStyle} src={projectsImg as string} /></span> <b>All Projects</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllPhases'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src={phaseImg as string} /></span> <b>All Phases</b>
+                            <span><img style={iconStyle} src={phaseImg as string} /></span> <b>Phases</b>
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/Programs'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src={moneyImg as string} /></span> Programs/Funds
+                            <span><img style={iconStyle} src={moneyImg as string} /></span> Funds
                         </Link>
                         <Link onClick={this.closeModal.bind(this)} to={'/AllAssets'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src={assetsImg as string} /></span> Assets
