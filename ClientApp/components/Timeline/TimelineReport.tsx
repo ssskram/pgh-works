@@ -16,7 +16,8 @@ const nothingImg = require('./../../images/nothing.png')
 const timelineImg = require('./../../images/timelineDark.png')
 
 const iconStyle = {
-    height: '28px'
+    height: '35px',
+    marginTop: '-5px'
 }
 
 const imgStyle = {
@@ -110,7 +111,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color: #ACD1EF; border-color: #CA3C00; border-width: 2px;'
+                    style: 'background-color: #ACD1EF; border-color: #FF986C; border-width: 2px;'
                 }
                 index = index + 1
                 items.push(expected)
@@ -121,7 +122,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
+                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #FF986C; border-width: 2px;'
                     }
                     index = index + 1
                     items.push(actual)
@@ -157,7 +158,7 @@ export class Timeline extends React.Component<any, any> {
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
                             <span style={{ border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
                             <span style={{ border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
-                            <span style={{ border: '2px solid #CA3C00', padding: '8px' }}>Phase</span>
+                            <span style={{ border: '2px solid #FF986C', padding: '8px' }}>Phase</span>
                         </div>
                         <TL groups={groups} items={items} />
                         <br />
@@ -188,7 +189,7 @@ export class Timeline extends React.Component<any, any> {
                     <div className='col-md-12 text-center'>
                         <h1>The timeline is empty</h1>
                         <h1><span><img style={imgStyle} src={nothingImg as string} /></span></h1>
-                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><button style={btnMargin} className='btn  btn-secondary'><span className='glyphicon'><img style={iconStyle} src={timelineImg as string}></img></span></button></span></h3>
+                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><img style={iconStyle} src={timelineImg as string}></img></span></h3>
                     </div>
                 }
             </div>

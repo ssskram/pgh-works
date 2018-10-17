@@ -240,9 +240,9 @@ export class ProgramsFunds extends React.Component<any, any> {
                     Cost
                     {canEdit == true &&
                         <span>
-                            <button onClick={this.newDrawdown.bind(this)} title='Add expenditure' type='button' className='btn  btn-secondary pull-right hidden-xs'>
-                                <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
-                            </button>
+                            <div onClick={this.newDrawdown.bind(this)} title='Add expenditure' className='btn-add pull-right hidden-xs'>
+                                <span style={{ marginTop: '10px' }} className='glyphicon glyphicon-plus'></span>
+                            </div>
                         </span>
                     }
                 </h2>

@@ -112,9 +112,9 @@ export class Tags extends React.Component<any, any> {
                     Relevant Assets
                     {canEdit &&
                         <span>
-                            <button onClick={this.openModal.bind(this)} title='Tag an asset' type='button' className='btn  btn-secondary pull-right hidden-xs'>
-                                <span style={{ fontSize: '20px' }} className='glyphicon glyphicon-plus'></span>
-                            </button>
+                            <div onClick={this.openModal.bind(this)} title='Tag an asset' className='btn-add pull-right hidden-xs'>
+                                <span style={{ marginTop: '10px' }} className='glyphicon glyphicon-plus'></span>
+                            </div>
                         </span>
                     }
                 </h2>

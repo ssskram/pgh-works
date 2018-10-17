@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1a1eec1ecafa414653a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2bdd934158367be38ec3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33120,8 +33120,8 @@ var Tags = (function (_super) {
                 "Relevant Assets",
                 canEdit &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Tag an asset', type: 'button', className: 'btn  btn-secondary pull-right hidden-xs' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), title: 'Tag an asset', className: 'btn-add pull-right hidden-xs' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 tags.length == 0 &&
@@ -64547,8 +64547,8 @@ var Milestones = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: milestonesImg }),
                 "Milestones",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add milestone', type: 'button', className: 'btn  btn-secondary pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), title: 'Add milestone', className: 'btn-add pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             milestones.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
@@ -65007,8 +65007,8 @@ var SubPhases = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: subphaseImg }),
                 "Subphases",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), title: 'Add subphase', type: 'button', className: 'btn  btn-secondary pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), title: 'Add subphase', className: 'btn-add pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             subphases.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
@@ -65232,8 +65232,8 @@ var Attachments = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: attachmentImg }),
                 "Attachments",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), type: 'button', className: 'btn  btn-secondary pull-right hidden-xs' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { title: 'Upload an attachment', onClick: this.addAttachment.bind(this), className: 'btn-add pull-right hidden-xs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 attachments.length == 0 &&
@@ -65535,8 +65535,8 @@ var ProgramsFunds = (function (_super) {
                 "Cost",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', type: 'button', className: 'btn  btn-secondary pull-right hidden-xs' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, className: 'glyphicon glyphicon-plus' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.newDrawdown.bind(this), title: 'Add expenditure', className: 'btn-add pull-right hidden-xs' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.budget != 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
@@ -65724,8 +65724,8 @@ var Phases = (function (_super) {
                 "Phases",
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), type: 'button', className: 'btn btn-secondary pull-right hidden-xs' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '20px' }, title: 'Add a phase', className: 'glyphicon glyphicon-plus' })))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), className: 'btn-add pull-right hidden-xs' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, title: 'Add a phase', className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
@@ -66183,12 +66183,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var timelineImg = __webpack_require__(365);
-var btnMargin = {
-    marginBottom: '10px',
-    border: '1px solid #383838'
-};
 var iconStyle = {
-    height: '30px',
+    height: '40px',
 };
 var ProjectTimeline = (function (_super) {
     __extends(ProjectTimeline, _super);
@@ -66248,12 +66244,12 @@ var ProjectTimeline = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { marginBottom: '-38px', fontSize: '14px' } },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { paddingBottom: '5px' } },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { marginBottom: '-30px', fontSize: '14px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/Timeline' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, onClick: this.addToTimeline.bind(this), title: 'Add to timeline', type: 'button', className: 'btn  btn-secondary pull-right' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.addToTimeline.bind(this), title: 'Add to timeline', className: 'pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: timelineImg }))))),
             this.props.project &&
@@ -66313,7 +66309,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 var nothingImg = __webpack_require__(760);
 var timelineImg = __webpack_require__(365);
 var iconStyle = {
-    height: '28px'
+    height: '35px',
+    marginTop: '-5px'
 };
 var imgStyle = {
     color: '#fff',
@@ -66400,7 +66397,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color: #ACD1EF; border-color: #CA3C00; border-width: 2px;'
+                    style: 'background-color: #ACD1EF; border-color: #FF986C; border-width: 2px;'
                 };
                 index = index + 1;
                 items.push(expected);
@@ -66411,7 +66408,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
+                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #FF986C; border-width: 2px;'
                     };
                     index = index + 1;
                     items.push(actual);
@@ -66447,7 +66444,7 @@ var Timeline = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #CA3C00', padding: '8px' } }, "Phase")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #FF986C', padding: '8px' } }, "Phase")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Timeline__["a" /* default */], { groups: groups, items: items }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_table__["a" /* default */], { data: timeline.filter(function (item) {
@@ -66473,9 +66470,7 @@ var Timeline = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/AllProjects' }, "project"),
                         " and click ",
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, className: 'btn  btn-secondary' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: timelineImg }))))))));
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: timelineImg }))))));
     };
     return Timeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

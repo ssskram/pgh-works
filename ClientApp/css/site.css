@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5 {
 hr {
     overflow: visible;
     height: 2px;
-    border-top: 1px solid rgb(186, 134, 6);
+    border-top: 1px solid #383838;
     margin: 1.8em 0;
 }
 
@@ -325,10 +325,6 @@ textarea {
 
 .btn-success {
     font-weight: bold;
-}
-
-.btn-secondary {
-    border: 1px solid #383838;
 }
 
 .btn i {
@@ -866,4 +862,9 @@ a[href^="https://maps.google.com/maps"] {
 .project-header-link:hover,
 .project-header-link:active {
     color: rgb(186, 134, 6);
+}
+
+.btn-add {
+    background-color: transparent;
+    cursor: pointer;
 }

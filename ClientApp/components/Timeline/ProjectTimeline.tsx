@@ -11,13 +11,8 @@ import * as Phases from '../../store/phases'
 
 const timelineImg = require('./../../images/timelineDark.png')
 
-const btnMargin = {
-    marginBottom: '10px',
-    border: '1px solid #383838'
-}
-
 const iconStyle = {
-    height: '30px',
+    height: '40px',
 }
 
 export class ProjectTimeline extends React.Component<any, any> {
@@ -85,17 +80,17 @@ export class ProjectTimeline extends React.Component<any, any> {
             <div>
                 <br />
                 <br />
-                <div className='col-md-12'>
-                    <div style={{ marginBottom: '-38px', fontSize: '14px' }}>
+                <div className='col-md-12' style={{ paddingBottom: '5px' }}>
+                    <div style={{ marginBottom: '-30px', fontSize: '14px' }}>
                         <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
                         <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
                     </div>
                     <Link to={'/Timeline'}>
-                        <button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn  btn-secondary pull-right'>
+                        <div onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='pull-right'>
                             <span className='glyphicon'>
                                 <img style={iconStyle} src={timelineImg as string}></img>
                             </span>
-                        </button>
+                        </div>
                     </Link>
                 </div>
                 {this.props.project &&
