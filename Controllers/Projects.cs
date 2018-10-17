@@ -104,6 +104,7 @@ namespace pghworks.Controllers {
         // PuUT
         [HttpPut ("[action]")]
         public async Task updateProject ([FromBody] Project model) {
+            Console.WriteLine("YOOOOOOOOOOOO");
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             string id;
             if (model.cartegraphID != null && model.cartegraphID != "") {

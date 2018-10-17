@@ -226,6 +226,8 @@ export class Project extends React.Component<any, any> {
         this.setState({
             shape: shape
         }, function (this) {
+            console.log('here')
+            console.log(this.state)
             this.props.updateProject(this.state)
         })
     }

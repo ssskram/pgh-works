@@ -6,6 +6,8 @@ import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import setCenter from './../../functions/setCenter'
 
+const mapStyle = require('./featurelessLight.json')
+
 export default class ProjectMap extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -53,9 +55,11 @@ export default class ProjectMap extends React.Component<any, any> {
             <GoogleMap
                 defaultZoom={15}
                 defaultCenter={center}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 <Polygon
                     paths={[this.props.shape.points]}
+                    options={{ fillColor: '#337ab7', strokeColor: '#337ab7', strokeWeight: 3, fillOpacity: 0.4 }}
                 />
             </GoogleMap>
         )

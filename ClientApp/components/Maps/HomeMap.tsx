@@ -7,6 +7,8 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "rea
 import randomcolor from 'randomcolor'
 import setCenter from './../../functions/setCenter'
 
+const mapStyle = require('./featurelessLight.json')
+
 export default class HomeMap extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -29,7 +31,7 @@ export default class HomeMap extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState ({
+        this.setState({
             projects: nextProps.projects
         })
     }
@@ -65,7 +67,7 @@ export default class HomeMap extends React.Component<any, any> {
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
                 loadingElement: <div style={{ height: `100%`, }} />,
                 containerElement: <div style={{ height: `100%` }} />,
-                mapElement: <div style={{ height: `100%` }} />,
+                mapElement: <div style={{ height: `100%` }} />
             }),
             withScriptjs,
             withGoogleMap
@@ -73,6 +75,7 @@ export default class HomeMap extends React.Component<any, any> {
             <GoogleMap
                 defaultZoom={zoom}
                 defaultCenter={center}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 {projects &&
                     projects.map((project, index) => {
@@ -81,7 +84,7 @@ export default class HomeMap extends React.Component<any, any> {
                             return (
                                 <div key={index}>
                                     <Polygon
-                                        options={{fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4}}
+                                        options={{ fillColor: color, strokeColor: color, strokeWeight: 3, fillOpacity: 0.4 }}
                                         paths={[project.shape.points]}
                                         onClick={() => this.polygonSelection(project)}>
                                     </Polygon>
@@ -93,9 +96,9 @@ export default class HomeMap extends React.Component<any, any> {
                 }
                 {showInfowindow == true &&
                     <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
-                        <div className='col-md-12 text-center' style={{maxWidth: '250px'}}>
+                        <div className='col-md-12 text-center' style={{ maxWidth: '250px' }}>
                             <h3>{selectedProject.projectName}</h3>
-                            <button onClick={() => this.props.receiveProject(selectedProject)} className='btn btn-success' style={{width: '100%'}}><span className='glyphicon glyphicon-arrow-right'></span></button>
+                            <button onClick={() => this.props.receiveProject(selectedProject)} className='btn btn-success' style={{ width: '100%' }}><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </InfoWindow>
                 }

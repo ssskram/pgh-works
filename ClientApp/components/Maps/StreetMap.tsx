@@ -15,6 +15,8 @@ import handleOverlayComplete from './../../functions/handleOverlayComplete'
 import findMiddleSegment from './../../functions/findMiddleSegment'
 import assetsInPolygon from './../../functions/assetsInPolygon'
 
+const mapStyle = require('./featurelessLight.json')
+
 export class StreetMap extends React.Component<any, any> {
     constructor() {
         super()
@@ -100,6 +102,7 @@ export class StreetMap extends React.Component<any, any> {
             <GoogleMap
                 zoom={zoom}
                 defaultCenter={center}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 {assets &&
                     assets.map((asset, index) => {
@@ -107,6 +110,7 @@ export class StreetMap extends React.Component<any, any> {
                             return (
                                 <div key={index}>
                                     <Polygon
+                                        options={{ fillColor: '#337ab7', strokeColor: '#337ab7', strokeWeight: 3, fillOpacity: 0.4 }}
                                         paths={[asset.shape.points]}>
                                     </Polygon>
                                 </div>

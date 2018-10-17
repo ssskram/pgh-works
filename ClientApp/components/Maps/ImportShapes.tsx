@@ -10,6 +10,8 @@ import setCenter from './../../functions/setCenter'
 import handleOverlayComplete from './../../functions/handleOverlayComplete'
 import findMiddleSegment from './../../functions/findMiddleSegment'
 
+const mapStyle = require('./featurelessLight.json')
+
 export default class ImportShapes extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -29,12 +31,12 @@ export default class ImportShapes extends React.Component<any, any> {
         if (this.props.grabby == true) {
             if (this.props.assets.length === 1) {
                 let foundSegment = this.props.assets[0]
-                this.setState ({
+                this.setState({
                     center: setCenter(foundSegment.shape.points),
                     zoom: 16
                 })
             } else {
-                this.setState ({
+                this.setState({
                     center: setCenter(findMiddleSegment(this.props.assets).shape.points),
                     zoom: 13
                 })
@@ -108,6 +110,7 @@ export default class ImportShapes extends React.Component<any, any> {
             <GoogleMap
                 zoom={zoom}
                 defaultCenter={center}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 {assets && grabby != true &&
                     assets.map((asset, index) => {
@@ -115,6 +118,7 @@ export default class ImportShapes extends React.Component<any, any> {
                             return (
                                 <div key={index}>
                                     <Polygon
+                                        options={{ fillColor: '#337ab7', strokeColor: '#337ab7', strokeWeight: 3, fillOpacity: 0.4 }}
                                         paths={[asset.shape.points]}
                                         onClick={() => this.polygonSelection(asset)}>
                                     </Polygon>

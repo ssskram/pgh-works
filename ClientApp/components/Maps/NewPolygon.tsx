@@ -7,6 +7,8 @@ import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
 import DrawingManager from "react-google-maps/lib/components/drawing/DrawingManager"
 import handleOverlayComplete from './../../functions/handleOverlayComplete'
 
+const mapStyle = require('./featurelessLight.json')
+
 export default class PolygonGeneration extends React.Component<any, any> {
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -31,6 +33,7 @@ export default class PolygonGeneration extends React.Component<any, any> {
             <GoogleMap
                 defaultZoom={13}
                 defaultCenter={{ lat: 40.437470539681442, lng: -79.987124601795273 }}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 <DrawingManager
                     defaultDrawingMode={google.maps.drawing.OverlayType.POLYGON}

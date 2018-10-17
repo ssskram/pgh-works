@@ -6,6 +6,8 @@ import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from "react-google-maps"
 import setCenter from './../../functions/setCenter'
 
+const mapStyle = require('./featurelessLight.json')
+
 export default class MapThumbnail extends React.Component<any, any> {
     constructor(props) {
         super(props)
@@ -20,14 +22,14 @@ export default class MapThumbnail extends React.Component<any, any> {
         } else return true
     }
 
-    componentDidMount () {
-        this.setState ({
+    componentDidMount() {
+        this.setState({
             center: setCenter(this.props.shape)
         })
     }
 
-    componentWillReceiveProps (nextProps) {
-        this.setState ({
+    componentWillReceiveProps(nextProps) {
+        this.setState({
             center: setCenter(nextProps.shape)
         })
     }
@@ -50,15 +52,17 @@ export default class MapThumbnail extends React.Component<any, any> {
             <GoogleMap
                 defaultZoom={14}
                 defaultCenter={center}
+                defaultOptions={{ styles: mapStyle as any }}
             >
                 <Polygon
+                    options={{ fillColor: '#337ab7', strokeColor: '#337ab7', strokeWeight: 3, fillOpacity: 0.4 }}
                     paths={[this.props.shape]}
                 />
             </GoogleMap>
         )
 
         return (
-            <div id='project-thumbnail' style={{margin: '0 auto'}}>
+            <div id='project-thumbnail' style={{ margin: '0 auto' }}>
                 <MapComponent />
             </div>
         )
