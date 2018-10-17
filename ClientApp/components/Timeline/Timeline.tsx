@@ -17,7 +17,7 @@ export default class Line extends React.Component<any, any> {
     componentWillMount() {
         let self = this
         this.redraw(this.props)
-        setTimeout(function (this) {
+        setTimeout(function () {
             self.forceUpdate()
         }, 500);
     }
