@@ -204,7 +204,11 @@ export class Project extends React.Component<any, any> {
                     const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
                     if (componentAssets.length > 0) {
                         componentAssets.forEach(function (component) {
-                            self.createTag(component)
+                            console.log(component)
+                            console.log(self.state.projectName)
+                            if (component.assetName != self.state.projectName) {
+                                self.createTag(component)
+                            }
                         })
                     }
                 } else {
@@ -215,7 +219,9 @@ export class Project extends React.Component<any, any> {
                     // for each asset inside polygon, generate a tag
                     if (componentAssets.length > 0) {
                         componentAssets.forEach(function (component) {
-                            self.createTag(component)
+                            if (component.assetName != self.state.projectName) {
+                                self.createTag(component)
+                            }
                         })
                     }
                 }

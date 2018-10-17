@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d1172d3585d717fff18c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b951531f69a206f093f6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61415,7 +61415,9 @@ var ProjectDefinition = (function (_super) {
         // for each asset inside polygon, generate a tag
         if (componentAssets.length > 0) {
             componentAssets.forEach(function (component) {
-                self.createTag(component);
+                if (component.assetName != self.state.projectName) {
+                    self.createTag(component);
+                }
             });
         }
     };
@@ -63402,6 +63404,9 @@ var PolygonGeneration = (function (_super) {
         };
         return _this;
     }
+    PolygonGeneration.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+        return false;
+    };
     PolygonGeneration.prototype.render = function () {
         var _this = this;
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
@@ -66015,7 +66020,11 @@ var Project = (function (_super) {
                     var componentAssets = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__functions_assetsInPolygon__["a" /* default */])(this.state.shape.points, this.props.assets);
                     if (componentAssets.length > 0) {
                         componentAssets.forEach(function (component) {
-                            self_1.createTag(component);
+                            console.log(component);
+                            console.log(self_1.state.projectName);
+                            if (component.assetName != self_1.state.projectName) {
+                                self_1.createTag(component);
+                            }
                         });
                     }
                 }
@@ -66027,7 +66036,9 @@ var Project = (function (_super) {
                     // for each asset inside polygon, generate a tag
                     if (componentAssets.length > 0) {
                         componentAssets.forEach(function (component) {
-                            self_1.createTag(component);
+                            if (component.assetName != self_1.state.projectName) {
+                                self_1.createTag(component);
+                            }
                         });
                     }
                 }

@@ -9,6 +9,10 @@ import handleOverlayComplete from './../../functions/handleOverlayComplete'
 
 export default class PolygonGeneration extends React.Component<any, any> {
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return false
+    }
+
     handleShape = (evt) => {
         this.props.passShape(handleOverlayComplete(evt))
     }

@@ -4,7 +4,7 @@
 
 import inside from 'point-in-polygon'
 
-export default function assetsInPolygon (points, assets) {
+export default function assetsInPolygon(points, assets) {
     let shape = [] as any
     let componentAssets = [] as any
     points.forEach(function (point) {

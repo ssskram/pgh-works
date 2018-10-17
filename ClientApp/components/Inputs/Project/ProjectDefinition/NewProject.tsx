@@ -178,7 +178,9 @@ export class ProjectDefinition extends React.Component<any, any> {
         // for each asset inside polygon, generate a tag
         if (componentAssets.length > 0) {
             componentAssets.forEach(function (component) {
-                self.createTag(component)
+                if (component.assetName != self.state.projectName) {
+                    self.createTag(component)
+                }
             })
         }
     }
