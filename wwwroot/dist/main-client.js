@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0540326ed3dad76f1de9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "95b0f0711f818e4d1d4d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33280,7 +33280,7 @@ var Tags = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), title: 'Tag an asset', className: 'btn-add pull-right hidden-xs' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 row' },
                 tags.length == 0 &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No relevant assets")),

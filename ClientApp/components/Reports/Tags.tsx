@@ -119,7 +119,7 @@ export class Tags extends React.Component<any, any> {
                     }
                 </h2>
                 <hr />
-                <div className='col-md-12'>
+                <div className='col-md-12 row'>
                     {tags.length == 0 &&
                         <h4 className='text-center'><i>No relevant assets</i></h4>
                     }
