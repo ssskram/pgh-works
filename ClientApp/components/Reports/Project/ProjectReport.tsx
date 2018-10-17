@@ -179,7 +179,7 @@ export class Project extends React.Component<any, any> {
         }
     }
 
-    setShape(shape) {
+    setShape(shape, types) {
         let existingShape = this.state.shape
         this.setState({
             shape: shape,
@@ -199,12 +199,25 @@ export class Project extends React.Component<any, any> {
                     self.props.deleteTag(tag)
                 })
 
-                // refresh geospatial tags with new shape
-                const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
-                if (componentAssets.length > 0) {
-                    componentAssets.forEach(function (component) {
-                        self.createTag(component)
+                if (types == 'all') {
+                    // refresh geospatial tags with new shape
+                    const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
+                    if (componentAssets.length > 0) {
+                        componentAssets.forEach(function (component) {
+                            self.createTag(component)
+                        })
+                    }
+                } else {
+                    const assets = this.props.assets.filter(asset => {
+                        return types.includes(asset.assetType)
                     })
+                    const componentAssets = assetsInPolygon (this.state.shape.points, assets)
+                    // for each asset inside polygon, generate a tag
+                    if (componentAssets.length > 0) {
+                        componentAssets.forEach(function (component) {
+                            self.createTag(component)
+                        })
+                    }
                 }
             }
         })

@@ -4,6 +4,7 @@
 import * as React from 'react'
 import Import from '../Shapes/ImportShape'
 import New from '../Shapes/NewShape'
+import TaggableAssetSelection from './../../Inputs/Tag/RelevantAssetTypes'
 
 const newShapeImg = require('./../../../images/importShape.png')
 const polygonImg = require('./../../../images/polygon.png')
@@ -20,35 +21,56 @@ export default class UpdateLocation extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
-            shapeType: ''
+            stage: '',
+            shape: [],
+            types: []
         }
     }
 
     importShape() {
         this.setState({
-            shapeType: 'import',
+            stage: 'import',
         })
     }
 
     newShape() {
         this.setState({
-            shapeType: 'new',
+            stage: 'new',
+        })
+    }
+
+    saveShape(shape) {
+        this.setState({
+            shape: shape,
+            stage: 'types'
+        })
+    }
+
+    receiveTypes(types) {
+        this.setState ({
+            types: types
+        }, function (this) {
+            this.setShape(this.state.shape)
         })
     }
 
     setShape(shape) {
-        this.props.setShape(shape)
+        if (this.state.stage == 'import') {
+            this.props.setShape(shape, 'all')
+        } else { // new shape, include types
+            this.props.setShape(shape, this.state.types)
+        }
     }
 
     public render() {
         const {
-            shapeType
+            stage
         } = this.state
 
         return (
             <div>
                 <br />
-                {shapeType == '' &&
+                {stage == '' &&
                     <div>
                         <h3 className='text-center'>Change the location</h3>
                         <hr />
@@ -74,11 +96,14 @@ export default class UpdateLocation extends React.Component<any, any> {
                         </div>
                     </div>
                 }
-                {shapeType == 'new' &&
-                    <New passShape={this.setShape.bind(this)} />
+                {stage == 'new' &&
+                    <New passShape={this.saveShape.bind(this)} />
                 }
-                {shapeType == 'import' &&
+                {stage == 'import' &&
                     <Import passShape={this.setShape.bind(this)} />
+                }
+                {stage == 'types' &&
+                    <TaggableAssetSelection receiveTypes={this.receiveTypes.bind(this)}/>
                 }
             </div>
         )

@@ -143,7 +143,7 @@ export class ProgramsFunds extends React.Component<any, any> {
         let columns = [] as any
         if (canEdit == true) {
             columns = [{
-                Header: 'Fund/Program',
+                Header: 'Fund',
                 accessor: 'fundID',
                 Cell: props => <div>{this.getFundName(props.value)}</div>
             }, {
@@ -155,12 +155,12 @@ export class ProgramsFunds extends React.Component<any, any> {
                 accessor: 'fundID',
                 Cell: props => <div>{this.getFundType(props.value)}</div>
             }, {
-                Header: 'Drawdown Amount',
+                Header: 'Drawdown',
+                accessor: 'drawdownType'
+            }, {
+                Header: 'Amount',
                 accessor: 'drawdownAmount',
                 Cell: props => <CurrencyFormat value={props.value} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-            }, {
-                Header: 'Drawdown Type',
-                accessor: 'drawdownType'
             }, {
                 Header: 'Notes',
                 accessor: 'notes'

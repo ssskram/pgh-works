@@ -27,10 +27,6 @@ const imgStyle = {
     paddingLeft: '15px'
 }
 
-const btnMargin = {
-    margin: '8px 5px'
-}
-
 export class Timeline extends React.Component<any, any> {
     constructor () {
         super()

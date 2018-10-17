@@ -76,7 +76,6 @@ export class ProgramsFunds extends React.Component<any, any> {
     }
 
     calculateAmountRemaining(fund) {
-        console.log(fund)
         let sum = 0
         const drawdowns = this.props.drawdowns.filter(drawdown => {
             return drawdown.fundID == fund.fundID
