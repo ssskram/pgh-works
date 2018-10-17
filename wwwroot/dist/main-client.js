@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b951531f69a206f093f6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "441f11bb2776250667b5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65866,9 +65866,6 @@ var btnMargin = {
 };
 var marginBottom = {
     marginBottom: '70px'
-};
-var iconStyle = {
-    height: '32px',
 };
 var Project = (function (_super) {
     __extends(Project, _super);

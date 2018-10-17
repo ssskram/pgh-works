@@ -40,10 +40,6 @@ const marginBottom = {
     marginBottom: '70px'
 }
 
-const iconStyle = {
-    height: '32px',
-}
-
 export class Project extends React.Component<any, any> {
     constructor() {
         super();
