@@ -15,10 +15,11 @@ export default class Line extends React.Component<any, any> {
     }
 
     componentWillMount() {
+        let self = this
         this.redraw(this.props)
         setTimeout(function (this) {
-            this.forceUpdate()
-        }, 1000);
+            self.forceUpdate()
+        }, 500);
     }
 
     componentWillReceiveProps(nextProps) {
