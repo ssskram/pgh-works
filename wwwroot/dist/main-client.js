@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "95b0f0711f818e4d1d4d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "338706fec2d26af28e25"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -15149,7 +15149,7 @@ var currency = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: "form-h4" },
                     this.props.header,
                     this.props.required == true && __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { color: 'red', fontSize: '20' } }, "*")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { type: 'search', autoFocus: false, className: conditionalClass, prefix: this.props.prefix, precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_currency_input__["a" /* default */], { autoFocus: false, className: conditionalClass, prefix: this.props.prefix, precision: "0", value: this.props.value, onChangeEvent: this.props.callback.bind(this) }))));
     };
     return currency;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -63124,7 +63124,7 @@ var HomeMap = (function (_super) {
         _this.state = {
             projects: props.projects,
             zoom: 13,
-            center: { lat: 40.453079, lng: -79.975481 },
+            center: { lat: 40.449801, lng: -79.994935 },
             selectedProject: {},
             showInfowindow: false
         };
