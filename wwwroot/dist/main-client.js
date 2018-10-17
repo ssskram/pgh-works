@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b601d38caa460b0f169a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1a1eec1ecafa414653a5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58736,37 +58736,25 @@ var PhaseCard = (function (_super) {
         var percentComplete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__["a" /* default */])(allMilestones, allSubphases);
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, rgba(255, 187, 95, .1), ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
+            background: 'linear-gradient(to right, #ACD1EF, ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
             borderRadius: '15px'
         };
         var link = "/Phase/id=" + phase.phaseID;
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12", key: phase.phaseID },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-6 col-md-4", key: phase.phaseID },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel', style: progressBackground },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-button" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: link },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
-                                phase.actualStartDate && phase.actualEndDate &&
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                        phase.actualStartDate,
-                                        " - ",
-                                        phase.actualEndDate),
-                                !phase.actualStartDate && !phase.actualEndDate &&
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                        phase.expectedStartDate,
-                                        " - ",
-                                        phase.expectedEndDate)),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                    allMilestones.length,
-                                    " Milestone",
-                                    allMilestones.length != 1 && 's'),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                    allSubphases.length,
-                                    " Subphase",
-                                    allSubphases.length != 1 && 's'))))))));
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, phase.phaseName)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                allMilestones.length,
+                                " Milestone",
+                                allMilestones.length != 1 && 's'),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                allSubphases.length,
+                                " Subphase",
+                                allSubphases.length != 1 && 's')))))));
     };
     return PhaseCard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -58833,7 +58821,7 @@ var Subphase = (function (_super) {
         var _b = this.props, subphase = _b.subphase, canEdit = _b.canEdit;
         var percentRemaining = 100 - subphase.percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, rgba(255, 187, 95, .1) ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, #ACD1EF ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-6 col-md-4" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
@@ -58951,23 +58939,21 @@ var TagsCard = (function (_super) {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, redirectLink = _a.redirectLink;
         var _b = this.props, tag = _b.tag, canEdit = _b.canEdit;
         var src = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_getAssetIcon__["a" /* default */])(tag.tagType);
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-12" },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-6 col-sm-12" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src, style: imgHeight }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6', style: marginTop },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, tag.taggedAssetName),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
                                 "\"",
                                 tag.tagDescription,
-                                "\""))),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                                "\"")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: redirectLink, style: marginTop, className: 'btn btn-success' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
@@ -62289,8 +62275,8 @@ var AllAssets = (function (_super) {
             assets.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { thirdNotice: '...you can blame Cartegraph, if you would like...', secondNotice: '...sorry, this one takes a while...', firstNotice: '...loading the assets...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                "All Assets",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                "Assets",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_AssetFilter__["a" /* default */], { returnFiltered: this.receiveFilteredAssets.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             assets.length > 0 &&
@@ -62483,8 +62469,8 @@ var AllPhases = (function (_super) {
             phases.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the phases...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                "All Phases",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                "Phases",
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Filters_PhaseFilter__["a" /* default */], { returnFiltered: this.receiveFilteredPhases.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length > 0 &&
@@ -62660,7 +62646,7 @@ var AllProjects = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the projects...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             projects.length > 0 &&
@@ -62835,7 +62821,7 @@ var MyProjects = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "My Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "mine", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.projects.length == 0 &&
@@ -63044,8 +63030,9 @@ var ProgramsFunds = (function (_super) {
             funds.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Utilities_Spinner__["a" /* default */], { notice: '...loading the funds...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                "Programs & Funds",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-md hidden-lg hiddenp-xl' }, "Funds"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Programs & Funds"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_FundFilter__["a" /* default */], { returnFiltered: this.receiveFilteredFunds.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
@@ -64010,7 +63997,7 @@ var AssetReport = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'hidden-xs' },
                             "Related projects & phases",
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-20px' }, className: 'pull-right' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Filters_TagFilter__["a" /* default */], { tags: tags, reset: this.reset.bind(this), returnFiltered: this.receiveFilteredTags.bind(this) }))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'hidden-sm hidden-md hidden-lg hidden-xl text-center' },
                             "Related projects & phases",
@@ -64287,19 +64274,19 @@ var FundViewer = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
@@ -65564,19 +65551,19 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: thermometer, className: 'col-md-12 row' })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Spent"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: spent, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: encumbered, displayType: 'text', thousandSeparator: true, prefix: '$' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-dark' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Pre-encumbered"),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null,
@@ -65713,7 +65700,7 @@ var Phases = (function (_super) {
                 content: phase.phaseName,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
-                style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+                style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
             };
             counter++;
             items.push(expected);
@@ -65725,7 +65712,7 @@ var Phases = (function (_super) {
                     content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
-                    style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                    style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                 };
                 counter++;
                 items.push(actual);
@@ -66127,7 +66114,7 @@ var PhaseTimeline = (function (_super) {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+            style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -66136,7 +66123,7 @@ var PhaseTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             };
             items.push(actual);
         }
@@ -66144,8 +66131,8 @@ var PhaseTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#5393C8', color: '#fffcf5', padding: '8px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFBB5F', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual")),
             this.props.phase &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline__["a" /* default */], { items: items })));
     };
@@ -66245,7 +66232,7 @@ var ProjectTimeline = (function (_super) {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+            style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         };
         items.push(expected);
         if (actualStartDate && actualEndDate) {
@@ -66254,7 +66241,7 @@ var ProjectTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             };
             items.push(actual);
         }
@@ -66263,8 +66250,8 @@ var ProjectTimeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { marginBottom: '-38px', fontSize: '14px' } },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#5393C8', color: '#fffcf5', padding: '8px' } }, "Expected"),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFBB5F', padding: '8px' } }, "Actual")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/Timeline' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: btnMargin, onClick: this.addToTimeline.bind(this), title: 'Add to timeline', type: 'button', className: 'btn  btn-secondary pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
@@ -66389,7 +66376,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
-                    style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+                    style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
                 };
                 index = index + 1;
                 items.push(expected);
@@ -66400,7 +66387,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
-                        style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                        style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                     };
                     index = index + 1;
                     items.push(actual);
@@ -66413,7 +66400,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color: #5393C8; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
+                    style: 'background-color: #ACD1EF; border-color: #CA3C00; border-width: 2px;'
                 };
                 index = index + 1;
                 items.push(expected);
@@ -66424,7 +66411,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: #FFBB5F; border-color: #CA3C00; border-width: 2px;'
+                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
                     };
                     index = index + 1;
                     items.push(actual);
@@ -66458,8 +66445,8 @@ var Timeline = (function (_super) {
             timeline.length > 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #5393C8', backgroundColor: '#5393C8', padding: '8px', color: '#fffcf5' } }, "Expected"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #FFBB5F', backgroundColor: '#FFBB5F', padding: '8px' } }, "Actual"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { border: '2px solid #CA3C00', padding: '8px' } }, "Phase")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Timeline__["a" /* default */], { groups: groups, items: items }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

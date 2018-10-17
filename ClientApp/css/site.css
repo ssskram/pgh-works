@@ -460,7 +460,7 @@ textarea {
 
 .panel-button:hover {
     background-color: #286090 !important;
-    color: white !important;
+    color: #fff !important;
     cursor: pointer;
 }
 
@@ -469,7 +469,7 @@ textarea {
 }
 
 .panel-button:hover h1, .panel-button:active h1, .panel-button:hover h2, .panel-button:active h2, .panel-button:hover h3, .panel-button:active h3, .panel-button:hover h4, .panel-button:active h4, .panel-button:hover h5, .panel-button:active h5, .panel-button:hover h6, .panel-button:active h6 {
-    color: white;
+    color: #fff;
 }
 
 .panel-img-container {
@@ -497,6 +497,21 @@ textarea {
     background-color: #fffaee;
     box-shadow: inset 0 0 3px #000000;
 }
+
+.panel-dark {
+    background-color: #383838 !important;
+    border-radius: 8px;
+}
+
+.panel-dark h1,
+.panel-dark h2,
+.panel-dark h3,
+.panel-dark h4,
+.panel-dark h5,
+.panel-dark h6 {
+    color: #fff;
+}
+
 
 /* Datatables
 /* ------------------------- */
@@ -788,11 +803,18 @@ a[href^="https://maps.google.com/maps"] {
 
 /* Timeline
 /* ------------------------- */
+.vis-text {
+    color: #fff !important;
+}
+
+.vis-label {
+    color: #fff !important;
+}
 
 .vis-timeline {
-    background-color: #fff !important;
+    background-color: #383838 !important;
     border: solid 0px rgba(160, 160, 160, 0.3);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 5px !important;
 }
 
 .vis-panel {
@@ -843,5 +865,5 @@ a[href^="https://maps.google.com/maps"] {
 
 .project-header-link:hover,
 .project-header-link:active {
-    color: rgb(44, 62, 80);
+    color: rgb(186, 134, 6);
 }

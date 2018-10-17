@@ -258,7 +258,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                 }
                 <div className='col-md-12'>
                     <div className='col-md-4 text-center'>
-                        <div className='panel'>
+                        <div className='panel panel-dark'>
                             <div className='panel-body'>
                                 <h3>Spent</h3>
                                 <h1><CurrencyFormat value={spent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
@@ -266,7 +266,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         </div>
                     </div>
                     <div className='col-md-4 text-center'>
-                        <div className='panel'>
+                        <div className='panel panel-dark'>
                             <div className='panel-body'>
                                 <h3>Encumbered</h3>
                                 <h1><CurrencyFormat value={encumbered} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>
@@ -274,7 +274,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                         </div>
                     </div>
                     <div className='col-md-4 text-center'>
-                        <div className='panel'>
+                        <div className='panel panel-dark'>
                             <div className='panel-body'>
                                 <h3>Pre-encumbered</h3>
                                 <h1><CurrencyFormat value={preencumbered} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h1>

@@ -156,8 +156,8 @@ export class AllPhases extends React.Component<any, any> {
                     <Spinner notice='...loading the phases...' />
                 }
                 <h2>
-                    All Phases
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                    Phases
+                    <span style={{ marginTop: '-15px' }} className='pull-right'>
                         <PhaseFilters
                             returnFiltered={this.receiveFilteredPhases.bind(this)} />
                     </span>

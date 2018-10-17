@@ -175,8 +175,8 @@ export class AllAssets extends React.Component<any, any> {
                     />
                 }
                 <h2>
-                    All Assets
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                    Assets
+                    <span style={{ marginTop: '-15px' }} className='pull-right'>
                         <AssetFilter
                             returnFiltered={this.receiveFilteredAssets.bind(this)} />
                     </span>

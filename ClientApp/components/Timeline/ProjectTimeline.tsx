@@ -66,7 +66,7 @@ export class ProjectTimeline extends React.Component<any, any> {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
-            style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+            style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         }
         items.push(expected)
 
@@ -76,7 +76,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
-                style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             }
             items.push(actual)
         }
@@ -87,8 +87,8 @@ export class ProjectTimeline extends React.Component<any, any> {
                 <br />
                 <div className='col-md-12'>
                     <div style={{ marginBottom: '-38px', fontSize: '14px' }}>
-                        <span style={{ backgroundColor: '#5393C8', color: '#fffcf5', padding: '8px' }}>Expected</span>
-                        <span style={{ backgroundColor: '#FFBB5F', padding: '8px' }}>Actual</span>
+                        <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
+                        <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
                     </div>
                     <Link to={'/Timeline'}>
                         <button style={btnMargin} onClick={this.addToTimeline.bind(this)} title='Add to timeline' type='button' className='btn  btn-secondary pull-right'>

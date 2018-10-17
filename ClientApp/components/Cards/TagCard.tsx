@@ -64,23 +64,19 @@ export class TagsCard extends React.Component<any, any> {
         } = this.props
 
         let src = returnAssetIcon(tag.tagType)
-        
+
         return (
-            <div className="col-sm-12">
+            <div className="col-md-6 col-sm-12">
                 <div className="panel">
                     {canEdit == true &&
                         <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
                     }
                     <div className="panel-body text-center">
-                        <div className='col-md-3'>
+                        <div className='col-md-12'>
                             <img src={src} style={imgHeight} />
                             <h4><b>{tag.tagType}</b></h4>
-                        </div>
-                        <div className='col-md-6' style={marginTop}>
                             <h3>{tag.taggedAssetName}</h3>
                             <h4><i>"{tag.tagDescription}"</i></h4>
-                        </div>
-                        <div className='col-md-3'>
                             <Link to={redirectLink} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
                         </div>
                     </div>

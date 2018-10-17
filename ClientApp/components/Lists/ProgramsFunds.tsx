@@ -153,8 +153,9 @@ export class ProgramsFunds extends React.Component<any, any> {
                     <Spinner notice='...loading the funds...' />
                 }
                 <h2>
-                    Programs & Funds
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                    <span className='hidden-md hidden-lg hiddenp-xl'>Funds</span>
+                    <span className='hidden-sm hidden-xs'>Programs & Funds</span>
+                    <span style={{ marginTop: '-15px' }} className='pull-right'>
                         <FundFilter
                             returnFiltered={this.receiveFilteredFunds.bind(this)} />
                     </span>

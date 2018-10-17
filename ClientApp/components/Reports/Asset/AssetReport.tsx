@@ -222,7 +222,7 @@ export class AssetReport extends React.Component<any, any> {
                         <div className='col-md-12'>
                             <h3 className='hidden-xs'>
                                 Related projects & phases
-                                <span style={{ marginTop: '-15px' }} className='pull-right'>
+                                <span style={{ marginTop: '-20px' }} className='pull-right'>
                                     <TagFilter
                                         tags={tags}
                                         reset={this.reset.bind(this)}

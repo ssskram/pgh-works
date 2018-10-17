@@ -87,7 +87,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
-                    style: 'background-color: #5393C8; border-color: #5393C8; color: #fffcf5;'
+                    style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
                 }
                 index = index + 1
                 items.push(expected)
@@ -98,7 +98,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
-                        style: 'background-color: #FFBB5F; border-color: #FFBB5F;'
+                        style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                     }
                     index = index + 1
                     items.push(actual)
@@ -110,7 +110,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
-                    style: 'background-color: #5393C8; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
+                    style: 'background-color: #ACD1EF; border-color: #CA3C00; border-width: 2px;'
                 }
                 index = index + 1
                 items.push(expected)
@@ -121,7 +121,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
-                        style: 'background-color: #FFBB5F; border-color: #CA3C00; border-width: 2px;'
+                        style: 'background-color: #1561A1; color: #fffcf5; border-color: #CA3C00; border-width: 2px;'
                     }
                     index = index + 1
                     items.push(actual)
@@ -155,8 +155,8 @@ export class Timeline extends React.Component<any, any> {
                 {timeline.length > 0 &&
                     <div>
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                            <span style={{ border: '2px solid #5393C8', backgroundColor: '#5393C8', padding: '8px', color: '#fffcf5' }}>Expected</span>
-                            <span style={{ border: '2px solid #FFBB5F', backgroundColor: '#FFBB5F', padding: '8px' }}>Actual</span>
+                            <span style={{ border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
+                            <span style={{ border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
                             <span style={{ border: '2px solid #CA3C00', padding: '8px' }}>Phase</span>
                         </div>
                         <TL groups={groups} items={items} />
