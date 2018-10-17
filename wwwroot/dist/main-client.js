@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3748c222ae81d864321f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fa147a475d9457eee281"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12633,7 +12633,6 @@ var Line = (function (_super) {
         _this.state = {
             groups: [],
             items: [],
-            hidden: false
         };
         _this.redraw = _this.redraw.bind(_this);
         return _this;
@@ -12642,7 +12641,7 @@ var Line = (function (_super) {
         this.redraw(this.props);
         setTimeout(function () {
             this.forceUpdate();
-        }, 1000);
+        }, 500);
     };
     Line.prototype.componentWillReceiveProps = function (nextProps) {
         this.redraw(nextProps);
@@ -12654,7 +12653,7 @@ var Line = (function (_super) {
         });
     };
     Line.prototype.render = function () {
-        var _a = this.state, groups = _a.groups, items = _a.items, hidden = _a.hidden;
+        var _a = this.state, groups = _a.groups, items = _a.items;
         var timelineOptions = {
             width: '100%',
             stack: true,
@@ -12669,7 +12668,7 @@ var Line = (function (_super) {
                 }
             }
         };
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, !hidden &&
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline___default.a, { options: timelineOptions, items: items, groups: groups })));
     };
     return Line;
