@@ -14,6 +14,7 @@ export default class currency extends React.Component<any, any> {
                 <div className="col-md-12 form-element">
                     <h4 className="form-h4">{this.props.header}{this.props.required == true && <span style={{ color: 'red', fontSize: '20' }}>*</span>}</h4>
                     <CurrencyInput
+                        selectAllOnFocus={false}
                         autoFocus={false}
                         className={conditionalClass}
                         prefix={this.props.prefix}
