@@ -10,17 +10,15 @@ export default class Line extends React.Component<any, any> {
         this.state = {
             groups: [],
             items: [],
-            hidden: false
         }
         this.redraw = this.redraw.bind(this)
     }
 
-    componentWillMount() {
-        let self = this
+    componentDidMount() {
         this.redraw(this.props)
-        setTimeout(function () {
-            self.forceUpdate()
-        }, 1000);
+        setTimeout(function (this) {
+            this.forceUpdate()
+        }, 500);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -37,14 +35,13 @@ export default class Line extends React.Component<any, any> {
     public render() {
         const {
             groups,
-            items,
-            hidden,
+            items
         } = this.state
 
         const timelineOptions = {
             width: '100%',
             stack: true,
-            autoResize: true,     
+            autoResize: true,
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,
@@ -58,12 +55,10 @@ export default class Line extends React.Component<any, any> {
 
         return (
             <div>
-                {!hidden &&
-                    <TL
-                        options={timelineOptions}
-                        items={items}
-                        groups={groups} />
-                }
+                <TL
+                    options={timelineOptions}
+                    items={items}
+                    groups={groups} />
             </div>
         )
     }
