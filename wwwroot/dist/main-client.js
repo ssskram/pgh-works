@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "441f11bb2776250667b5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "79152340823e8ea4ac83"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12633,13 +12633,19 @@ var Line = (function (_super) {
         _this.state = {
             groups: [],
             items: [],
-            hidden: false
+            hidden: true
         };
         _this.redraw = _this.redraw.bind(_this);
         return _this;
     }
     Line.prototype.componentWillMount = function () {
+        var self = this;
         this.redraw(this.props);
+        setTimeout(function () {
+            self.setState({
+                hidden: false
+            });
+        }, 10);
     };
     Line.prototype.componentWillReceiveProps = function (nextProps) {
         this.redraw(nextProps);
