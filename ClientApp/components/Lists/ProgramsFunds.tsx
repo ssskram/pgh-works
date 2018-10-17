@@ -161,7 +161,7 @@ export class ProgramsFunds extends React.Component<any, any> {
                 </h2>
                 <hr />
                 {funds.length > 0 &&
-                    <div className='col-md-12'>
+                    <div className='row'>
                         {renderItems}
                         <br />
                         <br />

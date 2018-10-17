@@ -132,7 +132,7 @@ export class AllProjects extends React.Component<any, any> {
                 </h2>
                 <hr />
                 {projects.length > 0 &&
-                    <div>
+                    <div className='row'>
                         {renderItems}
                         < br />
                         <Paging

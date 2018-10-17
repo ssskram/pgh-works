@@ -132,7 +132,7 @@ export class MyProjects extends React.Component<any, any> {
                     <Spinner notice='...loading your projects...' />
                 }
                 {projects.length > 0 &&
-                    <div>
+                    <div className='row'>
                         {renderItems}
                         < br />
                         <Paging

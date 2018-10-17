@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "338706fec2d26af28e25"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6453c6c544e17f28c2c3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14938,7 +14938,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible; }';
 var departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
     { value: 'DPW', label: 'DPW', name: 'projectDepartment' }
@@ -15094,12 +15094,12 @@ var ProjectFilter = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", header: 'Project department', placeholder: 'Select department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select user', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", header: "From", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'startDate'); } })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: endDate, name: "endDate", header: "To", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'endDate'); } })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', placeholder: 'Select user', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.filter.bind(this), className: 'btn btn-success' }, "Apply filter"))))));
     };
@@ -59545,7 +59545,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var types = [
     { value: 'Facility', label: 'Facility', name: 'assetType' },
     { value: 'Project', label: 'Project', name: 'assetType' },
@@ -59872,7 +59872,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible; }';
 var types = [
     { value: 'Programming', label: 'Programming', name: 'phaseName' },
     { value: 'Design', label: 'Design', name: 'phaseName' },
@@ -60051,7 +60051,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var types = [
     { value: 'Project', label: 'Project', name: 'parentType' },
     { value: 'Phase', label: 'Phase', name: 'parentType' },
@@ -60326,7 +60326,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var types = [
     { value: 'Final contract', label: 'Final contract', name: 'attachmentName' },
     { value: 'Final legislation', label: 'Final legislation', name: 'attachmentName' },
@@ -60465,7 +60465,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var types = [];
 var ProgramFundInputs = (function (_super) {
     __extends(ProgramFundInputs, _super);
@@ -60865,7 +60865,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var PhaseFollows = (function (_super) {
     __extends(PhaseFollows, _super);
     function PhaseFollows() {
@@ -61908,7 +61908,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.Select-menu-outer { overflow: visible}';
 var StreetSelection = (function (_super) {
     __extends(StreetSelection, _super);
     function StreetSelection(props) {
@@ -62312,7 +62312,7 @@ var AllAssets = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_AssetFilter__["a" /* default */], { returnFiltered: this.receiveFilteredAssets.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             assets.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -62506,7 +62506,7 @@ var AllPhases = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Filters_PhaseFilter__["a" /* default */], { returnFiltered: this.receiveFilteredPhases.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             phases.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 row' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -62682,7 +62682,7 @@ var AllProjects = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             projects.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
@@ -62859,7 +62859,7 @@ var MyProjects = (function (_super) {
             this.props.projects.length == 0 &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Utilities_Spinner__["a" /* default */], { notice: '...loading your projects...' }),
             projects.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_Paging__["a" /* default */], { count: projects, currentPage: currentPage, totalPages: pageNumbers, next: this.handleNextClick.bind(this), prev: this.handlePreviousClick.bind(this) }),
@@ -63067,7 +63067,7 @@ var ProgramsFunds = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_FundFilter__["a" /* default */], { returnFiltered: this.receiveFilteredFunds.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             funds.length > 0 &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     renderItems,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
@@ -63123,7 +63123,7 @@ var HomeMap = (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.state = {
             projects: props.projects,
-            zoom: 13,
+            zoom: 12,
             center: { lat: 40.449801, lng: -79.994935 },
             selectedProject: {},
             showInfowindow: false

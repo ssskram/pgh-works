@@ -11,7 +11,7 @@ import * as Projects from '../../store/projects'
 import filterPhases from './../../functions/filters/filterPhases'
 import { Helmet } from "react-helmet"
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible; }'
 
 const types = [
     { value: 'Programming', label: 'Programming', name: 'phaseName' },

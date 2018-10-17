@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet"
 import filterProjects from './../../functions/filters/filterProjects'
 import getMyProjects from './../../functions/myProjects'
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible; }'
 
 const departments = [
     { value: 'DOMI', label: 'DOMI', name: 'projectDepartment' },
@@ -225,6 +225,18 @@ export class ProjectFilter extends React.Component<any, any> {
                             />
                         </div>
 
+                        <div className='col-md-12'>
+                            <Select
+                                value={projectManager}
+                                name="projectManager"
+                                header='Project manager'
+                                placeholder='Select user'
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={personnel}
+                            />
+                        </div>
+                        
                         <div className='col-md-6'>
                             <Datepicker
                                 value={startDate}
@@ -242,18 +254,6 @@ export class ProjectFilter extends React.Component<any, any> {
                                 header="To"
                                 placeholder="Select a date"
                                 callback={(value) => this.handleDate(value, 'endDate')}
-                            />
-                        </div>
-
-                        <div className='col-md-12'>
-                            <Select
-                                value={projectManager}
-                                name="projectManager"
-                                header='Project manager'
-                                placeholder='Select user'
-                                onChange={this.handleChildSelect.bind(this)}
-                                multi={false}
-                                options={personnel}
                             />
                         </div>
 

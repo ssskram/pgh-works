@@ -11,7 +11,7 @@ import * as moment from 'moment'
 import { Helmet } from "react-helmet"
 import filterTags from './../../functions/filters/filterTags'
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible}'
 
 const types = [
     { value: 'Project', label: 'Project', name: 'parentType' },

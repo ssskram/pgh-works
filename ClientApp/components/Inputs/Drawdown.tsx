@@ -18,7 +18,7 @@ import { Helmet } from "react-helmet"
 import { v1 as uuid } from 'uuid'
 import * as CurrencyFormat from 'react-currency-format'
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible}'
 
 let types = [] as any
 

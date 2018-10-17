@@ -11,7 +11,7 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 import { Helmet } from "react-helmet"
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible}'
 
 const types = [
     { value: 'Final contract', label: 'Final contract', name: 'attachmentName' },

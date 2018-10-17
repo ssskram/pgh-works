@@ -183,7 +183,7 @@ export class AllAssets extends React.Component<any, any> {
                 </h2>
                 <hr />
                 {assets.length > 0 &&
-                    <div className='col-md-12'>
+                    <div className='row'>
                         {renderItems}
                         <br />
                         <br />

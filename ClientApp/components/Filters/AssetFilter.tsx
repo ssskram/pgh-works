@@ -9,7 +9,7 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import filterAssets from './../../functions/filters/filterAssets'
 import { Helmet } from "react-helmet"
 
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.Select-menu-outer { overflow: visible}'
 
 const types = [
     { value: 'Facility', label: 'Facility', name: 'assetType' },

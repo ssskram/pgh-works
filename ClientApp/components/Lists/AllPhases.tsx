@@ -164,7 +164,7 @@ export class AllPhases extends React.Component<any, any> {
                 </h2>
                 <hr />
                 {phases.length > 0 &&
-                    <div className='col-md-12'>
+                    <div className='col-md-12 row'>
                         {renderItems}
                         <br />
                         <br />
