@@ -10,7 +10,7 @@ export default class Line extends React.Component<any, any> {
         this.state = {
             groups: [],
             items: [],
-            hidden: true
+            hidden: false
         }
         this.redraw = this.redraw.bind(this)
     }
@@ -19,9 +19,7 @@ export default class Line extends React.Component<any, any> {
         let self = this
         this.redraw(this.props)
         setTimeout(function () {
-            self.setState({
-                hidden: false
-            })
+            self.forceUpdate()
         }, 10);
     }
 
