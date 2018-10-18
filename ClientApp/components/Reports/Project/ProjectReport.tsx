@@ -112,7 +112,7 @@ export class Project extends React.Component<any, any> {
             projectBudget: project.projectBudget,
             notes: project.notes,
             shape: project.shape,
-            // canEdit: canEdit(project, this.props.personnel, this.props.user)
+            canEdit: canEdit(project, this.props.personnel, this.props.user)
         }, function (this) {
             this.setState({
                 spinner: false

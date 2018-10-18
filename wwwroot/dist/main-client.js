@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4bb262f6e624759e4a46"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8bef2f34c66ae1cf6565"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64862,6 +64862,7 @@ var Milestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Inputs_Phase_PhaseFollows__ = __webpack_require__(650);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DeleteConfirmations_DeletePhase__ = __webpack_require__(639);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__functions_canEdit__ = __webpack_require__(784);
 // top level phase report
 // parent of Phasecard.tsx
 // parent of Milestones.tsx
@@ -64885,6 +64886,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -64985,6 +64987,7 @@ var Phase = (function (_super) {
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
         }, function () {
             this.findProject(this.state.projectID);
         });
@@ -66018,6 +66021,7 @@ var Phases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Timeline_ProjectTimeline__ = __webpack_require__(683);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__Utilities_HydrateStore__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__functions_canEdit__ = __webpack_require__(784);
 // top level project report
 // parent of ProjectCard.tsx
 // parent of Attachments.tsx
@@ -66041,6 +66045,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -66140,6 +66145,7 @@ var Project = (function (_super) {
             projectBudget: project.projectBudget,
             notes: project.notes,
             shape: project.shape,
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
         }, function () {
             this.setState({
                 spinner: false
@@ -83562,6 +83568,36 @@ __webpack_require__(372);
 __webpack_require__(371);
 module.exports = __webpack_require__(370);
 
+
+/***/ }),
+/* 783 */,
+/* 784 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (immutable) */ __webpack_exports__["a"] = canEdit;
+// provided the project, list of personnel, and logged in user,
+// this returns whether user has write access to project & phases
+function canEdit(project, personnel, user) {
+    var me = personnel.find(function (person) {
+        return person.email == user;
+    });
+    var canEdit = false;
+    if (project.projectManager.includes(me.title)) {
+        canEdit = true;
+    }
+    if (project.projectMembers.includes(me.title)) {
+        canEdit = true;
+    }
+    if (canEdit == false) {
+        return false;
+    }
+    return canEdit;
+}
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/functions/canEdit.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/functions/canEdit.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);
