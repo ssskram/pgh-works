@@ -238,8 +238,8 @@ export class SubphaseInput extends React.Component<any, any> {
                     </div>
                 }
                 {canEdit != true &&
-                    <div className='col-md-12'>
-                        <h2 className='text-center'>{subphaseName}</h2>
+                    <div className='col-md-12 text-center'>
+                        <h3>{subphaseName}</h3>
                         {subphaseDescription != '' &&
                             <div>
                                 <h4><b>Description</b></h4>
