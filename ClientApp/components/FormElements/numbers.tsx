@@ -13,7 +13,7 @@ export default class currency extends React.Component<any, any> {
             <div className="form-group">
                 <div className="col-md-12 form-element">
                     <h4 className="form-h4">{this.props.header}{this.props.required == true && <span style={{ color: 'red', fontSize: '20' }}>*</span>}</h4>
-                    <CurrencyInput
+                    <CurrencyInput type='search'
                         selectAllOnFocus={false}
                         autoFocus={false}
                         className={conditionalClass}

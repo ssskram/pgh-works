@@ -10,7 +10,7 @@ import * as Assets from '../../../store/GETS/taggableAssets'
 import Select from '../../FormElements/select'
 import { Helmet } from "react-helmet"
 
-const dropdownStyle = '.Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 export class StreetSelection extends React.Component<any, any> {
     constructor(props) {
