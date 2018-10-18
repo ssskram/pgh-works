@@ -9,7 +9,7 @@ import * as Phases from '../../../store/phases'
 import Select from '../../FormElements/select'
 import { Helmet } from "react-helmet"
 
-const dropdownStyle = '.Select-menu-outer { overflow: visible}'
+const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 export class PhaseFollows extends React.Component<any, any> {
     constructor() {

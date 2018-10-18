@@ -168,6 +168,48 @@ export class ProjectInputs extends React.Component<any, any> {
                     />
                 </div>
 
+                <div className='col-md-12' style={ownerStyle}>
+                    <h3 style={sectionHeader}>Owners<span style={glyphs} className='glyphicon glyphicon-user hidden-sm hidden-xs pull-right'></span></h3>
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectDepartment}
+                            name="projectDepartment"
+                            required={true}
+                            header='Department'
+                            placeholder='Select a department'
+                            onChange={this.handleChildSelect.bind(this)}
+                            multi={false}
+                            options={departments}
+                        />
+                    </div>
+
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectManager}
+                            name="projectManager"
+                            header='Project manager'
+                            required={true}
+                            placeholder='Select manager'
+                            onChange={this.handleChildSelect.bind(this)}
+                            multi={false}
+                            options={personnel}
+                        />
+                    </div>
+
+                    <div className='col-md-12'>
+                        <Select
+                            value={projectMembers}
+                            name="projectMembers"
+                            header='Project members'
+                            placeholder='Select team members'
+                            onChange={this.handleMembersMulti.bind(this)}
+                            multi={true}
+                            options={personnel}
+                            delimiter='; '
+                        />
+                    </div>
+                </div>
+
                 <div style={dateStyle} className='col-md-12'>
                     <h3 style={sectionHeader}>Duration<span style={glyphs} className='glyphicon glyphicon-calendar hidden-sm hidden-xs pull-right'></span></h3>
                     {!update &&
@@ -214,48 +256,6 @@ export class ProjectInputs extends React.Component<any, any> {
                             header="Actual end date"
                             placeholder="Select a date"
                             callback={(value) => this.handleDate(value, 'actualEndDate')}
-                        />
-                    </div>
-                </div>
-
-                <div className='col-md-12' style={ownerStyle}>
-                    <h3 style={sectionHeader}>Owners<span style={glyphs} className='glyphicon glyphicon-user hidden-sm hidden-xs pull-right'></span></h3>
-                    <div className='col-md-12'>
-                        <Select
-                            value={projectDepartment}
-                            name="projectDepartment"
-                            required={true}
-                            header='Department'
-                            placeholder='Select a department'
-                            onChange={this.handleChildSelect.bind(this)}
-                            multi={false}
-                            options={departments}
-                        />
-                    </div>
-
-                    <div className='col-md-12'>
-                        <Select
-                            value={projectManager}
-                            name="projectManager"
-                            header='Project manager'
-                            required={true}
-                            placeholder='Select manager'
-                            onChange={this.handleChildSelect.bind(this)}
-                            multi={false}
-                            options={personnel}
-                        />
-                    </div>
-
-                    <div className='col-md-12'>
-                        <Select
-                            value={projectMembers}
-                            name="projectMembers"
-                            header='Project members'
-                            placeholder='Select team members'
-                            onChange={this.handleMembersMulti.bind(this)}
-                            multi={true}
-                            options={personnel}
-                            delimiter='; '
                         />
                     </div>
                 </div>

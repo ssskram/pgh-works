@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "36c02c15d8dcd8b141de"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "63ebb25fb9a6bf8ad927"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -32730,6 +32730,16 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: projectDescription, name: "projectDescription", header: "Project description", placeholder: "Provide a brief explanation of the project", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: ownerStyle },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: sectionHeader },
+                    "Owners",
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: glyphs, className: 'glyphicon glyphicon-user hidden-sm hidden-xs pull-right' })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", required: true, header: 'Department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: personnel, delimiter: '; ' }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: dateStyle, className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: sectionHeader },
                     "Duration",
@@ -32743,17 +32753,7 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: actualEndDate, name: "actualEndDate", header: "Actual end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualEndDate'); } }))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: ownerStyle },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: sectionHeader },
-                    "Owners",
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: glyphs, className: 'glyphicon glyphicon-user hidden-sm hidden-xs pull-right' })),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectDepartment, name: "projectDepartment", required: true, header: 'Department', placeholder: 'Select a department', onChange: this.handleChildSelect.bind(this), multi: false, options: departments })),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: personnel, delimiter: '; ' })))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: actualEndDate, name: "actualEndDate", header: "Actual end date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualEndDate'); } })))));
     };
     return ProjectInputs;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -58778,15 +58778,15 @@ var PhaseCard = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_slick___default.a, __assign({}, settings),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Phase status")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseStatus)),
                     phaseDescription &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseDescription)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Phase status")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseStatus)),
                     notes &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
@@ -58862,6 +58862,11 @@ var ProjectCard = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_slick___default.a, __assign({}, settings),
+                    projectDescription &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDescription)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project status")),
@@ -58870,11 +58875,6 @@ var ProjectCard = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Department")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDepartment)),
-                    projectDescription &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDescription)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project manager")),
@@ -59607,7 +59607,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var types = [
     { value: 'Facility', label: 'Facility', name: 'assetType' },
     { value: 'Project', label: 'Project', name: 'assetType' },
@@ -60927,7 +60927,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var dropdownStyle = '.Select-menu-outer { overflow: visible}';
+var dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}';
 var PhaseFollows = (function (_super) {
     __extends(PhaseFollows, _super);
     function PhaseFollows() {
@@ -66216,14 +66216,13 @@ var Project = (function (_super) {
             spinner == true &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Utilities_Spinner__["a" /* default */], { notice: '...loading the project...' }),
             spinner == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center', style: { marginBottom: '25px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { style: { letterSpacing: '2px' } }, projectName)),
                     canEdit == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' }, "Edit")))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Maps_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             spinner == false &&

@@ -39,6 +39,12 @@ export default class ProjectCard extends React.Component<any, any> {
                     <br />
                     <Slider {...settings}>
 
+                        {projectDescription &&
+                            <div className='col-md-12 text-center'>
+                                <h3><u>Description</u></h3>
+                                <h2>{projectDescription}</h2>
+                            </div>
+                        }
                         <div className='col-md-12 text-center'>
                             <h3><u>Project status</u></h3>
                             <h2>{projectStatus}</h2>
@@ -47,12 +53,6 @@ export default class ProjectCard extends React.Component<any, any> {
                             <h3><u>Department</u></h3>
                             <h2>{projectDepartment}</h2>
                         </div>
-                        {projectDescription &&
-                            <div className='col-md-12 text-center'>
-                                <h3><u>Description</u></h3>
-                                <h2>{projectDescription}</h2>
-                            </div>
-                        }
                         <div className='col-md-12 text-center'>
                             <h3><u>Project manager</u></h3>
                             <h2>{projectManager}</h2>
@@ -71,9 +71,9 @@ export default class ProjectCard extends React.Component<any, any> {
                         }
                     </Slider>
                 </div>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
             </div>
         )
     }

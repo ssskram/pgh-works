@@ -212,7 +212,7 @@ export class Project extends React.Component<any, any> {
                     <Spinner notice='...loading the project...' />
                 }
                 {spinner == false &&
-                    <div className='row text-center'>
+                    <div className='row text-center' style={{marginBottom: '25px'}}>
                         <div className='col-md-12'>
                             <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
                         </div>
@@ -225,7 +225,6 @@ export class Project extends React.Component<any, any> {
                         }
                     </div>
                 }
-                <hr />
                 <Map shape={shape} />
                 <br />
                 {spinner == false &&
