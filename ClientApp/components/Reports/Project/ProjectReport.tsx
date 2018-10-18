@@ -85,17 +85,17 @@ export class Project extends React.Component<any, any> {
     findProject(props) {
         // set project, and pass project to setProjectState
         const id = this.props.match.params.id
-        if (props.projects) {
+        if (props.projects && props.personnel && props.user) {
             let project = props.projects.find(function (item) {
                 return item.projectID == id
             })
             if (project) {
-                this.setProjectState(project)
+                this.setProjectState(project, props.personnel, props.user)
             }
         }
     }
 
-    setProjectState(project) {
+    setProjectState(project, personnel, user) {
         this.setState({
             cartegraphID: project.cartegraphID,
             projectID: project.projectID,
@@ -112,7 +112,7 @@ export class Project extends React.Component<any, any> {
             projectBudget: project.projectBudget,
             notes: project.notes,
             shape: project.shape,
-            canEdit: canEdit(project, this.props.personnel, this.props.user)
+            canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.setState({
                 spinner: false

@@ -92,12 +92,12 @@ export class Phase extends React.Component<any, any> {
         let phase = props.phases.find(function (item) {
             return item.phaseID == id
         })
-        if (phase) {
-            this.setPhaseState(phase)
+        if (phase && props.personnel && props.user) {
+            this.setPhaseState(phase, props.personnel, props.user)
         }
     }
 
-    setPhaseState(phase) {
+    setPhaseState(phase, personnel, user) {
         const project = this.props.projects.find(project => {
             return project.projectID == phase.projectID
         })
@@ -115,7 +115,7 @@ export class Phase extends React.Component<any, any> {
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
-            canEdit: canEdit(project, this.props.personnel, this.props.user)
+            canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.findProject(this.state.projectID)
         })

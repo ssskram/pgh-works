@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8ba9602d94de9700241a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "71a937e5b0056270ae21"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64994,11 +64994,11 @@ var Phase = (function (_super) {
         var phase = props.phases.find(function (item) {
             return item.phaseID == id;
         });
-        if (phase) {
-            this.setPhaseState(phase);
+        if (phase && props.personnel && props.user) {
+            this.setPhaseState(phase, props.personnel, props.user);
         }
     };
-    Phase.prototype.setPhaseState = function (phase) {
+    Phase.prototype.setPhaseState = function (phase, personnel, user) {
         var project = this.props.projects.find(function (project) {
             return project.projectID == phase.projectID;
         });
@@ -65016,7 +65016,7 @@ var Phase = (function (_super) {
             phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
-            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__functions_canEdit__["a" /* default */])(project, personnel, user)
         }, function () {
             this.findProject(this.state.projectID);
         });
@@ -65742,7 +65742,7 @@ var ProgramsFunds = (function (_super) {
         }
         else {
             columns = [{
-                    Header: 'Fund/Program',
+                    Header: 'Fund',
                     accessor: 'fundID',
                     Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundName(props.value)); }
                 }, {
@@ -65754,12 +65754,12 @@ var ProgramsFunds = (function (_super) {
                     accessor: 'fundID',
                     Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, _this.getFundType(props.value)); }
                 }, {
-                    Header: 'Drawdown Amount',
+                    Header: 'Drawdown',
+                    accessor: 'drawdownType'
+                }, {
+                    Header: 'Amount',
                     accessor: 'drawdownAmount',
                     Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8_react_currency_format__, { value: props.value, displayType: 'text', thousandSeparator: true, prefix: '$' }); }
-                }, {
-                    Header: 'Drawdown Type',
-                    accessor: 'drawdownType'
                 }, {
                     Header: 'Notes',
                     accessor: 'notes'
@@ -66148,16 +66148,16 @@ var Project = (function (_super) {
     Project.prototype.findProject = function (props) {
         // set project, and pass project to setProjectState
         var id = this.props.match.params.id;
-        if (props.projects) {
+        if (props.projects && props.personnel && props.user) {
             var project = props.projects.find(function (item) {
                 return item.projectID == id;
             });
             if (project) {
-                this.setProjectState(project);
+                this.setProjectState(project, props.personnel, props.user);
             }
         }
     };
-    Project.prototype.setProjectState = function (project) {
+    Project.prototype.setProjectState = function (project, personnel, user) {
         this.setState({
             cartegraphID: project.cartegraphID,
             projectID: project.projectID,
@@ -66174,7 +66174,7 @@ var Project = (function (_super) {
             projectBudget: project.projectBudget,
             notes: project.notes,
             shape: project.shape,
-            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__functions_canEdit__["a" /* default */])(project, this.props.personnel, this.props.user)
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_21__functions_canEdit__["a" /* default */])(project, personnel, user)
         }, function () {
             this.setState({
                 spinner: false
