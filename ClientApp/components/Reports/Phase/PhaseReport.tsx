@@ -101,6 +101,7 @@ export class Phase extends React.Component<any, any> {
         const project = this.props.projects.find(project => {
             return project.projectID == phase.projectID
         })
+        console.log(phase)
         this.setState({
             projectID: phase.projectID,
             phaseID: phase.phaseID,
@@ -125,6 +126,7 @@ export class Phase extends React.Component<any, any> {
         let project = this.props.projects.find(function (item) {
             return item.projectID == id
         })
+        console.log(project)
         if (project) {
             this.setState({
                 projectName: project.projectName,
@@ -245,7 +247,7 @@ export class Phase extends React.Component<any, any> {
                         <hr />
                         <br />
                         <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>
-                        {pfProject.projectName && pfPhase.phaseName &&
+                        {pfProject != undefined && pfPhase != undefined &&
                             <div className='text-center' style={{ padding: '10px' }}>
                                 <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
                             </div>

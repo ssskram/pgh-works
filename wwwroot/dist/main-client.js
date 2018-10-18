@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "71a937e5b0056270ae21"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "66b22ec34b6dd8a78395"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65002,6 +65002,7 @@ var Phase = (function (_super) {
         var project = this.props.projects.find(function (project) {
             return project.projectID == phase.projectID;
         });
+        console.log(phase);
         this.setState({
             projectID: phase.projectID,
             phaseID: phase.phaseID,
@@ -65025,6 +65026,7 @@ var Phase = (function (_super) {
         var project = this.props.projects.find(function (item) {
             return item.projectID == id;
         });
+        console.log(project);
         if (project) {
             this.setState({
                 projectName: project.projectName,
@@ -65119,7 +65121,7 @@ var Phase = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: { marginTop: '-12px', marginRight: '10px' }, src: phaseImg })),
                         phaseName),
-                    pfProject.projectName && pfPhase.phaseName &&
+                    pfProject != undefined && pfPhase != undefined &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: { padding: '10px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                                 "Follows ",
