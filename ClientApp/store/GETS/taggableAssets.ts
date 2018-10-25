@@ -50,7 +50,7 @@ export const reducer: Reducer<AssetState> = (state: AssetState, incomingAction: 
             return {
                 ...state,
                 assets: action.assets
-            };
+            }
     }
 
     return state || unloadedState;
