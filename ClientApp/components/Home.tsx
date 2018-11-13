@@ -35,18 +35,12 @@ export class Home extends React.Component<any, any> {
             redirect: false,
             projectID: ''
         }
-    }const floatingPanelBig = {
-    position: 'absolute' as any,
-    bottom: '5px',
-    left: '25%',
-    zIndex: 99,
-    padding: '5px'
-}
+    }
 
     componentDidMount() {
         window.scrollTo(0, 0)
 
-        this.setState ({
+        this.setState({
             projects: this.props.projects
         })
 
@@ -56,7 +50,7 @@ export class Home extends React.Component<any, any> {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.projects.length == 0) {
-            this.setState ({
+            this.setState({
                 projects: nextProps.projects
             })
         }

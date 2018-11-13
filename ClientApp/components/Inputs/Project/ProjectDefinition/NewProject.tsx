@@ -99,7 +99,6 @@ export class ProjectDefinition extends React.Component<any, any> {
             projectDepartment: projectDesc.projectDepartment,
             projectDescription: projectDesc.projectDescription,
             projectStatus: projectDesc.projectStatus,
-            projectBudget: projectDesc.projectBudget,
             notes: projectDesc.notes
         }, function (this) {
             if (this.state.shapeType == 'new' && this.state.assetTypeCheck == false) {
@@ -119,7 +118,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                     projectDepartment: this.state.projectDepartment,
                     projectDescription: this.state.projectDescription,
                     projectStatus: this.state.projectStatus,
-                    projectBudget: this.state.projectBudget,
                     notes: this.state.notes,
                     shape: this.state.shape
                 }
@@ -150,7 +148,6 @@ export class ProjectDefinition extends React.Component<any, any> {
                 projectDepartment: this.state.projectDepartment,
                 projectDescription: this.state.projectDescription,
                 projectStatus: this.state.projectStatus,
-                projectBudget: this.state.projectBudget,
                 notes: this.state.notes,
                 shape: this.state.shape
             }

@@ -43,7 +43,6 @@ namespace pghworks.Controllers {
                     projectMembers = item.projectMembersField,
                     projectName = item.projectNameField,
                     projectStatus = item.projectStatusField,
-                    projectBudget = item.projectBudgetField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllProjects.Add (pj);
@@ -76,7 +75,6 @@ namespace pghworks.Controllers {
                 projectMembersField = model.projectMembers,
                 projectNameField = model.projectName,
                 projectStatusField = model.projectStatus,
-                projectBudgetField = model.projectBudget,
                 CgShape = model.shape
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
@@ -133,7 +131,6 @@ namespace pghworks.Controllers {
                 projectMembersField = model.projectMembers,
                 projectNameField = model.projectName,
                 projectStatusField = model.projectStatus,
-                projectBudgetField = model.projectBudget,
                 CgShape = model.shape
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);

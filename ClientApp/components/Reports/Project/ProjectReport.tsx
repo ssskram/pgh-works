@@ -11,11 +11,10 @@ import { ApplicationState } from '../../../store'
 import Modal from 'react-responsive-modal'
 import * as Ping from '../../../store/GETS/ping'
 import * as Projects from '../../../store/projects'
-import * as Personnel from '../../../store/GETS/funds'
+import * as Personnel from '../../../store/GETS/personnel'
 import Spinner from '../../Utilities/Spinner'
 import Map from '../../Maps/ProjectMap'
 import Phases from './Phases'
-import Drawdowns from './Drawdowns'
 import Attachments from './Attachments'
 import * as User from '../../../store/GETS/user'
 import * as Assets from '../../../store/GETS/taggableAssets'
@@ -61,7 +60,6 @@ export class Project extends React.Component<any, any> {
             projectDepartment: '',
             projectDescription: '',
             projectStatus: '',
-            projectBudget: '',
             notes: '',
             shape: {}
         }
@@ -109,7 +107,6 @@ export class Project extends React.Component<any, any> {
             projectDepartment: project.projectDepartment,
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
-            projectBudget: project.projectBudget,
             notes: project.notes,
             shape: project.shape,
             canEdit: canEdit(project, personnel, user)
@@ -148,10 +145,6 @@ export class Project extends React.Component<any, any> {
 
     handleActualCost(value) {
         this.setState({ actualCost: value })
-    }
-
-    handleCurrency(value) {
-        this.setState({ projectBudget: value })
     }
 
     handleDate(date, name) {
@@ -197,8 +190,7 @@ export class Project extends React.Component<any, any> {
             projectStatus,
             shape,
             expectedStartDate,
-            expectedEndDate,
-            projectBudget
+            expectedEndDate
         } = this.state
 
         // validation
@@ -244,14 +236,6 @@ export class Project extends React.Component<any, any> {
                             />
                         </div>
                         <div style={marginBottom} className='col-md-12 row'>
-                            <Drawdowns
-                                canEdit={canEdit}
-                                parentID={projectID}
-                                parentType={'Project'}
-                                budget={projectBudget}
-                            />
-                        </div>
-                        <div style={marginBottom} className='col-md-12 row'>
                             <Tags
                                 canEdit={canEdit}
                                 parentID={projectID}
@@ -285,7 +269,6 @@ export class Project extends React.Component<any, any> {
                                 handleSelect={this.handleChildSelect.bind(this)}
                                 handleMulti={this.handleMultiSelect.bind(this)}
                                 handleDate={this.handleDate.bind(this)}
-                                handleCurrency={this.handleCurrency.bind(this)}
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>

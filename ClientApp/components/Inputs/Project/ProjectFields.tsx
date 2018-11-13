@@ -100,7 +100,6 @@ export class ProjectInputs extends React.Component<any, any> {
             projectDepartment,
             projectDescription,
             projectStatus,
-            projectBudget,
             notes,
             update
         } = this.props.description
@@ -133,18 +132,6 @@ export class ProjectInputs extends React.Component<any, any> {
                         multi={false}
                         required={true}
                         options={statuses}
-                    />
-                </div>
-
-                <div className='col-md-12'>
-                    <Currency
-                        value={projectBudget}
-                        name="projectBudget"
-                        header="Project budget"
-                        required={false}
-                        placeholder="Enter an amount"
-                        prefix="$"
-                        callback={this.handleCurrency.bind(this)}
                     />
                 </div>
 

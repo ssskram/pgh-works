@@ -13,7 +13,6 @@ namespace pghworks.Models {
         public string projectMembers { get; set; }
         public string projectName { get; set; }
         public string projectStatus { get; set; }
-        public string projectBudget { get; set; }
         public Shape shape { get; set; }
     }
 
@@ -31,7 +30,6 @@ namespace pghworks.Models {
         public string projectMembersField { get; set; }
         public string projectNameField { get; set; }
         public string projectStatusField { get; set; }
-        public string projectBudgetField { get; set; }
         public Shape CgShape { get; set; }
     }
 }
