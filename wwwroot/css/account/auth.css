@@ -1,52 +1,36 @@
+
 body {
-    background-color: rgba(255, 250, 238, .5);
+    background-color: #000000;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+}
+
+h1,h2 {
+    color: #FDD803 !important;
 }
 
 .row {
     margin: 0px !important;
 }
 
+.auth-img {
+    min-width: 250px;
+    margin: 0 auto;
+    width: 80%
+}
+
+.btn-secondary {
+    font-size: 22px;
+    margin-top: 25px;
+    padding: 10px 20px;
+}
+
 /* center login page */
-
 .login {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
     transform: translate(-50%, -50%);
-}
-
-/* button styles */
-
-.btn-default:active, .btn-default:focus, .btn-default:hover {
-    background-color: #000000 !important;
-    border: 2px #000000;
-    border-style: solid;
-    color: white !important;
-    outline: none;
-}
-
-.btn-default {
-    /* font */
-    color: black;
-    font-size: 20px;
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 2px !important;
-    font-weight: bold;
-    /* remove blue underline */
-    text-decoration: none;
-    /* border */
-    border: 2px black;
-    border-style: solid;
-    border-radius: 10px;
-    /* transitions */
-    transition-duration: .2s;
-    -webkit-transition-duration: .2s;
-    -moz-transition-duration: .2s;
-    /* other */
-    background-color: transparent;
-    padding: 10px 15px;
-    margin: 15px 7px;
-    width: 250px;
 }
 
 /* loader to save screen on network activity */
@@ -55,7 +39,7 @@ body {
     align-items: center;
     justify-content: center;
     display: none;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 250, 238, .35);
     position: fixed;
     z-index: 1035;
     height: 100%;
@@ -66,7 +50,7 @@ body {
 }
 
 .loader {
-    border: 16px solid #fffaee;
+    border: 16px solid #FAF7F2;
     border-top: 16px solid rgba(202, 205, 206, .35);
     border-radius: 50%;
     width: 150px;
