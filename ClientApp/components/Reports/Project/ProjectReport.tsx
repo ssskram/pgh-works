@@ -26,7 +26,7 @@ import ProjectCard from '../../Cards/ProjectCard'
 import { v1 as uuid } from 'uuid'
 import ProjectTimeline from '../../Timeline/ProjectTimeline'
 import Hydrate from './../../Utilities/HydrateStore'
-import canEdit from '../../../functions/canEdit'
+// import canEdit from '../../../functions/canEdit'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
@@ -108,8 +108,8 @@ export class Project extends React.Component<any, any> {
             projectDescription: project.projectDescription,
             projectStatus: project.projectStatus,
             notes: project.notes,
-            shape: project.shape,
-            canEdit: canEdit(project, personnel, user)
+            shape: project.shape
+            // canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.setState({
                 spinner: false

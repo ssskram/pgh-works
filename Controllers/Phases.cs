@@ -31,7 +31,6 @@ namespace pghworks.Controllers {
             string cartPhases = getPhases ().Result;
             dynamic cartPhasesObject = JObject.Parse (cartPhases) ["cgWorkOrdersClass"];
             foreach (var item in cartPhasesObject) {
-                PhaseFollows pf = JsonConvert.DeserializeObject<PhaseFollows> (item.phaseFollowsField.ToString ());
                 Phase ph = new Phase () {
                     actualEndDate = item.phaseActualEndDateField,
                     actualStartDate = item.phaseActualStartDateField,
@@ -40,7 +39,6 @@ namespace pghworks.Controllers {
                     expectedStartDate = item.phaseExpectedStartDateField,
                     notes = item.NotesField,
                     phaseDescription = item.phaseDescriptionField,
-                    phaseFollows = pf,
                     phaseID = item.phaseIDField,
                     phaseName = item.phaseNameField,
                     phaseStatus = item.phaseStatusField,
@@ -63,7 +61,6 @@ namespace pghworks.Controllers {
         // POST
         [HttpPost ("[action]")]
         public async Task addPhase ([FromBody] Phase model) {
-            var phaseFollows = JsonConvert.SerializeObject (model.phaseFollows);
             CgPhase cgModel = new CgPhase () {
                 phaseActualStartDateField = model.actualStartDate,
                 phaseActualEndDateField = model.actualEndDate,
@@ -74,8 +71,7 @@ namespace pghworks.Controllers {
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
-                projectIDField = model.projectID,
-                phaseFollowsField = phaseFollows
+                projectIDField = model.projectID
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
@@ -116,7 +112,6 @@ namespace pghworks.Controllers {
                 dynamic phase = JObject.Parse (content) ["cgWorkOrdersClass"][0];
                 id = phase.Oid;
             }
-            var phaseFollows = JsonConvert.SerializeObject (model.phaseFollows);
             CgPhase cgModel = new CgPhase () {
                 Oid = id,
                 phaseActualStartDateField = model.actualStartDate,
@@ -125,7 +120,6 @@ namespace pghworks.Controllers {
                 phaseExpectedStartDateField = model.expectedStartDate,
                 NotesField = model.notes,
                 phaseDescriptionField = model.phaseDescription,
-                phaseFollowsField = phaseFollows,
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,

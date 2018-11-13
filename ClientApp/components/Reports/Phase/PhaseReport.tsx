@@ -22,7 +22,6 @@ import Tags from '../Tags'
 import Milestones from './Milestones'
 import Subphases from './SubPhases'
 import Timeline from '../../Timeline/PhaseTimeline'
-import PhaseFollows from '../../Inputs/Phase/PhaseFollows'
 import DeletePhase from '../../DeleteConfirmations/DeletePhase'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
@@ -59,7 +58,6 @@ export class Phase extends React.Component<any, any> {
             actualStartDate: '',
             actualEndDate: '',
             phaseDescription: '',
-            phaseFollows: { project: '', phase: '' },
             phaseStatus: '',
             percentComplete: '',
             notes: '',
@@ -113,7 +111,6 @@ export class Phase extends React.Component<any, any> {
             actualEndDate: phase.actualEndDate,
             phaseDescription: phase.phaseDescription,
             phaseStatus: phase.phaseStatus,
-            phaseFollows: phase.phaseFollows,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
             canEdit: canEdit(project, personnel, user)
@@ -149,19 +146,8 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
-    pfProjectRedirect() {
-        this.setState({
-            redirect: true,
-            redirectLink: "/Project/id=" + this.state.phaseFollows.project
-        })
-    }
 
-    setPhaseFollows() {
-        this.setState({
-            modalIsOpen: true,
-            modalType: 'follows'
-        })
-    }
+
 
     editPhase() {
         this.setState({
@@ -174,30 +160,6 @@ export class Phase extends React.Component<any, any> {
         this.setState({
             modalIsOpen: true,
             modalType: 'delete'
-        })
-    }
-
-    putPhaseFollows(phaseFollows) {
-        this.setState({
-            phaseFollows: phaseFollows
-        }, function (this) {
-            const putLoad = {
-                phaseID: this.state.phaseID,
-                projectID: this.state.projectID,
-                cartegraphID: this.state.cartegraphID,
-                phaseName: this.state.phaseName,
-                expectedStartDate: this.state.expectedStartDate,
-                expectedEndDate: this.state.expectedEndDate,
-                actualStartDate: this.state.actualStartDate,
-                actualEndDate: this.state.actualEndDate,
-                phaseDescription: this.state.phaseDescription,
-                phaseFollows: this.state.phaseFollows,
-                phaseStatus: this.state.phaseStatus,
-                percentComplete: this.state.percentComplete,
-                notes: this.state.notes
-            }
-            this.props.updatePhase(putLoad)
-            this.closeModal()
         })
     }
 
@@ -214,21 +176,8 @@ export class Phase extends React.Component<any, any> {
             projectID,
             projectName,
             expectedStartDate,
-            expectedEndDate,
-            phaseFollows
+            expectedEndDate
         } = this.state
-
-
-        let pfProject = {} as any
-        let pfPhase = {} as any
-        if (phaseFollows.project != '' && phaseFollows.phase != '') {
-            pfProject = this.props.projects.find(project => {
-                return project.projectID == phaseFollows.project
-            })
-            pfPhase = this.props.phases.find(phase => {
-                return phase.phaseID == phaseFollows.phase
-            })
-        }
 
         if (redirect) {
             return <Redirect push to={redirectLink} />
@@ -247,15 +196,9 @@ export class Phase extends React.Component<any, any> {
                         <hr />
                         <br />
                         <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>
-                        {pfProject != undefined && pfPhase != undefined &&
-                            <div className='text-center' style={{ padding: '10px' }}>
-                                <h4>Follows <b>{pfPhase.phaseName}</b> phase of <a style={{ cursor: 'pointer' }} onClick={this.pfProjectRedirect.bind(this)}><b>{pfProject.projectName}</b></a></h4>
-                            </div>
-                        }
                         {canEdit == true &&
                             <div className='text-center' style={{ marginTop: '20px' }}>
                                 <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit</button></span>
-                                <span><button onClick={this.setPhaseFollows.bind(this)} title='Phase follows' style={btnMargin} type='button' className='btn  btn-primary'>Follows</button></span>
                                 <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'>Delete</button></span>
                             </div>
                         }
@@ -304,11 +247,6 @@ export class Phase extends React.Component<any, any> {
                             phaseID={phaseID}
                             closeModal={this.closeModal.bind(this)}
                             update
-                        />
-                    }
-                    {modalType == 'follows' &&
-                        <PhaseFollows
-                            passFollows={this.putPhaseFollows.bind(this)}
                         />
                     }
                     {modalType == 'delete' &&

@@ -14,7 +14,6 @@ export class DeletePhase extends React.Component<any, any> {
             phaseID: phase.phaseID,
             projectID: phase.projectID,
             phaseName: phase.phaseName,
-            phaseFollows: phase.phaseFollows,
             phaseDescription: phase.phaseDescription,
             expectedStartDate: phase.expectedStartDate,
             expectedEndDate: phase.expectedEndDate,
