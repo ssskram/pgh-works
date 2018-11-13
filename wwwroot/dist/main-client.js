@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "701c4ed6ef544236eab7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3f90d83be99487873c8a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59097,15 +59097,14 @@ var MilestoneInputs = (function (_super) {
     MilestoneInputs.prototype.render = function () {
         var _a = this.state, milestoneName = _a.milestoneName, dueDate = _a.dueDate, notes = _a.notes;
         // validation
-        var isEnabled = milestoneName != '' &&
-            dueDate != '';
+        var isEnabled = milestoneName != '';
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "New milestone"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: milestoneName, required: true, name: "milestoneName", header: "Milestone name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: dueDate, name: "dueDate", required: true, header: "Due date", placeholder: "Select a date", callback: this.handleDueDate.bind(this) })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_datepicker__["a" /* default */], { value: dueDate, name: "dueDate", required: false, header: "Due date", placeholder: "Select a date", callback: this.handleDueDate.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__FormElements_input__["a" /* default */], { value: notes, required: false, name: "notes", header: "Notes", placeholder: "Other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },

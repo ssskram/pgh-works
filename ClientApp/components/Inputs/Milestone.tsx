@@ -73,8 +73,7 @@ export class MilestoneInputs extends React.Component<any, any> {
 
         // validation
         const isEnabled =
-            milestoneName != '' &&
-            dueDate != ''
+            milestoneName != ''
 
         return (
             <div>
@@ -95,7 +94,7 @@ export class MilestoneInputs extends React.Component<any, any> {
                     <Datepicker
                         value={dueDate}
                         name="dueDate"
-                        required={true}
+                        required={false}
                         header="Due date"
                         placeholder="Select a date"
                         callback={this.handleDueDate.bind(this)}
