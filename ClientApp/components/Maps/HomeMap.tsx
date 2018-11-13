@@ -1,7 +1,7 @@
 
 // returns all projects to home map
 
-import * as React from "react";
+import * as React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon, InfoWindow } from "react-google-maps"
 import randomcolor from 'randomcolor'
@@ -61,6 +61,8 @@ export default class HomeMap extends React.Component<any, any> {
             showInfowindow,
             selectedProject
         } = this.state
+
+        console.log(projects)
 
         const MapComponent = compose(
             withProps({

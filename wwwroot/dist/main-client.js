@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "66b22ec34b6dd8a78395"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "202d3746a70333e71f4e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63392,6 +63392,7 @@ var HomeMap = (function (_super) {
     HomeMap.prototype.render = function () {
         var _this = this;
         var _a = this.state, projects = _a.projects, zoom = _a.zoom, center = _a.center, showInfowindow = _a.showInfowindow, selectedProject = _a.selectedProject;
+        console.log(projects);
         var MapComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_recompose__["withProps"])({
             googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",
             loadingElement: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { height: "100%", } }),
