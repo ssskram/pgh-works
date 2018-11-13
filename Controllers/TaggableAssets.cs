@@ -44,7 +44,7 @@ namespace pghworks.Controllers {
 
         public async Task getFacilities () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgFacilitiesClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgFacilitiesClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -63,7 +63,7 @@ namespace pghworks.Controllers {
 
         public async Task getProjects () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass?fields=Oid,CgShape,projectNameField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass?fields=Oid,CgShape,projectNameField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -82,7 +82,7 @@ namespace pghworks.Controllers {
 
         public async Task getSteps () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/StepsClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/StepsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -101,7 +101,7 @@ namespace pghworks.Controllers {
 
         public async Task getRetainingWalls () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/RetainingWallClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/RetainingWallClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -120,7 +120,7 @@ namespace pghworks.Controllers {
 
         public async Task getPools () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PoolsClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PoolsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -139,7 +139,7 @@ namespace pghworks.Controllers {
 
         public async Task getPlaygrounds () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlaygroundsClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlaygroundsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -158,7 +158,7 @@ namespace pghworks.Controllers {
 
         public async Task getParks () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ParksClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ParksClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -192,7 +192,7 @@ namespace pghworks.Controllers {
 
         public async Task getIntersections () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgSignalizedIntersectionsClass?fields=Oid,CgShape,DescriptionField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgSignalizedIntersectionsClass?fields=Oid,CgShape,DescriptionField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -211,7 +211,7 @@ namespace pghworks.Controllers {
 
         public async Task getBridges () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgBridgesClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgBridgesClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -230,7 +230,7 @@ namespace pghworks.Controllers {
 
         public async Task getFields () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlayingFieldsClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlayingFieldsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -249,7 +249,7 @@ namespace pghworks.Controllers {
 
         public async Task getCourts () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/CourtsClass?fields=Oid,CgShape,IDField";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/CourtsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -268,7 +268,7 @@ namespace pghworks.Controllers {
 
         public async Task getStreetsRecursively () {
             var offset = 0;
-            var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField&limit=1000";
+            var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField,InactiveField&filter=(([Inactive] is equal to false))&limit=1000";
             await getStreets (url, offset);
         }
 
