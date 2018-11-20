@@ -1,7 +1,6 @@
 
 // top level project report
 // parent of ProjectCard.tsx
-// parent of Attachments.tsx
 // co-parent of Tags.tsx
 
 import * as React from 'react'
@@ -14,7 +13,6 @@ import * as Personnel from '../../../store/GETS/personnel'
 import Spinner from '../../Utilities/Spinner'
 import Map from '../../Maps/ProjectMap'
 import Phases from './Phases'
-import Attachments from './Attachments'
 import * as User from '../../../store/GETS/user'
 import * as Assets from '../../../store/GETS/taggableAssets'
 import * as TagStore from '../../../store/tags'
@@ -240,14 +238,6 @@ export class Project extends React.Component<any, any> {
                                 parentID={projectID}
                                 parentName={projectName}
                                 parentType='Project'
-                            />
-                        </div>
-                        <div style={marginBottom} className='col-md-12 row'>
-                            <Attachments
-                                canEdit={canEdit}
-                                parentID={projectID}
-                                parentType={'Project'}
-                                parentName={projectName}
                             />
                         </div>
                     </div>

@@ -7,7 +7,6 @@ import { ApplicationState } from '../../store'
 import * as Projects from '../../store/projects'
 import * as Phases from '../../store/phases'
 import * as Milestones from '../../store/milestones'
-import * as Attachments from '../../store/attachments'
 import * as Tags from '../../store/tags'
 import * as TaggableAssets from '../../store/GETS/taggableAssets'
 import * as Personnel from '../../store/GETS/personnel'
@@ -23,7 +22,6 @@ export class Hydrate extends React.Component<any, any> {
         props.loadProjects()
         props.loadPhases()
         props.loadMilestones()
-        props.loadAttachments()
         props.loadTags()
         props.loadTaggableAssets()
         props.loadPersonnel()
@@ -41,7 +39,6 @@ export default connect(
         ...state.projects,
         ...state.phases,
         ...state.milestones,
-        ...state.attachments,
         ...state.tags,
         ...state.taggableAssets,
         ...state.personnel,
@@ -52,7 +49,6 @@ export default connect(
         ...Projects.actionCreators,
         ...Phases.actionCreators,
         ...Milestones.actionCreators,
-        ...Attachments.actionCreators,
         ...Tags.actionCreators,
         ...TaggableAssets.actionCreators,
         ...Personnel.actionCreators,
