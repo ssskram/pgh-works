@@ -1,0 +1,65 @@
+{
+    "activity": [{
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "c9b6f9a0-b69e-11e8-930d-dd084cae8ed3",
+            "activityField": "RFP published",
+            "parentID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
+            "parentType": "phase",
+            "userField": "Schultze, Steven"
+        },
+        {
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "d860f140-b69e-11e8-930d-dd084cae8ed3",
+            "activityField": "This is on hold until OWKR gets it stuff together",
+            "parentType": "project",
+            "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "userField": "Trout, Tina"
+        },
+        {
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "6b234910-b69f-11e8-930d-dd084cae8ed3",
+            "activityField": "Money was pulled for this",
+            "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "userField": "Miser, Michael"
+        },
+        {
+            "Oid": "",
+            "dateField": "",
+            "activityIDField": "9a38a920-b69f-11e8-930d-dd084cae8ed3",
+            "activityField": "Response period pushed out three weeks",
+            "phaseID": "c8e2af20-b69d-11e8-930d-dd084cae8ed3",
+            "projectID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "userField": "Diterey, Donald"
+        },
+        {
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "7c141180-b6a1-11e8-930d-dd084cae8ed3",
+            "activityField": "Materials are on order",
+            "phaseID": "615cc620-b6a1-11e8-930d-dd084cae8ed3",
+            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "userField": "Bligh, Benjamin"
+        },
+        {
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "83031f90-b6a1-11e8-930d-dd084cae8ed3",
+            "activityField": "Still no response from Mr. Smith",
+            "phaseID": "615cc620-b6a1-11e8-930d-dd084cae8ed3",
+            "projectID": "Chenu, Cindy"
+        },
+        {
+            "Oid": "",
+            "dateField": "09/12/2018",
+            "activityIDField": "1edc6e80-b6a2-11e8-930d-dd084cae8ed3",
+            "activityField": "Yadda, yadda, yadda",
+            "phaseID": "976022d0-b6a1-11e8-930d-dd084cae8ed3",
+            "projectID": "f9cbdd70-b6a0-11e8-930d-dd084cae8ed3",
+            "userField": "Mi, Michelle"
+        }
+    ]
+}

@@ -5,6 +5,8 @@ namespace pghworks.Models {
         public string user { get; set; }
         public string activity { get; set; }
         public string date { get; set; }
+        public string parentID { get; set; }
+        public string parentType { get; set; }
     }
 
     public class CgActivity {
@@ -13,5 +15,7 @@ namespace pghworks.Models {
         public string userField { get; set; }
         public string activityField { get; set; }
         public string dateField { get; set; }
+        public string parentIDField { get; set; }
+        public string parentTypeField { get; set; }
     }
 }

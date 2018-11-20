@@ -27,20 +27,25 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadActivity () {
             List<Activities> AllActivity = new List<Activities> ();
-            string cartActivity = getActivity ().Result;
-            dynamic cartActivityObject = JObject.Parse (cartActivity) ["cgTasksClass"];
-            foreach (var item in cartActivityObject) {
+            // string cartActivity = getActivity ().Result;
+            // dynamic cartActivityObject = JObject.Parse (cartActivity) ["cgTasksClass"];
+            string activity = System.IO.File.ReadAllText ("demoData/demoActivity.json");
+            dynamic activityObject = JObject.Parse (activity) ["activity"];
+            foreach (var item in activityObject) {
                 Activities ph = new Activities () {
                     cartegraphID = item.Oid,
                     activityID = item.activityIDField,
                     user = item.userField,
                     activity = item.activityField,
-                    date = item.dateField
+                    date = item.dateField,
+                    parentID = item.parentIDField,
+                    parentType = item.parentField
                 };
                 AllActivity.Add (ph);
             }
             return AllActivity;
         }
+
         public async Task<string> getActivity () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
             var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseType] is equal to \"Activity\"))";
@@ -59,7 +64,9 @@ namespace pghworks.Controllers {
                 activityIDField = model.activityID,
                 activityField = model.activity,
                 userField = model.user,
-                dateField = model.date
+                dateField = model.date,
+                parentIDField = model.parentID,
+                parentTypeField = model.parentType
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
@@ -104,7 +111,9 @@ namespace pghworks.Controllers {
                 activityIDField = model.activityID,
                 activityField = model.activity,
                 userField = model.user,
-                dateField = model.date
+                dateField = model.date,
+                parentIDField = model.parentID,
+                parentTypeField = model.parentType
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgTasksClass/");
