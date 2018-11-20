@@ -18,13 +18,9 @@ export interface ActivityState {
 export interface ActivityItem {
     cartegraphID: string
     activityID: string
-    activityName: string
-    phaseID: string
-    projectID: string
-    dueDate: string
-    percentComplete: number
-    dateCompleted: string
-    notes: string
+    user: string
+    activity: string
+    date: string
 }
 
 export const actionCreators = {
