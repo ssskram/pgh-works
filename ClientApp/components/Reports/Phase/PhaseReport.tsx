@@ -99,7 +99,6 @@ export class Phase extends React.Component<any, any> {
         const project = this.props.projects.find(project => {
             return project.projectID == phase.projectID
         })
-        console.log(phase)
         this.setState({
             projectID: phase.projectID,
             phaseID: phase.phaseID,
@@ -123,7 +122,6 @@ export class Phase extends React.Component<any, any> {
         let project = this.props.projects.find(function (item) {
             return item.projectID == id
         })
-        console.log(project)
         if (project) {
             this.setState({
                 projectName: project.projectName,

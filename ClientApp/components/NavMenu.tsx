@@ -8,7 +8,7 @@ import Modal from 'react-responsive-modal'
 const workerImg = require('./../images/worker.png')
 const projectsImg = require('./../images/projects.png')
 const phaseImg = require('./../images/phase.png')
-const moneyImg = require('./../images/money.png')
+const activityImg = require('./../images/activityLight.png')
 const assetsImg = require('./../images/assets.png')
 const timelineImg = require('./../images/timeline.png')
 const addImg = require('./../images/add.png')
@@ -92,7 +92,7 @@ export class NavMenu extends React.Component<any, any>  {
                         </li>
                         <li>
                             <NavLink to={'/AllActivity'}>
-                                <span><img style={iconStyle} src={moneyImg as string} /></span> Activity
+                                <span><img style={iconStyle} src={activityImg as string} /></span> Activity
                             </NavLink>
                         </li>
                         <li>

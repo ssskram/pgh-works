@@ -61,9 +61,7 @@ export default class HomeMap extends React.Component<any, any> {
             showInfowindow,
             selectedProject
         } = this.state
-
-        console.log(projects)
-
+        
         const MapComponent = compose(
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",

@@ -35,7 +35,6 @@ export const actionCreators = {
         })
             .then(response => response.json() as Promise<ActivityItem[]>)
             .then(data => {
-                console.log(data)
                 dispatch({ type: loadActivity, activity: data });
             });
     },
