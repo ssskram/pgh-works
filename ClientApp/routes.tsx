@@ -12,7 +12,7 @@ import Timeline from './components/Timeline/TimelineReport'
 import ProjectRecord from './components/Reports/Project/ProjectReport'
 import PhaseRecord from './components/Reports/Phase/PhaseReport'
 import AssetReport from './components/Reports/Asset/AssetReport'
-import Activity, { AllActivity } from './components/Lists/AllActivity'
+import AllActivity from './components/Lists/AllActivity'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />

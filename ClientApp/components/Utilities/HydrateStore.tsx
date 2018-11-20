@@ -17,6 +17,7 @@ import * as Activity from '../../store/activity'
 export class Hydrate extends React.Component<any, any> {
 
     componentDidMount() {
+        console.log(this.props)
         const props = this.props
 
         // load all stores

@@ -4,8 +4,8 @@
             "dateField": "09/12/2018",
             "activityIDField": "c9b6f9a0-b69e-11e8-930d-dd084cae8ed3",
             "activityField": "RFP published",
-            "parentID": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
-            "parentType": "phase",
+            "parentIDField": "f805f1e0-b69d-11e8-930d-dd084cae8ed3",
+            "parentTypeField": "phase",
             "userField": "Schultze, Steven"
         },
         {
@@ -13,8 +13,8 @@
             "dateField": "09/12/2018",
             "activityIDField": "d860f140-b69e-11e8-930d-dd084cae8ed3",
             "activityField": "This is on hold until OWKR gets it stuff together",
-            "parentType": "project",
-            "parentID": "7341e860-b69d-11e8-930d-dd084cae8ed3",
+            "parentTypeField": "project",
+            "parentIDField": "7341e860-b69d-11e8-930d-dd084cae8ed3",
             "userField": "Trout, Tina"
         },
         {

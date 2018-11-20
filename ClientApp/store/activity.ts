@@ -18,6 +18,8 @@ export interface ActivityState {
 export interface ActivityItem {
     cartegraphID: string
     activityID: string
+    parentID: string
+    parentType: string
     user: string
     activity: string
     date: string
@@ -33,6 +35,7 @@ export const actionCreators = {
         })
             .then(response => response.json() as Promise<ActivityItem[]>)
             .then(data => {
+                console.log(data)
                 dispatch({ type: loadActivity, activity: data });
             });
     },

@@ -12,7 +12,10 @@ export class AllActivity extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        console.log(this.props)
+       console.log(this.props) 
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
     }
 
 

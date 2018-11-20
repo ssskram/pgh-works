@@ -39,7 +39,7 @@ namespace pghworks.Controllers {
                     activity = item.activityField,
                     date = item.dateField,
                     parentID = item.parentIDField,
-                    parentType = item.parentField
+                    parentType = item.parentTypeField
                 };
                 AllActivity.Add (ph);
             }
