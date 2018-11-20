@@ -27,7 +27,6 @@ import canEdit from '../../../functions/canEdit'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
-    border: '1px solid #383838'
 }
 
 const marginBottom = {
@@ -201,7 +200,7 @@ export class Project extends React.Component<any, any> {
                     <Spinner notice='...loading the project...' />
                 }
                 {spinner == false &&
-                    <div className='row text-center' style={{marginBottom: '25px'}}>
+                    <div className='row text-center' style={{ marginBottom: '25px' }}>
                         <div className='col-md-12'>
                             <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
                         </div>
@@ -209,6 +208,7 @@ export class Project extends React.Component<any, any> {
                             <div className='col-md-12'>
                                 <div>
                                     <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
+                                    <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
                                 </div>
                             </div>
                         }
