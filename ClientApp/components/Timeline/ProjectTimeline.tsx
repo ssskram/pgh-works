@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as Timeline from '../../store/timeline'
 import * as Phases from '../../store/phases'
+import * as Activity from '../../store/activity'
 
 const timelineImg = require('./../../images/timelineDark.png')
 
@@ -16,6 +17,10 @@ const iconStyle = {
 }
 
 export class ProjectTimeline extends React.Component<any, any> {
+
+    componentDidMount() {
+        console.log(this.props)
+    }
 
     addToTimeline() {
         let self = this
@@ -76,6 +81,16 @@ export class ProjectTimeline extends React.Component<any, any> {
             items.push(actual)
         }
 
+        this.props.activity.forEach((ac, index) => {
+            let vy = {
+                id: index + 3,
+                content: ac.activity,
+                start: ac.date,
+                style: 'background-color: #FAF7F2; border-color: #1561A1; color: #383838;'
+            }
+            items.push(vy)
+        })
+
         return (
             <div>
                 <br />
@@ -104,10 +119,12 @@ export class ProjectTimeline extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.timeline,
-        ...state.phases
+        ...state.phases,
+        ...state.activity
     }),
     ({
         ...Timeline.actionCreators,
         ...Phases.actionCreators,
+        ...Activity.actionCreators
     })
 )(ProjectTimeline as any) as typeof ProjectTimeline
