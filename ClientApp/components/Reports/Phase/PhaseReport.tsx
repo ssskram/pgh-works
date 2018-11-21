@@ -191,15 +191,14 @@ export class Phase extends React.Component<any, any> {
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
                             <h4 style={{marginLeft: '5px'}}>Project</h4>
-                            <div className='btn btn-primary' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
+                            <div className='btn btn-info' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
                         </h2>
-                        <hr />
                         <br />
                         <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>
                         {canEdit == true &&
                             <div className='text-center' style={{ marginTop: '20px' }}>
                                 <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit</button></span>
-                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'>Delete phase</button></span>
+                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-danger'>Delete phase</button></span>
                             </div>
                         }
                         <div className='col-md-12'>

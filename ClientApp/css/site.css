@@ -340,12 +340,6 @@ textarea {
     padding-right: 10px;
 }
 
-.btn-info {
-    padding: 15px 0px !important;
-    width: 90% !important;
-    margin: 15px 5px !important;
-}
-
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     outline: 0;
 }

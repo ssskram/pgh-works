@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0b9d50223b3e3f28bfbf"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6432a7737c6520dafe68"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61731,8 +61731,7 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { marginLeft: '5px' } }, "Project"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-primary', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-info', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
@@ -61743,7 +61742,7 @@ var Phase = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn  btn-primary' }, "Edit")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn  btn-primary' }, "Delete phase"))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn  btn-danger' }, "Delete phase"))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__["a" /* default */], { phase: this.state })),
                     expectedStartDate && expectedEndDate &&
@@ -62314,7 +62313,7 @@ var Project = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Inputs_Project_ProjectFields__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleDate: this.handleDate.bind(this) }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-warning', onClick: function () { return _this.setState({ edit: 'activity' }); } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-primary', onClick: function () { return _this.setState({ edit: 'activity' }); } },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Add activity")),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.put.bind(this) },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save"))))),

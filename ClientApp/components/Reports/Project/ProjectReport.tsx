@@ -263,7 +263,7 @@ export class Project extends React.Component<any, any> {
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>
-                                    <button className='btn btn-warning' onClick={() => this.setState({ edit: 'activity' })}><b>Add activity</b></button>
+                                    <button className='btn btn-primary' onClick={() => this.setState({ edit: 'activity' })}><b>Add activity</b></button>
                                     <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
                                 </div>
                             </div>
