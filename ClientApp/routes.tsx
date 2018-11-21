@@ -5,7 +5,6 @@ import Home from './components/Home'
 import { Login } from './components/Account/Login'
 import ProjectDefinition from './components/Inputs/Project/ProjectDefinition/NewProject'
 import AllProjects from './components/Lists/AllProjects'
-import AllPhases from './components/Lists/AllPhases'
 import AllAssets from './components/Lists/AllAssets'
 import MyProjects from './components/Lists/MyProjects'
 import Timeline from './components/Timeline/TimelineReport'
@@ -18,7 +17,6 @@ export const routes = <Layout>
     <Route exact path='/' component={ Home } />
     <Route exact path='/ProjectDefinition' component={ ProjectDefinition } />
     <Route exact path='/AllProjects' component={ AllProjects } />
-    <Route exact path='/AllPhases' component={ AllPhases } />
     <Route exact path='/AllAssets' component={ AllAssets } />
     <Route exact path='/AllActivity' component={ AllActivity } />
     <Route exact path='/MyProjects' component={ MyProjects } />

@@ -101,11 +101,6 @@ export class NavMenu extends React.Component<any, any>  {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllPhases'}>
-                                <span><img style={iconStyle} src={phaseImg as string} /></span> Phases
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink to={'/AllAssets'}>
                                 <span><img style={iconStyle} src={assetsImg as string} /></span> Assets
                             </NavLink>
