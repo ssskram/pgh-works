@@ -209,8 +209,8 @@ export class Project extends React.Component<any, any> {
                         {canEdit == true &&
                             <div className='col-md-12'>
                                 <div>
-                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
                                     <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
+                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
                                 </div>
                             </div>
                         }
@@ -272,8 +272,8 @@ export class Project extends React.Component<any, any> {
                     {edit == "activity" &&
                         <ActivityInput
                             projectID={projectID}
-                            projectName={projectName} 
-                            closeModal={this.closeModal.bind(this)}/>
+                            projectName={projectName}
+                            closeModal={this.closeModal.bind(this)} />
                     }
                 </Modal>
                 <Hydrate />

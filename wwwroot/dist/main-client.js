@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6432a7737c6520dafe68"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aacbb36a33740f8ed407"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -56947,7 +56947,8 @@ var Subphase = (function (_super) {
     };
     Subphase.prototype.closeModal = function () {
         this.setState({
-            modalIsOpen: false
+            modalIsOpen: false,
+            modalType: ''
         });
     };
     Subphase.prototype.setDelete = function () {
@@ -61731,7 +61732,7 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { marginLeft: '5px' } }, "Project"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-info', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-warning', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
@@ -61740,9 +61741,9 @@ var Phase = (function (_super) {
                     canEdit == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: { marginTop: '20px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn  btn-primary' }, "Edit")),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn  btn-danger' }, "Delete phase")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deletePhase.bind(this), title: 'Delete phase', style: btnMargin, type: 'button', className: 'btn  btn-danger' }, "Delete phase"))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn  btn-primary' }, "Edit"))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__["a" /* default */], { phase: this.state })),
                     expectedStartDate && expectedEndDate &&
@@ -62289,8 +62290,8 @@ var Project = (function (_super) {
                     canEdit == true &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' }, "Edit"),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName, target: '_blank', style: btnMargin, className: 'btn btn-warning' }, "Documents")))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName, target: '_blank', style: btnMargin, className: 'btn btn-warning' }, "Documents"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' }, "Edit")))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Maps_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             spinner == false &&
