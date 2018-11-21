@@ -11,12 +11,21 @@ import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
 
+const projectImg = require('../../images/project.png')
+
 const padding15 = {
     padding: '15px'
 }
 
 const emptyNotice = {
     letterSpacing: '2px'
+}
+
+const iconStyle = {
+    height: '25px',
+    marginTop: '-3px',
+    marginLeft: '5px',
+    marginRight: '15px'
 }
 
 export class AllActivity extends React.Component<any, any> {
@@ -100,17 +109,13 @@ export class AllActivity extends React.Component<any, any> {
         const currentItems = returnCurrentItems(activity, currentPage)
         const pageNumbers = returnPageNumber(activity)
         const renderItems = currentItems.map((activity, index) => {
-            console.log(activity)
             return <div className='col-md-12' key={index}>
                 <div className='panel panel-button'>
                     <div onClick={() => this.getParentLink(activity)} className='panel-body text-center' style={padding15}>
-                        <div className='col-md-3'>
-                            <h4>Project</h4>
-                            <h3><b>Test test test</b></h3>
-                        </div>
                         <div>
-                            <div className='col-md-9'>
+                            <div className='col-md-12'>
                                 <h3>"{activity.activity}"</h3>
+                                <h4><b>Test test test</b></h4>
                                 <h4>{activity.user}</h4>
                                 <h4>{activity.date}</h4>
                             </div>

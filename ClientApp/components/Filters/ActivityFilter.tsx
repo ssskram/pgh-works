@@ -109,7 +109,7 @@ export class ActivityFilter extends React.Component<any, any> {
                                 value={project}
                                 name="project"
                                 header="Project"
-                                placeholder="Select..."
+                                placeholder="Select project..."
                                 callback={this.handleChildChange.bind(this)}
                             />
                         </div>
@@ -119,7 +119,7 @@ export class ActivityFilter extends React.Component<any, any> {
                                 value={phase}
                                 name="phase"
                                 header="Phase"
-                                placeholder="Select..."
+                                placeholder="Select phase..."
                                 callback={this.handleChildChange.bind(this)}
                             />
                         </div>

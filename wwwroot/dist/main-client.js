@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b70a1053581616dda506"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5a5ef2a0a0ad08f63131"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -57473,9 +57473,9 @@ var ActivityFilter = (function (_super) {
                 }, center: true },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: project, name: "project", header: "Project", placeholder: "Select...", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: project, name: "project", header: "Project", placeholder: "Select project...", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: phase, name: "phase", header: "Phase", placeholder: "Select...", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: phase, name: "phase", header: "Phase", placeholder: "Select phase...", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: user, name: "user", header: "Created by", placeholder: "Select a colleague...", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -59605,11 +59605,18 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
+var projectImg = __webpack_require__(739);
 var padding15 = {
     padding: '15px'
 };
 var emptyNotice = {
     letterSpacing: '2px'
+};
+var iconStyle = {
+    height: '25px',
+    marginTop: '-3px',
+    marginLeft: '5px',
+    marginRight: '15px'
 };
 var AllActivity = (function (_super) {
     __extends(AllActivity, _super);
@@ -59676,20 +59683,17 @@ var AllActivity = (function (_super) {
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["a" /* returnCurrentItems */])(activity, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["b" /* returnPageNumber */])(activity);
         var renderItems = currentItems.map(function (activity, index) {
-            console.log(activity);
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, className: 'panel-body text-center', style: padding15 },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Project"),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Test test test"))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-9' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                     "\"",
                                     activity.activity,
                                     "\""),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Test test test")),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.user),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.date))))));
         });
@@ -77024,7 +77028,7 @@ module.exports = function (str) {
 /* 715 */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVGhD7ZmxSgNBEIavVRRba/EFRPAJLAQLX8HOTkEbX8DGPmltrMQniPgGgqUiWCgIBu8uVyiX2yMz/oZdzsiA3hXLgPPDRyCZTf7vjrBZklgslr+F+WWeqqwPRuxy1gr6Ebn8nsb5jq8+Gwz0pIVaQd+aqtGar98EL6TSAs2g84mv30Qa1A5E+r5+E2lQOyaiDRPRRicRqvIPctljRJ5QlKQugdYiWFAxD5f9aLTgs49/dvlOF5EJ1dk2l8VKLKgsVnFXzqQ+gdYiWjERbZiINkxEG51EsLO/sstuYoE95BZFndQl0FoEC8bM+ZIfjRaczfelPoEuIsTVaJddsR4LcukGRC6lPoHWIloxEW2YiDZMRBudRLDTPmB3v4pHdo3Hd6lLoLUI3rAkep7zo9GCi7cn9Ql0vSNHXKebsaA628IFHEhdAv/7O6IRE9GGiWhDFMGTE2lYM+jc8/Wb4DR2Jw1rBp0PfP0mX/9bw7CWFmhkeuF5uODrz2Z6Vq7yUwxeaAW/MM7BIdHboq9tsVh+TZJ8AvkZmBPhUqZQAAAAAElFTkSuQmCC"
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPCSURBVGhD7Vk9aBRBGE0UIVqoiOIPaKEoFoLgTyMWFgqC2mljoqBGC0HQIJGgYqNRIkgEBbVQFI1oZwoLbUO0sLGwChKNBmNuZ+6MJLndkxnftzN7yYXvsnt32b0r7sHjknk37/ve7uzvNdRRRx2VQ+v0UuWJduXKPuUKqT2p4yL8c8qTQ2CPyokDWutG20ZlUK5zEuZprmgSxMbrV5OZDbad8oAA1znzpIk+UspNb7NtlQZMbuVMq0UstR9Kjay07UWDUpllCBLrsVAOscwe2BajAQf2Jc6o2sTGzSk1tsK2GQ4k/8AZ1QLR23HbZji0KzOcSS0QQbpsm7NDqaGFnEFUotAkluZXHJzD5ehhxNynttXZobVcwhlEJRp9Tz4q5+wror81ujzI6WFEkBc0PxQVB8EVmXzQcDOviydGT5/g9DAmF8QV3eSjvPR5Xpe3jS7aOT2MsQVBY+Mwx5oPKM+RD/5uKxy3dMVpo8uOqTH5i/PmiO/HFMQTb+zUsqGy8hDnzTHWIHoysz5PPbzI+PxeVTCe1webSFfjqTXBWLFlyDG2IDOJQrvIB8vlI69ndvh1PPGJ08OYXJDsn43kg4IDnK4n5Dqjy5+sHsLEgtBDGPlgj4zxul1arsiyeggTCULNGY/BJl6XfyuukUgQLBfyUBNiLa+LAV/H8uP0KIwxCB20hsFVXWdTm6ePT+nmPgl7bkuhxvnyjCcI7pLttLKhlLOY9S7CWIJgzY9oL7M9z+CMhIefgvFZdJUT+znvYoxxaU0Rwe6QB4q18bq4aXR5hdOjMJkguH8iDwTq4nXngtFFN6dHYUJ7xDlFHij2mNdls9HlS06PwqT2yDWdc/ai4f4iegfppZ6ppjORIEmwHqTWWA9Sayw5CM71Xi29qEM/wv8seY8ghPJSO2HgTDesBtF8L/1OY/+OGkTPR/P//D2idSM9e9NkGptZIG6i5iiuOWfQx7zgPRiuRY9sq+HAl81jqL3JIyg1uhrjZ2F+F5+voL+Og9hoz1Djhv3ZbYEtT7c1ndApyFU7FA58ucdO8t9RVRu0MhDwM/Wkc+k9djgcwXsmBBkKXu9UEyrrHDb9iO+09O1wOPwt4Mo+fwvQLi9l8hxDZUc3YVmZM5Yrj9nh6PBfnPkHm2/wjv63UiKgjaldcSQfwhPPrVQ6EGCrv7z8MMKFWS94EeMtVCQOok4rTv23UPcL1Q1CBK+RyobWY8thfh/0AuOkiADfUPeobWVuYH7plS0w7sTnw/go7mFvXEaQ3dU8Nuuow0dDw38I3Fd1TUsh9QAAAABJRU5ErkJggg=="
 
 /***/ }),
 /* 716 */
