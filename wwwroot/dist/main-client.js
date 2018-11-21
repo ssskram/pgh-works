@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4ac99f14715bcc0f92e2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "53aedbe975312111e63c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62062,8 +62062,9 @@ var Phases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_uuid__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__Timeline_ProjectTimeline__ = __webpack_require__(665);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__functions_canEdit__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Inputs_Activity__ = __webpack_require__(635);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__functions_canEdit__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__Inputs_Activity__ = __webpack_require__(635);
 // top level project report
 // parent of ProjectCard.tsx
 // co-parent of Tags.tsx
@@ -62085,6 +62086,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 
 
 
@@ -62180,7 +62182,7 @@ var Project = (function (_super) {
             projectStatus: project.projectStatus,
             notes: project.notes,
             shape: project.shape,
-            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_18__functions_canEdit__["a" /* default */])(project, personnel, user)
+            canEdit: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_19__functions_canEdit__["a" /* default */])(project, personnel, user)
         }, function () {
             this.setState({
                 spinner: false
@@ -62291,7 +62293,8 @@ var Project = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.put.bind(this) },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save"))))),
                 edit == "activity" &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_19__Inputs_Activity__["a" /* default */], { projectID: projectID, projectName: projectName, closeModal: this.closeModal.bind(this) }))));
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_20__Inputs_Activity__["a" /* default */], { projectID: projectID, projectName: projectName, closeModal: this.closeModal.bind(this) })),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_18__Utilities_HydrateStore__["a" /* default */], null)));
     };
     return Project;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -62474,7 +62477,7 @@ var ProjectTimeline = (function (_super) {
                 id: index + 3,
                 content: ac.activity,
                 start: ac.date,
-                style: 'max-width: 250px;'
+                style: 'max-width: 250px; white-space: pre-wrap !important; overflow-wrap: break-word !important;'
             };
             items.push(vy);
         });

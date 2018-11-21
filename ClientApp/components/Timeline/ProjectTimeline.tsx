@@ -86,7 +86,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 id: index + 3,
                 content: ac.activity,
                 start: ac.date,
-                style: 'max-width: 250px;'
+                style: 'max-width: 250px; white-space: pre-wrap !important; overflow-wrap: break-word !important;'
             }
             items.push(vy)
         })
