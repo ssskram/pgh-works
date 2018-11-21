@@ -148,9 +148,6 @@ export class Phase extends React.Component<any, any> {
         })
     }
 
-
-
-
     editPhase() {
         this.setState({
             modalIsOpen: true,
@@ -193,8 +190,8 @@ export class Phase extends React.Component<any, any> {
                 {spinner == false &&
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
-                            <h4>Project</h4>
-                            <div className='project-header-link' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName} <span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></div>
+                            <h4 style={{marginLeft: '5px'}}>Project</h4>
+                            <div className='btn btn-primary' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
                         </h2>
                         <hr />
                         <br />

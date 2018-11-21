@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "23529d636a1a7a2d43c7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0b9d50223b3e3f28bfbf"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61730,11 +61730,8 @@ var Phase = (function (_super) {
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Project"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'project-header-link', onClick: this.returnToProject.bind(this), title: 'Return to project' },
-                            projectName,
-                            " ",
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: iconStyle, className: 'glyphicon glyphicon-arrow-right' }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { marginLeft: '5px' } }, "Project"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-primary', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
