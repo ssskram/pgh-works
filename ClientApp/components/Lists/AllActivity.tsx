@@ -50,7 +50,7 @@ export class AllActivity extends React.Component<any, any> {
 
     setActivity(activity) {
         this.setState({
-            activity: activity
+            activity: activity.sort((a, b) => +new Date(b.date) - +new Date(a.date))
         })
     }
 

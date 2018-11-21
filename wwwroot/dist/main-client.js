@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "281691d53d4f4c798f6d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "51ad107c1fd16870792a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59551,7 +59551,7 @@ var AllActivity = (function (_super) {
     };
     AllActivity.prototype.setActivity = function (activity) {
         this.setState({
-            activity: activity
+            activity: activity.sort(function (a, b) { return +new Date(b.date) - +new Date(a.date); })
         });
     };
     AllActivity.prototype.handleNextClick = function () {
