@@ -65,6 +65,7 @@ export class ActivityInput extends React.Component<any, any> {
                         header="What's happenin?"
                         placeholder=""
                         callback={this.handleChildChange.bind(this)}
+                        maxLength={180}
                     />
                 </div>
 

@@ -31,7 +31,7 @@ export default class textarea extends React.Component<any, any> {
         return (
             <div className="form-group">
                 <div className="col-md-12 form-element">
-                    <h4 className="form-h4">{this.props.header}{this.props.required == true && <span style={{color: 'red', fontSize: '20'}}>*</span>}</h4>
+                    <h4 className="form-h4">{this.props.header}{this.props.required == true && <span style={{ color: 'red', fontSize: '20' }}>*</span>}</h4>
                     <textarea
                         onKeyUp={this.setHeight.bind(this)}
                         onFocus={this.setHeight.bind(this)}
@@ -41,7 +41,9 @@ export default class textarea extends React.Component<any, any> {
                         id={this.props.name}
                         placeholder={this.props.placeholder}
                         style={{ height: this.state.height }}
-                        onChange={this.props.callback.bind(this)}></textarea>
+                        onChange={this.props.callback.bind(this)}
+                        maxLength={this.props.maxLength}>
+                    </textarea>
                 </div>
             </div>
         )
