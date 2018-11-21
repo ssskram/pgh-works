@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fd5405d5f4f57178d998"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3fed1f879e1b52725fed"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62507,7 +62507,7 @@ var ProjectTimeline = (function (_super) {
                 content: ac.activity,
                 start: ac.date,
                 user: ac.user,
-                style: 'max-width: 250px; white-space: pre-wrap !important; overflow-wrap: break-word !important;'
+                style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
             };
             items.push(vy);
         });
@@ -62518,7 +62518,7 @@ var ProjectTimeline = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { marginBottom: '-30px', fontSize: '14px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#d5ddf6', padding: '8px' } }, "Activity")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFEEBB', padding: '8px' } }, "Activity")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: '/Timeline' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.addToTimeline.bind(this), title: 'Add to timeline', className: 'pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
