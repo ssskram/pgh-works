@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3fed1f879e1b52725fed"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ce3e25c25889cc0c9828"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60906,16 +60906,15 @@ var NavMenu = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: workerImg })),
                             " My Projects"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/AllActivity', style: btnWidth, className: 'btn btn-primary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: activityImg })),
+                            " Activity"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/AllProjects', style: btnWidth, className: 'btn btn-primary' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: projectsImg })),
                             " ",
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "All Projects")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/AllPhases', style: btnWidth, className: 'btn btn-primary' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: phaseImg })),
-                            " ",
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Phases")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/AllAssets', style: btnWidth, className: 'btn btn-primary' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: assetsImg })),
@@ -61065,6 +61064,7 @@ var AssetReport = (function (_super) {
             var asset = assets.find(function (asset) {
                 return asset.assetOID == prop;
             });
+            console.log(asset);
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
