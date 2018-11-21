@@ -11,6 +11,7 @@ import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
+import hashtagIt from '../../functions/hashtagIt'
 
 const padding = {
     padding: '30px 0px'
@@ -87,8 +88,7 @@ export class AllActivity extends React.Component<any, any> {
     getParentName(activity) {
         // hashtag it!
         const parent = this.props.projects.find(project => project.projectID == activity.parentID)
-        const uppercase = parent.projectName.replace(/\b[a-z](?=[a-z]{1})/g, letter => letter.toUpperCase())
-        return uppercase.replace(/\s/g, '') // ditch spaces
+        return hashtagIt(parent.projectName)
     }
 
     public render() {

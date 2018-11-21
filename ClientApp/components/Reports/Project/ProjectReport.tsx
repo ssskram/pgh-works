@@ -24,6 +24,7 @@ import { v1 as uuid } from 'uuid'
 import ProjectTimeline from '../../Timeline/ProjectTimeline'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
+import ActivityInput from '../../Inputs/Activity'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
@@ -262,13 +263,14 @@ export class Project extends React.Component<any, any> {
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>
-                                    <div>
-                                        <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
-                                    </div>
+                                    <button className='btn btn-warning' onClick={() => this.setState({edit: 'activity'})}><b>Add activity</b></button>
+                                    <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
                                 </div>
                             </div>
                         </div>
-
+                    }
+                    {edit == "activity" &&
+                        <ActivityInput projectID={projectID} projectName={projectName}/>
                     }
                 </Modal>
                 <Hydrate />

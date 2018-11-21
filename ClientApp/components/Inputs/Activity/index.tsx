@@ -66,8 +66,8 @@ export class ActivityInput extends React.Component<any, any> {
                         value={activity}
                         required={true}
                         name="activity"
-                        header=""
-                        placeholder="..."
+                        header="What's happenin?"
+                        placeholder=""
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>
