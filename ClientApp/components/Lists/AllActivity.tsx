@@ -6,26 +6,18 @@ import { ApplicationState } from '../../store'
 import Hydrate from './../Utilities/HydrateStore'
 import * as Ping from '../../store/GETS/ping'
 import * as Activity from '../../store/activity'
+import * as Projects from '../../store/projects'
 import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
 
-const projectImg = require('../../images/project.png')
-
 const padding15 = {
-    padding: '15px'
+    padding: '15px 0px'
 }
 
 const emptyNotice = {
     letterSpacing: '2px'
-}
-
-const iconStyle = {
-    height: '25px',
-    marginTop: '-3px',
-    marginLeft: '5px',
-    marginRight: '15px'
 }
 
 export class AllActivity extends React.Component<any, any> {
@@ -92,6 +84,12 @@ export class AllActivity extends React.Component<any, any> {
         })
     }
 
+    getParentName(activity) {
+        // hashtag it!
+        const parent = this.props.projects.find(project => project.projectID == activity.parentID)
+        const uppercase = parent.projectName.replace(/\b[a-z](?=[a-z]{1})/g, letter => letter.toUpperCase())
+        return uppercase.replace(/\s/g, '') // ditch spaces
+    }
 
     public render() {
         const {
@@ -113,9 +111,11 @@ export class AllActivity extends React.Component<any, any> {
                 <div className='panel panel-button'>
                     <div onClick={() => this.getParentLink(activity)} className='panel-body text-center' style={padding15}>
                         <div>
-                            <div className='col-md-12'>
+                            <div className='col-md-8' style={padding15}>
                                 <h3>"{activity.activity}"</h3>
-                                <h4><b>Test test test</b></h4>
+                            </div>
+                            <div className='col-md-4'>
+                                <h4><b>#{this.getParentName(activity)}</b></h4>
                                 <h4>{activity.user}</h4>
                                 <h4>{activity.date}</h4>
                             </div>
@@ -169,10 +169,12 @@ export class AllActivity extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.ping,
-        ...state.activity
+        ...state.activity,
+        ...state.projects
     }),
     ({
         ...Ping.actionCreators,
-        ...Activity.actionCreators
+        ...Activity.actionCreators,
+        ...Projects.actionCreators
     })
 )(AllActivity as any) as typeof AllActivity

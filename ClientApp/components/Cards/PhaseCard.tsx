@@ -35,16 +35,16 @@ export default class PhaseCard extends React.Component<any, any> {
                 <div className='row'>
                     <br />
                     <Slider {...settings}>
+                        <div className='col-md-12 text-center'>
+                            <h3><u>Phase status</u></h3>
+                            <h2>{phaseStatus}</h2>
+                        </div>
                         {phaseDescription &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Description</u></h3>
                                 <h2>{phaseDescription}</h2>
                             </div>
                         }
-                        <div className='col-md-12 text-center'>
-                            <h3><u>Phase status</u></h3>
-                            <h2>{phaseStatus}</h2>
-                        </div>
                         {notes &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Notes</u></h3>

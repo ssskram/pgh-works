@@ -29,12 +29,16 @@ import canEdit from '../../../functions/canEdit'
 const phaseImg = require('./../../../images/phaseGrey.png')
 
 const btnMargin = {
-    margin: '5px',
+    margin: '25px',
     padding: '5px 12px'
 }
 
 const marginBottom = {
     marginBottom: '70px'
+}
+
+const iconStyle = {
+    marginLeft: '10px'
 }
 
 export class Phase extends React.Component<any, any> {
@@ -189,7 +193,8 @@ export class Phase extends React.Component<any, any> {
                 {spinner == false &&
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
-                            <span className='project-header-link' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</span>
+                            <h4>Project</h4>
+                            <div className='project-header-link' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName} <span style={iconStyle} className='glyphicon glyphicon-arrow-right'></span></div>
                         </h2>
                         <hr />
                         <br />
@@ -197,7 +202,7 @@ export class Phase extends React.Component<any, any> {
                         {canEdit == true &&
                             <div className='text-center' style={{ marginTop: '20px' }}>
                                 <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit</button></span>
-                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'>Delete</button></span>
+                                <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-primary'>Delete phase</button></span>
                             </div>
                         }
                         <div className='col-md-12'>

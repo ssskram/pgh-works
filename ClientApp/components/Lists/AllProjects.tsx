@@ -46,6 +46,8 @@ export class AllProjects extends React.Component<any, any> {
     componentWillReceiveProps(nextProps) {
         if (this.props != nextProps) {
             if (nextProps.projects.length > 0) {
+                console.log(nextProps.projects)
+                
                 this.setState({
                     projects: nextProps.projects.sort(function (a, b) {
                         return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);

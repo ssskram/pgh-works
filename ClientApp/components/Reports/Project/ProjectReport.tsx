@@ -200,9 +200,10 @@ export class Project extends React.Component<any, any> {
                     <Spinner notice='...loading the project...' />
                 }
                 {spinner == false &&
-                    <div className='row text-center' style={{ marginBottom: '25px' }}>
+                    <div className='row text-center' style={{ marginBottom: '25px', letterSpacing: '2px' }}>
                         <div className='col-md-12'>
-                            <h1 style={{ letterSpacing: '2px' }}>{projectName}</h1>
+                            <h4>Project</h4>
+                            <h1>{projectName}</h1>
                         </div>
                         {canEdit == true &&
                             <div className='col-md-12'>
