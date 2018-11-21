@@ -49,6 +49,7 @@ export default class Line extends React.Component<any, any> {
             showMajorLabels: true,
             showCurrentTime: true,
             zoomMin: 1000000,
+            orientation: 'top',
             format: {
                 minorLabels: {
                     minute: 'h:mma',

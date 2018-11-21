@@ -86,7 +86,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 id: index + 3,
                 content: ac.activity,
                 start: ac.date,
-                style: 'background-color: #FAF7F2; border-color: #1561A1; color: #383838;'
+                style: 'max-width: 250px;'
             }
             items.push(vy)
         })
@@ -99,6 +99,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                     <div style={{ marginBottom: '-30px', fontSize: '14px' }}>
                         <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
                         <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
+                        <span style={{ backgroundColor: '#d5ddf6', padding: '8px' }}>Activity</span>
                     </div>
                     <Link to={'/Timeline'}>
                         <div onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='pull-right'>
