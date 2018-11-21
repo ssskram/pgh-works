@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2e54f4a36c42ecc781e7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "31e4bc567996b0ca2c62"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59509,7 +59509,10 @@ var AllActivity = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, className: 'panel-body text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8 enlargeOnHover', style: padding },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'panel-blue-font' }, activity.activity)),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'panel-blue-font' },
+                                    "\"",
+                                    activity.activity,
+                                    "\"")),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'ellipsis' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
