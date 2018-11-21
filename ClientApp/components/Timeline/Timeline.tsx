@@ -3,6 +3,7 @@
 
 import * as React from 'react'
 import TL from 'react-visjs-timeline'
+import Modal from 'react-responsive-modal'
 
 export default class Line extends React.Component<any, any> {
     constructor() {
@@ -10,6 +11,9 @@ export default class Line extends React.Component<any, any> {
         this.state = {
             groups: [],
             items: [],
+            selectedSpan: {},
+            selectedActivity: {},
+            investigate: false
         }
         this.redraw = this.redraw.bind(this)
     }
@@ -36,10 +40,21 @@ export default class Line extends React.Component<any, any> {
         })
     }
 
+    clickHandler(props) {
+        const item = this.state.items.find(it => it.id == props.item)
+        if (item) {
+            if (item.id > 2) {
+                this.setState({ selectedActivity: item, investigate: true })
+            }
+        }
+    }
+
     public render() {
         const {
             groups,
-            items
+            items,
+            selectedActivity,
+            investigate
         } = this.state
 
         const timelineOptions = {
@@ -63,8 +78,29 @@ export default class Line extends React.Component<any, any> {
                 <TL
                     options={timelineOptions}
                     items={items}
-                    groups={groups} />
+                    groups={groups}
+                    clickHandler={this.clickHandler.bind(this)} />
+                <Modal
+                    open={investigate}
+                    onClose={() => this.setState({
+                        investigate: false,
+                        selectedActivity: {}
+                    })}
+                    classNames={{
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }}
+                    center>
+                    <div className='col-md-12'>
+                        <h3>"{selectedActivity.content}"</h3>
+                        <h4>{selectedActivity.start}</h4>
+                        {selectedActivity.user &&
+                            <h4>{selectedActivity.user}</h4>
+                        }
+                    </div>
+                </Modal>
             </div>
+
         )
     }
 }
