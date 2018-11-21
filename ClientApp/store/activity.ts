@@ -4,8 +4,6 @@ import { AppThunkAction } from './'
 
 const loadActivity = 'loadActivity'
 const addActivity = 'addActivity'
-const updateActivity = 'updateActivity'
-const deleteActivity = 'deleteActivity'
 
 const unloadedState: ActivityState = {
     activity: []
@@ -40,49 +38,20 @@ export const actionCreators = {
     },
     addActivity: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item).replace(/'/g, '')
-        fetch('/api/activity/addActivity', {
-            method: 'POST',
-            body: data,
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
+        console.log(data)
+        // fetch('/api/activity/addActivity', {
+        //     method: 'POST',
+        //     body: data,
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
         dispatch({
             type: addActivity, item
         })
     },
-    updateActivity: (item): AppThunkAction<any> => (dispatch, getState) => {
-        let data = JSON.stringify(item).replace(/'/g, '')
-        fetch('/api/activity/updateActivity', {
-            method: 'PUT',
-            body: data,
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        dispatch({
-            type: updateActivity, item
-        })
-    },
-    deleteActivity: (item): AppThunkAction<any> => (dispatch, getState) => {
-        let data = JSON.stringify(item).replace(/'/g, '')
-        fetch('/api/activity/deleteActivity', {
-            method: 'DELETE',
-            body: data,
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        dispatch({
-            type: deleteActivity, item
-        })
-    }
 }
 
 export const reducer: Reducer<ActivityState> = (state: ActivityState, incomingAction: Action) => {
@@ -92,36 +61,12 @@ export const reducer: Reducer<ActivityState> = (state: ActivityState, incomingAc
             return {
                 ...state,
                 activity: action.activity
-            };
+            }
         case addActivity:
             return {
                 ...state,
                 activity: state.activity.concat(action.item)
-            };
-        case updateActivity:
-            return {
-                ...state,
-                activity: state.activity.map(activity => activity.activityID === action.item.activityID ? {
-                    ...activity,
-                    cartegraphID: action.item.cartegraphID,
-                    projectID: action.item.projectID,
-                    activityID: action.item.activityID,
-                    phaseID: action.item.phaseID,
-                    activityName: action.item.activityName,
-                    dueDate: action.item.dueDate,
-                    dateCompleted: action.item.dateCompleted,
-                    percentComplete: action.item.percentComplete,
-                    notes: action.item.notes
-                } : activity
-                )
-            };
-        case deleteActivity:
-            let activityCopy = state.activity.slice()
-            activityCopy.splice(activityCopy.indexOf(action.item), 1);
-            return {
-                ...state,
-                activity: activityCopy
-            };
+            }
     }
 
     return state || unloadedState;

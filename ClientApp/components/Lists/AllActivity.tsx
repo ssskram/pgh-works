@@ -127,7 +127,7 @@ export class AllActivity extends React.Component<any, any> {
 
         return (
             <div>
-                <Hydrate />
+                {/* <Hydrate /> */}
                 {activity.length == 0 && onFilter == false &&
                     <Spinner notice='...loading activity...' />
                 }

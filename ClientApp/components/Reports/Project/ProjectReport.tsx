@@ -263,14 +263,17 @@ export class Project extends React.Component<any, any> {
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>
-                                    <button className='btn btn-warning' onClick={() => this.setState({edit: 'activity'})}><b>Add activity</b></button>
+                                    <button className='btn btn-warning' onClick={() => this.setState({ edit: 'activity' })}><b>Add activity</b></button>
                                     <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
                                 </div>
                             </div>
                         </div>
                     }
                     {edit == "activity" &&
-                        <ActivityInput projectID={projectID} projectName={projectName}/>
+                        <ActivityInput
+                            projectID={projectID}
+                            projectName={projectName} 
+                            closeModal={this.closeModal.bind(this)}/>
                     }
                 </Modal>
                 <Hydrate />

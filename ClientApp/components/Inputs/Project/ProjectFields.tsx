@@ -9,7 +9,6 @@ import Input from '../../FormElements/input'
 import TextArea from '../../FormElements/textarea'
 import Select from '../../FormElements/select'
 import Datepicker from '../../FormElements/datepicker'
-import Currency from '../../FormElements/numbers'
 
 const statuses = [
     { value: 'Programming', label: 'Programming', name: 'projectStatus' },

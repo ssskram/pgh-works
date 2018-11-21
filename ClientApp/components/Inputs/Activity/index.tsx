@@ -4,11 +4,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
-import * as Milestones from '../../../store/milestones'
+import * as Activity from '../../../store/activity'
 import * as User from '../../../store/GETS/user'
 import Textarea from '../../FormElements/textarea'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
+import hashtagIt from '../../../functions/hashtagIt'
 
 export class ActivityInput extends React.Component<any, any> {
     constructor() {
@@ -48,6 +49,8 @@ export class ActivityInput extends React.Component<any, any> {
     }
 
     post() {
+        this.props.addActivity(this.state)
+        this.props.closeModal()
     }
 
     public render() {
@@ -74,6 +77,7 @@ export class ActivityInput extends React.Component<any, any> {
 
                 <div className='row'>
                     <div className='col-md-12 text-center'>
+                        <b>#{hashtagIt(this.props.projectName)}</b>
                         <div>
                             <button disabled={!isEnabled} className='btn btn-success' onClick={this.post.bind(this)}><b>Save</b></button>
                         </div>
@@ -86,11 +90,11 @@ export class ActivityInput extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.milestones,
+        ...state.activity,
         ...state.user
     }),
     ({
         ...User.actionCreators,
-        ...Milestones.actionCreators
+        ...Activity.actionCreators
     })
 )(ActivityInput as any) as typeof ActivityInput
