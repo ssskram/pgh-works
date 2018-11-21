@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Activity from '../../../store/activity'
 import * as User from '../../../store/GETS/user'
+import * as Personnel from '../../../store/GETS/personnel'
 import Textarea from '../../FormElements/textarea'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
@@ -23,29 +24,21 @@ export class ActivityInput extends React.Component<any, any> {
             activity: ''
         }
     }
+
     componentDidMount() {
         // new milestone
         const guid: string = uuid()
+        const user = this.props.personnel.find(person => person.email == this.props.user)
         this.setState({
             parentID: this.props.projectID,
-            activityID: guid
+            activityID: guid,
+            user: user.title,
+            date: moment().format('MM/DD/YYYY, hh:mm A')
         })
     }
 
     handleChildChange(event) {
         this.setState({ [event.target.name]: event.target.value })
-    }
-
-    handleDate(date) {
-        if (date) {
-            this.setState({
-                dueDate: moment(date).format('MM/DD/YYYY')
-            })
-        } else {
-            this.setState({
-                dueDate: null
-            })
-        }
     }
 
     post() {
@@ -91,10 +84,12 @@ export class ActivityInput extends React.Component<any, any> {
 export default connect(
     (state: ApplicationState) => ({
         ...state.activity,
-        ...state.user
+        ...state.user,
+        ...state.personnel
     }),
     ({
         ...User.actionCreators,
-        ...Activity.actionCreators
+        ...Activity.actionCreators,
+        ...Personnel.actionCreators
     })
 )(ActivityInput as any) as typeof ActivityInput
