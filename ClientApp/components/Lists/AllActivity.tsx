@@ -12,8 +12,8 @@ import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
 
-const padding15 = {
-    padding: '15px 0px'
+const padding = {
+    padding: '30px 0px'
 }
 
 const emptyNotice = {
@@ -109,13 +109,13 @@ export class AllActivity extends React.Component<any, any> {
         const renderItems = currentItems.map((activity, index) => {
             return <div className='col-md-12' key={index}>
                 <div className='panel panel-button'>
-                    <div onClick={() => this.getParentLink(activity)} className='panel-body text-center' style={padding15}>
+                    <div onClick={() => this.getParentLink(activity)} className='panel-body text-center'>
                         <div>
-                            <div className='col-md-8' style={padding15}>
-                                <h3>"{activity.activity}"</h3>
+                            <div className='col-md-8 enlargeOnHover' style={padding}>
+                                <h3 className='panel-blue-font'>{activity.activity}</h3>
                             </div>
                             <div className='col-md-4'>
-                                <h4><b>#{this.getParentName(activity)}</b></h4>
+                                <h4 className='ellipsis'><b>#{this.getParentName(activity)}</b></h4>
                                 <h4>{activity.user}</h4>
                                 <h4>{activity.date}</h4>
                             </div>

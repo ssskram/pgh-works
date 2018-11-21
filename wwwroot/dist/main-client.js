@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bada598a57746cacb90f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2e54f4a36c42ecc781e7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59427,8 +59427,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var padding15 = {
-    padding: '15px 0px'
+var padding = {
+    padding: '30px 0px'
 };
 var emptyNotice = {
     letterSpacing: '2px'
@@ -59506,15 +59506,12 @@ var AllActivity = (function (_super) {
         var renderItems = currentItems.map(function (activity, index) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, className: 'panel-body text-center', style: padding15 },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, className: 'panel-body text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8', style: padding15 },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                    "\"",
-                                    activity.activity,
-                                    "\"")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8 enlargeOnHover', style: padding },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { className: 'panel-blue-font' }, activity.activity)),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'ellipsis' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
                                         "#",
                                         _this.getParentName(activity))),
@@ -59846,7 +59843,6 @@ var AllProjects = (function (_super) {
     AllProjects.prototype.componentWillReceiveProps = function (nextProps) {
         if (this.props != nextProps) {
             if (nextProps.projects.length > 0) {
-                console.log(nextProps.projects);
                 this.setState({
                     projects: nextProps.projects.sort(function (a, b) {
                         return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
