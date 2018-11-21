@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "450673b60af5c67ebd0b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "afe5a14ec866f5065b75"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59515,7 +59515,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var padding = {
-    padding: '30px 0px'
+    padding: '10px 0px'
 };
 var emptyNotice = {
     letterSpacing: '2px'
@@ -62448,6 +62448,7 @@ var ProjectTimeline = (function (_super) {
         });
     };
     ProjectTimeline.prototype.render = function () {
+        var _this = this;
         var _a = this.props.project, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate;
         var items = [];
         var expected = {
@@ -62468,7 +62469,7 @@ var ProjectTimeline = (function (_super) {
             };
             items.push(actual);
         }
-        this.props.activity.forEach(function (ac, index) {
+        this.props.activity.filter(function (ac) { return ac.parentID == _this.props.project.projectID; }).forEach(function (ac, index) {
             var vy = {
                 id: index + 3,
                 content: ac.activity,

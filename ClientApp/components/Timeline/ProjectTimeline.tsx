@@ -81,7 +81,7 @@ export class ProjectTimeline extends React.Component<any, any> {
             items.push(actual)
         }
 
-        this.props.activity.forEach((ac, index) => {
+        this.props.activity.filter(ac => ac.parentID == this.props.project.projectID).forEach((ac, index) => {
             let vy = {
                 id: index + 3,
                 content: ac.activity,

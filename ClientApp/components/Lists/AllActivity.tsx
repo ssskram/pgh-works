@@ -14,7 +14,7 @@ import Spinner from '../Utilities/Spinner'
 import hashtagIt from '../../functions/hashtagIt'
 
 const padding = {
-    padding: '30px 0px'
+    padding: '10px 0px'
 }
 
 const emptyNotice = {
