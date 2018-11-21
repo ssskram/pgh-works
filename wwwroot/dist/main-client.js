@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f0d18bd506cc485c3e28"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b70a1053581616dda506"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -57406,7 +57406,8 @@ var ActivityFilter = (function (_super) {
         _this.state = {
             onFilter: false,
             modalIsOpen: false,
-            parent: '',
+            project: '',
+            phase: '',
             user: '',
             date: ''
         };
@@ -57432,9 +57433,10 @@ var ActivityFilter = (function (_super) {
     };
     ActivityFilter.prototype.filter = function () {
         var filterLoad = {
-            parent: this.state.parent,
             user: this.state.user,
-            date: this.state.date
+            date: this.state.date,
+            project: this.state.project,
+            phase: this.state.phase
         };
         this.props.returnFiltered(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_filters_filterActivity__["a" /* default */])(this.props.activity, filterLoad));
         this.setState({
@@ -57446,13 +57448,14 @@ var ActivityFilter = (function (_super) {
         this.props.returnFiltered(this.props.activity);
         this.setState({
             onFilter: false,
-            parent: '',
+            project: '',
+            phase: '',
             user: '',
             date: ''
         });
     };
     ActivityFilter.prototype.render = function () {
-        var _a = this.state, onFilter = _a.onFilter, modalIsOpen = _a.modalIsOpen, parent = _a.parent, user = _a.user, date = _a.date;
+        var _a = this.state, onFilter = _a.onFilter, modalIsOpen = _a.modalIsOpen, project = _a.project, phase = _a.phase, user = _a.user, date = _a.date;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
@@ -57470,7 +57473,9 @@ var ActivityFilter = (function (_super) {
                 }, center: true },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: parent, name: "parent", header: "Project name", placeholder: "Select...", callback: this.handleChildChange.bind(this) })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: project, name: "project", header: "Project", placeholder: "Select...", callback: this.handleChildChange.bind(this) })),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: phase, name: "phase", header: "Phase", placeholder: "Select...", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__FormElements_input__["a" /* default */], { value: user, name: "user", header: "Created by", placeholder: "Select a colleague...", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -59656,7 +59661,14 @@ var AllActivity = (function (_super) {
             this.setActivity(activity);
         });
     };
+    AllActivity.prototype.getParentLink = function (props) {
+        this.setState({
+            redirectLink: "/Project/id=" + props.parentID,
+            redirect: true
+        });
+    };
     AllActivity.prototype.render = function () {
+        var _this = this;
         var _a = this.state, activity = _a.activity, onFilter = _a.onFilter, redirectLink = _a.redirectLink, redirect = _a.redirect, currentPage = _a.currentPage;
         if (redirect) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Redirect"], { push: true, to: redirectLink });
@@ -59664,13 +59676,27 @@ var AllActivity = (function (_super) {
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["a" /* returnCurrentItems */])(activity, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__functions_paging__["b" /* returnPageNumber */])(activity);
         var renderItems = currentItems.map(function (activity, index) {
+            console.log(activity);
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' }, "One here"));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, className: 'panel-body text-center', style: padding15 },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Project"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Test test test"))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-9' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                    "\"",
+                                    activity.activity,
+                                    "\""),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.user),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.date))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             activity.length == 0 && onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__["a" /* default */], { thirdNotice: '...you can blame Cartegraph, if you would like...', secondNotice: '...sorry, this one takes a while...', firstNotice: '...loading the activity...' }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__["a" /* default */], { notice: '...loading activity...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "Activity",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
@@ -62995,8 +63021,12 @@ function buildRootReducer(allReducers) {
 // activity filter
 function filterActivity(activity, filters) {
     var filtered = activity.filter(function (ac) {
-        if (filters.parent) {
-            // return all activity from project/phase
+        if (filters.phase) {
+            // return all activity from phase
+            return false;
+        }
+        if (filters.project) {
+            // return all activity from project
             return false;
         }
         if (filters.user) {

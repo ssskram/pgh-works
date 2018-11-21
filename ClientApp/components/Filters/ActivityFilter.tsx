@@ -17,7 +17,8 @@ export class ActivityFilter extends React.Component<any, any> {
         this.state = {
             onFilter: false,
             modalIsOpen: false,
-            parent: '',
+            project: '',
+            phase: '',
             user: '',
             date: ''
         }
@@ -45,9 +46,10 @@ export class ActivityFilter extends React.Component<any, any> {
 
     filter() {
         const filterLoad = {
-            parent: this.state.parent,
             user: this.state.user,
-            date: this.state.date
+            date: this.state.date,
+            project: this.state.project,
+            phase: this.state.phase
         }
         this.props.returnFiltered(filterActivity(this.props.activity, filterLoad))
         this.setState({
@@ -60,7 +62,8 @@ export class ActivityFilter extends React.Component<any, any> {
         this.props.returnFiltered(this.props.activity)
         this.setState({
             onFilter: false,
-            parent: '',
+            project: '',
+            phase: '',
             user: '',
             date: ''
         })
@@ -70,7 +73,8 @@ export class ActivityFilter extends React.Component<any, any> {
         const {
             onFilter,
             modalIsOpen,
-            parent,
+            project,
+            phase,
             user,
             date
         } = this.state
@@ -102,9 +106,19 @@ export class ActivityFilter extends React.Component<any, any> {
                     <div>
                         <div className='col-md-12'>
                             <Input
-                                value={parent}
-                                name="parent"
-                                header="Project name"
+                                value={project}
+                                name="project"
+                                header="Project"
+                                placeholder="Select..."
+                                callback={this.handleChildChange.bind(this)}
+                            />
+                        </div>
+
+                        <div className='col-md-12'>
+                            <Input
+                                value={phase}
+                                name="phase"
+                                header="Phase"
                                 placeholder="Select..."
                                 callback={this.handleChildChange.bind(this)}
                             />

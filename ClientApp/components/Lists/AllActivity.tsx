@@ -76,6 +76,14 @@ export class AllActivity extends React.Component<any, any> {
         })
     }
 
+    getParentLink(props) {
+        this.setState({
+            redirectLink: "/Project/id=" + props.parentID,
+            redirect: true
+        })
+    }
+
+
     public render() {
         const {
             activity,
@@ -92,9 +100,22 @@ export class AllActivity extends React.Component<any, any> {
         const currentItems = returnCurrentItems(activity, currentPage)
         const pageNumbers = returnPageNumber(activity)
         const renderItems = currentItems.map((activity, index) => {
+            console.log(activity)
             return <div className='col-md-12' key={index}>
                 <div className='panel panel-button'>
-                    One here
+                    <div onClick={() => this.getParentLink(activity)} className='panel-body text-center' style={padding15}>
+                        <div className='col-md-3'>
+                            <h4>Project</h4>
+                            <h3><b>Test test test</b></h3>
+                        </div>
+                        <div>
+                            <div className='col-md-9'>
+                                <h3>"{activity.activity}"</h3>
+                                <h4>{activity.user}</h4>
+                                <h4>{activity.date}</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         })
@@ -103,11 +124,7 @@ export class AllActivity extends React.Component<any, any> {
             <div>
                 <Hydrate />
                 {activity.length == 0 && onFilter == false &&
-                    <Spinner
-                        thirdNotice='...you can blame Cartegraph, if you would like...'
-                        secondNotice='...sorry, this one takes a while...'
-                        firstNotice='...loading the activity...'
-                    />
+                    <Spinner notice='...loading activity...' />
                 }
                 <h2>
                     Activity
