@@ -18,10 +18,6 @@ const iconStyle = {
 
 export class ProjectTimeline extends React.Component<any, any> {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     addToTimeline() {
         let self = this
         const timelineLoad = {
@@ -96,8 +92,8 @@ export class ProjectTimeline extends React.Component<any, any> {
             <div>
                 <br />
                 <br />
-                <div className='col-md-12' style={{ paddingBottom: '5px' }}>
-                    <div style={{ marginBottom: '-30px', fontSize: '14px' }}>
+                <div className='col-md-12 hidden-sm hidden-xs' style={{ paddingBottom: '5px' }}>
+                    <div style={{ fontSize: '14px', marginBottom: '-30px' }}>
                         <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
                         <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
                         <span style={{ backgroundColor: '#FFEEBB', padding: '8px' }}>Activity</span>
@@ -109,6 +105,11 @@ export class ProjectTimeline extends React.Component<any, any> {
                             </span>
                         </div>
                     </Link>
+                </div>
+                <div className='col-md-12 hidden-md hidden-lg hidden-xl' style={{ marginBottom: '15px', fontSize: '14px' }}>
+                    <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
+                    <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
+                    <span style={{ backgroundColor: '#FFEEBB', padding: '8px' }}>Activity</span>
                 </div>
                 {this.props.project &&
                     <TL items={items} />

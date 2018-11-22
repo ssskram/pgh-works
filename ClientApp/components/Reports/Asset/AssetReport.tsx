@@ -82,7 +82,6 @@ export class AssetReport extends React.Component<any, any> {
             const asset = assets.find(function (asset) {
                 return asset.assetOID == prop
             })
-            console.log(asset)
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,

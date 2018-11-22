@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2a980942f79160cad069"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b925e9dd5eecba45059d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9693,7 +9693,6 @@ var actionCreators = {
     }; },
     addActivity: function (item) { return function (dispatch, getState) {
         var data = JSON.stringify(item).replace(/'/g, '');
-        console.log(data);
         // fetch('/api/activity/addActivity', {
         //     method: 'POST',
         //     body: data,
@@ -61065,7 +61064,6 @@ var AssetReport = (function (_super) {
             var asset = assets.find(function (asset) {
                 return asset.assetOID == prop;
             });
-            console.log(asset);
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
@@ -61732,7 +61730,7 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { marginLeft: '5px' } }, "Project"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-warning', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-secondary', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
@@ -62444,9 +62442,6 @@ var ProjectTimeline = (function (_super) {
     function ProjectTimeline() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ProjectTimeline.prototype.componentDidMount = function () {
-        console.log(this.props);
-    };
     ProjectTimeline.prototype.addToTimeline = function () {
         var self = this;
         var timelineLoad = {
@@ -62511,8 +62506,8 @@ var ProjectTimeline = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { paddingBottom: '5px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { marginBottom: '-30px', fontSize: '14px' } },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 hidden-sm hidden-xs', style: { paddingBottom: '5px' } },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { fontSize: '14px', marginBottom: '-30px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFEEBB', padding: '8px' } }, "Activity")),
@@ -62520,6 +62515,10 @@ var ProjectTimeline = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.addToTimeline.bind(this), title: 'Add to timeline', className: 'pull-right' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: timelineImg }))))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 hidden-md hidden-lg hidden-xl', style: { marginBottom: '15px', fontSize: '14px' } },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFEEBB', padding: '8px' } }, "Activity")),
             this.props.project &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline__["a" /* default */], { items: items })));
     };

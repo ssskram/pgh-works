@@ -191,7 +191,7 @@ export class Phase extends React.Component<any, any> {
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
                             <h4 style={{ marginLeft: '5px' }}>Project</h4>
-                            <div className='btn btn-warning' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
+                            <div className='btn btn-secondary' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
                         </h2>
                         <br />
                         <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>

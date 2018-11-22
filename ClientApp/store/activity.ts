@@ -38,7 +38,6 @@ export const actionCreators = {
     },
     addActivity: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item).replace(/'/g, '')
-        console.log(data)
         // fetch('/api/activity/addActivity', {
         //     method: 'POST',
         //     body: data,
