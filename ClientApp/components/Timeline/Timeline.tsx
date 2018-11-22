@@ -93,10 +93,10 @@ export default class Line extends React.Component<any, any> {
                     center>
                     <div className='col-md-12'>
                         <h3>"{selectedActivity.content}"</h3>
-                        <h4>{selectedActivity.start}</h4>
                         {selectedActivity.user &&
                             <h4>{selectedActivity.user}</h4>
                         }
+                        <h4>{selectedActivity.start}</h4>
                     </div>
                 </Modal>
             </div>

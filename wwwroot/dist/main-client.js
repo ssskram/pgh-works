@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cf2676a7dd976bcb6054"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3c25e50e539aa6e26b2e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10946,9 +10946,9 @@ var Line = (function (_super) {
                         "\"",
                         selectedActivity.content,
                         "\""),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.start),
                     selectedActivity.user &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.user)))));
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.user),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.start)))));
     };
     return Line;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
