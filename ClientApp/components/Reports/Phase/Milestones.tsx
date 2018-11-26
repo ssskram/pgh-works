@@ -154,17 +154,17 @@ export class Milestones extends React.Component<any, any> {
             }, {
                 Header: '',
                 accessor: 'milestoneID',
-                Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
+                Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success' title='Mark as complete'><span className='glyphicon glyphicon-ok'></span></button>,
                 maxWidth: 100
             }, {
                 Header: '',
                 accessor: 'milestoneID',
-                Cell: props => <button onClick={() => this.setEdit(props.value)} className='btn btn-warning'><span className='glyphicon glyphicon-info-sign'></span></button>,
+                Cell: props => <button onClick={() => this.setEdit(props.value)} className='btn btn-warning' title='Edit milestone'><span className='glyphicon glyphicon-info-sign'></span></button>,
                 maxWidth: 100
             }, {
                 Header: '',
                 accessor: 'milestoneID',
-                Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger'><span className='glyphicon glyphicon-remove'></span></button>,
+                Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger' title='Delete milestone'><span className='glyphicon glyphicon-remove'></span></button>,
                 maxWidth: 100
             }]
         } else {
@@ -201,7 +201,7 @@ export class Milestones extends React.Component<any, any> {
             }, {
                 Header: '',
                 accessor: 'milestoneID',
-                Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-up'></span></button>,
+                Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success' title='Mark as incomplete'><span className='glyphicon glyphicon-arrow-up'></span></button>,
                 maxWidth: 100
             }]
         } else {

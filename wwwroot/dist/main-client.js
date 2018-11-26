@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a51a421d9a068465cb4d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b2a785203ef406680503"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61482,19 +61482,19 @@ var Milestones = (function (_super) {
                 }, {
                     Header: '',
                     accessor: 'milestoneID',
-                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.completeMilestone(props.value); }, className: 'btn btn-success' },
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.completeMilestone(props.value); }, className: 'btn btn-success', title: 'Mark as complete' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-ok' })); },
                     maxWidth: 100
                 }, {
                     Header: '',
                     accessor: 'milestoneID',
-                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setEdit(props.value); }, className: 'btn btn-warning' },
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setEdit(props.value); }, className: 'btn btn-warning', title: 'Edit milestone' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign' })); },
                     maxWidth: 100
                 }, {
                     Header: '',
                     accessor: 'milestoneID',
-                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setDelete(props.value); }, className: 'btn btn-danger' },
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setDelete(props.value); }, className: 'btn btn-danger', title: 'Delete milestone' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-remove' })); },
                     maxWidth: 100
                 }];
@@ -61534,7 +61534,7 @@ var Milestones = (function (_super) {
                 }, {
                     Header: '',
                     accessor: 'milestoneID',
-                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.reopenMilestone(props.value); }, className: 'btn btn-success' },
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.reopenMilestone(props.value); }, className: 'btn btn-success', title: 'Mark as incomplete' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-up' })); },
                     maxWidth: 100
                 }];
