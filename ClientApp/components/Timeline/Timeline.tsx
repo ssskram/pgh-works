@@ -81,7 +81,7 @@ export default class Line extends React.Component<any, any> {
                     open={investigate}
                     onClose={() => this.setState({
                         investigate: false,
-                        selectedActivity: {}
+                        selectedItem: {}
                     })}
                     classNames={{
                         overlay: 'custom-overlay',

@@ -23,7 +23,7 @@ export class PhaseTimeline extends React.Component<any, any> {
 
         // expected dates
         let expected = {
-            id: 1,
+            id: counter,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
@@ -65,7 +65,7 @@ export class PhaseTimeline extends React.Component<any, any> {
         this.props.milestones.filter(ms => ms.phaseID == this.props.phase.phaseID).forEach((m, i) => {
             let mi
             if (m.percentComplete < 100) {
-                if (m.dueDate != '') {
+                if (m.dueDate) {
                     mi = {
                         id: counter + 1,
                         content: m.milestoneName,
@@ -85,9 +85,10 @@ export class PhaseTimeline extends React.Component<any, any> {
                 }
                 counter++
             }
-            items.push(mi)
+            if (mi) items.push(mi)
         })
 
+        console.log(items)
         return (
             <div>
                 <br />

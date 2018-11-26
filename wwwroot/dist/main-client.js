@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "908d491900c09060107d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4f43eb2ac72baf26504b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10933,7 +10933,7 @@ var Line = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline___default.a, { options: timelineOptions, items: items, groups: groups, clickHandler: this.clickHandler.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__["a" /* default */], { open: investigate, onClose: function () { return _this.setState({
                     investigate: false,
-                    selectedActivity: {}
+                    selectedItem: {}
                 }); }, classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -62538,7 +62538,7 @@ var PhaseTimeline = (function (_super) {
         var items = [];
         // expected dates
         var expected = {
-            id: 1,
+            id: counter,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
@@ -62577,7 +62577,7 @@ var PhaseTimeline = (function (_super) {
         this.props.milestones.filter(function (ms) { return ms.phaseID == _this.props.phase.phaseID; }).forEach(function (m, i) {
             var mi;
             if (m.percentComplete < 100) {
-                if (m.dueDate != '') {
+                if (m.dueDate) {
                     mi = {
                         id: counter + 1,
                         content: m.milestoneName,
@@ -62598,8 +62598,10 @@ var PhaseTimeline = (function (_super) {
                 };
                 counter++;
             }
-            items.push(mi);
+            if (mi)
+                items.push(mi);
         });
+        console.log(items);
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
