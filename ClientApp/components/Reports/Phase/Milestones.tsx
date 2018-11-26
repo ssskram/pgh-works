@@ -31,7 +31,7 @@ export class Milestones extends React.Component<any, any> {
             // milestones
             milestones: [],
 
-            // delete or complete
+            // delete, complete, or edit
             selectedMilestone: {}
         }
         this.getMilestones = this.getMilestones.bind(this);
@@ -60,12 +60,6 @@ export class Milestones extends React.Component<any, any> {
         }
     }
 
-    openModal() {
-        this.setState({
-            modalIsOpen: true
-        })
-    }
-
     closeModal() {
         this.setState({
             modalIsOpen: false,
@@ -73,6 +67,13 @@ export class Milestones extends React.Component<any, any> {
         });
     }
 
+    setNew() {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'new'
+        })
+    }
+    
     setDelete(milestoneID) {
         let milestone = this.state.milestones.find(function (milestone) {
             return milestone.milestoneID == milestoneID
@@ -80,6 +81,17 @@ export class Milestones extends React.Component<any, any> {
         this.setState({
             modalIsOpen: true,
             modalType: 'delete',
+            selectedMilestone: milestone
+        })
+    }
+
+    setEdit(milestoneID) {
+        let milestone = this.state.milestones.find(function (milestone) {
+            return milestone.milestoneID == milestoneID
+        })
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'edit',
             selectedMilestone: milestone
         })
     }
@@ -121,13 +133,15 @@ export class Milestones extends React.Component<any, any> {
             modalType
         } = this.state
 
+        console.log(selectedMilestone)
+
         const {
             canEdit
         } = this.props
 
         let openColumns = [] as any
         if (canEdit == true) {
-           openColumns = [{
+            openColumns = [{
                 Header: 'Name',
                 accessor: 'milestoneName'
             }, {
@@ -141,6 +155,11 @@ export class Milestones extends React.Component<any, any> {
                 Header: '',
                 accessor: 'milestoneID',
                 Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success'><span className='glyphicon glyphicon-ok'></span></button>,
+                maxWidth: 100
+            }, {
+                Header: '',
+                accessor: 'milestoneID',
+                Cell: props => <button onClick={() => this.setEdit(props.value)} className='btn btn-warning'><span className='glyphicon glyphicon-info-sign'></span></button>,
                 maxWidth: 100
             }, {
                 Header: '',
@@ -219,7 +238,7 @@ export class Milestones extends React.Component<any, any> {
                     Milestones
                     <span>
                         {canEdit == true &&
-                            <div onClick={this.openModal.bind(this)} title='Add milestone' className='btn-add pull-right hidden-xs'>
+                            <div onClick={this.setNew.bind(this)} title='Add milestone' className='btn-add pull-right hidden-xs'>
                                 <span style={{ marginTop: '10px' }} className='glyphicon glyphicon-plus'></span>
                             </div>
                         }
@@ -292,8 +311,15 @@ export class Milestones extends React.Component<any, any> {
                             closeModal={this.closeModal.bind(this)}
                             removeMilestone={this.removeMilestone.bind(this)} />
                     }
-                    {modalType != 'delete' &&
+                    {modalType == 'new' &&
                         <MilestoneForm
+                            phaseID={this.props.phaseID}
+                            projectID={this.props.projectID}
+                            closeModal={this.closeModal.bind(this)} />
+                    }
+                    {modalType == 'edit' &&
+                        <MilestoneForm
+                            milestone={selectedMilestone}
                             phaseID={this.props.phaseID}
                             projectID={this.props.projectID}
                             closeModal={this.closeModal.bind(this)} />

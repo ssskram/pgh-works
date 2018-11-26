@@ -26,14 +26,40 @@ export class MilestoneInputs extends React.Component<any, any> {
             dateCompleted: ''
         }
     }
+
     componentDidMount() {
-        // new milestone
-        const guid: string = uuid()
-        this.setState({
-            projectID: this.props.projectID,
-            phaseID: this.props.phaseID,
-            milestoneID: guid
-        })
+        this.editMilestone(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.editMilestone(nextProps)
+    }
+
+    editMilestone(props) {
+        console.log(props)
+        if (props.milestone) {
+            // update milestone
+            this.setState({
+                projectID: this.props.milestone.projectID,
+                phaseID: this.props.milestone.phaseID,
+                milestoneID: this.props.milestone.milestoneID,
+                cartegraphID: this.props.milestone.cartegraphID,
+                milestoneName: this.props.milestone.milestoneName,
+                notes: this.props.milestone.notes,
+                percentComplete: this.props.milestone.percentComplete,
+                dueDate: this.props.milestone.dueDate,
+                dateCompleted: this.props.milestone.dateCompleted
+            })
+        } else {
+            // new milestone
+            const guid: string = uuid()
+            this.setState({
+                projectID: this.props.projectID,
+                phaseID: this.props.phaseID,
+                milestoneID: guid
+            })
+
+        }
     }
 
     handleChildChange(event) {
@@ -53,7 +79,7 @@ export class MilestoneInputs extends React.Component<any, any> {
     }
 
     post() {
-        if (this.props.milestoneID) {
+        if (this.props.milestone) {
             // update
             this.props.updateMilestone(this.state)
             this.props.closeModal()

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "91722489b9bef890d20e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a51a421d9a068465cb4d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -58172,13 +58172,36 @@ var MilestoneInputs = (function (_super) {
         return _this;
     }
     MilestoneInputs.prototype.componentDidMount = function () {
-        // new milestone
-        var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_uuid__["v1"])();
-        this.setState({
-            projectID: this.props.projectID,
-            phaseID: this.props.phaseID,
-            milestoneID: guid
-        });
+        this.editMilestone(this.props);
+    };
+    MilestoneInputs.prototype.componentWillReceiveProps = function (nextProps) {
+        this.editMilestone(nextProps);
+    };
+    MilestoneInputs.prototype.editMilestone = function (props) {
+        console.log(props);
+        if (props.milestone) {
+            // update milestone
+            this.setState({
+                projectID: this.props.milestone.projectID,
+                phaseID: this.props.milestone.phaseID,
+                milestoneID: this.props.milestone.milestoneID,
+                cartegraphID: this.props.milestone.cartegraphID,
+                milestoneName: this.props.milestone.milestoneName,
+                notes: this.props.milestone.notes,
+                percentComplete: this.props.milestone.percentComplete,
+                dueDate: this.props.milestone.dueDate,
+                dateCompleted: this.props.milestone.dateCompleted
+            });
+        }
+        else {
+            // new milestone
+            var guid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_uuid__["v1"])();
+            this.setState({
+                projectID: this.props.projectID,
+                phaseID: this.props.phaseID,
+                milestoneID: guid
+            });
+        }
     };
     MilestoneInputs.prototype.handleChildChange = function (event) {
         this.setState((_a = {}, _a[event.target.name] = event.target.value, _a));
@@ -58197,7 +58220,7 @@ var MilestoneInputs = (function (_super) {
         }
     };
     MilestoneInputs.prototype.post = function () {
-        if (this.props.milestoneID) {
+        if (this.props.milestone) {
             // update
             this.props.updateMilestone(this.state);
             this.props.closeModal();
@@ -61353,7 +61376,7 @@ var Milestones = (function (_super) {
             modalType: '',
             // milestones
             milestones: [],
-            // delete or complete
+            // delete, complete, or edit
             selectedMilestone: {}
         };
         _this.getMilestones = _this.getMilestones.bind(_this);
@@ -61379,15 +61402,16 @@ var Milestones = (function (_super) {
             }
         }
     };
-    Milestones.prototype.openModal = function () {
-        this.setState({
-            modalIsOpen: true
-        });
-    };
     Milestones.prototype.closeModal = function () {
         this.setState({
             modalIsOpen: false,
             modalType: ''
+        });
+    };
+    Milestones.prototype.setNew = function () {
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'new'
         });
     };
     Milestones.prototype.setDelete = function (milestoneID) {
@@ -61397,6 +61421,16 @@ var Milestones = (function (_super) {
         this.setState({
             modalIsOpen: true,
             modalType: 'delete',
+            selectedMilestone: milestone
+        });
+    };
+    Milestones.prototype.setEdit = function (milestoneID) {
+        var milestone = this.state.milestones.find(function (milestone) {
+            return milestone.milestoneID == milestoneID;
+        });
+        this.setState({
+            modalIsOpen: true,
+            modalType: 'edit',
             selectedMilestone: milestone
         });
     };
@@ -61429,6 +61463,7 @@ var Milestones = (function (_super) {
     Milestones.prototype.render = function () {
         var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, milestones = _a.milestones, selectedMilestone = _a.selectedMilestone, modalType = _a.modalType;
+        console.log(selectedMilestone);
         var canEdit = this.props.canEdit;
         var openColumns = [];
         if (canEdit == true) {
@@ -61449,6 +61484,12 @@ var Milestones = (function (_super) {
                     accessor: 'milestoneID',
                     Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.completeMilestone(props.value); }, className: 'btn btn-success' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-ok' })); },
+                    maxWidth: 100
+                }, {
+                    Header: '',
+                    accessor: 'milestoneID',
+                    Cell: function (props) { return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setEdit(props.value); }, className: 'btn btn-warning' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign' })); },
                     maxWidth: 100
                 }, {
                     Header: '',
@@ -61527,7 +61568,7 @@ var Milestones = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: milestonesImg }),
                 "Milestones",
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.openModal.bind(this), title: 'Add milestone', className: 'btn-add pull-right hidden-xs' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: this.setNew.bind(this), title: 'Add milestone', className: 'btn-add pull-right hidden-xs' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '10px' }, className: 'glyphicon glyphicon-plus' })))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             milestones.length == 0 &&
@@ -61567,8 +61608,10 @@ var Milestones = (function (_super) {
                 }, center: true },
                 modalType == 'delete' &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__DeleteConfirmations_DeleteMilestone__["a" /* default */], { milestone: selectedMilestone, closeModal: this.closeModal.bind(this), removeMilestone: this.removeMilestone.bind(this) }),
-                modalType != 'delete' &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Inputs_Milestone__["a" /* default */], { phaseID: this.props.phaseID, projectID: this.props.projectID, closeModal: this.closeModal.bind(this) }))));
+                modalType == 'new' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Inputs_Milestone__["a" /* default */], { phaseID: this.props.phaseID, projectID: this.props.projectID, closeModal: this.closeModal.bind(this) }),
+                modalType == 'edit' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Inputs_Milestone__["a" /* default */], { milestone: selectedMilestone, phaseID: this.props.phaseID, projectID: this.props.projectID, closeModal: this.closeModal.bind(this) }))));
     };
     return Milestones;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
