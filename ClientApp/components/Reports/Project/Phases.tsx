@@ -86,6 +86,7 @@ export class Phases extends React.Component<any, any> {
                 content: phase.phaseName,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
+                itemType: 'phaseExpected',
                 style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
             }
             counter++
@@ -99,6 +100,7 @@ export class Phases extends React.Component<any, any> {
                     content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
+                    itemType: 'phaseActual',
                     style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                 }
                 counter++

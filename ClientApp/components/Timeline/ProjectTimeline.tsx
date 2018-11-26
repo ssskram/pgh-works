@@ -62,6 +62,7 @@ export class ProjectTimeline extends React.Component<any, any> {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
+            itemType: 'projectExpected',
             style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         }
         items.push(expected)
@@ -72,6 +73,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
+                itemType: 'projectActual',
                 style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             }
             items.push(actual)
@@ -83,6 +85,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 content: ac.activity,
                 start: ac.date,
                 user: ac.user,
+                itemType: 'activity',
                 style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
             }
             items.push(vy)

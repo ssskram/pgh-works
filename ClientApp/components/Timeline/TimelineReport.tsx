@@ -84,6 +84,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
+                    itemType: 'projectExpected',
                     style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
                 }
                 index = index + 1
@@ -95,6 +96,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
+                        itemType: 'projectActual',
                         style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                     }
                     index = index + 1
@@ -107,6 +109,7 @@ export class Timeline extends React.Component<any, any> {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
+                    itemType: 'phaseExpected',
                     style: 'background-color: #ACD1EF; border-color: #FF986C; border-width: 2px;'
                 }
                 index = index + 1
@@ -118,6 +121,7 @@ export class Timeline extends React.Component<any, any> {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
+                        itemType: 'phaseActual',
                         style: 'background-color: #1561A1; color: #fffcf5; border-color: #FF986C; border-width: 2px;'
                     }
                     index = index + 1

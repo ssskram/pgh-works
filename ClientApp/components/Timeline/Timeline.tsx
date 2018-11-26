@@ -11,8 +11,7 @@ export default class Line extends React.Component<any, any> {
         this.state = {
             groups: [],
             items: [],
-            selectedSpan: {},
-            selectedActivity: {},
+            selectedItem: {},
             investigate: false
         }
         this.redraw = this.redraw.bind(this)
@@ -43,9 +42,7 @@ export default class Line extends React.Component<any, any> {
     clickHandler(props) {
         const item = this.state.items.find(it => it.id == props.item)
         if (item) {
-            if (item.id > 2) {
-                this.setState({ selectedActivity: item, investigate: true })
-            }
+            this.setState({ selectedItem: item, investigate: true })
         }
     }
 
@@ -53,7 +50,7 @@ export default class Line extends React.Component<any, any> {
         const {
             groups,
             items,
-            selectedActivity,
+            selectedItem,
             investigate
         } = this.state
 
@@ -92,11 +89,75 @@ export default class Line extends React.Component<any, any> {
                     }}
                     center>
                     <div className='col-md-12'>
-                        <h3>"{selectedActivity.content}"</h3>
-                        {selectedActivity.user &&
-                            <h4>{selectedActivity.user}</h4>
+                        {selectedItem && selectedItem.itemType == 'projectExpected' &&
+                            <div className='text-center'>
+                                <i>Project</i>
+                                <h4>Expected start date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                                <h4>Expected end date</h4>
+                                <h4><b>{selectedItem.end}</b></h4>
+                            </div>
                         }
-                        <h4>{selectedActivity.start}</h4>
+                        {selectedItem && selectedItem.itemType == 'projectActual' &&
+                            <div className='text-center'>
+                                <i>Project</i>
+                                <h4>Actual start date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                                <h4>Actual end date</h4>
+                                <h4><b>{selectedItem.end}</b></h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'activity' &&
+                            <div className='text-center'>
+                                <h3>"{selectedItem.content}"</h3>
+                                <h4>{selectedItem.user}</h4>
+                                <h4>{selectedItem.start}</h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'phaseExpected' &&
+                            <div className='text-center'>
+                                <i>Phase</i>
+                                <h4>Expected start date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                                <h4>Expected end date</h4>
+                                <h4><b>{selectedItem.end}</b></h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'phaseActual' &&
+                            <div className='text-center'>
+                                <i>Phase</i>
+                                <h4>Actual start date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                                <h4>Actual end date</h4>
+                                <h4><b>{selectedItem.end}</b></h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'subphase' &&
+                            <div className='text-center'>
+                                <i>Subphase</i>
+                                <h3>"{selectedItem.content}"</h3>
+                                <h4>Start date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                                <h4>End date</h4>
+                                <h4><b>{selectedItem.end}</b></h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'milestoneOpen' &&
+                            <div className='text-center'>
+                                <i>Milestone</i>
+                                <h3>"{selectedItem.content}"</h3>
+                                <h4>Due date</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                            </div>
+                        }
+                        {selectedItem && selectedItem.itemType == 'milestoneCompleted' &&
+                            <div className='text-center'>
+                                <i>Milestone</i>
+                                <h3>"{selectedItem.content}"</h3>
+                                <h4>Date completed</h4>
+                                <h4><b>{selectedItem.start}</b></h4>
+                            </div>
+                        }
                     </div>
                 </Modal>
             </div>

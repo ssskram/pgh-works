@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "be8b6cacea15d52b46de"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "908d491900c09060107d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10880,8 +10880,7 @@ var Line = (function (_super) {
         _this.state = {
             groups: [],
             items: [],
-            selectedSpan: {},
-            selectedActivity: {},
+            selectedItem: {},
             investigate: false
         };
         _this.redraw = _this.redraw.bind(_this);
@@ -10909,14 +10908,12 @@ var Line = (function (_super) {
     Line.prototype.clickHandler = function (props) {
         var item = this.state.items.find(function (it) { return it.id == props.item; });
         if (item) {
-            if (item.id > 2) {
-                this.setState({ selectedActivity: item, investigate: true });
-            }
+            this.setState({ selectedItem: item, investigate: true });
         }
     };
     Line.prototype.render = function () {
         var _this = this;
-        var _a = this.state, groups = _a.groups, items = _a.items, selectedActivity = _a.selectedActivity, investigate = _a.investigate;
+        var _a = this.state, groups = _a.groups, items = _a.items, selectedItem = _a.selectedItem, investigate = _a.investigate;
         var timelineOptions = {
             width: '100%',
             stack: true,
@@ -10942,13 +10939,83 @@ var Line = (function (_super) {
                     modal: 'custom-modal'
                 }, center: true },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                        "\"",
-                        selectedActivity.content,
-                        "\""),
-                    selectedActivity.user &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.user),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedActivity.start)))));
+                    selectedItem && selectedItem.itemType == 'projectExpected' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Project"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Expected start date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Expected end date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.end))),
+                    selectedItem && selectedItem.itemType == 'projectActual' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Project"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Actual start date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Actual end date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.end))),
+                    selectedItem && selectedItem.itemType == 'activity' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                "\"",
+                                selectedItem.content,
+                                "\""),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedItem.user),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedItem.start)),
+                    selectedItem && selectedItem.itemType == 'phaseExpected' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Phase"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Expected start date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Expected end date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.end))),
+                    selectedItem && selectedItem.itemType == 'phaseActual' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Phase"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Actual start date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Actual end date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.end))),
+                    selectedItem && selectedItem.itemType == 'subphase' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Subphase"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                "\"",
+                                selectedItem.content,
+                                "\""),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Start date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "End date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.end))),
+                    selectedItem && selectedItem.itemType == 'milestoneOpen' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Milestone"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                "\"",
+                                selectedItem.content,
+                                "\""),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Due date"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start))),
+                    selectedItem && selectedItem.itemType == 'milestoneCompleted' &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Milestone"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                "\"",
+                                selectedItem.content,
+                                "\""),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Date completed"),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, selectedItem.start)))))));
     };
     return Line;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -62097,6 +62164,7 @@ var Phases = (function (_super) {
                 content: phase.phaseName,
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
+                itemType: 'phaseExpected',
                 style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
             };
             counter++;
@@ -62109,6 +62177,7 @@ var Phases = (function (_super) {
                     content: phase.phaseName,
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
+                    itemType: 'phaseActual',
                     style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                 };
                 counter++;
@@ -62462,59 +62531,83 @@ var PhaseTimeline = (function (_super) {
     function PhaseTimeline() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    PhaseTimeline.prototype.componentDidMount = function () {
-        console.log(this.props);
-    };
     PhaseTimeline.prototype.render = function () {
         var _this = this;
         var _a = this.props.phase, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate;
+        var counter = 0;
         var items = [];
+        // expected dates
         var expected = {
             id: 1,
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
+            itemType: 'phaseExpected',
             style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         };
+        counter++;
         items.push(expected);
+        // if actual dates, add
         if (actualStartDate && actualEndDate) {
             var actual = {
-                id: 2,
+                id: counter + 1,
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
+                itemType: 'phaseActual',
                 style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             };
             items.push(actual);
+            counter++;
         }
-        var milestones = this.props.milestones.filter(function (ms) { return ms.phaseID == _this.props.phase.phaseID; }).forEach(function (m, i) {
+        // add subphases
+        this.props.subphases.filter(function (sp) { return sp.phaseID == _this.props.phase.phaseID; }).forEach(function (s) {
+            var sb = {
+                id: counter + 1,
+                content: s.subphaseName,
+                start: s.startDate,
+                end: s.endDate,
+                itemType: 'subphase',
+                style: 'background-color: #FFE6DB; border-color: #FFE6DB;'
+            };
+            items.push(sb);
+            counter++;
+        });
+        // add milestones
+        this.props.milestones.filter(function (ms) { return ms.phaseID == _this.props.phase.phaseID; }).forEach(function (m, i) {
             var mi;
             if (m.percentComplete < 100) {
-                mi = {
-                    id: i + 4,
-                    content: m.milestoneName,
-                    start: m.dueDate,
-                    style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
-                };
+                if (m.dueDate != '') {
+                    mi = {
+                        id: counter + 1,
+                        content: m.milestoneName,
+                        start: m.dueDate,
+                        itemType: 'milestoneOpen',
+                        style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
+                    };
+                    counter++;
+                }
             }
             else {
                 mi = {
-                    id: i + 4,
+                    id: counter + 1,
                     content: m.milestoneName,
                     start: m.dateCompleted,
+                    itemType: 'milestoneCompleted',
                     style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
                 };
+                counter++;
             }
             items.push(mi);
         });
-        var subphases = this.props.subphases.filter(function (sp) { return sp.phaseID == _this.props.phase.phaseID; });
-        console.log(subphases);
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { marginBottom: '15px', fontSize: '14px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFE6DB', padding: '8px' } }, "Subphase"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFEEBB', padding: '8px' } }, "Milestone")),
             this.props.phase &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline__["a" /* default */], { items: items })));
     };
@@ -62614,6 +62707,7 @@ var ProjectTimeline = (function (_super) {
             content: expectedStartDate + ' - ' + expectedEndDate,
             start: expectedStartDate,
             end: expectedEndDate,
+            itemType: 'projectExpected',
             style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
         };
         items.push(expected);
@@ -62623,6 +62717,7 @@ var ProjectTimeline = (function (_super) {
                 content: actualStartDate + ' - ' + actualEndDate,
                 start: actualStartDate,
                 end: actualEndDate,
+                itemType: 'projectActual',
                 style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
             };
             items.push(actual);
@@ -62633,6 +62728,7 @@ var ProjectTimeline = (function (_super) {
                 content: ac.activity,
                 start: ac.date,
                 user: ac.user,
+                itemType: 'activity',
                 style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
             };
             items.push(vy);
@@ -62771,6 +62867,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.id,
+                    itemType: 'projectExpected',
                     style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
                 };
                 index = index + 1;
@@ -62782,6 +62879,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.id,
+                        itemType: 'projectActual',
                         style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
                     };
                     index = index + 1;
@@ -62795,6 +62893,7 @@ var Timeline = (function (_super) {
                     start: item.expectedStartDate,
                     end: item.expectedEndDate,
                     group: item.parentProjectID,
+                    itemType: 'phaseExpected',
                     style: 'background-color: #ACD1EF; border-color: #FF986C; border-width: 2px;'
                 };
                 index = index + 1;
@@ -62806,6 +62905,7 @@ var Timeline = (function (_super) {
                         start: item.actualStartDate,
                         end: item.actualEndDate,
                         group: item.parentProjectID,
+                        itemType: 'phaseActual',
                         style: 'background-color: #1561A1; color: #fffcf5; border-color: #FF986C; border-width: 2px;'
                     };
                     index = index + 1;
