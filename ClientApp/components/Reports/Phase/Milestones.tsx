@@ -133,8 +133,6 @@ export class Milestones extends React.Component<any, any> {
             modalType
         } = this.state
 
-        console.log(selectedMilestone)
-
         const {
             canEdit
         } = this.props

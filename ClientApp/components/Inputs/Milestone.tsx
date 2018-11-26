@@ -36,7 +36,6 @@ export class MilestoneInputs extends React.Component<any, any> {
     }
 
     editMilestone(props) {
-        console.log(props)
         if (props.milestone) {
             // update milestone
             this.setState({

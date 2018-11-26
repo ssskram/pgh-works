@@ -3,8 +3,16 @@
 
 import * as React from 'react'
 import TL from './Timeline'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as Subphases from '../../store/subphases'
+import * as Milestones from '../../store/milestones'
 
-export default class PhaseTimeline extends React.Component<any, any> {
+export class PhaseTimeline extends React.Component<any, any> {
+
+    componentDidMount() {
+        console.log(this.props)
+    }
 
     public render() {
         const {
@@ -35,6 +43,29 @@ export default class PhaseTimeline extends React.Component<any, any> {
             items.push(actual)
         }
 
+        const milestones = this.props.milestones.filter(ms => ms.phaseID == this.props.phase.phaseID).forEach((m, i) => {
+            let mi
+            if (m.percentComplete < 100) {
+                mi = {
+                    id: i + 4,
+                    content: m.milestoneName,
+                    start: m.dueDate,
+                    style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
+                }
+            } else {
+                mi = {
+                    id: i + 4,
+                    content: m.milestoneName,
+                    start: m.dateCompleted,
+                    style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
+                }
+            }
+            items.push(mi)
+        })
+
+        const subphases = this.props.subphases.filter(sp => sp.phaseID == this.props.phase.phaseID)
+        console.log(subphases)
+
         return (
             <div>
                 <br />
@@ -50,3 +81,14 @@ export default class PhaseTimeline extends React.Component<any, any> {
         )
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.subphases,
+        ...state.milestones
+    }),
+    ({
+        ...Subphases.actionCreators,
+        ...Milestones.actionCreators
+    })
+)(PhaseTimeline as any) as typeof PhaseTimeline
