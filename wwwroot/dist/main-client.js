@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0a56ceae41439a1cd97c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b770b482d2f51d3e9391"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60031,36 +60031,40 @@ var AllProjects = (function (_super) {
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_paging__["a" /* returnCurrentItems */])(projects, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__functions_paging__["b" /* returnPageNumber */])(projects);
         var renderItems = currentItems.map(function (project, index) {
+            var clearfix = index & 1 && index != 0;
             var link = "/Project/id=" + project.projectID;
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
-                                project.actualStartDate && project.actualEndDate &&
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
+                                    project.actualStartDate && project.actualEndDate &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                                project.actualStartDate,
+                                                " - ",
+                                                project.actualEndDate)),
+                                    !project.actualStartDate && !project.actualEndDate &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                                project.expectedStartDate,
+                                                " - ",
+                                                project.expectedEndDate)),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                            project.actualStartDate,
-                                            " - ",
-                                            project.actualEndDate)),
-                                !project.actualStartDate && !project.actualEndDate &&
+                                        "Status: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                            project.expectedStartDate,
-                                            " - ",
-                                            project.expectedEndDate)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "Status: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "Department: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "PM: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager)))))));
+                                        "Department: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                        "PM: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))))))),
+                clearfix == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "clearfix" }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
@@ -60204,36 +60208,40 @@ var MyProjects = (function (_super) {
         var currentItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_paging__["a" /* returnCurrentItems */])(projects, currentPage);
         var pageNumbers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__functions_paging__["b" /* returnPageNumber */])(projects);
         var renderItems = currentItems.map(function (project, index) {
+            var clearfix = index & 1 && index != 0;
             var link = "/Project/id=" + project.projectID;
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
-                                project.actualStartDate && project.actualEndDate &&
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { padding: '15px' } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
+                                    project.actualStartDate && project.actualEndDate &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                                project.actualStartDate,
+                                                " - ",
+                                                project.actualEndDate)),
+                                    !project.actualStartDate && !project.actualEndDate &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                                project.expectedStartDate,
+                                                " - ",
+                                                project.expectedEndDate)),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                            project.actualStartDate,
-                                            " - ",
-                                            project.actualEndDate)),
-                                !project.actualStartDate && !project.actualEndDate &&
+                                        "Status: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                            project.expectedStartDate,
-                                            " - ",
-                                            project.expectedEndDate)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "Status: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectStatus)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "Department: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
-                                    "PM: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager)))))));
+                                        "Department: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectDepartment)),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
+                                        "PM: ",
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectManager))))))),
+                clearfix == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "clearfix" }));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),

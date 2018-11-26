@@ -85,27 +85,33 @@ export class AllProjects extends React.Component<any, any> {
         const pageNumbers = returnPageNumber(projects)
 
         const renderItems = currentItems.map((project, index) => {
+            const clearfix = index & 1 && index != 0
             const link = "/Project/id=" + project.projectID
-            return <div className='col-md-6 col-sm-12' key={index}>
-                <div className='panel panel-button'>
-                    <Link to={link}>
-                        <div className='panel-body text-center'>
-                            <div className='col-md-12' style={{ padding: '15px' }}>
-                                <MapThumbnail shape={project.shape.points} />
-                                <h2><b>{project.projectName}</b></h2>
-                                {project.actualStartDate && project.actualEndDate &&
-                                    <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
-                                }
-                                {!project.actualStartDate && !project.actualEndDate &&
-                                    <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
-                                }
-                                <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
-                                <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
-                                <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
+            return <div key={index}>
+                <div className='col-md-6 col-sm-12'>
+                    <div className='panel panel-button'>
+                        <Link to={link}>
+                            <div className='panel-body text-center'>
+                                <div className='col-md-12' style={{ padding: '15px' }}>
+                                    <MapThumbnail shape={project.shape.points} />
+                                    <h2><b>{project.projectName}</b></h2>
+                                    {project.actualStartDate && project.actualEndDate &&
+                                        <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
+                                    }
+                                    {!project.actualStartDate && !project.actualEndDate &&
+                                        <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                    }
+                                    <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
+                                    <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
+                                    <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 </div>
+                {clearfix == true &&
+                    <div className="clearfix"></div>
+                }
             </div>
         })
 
