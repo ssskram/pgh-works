@@ -21,6 +21,12 @@ export default class HomeMap extends React.Component<any, any> {
         }
     }
 
+    componentWillMount() {
+        if (window.innerWidth < 1000) {
+            this.setState({ zoom: 12 })
+        }
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
         if (this.state.projects != nextState.projects) {
             return true
@@ -61,7 +67,7 @@ export default class HomeMap extends React.Component<any, any> {
             showInfowindow,
             selectedProject
         } = this.state
-        
+
         const MapComponent = compose(
             withProps({
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA89-c5tGTUcwg5cbyoY9QX1nFwATbvk6g&v=3.exp&libraries=geometry,drawing,places",

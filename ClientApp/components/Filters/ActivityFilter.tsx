@@ -2,9 +2,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import Input from '../FormElements/input'
+import * as Personnel from '../../store/GETS/personnel'
+import * as Projects from '../../store/projects'
 import Select from '../FormElements/select'
+import Datepicker from '../FormElements/datepicker'
 import Modal from 'react-responsive-modal'
+import * as moment from 'moment'
 import * as Activity from '../../store/activity'
 import filterActivity from './../../functions/filters/filterActivity'
 import { Helmet } from "react-helmet"
@@ -18,10 +21,36 @@ export class ActivityFilter extends React.Component<any, any> {
             onFilter: false,
             modalIsOpen: false,
             project: '',
-            phase: '',
+            projects: [],
             user: '',
+            users: [],
             date: ''
         }
+    }
+
+    componentDidMount() {
+        this.setDropdowns()
+    }
+
+    componentWillReceiveProps() {
+        this.setDropdowns()
+    }
+
+    setDropdowns() {
+        const personnel = [] as any
+        const projectDropdown = [] as any
+        this.props.personnel.forEach(user => {
+            const personnelSelect = { value: user.title, label: user.title, name: 'user' }
+            personnel.push(personnelSelect)
+        })
+        this.props.projects.forEach(project => {
+            const projectSelect = { value: project.projectName, label: project.projectName, name: 'project' }
+            projectDropdown.push(projectSelect)
+        })
+        this.setState({
+            users: personnel,
+            projects: projectDropdown
+        })
     }
 
     closeModal() {
@@ -36,12 +65,21 @@ export class ActivityFilter extends React.Component<any, any> {
         })
     }
 
-    handleChildChange(event) {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-
     handleChildSelect(event) {
         this.setState({ [event.name]: event.value });
+    }
+
+    handleDate(date, name) {
+        console.log(date, name)
+        if (date) {
+            this.setState({
+                [name]: moment(date).format('MM/DD/YYYY')
+            });
+        } else {
+            this.setState({
+                [name]: null
+            });
+        }
     }
 
     filter() {
@@ -49,9 +87,8 @@ export class ActivityFilter extends React.Component<any, any> {
             user: this.state.user,
             date: this.state.date,
             project: this.state.project,
-            phase: this.state.phase
         }
-        this.props.returnFiltered(filterActivity(this.props.activity, filterLoad))
+        this.props.returnFiltered(filterActivity(this.props.activity, this.props.projects, filterLoad))
         this.setState({
             modalIsOpen: false,
             onFilter: true
@@ -63,7 +100,6 @@ export class ActivityFilter extends React.Component<any, any> {
         this.setState({
             onFilter: false,
             project: '',
-            phase: '',
             user: '',
             date: ''
         })
@@ -74,8 +110,9 @@ export class ActivityFilter extends React.Component<any, any> {
             onFilter,
             modalIsOpen,
             project,
-            phase,
+            projects,
             user,
+            users,
             date
         } = this.state
         return (
@@ -105,42 +142,36 @@ export class ActivityFilter extends React.Component<any, any> {
                     center>
                     <div>
                         <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={project}
                                 name="project"
                                 header="Project"
                                 placeholder="Select project..."
-                                callback={this.handleChildChange.bind(this)}
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={projects}
                             />
                         </div>
 
                         <div className='col-md-12'>
-                            <Input
-                                value={phase}
-                                name="phase"
-                                header="Phase"
-                                placeholder="Select phase..."
-                                callback={this.handleChildChange.bind(this)}
-                            />
-                        </div>
-
-                        <div className='col-md-12'>
-                            <Input
+                            <Select
                                 value={user}
                                 name="user"
                                 header="Created by"
                                 placeholder="Select a colleague..."
-                                callback={this.handleChildChange.bind(this)}
+                                onChange={this.handleChildSelect.bind(this)}
+                                multi={false}
+                                options={users}
                             />
                         </div>
 
                         <div className='col-md-12'>
-                            <Input
+                            <Datepicker
                                 value={date}
                                 name="date"
                                 header="Submitted"
                                 placeholder="Select a date...."
-                                callback={this.handleChildChange.bind(this)}
+                                callback={(value) => this.handleDate(value, 'date')}
                             />
                         </div>
 
@@ -156,9 +187,13 @@ export class ActivityFilter extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.activity,
+        ...state.personnel,
+        ...state.projects,
+        ...state.activity
     }),
     ({
-        ...Activity.actionCreators,
+        ...Personnel.actionCreators,
+        ...Projects.actionCreators,
+        ...Activity.actionCreators
     })
 )(ActivityFilter as any) as typeof ActivityFilter
