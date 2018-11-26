@@ -103,6 +103,9 @@ export class MyProjects extends React.Component<any, any> {
                                     {!project.actualStartDate && !project.actualEndDate &&
                                         <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
                                     }
+                                    {!project.actualStartDate || !project.actualEndDate &&
+                                        <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                    }
                                     <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
                                     <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
                                     <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
