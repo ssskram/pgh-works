@@ -48,9 +48,7 @@ export class MyProjects extends React.Component<any, any> {
     setMyProjects(props) {
         if (props.projects.length > 0 && props.personnel.length > 0 && props.user != '') {
             this.setState({
-                projects: getMyProjects(props.projects, props.personnel, props.user).sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
+                projects: getMyProjects(props.projects, props.personnel, props.user)
             })
         }
     }
@@ -73,9 +71,7 @@ export class MyProjects extends React.Component<any, any> {
 
     receiveFilteredProjects(projects) {
         this.setState({
-            projects: getMyProjects(projects, this.props.personnel, this.props.user).sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            projects: getMyProjects(projects, this.props.personnel, this.props.user),
             onFilter: true
         })
     }

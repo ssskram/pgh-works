@@ -34,9 +34,7 @@ export class AllProjects extends React.Component<any, any> {
         window.scrollTo(0, 0)
         if (this.props.projects.length > 0) {
             this.setState({
-                projects: this.props.projects.sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
+                projects: this.props.projects
             })
         }
         // ping server
@@ -47,9 +45,7 @@ export class AllProjects extends React.Component<any, any> {
         if (this.props != nextProps) {
             if (nextProps.projects.length > 0) {
                 this.setState({
-                    projects: nextProps.projects.sort(function (a, b) {
-                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                    })
+                    projects: nextProps.projects
                 })
             }
         }
@@ -73,9 +69,7 @@ export class AllProjects extends React.Component<any, any> {
 
     receiveFilteredProjects(projects) {
         this.setState({
-            projects: projects.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate)
-            }),
+            projects: projects,
             onFilter: true
         })
     }

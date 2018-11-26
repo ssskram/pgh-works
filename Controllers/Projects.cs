@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 using pghworks.Models;
 
 namespace pghworks.Controllers {
@@ -47,7 +48,8 @@ namespace pghworks.Controllers {
                 };
                 AllProjects.Add (pj);
             }
-            return AllProjects;
+            List<Project> sortedProjects = AllProjects.OrderBy(o => o.projectName).ToList();
+            return sortedProjects;
         }
         public async Task<string> getProjects () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");

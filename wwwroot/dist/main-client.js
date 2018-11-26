@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "300605376e657106564a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0a56ceae41439a1cd97c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59991,9 +59991,7 @@ var AllProjects = (function (_super) {
         window.scrollTo(0, 0);
         if (this.props.projects.length > 0) {
             this.setState({
-                projects: this.props.projects.sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
+                projects: this.props.projects
             });
         }
         // ping server
@@ -60003,9 +60001,7 @@ var AllProjects = (function (_super) {
         if (this.props != nextProps) {
             if (nextProps.projects.length > 0) {
                 this.setState({
-                    projects: nextProps.projects.sort(function (a, b) {
-                        return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                    })
+                    projects: nextProps.projects
                 });
             }
         }
@@ -60026,9 +60022,7 @@ var AllProjects = (function (_super) {
     };
     AllProjects.prototype.receiveFilteredProjects = function (projects) {
         this.setState({
-            projects: projects.sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            projects: projects,
             onFilter: true
         });
     };
@@ -60181,9 +60175,7 @@ var MyProjects = (function (_super) {
     MyProjects.prototype.setMyProjects = function (props) {
         if (props.projects.length > 0 && props.personnel.length > 0 && props.user != '') {
             this.setState({
-                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_myProjects__["a" /* default */])(props.projects, props.personnel, props.user).sort(function (a, b) {
-                    return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-                })
+                projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_myProjects__["a" /* default */])(props.projects, props.personnel, props.user)
             });
         }
     };
@@ -60203,9 +60195,7 @@ var MyProjects = (function (_super) {
     };
     MyProjects.prototype.receiveFilteredProjects = function (projects) {
         this.setState({
-            projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_myProjects__["a" /* default */])(projects, this.props.personnel, this.props.user).sort(function (a, b) {
-                return +new Date(b.expectedEndDate) - +new Date(a.expectedEndDate);
-            }),
+            projects: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__functions_myProjects__["a" /* default */])(projects, this.props.personnel, this.props.user),
             onFilter: true
         });
     };
