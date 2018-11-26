@@ -70,7 +70,6 @@ export class ActivityFilter extends React.Component<any, any> {
     }
 
     handleDate(date, name) {
-        console.log(date, name)
         if (date) {
             this.setState({
                 [name]: moment(date).format('MM/DD/YYYY')

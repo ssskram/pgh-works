@@ -87,7 +87,6 @@ export class AllProjects extends React.Component<any, any> {
         const renderItems = currentItems.map((project, index) => {
             const clearfix = index & 1 && index != 0
             const link = "/Project/id=" + project.projectID
-            console.log(project.projectName, project.expectedStartDate, project.expectedEndDate, project.actualStartDate, project.actualEndDate)
             return <div key={index}>
                 <div className='col-md-6 col-sm-12'>
                     <div className='panel panel-button'>

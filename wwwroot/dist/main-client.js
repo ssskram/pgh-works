@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "dcd696bc9c19a469e4a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "91722489b9bef890d20e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -57470,7 +57470,6 @@ var ActivityFilter = (function (_super) {
         var _a;
     };
     ActivityFilter.prototype.handleDate = function (date, name) {
-        console.log(date, name);
         if (date) {
             this.setState((_a = {},
                 _a[name] = __WEBPACK_IMPORTED_MODULE_7_moment__(date).format('MM/DD/YYYY'),
@@ -60033,7 +60032,6 @@ var AllProjects = (function (_super) {
         var renderItems = currentItems.map(function (project, index) {
             var clearfix = index & 1 && index != 0;
             var link = "/Project/id=" + project.projectID;
-            console.log(project.projectName, project.expectedStartDate, project.expectedEndDate, project.actualStartDate, project.actualEndDate);
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
