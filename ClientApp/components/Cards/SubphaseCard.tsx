@@ -52,7 +52,7 @@ export default class Subphase extends React.Component<any, any> {
         }
 
         return (
-            <div className="col-sm-6 col-md-4" >
+            <div className="col-md-6" >
                 <div style={progressBackground} className="panel">
                     {canEdit == true &&
                         <button onClick={this.setDelete.bind(this)} className='pull-right delete-btn'>X</button>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "943bd6db44a358eb6026"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "30d8176effe2e85d88dc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -57030,7 +57030,7 @@ var Subphase = (function (_super) {
         var progressBackground = {
             background: 'linear-gradient(to right, #ACD1EF ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-6 col-md-4" },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-6" },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: progressBackground, className: "panel" },
                 canEdit == true &&
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setDelete.bind(this), className: 'pull-right delete-btn' }, "X"),
