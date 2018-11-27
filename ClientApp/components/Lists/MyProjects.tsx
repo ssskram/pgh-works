@@ -89,8 +89,8 @@ export class MyProjects extends React.Component<any, any> {
         const renderItems = currentItems.map((project, index) => {
             const clearfix = index & 1 && index != 0
             const link = "/Project/id=" + project.projectID
-            return <div>
-                <div className='col-md-6 col-sm-12' key={index}>
+            return <div key={index}>
+                <div className='col-md-6 col-sm-12'>
                     <div className='panel panel-button'>
                         <Link to={link}>
                             <div className='panel-body text-center'>

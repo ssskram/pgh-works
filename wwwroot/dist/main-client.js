@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4f43eb2ac72baf26504b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2f82a63f3145fcc352eb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9858,15 +9858,15 @@ var actionCreators = {
     }; },
     addActivity: function (item) { return function (dispatch, getState) {
         var data = JSON.stringify(item).replace(/'/g, '');
-        // fetch('/api/activity/addActivity', {
-        //     method: 'POST',
-        //     body: data,
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/activity/addActivity', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
         dispatch({
             type: addActivity, item: item
         });
@@ -60304,8 +60304,8 @@ var MyProjects = (function (_super) {
         var renderItems = currentItems.map(function (project, index) {
             var clearfix = index & 1 && index != 0;
             var link = "/Project/id=" + project.projectID;
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12', key: index },
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 col-sm-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"], { to: link },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel-body text-center' },

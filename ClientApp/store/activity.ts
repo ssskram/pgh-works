@@ -38,15 +38,15 @@ export const actionCreators = {
     },
     addActivity: (item): AppThunkAction<any> => (dispatch, getState) => {
         let data = JSON.stringify(item).replace(/'/g, '')
-        // fetch('/api/activity/addActivity', {
-        //     method: 'POST',
-        //     body: data,
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
+        fetch('/api/activity/addActivity', {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
         dispatch({
             type: addActivity, item
         })
