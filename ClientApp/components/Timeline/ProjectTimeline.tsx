@@ -86,7 +86,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 start: ac.date,
                 user: ac.user,
                 itemType: 'activity',
-                style: 'max-width: 250px; background-color: #FFEEBB; border-color: #FFEEBB;'
+                style: 'max-width: 250px; background-color: #FFD143; border-color: #FFD143;'
             }
             items.push(vy)
         })
@@ -97,9 +97,9 @@ export class ProjectTimeline extends React.Component<any, any> {
                 <br />
                 <div className='col-md-12 hidden-sm hidden-xs' style={{ paddingBottom: '5px' }}>
                     <div style={{ fontSize: '14px', marginBottom: '-30px' }}>
-                        <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
+                        <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
                         <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
-                        <span style={{ backgroundColor: '#FFEEBB', padding: '8px' }}>Activity</span>
+                        <span style={{ backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Activity</span>
                     </div>
                     <Link to={'/Timeline'}>
                         <div onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='pull-right'>
@@ -110,9 +110,9 @@ export class ProjectTimeline extends React.Component<any, any> {
                     </Link>
                 </div>
                 <div className='col-md-12 hidden-md hidden-lg hidden-xl' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                    <span style={{ backgroundColor: '#ACD1EF', padding: '8px' }}>Expected</span>
+                    <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
                     <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
-                    <span style={{ backgroundColor: '#FFEEBB', padding: '8px' }}>Activity</span>
+                    <span style={{ backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Activity</span>
                 </div>
                 {this.props.project &&
                     <TL items={items} />
