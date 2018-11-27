@@ -27,17 +27,15 @@ namespace pghworks.Controllers {
         [HttpGet ("[action]")]
         public object loadActivity () {
             List<Activities> AllActivity = new List<Activities> ();
-            // string cartActivity = getActivity ().Result;
-            // dynamic cartActivityObject = JObject.Parse (cartActivity) ["cgTasksClass"];
-            string activity = System.IO.File.ReadAllText ("demoData/demoActivity.json");
-            dynamic activityObject = JObject.Parse (activity) ["activity"];
+            string activity = getActivity ().Result;
+            dynamic activityObject = JObject.Parse (activity) ["PGHWorksActivitiesClass"];
             foreach (var item in activityObject) {
                 Activities ph = new Activities () {
                     cartegraphID = item.Oid,
                     activityID = item.activityIDField,
-                    user = item.userField,
+                    user = item.userIDField,
                     activity = item.activityField,
-                    date = item.dateField,
+                    date = item.activityDateField,
                     parentID = item.parentIDField,
                     parentType = item.parentTypeField
                 };
@@ -48,7 +46,7 @@ namespace pghworks.Controllers {
 
         public async Task<string> getActivity () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseType] is equal to \"Activity\"))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/PGHWorksActivitiesClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -63,19 +61,19 @@ namespace pghworks.Controllers {
                 Oid = model.cartegraphID,
                 activityIDField = model.activityID,
                 activityField = model.activity,
-                userField = model.user,
-                dateField = model.date,
+                userIDField = model.user,
+                activityDateField = model.date,
                 parentIDField = model.parentID,
                 parentTypeField = model.parentType
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgTasksClass";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/PGHWorksActivitiesClass";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "POST");
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
-            string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
+            string json = "{ 'PGHWorksActivitiesClass' : [" + cgLoad + "] }";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -97,31 +95,31 @@ namespace pghworks.Controllers {
                 id = model.cartegraphID;
             } else {
                 var getURL =
-                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/PGHWorksActivitiesClass?filter=(([activityID] is equal to \"{0}\"))",
                         model.activityID); // 0
                 client.DefaultRequestHeaders.Clear ();
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
-                dynamic activity = JObject.Parse (content) ["cgTasksClass"][0];
+                dynamic activity = JObject.Parse (content) ["PGHWorksActivitiesClass"][0];
                 id = activity.Oid;
             }
             CgActivity cgModel = new CgActivity () {
                 Oid = model.cartegraphID,
                 activityIDField = model.activityID,
                 activityField = model.activity,
-                userField = model.user,
-                dateField = model.date,
+                userIDField = model.user,
+                activityDateField = model.date,
                 parentIDField = model.parentID,
                 parentTypeField = model.parentType
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
-            var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgTasksClass/");
+            var cartegraphUrl = String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PGHWorksActivitiesClass/");
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Add ("X-HTTP-Method", "PUT");
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
-            string json = "{ 'cgTasksClass' : [" + cgLoad + "] }";
+            string json = "{ 'PGHWorksActivitiesClass' : [" + cgLoad + "] }";
             client.DefaultRequestHeaders.Add ("ContentLength", json.Length.ToString ());
             try {
                 StringContent strContent = new StringContent (json);
@@ -143,17 +141,17 @@ namespace pghworks.Controllers {
                 id = model.cartegraphID;
             } else {
                 var getURL =
-                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass?filter=(([subphaseID] is equal to \"{0}\"))",
+                    String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/PGHWorksActivitiesClass?filter=(([activityID] is equal to \"{0}\"))",
                         model.activityID); // 0
                 client.DefaultRequestHeaders.Clear ();
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue ("Basic", key);
                 string content = await client.GetStringAsync (getURL);
-                dynamic activity = JObject.Parse (content) ["cgTasksClass"][0];
+                dynamic activity = JObject.Parse (content) ["PGHWorksActivitiesClass"][0];
                 id = activity.Oid;
             }
             var deleteUrl =
-                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/cgTasksClass/{0}",
+                String.Format ("https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/classes/PGHWorksActivitiesClass/{0}",
                     id); // 0
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
