@@ -886,6 +886,18 @@ a[href^="https://maps.google.com/maps"] {
     outline: none !important;
 }
 
+/* Joyride
+/* ------------------------- */
+
+.example-appear {
+    opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}
+
 /* Site specific
 /* ------------------------- */
 

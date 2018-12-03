@@ -169,7 +169,7 @@ export class ProjectFilter extends React.Component<any, any> {
                     <style>{dropdownStyle}</style>
                 </Helmet>
                 {onFilter == false &&
-                    <button onClick={this.openModal.bind(this)} className='btn btn-primary'>
+                    <button onClick={this.openModal.bind(this)} className='btn btn-primary projectFilter'>
                         <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
                         <span className='hidden-sm hidden-xs'>Filter</span>
                     </button>

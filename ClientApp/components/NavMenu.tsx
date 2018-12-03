@@ -85,32 +85,32 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <NavLink to={'/MyProjects'}>
+                            <NavLink className='myProjects' to={'/MyProjects'}>
                                 <span><img style={iconStyle} src={workerImg as string} /></span> My projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllActivity'}>
+                            <NavLink className='allActivity' to={'/AllActivity'}>
                                 <span><img style={iconStyle} src={activityImg as string} /></span> Activity
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllProjects'}>
+                            <NavLink className='allProjects' to={'/AllProjects'}>
                                 <span><img style={iconStyle} src={projectsImg as string} /></span> Projects
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/AllAssets'}>
+                            <NavLink className='allAssets' to={'/AllAssets'}>
                                 <span><img style={iconStyle} src={assetsImg as string} /></span> Assets
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/Timeline'} >
+                            <NavLink className='timeline' to={'/Timeline'} >
                                 <span><img style={iconStyle} src={timelineImg as string} /></span> Timeline
                             </NavLink>
                         </li>
                         <div className='text-center'>
-                            <NavLink to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary'>
+                            <NavLink to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary addProject'>
                                 <b>Add a Project</b>
                             </NavLink>
                         </div>

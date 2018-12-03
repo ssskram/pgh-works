@@ -9,7 +9,7 @@ import Map from './Maps/HomeMap'
 import { Helmet } from "react-helmet"
 import Filters from './Filters/ProjectFilter'
 import Spinner from './Utilities/Spinner'
-import Joyride from './Utilities/Joyride'
+import SiteTour from './SiteTour/Joyride'
 
 const floatingPanelBig = {
     position: 'absolute' as any,
@@ -107,6 +107,7 @@ export class Home extends React.Component<any, any> {
                     returnFiltered={this.receiveFilteredProjects.bind(this)}
                 />
             </div>
+            <SiteTour />
         </div>;
     }
 }
