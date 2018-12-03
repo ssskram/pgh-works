@@ -44,6 +44,7 @@
     "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "3.0.0-beta.7",
+    "react-joyride": "^2.0.0-15",
     "react-moment": "^0.7.9",
     "react-places-autocomplete": "^7.2.0",
     "react-progressbar": "^15.4.1",

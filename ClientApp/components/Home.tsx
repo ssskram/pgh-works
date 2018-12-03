@@ -9,6 +9,7 @@ import Map from './Maps/HomeMap'
 import { Helmet } from "react-helmet"
 import Filters from './Filters/ProjectFilter'
 import Spinner from './Utilities/Spinner'
+import Joyride from './Utilities/Joyride'
 
 const floatingPanelBig = {
     position: 'absolute' as any,
@@ -98,6 +99,7 @@ export class Home extends React.Component<any, any> {
                     filterType="all"
                     returnFiltered={this.receiveFilteredProjects.bind(this)}
                 />
+                {/* <Joyride /> */}
             </div>
             <div style={floatingPanelSmall} className='hidden-md hidden-lg hidden-xl'>
                 <Filters
