@@ -221,25 +221,28 @@ export class Timeline extends React.Component<any, any> {
 
         return (
             <div>
+                <Helmet>
+                    <style>{'.Select-menu-outer { z-index: 999 !important; }'}</style>
+                </Helmet>
                 <h2>Timeline</h2>
                 <hr />
+                <Select
+                    value={this.props.timeline}
+                    header='Add projects to the timeline'
+                    placeholder='Select projects...'
+                    onChange={tl => this.props.setTimeline(tl)}
+                    multi={true}
+                    options={projectDropdown}
+                />
                 {timeline != '' &&
                     <div>
-                        <Select
-                            value={this.props.timeline}
-                            header='Add projects to the timeline'
-                            placeholder='Select projects...'
-                            onChange={tl => this.props.setTimeline(tl)}
-                            multi={true}
-                            options={projectDropdown}
-                        />
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                            <span style={{ border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Expected <Checkbox name='expected' defaultChecked={1} onChange={() => this.setState({ expected: !expected })} /></span>
-                            <span style={{ border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual <Checkbox name='actual' onChange={() => this.setState({ actual: !actual })} /></span>
-                            <span style={{ border: '2px solid #FF986C', padding: '8px' }}>Phase <Checkbox name='phase' onChange={() => this.setState({ phase: !phase })} /></span>
-                            <span style={{ border: '2px solid #FFD143', backgroundColor: '#FFD143', padding: '8px' }}>Activity <Checkbox name='activity' onChange={() => this.setState({ activitee: !activitee })} /></span>
-                            <span style={{ border: '2px solid #FFB043', backgroundColor: '#FFB043', padding: '8px' }}>Subphase <Checkbox name='subphase' onChange={() => this.setState({ subphase: !subphase })} /></span>
-                            <span style={{ border: '2px solid #FF7B43', backgroundColor: '#FF7B43', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Milestone <Checkbox name='milestone' onChange={() => this.setState({ milestone: !milestone })} /></span>
+                            <span style={{ border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Expected <Checkbox checked={expected} onChange={() => this.setState({ expected: !expected })} /></span>
+                            <span style={{ border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual <Checkbox checked={actual} onChange={() => this.setState({ actual: !actual })} /></span>
+                            <span style={{ border: '2px solid #FF986C', padding: '8px' }}>Phase <Checkbox checked={phase} onChange={() => this.setState({ phase: !phase })} /></span>
+                            <span style={{ border: '2px solid #FFD143', backgroundColor: '#FFD143', padding: '8px' }}>Activity <Checkbox checked={activitee} onChange={() => this.setState({ activitee: !activitee })} /></span>
+                            <span style={{ border: '2px solid #FFB043', backgroundColor: '#FFB043', padding: '8px' }}>Subphase <Checkbox checked={subphase} onChange={() => this.setState({ subphase: !subphase })} /></span>
+                            <span style={{ border: '2px solid #FF7B43', backgroundColor: '#FF7B43', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Milestone <Checkbox checked={milestone} onChange={() => this.setState({ milestone: !milestone })} /></span>
                         </div>
                         <TL groups={groups} items={items} />
                         <br />
@@ -247,15 +250,9 @@ export class Timeline extends React.Component<any, any> {
                 }
                 {timeline == '' &&
                     <div className='col-md-12'>
-                        <h1 className='text-center'>The timeline is empty</h1>
-                        <Select
-                            value={this.props.timeline}
-                            header='Add projects to the timeline'
-                            placeholder='Select projects...'
-                            onChange={tl => this.props.setTimeline(tl)}
-                            multi={true}
-                            options={projectDropdown}
-                        />
+                        <div className='text-center alert alert-info'>
+                            <h2 style={{ letterSpacing: '2px' }}>The timeline is empty</h2>
+                        </div>
                     </div>
                 }
                 {projects.length == 0 &&

@@ -264,6 +264,12 @@ hr {
 /* Forms
 /* ------------------------- */
 
+input[type=checkbox] {
+    transform: scale(1.5);
+    padding: 10px;
+    margin: 5px;
+}
+
 .button-input {
     cursor: pointer;
 }
