@@ -9,10 +9,11 @@ const styleLarge = {
     position: 'absolute' as any,
     top: '0px',
     right: '0px',
-    padding: '8px 15px 8px 45px',
+    padding: '0px 15px 0px 45px',
     backgroundColor: '#5cb85c',
     borderRadius: '0px 0px 0px 15px',
-    color: '#fff'
+    color: '#fff',
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)'
 }
 
 const styleSmall = {
@@ -35,16 +36,19 @@ export default class SiteTour extends React.Component<any, any> {
                     target: '.myProjects',
                     content: 'Hey these are yours!',
                     placement: 'right',
+                    disableBeacon: true
                 },
                 {
                     target: '.allActivity',
                     content: 'Like tweets, ya know?!',
                     placement: 'right',
+                    disableBeacon: true
                 },
                 {
                     target: '.projectFilter',
                     content: 'Filters are your friend',
                     placement: 'right',
+                    disableBeacon: true
                 }
             ]
         }
@@ -57,9 +61,15 @@ export default class SiteTour extends React.Component<any, any> {
     public render() {
 
         const header =
-            <button onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
-                Take a tour
-            </button>
+            <div>
+                <button style={{borderColor: 'transparent'}} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                    Take a tour
+                </button>
+                or
+                <button style={{borderColor: 'transparent'}} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                    Submit feedback
+                </button>
+            </div>
 
         const form =
             <ReactCSSTransitionGroup
