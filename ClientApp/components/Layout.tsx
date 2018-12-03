@@ -11,7 +11,9 @@ export class Layout extends React.Component<{}, {}> {
             <div className='col-sm-9'>
                 {this.props.children}
             </div>
-            <SiteTour />
+            <div className='hidden-xs'>
+                <SiteTour />
+            </div>
         </div>
     }
 }

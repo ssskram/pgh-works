@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "729b6aad2be04959a80a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "216ba230dffe5c5d8d8e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -15843,7 +15843,7 @@ var ProjectFilter = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9_react_helmet__["Helmet"], null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, dropdownStyle)),
             onFilter == false &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn btn-primary projectFilter' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn btn-primary' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { padding: '3px' }, className: 'hidden-md hidden-lg hidden-xl glyphicon glyphicon-search' }),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'hidden-sm hidden-xs' }, "Filter")),
             onFilter == true &&
@@ -62635,7 +62635,8 @@ var Layout = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__NavMenu__["a" /* default */], null))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-9' }, this.props.children),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__SiteTour__["a" /* default */], null));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__SiteTour__["a" /* default */], null)));
     };
     return Layout;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -65567,7 +65568,6 @@ var SiteTour = (function (_super) {
     function SiteTour() {
         var _this = _super.call(this) || this;
         _this.callback = function (data) {
-            console.log(data);
             if (data.action == 'close' || data.status == 'finished') {
                 _this.setState({
                     runTour: false,
@@ -65633,12 +65633,6 @@ var SiteTour = (function (_super) {
                     content: 'Add one!',
                     placement: 'right',
                     disableBeacon: true
-                },
-                {
-                    target: '.projectFilter',
-                    content: 'Filter them shits',
-                    placement: 'top',
-                    disableBeacon: true
                 }
             ]
         };
@@ -65654,7 +65648,7 @@ var SiteTour = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ showForm: !showForm }); } }, showForm ? "Close feedback" : "Submit feedback"));
         var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_textarea__["a" /* default */], { value: feedback, placeholder: "Issues? Requests? Musings?  Don't be shy ", callback: function (e) { return _this.setState({ feedback: e.target.value }); } }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success text-center' }, "Submit"));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success' }, "Submit"));
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xl hidden-lg hidden-md hidden-sm text-center', style: styleSmall },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
@@ -65662,8 +65656,8 @@ var SiteTour = (function (_super) {
                     form),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs', style: styleLarge },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
-                this.state.showForm == true &&
-                    form),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'pull-right text-center', style: { width: '400px' } }, this.state.showForm == true &&
+                    form)),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: steps, stepIndex: index, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
     };
     return SiteTour;

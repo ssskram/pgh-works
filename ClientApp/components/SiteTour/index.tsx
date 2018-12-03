@@ -84,30 +84,23 @@ export default class SiteTour extends React.Component<any, any> {
                     content: 'Add one!',
                     placement: 'right',
                     disableBeacon: true
-                },
-                {
-                    target: '.projectFilter',
-                    content: 'Filter them shits',
-                    placement: 'top',
-                    disableBeacon: true
                 }
             ]
         }
     }
 
     callback = (data) => {
-        console.log(data)
         if (data.action == 'close' || data.status == 'finished') {
             this.setState({
                 runTour: false,
                 index: 0
             })
         } else if (data.action == 'next' && data.lifecycle == 'complete') {
-            this.setState ({
+            this.setState({
                 index: data.index + 1
             })
-        } else if (data.action =='prev' && data.lifecycle == 'complete') {
-            this.setState ({
+        } else if (data.action == 'prev' && data.lifecycle == 'complete') {
+            this.setState({
                 index: data.index - 1
             })
         }
@@ -147,7 +140,7 @@ export default class SiteTour extends React.Component<any, any> {
                     placeholder="Issues? Requests? Musings?  Don't be shy "
                     callback={e => this.setState({ feedback: e.target.value })}
                 />
-                <button disabled={!isEnabled} className='btn btn-success text-center'>Submit</button>
+                <button disabled={!isEnabled} className='btn btn-success'>Submit</button>
             </ReactCSSTransitionGroup>
 
         return <div>
@@ -159,9 +152,11 @@ export default class SiteTour extends React.Component<any, any> {
             </div>
             <div className='hidden-xs' style={styleLarge}>
                 <div>{header}</div>
-                {this.state.showForm == true &&
-                    form
-                }
+                <div className='pull-right text-center' style={{width: '400px'}}>
+                    {this.state.showForm == true &&
+                        form
+                    }
+                </div>
             </div>
             <Joyride
                 steps={steps}
