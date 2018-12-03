@@ -37,11 +37,18 @@ export default class SiteTour extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            index: 0,
             buttonHover: false,
             feedback: '',
             runTour: false,
             showForm: false,
             steps: [
+                {
+                    target: '.mainApp',
+                    content: 'This is PGH Works',
+                    placement: 'center',
+                    disableBeacon: true
+                },
                 {
                     target: '.myProjects',
                     content: 'Hey these are yours!',
@@ -55,15 +62,33 @@ export default class SiteTour extends React.Component<any, any> {
                     disableBeacon: true
                 },
                 {
-                    target: '.projectCard',
-                    content: 'All the good stuff',
+                    target: '.allProjects',
+                    content: 'All the projects',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allAssets',
+                    content: 'All of the assets',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.timeline',
+                    content: 'See them shits in spacetime',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.addProject',
+                    content: 'Add one!',
                     placement: 'right',
                     disableBeacon: true
                 },
                 {
                     target: '.projectFilter',
-                    content: 'Filters are your friend',
-                    placement: 'right',
+                    content: 'Filter them shits',
+                    placement: 'top',
                     disableBeacon: true
                 }
             ]
@@ -71,10 +96,19 @@ export default class SiteTour extends React.Component<any, any> {
     }
 
     callback = (data) => {
-        const { action, index, type } = data
-        if (data.action == 'close') {
+        console.log(data)
+        if (data.action == 'close' || data.status == 'finished') {
             this.setState({
-                runTour: false
+                runTour: false,
+                index: 0
+            })
+        } else if (data.action == 'next' && data.lifecycle == 'complete') {
+            this.setState ({
+                index: data.index + 1
+            })
+        } else if (data.action =='prev' && data.lifecycle == 'complete') {
+            this.setState ({
+                index: data.index - 1
             })
         }
     }
@@ -84,7 +118,8 @@ export default class SiteTour extends React.Component<any, any> {
             runTour,
             showForm,
             steps,
-            feedback
+            feedback,
+            index
         } = this.state
 
         const isEnabled = feedback != ''
@@ -130,6 +165,7 @@ export default class SiteTour extends React.Component<any, any> {
             </div>
             <Joyride
                 steps={steps}
+                stepIndex={index}
                 run={runTour}
                 continuous={true}
                 showProgress={true}

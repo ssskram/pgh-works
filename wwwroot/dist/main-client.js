@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ca0b8b79f53f34f35f33"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "729b6aad2be04959a80a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -62630,7 +62630,7 @@ var Layout = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Layout.prototype.render = function () {
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'container-fluid' },
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'container-fluid mainApp' },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-3' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__NavMenu__["a" /* default */], null))),
@@ -65567,19 +65567,37 @@ var SiteTour = (function (_super) {
     function SiteTour() {
         var _this = _super.call(this) || this;
         _this.callback = function (data) {
-            var action = data.action, index = data.index, type = data.type;
-            if (data.action == 'close') {
+            console.log(data);
+            if (data.action == 'close' || data.status == 'finished') {
                 _this.setState({
-                    runTour: false
+                    runTour: false,
+                    index: 0
+                });
+            }
+            else if (data.action == 'next' && data.lifecycle == 'complete') {
+                _this.setState({
+                    index: data.index + 1
+                });
+            }
+            else if (data.action == 'prev' && data.lifecycle == 'complete') {
+                _this.setState({
+                    index: data.index - 1
                 });
             }
         };
         _this.state = {
+            index: 0,
             buttonHover: false,
             feedback: '',
             runTour: false,
             showForm: false,
             steps: [
+                {
+                    target: '.mainApp',
+                    content: 'This is PGH Works',
+                    placement: 'center',
+                    disableBeacon: true
+                },
                 {
                     target: '.myProjects',
                     content: 'Hey these are yours!',
@@ -65593,15 +65611,33 @@ var SiteTour = (function (_super) {
                     disableBeacon: true
                 },
                 {
-                    target: '.projectCard',
-                    content: 'All the good stuff',
+                    target: '.allProjects',
+                    content: 'All the projects',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allAssets',
+                    content: 'All of the assets',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.timeline',
+                    content: 'See them shits in spacetime',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.addProject',
+                    content: 'Add one!',
                     placement: 'right',
                     disableBeacon: true
                 },
                 {
                     target: '.projectFilter',
-                    content: 'Filters are your friend',
-                    placement: 'right',
+                    content: 'Filter them shits',
+                    placement: 'top',
                     disableBeacon: true
                 }
             ]
@@ -65610,7 +65646,7 @@ var SiteTour = (function (_super) {
     }
     SiteTour.prototype.render = function () {
         var _this = this;
-        var _a = this.state, runTour = _a.runTour, showForm = _a.showForm, steps = _a.steps, feedback = _a.feedback;
+        var _a = this.state, runTour = _a.runTour, showForm = _a.showForm, steps = _a.steps, feedback = _a.feedback, index = _a.index;
         var isEnabled = feedback != '';
         var header = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: !runTour }); } }, runTour ? "End tour" : "Take a tour"),
@@ -65628,7 +65664,7 @@ var SiteTour = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
                 this.state.showForm == true &&
                     form),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: steps, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: steps, stepIndex: index, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
     };
     return SiteTour;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
