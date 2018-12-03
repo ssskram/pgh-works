@@ -6,11 +6,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
-import { Link } from 'react-router-dom' 
+import { Link } from 'react-router-dom'
 import * as Ping from '../../store/GETS/ping'
 import * as TimelineStore from '../../store/timeline'
 import TL from './Timeline'
 import Table from 'react-table'
+import { Helmet } from "react-helmet"
 
 const nothingImg = require('./../../images/nothing.png')
 const timelineImg = require('./../../images/timelineDark.png')
@@ -28,7 +29,7 @@ const imgStyle = {
 }
 
 export class Timeline extends React.Component<any, any> {
-    constructor () {
+    constructor() {
         super()
         this.state = {
             timeline: [],
@@ -40,13 +41,13 @@ export class Timeline extends React.Component<any, any> {
         window.scrollTo(0, 0)
         // ping server
         this.props.ping()
-        this.setState ({
+        this.setState({
             timeline: this.props.timeline
         })
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState ({
+        this.setState({
             timeline: nextProps.timeline
         })
     }
@@ -54,11 +55,11 @@ export class Timeline extends React.Component<any, any> {
     returnPhaseCount(projectID) {
         const phases = this.state.timeline.filter(function (item) {
             return item.parentProjectID == projectID
-        }) 
+        })
         return phases.length
     }
 
-    deleteTimelineItem (projectID) {
+    deleteTimelineItem(projectID) {
         this.props.deleteTimeline(projectID)
     }
 
@@ -151,6 +152,9 @@ export class Timeline extends React.Component<any, any> {
 
         return (
             <div>
+                <Helmet>
+                    <style>{'body { background-color: #383838 } '}</style>
+                </Helmet>
                 <h2>Timeline</h2>
                 <hr />
                 {timeline.length > 0 &&
@@ -189,7 +193,7 @@ export class Timeline extends React.Component<any, any> {
                     <div className='col-md-12 text-center'>
                         <h1>The timeline is empty</h1>
                         <h1><span><img style={imgStyle} src={nothingImg as string} /></span></h1>
-                        <h3>To add to the timeline, <br/> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><img style={iconStyle} src={timelineImg as string}></img></span></h3>
+                        <h3>To add to the timeline, <br /> navigate to a <Link to={'/AllProjects'}>project</Link> and click <span><img style={iconStyle} src={timelineImg as string}></img></span></h3>
                     </div>
                 }
             </div>
