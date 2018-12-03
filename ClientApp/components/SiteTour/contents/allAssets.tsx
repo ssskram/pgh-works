@@ -12,7 +12,7 @@ export default class AllAssets extends React.Component<any, any> {
                 <h4><b>What are they doing here?</b></h4>
                 <h5>When a new project is created, all of the assets within the geographical bounds of the project are tagged as related to that project</h5>
                 <h4><b>What for?</b></h4>
-                <h5>So the next time that work needs done on an asset, you won't have to go find the oldest, wisest civil servant around for information on when that work may have been performed last.  It'll all be here. </h5>
+                <h5>So the next time that work needs done on an asset, you won't have to go find the oldest, wisest civil servant around for information on when that work may have been performed previously.  It'll all be here. </h5>
             </div>
         </div>
     }

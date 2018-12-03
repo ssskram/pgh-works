@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6d9cbec2e77f728726c1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "41df17bf3da16d7023f0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65827,7 +65827,7 @@ var AddProject = (function (_super) {
     }
     AddProject.prototype.render = function () {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "This is where it all begins"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "And this is where it all begins"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Projects have many parts.  These are the basics.")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '20px' } },
@@ -65943,7 +65943,7 @@ var AllAssets = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "When a new project is created, all of the assets within the geographical bounds of the project are tagged as related to that project"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "What for?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "So the next time that work needs done on an asset, you won't have to go find the oldest, wisest civil servant around for information on when that work may have been performed last.  It'll all be here. ")));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "So the next time that work needs done on an asset, you won't have to go find the oldest, wisest civil servant around for information on when that work may have been performed previously.  It'll all be here. ")));
     };
     return AllAssets;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -65984,7 +65984,7 @@ var AllProjectss = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Wait...you mean the projects are visible to everyone?")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "That's right.  Welcome to the golden age of transparency."),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Can they modify the projects too?")),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Can anybody edit a project?")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Nope.  Only project members and project managers have edit priveleges"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "How do I find what I'm looking for?")),
@@ -66083,11 +66083,11 @@ var MyProjects = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "These are your projects"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '20px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "What does this mean?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "You have been identified as either a project member, or a project manager for the projects within this view"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "What does that mean?")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "You are either a project member, or a project manager for the projects within this view"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Does this make me special?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Absolutely.  You have full edit privileges for all of the projects here: you can update the status, add phases & milestones, post activity, and so much more")));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Absolutely.  You have full edit privileges for your projects.  You can update the status, add phases & milestones, post activity, and so much more...")));
     };
     return MyProjects;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -66165,13 +66165,13 @@ var Timeline = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '20px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "What do I do with it?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Are there a handful of projects that overlap in time, but no way to visualize them? Meet the timeline."),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Add projects to see where they overlap in time"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Can I save the timeline?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "All projects added to the timeline will disappear when you leave the site, and will need to be re-added on future visits."),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "No.  Different configurations of the timeline cannot be saved for future reference"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Can I export the timeline?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Try a screen shot.")));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "How about a screen shot?")));
     };
     return Timeline;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -84703,7 +84703,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAe
 /* 769 */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI1SURBVHhe7ZphTsMwDIX3i8PsAt2A/0zcC5C41sZFBuMa8FLZU0HZmszPXaP5kyzNluO8WFoaRVkEQRB403XdM+xrtVr9lJjkbmR4+2Axn8MFFtpehrePLkrcUWrzZ080gNAA7AsfsJ24PbmYC8vl8g4TvcMOKu4Sk3Kj5PJLYtKQpPEtaZawnVRQJ7OYlBsll18Sw++txmBvEraDYt+p6Hq9vpdQFSpK3FFy+fDT4rbi9pyIPcDSp/QgITu5iWpIgpKJO0pt/n+s4+nUCrIuwDqeDsRMehDSGuLaSDurFsTviz45GLuB7bVOge2x3zzJ8Gq0jrg2UGi4s168D0yJ6hX39ogGRAOIDWBsglNDbQAKxSbYGtGAaIChAdjoii4wJefqF5d0vUiqObdf/eISGrh6NVnck5TmeUPXSy/oDF0vvaAzdL30gs7Q9dILOkPXSy/oDF0vvaAzdL30gs7Q9dILOkPXSy/oDF0vkm7+KFx6hW26umYBHf56tYi4t0c0IBrQTgM6j1vsxhqwU70wzi12Sw1wIRoQDWinAbPcBCFksrfCadGDWvPYBDF20icydFSUuNXUjrfOR8cqqHa8dT78DbhPaCGmfyiJoo8S6slNlIvVLqg2f0jSKFqpDyWPT2WHi9OYuD2lsXNovsWg80XK2ZHH0q+pqyh+3Fl1MnF7SmPn0PxLLGlMWqmPpU+BidIn58+nJhdTceKOUps/e6IB0YDGD0JWsJhJ3woHQRCUsVj8AjIpfz1bgz0JAAAAAElFTkSuQmCC"
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAXvSURBVGhD7ZoLiFVFGMdXe9nLyt7ZE4toq632/artAXXpRSprD4PQCHu7YGFlRlCSqCyaaSyFFkggkiVFaWJabZQYReBWZAlFWmZlZYViab//9M029+6595577rZ0wD/8mfm++eab+Z/HnHPn3Iq9+L+hsbFxdUNDw4ampqbxbW1t+5q7bNTX1w8l71Ty/wDfoz4a9+B/WssHcz2cnDPgNs1dQvYE3FiuIC8A/pSTew++DZQTyD/EwktGJpM5gDyT4I9B7vmhkE+CesmC8gh4gzwXUd4C13s/MVvgFOrDrHscDKbPzfArnwdutvJfIQpk0BuplyQoSgD1lZQtFuIxiNir8L/t4+BvcDZjnGIxkaD9CnJ+GPT7APtieIfZWUI88gqqqanZz2LyCoCtFpIXzc3NTcQtpc9f1m8XXIT/fAtxYMwLaF8R5P9Cc6NpkNqxCwrxiBQEbyVB7iW0CruogFww8TPp9yzc4XNRX045knIRpRMKt2JPrKys3N+6OuCLJcQjSpDnKs7MhRaXGNXV1ceTazr8JcgtUX/AaVqhLDQLpQrxcILo/BHx7iY2f79Blyu574c9jPMM5XBrikQcIVrv+23Nz4WOMAfiGDMTo6gQAtbClWb2K7gvRpB7m417u3x1dXVH4nsBu4v2E1xgDMQRshjfU2aWDXKNJeco1XUmsN/H/ozyGvPVaQ4i/kny6cHHpXai6vlQVEi5qKqqOri9vX0f1cn9oI2xFTPv5SoxTGw0l90hsol/3PotdAERiC0Ef4bgl4odGY/a2tqT6PMm1LL5O5xO/4mUnzPRqy0sFhjzcvr+Sl89NA80dxZiCyGw09pXm6sgiHvH5ws4wZpLRmtr6xEtLS0nm9kHsYXwJD+MYD2BZ5orL4gZ5nOFpP9yCykL5FkMp5npEFtILogbCTu0ypjLAd9w3Rck/tPnC7jEwhJDr0bk+Vn5uOQazV2WkB7FkqBbtgag/pb5nqTsUj2g7pU217lMkGcM7EHIaeZKLoQzUUvsAhLcKZsVZgj2RuzvKcfoLZn6ZNgNX2HQS13H/wiMkUxIFMI34oEAkz/Vqv0rZCDBPMdqrgjQz+b0CuFSvcuEdMpOrRB7J3ue+Z4rO7VCcpFqIVxelRTunS21Qpjn3Tbfm2SnWcgczRUB42SnVoh2WZj8DL1Myk6tkFykUohuciauX5luT0tInRDtZzHHrzXPcNMiFUJ4hztIP3+156UNCeaoN+l1NA3MGdHTt9wXSeaTgfocobnthnN0o1NmbXqXLMR+2FTT8SxM9zCy090BZ3P9DpWP+kPKBbXFeax8erUPL4di0OYDfcNPBo74rreQXpQkhCOh/dlPfRz1NVr+qEuE99UolvIG7C/hOvodKh/1Fy3mddnFQFyr4iPYZSG9IDa+EILX+BhPfHO1KUB9JsxYaCSIvQ3qCH/sLznqs/Bp76z31yNnTTvvHZSXUWaNZ3zEQntBjnhCNDDBu3xMwPUWUjIs5xbL85p8Onv4/O/9JXCh1T03cxUc7RIEiC1EIHiTjwm4wpoTQftf5B0VbPXoa9QDsBNRI2RzZsZj65X9MUp3v+UCf3whSki7Vg4XR+cd+JqtuSgUS7+Cu+pJkSUEw5/Sl7XEWUwWWJUuIe5p2MnEzjF3QRB7JVxruXdSf46l+WxrLhvkuxa6RYhyrhyTMbQtqQF15PMKigPyhQLE77D9FynlfxUm3iLioDaSz21BGbVFdJ5r5Chrh3wWTCwoVwD1byjv0ZYRZ+I46k/g858T1K5PF7G/vdPndKiFwF/m+qKrT919P9QmEcRkcgVsgvdKgIX0Qg9OeJ9igviC395Z5Y6ifR7cafHb4VQ9OC0kP+IIIlmkAOqRO+ch9FZA7Dhi3c6l9de394epu9cQ24KdArdbux4D8ygjV7CCyCNoGcnCe+BbbH06KCogAlp2ddO+G+TTWAug/zPAbtqXwjOsT3JECCpXQB+QpwUug/4e0Fno1s1tIf0HCSL5ozDWJZQETLyS3NMZ6zpz7UUKUVHxN1W2CVSbePxhAAAAAElFTkSuQmCC"
 
 /***/ }),
 /* 770 */
