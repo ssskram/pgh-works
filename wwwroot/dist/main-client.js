@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "41df17bf3da16d7023f0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "92ec9b8b560c2579767d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66122,8 +66122,7 @@ var SubmitFeedback = (function (_super) {
     }
     SubmitFeedback.prototype.render = function () {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Questions? Feedback?"),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "This site will continue to change according to your direction"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Questions? Recommendations?"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "We need your feedback")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Click the link in the top right to share your thoughts"));
