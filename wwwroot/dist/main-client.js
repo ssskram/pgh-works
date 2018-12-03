@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c587f6dd8ac72faff3ef"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b3d7b4a84a53085134f5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -59865,7 +59865,7 @@ var ProjectCard = (function (_super) {
             prevArrow: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__["a" /* default */], null)
         };
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row projectCard' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_slick___default.a, __assign({}, settings),
                     projectDescription &&
@@ -60983,7 +60983,6 @@ var currency = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__SiteTour__ = __webpack_require__(777);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -61002,7 +61001,6 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-
 
 
 
@@ -61082,8 +61080,7 @@ var Home = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: floatingPanelBig, className: 'hidden-sm hidden-xs' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: floatingPanelSmall, className: 'hidden-md hidden-lg hidden-xl' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) })),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__SiteTour__["a" /* default */], null));
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) })));
     };
     return Home;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -62613,6 +62610,7 @@ var TagDescription = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NavMenu__ = __webpack_require__(673);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SiteTour__ = __webpack_require__(680);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -62625,6 +62623,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 
 
+
 var Layout = (function (_super) {
     __extends(Layout, _super);
     function Layout() {
@@ -62635,7 +62634,8 @@ var Layout = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-3' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__NavMenu__["a" /* default */], null))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-9' }, this.props.children));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-9' }, this.props.children),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__SiteTour__["a" /* default */], null));
     };
     return Layout;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -65513,7 +65513,119 @@ var Project = (function (_super) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 680 */,
+/* 680 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_joyride__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group__);
+// provides a tour of the site
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var styleLarge = {
+    position: 'absolute',
+    top: '0px',
+    right: '0px',
+    padding: '0px 15px 0px 45px',
+    backgroundColor: '#5cb85c',
+    borderRadius: '0px 0px 0px 15px',
+    color: '#fff',
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)'
+};
+var styleSmall = {
+    position: 'absolute',
+    top: '51px',
+    right: '0px',
+    padding: '5px',
+    backgroundColor: '#5cb85c',
+    width: '100%'
+};
+var SiteTour = (function (_super) {
+    __extends(SiteTour, _super);
+    function SiteTour() {
+        var _this = _super.call(this) || this;
+        _this.callback = function (data) {
+            var action = data.action, index = data.index, type = data.type;
+        };
+        _this.state = {
+            runTour: false,
+            showForm: false,
+            steps: [
+                {
+                    target: '.myProjects',
+                    content: 'Hey these are yours!',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allActivity',
+                    content: 'Like tweets, ya know?!',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.projectCard',
+                    content: 'All the good stuff',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.projectFilter',
+                    content: 'Filters are your friend',
+                    placement: 'right',
+                    disableBeacon: true
+                }
+            ]
+        };
+        return _this;
+    }
+    SiteTour.prototype.render = function () {
+        var _this = this;
+        var header = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Take a tour"),
+            "or",
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Submit feedback"));
+        var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' } }, "Contact Evolve 365 Live Support"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-sm hidden-md hidden-lg hidden-xl' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "tel:+1-844-279-8423" }, "1-844-279-8423"))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-xs' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "1-844-279-8423")));
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xl hidden-lg hidden-md hidden-sm text-center', style: styleSmall },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
+                this.state.showForm == true &&
+                    form),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs text-center', style: styleLarge },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
+                this.state.showForm == true &&
+                    form),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: this.state.steps, run: this.state.runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
+    };
+    return SiteTour;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+/* harmony default export */ __webpack_exports__["a"] = (SiteTour);
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/SiteTour/index.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/SiteTour/index.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
+
+/***/ }),
 /* 681 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -83425,115 +83537,6 @@ __webpack_require__(375);
 __webpack_require__(374);
 module.exports = __webpack_require__(373);
 
-
-/***/ }),
-/* 775 */,
-/* 776 */,
-/* 777 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_joyride__ = __webpack_require__(691);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group__);
-// provides a tour of the site
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var styleLarge = {
-    position: 'absolute',
-    top: '0px',
-    right: '0px',
-    padding: '0px 15px 0px 45px',
-    backgroundColor: '#5cb85c',
-    borderRadius: '0px 0px 0px 15px',
-    color: '#fff',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)'
-};
-var styleSmall = {
-    position: 'absolute',
-    top: '51px',
-    right: '0px',
-    padding: '5px',
-    backgroundColor: '#5cb85c',
-    width: '100%'
-};
-var SiteTour = (function (_super) {
-    __extends(SiteTour, _super);
-    function SiteTour() {
-        var _this = _super.call(this) || this;
-        _this.callback = function (data) {
-            var action = data.action, index = data.index, type = data.type;
-        };
-        _this.state = {
-            runTour: false,
-            showForm: false,
-            steps: [
-                {
-                    target: '.myProjects',
-                    content: 'Hey these are yours!',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.allActivity',
-                    content: 'Like tweets, ya know?!',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.projectFilter',
-                    content: 'Filters are your friend',
-                    placement: 'right',
-                    disableBeacon: true
-                }
-            ]
-        };
-        return _this;
-    }
-    SiteTour.prototype.render = function () {
-        var _this = this;
-        var header = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Take a tour"),
-            "or",
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Submit feedback"));
-        var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' } }, "Contact Evolve 365 Live Support"),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-sm hidden-md hidden-lg hidden-xl' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "tel:+1-844-279-8423" }, "1-844-279-8423"))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-xs' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "1-844-279-8423")));
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xl hidden-lg hidden-md hidden-sm text-center', style: styleSmall },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
-                this.state.showForm == true &&
-                    form),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs text-center', style: styleLarge },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
-                this.state.showForm == true &&
-                    form),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: this.state.steps, run: this.state.runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
-    };
-    return SiteTour;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (SiteTour);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/SiteTour/index.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/SiteTour/index.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ })
 /******/ ]);

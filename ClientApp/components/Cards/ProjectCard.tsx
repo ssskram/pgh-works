@@ -35,10 +35,9 @@ export default class ProjectCard extends React.Component<any, any> {
 
         return (
             <div>
-                <div className='row'>
+                <div className='row projectCard'>
                     <br />
                     <Slider {...settings}>
-
                         {projectDescription &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Description</u></h3>

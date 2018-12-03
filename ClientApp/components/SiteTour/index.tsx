@@ -45,6 +45,12 @@ export default class SiteTour extends React.Component<any, any> {
                     disableBeacon: true
                 },
                 {
+                    target: '.projectCard',
+                    content: 'All the good stuff',
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
                     target: '.projectFilter',
                     content: 'Filters are your friend',
                     placement: 'right',
@@ -62,11 +68,11 @@ export default class SiteTour extends React.Component<any, any> {
 
         const header =
             <div>
-                <button style={{borderColor: 'transparent'}} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                <button style={{ borderColor: 'transparent' }} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
                     Take a tour
                 </button>
                 or
-                <button style={{borderColor: 'transparent'}} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                <button style={{ borderColor: 'transparent' }} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
                     Submit feedback
                 </button>
             </div>

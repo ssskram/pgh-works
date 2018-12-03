@@ -1,5 +1,6 @@
-import * as React from 'react';
-import NavMenu from './NavMenu';
+import * as React from 'react'
+import NavMenu from './NavMenu'
+import SiteTour from './SiteTour'
 
 export class Layout extends React.Component<{}, {}> {
     public render() {
@@ -10,6 +11,7 @@ export class Layout extends React.Component<{}, {}> {
             <div className='col-sm-9'>
                 {this.props.children}
             </div>
-        </div>;
+            <SiteTour />
+        </div>
     }
 }
