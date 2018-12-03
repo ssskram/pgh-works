@@ -5,6 +5,13 @@ import * as React from 'react'
 import Joyride from 'react-joyride'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Textarea from '../FormElements/textarea'
+import MainApp from './contents/mainApp'
+import MyProjects from './contents/myProjects'
+import AllActivity from './contents/allActivity'
+import AllProjects from './contents/allProjects'
+import AllAssets from './contents/allAssets'
+import Timeline from './contents/timeline'
+import AddProject from './contents/addProject'
 
 const btnStyle = {
     fontSize: '16px',
@@ -41,51 +48,7 @@ export default class SiteTour extends React.Component<any, any> {
             buttonHover: false,
             feedback: '',
             runTour: false,
-            showForm: false,
-            steps: [
-                {
-                    target: '.mainApp',
-                    content: 'This is PGH Works',
-                    placement: 'center',
-                    disableBeacon: true
-                },
-                {
-                    target: '.myProjects',
-                    content: 'Hey these are yours!',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.allActivity',
-                    content: 'Like tweets, ya know?!',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.allProjects',
-                    content: 'All the projects',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.allAssets',
-                    content: 'All of the assets',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.timeline',
-                    content: 'See them shits in spacetime',
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.addProject',
-                    content: 'Add one!',
-                    placement: 'right',
-                    disableBeacon: true
-                }
-            ]
+            showForm: false
         }
     }
 
@@ -110,7 +73,6 @@ export default class SiteTour extends React.Component<any, any> {
         const {
             runTour,
             showForm,
-            steps,
             feedback,
             index
         } = this.state
@@ -143,6 +105,51 @@ export default class SiteTour extends React.Component<any, any> {
                 <button disabled={!isEnabled} className='btn btn-success'>Submit</button>
             </ReactCSSTransitionGroup>
 
+        const steps = [
+            {
+                target: '.mainApp',
+                content: <MainApp />,
+                placement: 'center',
+                disableBeacon: true
+            },
+            {
+                target: '.myProjects',
+                content: <MyProjects />,
+                placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.allActivity',
+                content: <AllActivity />,
+                placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.allProjects',
+                content: <AllProjects />,
+                placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.allAssets',
+                content: <AllAssets />,
+                placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.timeline',
+                content: <Timeline />,
+                placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.addProject',
+                content: <AddProject />,
+                placement: 'right',
+                disableBeacon: true
+            }
+        ]
+
         return <div>
             <div className='hidden-xl hidden-lg hidden-md hidden-sm text-center' style={styleSmall}>
                 <div>{header}</div>
@@ -152,7 +159,7 @@ export default class SiteTour extends React.Component<any, any> {
             </div>
             <div className='hidden-xs' style={styleLarge}>
                 <div>{header}</div>
-                <div className='pull-right text-center' style={{width: '400px'}}>
+                <div className='col-sm-9 col-md-offset-3 text-center'>
                     {this.state.showForm == true &&
                         form
                     }
@@ -165,6 +172,12 @@ export default class SiteTour extends React.Component<any, any> {
                 continuous={true}
                 showProgress={true}
                 callback={this.callback.bind(this)}
+                styles={{
+                    options: {
+                        backgroundColor: '#FAF7F2',
+                        primaryColor: '#337ab7'
+                    }
+                }}
             />
         </div>
     }
