@@ -90,7 +90,7 @@ export class Home extends React.Component<any, any> {
                 <Spinner notice='...loading the projects...' />
             }
             <Helmet>
-                <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } '}</style>
+                <style>{'.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0; overflow: hidden; } '}</style>
             </Helmet>
             <Map projects={projects} receiveProject={this.receiveProject.bind(this)} />
             <div style={floatingPanelBig} className='hidden-sm hidden-xs'>

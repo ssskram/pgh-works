@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e93ec9c7272c0c11649e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bca33d8cc71831ee7e4b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61075,7 +61075,7 @@ var Home = (function (_super) {
             projects.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Utilities_Spinner__["a" /* default */], { notice: '...loading the projects...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, '.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0 } ')),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, '.col-sm-9 { width: 100%; padding: 0; } .container-fluid { padding: 0; } body { padding: 0; overflow: hidden; } ')),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Maps_HomeMap__["a" /* default */], { projects: projects, receiveProject: this.receiveProject.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: floatingPanelBig, className: 'hidden-sm hidden-xs' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) })),
@@ -65550,7 +65550,7 @@ var AddProject = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Choose carefully: this can't be changed once the project is created"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "A status")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Think there are other statuses not included in the options?  Just let us know"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Programming, Design, Construction, or Complete"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "A department")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Only one per project"),
@@ -65743,8 +65743,7 @@ var MainApp = (function (_super) {
     MainApp.prototype.render = function () {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Welcome to PGH Works"),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "This site is for you")),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '10px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: organize }),
@@ -84001,7 +84000,7 @@ var SubmitFeedback = (function (_super) {
     SubmitFeedback.prototype.render = function () {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Questions? Feedback?"),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "This site will contionue to change according to your direction"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "This site will continue to change according to your direction"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "We need your feedback")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, "Click the link in the top right to share your thoughts"));

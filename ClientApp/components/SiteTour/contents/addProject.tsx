@@ -12,7 +12,7 @@ export default class AddProject extends React.Component<any, any> {
                 <h4><b>A name</b></h4>
                 <h5>Choose carefully: this can't be changed once the project is created</h5>
                 <h4><b>A status</b></h4>
-                <h5>Think there are other statuses not included in the options?  Just let us know</h5>
+                <h5>Programming, Design, Construction, or Complete</h5>
                 <h4><b>A department</b></h4>
                 <h5>Only one per project</h5>
                 <h4><b>A manager</b></h4>
