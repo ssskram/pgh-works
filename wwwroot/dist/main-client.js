@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e05a8e405ff82aafd4fe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b4300a86f4b4dcbd6c58"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66084,7 +66084,7 @@ var Timeline = (function (_super) {
             }];
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7_react_helmet__["Helmet"], null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, 'body { background-color: #383838 } ')),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("style", null, 'body { background-color: #383838; .vis-timeline { height: 100vh; } } ')),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, "Timeline"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             timeline.length > 0 &&

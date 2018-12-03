@@ -153,7 +153,7 @@ export class Timeline extends React.Component<any, any> {
         return (
             <div>
                 <Helmet>
-                    <style>{'body { background-color: #383838 } '}</style>
+                    <style>{'body { background-color: #383838; .vis-timeline { height: 100vh; } } '}</style>
                 </Helmet>
                 <h2>Timeline</h2>
                 <hr />
