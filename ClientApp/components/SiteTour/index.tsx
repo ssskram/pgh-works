@@ -5,15 +5,21 @@ import * as React from 'react'
 import Joyride from 'react-joyride'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
+const btnStyle = {
+    fontSize: '16px',
+    letterSpacing: '2px'
+}
+
 const styleLarge = {
     position: 'absolute' as any,
     top: '0px',
     right: '0px',
     padding: '0px 15px 0px 45px',
     backgroundColor: '#5cb85c',
-    borderRadius: '0px 0px 0px 15px',
     color: '#fff',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)'
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)',
+    width: '100%',
+    textAlign: 'right'
 }
 
 const styleSmall = {
@@ -22,13 +28,15 @@ const styleSmall = {
     right: '0px',
     padding: '5px',
     backgroundColor: '#5cb85c',
-    width: '100%'
+    width: '100%',
+    color: '#fff'
 }
 
 export default class SiteTour extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            buttonHover: false,
             runTour: false,
             showForm: false,
             steps: [
@@ -68,13 +76,13 @@ export default class SiteTour extends React.Component<any, any> {
 
         const header =
             <div>
-                <button style={{ borderColor: 'transparent' }} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                <div className='btn'  style={btnStyle} onClick={() => this.setState({ runTour: true })}>
                     Take a tour
-                </button>
+                </div>
                 or
-                <button style={{ borderColor: 'transparent' }} onClick={() => this.setState({ runTour: true })} className='btn btn-success'>
+                <div className='btn' style={btnStyle} onClick={() => this.setState({ runTour: true })}>
                     Submit feedback
-                </button>
+                </div>
             </div>
 
         const form =

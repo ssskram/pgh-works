@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b3d7b4a84a53085134f5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0e0ae9c2eab8bf8af7ee"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65536,15 +65536,20 @@ var __extends = (this && this.__extends) || (function () {
 
 
 
+var btnStyle = {
+    fontSize: '16px',
+    letterSpacing: '2px'
+};
 var styleLarge = {
     position: 'absolute',
     top: '0px',
     right: '0px',
     padding: '0px 15px 0px 45px',
     backgroundColor: '#5cb85c',
-    borderRadius: '0px 0px 0px 15px',
     color: '#fff',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)'
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)',
+    width: '100%',
+    textAlign: 'right'
 };
 var styleSmall = {
     position: 'absolute',
@@ -65552,7 +65557,8 @@ var styleSmall = {
     right: '0px',
     padding: '5px',
     backgroundColor: '#5cb85c',
-    width: '100%'
+    width: '100%',
+    color: '#fff'
 };
 var SiteTour = (function (_super) {
     __extends(SiteTour, _super);
@@ -65562,6 +65568,7 @@ var SiteTour = (function (_super) {
             var action = data.action, index = data.index, type = data.type;
         };
         _this.state = {
+            buttonHover: false,
             runTour: false,
             showForm: false,
             steps: [
@@ -65596,9 +65603,9 @@ var SiteTour = (function (_super) {
     SiteTour.prototype.render = function () {
         var _this = this;
         var header = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Take a tour"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: true }); } }, "Take a tour"),
             "or",
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { borderColor: 'transparent' }, onClick: function () { return _this.setState({ runTour: true }); }, className: 'btn btn-success' }, "Submit feedback"));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: true }); } }, "Submit feedback"));
         var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' } }, "Contact Evolve 365 Live Support"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-sm hidden-md hidden-lg hidden-xl' },
