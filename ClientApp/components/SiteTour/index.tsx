@@ -12,6 +12,7 @@ import AllProjects from './contents/allProjects'
 import AllAssets from './contents/allAssets'
 import Timeline from './contents/timeline'
 import AddProject from './contents/addProject'
+import SubmitFeedback from './contents/submitFeedback'
 
 const btnStyle = {
     fontSize: '16px',
@@ -146,6 +147,12 @@ export default class SiteTour extends React.Component<any, any> {
                 target: '.addProject',
                 content: <AddProject />,
                 placement: 'right',
+                disableBeacon: true
+            },
+            {
+                target: '.mainApp',
+                content: <SubmitFeedback />,
+                placement: 'center',
                 disableBeacon: true
             }
         ]
