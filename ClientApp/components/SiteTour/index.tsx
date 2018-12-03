@@ -2,6 +2,9 @@
 // provides a tour of the site
 
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { ApplicationState } from '../../store'
+import * as User from '../../store/GETS/user'
 import Joyride from 'react-joyride'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Textarea from '../FormElements/textarea'
@@ -13,6 +16,7 @@ import AllAssets from './contents/allAssets'
 import Timeline from './contents/timeline'
 import AddProject from './contents/addProject'
 import SubmitFeedback from './contents/submitFeedback'
+import PostFeedback from '../../functions/postFeedback'
 
 const btnStyle = {
     fontSize: '16px',
@@ -41,7 +45,7 @@ const styleSmall = {
     color: '#fff'
 }
 
-export default class SiteTour extends React.Component<any, any> {
+export class SiteTour extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
@@ -68,6 +72,15 @@ export default class SiteTour extends React.Component<any, any> {
                 index: data.index - 1
             })
         }
+    }
+
+    postFeedback() {
+        const load = { body: this.state.feedback}
+        PostFeedback(load, this.props.user)
+        this.setState ({
+            feedback: '',
+            showForm: false
+        })
     }
 
     public render() {
@@ -103,7 +116,7 @@ export default class SiteTour extends React.Component<any, any> {
                     placeholder="Issue?  Request?  Musing?  Don't be shy "
                     callback={e => this.setState({ feedback: e.target.value })}
                 />
-                <button disabled={!isEnabled} className='btn btn-success'>Submit</button>
+                <button disabled={!isEnabled} onClick={this.postFeedback.bind(this)} className='btn btn-success'>Submit</button>
             </ReactCSSTransitionGroup>
 
         const steps = [
@@ -189,3 +202,12 @@ export default class SiteTour extends React.Component<any, any> {
         </div>
     }
 }
+
+export default connect(
+    (state: ApplicationState) => ({
+        ...state.user
+    }),
+    ({
+        ...User.actionCreators
+    })
+)(SiteTour as any) as typeof SiteTour
