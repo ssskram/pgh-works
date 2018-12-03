@@ -4,6 +4,7 @@
 import * as React from 'react'
 import Joyride from 'react-joyride'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Textarea from '../FormElements/textarea'
 
 const btnStyle = {
     fontSize: '16px',
@@ -37,6 +38,7 @@ export default class SiteTour extends React.Component<any, any> {
         super()
         this.state = {
             buttonHover: false,
+            feedback: '',
             runTour: false,
             showForm: false,
             steps: [
@@ -81,17 +83,20 @@ export default class SiteTour extends React.Component<any, any> {
         const {
             runTour,
             showForm,
-            steps
+            steps,
+            feedback
         } = this.state
+
+        const isEnabled = feedback != ''
 
         const header =
             <div>
                 <div className='btn' style={btnStyle} onClick={() => this.setState({ runTour: !runTour })}>
-                    Take a tour
+                    {runTour ? "End tour" : "Take a tour"}
                 </div>
                 or
                 <div className='btn' style={btnStyle} onClick={() => this.setState({ showForm: !showForm })}>
-                    Submit feedback
+                    {showForm ? "Close feedback" : "Submit feedback"}
                 </div>
             </div>
 
@@ -102,9 +107,12 @@ export default class SiteTour extends React.Component<any, any> {
                 transitionAppearTimeout={500}
                 transitionEnter={false}
                 transitionLeave={false}>
-                <h4 style={{ color: '#fff' }}>Contact Evolve 365 Live Support</h4>
-                <h4 style={{ color: '#fff' }} className='hidden-sm hidden-md hidden-lg hidden-xl'><b><a href="tel:+1-844-279-8423">1-844-279-8423</a></b></h4>
-                <h4 style={{ color: '#fff' }} className='hidden-xs'><b>1-844-279-8423</b></h4>
+                <Textarea
+                    value={feedback}
+                    placeholder="Issues? Requests? Musings?  Don't be shy "
+                    callback={e => this.setState({ feedback: e.target.value })}
+                />
+                <button disabled={!isEnabled} className='btn btn-success text-center'>Submit</button>
             </ReactCSSTransitionGroup>
 
         return <div>
@@ -114,7 +122,7 @@ export default class SiteTour extends React.Component<any, any> {
                     form
                 }
             </div>
-            <div className='hidden-xs text-center' style={styleLarge}>
+            <div className='hidden-xs' style={styleLarge}>
                 <div>{header}</div>
                 {this.state.showForm == true &&
                     form
