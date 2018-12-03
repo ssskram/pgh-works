@@ -99,7 +99,7 @@ export default class SiteTour extends React.Component<any, any> {
                 transitionLeave={false}>
                 <Textarea
                     value={feedback}
-                    placeholder="Issues? Requests? Musings?  Don't be shy "
+                    placeholder="Issue?  Request?  Musing?  Don't be shy "
                     callback={e => this.setState({ feedback: e.target.value })}
                 />
                 <button disabled={!isEnabled} className='btn btn-success'>Submit</button>
