@@ -35,16 +35,6 @@ const styleLarge = {
     textAlign: 'right'
 }
 
-const styleSmall = {
-    position: 'absolute' as any,
-    top: '76px',
-    right: '0px',
-    padding: '5px',
-    backgroundColor: '#5cb85c',
-    width: '100%',
-    color: '#fff'
-}
-
 export class SiteTour extends React.Component<any, any> {
     constructor() {
         super()
@@ -75,9 +65,9 @@ export class SiteTour extends React.Component<any, any> {
     }
 
     postFeedback() {
-        const load = { body: this.state.feedback}
+        const load = { body: this.state.feedback }
         PostFeedback(load, this.props.user)
-        this.setState ({
+        this.setState({
             feedback: '',
             showForm: false
         })
@@ -113,7 +103,7 @@ export class SiteTour extends React.Component<any, any> {
                 transitionLeave={false}>
                 <Textarea
                     value={feedback}
-                    placeholder="Issue?  Request?  Musing?  Don't be shy "
+                    placeholder="Issue?  Request?  Musing?  We want it all!"
                     callback={e => this.setState({ feedback: e.target.value })}
                 />
                 <button disabled={!isEnabled} onClick={this.postFeedback.bind(this)} className='btn btn-success'>Submit</button>
@@ -171,18 +161,14 @@ export class SiteTour extends React.Component<any, any> {
         ]
 
         return <div>
-            <div className='hidden-xl hidden-lg hidden-md hidden-sm text-center' style={styleSmall}>
-                <div>{header}</div>
-                {this.state.showForm == true &&
-                    form
-                }
-            </div>
             <div className='hidden-xs' style={styleLarge}>
                 <div>{header}</div>
-                <div className='col-sm-9 col-md-offset-3 text-center'>
-                    {this.state.showForm == true &&
-                        form
-                    }
+                <div style={{ width: '75%' }} className='pull-right'>
+                    <div className='text-center'>
+                        {this.state.showForm == true &&
+                            form
+                        }
+                    </div>
                 </div>
             </div>
             <Joyride

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a690ce92c80860e9007b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "112ca5e8e9994cf1ecb5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65964,15 +65964,6 @@ var styleLarge = {
     width: '100%',
     textAlign: 'right'
 };
-var styleSmall = {
-    position: 'absolute',
-    top: '76px',
-    right: '0px',
-    padding: '5px',
-    backgroundColor: '#5cb85c',
-    width: '100%',
-    color: '#fff'
-};
 var SiteTour = (function (_super) {
     __extends(SiteTour, _super);
     function SiteTour() {
@@ -66021,7 +66012,7 @@ var SiteTour = (function (_super) {
             "or",
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ showForm: !showForm }); } }, showForm ? "Close feedback" : "Submit feedback"));
         var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: feedback, placeholder: "Issue?  Request?  Musing?  Don't be shy ", callback: function (e) { return _this.setState({ feedback: e.target.value }); } }),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: feedback, placeholder: "Issue?  Request?  Musing?  We want it all!", callback: function (e) { return _this.setState({ feedback: e.target.value }); } }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.postFeedback.bind(this), className: 'btn btn-success' }, "Submit"));
         var steps = [
             {
@@ -66074,14 +66065,11 @@ var SiteTour = (function (_super) {
             }
         ];
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xl hidden-lg hidden-md hidden-sm text-center', style: styleSmall },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
-                this.state.showForm == true &&
-                    form),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs', style: styleLarge },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-sm-9 col-md-offset-3 text-center' }, this.state.showForm == true &&
-                    form)),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { width: '75%' }, className: 'pull-right' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, this.state.showForm == true &&
+                        form))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_joyride__["a" /* default */], { steps: steps, stepIndex: index, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this), styles: {
                     options: {
                         backgroundColor: '#FAF7F2',
