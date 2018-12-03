@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0e0ae9c2eab8bf8af7ee"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0950d591a76351feb7a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65553,7 +65553,7 @@ var styleLarge = {
 };
 var styleSmall = {
     position: 'absolute',
-    top: '51px',
+    top: '76px',
     right: '0px',
     padding: '5px',
     backgroundColor: '#5cb85c',
@@ -65566,6 +65566,11 @@ var SiteTour = (function (_super) {
         var _this = _super.call(this) || this;
         _this.callback = function (data) {
             var action = data.action, index = data.index, type = data.type;
+            if (data.action == 'close') {
+                _this.setState({
+                    runTour: false
+                });
+            }
         };
         _this.state = {
             buttonHover: false,
@@ -65602,10 +65607,11 @@ var SiteTour = (function (_super) {
     }
     SiteTour.prototype.render = function () {
         var _this = this;
+        var _a = this.state, runTour = _a.runTour, showForm = _a.showForm, steps = _a.steps;
         var header = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: true }); } }, "Take a tour"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: !runTour }); } }, "Take a tour"),
             "or",
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ runTour: true }); } }, "Submit feedback"));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ showForm: !showForm }); } }, "Submit feedback"));
         var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' } }, "Contact Evolve 365 Live Support"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { color: '#fff' }, className: 'hidden-sm hidden-md hidden-lg hidden-xl' },
@@ -65622,7 +65628,7 @@ var SiteTour = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
                 this.state.showForm == true &&
                     form),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: this.state.steps, run: this.state.runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_joyride__["a" /* default */], { steps: steps, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this) }));
     };
     return SiteTour;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

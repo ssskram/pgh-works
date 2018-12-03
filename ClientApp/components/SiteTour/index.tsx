@@ -24,7 +24,7 @@ const styleLarge = {
 
 const styleSmall = {
     position: 'absolute' as any,
-    top: '51px',
+    top: '76px',
     right: '0px',
     padding: '5px',
     backgroundColor: '#5cb85c',
@@ -70,17 +70,27 @@ export default class SiteTour extends React.Component<any, any> {
 
     callback = (data) => {
         const { action, index, type } = data
+        if (data.action == 'close') {
+            this.setState({
+                runTour: false
+            })
+        }
     }
 
     public render() {
+        const {
+            runTour,
+            showForm,
+            steps
+        } = this.state
 
         const header =
             <div>
-                <div className='btn'  style={btnStyle} onClick={() => this.setState({ runTour: true })}>
+                <div className='btn' style={btnStyle} onClick={() => this.setState({ runTour: !runTour })}>
                     Take a tour
                 </div>
                 or
-                <div className='btn' style={btnStyle} onClick={() => this.setState({ runTour: true })}>
+                <div className='btn' style={btnStyle} onClick={() => this.setState({ showForm: !showForm })}>
                     Submit feedback
                 </div>
             </div>
@@ -111,8 +121,8 @@ export default class SiteTour extends React.Component<any, any> {
                 }
             </div>
             <Joyride
-                steps={this.state.steps}
-                run={this.state.runTour}
+                steps={steps}
+                run={runTour}
                 continuous={true}
                 showProgress={true}
                 callback={this.callback.bind(this)}
