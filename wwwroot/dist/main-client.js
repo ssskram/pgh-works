@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0950d591a76351feb7a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "02d0d8d4d5f3b8a2454c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -65883,15 +65883,11 @@ var ProjectTimeline = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 hidden-sm hidden-xs', style: { paddingBottom: '5px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { fontSize: '14px', marginBottom: '-30px' } },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', style: { paddingBottom: '5px' } },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { fontSize: '14px' } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' } }, "Expected"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' } }, "Activity"))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 hidden-md hidden-lg hidden-xl', style: { marginBottom: '15px', fontSize: '14px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' } }, "Expected"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' } }, "Actual"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' } }, "Activity")),
             this.props.project &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Timeline__["a" /* default */], { items: items })));
     };
