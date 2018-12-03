@@ -18,36 +18,6 @@ const iconStyle = {
 
 export class ProjectTimeline extends React.Component<any, any> {
 
-    addToTimeline() {
-        let self = this
-        const timelineLoad = {
-            id: self.props.project.projectID,
-            type: 'Project',
-            name: self.props.project.projectName,
-            expectedStartDate: self.props.project.expectedStartDate,
-            expectedEndDate: self.props.project.expectedEndDate,
-            actualStartDate: self.props.project.actualStartDate,
-            actualEndDate: self.props.project.actualEndDate
-        }
-        this.props.addTimeline(timelineLoad)
-        const phases = this.props.phases.filter(function (phase) {
-            return phase.projectID == self.props.project.projectID
-        })
-        phases.forEach(function (phase) {
-            const phaseLoad = {
-                id: phase.phaseID,
-                type: 'Phase',
-                name: phase.phaseName,
-                parentProjectID: phase.projectID,
-                expectedStartDate: phase.expectedStartDate,
-                expectedEndDate: phase.expectedEndDate,
-                actualStartDate: phase.actualStartDate,
-                actualEndDate: phase.actualEndDate
-            }
-            self.props.addTimeline(phaseLoad)
-        })
-    }
-
     public render() {
         const {
             expectedStartDate,
@@ -95,19 +65,10 @@ export class ProjectTimeline extends React.Component<any, any> {
             <div>
                 <br />
                 <br />
-                <div className='col-md-12' style={{ paddingBottom: '5px' }}>
-                    <div style={{ fontSize: '14px' }}>
-                        <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
-                        <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
-                        <span style={{ backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Activity</span>
-                    </div>
-                    <Link to={'/Timeline'}>
-                        <div onClick={this.addToTimeline.bind(this)} title='Add to timeline' className='pull-right'>
-                            <span className='glyphicon'>
-                                <img style={iconStyle} src={timelineImg as string}></img>
-                            </span>
-                        </div>
-                    </Link>
+                <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
+                    <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
+                    <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual</span>
+                    <span style={{ backgroundColor: '#FFD143', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Activity</span>
                 </div>
                 {this.props.project &&
                     <TL items={items} />

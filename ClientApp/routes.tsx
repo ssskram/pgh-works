@@ -7,7 +7,7 @@ import ProjectDefinition from './components/Inputs/Project/ProjectDefinition/New
 import AllProjects from './components/Lists/AllProjects'
 import AllAssets from './components/Lists/AllAssets'
 import MyProjects from './components/Lists/MyProjects'
-import Timeline from './components/Timeline/TimelineReport'
+import Timeline from './components/Timeline/MainTimeline'
 import ProjectRecord from './components/Reports/Project/ProjectReport'
 import PhaseRecord from './components/Reports/Phase/PhaseReport'
 import AssetReport from './components/Reports/Asset/AssetReport'
