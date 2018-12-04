@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c66e046bfc4b38d4a3d5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "102672b37ab34f71721e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31520,8 +31520,8 @@ var Tags = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No relevant assets")),
                 tags.length > 0 &&
-                    tags.map(function (tag) {
-                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Cards_TagCard__["a" /* default */], { canEdit: canEdit, tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this) }));
+                    tags.map(function (tag, index) {
+                        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__Cards_TagCard__["a" /* default */], { canEdit: canEdit, tag: tag, key: tag.tagID, removeTag: _this.removeTag.bind(_this), index: index }));
                     })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
@@ -60250,8 +60250,7 @@ var PhaseCard = (function (_super) {
         var percentComplete = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__functions_phasePercentComplete__["a" /* default */])(allMilestones, allSubphases);
         var percentRemaining = 100 - percentComplete - 1;
         var progressBackground = {
-            background: 'linear-gradient(to right, #ACD1EF, ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)',
-            borderRadius: '15px'
+            background: 'linear-gradient(to right, #ACD1EF, ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         };
         var link = "/Phase/id=" + phase.phaseID;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-sm-6 col-md-4", key: phase.phaseID },
@@ -60454,28 +60453,32 @@ var TagsCard = (function (_super) {
         var _a = this.state, modalIsOpen = _a.modalIsOpen, redirectLink = _a.redirectLink;
         var _b = this.props, tag = _b.tag, canEdit = _b.canEdit;
         var src = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_getAssetIcon__["a" /* default */])(tag.tagType);
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-lg-4 col-md-6 col-sm-12" },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
-                canEdit == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src, style: imgHeight }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType)),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, tag.taggedAssetName),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
-                                "\"",
-                                tag.tagDescription,
-                                "\"")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: redirectLink, style: marginTop, className: 'btn btn-success' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
-                    overlay: 'custom-overlay',
-                    modal: 'custom-modal'
-                }, center: true },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__DeleteConfirmations_DeleteTag__["a" /* default */], { tag: tag, removeTag: this.props.removeTag, closeModal: this.closeModal.bind(this) }))));
+        var clearfix = this.props.index & 1 && this.props.index != 0;
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "col-md-6" },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel" },
+                    canEdit == true &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.deleteTag.bind(this), className: 'pull-right delete-btn' }, "X"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src, style: imgHeight }),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, tag.tagType)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, tag.taggedAssetName),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
+                                    "\"",
+                                    tag.tagDescription,
+                                    "\"")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: redirectLink, style: marginTop, className: 'btn btn-success' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
+                        overlay: 'custom-overlay',
+                        modal: 'custom-modal'
+                    }, center: true },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__DeleteConfirmations_DeleteTag__["a" /* default */], { tag: tag, removeTag: this.props.removeTag, closeModal: this.closeModal.bind(this) }))),
+            clearfix == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "clearfix" })));
     };
     return TagsCard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

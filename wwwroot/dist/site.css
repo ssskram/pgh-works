@@ -510,10 +510,6 @@ textarea {
     color: #424242;
 }
 
-.panel-button {
-    border-radius: 15px;
-}
-
 .panel-button:hover {
     background-color: #286090 !important;
     color: #fff !important;

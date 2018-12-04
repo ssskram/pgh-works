@@ -124,13 +124,14 @@ export class Tags extends React.Component<any, any> {
                         <h4 className='text-center'><i>No relevant assets</i></h4>
                     }
                     {tags.length > 0 &&
-                        tags.map((tag) => {
+                        tags.map((tag, index) => {
                             return (
                                 <TagCard
                                     canEdit={canEdit}
                                     tag={tag}
                                     key={tag.tagID}
-                                    removeTag={this.removeTag.bind(this)} />
+                                    removeTag={this.removeTag.bind(this)} 
+                                    index={index}/>
                             )
                         })
                     }

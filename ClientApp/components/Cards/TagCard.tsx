@@ -64,36 +64,42 @@ export class TagsCard extends React.Component<any, any> {
         } = this.props
 
         let src = returnAssetIcon(tag.tagType)
+        const clearfix = this.props.index & 1 && this.props.index != 0
 
         return (
-            <div className="col-lg-4 col-md-6 col-sm-12">
-                <div className="panel">
-                    {canEdit == true &&
-                        <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
-                    }
-                    <div className="panel-body text-center">
-                        <div className='col-md-12'>
-                            <img src={src} style={imgHeight} />
-                            <h4><b>{tag.tagType}</b></h4>
-                            <h3>{tag.taggedAssetName}</h3>
-                            <h4><i>"{tag.tagDescription}"</i></h4>
-                            <Link to={redirectLink} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
+            <div>
+                <div className="col-md-6">
+                    <div className="panel">
+                        {canEdit == true &&
+                            <button onClick={this.deleteTag.bind(this)} className='pull-right delete-btn'>X</button>
+                        }
+                        <div className="panel-body text-center">
+                            <div className='col-md-12'>
+                                <img src={src} style={imgHeight} />
+                                <h4><b>{tag.tagType}</b></h4>
+                                <h3>{tag.taggedAssetName}</h3>
+                                <h4><i>"{tag.tagDescription}"</i></h4>
+                                <Link to={redirectLink} style={marginTop} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></Link>
+                            </div>
                         </div>
                     </div>
+                    <Modal
+                        open={modalIsOpen}
+                        onClose={this.closeModal.bind(this)}
+                        classNames={{
+                            overlay: 'custom-overlay',
+                            modal: 'custom-modal'
+                        }}
+                        center>
+                        <DeleteTag
+                            tag={tag}
+                            removeTag={this.props.removeTag}
+                            closeModal={this.closeModal.bind(this)} />
+                    </Modal>
                 </div>
-                <Modal
-                    open={modalIsOpen}
-                    onClose={this.closeModal.bind(this)}
-                    classNames={{
-                        overlay: 'custom-overlay',
-                        modal: 'custom-modal'
-                    }}
-                    center>
-                    <DeleteTag
-                        tag={tag}
-                        removeTag={this.props.removeTag}
-                        closeModal={this.closeModal.bind(this)} />
-                </Modal>
+                {clearfix == true &&
+                    <div className="clearfix"></div>
+                }
             </div>
         )
     }
