@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "92ec9b8b560c2579767d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c66e046bfc4b38d4a3d5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63789,7 +63789,7 @@ var HomeMap = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center, onCloseClick: _this.closeWindow.bind(_this) },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { maxWidth: '250px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, selectedProject.projectName),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveProject(selectedProject); }, className: 'btn btn-success', style: { width: '100%' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.receiveProject(selectedProject); }, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'home-map' },
@@ -65827,9 +65827,9 @@ var AddProject = (function (_super) {
     }
     AddProject.prototype.render = function () {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "And this is where it all begins"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Projects have many parts"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "Projects have many parts.  These are the basics.")),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "These are the basics")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '20px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "A place")),
@@ -66300,8 +66300,10 @@ var SiteTour = (function (_super) {
             "or",
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn', style: btnStyle, onClick: function () { return _this.setState({ showForm: !showForm }); } }, showForm ? "Close feedback" : "Submit feedback"));
         var form = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_addons_css_transition_group___default.a, { transitionName: "example", transitionAppear: true, transitionAppearTimeout: 500, transitionEnter: false, transitionLeave: false },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: feedback, placeholder: "Issue?  Request?  Musing?  We want it all!", callback: function (e) { return _this.setState({ feedback: e.target.value }); } }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.postFeedback.bind(this), className: 'btn btn-success' }, "Submit"));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: { color: '#fff', marginLeft: '35px' } }, "Issue? Request? Musing? We want it all!"),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: feedback, placeholder: "Enter feedback here", callback: function (e) { return _this.setState({ feedback: e.target.value }); } }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, onClick: this.postFeedback.bind(this), style: { borderColor: '#fff' }, className: 'btn btn-success' }, "Submit")));
         var steps = [
             {
                 target: '.mainApp',
@@ -66356,7 +66358,7 @@ var SiteTour = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-xs', style: styleLarge },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, header),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { width: '75%' }, className: 'pull-right' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' }, this.state.showForm == true &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left' } }, this.state.showForm == true &&
                         form))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_joyride__["a" /* default */], { steps: steps, stepIndex: index, run: runTour, continuous: true, showProgress: true, callback: this.callback.bind(this), styles: {
                     options: {

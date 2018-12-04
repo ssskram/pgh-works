@@ -101,12 +101,15 @@ export class SiteTour extends React.Component<any, any> {
                 transitionAppearTimeout={500}
                 transitionEnter={false}
                 transitionLeave={false}>
-                <Textarea
-                    value={feedback}
-                    placeholder="Issue?  Request?  Musing?  We want it all!"
-                    callback={e => this.setState({ feedback: e.target.value })}
-                />
-                <button disabled={!isEnabled} onClick={this.postFeedback.bind(this)} className='btn btn-success'>Submit</button>
+                <h3 style={{ color: '#fff', marginLeft: '35px' }}>Issue? Request? Musing? We want it all!</h3>
+                <div className='text-center'>
+                    <Textarea
+                        value={feedback}
+                        placeholder="Enter feedback here"
+                        callback={e => this.setState({ feedback: e.target.value })}
+                    />
+                    <button disabled={!isEnabled} onClick={this.postFeedback.bind(this)} style={{ borderColor: '#fff' }} className='btn btn-success'>Submit</button>
+                </div>
             </ReactCSSTransitionGroup>
 
         const steps = [
@@ -164,7 +167,7 @@ export class SiteTour extends React.Component<any, any> {
             <div className='hidden-xs' style={styleLarge}>
                 <div>{header}</div>
                 <div style={{ width: '75%' }} className='pull-right'>
-                    <div className='text-center'>
+                    <div style={{ textAlign: 'left' }}>
                         {this.state.showForm == true &&
                             form
                         }

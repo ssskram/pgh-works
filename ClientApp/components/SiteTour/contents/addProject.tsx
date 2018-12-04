@@ -4,8 +4,8 @@ export default class AddProject extends React.Component<any, any> {
 
     public render() {
         return <div>
-            <h3>And this is where it all begins</h3>
-            <h4><i>Projects have many parts.  These are the basics.</i></h4>
+            <h3>Projects have many parts</h3>
+            <h4><i>These are the basics</i></h4>
             <div style={{ textAlign: 'left', marginTop: '20px' }}>
                 <h4><b>A place</b></h4>
                 <h5>You can import the location from an existing asset, or draw the location on a map.</h5>
