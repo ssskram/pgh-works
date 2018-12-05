@@ -32,6 +32,7 @@ export class PhaseInputs extends React.Component<any, any> {
         this.state = {
             // utilities
             redirect: false,
+            throwDateError: false,
 
             // phase state
             projectID: '',
@@ -85,14 +86,38 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     handleDate(date, name) {
+        console.log(date, name)
         if (date) {
-            this.setState({
-                [name]: moment(date).format('MM/DD/YYYY')
-            });
+            // check for valid span
+            let valid = true
+            if (name == 'expectedStartDate') {
+                if (this.state.expectedEndDate)
+                    valid = date.isBefore(this.state.expectedEndDate, 'day')
+            }
+            if (name == 'expectedEndDate') {
+                if (this.state.expectedStartDate)
+                    valid = date.isAfter(this.state.expectedStartDate, 'day')
+            }
+            if (name == 'actualStartDate') {
+                if (this.state.actualEndDate)
+                    valid = date.isBefore(this.state.actualEndDate, 'day')
+            }
+            if (name == 'actualEndDate') {
+                if (this.state.actualStartDate)
+                    valid = date.isAfter(this.state.actualStartDate, 'day')
+            }
+            if (valid == true) {
+                this.setState({
+                    [name]: moment(date).format('MM/DD/YYYY'),
+                    throwDateError: false
+                })
+            } else {
+                this.setState({ throwDateError: true })
+            }
         } else {
             this.setState({
                 [name]: null
-            });
+            })
         }
     }
 
@@ -117,6 +142,7 @@ export class PhaseInputs extends React.Component<any, any> {
     public render() {
         const {
             redirect,
+            throwDateError,
             phaseID,
             phaseName,
             expectedStartDate,
@@ -187,7 +213,14 @@ export class PhaseInputs extends React.Component<any, any> {
                         options={statuses}
                     />
                 </div>
-
+                {throwDateError == true &&
+                    <div className='col-md-12'>
+                        <div className='alert alert-danger text-center'>
+                            <span style={{ fontSize: '1.5em' }}>Please check your dates</span><br />
+                            End dates can not come before start dates
+                            </div>
+                    </div>
+                }
                 {!this.props.update &&
                     <div>
                         <div className='col-md-6'>
@@ -213,7 +246,6 @@ export class PhaseInputs extends React.Component<any, any> {
                         </div>
                     </div>
                 }
-
                 <div className='col-md-6'>
                     <Datepicker
                         value={actualStartDate}

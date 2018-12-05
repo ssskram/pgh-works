@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "15e1f93bbd185be370b3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4207eb5b7badc810dd5a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -30644,6 +30644,7 @@ var PhaseInputs = (function (_super) {
         _this.state = {
             // utilities
             redirect: false,
+            throwDateError: false,
             // phase state
             projectID: '',
             phaseID: '',
@@ -30695,10 +30696,35 @@ var PhaseInputs = (function (_super) {
         var _a;
     };
     PhaseInputs.prototype.handleDate = function (date, name) {
+        console.log(date, name);
         if (date) {
-            this.setState((_a = {},
-                _a[name] = __WEBPACK_IMPORTED_MODULE_9_moment__(date).format('MM/DD/YYYY'),
-                _a));
+            // check for valid span
+            var valid = true;
+            if (name == 'expectedStartDate') {
+                if (this.state.expectedEndDate)
+                    valid = date.isBefore(this.state.expectedEndDate, 'day');
+            }
+            if (name == 'expectedEndDate') {
+                if (this.state.expectedStartDate)
+                    valid = date.isAfter(this.state.expectedStartDate, 'day');
+            }
+            if (name == 'actualStartDate') {
+                if (this.state.actualEndDate)
+                    valid = date.isBefore(this.state.actualEndDate, 'day');
+            }
+            if (name == 'actualEndDate') {
+                if (this.state.actualStartDate)
+                    valid = date.isAfter(this.state.actualStartDate, 'day');
+            }
+            if (valid == true) {
+                this.setState((_a = {},
+                    _a[name] = __WEBPACK_IMPORTED_MODULE_9_moment__(date).format('MM/DD/YYYY'),
+                    _a.throwDateError = false,
+                    _a));
+            }
+            else {
+                this.setState({ throwDateError: true });
+            }
         }
         else {
             this.setState((_b = {},
@@ -30727,7 +30753,7 @@ var PhaseInputs = (function (_super) {
     };
     PhaseInputs.prototype.render = function () {
         var _this = this;
-        var _a = this.state, redirect = _a.redirect, phaseID = _a.phaseID, phaseName = _a.phaseName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes;
+        var _a = this.state, redirect = _a.redirect, throwDateError = _a.throwDateError, phaseID = _a.phaseID, phaseName = _a.phaseName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, phaseDescription = _a.phaseDescription, phaseStatus = _a.phaseStatus, notes = _a.notes;
         // validation
         var isEnabled = phaseName != '' &&
             expectedStartDate != '' &&
@@ -30746,6 +30772,12 @@ var PhaseInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: phaseStatus, name: "phaseStatus", required: true, header: 'Phase status', placeholder: 'Select statuses', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
+            throwDateError == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'alert alert-danger text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '1.5em' } }, "Please check your dates"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        "End dates can not come before start dates")),
             !this.props.update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -30847,7 +30879,8 @@ var ProjectInputs = (function (_super) {
     function ProjectInputs() {
         var _this = _super.call(this) || this;
         _this.state = {
-            personnel: []
+            personnel: [],
+            throwDateError: false
         };
         _this.handleDate = _this.handleDate.bind(_this);
         return _this;
@@ -30872,7 +30905,31 @@ var ProjectInputs = (function (_super) {
         this.props.handleMulti("projectMembers", value);
     };
     ProjectInputs.prototype.handleDate = function (date, name) {
-        this.props.handleDate(date, name);
+        // check for valid span
+        var valid = true;
+        if (name == 'expectedStartDate') {
+            if (this.props.description.expectedEndDate)
+                valid = date.isBefore(this.props.description.expectedEndDate, 'day');
+        }
+        if (name == 'expectedEndDate') {
+            if (this.props.description.expectedStartDate)
+                valid = date.isAfter(this.props.description.expectedStartDate, 'day');
+        }
+        if (name == 'actualStartDate') {
+            if (this.props.description.actualEndDate)
+                valid = date.isBefore(this.props.description.actualEndDate, 'day');
+        }
+        if (name == 'actualEndDate') {
+            if (this.props.description.actualStartDate)
+                valid = date.isAfter(this.props.description.actualStartDate, 'day');
+        }
+        if (valid == true) {
+            this.props.handleDate(date, name);
+            this.setState({ throwDateError: false });
+        }
+        else {
+            this.setState({ throwDateError: true });
+        }
     };
     ProjectInputs.prototype.handleCurrency = function (event, maskedvalue, floatvalue) {
         this.props.handleCurrency(floatvalue);
@@ -30880,7 +30937,7 @@ var ProjectInputs = (function (_super) {
     ProjectInputs.prototype.render = function () {
         var _this = this;
         var _a = this.props.description, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, actualStartDate = _a.actualStartDate, actualEndDate = _a.actualEndDate, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes, update = _a.update;
-        var personnel = this.state.personnel;
+        var _b = this.state, personnel = _b.personnel, throwDateError = _b.throwDateError;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' } },
             !update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -30901,6 +30958,12 @@ var ProjectInputs = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectManager, name: "projectManager", header: 'Project manager', required: true, placeholder: 'Select manager', onChange: this.handleChildSelect.bind(this), multi: false, options: personnel })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectMembers, name: "projectMembers", header: 'Project members', placeholder: 'Select team members', onChange: this.handleMembersMulti.bind(this), multi: true, options: personnel, delimiter: '; ' }))),
+            throwDateError == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'alert alert-danger text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '1.5em' } }, "Please check your dates"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                        "End dates can not come before start dates")),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: dateStyle, className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: sectionHeader },
                     "Duration",
@@ -30985,6 +31048,7 @@ var SubphaseInput = (function (_super) {
     function SubphaseInput() {
         var _this = _super.call(this) || this;
         _this.state = {
+            throwDateError: false,
             projectID: '',
             phaseID: '',
             subphaseID: '',
@@ -31036,9 +31100,25 @@ var SubphaseInput = (function (_super) {
     };
     SubphaseInput.prototype.handleStartDate = function (date) {
         if (date) {
-            this.setState({
-                startDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY')
-            });
+            if (this.state.endDate) {
+                console.log('here');
+                if (date.isBefore(this.state.endDate, 'day')) {
+                    this.setState({
+                        startDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY'),
+                        throwDateError: false
+                    });
+                }
+                else {
+                    this.setState({
+                        throwDateError: true
+                    });
+                }
+            }
+            else {
+                this.setState({
+                    startDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY')
+                });
+            }
         }
         else {
             this.setState({
@@ -31048,9 +31128,22 @@ var SubphaseInput = (function (_super) {
     };
     SubphaseInput.prototype.handleEndDate = function (date) {
         if (date) {
-            this.setState({
-                endDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY')
-            });
+            if (this.state.startDate) {
+                if (date.isAfter(this.state.startDate, 'day')) {
+                    this.setState({
+                        endDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY'),
+                        throwDateError: false
+                    });
+                }
+                else {
+                    this.setState({ throwDateError: true });
+                }
+            }
+            else {
+                this.setState({
+                    endDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY')
+                });
+            }
         }
         else {
             this.setState({
@@ -31085,7 +31178,7 @@ var SubphaseInput = (function (_super) {
         }
     };
     SubphaseInput.prototype.render = function () {
-        var _a = this.state, subphaseName = _a.subphaseName, startDate = _a.startDate, endDate = _a.endDate, subphaseDescription = _a.subphaseDescription, subphaseStatus = _a.subphaseStatus, percentComplete = _a.percentComplete, notes = _a.notes;
+        var _a = this.state, throwDateError = _a.throwDateError, subphaseName = _a.subphaseName, startDate = _a.startDate, endDate = _a.endDate, subphaseDescription = _a.subphaseDescription, subphaseStatus = _a.subphaseStatus, percentComplete = _a.percentComplete, notes = _a.notes;
         var canEdit = this.props.canEdit;
         // validation
         var isEnabled = subphaseName != '' &&
@@ -31105,6 +31198,12 @@ var SubphaseInput = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_textarea__["a" /* default */], { value: notes, name: "notes", header: "Notes", placeholder: "Enter any other relevant information", callback: this.handleChildChange.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_select__["a" /* default */], { value: subphaseStatus, name: "subphaseStatus", header: 'Subphase status', required: true, placeholder: 'Select statuses', onChange: this.handleChildSelect.bind(this), multi: false, options: statuses })),
+                    throwDateError == true &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'alert alert-danger text-center' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '1.5em' } }, "Please check your dates"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                                "End dates can not come before start dates")),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__FormElements_datepicker__["a" /* default */], { value: startDate, name: "startDate", required: true, header: "Start date", placeholder: "Select a date", callback: this.handleStartDate.bind(this) })),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },

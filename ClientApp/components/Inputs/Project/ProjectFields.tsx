@@ -9,6 +9,7 @@ import Input from '../../FormElements/input'
 import TextArea from '../../FormElements/textarea'
 import Select from '../../FormElements/select'
 import Datepicker from '../../FormElements/datepicker'
+import * as moment from 'moment'
 
 const statuses = [
     { value: 'Programming', label: 'Programming', name: 'projectStatus' },
@@ -51,7 +52,8 @@ export class ProjectInputs extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
-            personnel: []
+            personnel: [],
+            throwDateError: false
         }
         this.handleDate = this.handleDate.bind(this)
     }
@@ -80,7 +82,30 @@ export class ProjectInputs extends React.Component<any, any> {
     }
 
     handleDate(date, name) {
-        this.props.handleDate(date, name)
+        // check for valid span
+        let valid = true
+        if (name == 'expectedStartDate') {
+            if (this.props.description.expectedEndDate)
+                valid = date.isBefore(this.props.description.expectedEndDate, 'day')
+        }
+        if (name == 'expectedEndDate') {
+            if (this.props.description.expectedStartDate)
+                valid = date.isAfter(this.props.description.expectedStartDate, 'day')
+        }
+        if (name == 'actualStartDate') {
+            if (this.props.description.actualEndDate)
+                valid = date.isBefore(this.props.description.actualEndDate, 'day')
+        }
+        if (name == 'actualEndDate') {
+            if (this.props.description.actualStartDate)
+                valid = date.isAfter(this.props.description.actualStartDate, 'day')
+        }
+        if (valid == true) {
+            this.props.handleDate(date, name)
+            this.setState({ throwDateError: false })
+        } else {
+            this.setState({ throwDateError: true })
+        }
     }
 
     handleCurrency(event, maskedvalue, floatvalue) {
@@ -104,8 +129,10 @@ export class ProjectInputs extends React.Component<any, any> {
         } = this.props.description
 
         const {
-            personnel
+            personnel,
+            throwDateError
         } = this.state
+
         return (
             <div style={{ padding: '10px' }}>
                 {!update &&
@@ -195,7 +222,14 @@ export class ProjectInputs extends React.Component<any, any> {
                         />
                     </div>
                 </div>
-
+                {throwDateError == true &&
+                    <div className='col-md-12'>
+                        <div className='alert alert-danger text-center'>
+                            <span style={{ fontSize: '1.5em' }}>Please check your dates</span><br />
+                            End dates can not come before start dates
+                                </div>
+                    </div>
+                }
                 <div style={dateStyle} className='col-md-12'>
                     <h3 style={sectionHeader}>Duration<span style={glyphs} className='glyphicon glyphicon-calendar hidden-sm hidden-xs pull-right'></span></h3>
                     {!update &&

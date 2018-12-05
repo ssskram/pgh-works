@@ -24,6 +24,8 @@ export class SubphaseInput extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            throwDateError: false,
+
             projectID: '',
             phaseID: '',
             subphaseID: '',
@@ -75,9 +77,23 @@ export class SubphaseInput extends React.Component<any, any> {
 
     handleStartDate(date) {
         if (date) {
-            this.setState({
-                startDate: moment(date).format('MM/DD/YYYY')
-            })
+            if (this.state.endDate) {
+                console.log('here')
+                if (date.isBefore(this.state.endDate, 'day')) {
+                    this.setState({
+                        startDate: moment(date).format('MM/DD/YYYY'),
+                        throwDateError: false
+                    })
+                } else {
+                    this.setState({ 
+                        throwDateError: true 
+                    })
+                }
+            } else {
+                this.setState({
+                    startDate: moment(date).format('MM/DD/YYYY')
+                })
+            }
         } else {
             this.setState({
                 startDate: null
@@ -87,9 +103,20 @@ export class SubphaseInput extends React.Component<any, any> {
 
     handleEndDate(date) {
         if (date) {
-            this.setState({
-                endDate: moment(date).format('MM/DD/YYYY')
-            })
+            if (this.state.startDate) {
+                if (date.isAfter(this.state.startDate, 'day')) {
+                    this.setState({
+                        endDate: moment(date).format('MM/DD/YYYY'),
+                        throwDateError: false
+                    })
+                } else {
+                    this.setState({ throwDateError: true })
+                }
+            } else {
+                this.setState({
+                    endDate: moment(date).format('MM/DD/YYYY')
+                }) 
+            }
         } else {
             this.setState({
                 endDate: null
@@ -125,6 +152,7 @@ export class SubphaseInput extends React.Component<any, any> {
 
     public render() {
         const {
+            throwDateError,
             subphaseName,
             startDate,
             endDate,
@@ -194,7 +222,14 @@ export class SubphaseInput extends React.Component<any, any> {
                                 options={statuses}
                             />
                         </div>
-
+                        {throwDateError == true &&
+                            <div className='col-md-12'>
+                                <div className='alert alert-danger text-center'>
+                                    <span style={{ fontSize: '1.5em' }}>Please check your dates</span><br />
+                                    End dates can not come before start dates
+                                </div>
+                            </div>
+                        }
                         <div className='col-md-6'>
                             <Datepicker
                                 value={startDate}
