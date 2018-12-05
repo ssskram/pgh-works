@@ -14,6 +14,7 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 
 const statuses = [
+    { value: 'Not started', label: 'Not started', name: 'phaseStatus' },
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
     { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }

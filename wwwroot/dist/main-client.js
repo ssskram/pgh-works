@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4207eb5b7badc810dd5a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "78481dee0d68f2a36c8f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -30627,6 +30627,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
+    { value: 'Not started', label: 'Not started', name: 'phaseStatus' },
     { value: 'In progress', label: 'In progress', name: 'phaseStatus' },
     { value: 'On hold', label: 'On hold', name: 'phaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'phaseStatus' }
@@ -31039,6 +31040,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
+    { value: 'Not started', label: 'Not started', name: 'subphaseStatus' },
     { value: 'In progress', label: 'In progress', name: 'subphaseStatus' },
     { value: 'On hold', label: 'On hold', name: 'subphaseStatus' },
     { value: 'Complete', label: 'Complete', name: 'subphaseStatus' }
@@ -65198,9 +65200,6 @@ var btnMargin = {
 var marginBottom = {
     marginBottom: '70px'
 };
-var iconStyle = {
-    marginLeft: '10px'
-};
 var Phase = (function (_super) {
     __extends(Phase, _super);
     function Phase() {
@@ -65324,7 +65323,9 @@ var Phase = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", { style: { letterSpacing: '2px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: { marginLeft: '5px' } }, "Project"),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-secondary', onClick: this.returnToProject.bind(this), title: 'Return to project' }, projectName)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'btn btn-secondary', onClick: this.returnToProject.bind(this), title: 'Return to project' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginRight: '10px' }, className: 'glyphicon glyphicon-home' }),
+                            projectName)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", { className: 'text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
@@ -66139,7 +66140,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 
-var organize = __webpack_require__(772);
+var consolidate = __webpack_require__(795);
 var timeline = __webpack_require__(366);
 var report = __webpack_require__(776);
 var connections = __webpack_require__(769);
@@ -66158,17 +66159,17 @@ var MainApp = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '10px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: organize }),
-                    "Organize your work"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: consolidate }),
+                    "Consolidate project data"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: timeline }),
-                    "Plan ahead"),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: report }),
-                    "Report on progress"),
+                    "Visualize overlap"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: connections }),
-                    "Create connections")));
+                    "Create connections"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: report }),
+                    "Report on progress")));
     };
     return MainApp;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -84842,12 +84843,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAONSURBVGhD7ZlLaBRBEIY34uugHnyAEJDoRYl42iT7SCSKoAER9CqSg4d4EISgJ/HiAw1CEBEURUW85CDeBAVRxIAHFYmPg3gQYqJi8IGioEYTv5pUL727s7uzE9FumB+K7q6q7qlve2Z2djaVKFGiRH9LM7T1V62trYuy2ex77HEmk9mRTqdnacgvAbAGm7TsFdabz+fna4ofomgDMoINaX+S3flEe4wdW6qpbotiDcggw4ZcLrcJiJvqE6Dv2Hn8q6ZmOKoSkIIoPo1vgHZc47+xXg27J4orA+nq6prDeDt2G5vQuOzOQU1xTxRYAOF6WE2xJ7APpnjsM3ZWdkinuCmKNCA/tQ2Mwu9xXezs7Oycp6lui6INiBQvO3FSfBr2RxbIEJ/+XHX7Jwuk6K7lnRIQ15SAuKYExDUB0C0gfBkO86Nqsbr9EgDbsB8CojbkHQzPUVstiH525Kl3MCUQh8XX0dGxxAkYfYmwUIcVFQZhFAeG/Kbm5ubZOpyeWGwdB/5K+zqfz69Ud5mqQRjVA0PeXnLkh9fgtB/3FeKbHljuPqEwUSCMosAoRHBMtfgwNgT9M9h17RfBlEAcUXdVKcwTnVMEgz+AoP3V1ta2j/5LzasfhkXsnTiNq0F+T+C/ob43AhMHwigMxoag7Za89vb2ZfQLMJHfiYVBTEVSKRuG9h1tLAgjG4Z2VNsChFHdMCxSEcJIYIg91JzYEEYlOyMgezRUpMgwUSBExOxv7LILm9NtA/5GHZaJ836zFK/DQDJmzjNds+LdrCYMi68nUC/EIXUHYqdm4uvDJvhQxlhzo4YCyfss/KdkLu0o8bUaChR2zWioSBVhYkLIm8FzHLhJY43YXY0Zk++APgHkGMvpP7BiAjOOHWC6/O3QgG8L40dWTn0wTP6ojkgQ5N+RInSO+C4zHtPYMIvmaOXuE7zLon8fk5fWkv+Cfho7iMlFLb5bmA05Quy59iPBkH9UitwvRizyNdHS0rKC/kUWMEBi1+RRJpiE2IUs8WErPoBvgYbNmfDWio/g2y2noJ5mNZ8ABIa8S1hGXeFikaoXtgCxxgVi8gK67IPQZ7Sr5PSoq0jytwLxKwZA3YGiwtQUk6tC/AtNG4ZJ/x3CKDYMyc5AGNUNQ5JzEEaRYQg6C2FUEwan8xBGFWEYeANhFAqD44tPEEY2DO1xAelhsEvjXkl2gtr75f9JdfmuVOoPHWymiiyO0CwAAAAASUVORK5CYII="
 
 /***/ }),
-/* 772 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALHSURBVGhD7Zq/axRBFMfvhIjgL0QQW1EQrziUY+8XB9vEQjvRwiqdjSLYWdtoowg2Ru1E2+QPiIKpbBXSXIxoUEEx/ogx4I9E/bx1RobN3N2srnuzZB98mB/vzZv3ZSfJ7JLS/7JWqxU0Go2pZrO5CM/gcrvd3qrc+bB6vU7dzWX4aYKw6UqlslGF+W8U/VAVHz0FBBygP6PmxlRYNhaG4RYKGIcPqoCkvCZN+Xe2SNyxmN+VH9DlKZ9QqZIZAm7FEvZjlfj3JsxdUakiC4JgJ3OzsbhPRo6+ELsCDZXO2TYk3GRerUtkrOvY8vWC+KtqqZvVarXttkS9yFDIXbXUzZIKgRedTmdHUijsiCVXT7IQkgmFEN8ohPhGIcQ3CiFZQ6HvaFfj85q8CLnPviMUe9rii/BeCAUucU3fI3szvhT3a1IXQkK5pj91gdgvtObaN7RfzTlEnJF9eQk7yPib6TNJW8hn8avQgSYvRHothczJ8ZH3ecYf1dwDwsryCsz4sY61kaoQkq1IcbQ1R64Z6xeNI1TH94qnsFfG9C8YcVaI8ednhGLmtRjabdIOOlIar4QIFPRci3E5UhrvhAgiBuTF6mbc1wsvhfwNhRDfKIQMgS6s+WasyYUQipxk6zL9sbhPkwchb7m27JK9Kfa6xR+RuhASPoEpB+5B/CP4o/gc45OyL/0Q5KO1GW/GpSeEZEthGG5SoQON+KPG+i5Tcnz2Mf9S5ZuQuGq1upn+nBG7BvypPhF5gzsLo4Ng48Nwh75eu8wROiR7cL/az3gmCILdMibOvFxaSVvIv7Igl0S1z4i0zPU9UhrfhAh/xLgcKY2PQoQFCjsFExafFV+FJKYQ4huFEN9Yv0Lkd7stkQfcViW6G+qd/khlCTWdV+W5G4uOw3dbwiExq7+DJTaEyJfCiyS5MSzYf5z2HFeafP2L1Dq3UukXbtRW4lZv1IEAAAAASUVORK5CYII="
-
-/***/ }),
+/* 772 */,
 /* 773 */
 /***/ (function(module, exports) {
 
@@ -85355,6 +85351,13 @@ __webpack_require__(375);
 __webpack_require__(374);
 module.exports = __webpack_require__(373);
 
+
+/***/ }),
+/* 794 */,
+/* 795 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
 
 /***/ })
 /******/ ]);

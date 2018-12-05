@@ -37,10 +37,6 @@ const marginBottom = {
     marginBottom: '70px'
 }
 
-const iconStyle = {
-    marginLeft: '10px'
-}
-
 export class Phase extends React.Component<any, any> {
     constructor() {
         super();
@@ -191,7 +187,7 @@ export class Phase extends React.Component<any, any> {
                     <div>
                         <h2 style={{ letterSpacing: '2px' }}>
                             <h4 style={{ marginLeft: '5px' }}>Project</h4>
-                            <div className='btn btn-secondary' onClick={this.returnToProject.bind(this)} title='Return to project'>{projectName}</div>
+                            <div className='btn btn-secondary' onClick={this.returnToProject.bind(this)} title='Return to project'><span style={{ marginRight: '10px' }} className='glyphicon glyphicon-home'></span>{projectName}</div>
                         </h2>
                         <br />
                         <h1 className='text-center'><b><img style={{ marginTop: '-12px', marginRight: '10px' }} src={phaseImg as string} /></b>{phaseName}</h1>
