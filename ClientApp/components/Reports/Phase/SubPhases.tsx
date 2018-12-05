@@ -104,11 +104,11 @@ export class SubPhases extends React.Component<any, any> {
                     <h4 className='text-center'><i>No subphases</i></h4>
                 }
                 {subphases.length > 0 &&
-                    subphases.map((subphase) => {
+                    subphases.map((subphase, index) => {
                         return (
                             <SubphaseCard
                                 canEdit={canEdit}
-                                key={subphase.subphaseID}
+                                key={index}
                                 subphase={subphase}
                                 removeSubphase={this.removeSubphase.bind(this)} />
                         )

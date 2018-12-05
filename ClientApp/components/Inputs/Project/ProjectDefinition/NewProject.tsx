@@ -247,6 +247,7 @@ export class ProjectDefinition extends React.Component<any, any> {
                             <ProjectDescription
                                 back={this.back.bind(this)}
                                 post={this.post.bind(this)}
+                                projects={this.props.projects}
                                 shape={shape}
                             />
                         </div>

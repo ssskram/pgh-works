@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "102672b37ab34f71721e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "15e1f93bbd185be370b3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61681,15 +61681,28 @@ var ProjectDescription = (function (_super) {
             projectMembers: '',
             projectDepartment: '',
             projectDescription: '',
-            notes: ''
+            notes: '',
+            throwNameError: false
         };
         return _this;
     }
+    ProjectDescription.prototype.componentDidMount = function () {
+        console.log(this.props.projects);
+    };
     ProjectDescription.prototype.handleChildChange = function (event) {
         if (event.target.name == 'projectName') {
-            this.setState({
-                projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
-            });
+            if (!this.props.projects.some(function (project) { return project.projectName.toLowerCase() == event.target.value.toLowerCase(); })) {
+                this.setState({
+                    projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+                    throwNameError: false
+                });
+            }
+            else {
+                this.setState({
+                    projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+                    throwNameError: true
+                });
+            }
         }
         else {
             this.setState((_a = {},
@@ -61726,15 +61739,23 @@ var ProjectDescription = (function (_super) {
         this.props.back();
     };
     ProjectDescription.prototype.render = function () {
-        var _a = this.state, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus, projectDepartment = _a.projectDepartment;
+        var _a = this.state, projectName = _a.projectName, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate, projectManager = _a.projectManager, projectStatus = _a.projectStatus, projectDepartment = _a.projectDepartment, throwNameError = _a.throwNameError;
         // validation
         var isEnabled = projectName != '' &&
             expectedStartDate != '' &&
             expectedEndDate != '' &&
             projectManager != '' &&
             projectStatus != '' &&
-            projectDepartment != '';
+            projectDepartment != '' &&
+            throwNameError == false;
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            throwNameError == true &&
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'alert alert-danger text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { fontSize: '1.5em' } }, "Sorry!"),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    "A project with that name already exists",
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    "Please include additional, unique information in the name"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__ProjectFields__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleDate: this.handleDate.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
@@ -62151,7 +62172,7 @@ var ProjectDefinition = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Maps_ProjectMap__["a" /* default */], { shape: shape }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Description__["a" /* default */], { back: this.back.bind(this), post: this.post.bind(this), shape: shape }))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Description__["a" /* default */], { back: this.back.bind(this), post: this.post.bind(this), projects: this.props.projects, shape: shape }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',
                     modal: 'custom-modal'
@@ -65359,8 +65380,8 @@ var SubPhases = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, "No subphases")),
             subphases.length > 0 &&
-                subphases.map(function (subphase) {
-                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Cards_SubphaseCard__["a" /* default */], { canEdit: canEdit, key: subphase.subphaseID, subphase: subphase, removeSubphase: _this.removeSubphase.bind(_this) }));
+                subphases.map(function (subphase, index) {
+                    return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__Cards_SubphaseCard__["a" /* default */], { canEdit: canEdit, key: index, subphase: subphase, removeSubphase: _this.removeSubphase.bind(_this) }));
                 }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                     overlay: 'custom-overlay',

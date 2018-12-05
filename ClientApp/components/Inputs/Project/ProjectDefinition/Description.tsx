@@ -27,15 +27,28 @@ export default class ProjectDescription extends React.Component<any, any> {
             projectMembers: '',
             projectDepartment: '',
             projectDescription: '',
-            notes: ''
+            notes: '',
+            throwNameError: false
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.projects)
     }
 
     handleChildChange(event) {
         if (event.target.name == 'projectName') {
-            this.setState({
-                projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
-            })
+            if (!this.props.projects.some(project => project.projectName.toLowerCase() == event.target.value.toLowerCase())) {
+                this.setState({
+                    projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+                    throwNameError: false
+                })
+            } else {
+                this.setState({
+                    projectName: event.target.value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, ''),
+                    throwNameError: true
+                })
+            }
         } else {
             this.setState({
                 [event.target.name]: event.target.value
@@ -63,7 +76,7 @@ export default class ProjectDescription extends React.Component<any, any> {
             });
         }
     }
-    
+
     post() {
         this.props.post(this.state)
     }
@@ -79,7 +92,8 @@ export default class ProjectDescription extends React.Component<any, any> {
             expectedEndDate,
             projectManager,
             projectStatus,
-            projectDepartment
+            projectDepartment,
+            throwNameError
         } = this.state
 
         // validation
@@ -89,10 +103,18 @@ export default class ProjectDescription extends React.Component<any, any> {
             expectedEndDate != '' &&
             projectManager != '' &&
             projectStatus != '' &&
-            projectDepartment != ''
+            projectDepartment != '' &&
+            throwNameError == false
 
         return (
             <div>
+                {throwNameError == true &&
+                    <div className='alert alert-danger text-center'>
+                        <span style={{fontSize: '1.5em'}}>Sorry!</span><br/>
+                        A project with that name already exists<br/>
+                        Please include additional, unique information in the name
+                    </div>
+                }
                 <ProjectFields
                     description={this.state}
                     handleInput={this.handleChildChange.bind(this)}
