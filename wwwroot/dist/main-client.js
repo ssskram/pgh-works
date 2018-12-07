@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e934a1d2959f069edbc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6108f6f588c36495185c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61112,14 +61112,14 @@ var AssetFilter = (function (_super) {
             assetName: this.state.assetName,
             assetType: this.state.assetType
         };
-        this.props.returnFiltered(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_filters_filterAssets__["a" /* default */])(this.props.assets, filterLoad));
+        this.props.returnFiltered(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_filters_filterAssets__["a" /* default */])(this.props.assets, filterLoad), filterLoad);
         this.setState({
             modalIsOpen: false,
             onFilter: true
         });
     };
     AssetFilter.prototype.clearFilter = function () {
-        this.props.returnFiltered(this.props.assets);
+        this.props.returnFiltered(this.props.assets, {});
         this.setState({
             onFilter: false,
             assetName: '',
@@ -63570,7 +63570,7 @@ var AllProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                                     project.projectDescription &&
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: linePadding },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
                                             "\"",
                                             project.projectDescription,
                                             "\""),
@@ -63758,7 +63758,7 @@ var MyProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
                                     project.projectDescription &&
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: linePadding },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
                                             "\"",
                                             project.projectDescription,
                                             "\""),
@@ -64609,6 +64609,9 @@ var AssetReport = (function (_super) {
             assetName: '',
             assetType: '',
             assetShape: '',
+            neighborhood: '',
+            street: '',
+            misc: '',
             // because incoming tags are manipulated so much, 
             // cache the original array returned from processing
             // to return to on filter clear
@@ -64646,7 +64649,7 @@ var AssetReport = (function (_super) {
         if (street) {
             this.setState({
                 assetName: prop,
-                assetType: "Street"
+                assetType: "Street",
             });
         }
         else {
@@ -64656,7 +64659,10 @@ var AssetReport = (function (_super) {
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
-                assetShape: asset.shape
+                assetShape: asset.shape,
+                neighborhood: asset.neighborhood,
+                street: asset.street,
+                misc: asset.misc
             });
         }
     };
@@ -64738,7 +64744,7 @@ var AssetReport = (function (_super) {
     };
     AssetReport.prototype.render = function () {
         var _this = this;
-        var _a = this.state, spinner = _a.spinner, onFilter = _a.onFilter, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, tags = _a.tags;
+        var _a = this.state, spinner = _a.spinner, onFilter = _a.onFilter, redirect = _a.redirect, redirectLink = _a.redirectLink, assetName = _a.assetName, assetType = _a.assetType, assetShape = _a.assetShape, neighborhood = _a.neighborhood, street = _a.street, misc = _a.misc, tags = _a.tags;
         if (redirect) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Redirect"], { push: true, to: redirectLink });
         }
@@ -64748,9 +64754,11 @@ var AssetReport = (function (_super) {
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, assetType),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, assetName),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, assetType))),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, neighborhood),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, street),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, misc)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     assetType != 'Street' &&

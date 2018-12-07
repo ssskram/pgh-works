@@ -37,6 +37,9 @@ export class AssetReport extends React.Component<any, any> {
             assetName: '',
             assetType: '',
             assetShape: '',
+            neighborhood: '',
+            street: '',
+            misc: '',
             // because incoming tags are manipulated so much, 
             // cache the original array returned from processing
             // to return to on filter clear
@@ -76,7 +79,7 @@ export class AssetReport extends React.Component<any, any> {
         if (street) {
             this.setState({
                 assetName: prop,
-                assetType: "Street"
+                assetType: "Street",
             })
         } else {
             const asset = assets.find(function (asset) {
@@ -85,7 +88,10 @@ export class AssetReport extends React.Component<any, any> {
             this.setState({
                 assetName: asset.assetName,
                 assetType: asset.assetType,
-                assetShape: asset.shape
+                assetShape: asset.shape,
+                neighborhood: asset.neighborhood,
+                street: asset.street,
+                misc: asset.misc
             })
         }
     }
@@ -178,6 +184,9 @@ export class AssetReport extends React.Component<any, any> {
             assetName,
             assetType,
             assetShape,
+            neighborhood,
+            street,
+            misc,
             tags
         } = this.state
 
@@ -196,8 +205,11 @@ export class AssetReport extends React.Component<any, any> {
                 {spinner == false &&
                     <div>
                         <div className='text-center'>
+                            <h3>{assetType}</h3>
                             <h1>{assetName}</h1>
-                            <h3><b>{assetType}</b></h3>
+                            <h4>{neighborhood}</h4>
+                            <h4>{street}</h4>
+                            <h4>{misc}</h4>
                         </div>
                         <br />
                         <br />

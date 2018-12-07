@@ -62,7 +62,7 @@ export class AssetFilter extends React.Component<any, any> {
             assetName: this.state.assetName,
             assetType: this.state.assetType
         }
-        this.props.returnFiltered(filterAssets(this.props.assets, filterLoad))
+        this.props.returnFiltered(filterAssets(this.props.assets, filterLoad), filterLoad)
         this.setState({
             modalIsOpen: false,
             onFilter: true
@@ -70,7 +70,7 @@ export class AssetFilter extends React.Component<any, any> {
     }
 
     clearFilter() {
-        this.props.returnFiltered(this.props.assets)
+        this.props.returnFiltered(this.props.assets, {})
         this.setState({
             onFilter: false,
             assetName: '',
