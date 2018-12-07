@@ -184,7 +184,8 @@ export class SiteTour extends React.Component<any, any> {
                 styles={{
                     options: {
                         backgroundColor: '#FAF7F2',
-                        primaryColor: '#337ab7'
+                        primaryColor: '#337ab7',
+                        width: '450px'
                     }
                 }}
             />
