@@ -44,7 +44,7 @@ namespace pghworks.Controllers {
 
         public async Task getFacilities () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgFacilitiesClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgFacilitiesClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -55,6 +55,9 @@ namespace pghworks.Controllers {
                     assetType = "Facility",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
+                    misc = item.FacilityTypeField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -63,7 +66,7 @@ namespace pghworks.Controllers {
 
         public async Task getProjects () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass?fields=Oid,CgShape,projectNameField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ProjectsClass?fields=Oid,CgShape,projectNameField,InactiveField,projectDescriptionField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -74,6 +77,7 @@ namespace pghworks.Controllers {
                     assetType = "Project",
                     assetOID = item.Oid,
                     assetName = item.projectNameField,
+                    misc = item.projectDescriptionField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -82,7 +86,7 @@ namespace pghworks.Controllers {
 
         public async Task getSteps () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/StepsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/StepsClass?fields=Oid,CgShape,IDField,InactiveField,StreetField,NeighborhoodField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -93,6 +97,9 @@ namespace pghworks.Controllers {
                     assetType = "Steps",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    street = item.StreetField,
+                    neighborhood = item.NeighborhoodField,
+
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -101,7 +108,7 @@ namespace pghworks.Controllers {
 
         public async Task getRetainingWalls () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/RetainingWallClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/RetainingWallClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -112,6 +119,8 @@ namespace pghworks.Controllers {
                     assetType = "Retaining Wall",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -120,7 +129,7 @@ namespace pghworks.Controllers {
 
         public async Task getPools () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PoolsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PoolsClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField,ParkField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -131,6 +140,9 @@ namespace pghworks.Controllers {
                     assetType = "Pool",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
+                    misc = item.ParkField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -139,7 +151,7 @@ namespace pghworks.Controllers {
 
         public async Task getPlaygrounds () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlaygroundsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlaygroundsClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField,ParkField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -150,6 +162,9 @@ namespace pghworks.Controllers {
                     assetType = "Playground",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
+                    misc = item.ParkField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -158,7 +173,7 @@ namespace pghworks.Controllers {
 
         public async Task getParks () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ParksClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/ParksClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -172,6 +187,8 @@ namespace pghworks.Controllers {
                     assetType = "Park",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
                     shape = item.CgShape.ToObject<Shape> ()
                     };
                     AllAssets.Add (ta);
@@ -182,6 +199,8 @@ namespace pghworks.Controllers {
                     TaggableAssets ta = new TaggableAssets () {
                         assetType = "Park",
                         assetOID = item.Oid,
+                        neighborhood = item.NeighborhoodField,
+                        street = item.StreetField,
                         assetName = item.IDField,
                         shape = hull
                     };
@@ -192,7 +211,7 @@ namespace pghworks.Controllers {
 
         public async Task getIntersections () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgSignalizedIntersectionsClass?fields=Oid,CgShape,DescriptionField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgSignalizedIntersectionsClass?fields=Oid,CgShape,DescriptionField,InactiveField,NeighborhoodField,StreetField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -203,6 +222,8 @@ namespace pghworks.Controllers {
                     assetType = "Intersection",
                     assetOID = item.Oid,
                     assetName = item.DescriptionField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -211,7 +232,7 @@ namespace pghworks.Controllers {
 
         public async Task getBridges () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgBridgesClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgBridgesClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -222,6 +243,8 @@ namespace pghworks.Controllers {
                     assetType = "Bridge",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -230,7 +253,7 @@ namespace pghworks.Controllers {
 
         public async Task getFields () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlayingFieldsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/PlayingFieldsClass?fields=Oid,CgShape,IDField,InactiveField,NeighborhoodField,StreetField,ParkField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -241,6 +264,9 @@ namespace pghworks.Controllers {
                     assetType = "Playing Field",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.NeighborhoodField,
+                    street = item.StreetField,
+                    misc = item.ParkField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -249,7 +275,7 @@ namespace pghworks.Controllers {
 
         public async Task getCourts () {
             var key = Environment.GetEnvironmentVariable ("CartegraphAPIkey");
-            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/CourtsClass?fields=Oid,CgShape,IDField,InactiveField&filter=(([Inactive] is equal to false))";
+            var cartegraphUrl = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/CourtsClass?fields=Oid,CgShape,IDField,InactiveField,ParkField,CourtTypeField&filter=(([Inactive] is equal to false))";
             client.DefaultRequestHeaders.Clear ();
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue ("Basic", key);
@@ -260,6 +286,8 @@ namespace pghworks.Controllers {
                     assetType = "Court",
                     assetOID = item.Oid,
                     assetName = item.IDField,
+                    neighborhood = item.ParkField,
+                    misc = item.CourtTypeField,
                     shape = item.CgShape.ToObject<Shape> ()
                 };
                 AllAssets.Add (ta);
@@ -268,7 +296,7 @@ namespace pghworks.Controllers {
 
         public async Task getStreetsRecursively () {
             var offset = 0;
-            var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField,InactiveField&filter=(([Inactive] is equal to false))&limit=1000";
+            var url = "https://cgweb06.cartegraphoms.com/PittsburghPA/api/v1/Classes/cgPavementClass?fields=Oid,CgShape,StreetField,InactiveField,HOODRIGHTField&filter=(([Inactive] is equal to false))&limit=1000";
             await getStreets (url, offset);
         }
 
@@ -287,6 +315,7 @@ namespace pghworks.Controllers {
                         assetType = "Street",
                         assetOID = item.Oid,
                         assetName = item.StreetField,
+                        neighborhood = item.HOODRIGHTField,
                         shape = item.CgShape.ToObject<Shape> ()
                     };
                     AllAssets.Add (ta);

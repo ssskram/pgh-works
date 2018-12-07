@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "415f7c84f74bb8004e60"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1e934a1d2959f069edbc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6323,6 +6323,7 @@ var actionCreators = {
         })
             .then(function (response) { return response.json(); })
             .then(function (data) {
+            console.log(data);
             dispatch({ type: loadAssets, assets: data });
         });
     }; }
@@ -63397,12 +63398,13 @@ var AllAssets = (function (_super) {
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: src }))),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: padding15 },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, asset.assetType),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, asset.assetName)),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, asset.assetType),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
-                                    "Cartegraph ID: ",
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, asset.assetOID))),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, asset.neighborhood)),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, asset.street),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, asset.misc)),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-3', style: padding15 },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'hidden-sm hidden-xs' },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,

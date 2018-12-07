@@ -145,9 +145,11 @@ export class AllAssets extends React.Component<any, any> {
                         </div>
                         <div style={padding15}>
                             <div className='col-md-6'>
+                                <h5>{asset.assetType}</h5>
                                 <h3><b>{asset.assetName}</b></h3>
-                                <h4>{asset.assetType}</h4>
-                                <h4>Cartegraph ID: <b>{asset.assetOID}</b></h4>
+                                <h4><b>{asset.neighborhood}</b></h4>
+                                <h4>{asset.street}</h4>
+                                <h4>{asset.misc}</h4>
                             </div>
                             <div className='col-md-3' style={padding15}>
                                 <div className='hidden-sm hidden-xs'>

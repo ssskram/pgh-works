@@ -16,6 +16,9 @@ export interface AssetItem {
     assetOID: string
     assetName: string
     assetType: string
+    neighborhood: string
+    street: string
+    misc: string
     shape: Coords[]
 }
 
@@ -38,6 +41,7 @@ export const actionCreators = {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 dispatch({ type: loadAssets, assets: data });
             });
     }
