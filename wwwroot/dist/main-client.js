@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7c3fc5b63921f27e04a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2b1854ac2d88fe8857e2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63350,12 +63350,15 @@ var AllAssets = (function (_super) {
                     }, showCloseIcon: false, center: true },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_13__Filters_AssetTypeSelection__["a" /* default */], { receiveType: this.setAssetFilterType.bind(this), assetType: assetFilter }))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Assets "),
-                assetFilter),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Assets")),
+                assetFilter != '' &&
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setState({ assetFilter: '' }); }, className: 'btn btn-secondary' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { letterSpacing: '2px', fontSize: '1.2em' } }, assetFilter))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             assetFilter != '' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { assets: assets }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { assets: assets, redirect: this.getAssetLink.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             assets.length > 0 &&
@@ -63829,6 +63832,20 @@ var AssetMap = (function (_super) {
             center: { lat: 40.437470539681442, lng: -79.987124601795273 }
         });
     };
+    AssetMap.prototype.getAssetLink = function (props) {
+        if (props.assetType != 'Street') {
+            this.setState({
+                redirectLink: "/Asset/id=" + props.assetOID,
+                redirect: true
+            });
+        }
+        else {
+            this.setState({
+                redirectLink: "/Asset/street=" + props.assetName,
+                redirect: true
+            });
+        }
+    };
     AssetMap.prototype.render = function () {
         var _this = this;
         var _a = this.state, center = _a.center, zoom = _a.zoom, showInfowindow = _a.showInfowindow, selectedAsset = _a.selectedAsset, assets = _a.assets;
@@ -63852,7 +63869,7 @@ var AssetMap = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { maxWidth: '250px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, selectedAsset.assetType),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedAsset.assetName),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-success' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.props.redirect(selectedAsset); }, className: 'btn btn-success' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: 'asset-map' },

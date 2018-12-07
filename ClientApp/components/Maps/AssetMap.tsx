@@ -53,6 +53,20 @@ export default class AssetMap extends React.Component<any, any> {
         })
     }
 
+    getAssetLink(props) {
+        if (props.assetType != 'Street') {
+            this.setState({
+                redirectLink: "/Asset/id=" + props.assetOID,
+                redirect: true
+            })
+        } else {
+            this.setState({
+                redirectLink: "/Asset/street=" + props.assetName,
+                redirect: true
+            })
+        }
+    }
+
     render() {
         const {
             center,
@@ -99,7 +113,7 @@ export default class AssetMap extends React.Component<any, any> {
                         <div className='col-md-12 text-center' style={{ maxWidth: '250px' }}>
                             <h5>{selectedAsset.assetType}</h5>
                             <h4>{selectedAsset.assetName}</h4>
-                            <button className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
+                            <button onClick={() => this.props.redirect(selectedAsset)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </InfoWindow>
                 }

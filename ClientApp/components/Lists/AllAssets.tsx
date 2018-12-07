@@ -194,10 +194,21 @@ export class AllAssets extends React.Component<any, any> {
                         </div>
                     </Modal>
                 }
-                <h2><b>Assets </b>{assetFilter}</h2>
+                <div className='text-center'>
+                    <h2><b>Assets</b></h2>
+                    {assetFilter != '' &&
+                        <button
+                            onClick={() => this.setState({ assetFilter: '' })}
+                            className='btn btn-secondary'>
+                            <span style={{ letterSpacing: '2px', fontSize: '1.2em' }}>{assetFilter}</span>
+                        </button>
+                    }
+                </div>
                 <hr />
                 {assetFilter != '' &&
-                    <AssetMap assets={assets} />
+                    <AssetMap
+                        assets={assets}
+                        redirect={this.getAssetLink.bind(this)} />
                 }
                 <br />
                 <br />
