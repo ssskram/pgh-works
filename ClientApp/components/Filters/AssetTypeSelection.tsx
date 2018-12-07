@@ -1,46 +1,91 @@
 
 import * as React from 'react'
-import Select from '../FormElements/select'
-import { Helmet } from "react-helmet"
-
-const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
-
-const types = [
-    { value: 'Facility', label: 'Facility', name: 'assetType' },
-    { value: 'Project', label: 'Project', name: 'assetType' },
-    { value: 'Steps', label: 'Steps', name: 'assetType' },
-    { value: 'Retaining Wall', label: 'Retaining Wall', name: 'assetType' },
-    { value: 'Pool', label: 'Pool', name: 'assetType' },
-    { value: 'Playground', label: 'Playground', name: 'assetType' },
-    { value: 'Intersection', label: 'Intersection', name: 'assetType' },
-    { value: 'Bridge', label: 'Bridge', name: 'assetType' },
-    { value: 'Court', label: 'Court', name: 'assetType' },
-    { value: 'Playing Field', label: 'Playing Field', name: 'assetType' },
-    { value: 'Park', label: 'Park', name: 'assetType' },
-    { value: 'Street', label: 'Street', name: 'assetType' }
-]
+import getIcon from '../../functions/getAssetIcon'
 
 export default class SelectAssetType extends React.Component<any, any> {
+    
     public render() {
         const {
-            assetType,
             receiveType
         } = this.props
 
         return (
             <div>
-                <Helmet>
-                    <style>{dropdownStyle}</style>
-                </Helmet>
-                <div className='col-md-12'>
-                    <Select
-                        value={assetType}
-                        header='Select an asset type'
-                        placeholder='Select type'
-                        onChange={e => receiveType(e.value)}
-                        multi={false}
-                        options={types}
-                    />
+                <h3>Select asset type</h3>
+                <hr />
+                <div className='row col-md-12'>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Facility')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Facility')} /></span><br />
+                            Facility
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Project')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Project')} /></span><br />
+                            Project
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Steps')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Steps')} /></span><br />
+                            Steps
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Retaining Wall')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Retaining Wall')} /></span><br />
+                            Retaining Wall
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Pool')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Pool')} /></span><br />
+                            Pool/Spray Park
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Playground')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Playground')} /></span><br />
+                            Playground
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Intersection')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Intersection')} /></span><br />
+                            Intersection
+                        `</button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Bridge')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Bridge')} /></span><br />
+                            Bridge
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Court')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Court')} /></span><br />
+                            Court
+                        </button>
+                    </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Playing Field')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Playing Field')} /></span><br />
+                            Playing Field
+                        </button>
+                    </div>
+                        <div className='col-md-4 text-center'>
+                            <button onClick={() => receiveType('Street')} className='btn btn-assetType'>
+                                <span><img src={getIcon('Street')} /></span><br />
+                                Street Segment
+                        </button>
+                        </div>
+                    <div className='col-md-4 text-center'>
+                        <button onClick={() => receiveType('Park')} className='btn btn-assetType'>
+                            <span><img src={getIcon('Park')} /></span><br />
+                            Park
+                        </button>
+                    </div>
                 </div>
             </div>
         )

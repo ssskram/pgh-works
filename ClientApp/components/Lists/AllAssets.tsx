@@ -112,14 +112,6 @@ export class AllAssets extends React.Component<any, any> {
         });
     }
 
-    receiveFilteredAssets(assets) {
-        this.setState({
-            onFilter: true
-        }, function (this) {
-            this.setAssets(assets)
-        })
-    }
-
     setAssetFilterType(type) {
         this.setState({ assetFilter: type }, function (this) {
             this.setAssets(this.props.assets)
@@ -130,7 +122,6 @@ export class AllAssets extends React.Component<any, any> {
         const {
             assetFilter,
             assets,
-            onFilter,
             redirectLink,
             redirect,
             currentPage
@@ -170,7 +161,7 @@ export class AllAssets extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                {this.props.assets.length == 0 && onFilter == false &&
+                {this.props.assets.length == 0 &&
                     <Spinner
                         thirdNotice='...you can blame Cartegraph, if you would like...'
                         secondNotice='...sorry, this one takes a while...'
@@ -227,7 +218,7 @@ export class AllAssets extends React.Component<any, any> {
                         <br />
                     </div>
                 }
-                {assets.length == 0 && onFilter == true &&
+                {assets.length == 0 && assetFilter != '' &&
                     <div className='col-md-12' style={{ margin: '20px 0px' }}>
                         <div className='text-center alert alert-info'>
                             <h2 style={emptyNotice}>No assets matching those criteria</h2>
