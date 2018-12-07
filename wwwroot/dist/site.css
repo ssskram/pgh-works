@@ -859,6 +859,11 @@ td {
     width: 100%;
 }
 
+#asset-map {
+    height: 500px;
+    width: 100%;
+}
+
 #project-thumbnail {
     height: 150px;
     width: 100%;

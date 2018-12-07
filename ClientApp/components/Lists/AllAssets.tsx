@@ -9,9 +9,11 @@ import * as Assets from '../../store/GETS/taggableAssets'
 import * as Tags from '../../store/tags'
 import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
-import AssetFilter from './../Filters/AssetFilter'
 import Spinner from '../Utilities/Spinner'
+import Modal from 'react-responsive-modal'
 import removeDuplicates from './../../functions/removeDuplicates'
+import AssetMap from './../Maps/AssetMap'
+import AssetTypeSelection from '../Filters/AssetTypeSelection'
 
 const padding15 = {
     padding: '15px'
@@ -25,11 +27,12 @@ export class AllAssets extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
+            assetFilter: '',
             assets: [],
+            modalIsOpen: false,
             currentPage: 1,
             redirectLink: '',
             redirect: false,
-            onFilter: false
         }
     }
 
@@ -43,22 +46,24 @@ export class AllAssets extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps && this.state.onFilter == false) {
+        if (this.props != nextProps) {
             this.setAssets(nextProps.assets)
         }
     }
 
     setAssets(assets) {
-        // filter out duplicate streets
-        var uniqueAssetNames = removeDuplicates(assets, "assetName")
-        uniqueAssetNames.forEach(item => {
-            item.countReferences = this.returnCountTags(item)
-        })
-        this.setState({
-            assets: uniqueAssetNames.filter(asset => asset.assetName != '').sort(function (a, b) {
-                return b.countReferences - a.countReferences
+        if (this.state.assetFilter != '') {
+            // filter out duplicate streets
+            var uniqueAssetNames = removeDuplicates(assets, "assetName").filter(asset => asset.assetType == this.state.assetFilter)
+            uniqueAssetNames.forEach(item => {
+                item.countReferences = this.returnCountTags(item)
             })
-        })
+            this.setState({
+                assets: uniqueAssetNames.filter(asset => asset.assetName != '').sort(function (a, b) {
+                    return b.countReferences - a.countReferences
+                })
+            })
+        }
     }
 
     getAssetLink(props) {
@@ -115,8 +120,15 @@ export class AllAssets extends React.Component<any, any> {
         })
     }
 
+    setAssetFilterType(type) {
+        this.setState({ assetFilter: type }, function (this) {
+            this.setAssets(this.props.assets)
+        })
+    }
+
     public render() {
         const {
+            assetFilter,
             assets,
             onFilter,
             redirectLink,
@@ -158,21 +170,37 @@ export class AllAssets extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                {assets.length == 0 && onFilter == false &&
+                {this.props.assets.length == 0 && onFilter == false &&
                     <Spinner
                         thirdNotice='...you can blame Cartegraph, if you would like...'
                         secondNotice='...sorry, this one takes a while...'
                         firstNotice='...loading the assets...'
                     />
                 }
-                <h2>
-                    Assets
-                    <span style={{ marginTop: '-15px' }} className='pull-right'>
-                        <AssetFilter
-                            returnFiltered={this.receiveFilteredAssets.bind(this)} />
-                    </span>
-                </h2>
+                {this.props.assets.length > 0 && assetFilter == '' &&
+                    <Modal
+                        open={assetFilter == ''}
+                        onClose={() => { }}
+                        classNames={{
+                            overlay: 'custom-overlay',
+                            modal: 'custom-modal'
+                        }}
+                        showCloseIcon={false}
+                        center>
+                        <div>
+                            <AssetTypeSelection
+                                receiveType={this.setAssetFilterType.bind(this)}
+                                assetType={assetFilter} />
+                        </div>
+                    </Modal>
+                }
+                <h2><b>Assets </b>{assetFilter}</h2>
                 <hr />
+                {assetFilter != '' &&
+                    <AssetMap assets={assets} />
+                }
+                <br />
+                <br />
                 {assets.length > 0 &&
                     <div className='row'>
                         {renderItems}

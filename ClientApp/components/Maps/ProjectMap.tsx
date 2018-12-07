@@ -32,9 +32,11 @@ export default class ProjectMap extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            center: setCenter(nextProps.shape.points)
-        })
+        if (nextProps.shape.points) {
+            this.setState({
+                center: setCenter(nextProps.shape.points)
+            })
+        }
     }
 
     render() {
