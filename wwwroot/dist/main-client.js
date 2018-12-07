@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b4f08965548868028cc6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "162a2500f9aa82f8a813"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66011,7 +66011,7 @@ var AllActivity = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '20px' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "What kind of activity?")),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Any updates, gripes, developments, or musings deemed relevant to the project, in 280 characters or less"),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Any updates, gripes, developments, or musings deemed relevant to the project, in 180 characters or less"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Who adds activity?")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Project members and project managers"),
@@ -66186,7 +66186,7 @@ var MainApp = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Report up, painlessly")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Because really...what can't be communicated in 280 characters or less?")))));
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Because really...what can't be communicated in 180 characters or less?")))));
     };
     return MainApp;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

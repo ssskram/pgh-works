@@ -52,7 +52,7 @@ export default class MainApp extends React.Component<any, any> {
                     </div>
                     <div className='col-md-10'>
                         <h4><b>Report up, painlessly</b></h4>
-                        <h5>Because really...what can't be communicated in 280 characters or less?</h5>
+                        <h5>Because really...what can't be communicated in 180 characters or less?</h5>
                     </div>
                 </div>
             </div>
