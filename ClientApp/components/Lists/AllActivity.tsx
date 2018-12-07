@@ -109,16 +109,14 @@ export class AllActivity extends React.Component<any, any> {
         const renderItems = currentItems.map((activity, index) => {
             return <div className='col-md-12' key={index}>
                 <div className='panel panel-button'>
-                    <div onClick={() => this.getParentLink(activity)} className='panel-body text-center'>
-                        <div>
-                            <div className='col-md-8 enlargeOnHover' style={padding}>
-                                <h3 className='panel-blue-font'>"{activity.activity}"</h3>
-                            </div>
-                            <div className='col-md-4'>
-                                <h4 className='ellipsis'><b>#{this.getParentName(activity)}</b></h4>
-                                <h4>{activity.user}</h4>
-                                <h4>{activity.date}</h4>
-                            </div>
+                    <div onClick={() => this.getParentLink(activity)}  style={padding} className='panel-body text-center'>
+                        <div className='col-md-8 enlargeOnHover'>
+                            <h4 className='panel-blue-font'>"{activity.activity}"</h4>
+                            <h5 className='ellipsis' style={padding}><b>#{this.getParentName(activity)}</b></h5>
+                        </div>
+                        <div className='col-md-4'>
+                            <h4>{activity.user}</h4>
+                            <h5>{activity.date}</h5>
                         </div>
                     </div>
                 </div>

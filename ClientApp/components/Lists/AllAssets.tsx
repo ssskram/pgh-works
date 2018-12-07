@@ -12,7 +12,6 @@ import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import AssetFilter from './../Filters/AssetFilter'
 import Spinner from '../Utilities/Spinner'
 import removeDuplicates from './../../functions/removeDuplicates'
-import returnAssetIcon from './../../functions/getAssetIcon'
 
 const padding15 = {
     padding: '15px'
@@ -132,37 +131,27 @@ export class AllAssets extends React.Component<any, any> {
         const currentItems = returnCurrentItems(assets, currentPage)
         const pageNumbers = returnPageNumber(assets)
         const renderItems = currentItems.map((asset, index) => {
-            const src = returnAssetIcon(asset.assetType)
-            return <div className='col-md-12' key={index}>
-                <div className='panel panel-button'>
-                    <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center'>
-                        <div className='col-md-3'>
-                            <div className='panel-img-container'>
-                                <span className='panel-img-helper'>
-                                </span>
-                                <img src={src}></img>
-                            </div>
-                        </div>
-                        <div style={padding15}>
-                            <div className='col-md-6'>
-                                <h5>{asset.assetType}</h5>
-                                <h3><b>{asset.assetName}</b></h3>
-                                <h4><b>{asset.neighborhood}</b></h4>
-                                <h4>{asset.street}</h4>
-                                <h4>{asset.misc}</h4>
-                            </div>
-                            <div className='col-md-3' style={padding15}>
-                                <div className='hidden-sm hidden-xs'>
-                                    <h3><b>{asset.countReferences}</b></h3>
-                                    <h4>Reference{asset.countReferences != 1 && 's'}</h4>
-                                </div>
-                                <div className='hidden-md hidden-lg hidden-xl'>
+            const clearfix = index & 1 && index != 0
+            return <div key={index}>
+                <div className='col-xs-12 col-sm-6'>
+                    <div className='panel panel-button'>
+                        <div onClick={() => this.getAssetLink(asset)} className='panel-body text-center'>
+                            <div style={padding15}>
+                                <div className='col-md-12'>
+                                    <h5>{asset.assetType}</h5>
+                                    <h3><b>{asset.assetName}</b></h3>
+                                    <h4><b>{asset.neighborhood}</b></h4>
+                                    <h4>{asset.street}</h4>
+                                    <h4>{asset.misc}</h4>
                                     <h4>Reference{asset.countReferences != 1 && 's'}: <b>{asset.countReferences}</b></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {clearfix == true &&
+                    <div className="clearfix"></div>
+                }
             </div>
         })
 

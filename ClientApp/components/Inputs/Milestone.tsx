@@ -102,7 +102,7 @@ export class MilestoneInputs extends React.Component<any, any> {
 
         return (
             <div>
-                <h3>New milestone</h3>
+                <h3>Milestone</h3>
                 <hr />
                 <div className='col-md-12'>
                     <Input
