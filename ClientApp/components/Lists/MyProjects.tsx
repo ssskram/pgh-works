@@ -97,6 +97,9 @@ export class MyProjects extends React.Component<any, any> {
                                 <div className='col-md-12' style={{ padding: '15px' }}>
                                     <MapThumbnail shape={project.shape.points} />
                                     <h2><b>{project.projectName}</b></h2>
+                                    {project.projectDescription &&
+                                        <h3 style={linePadding}>"{project.projectDescription}"</h3>
+                                    }
                                     {project.actualStartDate && project.actualEndDate &&
                                         <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
                                     }

@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import RightArrow from '../Utilities/CarouselRight'
 import LeftArrow from '../Utilities/CarouselLeft'
 
-export default class ProjectCard extends React.Component<any, any> {
+export default class ProjectSlider extends React.Component<any, any> {
 
     componentDidMount() {
         window.scrollTo(0, 0)

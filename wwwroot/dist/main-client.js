@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8b7ec2b39138b22fa921"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "415f7c84f74bb8004e60"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60205,103 +60205,6 @@ var PhaseCard = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick__ = __webpack_require__(364);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_slick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__ = __webpack_require__(355);
-// carousel on project page
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-
-
-
-
-var ProjectCard = (function (_super) {
-    __extends(ProjectCard, _super);
-    function ProjectCard() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProjectCard.prototype.componentDidMount = function () {
-        window.scrollTo(0, 0);
-    };
-    ProjectCard.prototype.render = function () {
-        var _a = this.props.project, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes;
-        var settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            nextArrow: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__["a" /* default */], null),
-            prevArrow: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__["a" /* default */], null)
-        };
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row projectCard' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_slick___default.a, __assign({}, settings),
-                    projectDescription &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDescription)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project status")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectStatus)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Department")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDepartment)),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project manager")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectManager)),
-                    projectMembers &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project members")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectMembers)),
-                    notes &&
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Notes")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, notes)))),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
-    };
-    return ProjectCard;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-/* harmony default export */ __webpack_exports__["a"] = (ProjectCard);
-
-
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectCard.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectCard.tsx"); } } })();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
-
-/***/ }),
-/* 646 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* unused harmony export PhaseCard */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
@@ -60377,6 +60280,103 @@ var PhaseCard = (function (_super) {
 
 
  ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectPhaseCard.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectPhaseCard.tsx"); } } })();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
+
+/***/ }),
+/* 646 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_slick__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__ = __webpack_require__(355);
+// carousel on project page
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+
+
+
+var ProjectSlider = (function (_super) {
+    __extends(ProjectSlider, _super);
+    function ProjectSlider() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ProjectSlider.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
+    };
+    ProjectSlider.prototype.render = function () {
+        var _a = this.props.project, projectManager = _a.projectManager, projectMembers = _a.projectMembers, projectDepartment = _a.projectDepartment, projectDescription = _a.projectDescription, projectStatus = _a.projectStatus, notes = _a.notes;
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            nextArrow: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Utilities_CarouselRight__["a" /* default */], null),
+            prevArrow: __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_CarouselLeft__["a" /* default */], null)
+        };
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row projectCard' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_slick___default.a, __assign({}, settings),
+                    projectDescription &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDescription)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project status")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectStatus)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Department")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDepartment)),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project manager")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectManager)),
+                    projectMembers &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project members")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectMembers)),
+                    notes &&
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Notes")),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, notes)))),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
+    };
+    return ProjectSlider;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+/* harmony default export */ __webpack_exports__["a"] = (ProjectSlider);
+
+
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectSlider.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/ProjectSlider.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
@@ -63567,6 +63567,11 @@ var AllProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
+                                    project.projectDescription &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: linePadding },
+                                            "\"",
+                                            project.projectDescription,
+                                            "\""),
                                     project.actualStartDate && project.actualEndDate &&
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
@@ -63750,6 +63755,11 @@ var MyProjects = (function (_super) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Maps_MapThumbnail__["a" /* default */], { shape: project.shape.points }),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, project.projectName)),
+                                    project.projectDescription &&
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: linePadding },
+                                            "\"",
+                                            project.projectDescription,
+                                            "\""),
                                     project.actualStartDate && project.actualEndDate &&
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { style: linePadding },
                                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null,
@@ -65510,7 +65520,7 @@ var SubPhases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_phases__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_responsive_modal__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Inputs_Phase_Phase__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Cards_ProjectPhaseCard__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Cards_ProjectPhaseCard__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Timeline_Timeline__ = __webpack_require__(95);
 // returns all phases per project
 // parent of ProjectPhaseCard.tsx
@@ -65682,7 +65692,7 @@ var Phases = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Tags__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Cards_ProjectCard__ = __webpack_require__(645);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Cards_ProjectSlider__ = __webpack_require__(646);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_uuid__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_uuid__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__Timeline_ProjectTimeline__ = __webpack_require__(698);
@@ -65895,7 +65905,7 @@ var Project = (function (_super) {
             spinner == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Cards_ProjectCard__["a" /* default */], { project: this.state })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Cards_ProjectSlider__["a" /* default */], { project: this.state })),
                     expectedStartDate && expectedEndDate &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_17__Timeline_ProjectTimeline__["a" /* default */], { project: this.state })),
