@@ -9,8 +9,8 @@ export default class NewShape extends React.Component<any, any> {
     public render() {
 
         return (
-            <div className='text-center'>
-                <h3>Use the polygon tool to outline the location</h3>
+            <div>
+                <h3 className='text-center'>Use the polygon tool to outline the location</h3>
                 <hr/>
                 <Map passShape={this.props.passShape}/>
             </div>
