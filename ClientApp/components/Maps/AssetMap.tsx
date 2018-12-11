@@ -31,8 +31,13 @@ export default class AssetMap extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
+        this.closeWindow()
         this.setState({
             assets: nextProps.assets
+        }, function (this) {
+            if (this.state.assets.length == 1) {
+                this.polygonSelection(this.state.assets[0])
+            }
         })
     }
 

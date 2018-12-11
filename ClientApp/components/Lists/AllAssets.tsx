@@ -14,6 +14,7 @@ import Modal from 'react-responsive-modal'
 import removeDuplicates from './../../functions/removeDuplicates'
 import AssetMap from './../Maps/AssetMap'
 import AssetTypeSelection from '../Filters/AssetTypeSelection'
+import Select from '../FormElements/select'
 
 const padding15 = {
     padding: '15px'
@@ -28,6 +29,8 @@ export class AllAssets extends React.Component<any, any> {
         super()
         this.state = {
             assetFilter: '',
+            assetDropdown: [],
+            assetType: '',
             assets: [],
             modalIsOpen: false,
             currentPage: 1,
@@ -46,21 +49,30 @@ export class AllAssets extends React.Component<any, any> {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props != nextProps) {
+        if (this.props != nextProps && this.state.assetFilter == '') {
             this.setAssets(nextProps.assets)
         }
     }
 
     setAssets(assets) {
-        if (this.state.assetFilter != '') {
+        if (this.state.assetType != '') {
             // filter out duplicate streets
-            var uniqueAssetNames = removeDuplicates(assets, "assetName").filter(asset => asset.assetType == this.state.assetFilter)
+            var uniqueAssetNames = removeDuplicates(assets, "assetName").filter(asset => asset.assetType == this.state.assetType)
             uniqueAssetNames.forEach(item => {
                 item.countReferences = this.returnCountTags(item)
             })
             this.setState({
                 assets: uniqueAssetNames.filter(asset => asset.assetName != '').sort(function (a, b) {
                     return b.countReferences - a.countReferences
+                })
+            }, function (this) {
+                let selects = [] as any
+                this.state.assets.forEach(asset => {
+                    const select = { value: asset.assetName, label: asset.assetName, name: 'assetFilter' }
+                    selects.push(select)
+                })
+                this.setState({
+                    assetDropdown: selects
                 })
             })
         }
@@ -112,15 +124,30 @@ export class AllAssets extends React.Component<any, any> {
         });
     }
 
-    setAssetFilterType(type) {
-        this.setState({ assetFilter: type }, function (this) {
+    setAssetType(type) {
+        this.setState({ assetType: type }, function (this) {
             this.setAssets(this.props.assets)
         })
+    }
+
+    filter(event) {
+        this.setState({ [event.name]: event.value });
+        const asset = this.state.assets.filter(asset => asset.assetName == event.value)
+        this.setState({ assets: asset })
+    }
+
+    clearFilter() {
+        this.setState({
+            assetFilter: ''
+        })
+        this.setAssets(this.props.assets)
     }
 
     public render() {
         const {
             assetFilter,
+            assetType,
+            assetDropdown,
             assets,
             redirectLink,
             redirect,
@@ -168,9 +195,9 @@ export class AllAssets extends React.Component<any, any> {
                         firstNotice='...loading the assets...'
                     />
                 }
-                {this.props.assets.length > 0 && assetFilter == '' &&
+                {this.props.assets.length > 0 && assetType == '' &&
                     <Modal
-                        open={assetFilter == ''}
+                        open={assetType == ''}
                         onClose={() => { }}
                         classNames={{
                             overlay: 'custom-overlay',
@@ -180,23 +207,41 @@ export class AllAssets extends React.Component<any, any> {
                         center>
                         <div>
                             <AssetTypeSelection
-                                receiveType={this.setAssetFilterType.bind(this)}
-                                assetType={assetFilter} />
+                                receiveType={this.setAssetType.bind(this)}
+                            />
                         </div>
                     </Modal>
                 }
                 <div className='text-center'>
                     <h2><b>Assets</b></h2>
-                    {assetFilter != '' &&
+                    {assetType != '' &&
                         <button
-                            onClick={() => this.setState({ assetFilter: '' })}
+                            onClick={() => this.setState({ assetType: '' })}
                             className='btn btn-secondary'>
-                            <span style={{ letterSpacing: '2px', fontSize: '1.2em' }}>{assetFilter}</span>
+                            <span style={{ letterSpacing: '2px', fontSize: '1.2em' }}>{assetType}</span>
                         </button>
                     }
                 </div>
                 <hr />
-                {assetFilter != '' && assetFilter != 'Street' &&
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <Select
+                            value={assetFilter}
+                            name="assetFilter"
+                            header={"Search for " + assetType}
+                            placeholder='Search by name...'
+                            onChange={this.filter.bind(this)}
+                            multi={false}
+                            options={assetDropdown}
+                        />
+                        {assetFilter != '' &&
+                            <div className='text-center'>
+                                <button style={{ width: '80%', margin: '0 auto' }} onClick={this.clearFilter.bind(this)} className='btn btn-warning'>Clear</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                {assetType != '' && assetType != 'Street' &&
                     <AssetMap
                         assets={assets}
                         redirect={this.getAssetLink.bind(this)} />
@@ -218,7 +263,7 @@ export class AllAssets extends React.Component<any, any> {
                         <br />
                     </div>
                 }
-                {assets.length == 0 && assetFilter != '' &&
+                {assets.length == 0 && assetType != '' &&
                     <div className='col-md-12' style={{ margin: '20px 0px' }}>
                         <div className='text-center alert alert-info'>
                             <h2 style={emptyNotice}>No assets matching those criteria</h2>
