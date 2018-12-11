@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "aa18fd5dd97c52703348"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7d2678f15c3ad65e0605"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63307,6 +63307,9 @@ var AllActivity = (function (_super) {
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12', key: index },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'panel panel-button' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { onClick: function () { return _this.getParentLink(activity); }, style: padding, className: 'panel-body text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.user),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, activity.date)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-8 enlargeOnHover' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", { className: 'panel-blue-font' },
                                 "\"",
@@ -63315,10 +63318,7 @@ var AllActivity = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", { className: 'ellipsis', style: padding },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null,
                                     "#",
-                                    _this.getParentName(activity)))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, activity.user),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, activity.date)))));
+                                    _this.getParentName(activity)))))));
         });
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
@@ -66447,8 +66447,7 @@ var report = __webpack_require__(782);
 var connections = __webpack_require__(774);
 var imgSize = {
     height: '50px',
-    margin: '10px 150px 10px 25px !important',
-    marginBottom: '-60px'
+    margin: '10px 150px 10px 25px !important'
 };
 var MainApp = (function (_super) {
     __extends(MainApp, _super);
@@ -66460,31 +66459,31 @@ var MainApp = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, "Welcome to PGH Works"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { textAlign: 'left', marginTop: '10px' } },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-2' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' }, className: 'row text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: consolidate })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Consolidate project data")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "A single source of truth for high level project details & records"))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-2' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' }, className: 'row text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: timeline })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Visualize in time")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "See where, when, and how work overlaps in time"))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-2' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' }, className: 'row text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: connections })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Establish connections")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Define and explore the history of work upon City assets"))),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-2' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' }, className: 'row text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: imgSize, src: report })),
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-10' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Report up, painlessly")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, "Because really...what can't be communicated in 180 characters or less?")))));
