@@ -9,12 +9,12 @@ import handleOverlayComplete from './../../functions/handleOverlayComplete'
 import Autocomplete from '../FormElements/autocomplete'
 
 const mapStyle = require('./featurelessLight.json')
+const place = require('../../images/place.png')
 
 export default class PolygonGeneration extends React.Component<any, any> {
     constructor() {
         super()
         this.state = {
-            address: '',
             latlng: { lat: 40.437470539681442, lng: -79.987124601795273 },
             zoom: 13,
             marker: false
@@ -32,22 +32,20 @@ export default class PolygonGeneration extends React.Component<any, any> {
         this.props.passShape(handleOverlayComplete(evt))
     }
 
-    handleAutoselect(address, latlng) {
-        if (address == '') {
+    handleAutoselect(latlng) {
+        if (Object.keys(latlng).length == 0) {
             this.setState({
-                address: '',
                 latlng: { lat: 40.437470539681442, lng: -79.987124601795273 },
                 zoom: 13,
                 marker: false
             })
         } else {
-            this.setState({ address, latlng, zoom: 16, marker: true })
+            this.setState({ latlng, zoom: 17, marker: true })
         }
     }
 
     render() {
         const {
-            address,
             latlng,
             zoom,
             marker
@@ -85,6 +83,7 @@ export default class PolygonGeneration extends React.Component<any, any> {
                 {marker == true &&
                     <Marker
                         position={latlng}
+                        defaultIcon={place}
                     />
                 }
             </GoogleMap>

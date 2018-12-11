@@ -27,9 +27,8 @@ export default class PolygonGeneration extends React.Component<any, any> {
         this.setState({ address })
         await geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => this.setState({ latLng }))
+            .then(latLng => this.props.selectAddress(latLng))
             .catch(error => console.error(error))
-        this.props.selectAddress(this.state.address, this.state.latLng)
     }
 
     render() {
@@ -47,12 +46,12 @@ export default class PolygonGeneration extends React.Component<any, any> {
                     >
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div>
-                                <input type='search' style={{ margin: '0 auto', width: '80%' }}
+                                <input style={{ margin: '0 auto', width: '80%' }}
                                     {...getInputProps({
                                         placeholder: 'Search for an address...',
                                         className: 'form-control'
                                     })}
-                                />
+                                    type='search' />
                                 {suggestions.length > 0 &&
                                     <div className="autocomplete-dropdown-container">
                                         {suggestions.map(suggestion => {
