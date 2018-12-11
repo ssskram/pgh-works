@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7d2678f15c3ad65e0605"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "01ec30ae7fd730ebf3f9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31543,7 +31543,6 @@ var PhaseInputs = (function (_super) {
         var _a;
     };
     PhaseInputs.prototype.handleDate = function (date, name) {
-        console.log(date, name);
         if (date) {
             // check for valid span
             var valid = true;
@@ -31949,7 +31948,6 @@ var SubphaseInput = (function (_super) {
     SubphaseInput.prototype.handleStartDate = function (date) {
         if (date) {
             if (this.state.endDate) {
-                console.log('here');
                 if (date.isBefore(this.state.endDate, 'day')) {
                     this.setState({
                         startDate: __WEBPACK_IMPORTED_MODULE_10_moment__(date).format('MM/DD/YYYY'),
@@ -61117,7 +61115,7 @@ var SelectAssetType = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__functions_getAssetIcon__["a" /* default */])('Street') })),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        "Street Segment")),
+                        "Street")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return receiveType('Park'); }, className: 'btn btn-assetType' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
@@ -61897,9 +61895,6 @@ var ProjectDescription = (function (_super) {
         };
         return _this;
     }
-    ProjectDescription.prototype.componentDidMount = function () {
-        console.log(this.props.projects);
-    };
     ProjectDescription.prototype.handleChildChange = function (event) {
         if (event.target.name == 'projectName') {
             if (!this.props.projects.some(function (project) { return project.projectName.toLowerCase() == event.target.value.toLowerCase(); })) {
@@ -62909,7 +62904,7 @@ var SelectAssetType = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { src: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__functions_getAssetIcon__["a" /* default */])('Street') })),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                            "Street Segment")),
+                            "Street")),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-4 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.passType('Park'); }, className: 'btn btn-assetType' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
@@ -63548,7 +63543,7 @@ var AllAssets = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setState({ assetFilter: '' }); }, className: 'btn btn-secondary' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { letterSpacing: '2px', fontSize: '1.2em' } }, assetFilter))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
-            assetFilter != '' &&
+            assetFilter != '' && assetFilter != 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { assets: assets, redirect: this.getAssetLink.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

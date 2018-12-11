@@ -87,7 +87,6 @@ export class PhaseInputs extends React.Component<any, any> {
     }
 
     handleDate(date, name) {
-        console.log(date, name)
         if (date) {
             // check for valid span
             let valid = true

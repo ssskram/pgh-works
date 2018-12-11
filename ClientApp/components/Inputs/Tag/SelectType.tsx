@@ -15,7 +15,7 @@ export class SelectAssetType extends React.Component<any, any> {
     constructor() {
         super()
     }
-    
+
     passType(type) {
         this.props.receiveType(type)
     }
@@ -97,7 +97,7 @@ export class SelectAssetType extends React.Component<any, any> {
                         <div className='col-md-4 text-center'>
                             <button onClick={() => this.passType('Street')} className='btn btn-assetType'>
                                 <span><img src={getIcon('Street')} /></span><br />
-                                Street Segment
+                                Street
                         </button>
                         </div>
                     }

@@ -79,7 +79,6 @@ export class SubphaseInput extends React.Component<any, any> {
     handleStartDate(date) {
         if (date) {
             if (this.state.endDate) {
-                console.log('here')
                 if (date.isBefore(this.state.endDate, 'day')) {
                     this.setState({
                         startDate: moment(date).format('MM/DD/YYYY'),

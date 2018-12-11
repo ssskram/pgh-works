@@ -196,7 +196,7 @@ export class AllAssets extends React.Component<any, any> {
                     }
                 </div>
                 <hr />
-                {assetFilter != '' &&
+                {assetFilter != '' && assetFilter != 'Street' &&
                     <AssetMap
                         assets={assets}
                         redirect={this.getAssetLink.bind(this)} />

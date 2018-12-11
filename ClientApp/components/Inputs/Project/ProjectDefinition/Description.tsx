@@ -32,10 +32,6 @@ export default class ProjectDescription extends React.Component<any, any> {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props.projects)
-    }
-
     handleChildChange(event) {
         if (event.target.name == 'projectName') {
             if (!this.props.projects.some(project => project.projectName.toLowerCase() == event.target.value.toLowerCase())) {

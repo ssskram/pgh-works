@@ -77,7 +77,7 @@ export default class SelectAssetType extends React.Component<any, any> {
                         <div className='col-md-4 text-center'>
                             <button onClick={() => receiveType('Street')} className='btn btn-assetType'>
                                 <span><img src={getIcon('Street')} /></span><br />
-                                Street Segment
+                                Street
                         </button>
                         </div>
                     <div className='col-md-4 text-center'>
