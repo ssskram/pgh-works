@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Assets from '../../../store/GETS/taggableAssets'
 import * as TagStore from '../../../store/tags'
-import Input from '../../FormElements/input'
+import Select from '../../FormElements/select'
 import SelectionMap from '../../Maps/ImportShapes'
 import { StreetSelection } from './StreetSelection'
 
@@ -18,6 +18,7 @@ export class SelectAsset extends React.Component<any, any> {
         this.state = {
             search: '',
             assets: [],
+            assetDropdown: [],
             showMap: true,
             grabby: false,
             streetName: ''
@@ -30,15 +31,23 @@ export class SelectAsset extends React.Component<any, any> {
                 showMap: false
             })
         } else {
+            // save list of assets to dropdown
+            const assets = this.props.assets.filter(asset => asset.assetType == this.props.assetType)
+            const assetSelects = [] as any
+            assets.forEach(asset => {
+                const s = { value: asset.assetName, label: asset.assetName, name: 'search' }
+                assetSelects.push(s)
+            })
             this.setState({
-                assets: this.props.assets.filter(asset => asset.assetType == this.props.assetType)
+                assets: assets,
+                assetDropdown: assetSelects
             })
         }
     }
 
-    handleChildChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
-        this.filter(event.target.value)
+    handleChildSelect(event) {
+        this.setState({ [event.name]: event.value })
+        this.filter(event.value)
     }
 
     filter(value) {
@@ -72,6 +81,7 @@ export class SelectAsset extends React.Component<any, any> {
 
         const {
             assets,
+            assetDropdown,
             search,
             showMap,
             grabby,
@@ -95,12 +105,14 @@ export class SelectAsset extends React.Component<any, any> {
                         </div>
                         {grabby != true &&
                             <div className='col-md-12'>
-                                <Input
+                                <Select
                                     value={search}
                                     name="search"
                                     header=""
                                     placeholder={searchPlaceholder}
-                                    callback={this.handleChildChange.bind(this)}
+                                    onChange={this.handleChildSelect.bind(this)}
+                                    multi={false}
+                                    options={assetDropdown}
                                 />
                             </div>
                         }
