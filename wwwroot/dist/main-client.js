@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7f3b42f814195e65a218"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5153ba3423e86664b0a8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63573,7 +63573,7 @@ var AllAssets = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_14__FormElements_select__["a" /* default */], { value: assetFilter, name: "assetFilter", header: "Search for " + assetType, placeholder: 'Search by name...', onChange: this.filter.bind(this), multi: false, options: assetDropdown }),
                     assetFilter != '' &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { width: '80%', margin: '0 auto' }, onClick: this.clearFilter.bind(this), className: 'btn btn-warning' }, "Clear")))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { width: '250px', margin: '0 auto' }, onClick: this.clearFilter.bind(this), className: 'btn btn-warning' }, "Clear")))),
             assetType != '' && assetType != 'Street' &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { assets: assets, redirect: this.getAssetLink.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),

@@ -236,7 +236,7 @@ export class AllAssets extends React.Component<any, any> {
                         />
                         {assetFilter != '' &&
                             <div className='text-center'>
-                                <button style={{ width: '80%', margin: '0 auto' }} onClick={this.clearFilter.bind(this)} className='btn btn-warning'>Clear</button>
+                                <button style={{ width: '250px', margin: '0 auto' }} onClick={this.clearFilter.bind(this)} className='btn btn-warning'>Clear</button>
                             </div>
                         }
                     </div>
