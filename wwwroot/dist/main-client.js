@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5153ba3423e86664b0a8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c555fd0695b204e73cdb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6238,7 +6238,7 @@ var reducer = function (state, incomingAction) {
         case addProject:
             return __assign({}, state, { projects: state.projects.concat(action.item) });
         case updateProject:
-            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, notes: action.item.notes, shape: action.item.shape }) : project; }) });
+            return __assign({}, state, { projects: state.projects.map(function (project) { return project.projectID === action.item.projectID ? __assign({}, project, { cartegraphID: action.item.cartegraphID, projectID: action.item.projectID, projectName: action.item.projectName, expectedStartDate: action.item.expectedStartDate, expectedEndDate: action.item.expectedEndDate, actualStartDate: action.item.actualStartDate, actualEndDate: action.item.actualEndDate, projectManager: action.item.projectManager, projectMembers: action.item.projectMembers, projectDepartment: action.item.projectDepartment, projectDescription: action.item.projectDescription, projectStatus: action.item.projectStatus, projectLocation: action.item.projectLocation, notes: action.item.notes, shape: action.item.shape }) : project; }) });
     }
     return state || unloadedState;
 };
@@ -63673,6 +63673,7 @@ var AllProjects = (function (_super) {
         }
         // ping server
         this.props.ping();
+        console.log(this.props);
     };
     AllProjects.prototype.componentWillReceiveProps = function (nextProps) {
         if (this.props != nextProps) {

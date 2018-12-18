@@ -27,6 +27,7 @@ export interface ProjectItem {
     projectDepartment: string
     projectDescription: string
     projectStatus: string
+    projectLocation: string
     notes: string
     shape: Shape
 }
@@ -94,12 +95,12 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
             return {
                 ...state,
                 projects: action.projects
-            };
+            }
         case addProject:
             return {
                 ...state,
                 projects: state.projects.concat(action.item)
-            };
+            }
         case updateProject:
             return {
                 ...state,
@@ -117,12 +118,13 @@ export const reducer: Reducer<ProjectState> = (state: ProjectState, incomingActi
                     projectDepartment: action.item.projectDepartment,
                     projectDescription: action.item.projectDescription,
                     projectStatus: action.item.projectStatus,
+                    projectLocation: action.item.projectLocation,
                     notes: action.item.notes,
                     shape: action.item.shape
                 } : project
                 )
-            };
+            }
     }
 
-    return state || unloadedState;
+    return state || unloadedState
 }
