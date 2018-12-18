@@ -41,6 +41,7 @@ namespace pghworks.Controllers {
                     phaseDescription = item.phaseDescriptionField,
                     phaseID = item.phaseIDField,
                     phaseName = item.phaseNameField,
+                    phaseType = item.phaseTypeField,
                     phaseStatus = item.phaseStatusField,
                     projectID = item.projectIDField
                 };
@@ -71,6 +72,7 @@ namespace pghworks.Controllers {
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
                 phaseStatusField = model.phaseStatus,
+                phaseTypeField = model.phaseType,
                 projectIDField = model.projectID
             };
             string cgLoad = JsonConvert.SerializeObject (cgModel);
@@ -122,6 +124,7 @@ namespace pghworks.Controllers {
                 phaseDescriptionField = model.phaseDescription,
                 phaseIDField = model.phaseID,
                 phaseNameField = model.phaseName,
+                phaseTypeField = model.phaseType,
                 phaseStatusField = model.phaseStatus,
                 projectIDField = model.projectID
             };

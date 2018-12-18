@@ -20,6 +20,7 @@ export interface PhaseItem {
     phaseID: string
     projectID: string
     phaseName: string
+    phaseType: string
     phaseDescription: string
     expectedStartDate: string
     expectedEndDate: string
@@ -111,6 +112,7 @@ export const reducer: Reducer<PhaseState> = (state: PhaseState, incomingAction: 
                     projectID: action.item.projectID,
                     phaseID: action.item.phaseID,
                     phaseName: action.item.phaseName,
+                    phaseType: action.item.phaseType,
                     expectedStartDate: action.item.expectedStartDate,
                     expectedEndDate: action.item.expectedEndDate,
                     actualStartDate: action.item.actualStartDate,

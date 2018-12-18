@@ -9,6 +9,7 @@ namespace pghworks.Models {
         public string phaseDescription { get; set; }
         public string phaseID { get; set; }
         public string phaseName { get; set; }
+        public string phaseType { get; set; }
         public string phaseStatus { get; set; }
         public string projectID { get; set; }
     }
@@ -23,6 +24,7 @@ namespace pghworks.Models {
         public string phaseDescriptionField { get; set; }
         public string phaseIDField { get; set; }
         public string phaseNameField { get; set; }
+        public string phaseTypeField { get; set; }
         public string phaseStatusField { get; set; }
         public string projectIDField { get; set; }
         public string PriorityField = "None";
