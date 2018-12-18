@@ -48,7 +48,7 @@ export default class Subphase extends React.Component<any, any> {
 
         let percentRemaining = 100 - subphase.percentComplete - 1
         const progressBackground = {
-            background: 'linear-gradient(to right, #ACD1EF ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, #DEF5DE ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
 
         return (

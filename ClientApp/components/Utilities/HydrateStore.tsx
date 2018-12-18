@@ -12,6 +12,7 @@ import * as TaggableAssets from '../../store/GETS/taggableAssets'
 import * as Personnel from '../../store/GETS/personnel'
 import * as SubPhases from '../../store/subphases'
 import * as Activity from '../../store/activity'
+import * as Tasks from '../../store/tasks'
 
 export class Hydrate extends React.Component<any, any> {
 
@@ -29,7 +30,12 @@ export class Hydrate extends React.Component<any, any> {
         props.loadTags()
         props.loadPersonnel()
         props.loadSubphases()
+        props.loadTasks()
         props.loadActivity()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
     }
 
     public render() {
@@ -46,7 +52,8 @@ export default connect(
         ...state.taggableAssets,
         ...state.personnel,
         ...state.subphases,
-        ...state.activity
+        ...state.activity,
+        ...state.tasks
     }),
     ({
         ...Projects.actionCreators,
@@ -56,6 +63,7 @@ export default connect(
         ...TaggableAssets.actionCreators,
         ...Personnel.actionCreators,
         ...SubPhases.actionCreators,
-        ...Activity.actionCreators
+        ...Activity.actionCreators,
+        ...Tasks.actionCreators
     })
   )(Hydrate as any) as typeof Hydrate

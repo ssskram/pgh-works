@@ -29,7 +29,7 @@ export class PhaseCard extends React.Component<any, any> {
         const percentComplete = phasePercentComplete(allMilestones, allSubphases)
         const percentRemaining = 100 - percentComplete - 1
         const progressBackground = {
-            background: 'linear-gradient(to right, #ACD1EF, ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, #DEF5DE, ' + percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
 
         const link = "/Phase/id=" + phase.phaseID
