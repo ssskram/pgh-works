@@ -25,8 +25,7 @@ import Timeline from '../../Timeline/PhaseTimeline'
 import DeletePhase from '../../DeleteConfirmations/DeletePhase'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
-
-const phaseImg = require('./../../../images/phaseGrey.png')
+import Tasks from './Tasks'
 
 const btnMargin = {
     margin: '25px',
@@ -210,6 +209,13 @@ export class Phase extends React.Component<any, any> {
                                 <Timeline phase={this.state} />
                             </div>
                         }
+                        <div style={marginBottom} className='col-md-12 row'>
+                            <Tasks
+                                canEdit={canEdit}
+                                phaseID={phaseID}
+                                projectID={projectID}
+                            />
+                        </div>
                         <div style={marginBottom} className='col-md-12 row'>
                             <Milestones
                                 canEdit={canEdit}
