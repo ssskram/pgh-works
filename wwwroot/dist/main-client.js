@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "49d8b6054d252dbd4a9e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a25ccc6da817d03ce5cc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8195,7 +8195,6 @@ var Hydrate = (function (_super) {
     Hydrate.prototype.componentDidMount = function () {
         var props = this.props;
         if (!props.assets) {
-            console.log('no assets!');
             props.loadTaggableAssets();
         }
         // load all stores
@@ -31798,6 +31797,8 @@ var ProjectInputs = (function (_super) {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { padding: '10px' } },
             !update &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center', style: { marginBottom: '-35px' } }, "Try to include special identifying information, such as a year"),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__FormElements_input__["a" /* default */], { value: projectName, name: "projectName", required: true, header: "Project name", placeholder: "Enter a name", callback: this.handleChildChange.bind(this) })),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__FormElements_select__["a" /* default */], { value: projectStatus, name: "projectStatus", header: 'Project status', placeholder: 'Select status(es)', onChange: this.handleChildSelect.bind(this), multi: false, required: true, options: statuses })),
@@ -63693,7 +63694,6 @@ var AllProjects = (function (_super) {
         }
         // ping server
         this.props.ping();
-        console.log(this.props);
     };
     AllProjects.prototype.componentWillReceiveProps = function (nextProps) {
         if (this.props != nextProps) {
@@ -64034,9 +64034,6 @@ var AssetMap = (function (_super) {
         };
         return _this;
     }
-    AssetMap.prototype.componentDidMount = function () {
-        console.log(this.props);
-    };
     AssetMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
         if (this.state.assets != nextState.assets) {
             return true;

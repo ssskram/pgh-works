@@ -9,7 +9,6 @@ import Input from '../../FormElements/input'
 import TextArea from '../../FormElements/textarea'
 import Select from '../../FormElements/select'
 import Datepicker from '../../FormElements/datepicker'
-import * as moment from 'moment'
 
 const statuses = [
     { value: 'Not started', label: 'Not started', name: 'projectStatus' },
@@ -139,6 +138,8 @@ export class ProjectInputs extends React.Component<any, any> {
             <div style={{ padding: '10px' }}>
                 {!update &&
                     <div className='col-md-12'>
+                        <br />
+                        <div className='text-center' style={{ marginBottom: '-35px' }}>Try to include special identifying information, such as a year</div>
                         <Input
                             value={projectName}
                             name="projectName"
