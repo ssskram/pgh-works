@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f0ca69179a299a4fa490"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "49d8b6054d252dbd4a9e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -63595,7 +63595,7 @@ var AllAssets = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { style: { width: '250px', margin: '0 auto' }, onClick: this.clearFilter.bind(this), className: 'btn btn-warning' }, "Clear")))),
             assetType != '' && assetType != 'Street' &&
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { assets: assets, redirect: this.getAssetLink.bind(this) }),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Maps_AssetMap__["a" /* default */], { clearFilter: this.clearFilter.bind(this), assets: assets, redirect: this.getAssetLink.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             assets.length > 0 &&
@@ -64034,6 +64034,9 @@ var AssetMap = (function (_super) {
         };
         return _this;
     }
+    AssetMap.prototype.componentDidMount = function () {
+        console.log(this.props);
+    };
     AssetMap.prototype.shouldComponentUpdate = function (nextProps, nextState) {
         if (this.state.assets != nextState.assets) {
             return true;
@@ -64102,7 +64105,7 @@ var AssetMap = (function (_super) {
                         }
                     }),
                 showInfowindow == true &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center, onCloseClick: _this.closeWindow.bind(_this) },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_google_maps__["InfoWindow"], { position: center },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center', style: { maxWidth: '250px' } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null, selectedAsset.assetType),
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null, selectedAsset.assetName),

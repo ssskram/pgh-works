@@ -21,6 +21,10 @@ export default class AssetMap extends React.Component<any, any> {
         }
     }
 
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
         if (this.state.assets != nextState.assets) {
             return true
@@ -56,6 +60,7 @@ export default class AssetMap extends React.Component<any, any> {
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 }
         })
+
     }
 
     getAssetLink(props) {
@@ -114,7 +119,7 @@ export default class AssetMap extends React.Component<any, any> {
                     })
                 }
                 {showInfowindow == true &&
-                    <InfoWindow position={center} onCloseClick={this.closeWindow.bind(this)}>
+                    <InfoWindow position={center}>
                         <div className='col-md-12 text-center' style={{ maxWidth: '250px' }}>
                             <h5>{selectedAsset.assetType}</h5>
                             <h4>{selectedAsset.assetName}</h4>
