@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "17e63e698c91875bb33b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0c38e5d00c4d58d9472b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31693,6 +31693,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 var statuses = [
+    { value: 'Not started', label: 'Not started', name: 'projectStatus' },
     { value: 'Programming', label: 'Programming', name: 'projectStatus' },
     { value: 'Design', label: 'Design', name: 'projectStatus' },
     { value: 'Construction', label: 'Construction', name: 'projectStatus' },

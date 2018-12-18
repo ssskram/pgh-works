@@ -12,6 +12,7 @@ import Datepicker from '../../FormElements/datepicker'
 import * as moment from 'moment'
 
 const statuses = [
+    { value: 'Not started', label: 'Not started', name: 'projectStatus' },
     { value: 'Programming', label: 'Programming', name: 'projectStatus' },
     { value: 'Design', label: 'Design', name: 'projectStatus' },
     { value: 'Construction', label: 'Construction', name: 'projectStatus' },
