@@ -8,6 +8,7 @@ import { ApplicationState } from '../../../store'
 import * as Phases from '../../../store/phases'
 import * as User from '../../../store/GETS/user'
 import TextArea from '../../FormElements/textarea'
+import Input from '../../FormElements/input'
 import Select from '../../FormElements/select'
 import Datepicker from '../../FormElements/datepicker'
 import { v1 as uuid } from 'uuid'
@@ -21,10 +22,10 @@ const statuses = [
 ]
 
 const types = [
-    { value: 'Programming', label: 'Programming', name: 'phaseName' },
-    { value: 'Design', label: 'Design', name: 'phaseName' },
-    { value: 'Construction', label: 'Construction', name: 'phaseName' },
-    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseName' }
+    { value: 'Programming', label: 'Programming', name: 'phaseType' },
+    { value: 'Design', label: 'Design', name: 'phaseType' },
+    { value: 'Construction', label: 'Construction', name: 'phaseType' },
+    { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
 ]
 
 export class PhaseInputs extends React.Component<any, any> {
@@ -40,6 +41,7 @@ export class PhaseInputs extends React.Component<any, any> {
             phaseID: '',
             cartegraphID: '',
             phaseName: '',
+            phaseType: '',
             expectedStartDate: '',
             expectedEndDate: '',
             actualStartDate: '',
@@ -63,6 +65,7 @@ export class PhaseInputs extends React.Component<any, any> {
                 phaseID: phase.phaseID,
                 cartegraphID: phase.cartegraphID,
                 phaseName: phase.phaseName,
+                phaseType: phase.phaseType,
                 expectedStartDate: phase.expectedStartDate,
                 expectedEndDate: phase.expectedEndDate,
                 actualStartDate: phase.actualStartDate,
@@ -145,6 +148,7 @@ export class PhaseInputs extends React.Component<any, any> {
             throwDateError,
             phaseID,
             phaseName,
+            phaseType,
             expectedStartDate,
             expectedEndDate,
             actualStartDate,
@@ -170,11 +174,22 @@ export class PhaseInputs extends React.Component<any, any> {
         return (
             <div>
                 <div className='col-md-12'>
-                    <Select
+                    <Input
                         value={phaseName}
                         name="phaseName"
-                        header='Phase name'
-                        placeholder='Select phase'
+                        required={true}
+                        header="Phase name"
+                        placeholder="Enter a name"
+                        callback={this.handleChildChange.bind(this)}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Select
+                        value={phaseType}
+                        name="phaseType"
+                        header='Phase type'
+                        placeholder='Select type'
                         onChange={this.handleChildSelect.bind(this)}
                         multi={false}
                         options={types}

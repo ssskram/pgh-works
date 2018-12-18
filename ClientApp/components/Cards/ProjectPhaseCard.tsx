@@ -41,6 +41,7 @@ export class PhaseCard extends React.Component<any, any> {
                         <Link to={link}>
                             <div className="panel-body text-center">
                                 <h3><b>{phase.phaseName}</b></h3>
+                                <h5>{phase.phaseType}</h5>
                                 <h4>{allMilestones.length} Milestone{allMilestones.length != 1 && 's'}</h4>
                                 <h4>{allSubphases.length} Subphase{allSubphases.length != 1 && 's'}</h4>
                             </div>
