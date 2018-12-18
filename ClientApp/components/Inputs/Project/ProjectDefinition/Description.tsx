@@ -27,6 +27,7 @@ export default class ProjectDescription extends React.Component<any, any> {
             projectMembers: '',
             projectDepartment: '',
             projectDescription: '',
+            projectLocationm: '',
             notes: '',
             throwNameError: false
         }
@@ -89,6 +90,7 @@ export default class ProjectDescription extends React.Component<any, any> {
             projectManager,
             projectStatus,
             projectDepartment,
+            projectLocation,
             throwNameError
         } = this.state
 

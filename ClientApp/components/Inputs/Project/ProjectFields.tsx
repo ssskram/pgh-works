@@ -124,6 +124,7 @@ export class ProjectInputs extends React.Component<any, any> {
             projectDepartment,
             projectDescription,
             projectStatus,
+            projectLocation,
             notes,
             update
         } = this.props.description
@@ -177,6 +178,17 @@ export class ProjectInputs extends React.Component<any, any> {
                         name="notes"
                         header="Notes"
                         placeholder="Enter any other relevant information"
+                        callback={this.handleChildChange.bind(this)}
+                    />
+                </div>
+
+                <div className='col-md-12'>
+                    <Input
+                        value={projectLocation}
+                        name="projectLocation"
+                        required={false}
+                        header="Location"
+                        placeholder="Room, floor, etc."
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>

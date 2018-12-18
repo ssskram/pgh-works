@@ -94,24 +94,26 @@ export class MyProjects extends React.Component<any, any> {
                     <div className='panel panel-button'>
                         <Link to={link}>
                             <div className='panel-body text-center'>
-                                <div className='col-md-12' style={{ padding: '15px' }}>
+                                <div className='col-md-12'>
                                     <MapThumbnail shape={project.shape.points} />
-                                    <h2><b>{project.projectName}</b></h2>
+                                    <h3 style={{ marginTop: '15px' }}><b>{project.projectName}</b></h3>
+                                    {project.projectLocation &&
+                                        <h5 style={linePadding}><i>{project.projectLocation}</i></h5>
+                                    }
                                     {project.projectDescription &&
                                         <h4 style={linePadding}>"{project.projectDescription}"</h4>
                                     }
                                     {project.actualStartDate && project.actualEndDate &&
-                                        <h4 style={linePadding}><i>{project.actualStartDate} - {project.actualEndDate}</i></h4>
+                                        < h5 style={linePadding}>{project.actualStartDate} - {project.actualEndDate}</h5>
                                     }
                                     {!project.actualStartDate && !project.actualEndDate &&
-                                        <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                        <h5 style={linePadding}>{project.expectedStartDate} - {project.expectedEndDate}</h5>
                                     }
                                     {!project.actualStartDate || !project.actualEndDate &&
-                                        <h4 style={linePadding}><i>{project.expectedStartDate} - {project.expectedEndDate}</i></h4>
+                                        <h5 style={linePadding}>{project.expectedStartDate} - {project.expectedEndDate}</h5>
                                     }
-                                    <h4 style={linePadding}>Status: <b>{project.projectStatus}</b></h4>
-                                    <h4 style={linePadding}>Department: <b>{project.projectDepartment}</b></h4>
-                                    <h4 style={linePadding}>PM: <b>{project.projectManager}</b></h4>
+                                    <h5 style={linePadding}>Status: <b>{project.projectStatus}</b></h5>
+                                    <h5 style={linePadding}>PM: <b>{project.projectManager}</b></h5>
                                 </div>
                             </div>
                         </Link>

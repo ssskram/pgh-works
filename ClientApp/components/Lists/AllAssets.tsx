@@ -188,14 +188,14 @@ export class AllAssets extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                {this.props.assets.length == 0 &&
+                {!this.props.assets &&
                     <Spinner
                         thirdNotice='...you can blame Cartegraph, if you would like...'
                         secondNotice='...sorry, this one takes a while...'
                         firstNotice='...loading the assets...'
                     />
                 }
-                {this.props.assets.length > 0 && assetType == '' &&
+                {this.props.assets && assetType == '' &&
                     <Modal
                         open={assetType == ''}
                         onClose={() => { }}

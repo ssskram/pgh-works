@@ -18,12 +18,16 @@ export class Hydrate extends React.Component<any, any> {
     componentDidMount() {
         const props = this.props
 
+        if (!props.assets) {
+            console.log('no assets!')
+            props.loadTaggableAssets()
+        }
+
         // load all stores
         props.loadProjects()
         props.loadPhases()
         props.loadMilestones()
         props.loadTags()
-        props.loadTaggableAssets()
         props.loadPersonnel()
         props.loadSubphases()
         props.loadActivity()

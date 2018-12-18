@@ -5,11 +5,11 @@ import { AppThunkAction } from './../'
 const loadAssets = 'loadAssets'
 
 const unloadedState: AssetState = {
-    assets: []
+    assets: undefined
 }
 
 export interface AssetState {
-    assets: AssetItem[]
+    assets: AssetItem[] | undefined
 }
 
 export interface AssetItem {
