@@ -19,7 +19,6 @@ export class Hydrate extends React.Component<any, any> {
         const props = this.props
 
         if (!props.assets) {
-            console.log('no assets!')
             props.loadTaggableAssets()
         }
 

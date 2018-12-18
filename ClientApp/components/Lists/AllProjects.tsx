@@ -39,7 +39,6 @@ export class AllProjects extends React.Component<any, any> {
         }
         // ping server
         this.props.ping()
-        console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps) {

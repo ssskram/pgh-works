@@ -21,10 +21,6 @@ export default class AssetMap extends React.Component<any, any> {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props)
-    }
-
     shouldComponentUpdate(nextProps, nextState) {
         if (this.state.assets != nextState.assets) {
             return true
