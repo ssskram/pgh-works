@@ -109,8 +109,8 @@ export class TaskInputs extends React.Component<any, any> {
                         value={taskName}
                         required={true}
                         name="taskName"
-                        header="Task name"
-                        placeholder="Enter a name"
+                        header="Task"
+                        placeholder="Enter a task"
                         callback={this.handleChildChange.bind(this)}
                     />
                 </div>

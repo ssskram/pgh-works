@@ -12,7 +12,7 @@ import TaskForm from '../../Inputs/Task'
 import * as moment from 'moment'
 import classnames from 'classnames'
 
-const tasksImg = require('./../../../images/milestoneGrey.png')
+const tasksImg = require('./../../../images/taskDark.png')
 
 const iconStyle = {
     marginRight: '15px',
@@ -182,11 +182,11 @@ export class Tasks extends React.Component<any, any> {
         let closedColumns = [] as any
         if (canEdit == true) {
             closedColumns = [{
-                Header: 'Name',
+                Header: 'Task',
                 accessor: 'taskName',
                 Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
             }, {
-                Header: 'Due date',
+                Header: 'Due',
                 accessor: 'dueDate',
                 Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
             }, {
@@ -204,11 +204,11 @@ export class Tasks extends React.Component<any, any> {
             }]
         } else {
             closedColumns = [{
-                Header: 'Name',
+                Header: 'Task',
                 accessor: 'taskName',
                 Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
             }, {
-                Header: 'Due date',
+                Header: 'Due',
                 accessor: 'dueDate',
                 Cell: props => <span style={{ textDecoration: 'line-through' }}>{props.value}</span>
             }, {
