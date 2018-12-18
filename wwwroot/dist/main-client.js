@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4652c4949f915debc491"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f0ca69179a299a4fa490"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -60210,7 +60210,7 @@ var PhaseCard = (function (_super) {
 /* harmony default export */ __webpack_exports__["a"] = (PhaseCard);
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/PhaseCard.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/PhaseCard.tsx"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/PhaseSlider.tsx"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/home/sskram/Applications/pgh-works/ClientApp/components/Cards/PhaseSlider.tsx"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3)(module)))
 
 /***/ }),
@@ -60458,13 +60458,18 @@ var Subphase = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.setDelete.bind(this), className: 'pull-right delete-btn' }, "X"),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "panel-body text-center" },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, subphase.subphaseName)),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        subphase.subphaseDescription != '' &&
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                                "\"",
+                                subphase.subphaseDescription,
+                                "\""),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null,
                             subphase.startDate,
                             " - ",
                             subphase.endDate),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h4", null,
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h5", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("i", null, subphase.subphaseStatus)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.openModal.bind(this), className: 'btn btn-success' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-info-sign' }))))),
@@ -65481,7 +65486,7 @@ var Milestones = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Utilities_Spinner__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_responsive_modal__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Inputs_Phase_Phase__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__ = __webpack_require__(644);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Cards_PhaseSlider__ = __webpack_require__(644);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Tags__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Milestones__ = __webpack_require__(684);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__SubPhases__ = __webpack_require__(686);
@@ -65679,7 +65684,7 @@ var Phase = (function (_super) {
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editPhase.bind(this), title: 'Update info', style: btnMargin, type: 'button', className: 'btn  btn-primary' }, "Edit"))),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseCard__["a" /* default */], { phase: this.state })),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11__Cards_PhaseSlider__["a" /* default */], { phase: this.state })),
                     expectedStartDate && expectedEndDate &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: marginBottom, className: 'col-md-12 row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_15__Timeline_PhaseTimeline__["a" /* default */], { phase: this.state })),
