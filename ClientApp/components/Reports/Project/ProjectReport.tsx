@@ -121,6 +121,13 @@ export class Project extends React.Component<any, any> {
         })
     }
 
+    addActivity() {
+        this.setState({
+            modalIsOpen: true,
+            edit: 'activity'
+        })
+    }
+
     closeModal() {
         this.setState({
             modalIsOpen: false,
@@ -211,6 +218,7 @@ export class Project extends React.Component<any, any> {
                                 <div>
                                     <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
                                     <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
+                                    <button className='btn btn-primary' onClick={this.addActivity.bind(this)}><b>Add activity</b></button>
                                 </div>
                             </div>
                         }
@@ -263,7 +271,6 @@ export class Project extends React.Component<any, any> {
                             />
                             <div className='row'>
                                 <div className='col-md-12 text-center'>
-                                    <button className='btn btn-primary' onClick={() => this.setState({ edit: 'activity' })}><b>Add activity</b></button>
                                     <button disabled={!isEnabled} className='btn btn-success' onClick={this.put.bind(this)}><b>Save</b></button>
                                 </div>
                             </div>

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c25a17217a3c934121a9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bcd91427653936417555"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -67613,6 +67613,12 @@ var Project = (function (_super) {
             edit: 'project'
         });
     };
+    Project.prototype.addActivity = function () {
+        this.setState({
+            modalIsOpen: true,
+            edit: 'activity'
+        });
+    };
     Project.prototype.closeModal = function () {
         this.setState({
             modalIsOpen: false,
@@ -67666,7 +67672,6 @@ var Project = (function (_super) {
         this.props.addTag(tagLoad);
     };
     Project.prototype.render = function () {
-        var _this = this;
         var _a = this.state, modalIsOpen = _a.modalIsOpen, edit = _a.edit, spinner = _a.spinner, canEdit = _a.canEdit, projectID = _a.projectID, projectName = _a.projectName, projectStatus = _a.projectStatus, shape = _a.shape, expectedStartDate = _a.expectedStartDate, expectedEndDate = _a.expectedEndDate;
         // validation
         var isEnabled = projectName != '' &&
@@ -67683,7 +67688,9 @@ var Project = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: 'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName, target: '_blank', style: btnMargin, className: 'btn btn-warning' }, "Documents"),
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' }, "Edit")))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: this.editProject.bind(this), style: btnMargin, title: 'Update info', type: 'button', className: 'btn  btn-primary' }, "Edit"),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-primary', onClick: this.addActivity.bind(this) },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Add activity"))))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_7__Maps_ProjectMap__["a" /* default */], { shape: shape }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             spinner == false &&
@@ -67706,8 +67713,6 @@ var Project = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12__Inputs_Project_ProjectFields__["a" /* default */], { description: this.state, handleInput: this.handleChildChange.bind(this), handleSelect: this.handleChildSelect.bind(this), handleMulti: this.handleMultiSelect.bind(this), handleDate: this.handleDate.bind(this) }),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn btn-primary', onClick: function () { return _this.setState({ edit: 'activity' }); } },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Add activity")),
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { disabled: !isEnabled, className: 'btn btn-success', onClick: this.put.bind(this) },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, "Save"))))),
                 edit == "activity" &&
