@@ -33,11 +33,7 @@ export class Hydrate extends React.Component<any, any> {
         props.loadTasks()
         props.loadActivity()
     }
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-    }
-
+    
     public render() {
         return null
     }
