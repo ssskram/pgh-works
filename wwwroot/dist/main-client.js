@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7cd445cf3ca831607b27"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c25a17217a3c934121a9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10731,7 +10731,8 @@ var Line = (function (_super) {
             groups: [],
             items: [],
             selectedItem: {},
-            investigate: false
+            investigate: false,
+            scroll: false
         };
         _this.redraw = _this.redraw.bind(_this);
         return _this;
@@ -10763,7 +10764,7 @@ var Line = (function (_super) {
     };
     Line.prototype.render = function () {
         var _this = this;
-        var _a = this.state, groups = _a.groups, items = _a.items, selectedItem = _a.selectedItem, investigate = _a.investigate;
+        var _a = this.state, groups = _a.groups, items = _a.items, selectedItem = _a.selectedItem, investigate = _a.investigate, scroll = _a.scroll;
         var timelineOptions = {
             width: '100%',
             stack: true,
@@ -10772,6 +10773,7 @@ var Line = (function (_super) {
             showCurrentTime: true,
             zoomMin: 1000000,
             orientation: 'top',
+            zoomable: scroll,
             format: {
                 minorLabels: {
                     minute: 'h:mma',
@@ -10780,6 +10782,7 @@ var Line = (function (_super) {
             }
         };
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { onClick: function () { return _this.setState({ scroll: !scroll }); }, style: { backgroundColor: '#383838', color: '#fff', marginTop: '-35px' }, className: 'btn btn-dark pull-right' }, scroll ? 'Disable zoom' : 'Enable zoom'),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_visjs_timeline___default.a, { options: timelineOptions, items: items, groups: groups, clickHandler: this.clickHandler.bind(this) }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_responsive_modal__["a" /* default */], { open: investigate, onClose: function () { return _this.setState({
                     investigate: false,

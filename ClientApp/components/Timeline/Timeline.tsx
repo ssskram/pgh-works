@@ -12,7 +12,8 @@ export default class Line extends React.Component<any, any> {
             groups: [],
             items: [],
             selectedItem: {},
-            investigate: false
+            investigate: false,
+            scroll: false
         }
         this.redraw = this.redraw.bind(this)
     }
@@ -51,7 +52,8 @@ export default class Line extends React.Component<any, any> {
             groups,
             items,
             selectedItem,
-            investigate
+            investigate,
+            scroll
         } = this.state
 
         const timelineOptions = {
@@ -62,6 +64,7 @@ export default class Line extends React.Component<any, any> {
             showCurrentTime: true,
             zoomMin: 1000000,
             orientation: 'top',
+            zoomable: scroll,
             format: {
                 minorLabels: {
                     minute: 'h:mma',
@@ -72,11 +75,13 @@ export default class Line extends React.Component<any, any> {
 
         return (
             <div>
+                <button onClick={() => this.setState({ scroll: !scroll })} style={{ backgroundColor: '#383838', color: '#fff', marginTop: '-35px' }} className='btn btn-dark pull-right'>{scroll ? 'Disable zoom' : 'Enable zoom'}</button>
                 <TL
                     options={timelineOptions}
                     items={items}
                     groups={groups}
-                    clickHandler={this.clickHandler.bind(this)} />
+                    clickHandler={this.clickHandler.bind(this)}
+                />
                 <Modal
                     open={investigate}
                     onClose={() => this.setState({
