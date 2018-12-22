@@ -119,7 +119,7 @@ export default class AssetMap extends React.Component<any, any> {
                         <div className='col-md-12 text-center' style={{ maxWidth: '250px' }}>
                             <h5>{selectedAsset.assetType}</h5>
                             <h4>{selectedAsset.assetName}</h4>
-                            <button onClick={() => this.props.redirect(selectedAsset)} className='btn btn-success'><span className='glyphicon glyphicon-arrow-right'></span></button>
+                            <button onClick={() => this.props.redirect(selectedAsset)} className='btn'><span className='glyphicon glyphicon-arrow-right'></span></button>
                         </div>
                     </InfoWindow>
                 }

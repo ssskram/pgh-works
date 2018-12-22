@@ -65,7 +65,7 @@ export default class Subphase extends React.Component<any, any> {
                             }
                             <h5>{subphase.startDate} - {subphase.endDate}</h5>
                             <h5><i>{subphase.subphaseStatus}</i></h5>
-                            <button onClick={this.openModal.bind(this)} className='btn btn-success'><span className='glyphicon glyphicon-info-sign'></span></button>
+                            <button onClick={this.openModal.bind(this)} className='btn'><span className='glyphicon glyphicon-info-sign'></span></button>
                         </div>
                     </div>
                 </div>
