@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import * as User from '../store/GETS/user'
+import * as Personnel from '../store/GETS/personnel'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../store'
 import Modal from 'react-responsive-modal'
-
+import isPersonnel from '../functions/userIsPersonnel'
 const workerImg = require('./../images/worker.png')
 const projectsImg = require('./../images/projects.png')
 const activityImg = require('./../images/activityLight.png')
@@ -84,19 +85,21 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
+                        {isPersonnel(user, this.props.personnel) &&
+                            <li>
+                                <NavLink className='myProjects' to={'/MyProjects'}>
+                                    <span><img style={iconStyle} src={workerImg as string} /></span> My projects
+                                </NavLink>
+                            </li>
+                        }
                         <li>
-                            <NavLink className='myProjects' to={'/MyProjects'}>
-                                <span><img style={iconStyle} src={workerImg as string} /></span> My projects
+                            <NavLink className='allProjects' to={'/AllProjects'}>
+                                <span><img style={iconStyle} src={projectsImg as string} /></span> All Projects
                             </NavLink>
                         </li>
                         <li>
                             <NavLink className='allActivity' to={'/AllActivity'}>
                                 <span><img style={iconStyle} src={activityImg as string} /></span> Activity
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className='allProjects' to={'/AllProjects'}>
-                                <span><img style={iconStyle} src={projectsImg as string} /></span> All Projects
                             </NavLink>
                         </li>
                         <li>
@@ -109,11 +112,13 @@ export class NavMenu extends React.Component<any, any>  {
                                 <span><img style={iconStyle} src={timelineImg as string} /></span> Timeline
                             </NavLink>
                         </li>
-                        <div className='text-center'>
-                            <NavLink to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary addProject'>
-                                <b>Add a Project</b>
-                            </NavLink>
-                        </div>
+                        {isPersonnel(user, this.props.personnel) &&
+                            <div className='text-center'>
+                                <NavLink to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary addProject'>
+                                    <b>Add a Project</b>
+                                </NavLink>
+                            </div>
+                        }
                         <div className='accountcontainer'>
                             <div className="account">{user}</div>
                             <div className='logout'>
@@ -137,9 +142,11 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <br />
                     <div className='text-center'>
-                        <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
-                            <span><img style={iconStyle} src={workerImg as string} /></span> My Projects
-                        </Link>
+                        {isPersonnel(user, this.props.personnel) &&
+                            <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
+                                <span><img style={iconStyle} src={workerImg as string} /></span> My Projects
+                            </Link>
+                        }
                         <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src={projectsImg as string} /></span> All Projects
                         </Link>
@@ -152,9 +159,11 @@ export class NavMenu extends React.Component<any, any>  {
                         <Link onClick={this.closeModal.bind(this)} to={'/Timeline'} style={btnWidth} className='btn btn-primary hidden-xs'>
                             <span><img style={iconStyle} src={timelineImg as string} /></span> Timeline
                         </Link>
-                        <Link onClick={this.closeModal.bind(this)} to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary hidden-xs'>
-                            <span><img style={iconStyle} src={addImg as string} /></span> New Project
-                    </Link>
+                        {isPersonnel(user, this.props.personnel) &&
+                            <Link onClick={this.closeModal.bind(this)} to={'/ProjectDefinition'} style={btnWidth} className='btn btn-primary hidden-xs'>
+                                <span><img style={iconStyle} src={addImg as string} /></span> New Project
+                            </Link>
+                        }
                     </div>
                     <div className='accountcontainer'>
                         <div style={modalLogout} className="account">{user}</div>
@@ -168,13 +177,18 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                 </div>
             </Modal>
-        </div>;
+        </div>
     }
 }
 
 export default connect(
-    (state: ApplicationState) =>
-        state.user,
-    User.actionCreators
-)(NavMenu as any) as typeof NavMenu;
+    (state: ApplicationState) => ({
+        ...state.user,
+        ...state.personnel
+    }),
+    ({
+        ...User.actionCreators,
+        ...Personnel.actionCreators
+    })
+)(NavMenu as any) as typeof NavMenu
 
