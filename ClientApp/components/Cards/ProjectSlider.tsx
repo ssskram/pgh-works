@@ -41,31 +41,31 @@ export default class ProjectSlider extends React.Component<any, any> {
                         {projectDescription &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Description</u></h3>
-                                <h2>{projectDescription}</h2>
+                                <h3>{projectDescription}</h3>
                             </div>
                         }
                         <div className='col-md-12 text-center'>
                             <h3><u>Project status</u></h3>
-                            <h2>{projectStatus}</h2>
+                            <h3>{projectStatus}</h3>
                         </div>
                         <div className='col-md-12 text-center'>
                             <h3><u>Department</u></h3>
-                            <h2>{projectDepartment}</h2>
+                            <h3>{projectDepartment}</h3>
                         </div>
                         <div className='col-md-12 text-center'>
                             <h3><u>Project manager</u></h3>
-                            <h2>{projectManager}</h2>
+                            <h3>{projectManager}</h3>
                         </div>
                         {projectMembers &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Project members</u></h3>
-                                <h2>{projectMembers}</h2>
+                                <h3>{projectMembers}</h3>
                             </div>
                         }
                         {notes &&
                             <div className='col-md-12 text-center'>
                                 <h3><u>Notes</u></h3>
-                                <h2>{notes}</h2>
+                                <h3>{notes}</h3>
                             </div>
                         }
                     </Slider>

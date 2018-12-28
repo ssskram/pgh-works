@@ -246,32 +246,27 @@ export class ProjectInputs extends React.Component<any, any> {
                 }
                 <div style={dateStyle} className='col-md-12'>
                     <h3 style={sectionHeader}>Duration<span style={glyphs} className='glyphicon glyphicon-calendar hidden-sm hidden-xs pull-right'></span></h3>
-                    {!update &&
-                        <div>
-                            <div className='col-md-6'>
-                                <Datepicker
-                                    value={expectedStartDate}
-                                    name="expectedStartDate"
-                                    header="Expected start date"
-                                    required={true}
-                                    placeholder="Select a date"
-                                    callback={(value) => this.handleDate(value, 'expectedStartDate')}
-                                />
-                            </div>
+                    <div className='col-md-6'>
+                        <Datepicker
+                            value={expectedStartDate}
+                            name="expectedStartDate"
+                            header="Expected start date"
+                            required={true}
+                            placeholder="Select a date"
+                            callback={(value) => this.handleDate(value, 'expectedStartDate')}
+                        />
+                    </div>
 
-                            <div className='col-md-6'>
-                                <Datepicker
-                                    value={expectedEndDate}
-                                    name="expectedEndDate"
-                                    header="Expected end date"
-                                    required={true}
-                                    placeholder="Select a date"
-                                    callback={(value) => this.handleDate(value, 'expectedEndDate')}
-                                />
-                            </div>
-
-                        </div>
-                    }
+                    <div className='col-md-6'>
+                        <Datepicker
+                            value={expectedEndDate}
+                            name="expectedEndDate"
+                            header="Expected end date"
+                            required={true}
+                            placeholder="Select a date"
+                            callback={(value) => this.handleDate(value, 'expectedEndDate')}
+                        />
+                    </div>
 
                     <div className='col-md-6'>
                         <Datepicker

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9c59e4a1e60406a89b86"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9e9cdc32ff115c5c8b56"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31936,12 +31936,10 @@ var ProjectInputs = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", { style: sectionHeader },
                     "Duration",
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: glyphs, className: 'glyphicon glyphicon-calendar hidden-sm hidden-xs pull-right' })),
-                !update &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } }))),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: expectedStartDate, name: "expectedStartDate", header: "Expected start date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedStartDate'); } })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: expectedEndDate, name: "expectedEndDate", header: "Expected end date", required: true, placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'expectedEndDate'); } })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__FormElements_datepicker__["a" /* default */], { value: actualStartDate, name: "actualStartDate", header: "Actual start date", placeholder: "Select a date", callback: function (value) { return _this.handleDate(value, 'actualStartDate'); } })),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6' },
@@ -61121,17 +61119,17 @@ var PhaseCard = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Phase status")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseStatus)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, phaseStatus)),
                     phaseDescription &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, phaseDescription)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, phaseDescription)),
                     notes &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Notes")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, notes)))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, notes)))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
@@ -61289,29 +61287,29 @@ var ProjectSlider = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Description")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDescription)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, projectDescription)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project status")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectStatus)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, projectStatus)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Department")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectDepartment)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, projectDepartment)),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project manager")),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectManager)),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, projectManager)),
                     projectMembers &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Project members")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, projectMembers)),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, projectMembers)),
                     notes &&
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12 text-center' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("u", null, "Notes")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null, notes)))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h3", null, notes)))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null)));
