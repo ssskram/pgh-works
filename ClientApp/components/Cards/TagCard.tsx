@@ -79,7 +79,7 @@ export class TagsCard extends React.Component<any, any> {
                                 <h4><b>{tag.tagType}</b></h4>
                                 <h3>{tag.taggedAssetName}</h3>
                                 <h4><i>"{tag.tagDescription}"</i></h4>
-                                <button className='btn'><Link to={redirectLink} style={marginTop}><span className='glyphicon glyphicon-arrow-right'></span></Link></button>
+                                <Link to={redirectLink} style={marginTop} className='btn btn-secondary'><span className='glyphicon glyphicon-arrow-right'></span></Link>
                             </div>
                         </div>
                     </div>

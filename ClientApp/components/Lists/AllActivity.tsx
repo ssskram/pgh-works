@@ -131,7 +131,7 @@ export class AllActivity extends React.Component<any, any> {
                 }
                 <h2>
                     Activity
-                    <span style={{ marginTop: '-15px' }} className='pull-right'>
+                    <span style={{ marginTop: '-10px' }} className='pull-right'>
                         <ActivityFilter
                             returnFiltered={this.receiveFilteredActivity.bind(this)} />
                     </span>

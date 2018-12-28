@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9e9cdc32ff115c5c8b56"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "85f4f1f25e00ea7e7771"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -61519,9 +61519,8 @@ var TagsCard = (function (_super) {
                                     "\"",
                                     tag.tagDescription,
                                     "\"")),
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { className: 'btn' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: redirectLink, style: marginTop },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' })))))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: redirectLink, style: marginTop, className: 'btn btn-secondary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-arrow-right' }))))),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_react_responsive_modal__["a" /* default */], { open: modalIsOpen, onClose: this.closeModal.bind(this), classNames: {
                         overlay: 'custom-overlay',
                         modal: 'custom-modal'
@@ -64476,7 +64475,7 @@ var AllActivity = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading activity...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "Activity",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_ActivityFilter__["a" /* default */], { returnFiltered: this.receiveFilteredActivity.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             activity.length > 0 &&
@@ -64912,7 +64911,7 @@ var AllProjects = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the projects...' }),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "All Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             projects.length > 0 &&
@@ -65095,7 +65094,7 @@ var MyProjects = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
                 "My Projects",
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-15px' }, className: 'pull-right' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-10px' }, className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_8__Filters_ProjectFilter__["a" /* default */], { filterType: "mine", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("hr", null),
             this.props.projects.length == 0 &&

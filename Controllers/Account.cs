@@ -53,7 +53,7 @@ namespace pghworks.Controllers {
             var info = await _signInManager.GetExternalLoginInfoAsync ();
             // create user account, and log user in.
             var email = info.Principal.FindFirstValue (ClaimTypes.Email);
-            if (email.Contains ("@pittsburghpa.gov") && (usergroup.Contains (email))) {
+            if (email.Contains ("@pittsburghpa.gov")) {
                 var user = new ApplicationUser { UserName = email, Email = email };
                 var add = await _userManager.CreateAsync (user);
                 if (add.Succeeded) {
