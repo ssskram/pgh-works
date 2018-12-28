@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0f25197467a6bf5518dc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "40b23255ee8fe11d1cc7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64894,9 +64894,10 @@ var AllActivity = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             activity.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading activity...' }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12_react_kawaii__["b" /* SpeechBubble */], { size: 60, mood: "happy", color: "#7EB1DC" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-55px' }, className: 'pull-right' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-left' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_12_react_kawaii__["b" /* SpeechBubble */], { size: 60, mood: "happy", color: "#7EB1DC" })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__Filters_ActivityFilter__["a" /* default */], { returnFiltered: this.receiveFilteredActivity.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             activity.length > 0 &&
@@ -65332,9 +65333,10 @@ var AllProjects = (function (_super) {
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Utilities_HydrateStore__["a" /* default */], null),
             projects.length == 0 && onFilter == false &&
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__Utilities_Spinner__["a" /* default */], { notice: '...loading the projects...' }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h2", null,
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_kawaii__["c" /* Mug */], { size: 60, mood: "blissful", color: "#7EB1DC" }),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: { marginTop: '-55px' }, className: 'pull-right' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-left' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_11_react_kawaii__["c" /* Mug */], { size: 60, mood: "blissful", color: "#7EB1DC" })),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'pull-right' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6__Filters_ProjectFilter__["a" /* default */], { filterType: "all", returnFiltered: this.receiveFilteredProjects.bind(this) }))),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
             projects.length > 0 &&

@@ -130,16 +130,18 @@ export class AllProjects extends React.Component<any, any> {
                 {projects.length == 0 && onFilter == false &&
                     <Spinner notice='...loading the projects...' />
                 }
-                <h2>
-                    <Mug size={60} mood="blissful" color="#7EB1DC" />
-                    <span style={{ marginTop: '-55px' }} className='pull-right'>
+                <div className='row'>
+                    <span className='pull-left'>
+                        <Mug size={60} mood="blissful" color="#7EB1DC" />
+                    </span>
+                    <span className='pull-right'>
                         <ProjectFilters
                             filterType="all"
                             returnFiltered={this.receiveFilteredProjects.bind(this)}
                         />
                     </span>
-                </h2>
-                <br/>
+                </div>
+                <br />
                 {projects.length > 0 &&
                     <div className='row'>
                         {renderItems}

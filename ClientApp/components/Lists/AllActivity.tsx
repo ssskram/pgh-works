@@ -130,14 +130,17 @@ export class AllActivity extends React.Component<any, any> {
                 {activity.length == 0 && onFilter == false &&
                     <Spinner notice='...loading activity...' />
                 }
-                <h2>
-                    <SpeechBubble size={60} mood="happy" color="#7EB1DC" />
-                    <span style={{ marginTop: '-55px' }} className='pull-right'>
+                <div className='row'>
+                    <span className='pull-left'>
+                        <SpeechBubble size={60} mood="happy" color="#7EB1DC" />
+                    </span>
+                    <span className='pull-right'>
                         <ActivityFilter
                             returnFiltered={this.receiveFilteredActivity.bind(this)} />
                     </span>
-                </h2>
-                <br/>
+                </div>
+
+                <br />
                 {activity.length > 0 &&
                     <div className='row'>
                         {renderItems}
