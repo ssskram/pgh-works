@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1b0b08ba0eb654ca5241"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0f25197467a6bf5518dc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -66355,12 +66355,11 @@ var NavMenu = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'clearfix' }),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'navbar-collapse collapse' },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("ul", { className: 'nav navbar-nav' },
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_userIsPersonnel__["a" /* default */])(user, this.props.personnel) &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { className: 'myProjects', to: '/MyProjects' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: workerImg })),
-                                    " My projects")),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { className: 'myProjects', to: '/MyProjects' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: workerImg })),
+                                " My projects")),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { className: 'allProjects', to: '/AllProjects' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
@@ -66399,11 +66398,10 @@ var NavMenu = (function (_super) {
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'text-center' },
-                        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__functions_userIsPersonnel__["a" /* default */])(user, this.props.personnel) &&
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/MyProjects', style: btnWidth, className: 'btn btn-primary' },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
-                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: workerImg })),
-                                " My Projects"),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/MyProjects', style: btnWidth, className: 'btn btn-primary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: workerImg })),
+                            " My Projects"),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { onClick: this.closeModal.bind(this), to: '/AllProjects', style: btnWidth, className: 'btn btn-primary' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null,
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", { style: iconStyle, src: projectsImg })),
