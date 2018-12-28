@@ -25,6 +25,11 @@ export default class ImportShapes extends React.Component<any, any> {
         this.polygonSelection = this.polygonSelection.bind(this)
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state != nextState) {
+            return true
+        } else return false
+    }
 
     componentDidMount() {
         // if user is grabbing street segments, grabby == true
@@ -65,8 +70,6 @@ export default class ImportShapes extends React.Component<any, any> {
     }
 
     polygonSelection(asset) {
-        console.log('polygon selected')
-        console.log(asset)
         this.setState({
             center: setCenter(asset.shape.points),
             zoom: 16,

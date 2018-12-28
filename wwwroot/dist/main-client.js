@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3be53c982287fe8a6f61"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "58e0d11b5f3884c722e5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -6562,8 +6562,6 @@ var actionCreators = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log('adding tag');
-                    console.log(item);
                     data = JSON.stringify(item).replace(/'/g, '');
                     return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/addTag', {
                             method: 'POST',
@@ -6588,8 +6586,6 @@ var actionCreators = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log('deleting tag');
-                    console.log(item);
                     data = JSON.stringify(item).replace(/'/g, '');
                     return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/deleteTag', {
                             method: 'DELETE',
@@ -63777,8 +63773,13 @@ var UpdateLocation = (function (_super) {
         });
     };
     UpdateLocation.prototype.saveShape = function (shape) {
+        var fullShape = {
+            points: shape.points,
+            breaks: [],
+            shapeType: '3'
+        };
         this.setState({
-            shape: shape,
+            shape: fullShape,
             stage: 'types'
         });
     };
@@ -63790,8 +63791,6 @@ var UpdateLocation = (function (_super) {
         });
     };
     UpdateLocation.prototype.setShape = function (shape) {
-        console.log('new shape');
-        console.log(shape);
         if (this.state.stage == 'import') {
             this.props.setShape(shape, 'all');
         }
@@ -65615,6 +65614,13 @@ var ImportShapes = (function (_super) {
         _this.polygonSelection = _this.polygonSelection.bind(_this);
         return _this;
     }
+    ImportShapes.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+        if (this.state != nextState) {
+            return true;
+        }
+        else
+            return false;
+    };
     ImportShapes.prototype.componentDidMount = function () {
         // if user is grabbing street segments, grabby == true
         if (this.props.grabby == true) {
@@ -65653,8 +65659,6 @@ var ImportShapes = (function (_super) {
         }
     };
     ImportShapes.prototype.polygonSelection = function (asset) {
-        console.log('polygon selected');
-        console.log(asset);
         this.setState({
             center: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__functions_setCenter__["a" /* default */])(asset.shape.points),
             zoom: 16,

@@ -40,8 +40,6 @@ export const actionCreators = {
     },
 
     addTag: (item): AppThunkAction<any> => async (dispatch, getState) => {
-        console.log('adding tag')
-        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
         await fetch('/api/tags/addTag', {
             method: 'POST',
@@ -58,8 +56,6 @@ export const actionCreators = {
     },
 
     deleteTag: (item): AppThunkAction<any> => async (dispatch, getState) => {
-        console.log('deleting tag')
-        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
         await fetch('/api/tags/deleteTag', {
             method: 'DELETE',

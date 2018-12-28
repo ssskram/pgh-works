@@ -40,8 +40,13 @@ export default class UpdateLocation extends React.Component<any, any> {
     }
 
     saveShape(shape) {
+        const fullShape = {
+            points: shape.points,
+            breaks: [],
+            shapeType: '3'
+        }
         this.setState({
-            shape: shape,
+            shape: fullShape,
             stage: 'types'
         })
     }
@@ -55,8 +60,6 @@ export default class UpdateLocation extends React.Component<any, any> {
     }
 
     setShape(shape) {
-        console.log('new shape')
-        console.log(shape)
         if (this.state.stage == 'import') {
             this.props.setShape(shape, 'all')
         } else { // new shape, include types
