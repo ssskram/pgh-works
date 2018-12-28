@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8c3f88ad79ae793f7b7f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4a9a52b1f2b8c2da9617"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33017,10 +33017,10 @@ function canEdit(project, personnel, user) {
     });
     if (me.length > 0) {
         if (project) {
-            if (project.projectManager.includes(me.title)) {
+            if (project.projectManager.includes(me[0].title)) {
                 canEdit = true;
             }
-            if (project.projectMembers.includes(me.title)) {
+            if (project.projectMembers.includes(me[0].title)) {
                 canEdit = true;
             }
             if (canEdit == false) {

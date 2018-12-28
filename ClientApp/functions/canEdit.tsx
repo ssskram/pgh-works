@@ -9,10 +9,10 @@ export default function canEdit(project, personnel, user) {
     })
     if (me.length > 0) {
         if (project) {
-            if (project.projectManager.includes(me.title)) {
+            if (project.projectManager.includes(me[0].title)) {
                 canEdit = true
             }
-            if (project.projectMembers.includes(me.title)) {
+            if (project.projectMembers.includes(me[0].title)) {
                 canEdit = true
             }
             if (canEdit == false) {
