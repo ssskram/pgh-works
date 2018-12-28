@@ -25,6 +25,8 @@ import ProjectTimeline from '../../Timeline/ProjectTimeline'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
 import ActivityInput from '../../Inputs/Activity'
+import assetsInPolygon from '../../../functions/assetsInPolygon'
+import UpdateLocation from '../../Inputs/Project/UpdateLocation'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
@@ -106,7 +108,7 @@ export class Project extends React.Component<any, any> {
             projectStatus: project.projectStatus,
             notes: project.notes,
             shape: project.shape,
-            canEdit: canEdit(project, personnel, user)
+            // canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.setState({
                 spinner: false
@@ -125,6 +127,13 @@ export class Project extends React.Component<any, any> {
         this.setState({
             modalIsOpen: true,
             edit: 'activity'
+        })
+    }
+
+    editLocation() {
+        this.setState({
+            modalIsOpen: true,
+            edit: 'location'
         })
     }
 
@@ -166,6 +175,61 @@ export class Project extends React.Component<any, any> {
     put() {
         this.closeModal()
         this.props.updateProject(this.state)
+    }
+
+    setShape(shape, types) {
+        let existingShape = this.state.shape
+        this.setState({
+            shape: shape,
+            modalIsOpen: false,
+            edit: ''
+        }, function (this) {
+            if (existingShape != shape) {
+                // delete existing geospatial tags
+                let self = this
+                let tags = this.props.tags.filter(function (item) {
+                    return item.parentID == self.state.projectID
+                })
+                let tagsToDelete = tags.filter(function (tag) {
+                    return tag.tagDescription == 'Within project bounds'
+                })
+                tagsToDelete.forEach(function (tag) {
+                    self.props.deleteTag(tag)
+                })
+
+                if (types == 'all') {
+                    // refresh geospatial tags with new shape
+                    const componentAssets = assetsInPolygon(this.state.shape.points, this.props.assets)
+                    if (componentAssets.length > 0) {
+                        componentAssets.forEach(function (component) {
+                            if (component.assetName != self.state.projectName) {
+                                self.createTag(component)
+                            }
+                        })
+                    }
+                } else {
+                    const assets = this.props.assets.filter(asset => {
+                        return types.includes(asset.assetType)
+                    })
+                    const componentAssets = assetsInPolygon (this.state.shape.points, assets)
+                    // for each asset inside polygon, generate a tag
+                    if (componentAssets.length > 0) {
+                        componentAssets.forEach(function (component) {
+                            if (component.assetName != self.state.projectName) {
+                                self.createTag(component)
+                            }
+                        })
+                    }
+                }
+            }
+        })
+        this.setState({
+            shape: shape
+        }, function (this) {
+            console.log('here')
+            console.log(this.state)
+            this.props.updateProject(this.state)
+        })
     }
 
     createTag(asset) {
@@ -218,7 +282,8 @@ export class Project extends React.Component<any, any> {
                                 <div>
                                     <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
                                     <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
-                                    <button className='btn btn-primary' onClick={this.addActivity.bind(this)}><b>Add activity</b></button>
+                                    <button className='btn btn-primary' onClick={this.editLocation.bind(this)} title='Modify location'>Change location</button>
+                                    <button className='btn btn-secondary' onClick={this.addActivity.bind(this)} title='Add activity'><b>Add activity</b></button>
                                 </div>
                             </div>
                         }
@@ -281,6 +346,12 @@ export class Project extends React.Component<any, any> {
                             projectID={projectID}
                             projectName={projectName}
                             closeModal={this.closeModal.bind(this)} />
+                    }
+                    {edit == 'location' &&
+                        <UpdateLocation
+                            setShape={this.setShape.bind(this)}
+                            put={this.put.bind(this)}
+                        />
                     }
                 </Modal>
                 <Hydrate />
