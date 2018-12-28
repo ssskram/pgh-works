@@ -39,9 +39,11 @@ export const actionCreators = {
             });
     },
 
-    addTag: (item): AppThunkAction<any> => (dispatch, getState) => {
+    addTag: (item): AppThunkAction<any> => async (dispatch, getState) => {
+        console.log('adding tag')
+        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
-        fetch('/api/tags/addTag', {
+        await fetch('/api/tags/addTag', {
             method: 'POST',
             body: data,
             credentials: 'same-origin',
@@ -55,9 +57,11 @@ export const actionCreators = {
         })
     },
 
-    deleteTag: (item): AppThunkAction<any> => (dispatch, getState) => {
+    deleteTag: (item): AppThunkAction<any> => async (dispatch, getState) => {
+        console.log('deleting tag')
+        console.log(item)
         let data = JSON.stringify(item).replace(/'/g, '')
-        fetch('/api/tags/deleteTag', {
+        await fetch('/api/tags/deleteTag', {
             method: 'DELETE',
             body: data,
             credentials: 'same-origin',

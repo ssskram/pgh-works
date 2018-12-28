@@ -121,6 +121,7 @@ namespace pghworks.Controllers {
                 dynamic project = JObject.Parse (content) ["ProjectsClass"][0];
                 id = project.Oid;
             }
+            model.shape.ShapeType = "3";
             CgProject cgModel = new CgProject () {
                 projectEndDateField = model.actualEndDate,
                 Oid = id,

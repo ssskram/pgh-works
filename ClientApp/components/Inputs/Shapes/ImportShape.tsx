@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Assets from '../../../store/GETS/taggableAssets'
 import TaggableAssetSelection from './../Tag/NewTag'
+import Spinner from '../../Utilities/Spinner'
 
 export class ImportShape extends React.Component<any, any> {
     constructor() {
@@ -19,9 +20,14 @@ export class ImportShape extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <TaggableAssetSelection
-                    parent={'shape'}
-                    receiveAsset={this.receiveAsset.bind(this)} />
+                {this.props.assets &&
+                    <TaggableAssetSelection
+                        parent={'shape'}
+                        receiveAsset={this.receiveAsset.bind(this)} />
+                }
+                {!this.props.assets &&
+                    <Spinner notice='...loading the assets...' />
+                }
             </div>
         )
     }

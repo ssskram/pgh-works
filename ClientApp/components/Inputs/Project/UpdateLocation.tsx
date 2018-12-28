@@ -55,6 +55,8 @@ export default class UpdateLocation extends React.Component<any, any> {
     }
 
     setShape(shape) {
+        console.log('new shape')
+        console.log(shape)
         if (this.state.stage == 'import') {
             this.props.setShape(shape, 'all')
         } else { // new shape, include types

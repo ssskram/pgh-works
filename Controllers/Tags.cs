@@ -85,6 +85,7 @@ namespace pghworks.Controllers {
                 response.EnsureSuccessStatusCode ();
                 var content = await response.Content.ReadAsStringAsync ();
             } catch (Exception ex) {
+                Console.WriteLine(ex);
                 System.Diagnostics.Debug.WriteLine (ex.Message);
             }
             await new log ().postLog (_userManager.GetUserName (HttpContext.User), "Post", "Tag", model.taggedAssetName, model.tagID);

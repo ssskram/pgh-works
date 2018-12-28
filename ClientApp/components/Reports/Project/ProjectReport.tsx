@@ -108,7 +108,7 @@ export class Project extends React.Component<any, any> {
             projectStatus: project.projectStatus,
             notes: project.notes,
             shape: project.shape,
-            // canEdit: canEdit(project, personnel, user)
+            canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.setState({
                 spinner: false
@@ -184,6 +184,9 @@ export class Project extends React.Component<any, any> {
             modalIsOpen: false,
             edit: ''
         }, function (this) {
+            // post new state
+            this.props.updateProject(this.state)
+            
             if (existingShape != shape) {
                 // delete existing geospatial tags
                 let self = this
@@ -223,13 +226,11 @@ export class Project extends React.Component<any, any> {
                 }
             }
         })
-        this.setState({
-            shape: shape
-        }, function (this) {
-            console.log('here')
-            console.log(this.state)
-            this.props.updateProject(this.state)
-        })
+        // this.setState({
+        //     shape: shape
+        // }, function (this) {
+        //     this.props.updateProject(this.state)
+        // })
     }
 
     createTag(asset) {
@@ -350,7 +351,6 @@ export class Project extends React.Component<any, any> {
                     {edit == 'location' &&
                         <UpdateLocation
                             setShape={this.setShape.bind(this)}
-                            put={this.put.bind(this)}
                         />
                     }
                 </Modal>

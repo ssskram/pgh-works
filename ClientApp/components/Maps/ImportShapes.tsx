@@ -65,6 +65,8 @@ export default class ImportShapes extends React.Component<any, any> {
     }
 
     polygonSelection(asset) {
+        console.log('polygon selected')
+        console.log(asset)
         this.setState({
             center: setCenter(asset.shape.points),
             zoom: 16,
