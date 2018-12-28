@@ -5,6 +5,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../store'
 import * as User from '../../store/GETS/user'
+import * as Personnel from '../../store/GETS/personnel'
 import Joyride from 'react-joyride'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Textarea from '../FormElements/textarea'
@@ -17,6 +18,7 @@ import Timeline from './contents/timeline'
 import AddProject from './contents/addProject'
 import SubmitFeedback from './contents/submitFeedback'
 import PostFeedback from '../../functions/postFeedback'
+import isPersonnel from '../../functions/userIsPersonnel'
 
 const btnStyle = {
     fontSize: '16px',
@@ -112,56 +114,99 @@ export class SiteTour extends React.Component<any, any> {
                 </div>
             </ReactCSSTransitionGroup>
 
-        const steps = [
-            {
-                target: '.mainApp',
-                content: <MainApp />,
-                placement: 'center',
-                disableBeacon: true
-            },
-            {
-                target: '.myProjects',
-                content: <MyProjects />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.allActivity',
-                content: <AllActivity />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.allProjects',
-                content: <AllProjects />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.allAssets',
-                content: <AllAssets />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.timeline',
-                content: <Timeline />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.addProject',
-                content: <AddProject />,
-                placement: 'right',
-                disableBeacon: true
-            },
-            {
-                target: '.mainApp',
-                content: <SubmitFeedback />,
-                placement: 'center',
-                disableBeacon: true
-            }
-        ]
+        let steps
+        if (isPersonnel(this.props.user, this.props.personnel) == true) {
+            steps = [
+                {
+                    target: '.mainApp',
+                    content: <MainApp />,
+                    placement: 'center',
+                    disableBeacon: true
+                },
+                {
+                    target: '.myProjects',
+                    content: <MyProjects />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allProjects',
+                    content: <AllProjects />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allActivity',
+                    content: <AllActivity />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allAssets',
+                    content: <AllAssets />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.timeline',
+                    content: <Timeline />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.addProject',
+                    content: <AddProject />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.mainApp',
+                    content: <SubmitFeedback />,
+                    placement: 'center',
+                    disableBeacon: true
+                }
+            ]
+        } else {
+            steps = [
+                {
+                    target: '.mainApp',
+                    content: <MainApp />,
+                    placement: 'center',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allProjects',
+                    content: <AllProjects />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allActivity',
+                    content: <AllActivity />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.allAssets',
+                    content: <AllAssets />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.timeline',
+                    content: <Timeline />,
+                    placement: 'right',
+                    disableBeacon: true
+                },
+                {
+                    target: '.mainApp',
+                    content: <SubmitFeedback />,
+                    placement: 'center',
+                    disableBeacon: true
+                }
+            ]
+
+        }
 
         return <div>
             <div className='hidden-xs' style={styleLarge}>
@@ -195,9 +240,11 @@ export class SiteTour extends React.Component<any, any> {
 
 export default connect(
     (state: ApplicationState) => ({
-        ...state.user
+        ...state.user,
+        ...state.personnel
     }),
     ({
-        ...User.actionCreators
+        ...User.actionCreators,
+        ...Personnel.actionCreators
     })
 )(SiteTour as any) as typeof SiteTour

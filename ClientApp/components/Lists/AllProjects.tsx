@@ -11,6 +11,7 @@ import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import MapThumbnail from '../Maps/MapThumbnail'
 import Spinner from './../Utilities/Spinner'
+import { Mug } from 'react-kawaii'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -130,15 +131,15 @@ export class AllProjects extends React.Component<any, any> {
                     <Spinner notice='...loading the projects...' />
                 }
                 <h2>
-                    All Projects
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                    <Mug size={60} mood="blissful" color="#7EB1DC" />
+                    <span style={{ marginTop: '-55px' }} className='pull-right'>
                         <ProjectFilters
                             filterType="all"
                             returnFiltered={this.receiveFilteredProjects.bind(this)}
                         />
                     </span>
                 </h2>
-                <hr />
+                <br/>
                 {projects.length > 0 &&
                     <div className='row'>
                         {renderItems}

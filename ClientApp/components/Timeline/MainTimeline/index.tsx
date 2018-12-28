@@ -16,6 +16,7 @@ import TL from './../Timeline'
 import { Helmet } from "react-helmet"
 import Spinner from '../../Utilities/Spinner'
 import Checkbox from 'rc-checkbox'
+import { Ghost } from 'react-kawaii'
 
 export class Timeline extends React.Component<any, any> {
     constructor() {
@@ -249,9 +250,12 @@ export class Timeline extends React.Component<any, any> {
                     </div>
                 }
                 {timeline == '' &&
-                    <div className='col-md-12'>
+                    <div className='col-md-12 text-center'>
+                        <br />
+                        <br />
+                        <Ghost size={200} mood="shocked" color="#AED3E5" />
                         <div className='text-center alert alert-info'>
-                            <h2 style={{ letterSpacing: '2px' }}>The timeline is empty</h2>
+                            <h3 style={{ letterSpacing: '2px' }}>The timeline is empty</h3>
                         </div>
                     </div>
                 }

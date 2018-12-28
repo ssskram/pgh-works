@@ -12,6 +12,7 @@ import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
 import hashtagIt from '../../functions/hashtagIt'
+import { SpeechBubble } from 'react-kawaii'
 
 const padding = {
     padding: '10px 0px'
@@ -130,13 +131,13 @@ export class AllActivity extends React.Component<any, any> {
                     <Spinner notice='...loading activity...' />
                 }
                 <h2>
-                    Activity
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                    <SpeechBubble size={60} mood="happy" color="#7EB1DC" />
+                    <span style={{ marginTop: '-55px' }} className='pull-right'>
                         <ActivityFilter
                             returnFiltered={this.receiveFilteredActivity.bind(this)} />
                     </span>
                 </h2>
-                <hr />
+                <br/>
                 {activity.length > 0 &&
                     <div className='row'>
                         {renderItems}

@@ -85,13 +85,11 @@ export class NavMenu extends React.Component<any, any>  {
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
-                        {isPersonnel(user, this.props.personnel) &&
-                            <li>
-                                <NavLink className='myProjects' to={'/MyProjects'}>
-                                    <span><img style={iconStyle} src={workerImg as string} /></span> My projects
+                        <li>
+                            <NavLink className='myProjects' to={'/MyProjects'}>
+                                <span><img style={iconStyle} src={workerImg as string} /></span> My projects
                                 </NavLink>
-                            </li>
-                        }
+                        </li>
                         <li>
                             <NavLink className='allProjects' to={'/AllProjects'}>
                                 <span><img style={iconStyle} src={projectsImg as string} /></span> All Projects
@@ -142,11 +140,9 @@ export class NavMenu extends React.Component<any, any>  {
                     <br />
                     <br />
                     <div className='text-center'>
-                        {isPersonnel(user, this.props.personnel) &&
-                            <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
-                                <span><img style={iconStyle} src={workerImg as string} /></span> My Projects
+                        <Link onClick={this.closeModal.bind(this)} to={'/MyProjects'} style={btnWidth} className='btn btn-primary'>
+                            <span><img style={iconStyle} src={workerImg as string} /></span> My Projects
                             </Link>
-                        }
                         <Link onClick={this.closeModal.bind(this)} to={'/AllProjects'} style={btnWidth} className='btn btn-primary'>
                             <span><img style={iconStyle} src={projectsImg as string} /></span> All Projects
                         </Link>

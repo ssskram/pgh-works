@@ -14,6 +14,7 @@ import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import MapThumbnail from '../Maps/MapThumbnail'
 import getMyProjects from './../../functions/myProjects'
 import Spinner from './../Utilities/Spinner'
+import { Ghost } from 'react-kawaii'
 
 const emptyNotice = {
     letterSpacing: '2px'
@@ -163,9 +164,10 @@ export class MyProjects extends React.Component<any, any> {
                     </div>
                 }
                 {this.props.projects.length > 0 && projects.length == 0 && onFilter == false &&
-                    <div className='col-md-12' style={{ margin: '20px 0px' }}>
-                        <div className='text-center alert alert-info'>
-                            <h2 style={emptyNotice}>There are no projects associated with your account</h2>
+                    <div className='col-md-12 text-center' style={{ margin: '20px 0px' }}>
+                        <Ghost size={200} mood="shocked" color="#AED3E5" />
+                        <div className='alert alert-info'>
+                            <h3 style={emptyNotice}><i>You don't have any projects</i></h3>
                         </div>
                     </div>
                 }
