@@ -130,9 +130,9 @@ export class AllProjects extends React.Component<any, any> {
                 {projects.length == 0 && onFilter == false &&
                     <Spinner notice='...loading the projects...' />
                 }
-                <div className='row'>
+                <div className='col-md-12'>
                     <span className='pull-left'>
-                        <Mug size={60} mood="blissful" color="#7EB1DC" />
+                        <h3>All projects</h3>
                     </span>
                     <span className='pull-right'>
                         <ProjectFilters
@@ -141,7 +141,9 @@ export class AllProjects extends React.Component<any, any> {
                         />
                     </span>
                 </div>
-                <br />
+                <div style={{ marginTop: '-20px' }} className='col-md-12'>
+                    <hr />
+                </div>
                 {projects.length > 0 &&
                     <div className='row'>
                         {renderItems}

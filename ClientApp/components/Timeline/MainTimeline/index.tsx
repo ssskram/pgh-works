@@ -252,8 +252,6 @@ export class Timeline extends React.Component<any, any> {
                 {timeline == '' &&
                     <div className='col-md-12 text-center'>
                         <br />
-                        <br />
-                        <Ghost size={200} mood="shocked" color="#AED3E5" />
                         <div className='text-center alert alert-info'>
                             <h3 style={{ letterSpacing: '2px' }}>The timeline is empty</h3>
                         </div>

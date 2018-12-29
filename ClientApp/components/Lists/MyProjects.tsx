@@ -129,16 +129,20 @@ export class MyProjects extends React.Component<any, any> {
         return (
             <div>
                 <Hydrate />
-                <h2>
-                    My Projects
-                    <span style={{ marginTop: '-10px' }} className='pull-right'>
+                <div className='col-md-12'>
+                    <span className='pull-left'>
+                        <h3>My projects</h3>
+                    </span>
+                    <span className='pull-right'>
                         <ProjectFilters
                             filterType="mine"
                             returnFiltered={this.receiveFilteredProjects.bind(this)}
                         />
                     </span>
-                </h2>
-                <hr />
+                </div>
+                <div style={{ marginTop: '-20px' }} className='col-md-12'>
+                    <hr />
+                </div>
                 {this.props.projects.length == 0 &&
                     <Spinner notice='...loading your projects...' />
                 }
@@ -166,7 +170,7 @@ export class MyProjects extends React.Component<any, any> {
                 {this.props.projects.length > 0 && projects.length == 0 && onFilter == false &&
                     <div className='col-md-12 text-center' style={{ margin: '20px 0px' }}>
                         <Ghost size={200} mood="shocked" color="#AED3E5" />
-                        <div className='alert alert-info'>
+                        <div className='alert alert-info' style={{ maxWidth: '450px', margin: '0 auto' }}>
                             <h3 style={emptyNotice}><i>You don't have any projects</i></h3>
                         </div>
                     </div>
