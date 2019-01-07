@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "28f80ae37b6d4cc53577"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "15dcb6d232c0b9c99bcc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -33240,7 +33240,9 @@ function findMiddleSegment(segments) {
 // for the millenials
 function hashtagIt(string) {
     // hashtag it!
-    var uppercase = string.replace(/\b[a-z](?=[a-z]{1})/g, function (letter) { return letter.toUpperCase(); });
+    var lowercase = string.toLowerCase();
+    // first letter of each word
+    var uppercase = lowercase.replace(/\b[a-z](?=[a-z]{1})/g, function (letter) { return letter.toUpperCase(); });
     return uppercase.replace(/\s/g, '');
 }
 
