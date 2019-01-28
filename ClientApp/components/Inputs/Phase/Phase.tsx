@@ -25,6 +25,7 @@ const types = [
     { value: 'Programming', label: 'Programming', name: 'phaseType' },
     { value: 'Design', label: 'Design', name: 'phaseType' },
     { value: 'Construction', label: 'Construction', name: 'phaseType' },
+    { value: 'Installation', label: 'Installation', name: 'phaseType' },
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
 ]
 

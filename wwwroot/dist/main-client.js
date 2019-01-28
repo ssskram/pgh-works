@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "15dcb6d232c0b9c99bcc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d1fd34fb08c4648389e0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -31826,6 +31826,7 @@ var types = [
     { value: 'Programming', label: 'Programming', name: 'phaseType' },
     { value: 'Design', label: 'Design', name: 'phaseType' },
     { value: 'Construction', label: 'Construction', name: 'phaseType' },
+    { value: 'Installation', label: 'Installation', name: 'phaseType' },
     { value: 'Multi-faceted', label: 'Multi-faceted', name: 'phaseType' }
 ];
 var PhaseInputs = (function (_super) {
