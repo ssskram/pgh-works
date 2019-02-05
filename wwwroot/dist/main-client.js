@@ -47190,33 +47190,18 @@ var smallFont = {
 var ActivityFeed = (function (_super) {
     __extends(ActivityFeed, _super);
     function ActivityFeed(props) {
-        var _this = _super.call(this, props) || this;
-        _this.scrollToBottom = function () {
-            if (_this.ref.current) {
-                _this.ref.current.scrollIntoView({ behavior: 'smooth' });
-            }
-        };
-        _this.ref = __WEBPACK_IMPORTED_MODULE_0_react__["createRef"]();
-        return _this;
+        return _super.call(this, props) || this;
     }
-    ActivityFeed.prototype.componentDidMount = function () {
-        this.scrollToBottom();
-    };
-    ActivityFeed.prototype.componentDidUpdate = function () {
-        this.scrollToBottom();
-    };
     ActivityFeed.prototype.render = function () {
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: activityContainer, className: 'col-md-12 row chatContainer' },
-            this.props.activity.reverse().map(function (item, index) {
-                return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index, style: activityItem, className: 'pull-right speech-bubble' },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, item.activity),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: smallFont }, item.user),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: smallFont }, item.date))));
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { float: "left", clear: "both" }, ref: this.ref })));
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: activityContainer, className: 'col-md-12 row chatContainer' }, this.props.activity.reverse().map(function (item, index) {
+            return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { key: index, style: activityItem, className: 'pull-right speech-bubble' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, item.activity),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: smallFont }, item.user),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { style: smallFont }, item.date))));
+        })));
     };
     return ActivityFeed;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

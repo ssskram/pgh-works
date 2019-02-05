@@ -5,7 +5,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Activity from '../../../store/activity'
-import * as ReactDOM from 'react-dom'
 
 const activityContainer = {
     width: '100%',
@@ -31,22 +30,10 @@ const smallFont = {
 }
 
 export class ActivityFeed extends React.Component<any, any> {
-    private ref: React.RefObject<HTMLHeadingElement>
     constructor(props) {
         super(props)
-        this.ref = React.createRef()
     }
-    componentDidMount() {
-        this.scrollToBottom()
-    }
-    componentDidUpdate() {
-        this.scrollToBottom()
-    }
-    scrollToBottom = () => {
-        if (this.ref.current) {
-            this.ref.current.scrollIntoView({ behavior: 'smooth' })
-        }
-    }
+
     public render() {
 
         return (
@@ -62,9 +49,6 @@ export class ActivityFeed extends React.Component<any, any> {
                         </div>
                     )
                 })}
-                <div style={{ float: "left", clear: "both" }}
-                    ref={this.ref}>
-                </div>
             </div>
         )
     }
