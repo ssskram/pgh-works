@@ -100,8 +100,8 @@ namespace pghworks {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
                 app.UseWebpackDevMiddleware (new WebpackDevMiddlewareOptions {
-                    HotModuleReplacement = true,
-                        ReactHotModuleReplacement = true,
+                    HotModuleReplacement = false,
+                        ReactHotModuleReplacement = false,
                         HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
                 });
             } else {
