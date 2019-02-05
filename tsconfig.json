@@ -18,7 +18,8 @@
       "googlemaps",
       "markerclustererplus"
     ],
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "allowJs": true
   },
   "exclude": [
     "bin",

@@ -1,6 +1,7 @@
 import { fetch } from 'domain-task'
 import { Action, Reducer } from 'redux'
 import { AppThunkAction } from './'
+import { broadcastActivity } from '../sockets/activity'
 
 const loadActivity = 'loadActivity'
 const addActivity = 'addActivity'
@@ -47,10 +48,16 @@ export const actionCreators = {
                 'Content-Type': 'application/json'
             }
         })
+            .then(() => broadcastActivity())
         dispatch({
             type: addActivity, item
         })
     },
+    receiveActivity: (activity): AppThunkAction<any> => (dispatch, getState) => {
+        console.log('receiving activity...')
+        console.log(activity)
+        dispatch({ type: loadActivity, activity: activity })
+    }
 }
 
 export const reducer: Reducer<ActivityState> = (state: ActivityState, incomingAction: Action) => {

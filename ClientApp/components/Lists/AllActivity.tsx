@@ -13,6 +13,7 @@ import ActivityFilter from './../Filters/ActivityFilter'
 import Spinner from '../Utilities/Spinner'
 import hashtagIt from '../../functions/hashtagIt'
 import { SpeechBubble } from 'react-kawaii'
+import { subscribeToActivity } from '../../sockets/activity'
 
 const padding = {
     padding: '10px 0px'
@@ -32,6 +33,7 @@ export class AllActivity extends React.Component<any, any> {
             redirect: false,
             onFilter: false
         }
+        subscribeToActivity((err, activity) => this.props.receiveActivity(activity))
     }
 
     componentDidMount() {
