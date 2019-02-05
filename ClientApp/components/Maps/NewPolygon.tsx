@@ -12,8 +12,8 @@ const mapStyle = require('./featurelessLight.json')
 const place = require('../../images/place.png')
 
 export default class PolygonGeneration extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             latlng: { lat: 40.437470539681442, lng: -79.987124601795273 },
             zoom: 13,

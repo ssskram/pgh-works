@@ -22,8 +22,8 @@ const statuses = [
 ]
 
 export class SubphaseInput extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             throwDateError: false,
 

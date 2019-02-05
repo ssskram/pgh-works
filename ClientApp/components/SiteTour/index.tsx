@@ -34,12 +34,12 @@ const styleLarge = {
     color: '#fff',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.4)',
     width: '100%',
-    textAlign: 'right'
+    textAlign: 'right' as 'right'
 }
 
 export class SiteTour extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             index: 0,
             buttonHover: false,

@@ -18,8 +18,8 @@ import assetsInPolygon from './../../functions/assetsInPolygon'
 const mapStyle = require('./featurelessLight.json')
 
 export class StreetMap extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             zoom: 13,
             center: { lat: 40.437470539681442, lng: -79.987124601795273 },

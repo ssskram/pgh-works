@@ -18,8 +18,8 @@ const minWidth = {
 }
 
 export default class UpdateLocation extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             stage: '',
             shape: [],

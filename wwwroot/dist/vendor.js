@@ -767,7 +767,7 @@ jQuery.fn = jQuery.prototype = {
 	pushStack: function( elems ) {
 
 		// Build a new jQuery matched element set
-		var ret = jQuery.merge( this.constructor(), elems );
+		var ret = jQuery.merge( this.constructor(props), elems );
 
 		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
@@ -806,7 +806,7 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	end: function() {
-		return this.prevObject || this.constructor();
+		return this.prevObject || this.constructor(props);
 	},
 
 	// For internal use only.

@@ -12,8 +12,8 @@ import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
 
 export class TaskInputs extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             projectID: '',
             phaseID: '',

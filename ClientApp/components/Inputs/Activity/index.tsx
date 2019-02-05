@@ -13,8 +13,8 @@ import * as moment from 'moment'
 import hashtagIt from '../../../functions/hashtagIt'
 
 export class ActivityInput extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             activityID: '',
             parentID: '',

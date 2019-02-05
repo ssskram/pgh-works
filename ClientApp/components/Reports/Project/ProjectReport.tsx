@@ -27,6 +27,7 @@ import canEdit from '../../../functions/canEdit'
 import ActivityInput from '../../Inputs/Activity'
 import assetsInPolygon from '../../../functions/assetsInPolygon'
 import UpdateLocation from '../../Inputs/Project/UpdateLocation'
+import ActivityFeed from './Activity'
 
 const btnMargin = {
     margin: '20px 5px 0px 5px',
@@ -37,8 +38,8 @@ const marginBottom = {
 }
 
 export class Project extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             spinner: true,
@@ -226,11 +227,6 @@ export class Project extends React.Component<any, any> {
                 }
             }
         })
-        // this.setState({
-        //     shape: shape
-        // }, function (this) {
-        //     this.props.updateProject(this.state)
-        // })
     }
 
     createTag(asset) {
@@ -302,6 +298,11 @@ export class Project extends React.Component<any, any> {
                                 <ProjectTimeline project={this.state} />
                             </div>
                         }
+                        <div style={marginBottom}>
+                            <ActivityFeed 
+                                projectId={projectID}
+                            />
+                        </div>
                         <div style={marginBottom} className='col-md-12 row'>
                             <Phases
                                 canEdit={canEdit}

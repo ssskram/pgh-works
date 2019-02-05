@@ -24,8 +24,8 @@ const emptyNotice = {
 }
 
 export class AllActivity extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             activity: [],
             currentPage: 1,

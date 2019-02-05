@@ -9,8 +9,8 @@ import TaggableAssetSelection from './../Tag/NewTag'
 import Spinner from '../../Utilities/Spinner'
 
 export class ImportShape extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     receiveAsset(asset) {

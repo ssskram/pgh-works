@@ -12,8 +12,8 @@ import Spinner from '../../Utilities/Spinner'
 import getIcon from '../../../functions/getAssetIcon'
 
 export class SelectAssetType extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     }
 
     passType(type) {

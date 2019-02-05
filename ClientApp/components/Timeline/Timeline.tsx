@@ -6,8 +6,8 @@ import TL from 'react-visjs-timeline'
 import Modal from 'react-responsive-modal'
 
 export default class Line extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             groups: [],
             items: [],

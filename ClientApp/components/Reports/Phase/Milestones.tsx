@@ -21,8 +21,8 @@ const iconStyle = {
 }
 
 export class Milestones extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // utilities
             modalIsOpen: false,

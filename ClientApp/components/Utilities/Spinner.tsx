@@ -2,8 +2,8 @@ import * as React from 'react';
 import Modal from 'react-responsive-modal'
 
 export default class Spinner extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             notice: '',
             secondNotice: '',

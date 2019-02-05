@@ -27,8 +27,8 @@ const emptyNotice = {
 }
 
 export class AssetReport extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             spinner: true,
             onFilter: false,

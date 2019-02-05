@@ -25,8 +25,8 @@ const emptyNotice = {
 }
 
 export class AllAssets extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             assetFilter: '',
             assetDropdown: [],

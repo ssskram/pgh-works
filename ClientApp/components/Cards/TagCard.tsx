@@ -19,8 +19,8 @@ const marginTop = {
 }
 
 export class TagsCard extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             modalIsOpen: false,
             redirectLink: ''

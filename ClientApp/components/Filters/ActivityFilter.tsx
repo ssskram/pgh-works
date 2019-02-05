@@ -15,8 +15,8 @@ import { Helmet } from "react-helmet"
 const dropdownStyle = '.custom-modal { overflow: visible; } .Select-menu-outer { overflow: visible}'
 
 export class ActivityFilter extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             onFilter: false,
             modalIsOpen: false,

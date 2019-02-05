@@ -8,8 +8,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete'
 
 export default class PolygonGeneration extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             address: '',
             latLng: {}

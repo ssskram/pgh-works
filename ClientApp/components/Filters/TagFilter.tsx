@@ -19,8 +19,8 @@ const types = [
 ]
 
 export class TagFilter extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             onFilter: false,
             modalIsOpen: false,

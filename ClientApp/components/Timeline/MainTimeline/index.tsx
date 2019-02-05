@@ -19,8 +19,8 @@ import Checkbox from 'rc-checkbox'
 import { Ghost } from 'react-kawaii'
 
 export class Timeline extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             expected: true,
             actual: false,

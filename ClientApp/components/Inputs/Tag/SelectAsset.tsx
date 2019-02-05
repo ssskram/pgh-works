@@ -13,8 +13,8 @@ import SelectionMap from '../../Maps/ImportShapes'
 import { StreetSelection } from './StreetSelection'
 
 export class SelectAsset extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             search: '',
             assets: [],

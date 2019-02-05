@@ -7,8 +7,8 @@ import SubphaseForm from '../Inputs/Subphase'
 import DeleteSubphase from '../DeleteConfirmations/DeleteSubphase'
 
 export default class Subphase extends React.Component<any, any> {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             modalType: '',
             modalIsOpen: false

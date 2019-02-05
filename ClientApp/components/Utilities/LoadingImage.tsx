@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 export default class LoadingImage extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             imagePath: '../images/image-placeholder.png',
         }
