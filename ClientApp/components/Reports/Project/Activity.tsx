@@ -5,6 +5,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ApplicationState } from '../../../store'
 import * as Activity from '../../../store/activity'
+import { animateScroll } from "react-scroll"
+import { subscribeToActivity } from '../../../sockets/activity'
 
 const activityContainer = {
     width: '100%',
@@ -32,16 +34,35 @@ const smallFont = {
 export class ActivityFeed extends React.Component<any, any> {
     constructor(props) {
         super(props)
+        subscribeToActivity((err, activity) => this.props.receiveActivity(activity))
+    }
+
+    componentDidMount() {
+        this.scrollDown()
+    }
+
+    componentDidUpdate() {
+        this.scrollDown()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.scrollDown()
+    }
+
+    scrollDown() {
+        animateScroll.scrollToBottom({
+            containerId: "scrollTo"
+        })
     }
 
     public render() {
-
+        // TODO filter activity
         return (
-            <div style={activityContainer} className='col-md-12 row chatContainer'>
+            <div style={activityContainer} className='col-md-12 row chatContainer' id='scrollTo'>
                 {this.props.activity.reverse().map((item, index) => {
                     return (
-                        <div className='col-md-12'>
-                            <div key={index} style={activityItem} className='pull-right speech-bubble'>
+                        <div key={index} className='col-md-12'>
+                            <div style={activityItem} className='pull-right speech-bubble'>
                                 <b>{item.activity}</b><br />
                                 <span style={smallFont}>{item.user}</span><br />
                                 <span style={smallFont}>{item.date}</span>
