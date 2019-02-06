@@ -81,5 +81,9 @@
   },
   "devDependencies": {
     "@types/tapable": "^0.2.5"
+  },
+  "scripts": {
+    "staging": "node deploy/staging.js",
+    "production": "node deploy/production.js"
   }
 }
