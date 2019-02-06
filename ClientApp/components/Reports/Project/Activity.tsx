@@ -175,10 +175,12 @@ export class ActivityFeed extends React.Component<any, any> {
                         }
                     </div>
                 </div>
-                <div style={{ paddingLeft: '5px' }}>
-                    <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New message'></input>
-                    <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
-                </div>
+                {this.props.canEdit &&
+                    <div style={{ paddingLeft: '5px' }}>
+                        <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New message'></input>
+                        <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
+                    </div>
+                }
             </div>
         )
     }

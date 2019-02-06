@@ -113,7 +113,7 @@ export class Phase extends React.Component<any, any> {
             phaseStatus: phase.phaseStatus,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
-            // canEdit: canEdit(project, personnel, user)
+            canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.findProject(this.state.projectID)
         })
