@@ -142,7 +142,7 @@ export class ActivityFeed extends React.Component<any, any> {
                                             </div>
                                             <div className='col-md-12'>
                                                 <div className='pull-right'>
-                                                    <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
+                                                    <span style={{ fontSize: '.75em', color: '#fff' }}>{item.date}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@ export class ActivityFeed extends React.Component<any, any> {
                                             </div>
                                             <div className='col-md-12'>
                                                 <div className='pull-left'>
-                                                    <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
+                                                    <span style={{ fontSize: '.75em', color: '#fff' }}>{item.date}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,7 +176,7 @@ export class ActivityFeed extends React.Component<any, any> {
                     </div>
                 </div>
                 <div style={{ paddingLeft: '5px' }}>
-                    <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New mesage'></input>
+                    <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New message'></input>
                     <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
                 </div>
             </div>

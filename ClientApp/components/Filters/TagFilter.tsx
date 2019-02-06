@@ -100,7 +100,7 @@ export class TagFilter extends React.Component<any, any> {
                 </Helmet>
                 {onFilter == false &&
                     <button onClick={this.openModal.bind(this)} className='btn  btn-primary'>
-                        <span>Filter</span>
+                        <span>Search</span>
                     </button>
                 }
                 {onFilter == true &&

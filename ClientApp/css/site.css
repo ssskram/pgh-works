@@ -547,7 +547,7 @@ td {
     white-space: pre-wrap !important;
     overflow: visible !important;
     text-overflow: inherit !important;
-    padding: 10px !important;
+    padding: 5px !important;
 }
 
 .rt-thead {
@@ -577,7 +577,7 @@ td {
 }
 
 .ReactTable .-pagination {
-    padding: 15px !important;
+    padding: 5px !important;
     box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1) !important;
     border-top: 0px solid rgba(0, 0, 0, 0.1) !important;
 }

@@ -4,11 +4,12 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { ApplicationState } from '../../../store'
 import * as PhasesStore from '../../../store/phases'
 import Modal from 'react-responsive-modal'
 import PhaseForm from '../../Inputs/Phase/Phase'
-import PhaseCard from '../../Cards/ProjectPhaseCard'
+import ReactTable from "react-table"
 import TL from '../../Timeline/Timeline'
 
 const phaseImg = require('./../../../images/phaseGrey.png')
@@ -48,7 +49,7 @@ export class Phases extends React.Component<any, any> {
             if (phases.length > 0) {
                 this.setState({
                     phases: phases.sort(function (a, b) {
-                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate);
+                        return +new Date(a.expectedStartDate) - +new Date(b.expectedStartDate)
                     })
                 })
             }
@@ -76,6 +77,28 @@ export class Phases extends React.Component<any, any> {
         const {
             canEdit
         } = this.props
+
+        const columns = [{
+            Header: 'Name',
+            accessor: 'phaseName',
+        }, {
+            Header: 'Type',
+            accessor: 'phaseType',
+        }, {
+            Header: 'Exp. Start',
+            accessor: 'expectedStartDate',
+        }, {
+            Header: 'Exp. End',
+            accessor: 'expectedEndDate'
+        }, {
+            Header: 'Status',
+            accessor: 'phaseStatus'
+        }, {
+            Header: '',
+            accessor: 'phaseID',
+            Cell: props => <Link to={"/Phase/id=" + props.value}><button className='btn btn-secondary'><span className='glyphicon glyphicon-arrow-right'></span></button></Link>,
+            maxWidth: 70
+        }]
 
         // timeline configs
         const items = [] as any
@@ -137,11 +160,24 @@ export class Phases extends React.Component<any, any> {
                     </div>
                 }
                 {phases.length > 0 &&
-                    phases.map((phase) => {
-                        return (
-                            <PhaseCard phase={phase} key={phase.phaseID} />
-                        )
-                    })
+                    <ReactTable
+                        data={phases}
+                        columns={columns}
+                        loading={false}
+                        minRows={0}
+                        pageSize={5}
+                        showPagination={true}
+                        showPageSizeOptions={false}
+                        noDataText=''
+                        getTdProps={() => ({
+                            style: {
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                fontSize: '14px'
+                            }
+                        })}
+                    />
                 }
                 <Modal
                     open={modalIsOpen}

@@ -113,7 +113,7 @@ export class Phase extends React.Component<any, any> {
             phaseStatus: phase.phaseStatus,
             percentComplete: phase.percentComplete,
             notes: phase.notes,
-            canEdit: canEdit(project, personnel, user)
+            // canEdit: canEdit(project, personnel, user)
         }, function (this) {
             this.findProject(this.state.projectID)
         })
@@ -192,13 +192,13 @@ export class Phase extends React.Component<any, any> {
                             <div className='btn btn-secondary' onClick={this.returnToProject.bind(this)} title='Return to project'><span style={{ marginRight: '10px' }} className='glyphicon glyphicon-home'></span>{projectName}</div>
                         </h2>
                         <br />
-                        <h5 className='text-center' style={{marginBottom: '-15px'}}><b>Phase</b></h5>
+                        <h5 className='text-center' style={{ marginBottom: '-15px' }}><b>Phase</b></h5>
                         <h1 className='text-center'>{phaseName}</h1>
                         <h4 className='text-center'>{phaseType}</h4>
                         {canEdit == true &&
                             <div className='text-center' style={{ marginTop: '20px' }}>
+                                <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit phase</button></span>
                                 <span><button onClick={this.deletePhase.bind(this)} title='Delete phase' style={btnMargin} type='button' className='btn  btn-danger'>Delete phase</button></span>
-                                <span><button onClick={this.editPhase.bind(this)} title='Update info' style={btnMargin} type='button' className='btn  btn-primary'>Edit</button></span>
                             </div>
                         }
                         <div className='col-md-12'>

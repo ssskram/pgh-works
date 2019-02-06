@@ -153,17 +153,17 @@ export class Milestones extends React.Component<any, any> {
                 Header: '',
                 accessor: 'milestoneID',
                 Cell: props => <button onClick={() => this.completeMilestone(props.value)} className='btn btn-success' title='Mark as complete'><span className='glyphicon glyphicon-ok'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }, {
                 Header: '',
                 accessor: 'milestoneID',
                 Cell: props => <button onClick={() => this.setEdit(props.value)} className='btn btn-warning' title='Edit milestone'><span className='glyphicon glyphicon-info-sign'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }, {
                 Header: '',
                 accessor: 'milestoneID',
                 Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger' title='Delete milestone'><span className='glyphicon glyphicon-remove'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }]
         } else {
             openColumns = [{
@@ -200,7 +200,7 @@ export class Milestones extends React.Component<any, any> {
                 Header: '',
                 accessor: 'milestoneID',
                 Cell: props => <button onClick={() => this.reopenMilestone(props.value)} className='btn btn-success' title='Mark as incomplete'><span className='glyphicon glyphicon-arrow-up'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }]
         } else {
             closedColumns = [{
@@ -263,7 +263,7 @@ export class Milestones extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '18px'
+                                    fontSize: '14px'
                                 }
                             })}
                         />
@@ -289,7 +289,7 @@ export class Milestones extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '16px'
+                                    fontSize: '14px'
                                 }
                             })}
                         />

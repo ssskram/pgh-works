@@ -270,7 +270,7 @@ export class Project extends React.Component<any, any> {
                             <div className='col-md-12'>
                                 <div>
                                     <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
-                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
+                                    <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit project</button>
                                     <button className='btn btn-primary' onClick={this.editLocation.bind(this)} title='Modify location'>Change location</button>
                                 </div>
                             </div>

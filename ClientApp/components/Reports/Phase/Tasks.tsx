@@ -3,7 +3,7 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import ReactTable from "react-table";
+import ReactTable from "react-table"
 import { ApplicationState } from '../../../store'
 import * as TaskStore from '../../../store/tasks'
 import Modal from 'react-responsive-modal'
@@ -153,17 +153,17 @@ export class Tasks extends React.Component<any, any> {
                 Header: '',
                 accessor: 'taskID',
                 Cell: props => <button onClick={() => this.completeTask(props.value)} className='btn btn-success' title='Mark as complete'><span className='glyphicon glyphicon-ok'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }, {
                 Header: '',
                 accessor: 'taskID',
                 Cell: props => <button onClick={() => this.setEdit(props.value)} className='btn btn-warning' title='Edit task'><span className='glyphicon glyphicon-info-sign'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }, {
                 Header: '',
                 accessor: 'taskID',
                 Cell: props => <button onClick={() => this.setDelete(props.value)} className='btn btn-danger' title='Delete task'><span className='glyphicon glyphicon-remove'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }]
         } else {
             openColumns = [{
@@ -200,7 +200,7 @@ export class Tasks extends React.Component<any, any> {
                 Header: '',
                 accessor: 'taskID',
                 Cell: props => <button onClick={() => this.reopenTask(props.value)} className='btn btn-success' title='Mark as incomplete'><span className='glyphicon glyphicon-arrow-up'></span></button>,
-                maxWidth: 100
+                maxWidth: 70
             }]
         } else {
             closedColumns = [{
@@ -263,7 +263,7 @@ export class Tasks extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '18px'
+                                    fontSize: '14px'
                                 }
                             })}
                         />
@@ -289,7 +289,7 @@ export class Tasks extends React.Component<any, any> {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'center',
-                                    fontSize: '16px'
+                                    fontSize: '14px'
                                 }
                             })}
                         />

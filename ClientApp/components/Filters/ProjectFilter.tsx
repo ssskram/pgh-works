@@ -172,7 +172,7 @@ export class ProjectFilter extends React.Component<any, any> {
                 {onFilter == false &&
                     <button onClick={this.openModal.bind(this)} className='btn btn-primary'>
                         <span style={{ padding: '3px' }} className='hidden-md hidden-lg hidden-xl glyphicon glyphicon-search'></span>
-                        <span className='hidden-sm hidden-xs'>Filter</span>
+                        <span className='hidden-sm hidden-xs'>Search</span>
                     </button>
                 }
                 {onFilter == true &&
