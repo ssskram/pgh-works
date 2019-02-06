@@ -291,7 +291,7 @@ export class Project extends React.Component<any, any> {
                         }
                         <div style={marginBottom} className='col-md-12 row'>
                             <ActivityFeed 
-                                projectId={projectID}
+                                projectID={projectID}
                             />
                         </div>
                         <div style={marginBottom} className='col-md-12 row'>

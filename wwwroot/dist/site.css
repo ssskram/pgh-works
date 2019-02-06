@@ -883,8 +883,8 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 .vis-item-content {
-    font-size: 16px;
-    padding: 10px;
+    font-size: 14px;
+    padding: 5px 10px;
 }
 
 .vis-item .vis-selected {
@@ -1002,10 +1002,11 @@ a[href^="https://maps.google.com/maps"] {
     width: 20%;
     background-color: lightgrey;
     border-radius: 0px;
-    margin: 0px;
+    margin: 0px;;
     height: 100% !important;
     line-height: 2.2;
     border-top: 0px solid transparent;
+    border-right: 5px solid #f1f1f1 !important;
 }
 
 .chatButton:hover {

@@ -11,7 +11,6 @@ import Paging from '../Utilities/Paging'
 import { returnPageNumber, returnCurrentItems } from './../../functions/paging'
 import MapThumbnail from '../Maps/MapThumbnail'
 import Spinner from './../Utilities/Spinner'
-import { Mug } from 'react-kawaii'
 
 const emptyNotice = {
     letterSpacing: '2px'

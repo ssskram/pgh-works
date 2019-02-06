@@ -11,6 +11,7 @@ import { animateScroll } from "react-scroll"
 import { subscribeToActivity } from '../../../sockets/activity'
 import { v1 as uuid } from 'uuid'
 import * as moment from 'moment'
+import { SpeechBubble } from 'react-kawaii'
 
 const talkBubble = require('../../../images/talkBubble.png')
 
@@ -23,11 +24,12 @@ const iconStyle = {
 const activityContainer = {
     width: '100%',
     backgroundColor: '#383838',
-    padding: '5px',
+    padding: '25px 5px 5px 5px',
     maxHeight: '400px',
+    minHeight: '150px',
     margin: '0 auto',
     overflowY: 'scroll' as 'scroll',
-    overflowX: 'hidden' as 'hidden'
+    overflowX: 'hidden' as 'hidden',
 }
 
 const otherActivity = {
@@ -111,8 +113,10 @@ export class ActivityFeed extends React.Component<any, any> {
     }
 
     public render() {
-
         const user = this.props.personnel.find(person => person.email == this.props.user)
+        const activity = this.props.activity
+            .filter(a => a.parentID == this.props.projectID)
+            .sort((a, b) => +new Date(a.date) - +new Date(b.date))
         const isEnabled = this.state.activity != ''
 
         // TODO filter activity
@@ -121,46 +125,57 @@ export class ActivityFeed extends React.Component<any, any> {
                 <h2>
                     <img style={iconStyle} src={talkBubble as string} />
                     Activity
-                        </h2>
+                </h2>
                 <hr />
-                <div style={activityContainer} id='scrollTo'>
-                    {user && this.props.activity.sort((a, b) => +new Date(a.date) - +new Date(b.date)).map((item, index) => {
-                        if (user.title != item.user) {
-                            return (
-                                <div key={index} className='col-md-12' style={{ margin: '8px' }}>
-                                    <div className='col-md-12'>
-                                        <div style={otherActivity} className='speech-bubble-right pull-right'>
-                                            <b>{item.activity}</b><br />
-                                            <span style={smallFont}>{item.user}</span><br />
+                <div style={{ paddingLeft: '5px' }}>
+                    <div style={activityContainer} id='scrollTo'>
+                        {user && activity.length > 0 &&
+                            activity.map((item, index) => {
+                                if (user.title != item.user) {
+                                    return (
+                                        <div key={index} className='col-md-12' style={{ margin: '8px' }}>
+                                            <div className='col-md-12'>
+                                                <div style={otherActivity} className='speech-bubble-right pull-right'>
+                                                    <b>{item.activity}</b><br />
+                                                    <span style={smallFont}>{item.user}</span><br />
+                                                </div>
+                                            </div>
+                                            <div className='col-md-12'>
+                                                <div className='pull-right'>
+                                                    <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className='col-md-12'>
-                                        <div className='pull-right'>
-                                            <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
+                                    )
+                                } else {
+                                    return (
+                                        <div key={index} className='col-md-12' style={{ margin: '8px' }}>
+                                            <div className='col-md-12'>
+                                                <div style={myActivity} className='speech-bubble-left pull-left'>
+                                                    <b>{item.activity}</b><br />
+                                                </div>
+                                            </div>
+                                            <div className='col-md-12'>
+                                                <div className='pull-left'>
+                                                    <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            )
-                        } else {
-                            return (
-                                <div key={index} className='col-md-12' style={{ margin: '8px' }}>
-                                    <div className='col-md-12'>
-                                        <div style={myActivity} className='speech-bubble-left pull-left'>
-                                            <b>{item.activity}</b><br />
-                                            <span style={smallFont}>{item.user}</span><br />
-                                        </div>
-                                    </div>
-                                    <div className='col-md-12'>
-                                        <div className='pull-left'>
-                                            <span style={{ fontSize: '.7em', color: '#fff' }}>{item.date}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
+                                    )
+                                }
+                            })
                         }
-                    })}
+                        {user && activity.length == 0 &&
+                            <div className='col-md-12 text-center' style={{ margin: '20px 0px' }}>
+                                <SpeechBubble size={150} mood="sad" color="#d9edf7" />
+                                <div className='alert alert-info' style={{ maxWidth: '300px', margin: '0 auto' }}>
+                                    <span style={{ fontSize: '1.2em' }}><i>No activity here</i></span>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
-                <div>
+                <div style={{ paddingLeft: '5px' }}>
                     <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New mesage'></input>
                     <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
                 </div>
