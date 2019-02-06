@@ -11,7 +11,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Textarea from '../FormElements/textarea'
 import MainApp from './contents/mainApp'
 import MyProjects from './contents/myProjects'
-import AllActivity from './contents/allActivity'
 import AllProjects from './contents/allProjects'
 import AllAssets from './contents/allAssets'
 import Timeline from './contents/timeline'
@@ -136,12 +135,6 @@ export class SiteTour extends React.Component<any, any> {
                     disableBeacon: true
                 },
                 {
-                    target: '.allActivity',
-                    content: <AllActivity />,
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
                     target: '.allAssets',
                     content: <AllAssets />,
                     placement: 'right',
@@ -177,12 +170,6 @@ export class SiteTour extends React.Component<any, any> {
                 {
                     target: '.allProjects',
                     content: <AllProjects />,
-                    placement: 'right',
-                    disableBeacon: true
-                },
-                {
-                    target: '.allActivity',
-                    content: <AllActivity />,
                     placement: 'right',
                     disableBeacon: true
                 },

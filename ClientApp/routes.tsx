@@ -11,14 +11,12 @@ import Timeline from './components/Timeline/MainTimeline'
 import ProjectRecord from './components/Reports/Project/ProjectReport'
 import PhaseRecord from './components/Reports/Phase/PhaseReport'
 import AssetReport from './components/Reports/Asset/AssetReport'
-import AllActivity from './components/Lists/AllActivity'
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
     <Route exact path='/ProjectDefinition' component={ ProjectDefinition } />
     <Route exact path='/AllProjects' component={ AllProjects } />
     <Route exact path='/AllAssets' component={ AllAssets } />
-    <Route exact path='/AllActivity' component={ AllActivity } />
     <Route exact path='/MyProjects' component={ MyProjects } />
     <Route exact path='/Timeline' component={ Timeline } />
     <Route exact path='/Project/id=:id' component={ ProjectRecord } />

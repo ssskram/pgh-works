@@ -112,13 +112,6 @@ export default class Line extends React.Component<any, any> {
                                 <h4><b>{selectedItem.end}</b></h4>
                             </div>
                         }
-                        {selectedItem && selectedItem.itemType == 'activity' &&
-                            <div className='text-center'>
-                                <h3>"{selectedItem.content}"</h3>
-                                <h4>{selectedItem.user}</h4>
-                                <h4>{selectedItem.start}</h4>
-                            </div>
-                        }
                         {selectedItem && selectedItem.itemType == 'phaseExpected' &&
                             <div className='text-center'>
                                 <i>Phase</i>

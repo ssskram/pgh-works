@@ -24,7 +24,6 @@ import { v1 as uuid } from 'uuid'
 import ProjectTimeline from '../../Timeline/ProjectTimeline'
 import Hydrate from './../../Utilities/HydrateStore'
 import canEdit from '../../../functions/canEdit'
-import ActivityInput from '../../Inputs/Activity'
 import assetsInPolygon from '../../../functions/assetsInPolygon'
 import UpdateLocation from '../../Inputs/Project/UpdateLocation'
 import ActivityFeed from './Activity'
@@ -121,13 +120,6 @@ export class Project extends React.Component<any, any> {
         this.setState({
             modalIsOpen: true,
             edit: 'project'
-        })
-    }
-
-    addActivity() {
-        this.setState({
-            modalIsOpen: true,
-            edit: 'activity'
         })
     }
 
@@ -341,12 +333,6 @@ export class Project extends React.Component<any, any> {
                                 </div>
                             </div>
                         </div>
-                    }
-                    {edit == "activity" &&
-                        <ActivityInput
-                            projectID={projectID}
-                            projectName={projectName}
-                            closeModal={this.closeModal.bind(this)} />
                     }
                     {edit == 'location' &&
                         <UpdateLocation

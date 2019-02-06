@@ -25,7 +25,7 @@ export class ProjectTimeline extends React.Component<any, any> {
             start: expectedStartDate,
             end: expectedEndDate,
             itemType: 'projectExpected',
-            style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
+            style: 'background-color: #DAECFB; border-color: #DAECFB;'
         }
         items.push(expected)
 
@@ -36,7 +36,7 @@ export class ProjectTimeline extends React.Component<any, any> {
                 start: actualStartDate,
                 end: actualEndDate,
                 itemType: 'projectActual',
-                style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
+                style: 'background-color: #3473A8; border-color: #3473A8; color: #fffcf5;'
             }
             items.push(actual)
         }
@@ -46,8 +46,8 @@ export class ProjectTimeline extends React.Component<any, any> {
                 <br />
                 <br />
                 <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                    <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
-                    <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Actual</span>
+                    <span style={{ backgroundColor: '#DAECFB', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
+                    <span style={{ backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Actual</span>
                 </div>
                 {this.props.project &&
                     <TL items={items} />

@@ -87,7 +87,7 @@ export class Phases extends React.Component<any, any> {
                 start: phase.expectedStartDate,
                 end: phase.expectedEndDate,
                 itemType: 'phaseExpected',
-                style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
+                style: 'background-color: #DAECFB; border-color: #DAECFB;'
             }
             counter++
             items.push(expected)
@@ -101,7 +101,7 @@ export class Phases extends React.Component<any, any> {
                     start: phase.actualStartDate,
                     end: phase.actualEndDate,
                     itemType: 'phaseActual',
-                    style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
+                    style: 'background-color: #3473A8; border-color: #3473A8; color: #fffcf5;'
                 }
                 counter++
                 items.push(actual)
@@ -128,8 +128,8 @@ export class Phases extends React.Component<any, any> {
                 {phases.length > 0 &&
                     <div className='col-md-12 hidden-xs'>
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                            <span style={{ backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
-                            <span style={{ backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Actual</span>
+                            <span style={{ backgroundColor: '#DAECFB', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
+                            <span style={{ backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Actual</span>
                         </div>
                         <TL items={items} />
                         <br />

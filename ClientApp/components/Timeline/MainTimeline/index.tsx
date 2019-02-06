@@ -9,14 +9,12 @@ import * as Ping from '../../../store/GETS/ping'
 import * as TimelineStore from '../../../store/timeline'
 import * as Projects from '../../../store/projects'
 import * as Phases from '../../../store/phases'
-import * as Activity from '../../../store/activity'
 import * as Subphases from '../../../store/subphases'
 import * as Milestones from '../../../store/milestones'
 import TL from './../Timeline'
 import { Helmet } from "react-helmet"
 import Spinner from '../../Utilities/Spinner'
 import Checkbox from 'rc-checkbox'
-import { Ghost } from 'react-kawaii'
 
 export class Timeline extends React.Component<any, any> {
     constructor(props) {
@@ -25,7 +23,6 @@ export class Timeline extends React.Component<any, any> {
             expected: true,
             actual: false,
             phase: false,
-            activity: false,
             subphase: false,
             milestone: false
         }
@@ -41,7 +38,6 @@ export class Timeline extends React.Component<any, any> {
             timeline,
             projects,
             phases,
-            activity,
             subphases,
             milestones
         } = this.props
@@ -50,7 +46,6 @@ export class Timeline extends React.Component<any, any> {
             expected,
             actual,
             phase,
-            activitee,
             subphase,
             milestone
         } = this.state
@@ -74,8 +69,6 @@ export class Timeline extends React.Component<any, any> {
                 const project = projects.find(project => projectID == project.projectID)
                 // get phases
                 const pha = phases.filter(phase => phase.projectID == project.projectID)
-                // get activity
-                const act = activity.filter(v => v.parentID == project.projectID)
                 // get subphases
                 const subs = subphases.filter(s => s.projectID == project.projectID)
                 // get milestones
@@ -97,7 +90,7 @@ export class Timeline extends React.Component<any, any> {
                         end: project.expectedEndDate,
                         group: project.projectID,
                         itemType: 'projectExpected',
-                        style: 'background-color: #ACD1EF; border-color: #ACD1EF;'
+                        style: 'background-color: #DAECFB; border-color: #DAECFB;'
                     }
                     index++
                     items.push(expected)
@@ -112,7 +105,7 @@ export class Timeline extends React.Component<any, any> {
                             end: project.actualEndDate,
                             group: project.projectID,
                             itemType: 'projectActual',
-                            style: 'background-color: #1561A1; border-color: #1561A1; color: #fffcf5;'
+                            style: 'background-color: #3473A8; border-color: #3473A8; color: #fffcf5;'
                         }
                         index++
                         items.push(actual)
@@ -130,7 +123,7 @@ export class Timeline extends React.Component<any, any> {
                                 end: se.expectedEndDate,
                                 group: se.projectID,
                                 itemType: 'phaseExpected',
-                                style: 'background-color: #ACD1EF; border-color: #FF986C; border-width: 2px;'
+                                style: 'background-color: #DAECFB; border-color: #FF986C; border-width: 2px;'
                             }
                             index++
                             items.push(expected)
@@ -146,28 +139,12 @@ export class Timeline extends React.Component<any, any> {
                                     end: se.actualEndDate,
                                     group: se.projectID,
                                     itemType: 'phaseActual',
-                                    style: 'background-color: #1561A1; border-color: #FF986C; border-width: 2px; color: #fffcf5;'
+                                    style: 'background-color: #3473A8; border-color: #FF986C; border-width: 2px; color: #fffcf5;'
                                 }
                                 index++
                                 items.push(actual)
                             }
                         }
-                    })
-                }
-
-                if (activitee) {
-                    act.forEach(ivity => {
-                        let vy = {
-                            id: index,
-                            content: ivity.activity,
-                            start: ivity.date,
-                            user: ivity.user,
-                            itemType: 'activity',
-                            group: project.projectID,
-                            style: 'max-width: 250px; background-color: #FFD143; border-color: #FFD143; font-style: italic;'
-                        }
-                        index++
-                        items.push(vy)
                     })
                 }
 
@@ -238,10 +215,9 @@ export class Timeline extends React.Component<any, any> {
                 {timeline != '' &&
                     <div>
                         <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                            <span style={{ border: '2px solid #ACD1EF', backgroundColor: '#ACD1EF', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Expected <Checkbox checked={expected} onChange={() => this.setState({ expected: !expected })} /></span>
-                            <span style={{ border: '2px solid #1561A1', backgroundColor: '#1561A1', color: '#fffcf5', padding: '8px' }}>Actual <Checkbox checked={actual} onChange={() => this.setState({ actual: !actual })} /></span>
+                            <span style={{ border: '2px solid #DAECFB', backgroundColor: '#DAECFB', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Expected <Checkbox checked={expected} onChange={() => this.setState({ expected: !expected })} /></span>
+                            <span style={{ border: '2px solid #3473A8', backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px' }}>Actual <Checkbox checked={actual} onChange={() => this.setState({ actual: !actual })} /></span>
                             <span style={{ border: '2px solid #FF986C', padding: '8px' }}>Phase <Checkbox checked={phase} onChange={() => this.setState({ phase: !phase })} /></span>
-                            <span style={{ border: '2px solid #FFD143', backgroundColor: '#FFD143', padding: '8px' }}>Activity <Checkbox checked={activitee} onChange={() => this.setState({ activitee: !activitee })} /></span>
                             <span style={{ border: '2px solid #FFB043', backgroundColor: '#FFB043', padding: '8px' }}>Subphase <Checkbox checked={subphase} onChange={() => this.setState({ subphase: !subphase })} /></span>
                             <span style={{ border: '2px solid #FF7B43', backgroundColor: '#FF7B43', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Milestone <Checkbox checked={milestone} onChange={() => this.setState({ milestone: !milestone })} /></span>
                         </div>
@@ -271,7 +247,6 @@ export default connect(
         ...state.timeline,
         ...state.projects,
         ...state.phases,
-        ...state.activity,
         ...state.subphases,
         ...state.milestones
     }),
@@ -280,7 +255,6 @@ export default connect(
         ...TimelineStore.actionCreators,
         ...Projects.actionCreators,
         ...Phases.actionCreators,
-        ...Activity.actionCreators,
         ...Subphases.actionCreators,
         ...Milestones.actionCreators
     })
