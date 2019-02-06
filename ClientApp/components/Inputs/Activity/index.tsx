@@ -26,7 +26,6 @@ export class ActivityInput extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        // new milestone
         const guid: string = uuid()
         const user = this.props.personnel.find(person => person.email == this.props.user)
         this.setState({

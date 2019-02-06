@@ -280,7 +280,6 @@ export class Project extends React.Component<any, any> {
                                     <a href={'https://cityofpittsburgh.sharepoint.com/sites/pghworks/' + projectName} target='_blank' style={btnMargin} className='btn btn-warning'>Documents</a>
                                     <button onClick={this.editProject.bind(this)} style={btnMargin} title='Update info' type='button' className='btn  btn-primary'>Edit</button>
                                     <button className='btn btn-primary' onClick={this.editLocation.bind(this)} title='Modify location'>Change location</button>
-                                    <button className='btn btn-secondary' onClick={this.addActivity.bind(this)} title='Add activity'><b>Add activity</b></button>
                                 </div>
                             </div>
                         }
@@ -298,7 +297,7 @@ export class Project extends React.Component<any, any> {
                                 <ProjectTimeline project={this.state} />
                             </div>
                         }
-                        <div style={marginBottom}>
+                        <div style={marginBottom} className='col-md-12 row'>
                             <ActivityFeed 
                                 projectId={projectID}
                             />

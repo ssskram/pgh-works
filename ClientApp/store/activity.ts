@@ -49,13 +49,12 @@ export const actionCreators = {
             }
         })
             .then(() => broadcastActivity())
+            .catch(err => console.log(err))
         dispatch({
             type: addActivity, item
         })
     },
     receiveActivity: (activity): AppThunkAction<any> => (dispatch, getState) => {
-        console.log('receiving activity...')
-        console.log(activity)
         dispatch({ type: loadActivity, activity: activity })
     }
 }
