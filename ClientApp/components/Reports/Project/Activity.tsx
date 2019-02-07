@@ -36,7 +36,8 @@ const otherActivity = {
     backgroundColor: '#DAECFB',
     padding: '5px 8px',
     borderRadius: '5px',
-    textAlign: 'right' as 'right'
+    textAlign: 'right' as 'right',
+    fontSize: '1.2em'
 }
 
 const myActivity = {
@@ -44,7 +45,8 @@ const myActivity = {
     color: '#fff',
     padding: '5px 8px',
     borderRadius: '5px',
-    textAlign: 'left' as 'left'
+    textAlign: 'left' as 'left',
+    fontSize: '1.2em'
 }
 
 const smallFont = {
@@ -117,9 +119,8 @@ export class ActivityFeed extends React.Component<any, any> {
         const activity = this.props.activity
             .filter(a => a.parentID == this.props.projectID)
             .sort((a, b) => +new Date(a.date) - +new Date(b.date))
-        const isEnabled = this.state.activity != ''
+        const isEnabled = this.state.activity != '' && this.props.canEdit
 
-        // TODO filter activity
         return (
             <div className='row'>
                 <h2>
@@ -136,13 +137,13 @@ export class ActivityFeed extends React.Component<any, any> {
                                         <div key={index} className='col-md-12' style={{ margin: '8px' }}>
                                             <div className='col-md-12'>
                                                 <div style={otherActivity} className='speech-bubble-right pull-right'>
-                                                    <b>{item.activity}</b><br />
-                                                    <span style={smallFont}>{item.user}</span><br />
+                                                    <span style={{ margin: '10px' }}>{item.activity}</span><br />
+                                                    <span style={smallFont}><span style={{ fontSize: '.9em' }} className='glyphicon glyphicon-user nav-glyphicon'></span>{item.user}</span><br />
                                                 </div>
                                             </div>
                                             <div className='col-md-12'>
                                                 <div className='pull-right'>
-                                                    <span style={{ fontSize: '.75em', color: '#fff' }}>{item.date}</span>
+                                                    <span style={{ fontSize: '.85em', color: '#fff' }}>{item.date}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,12 +153,12 @@ export class ActivityFeed extends React.Component<any, any> {
                                         <div key={index} className='col-md-12' style={{ margin: '8px' }}>
                                             <div className='col-md-12'>
                                                 <div style={myActivity} className='speech-bubble-left pull-left'>
-                                                    <b>{item.activity}</b><br />
+                                                    <span style={{ margin: '10px' }}>{item.activity}</span><br />
                                                 </div>
                                             </div>
                                             <div className='col-md-12'>
                                                 <div className='pull-left'>
-                                                    <span style={{ fontSize: '.75em', color: '#fff' }}>{item.date}</span>
+                                                    <span style={{ fontSize: '.85em', color: '#fff' }}>{item.date}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,12 +176,10 @@ export class ActivityFeed extends React.Component<any, any> {
                         }
                     </div>
                 </div>
-                {this.props.canEdit &&
-                    <div style={{ paddingLeft: '5px' }}>
-                        <input value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder='New message'></input>
-                        <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
-                    </div>
-                }
+                <div style={{ paddingLeft: '5px' }}>
+                    <input disabled={!this.props.canEdit} value={this.state.activity} onKeyDown={this.keyPress.bind(this)} onChange={e => this.setState({ activity: e.target.value })} className='chatInput' placeholder={this.props.canEdit ? 'New message' : 'You must be a project member to contribute'}></input>
+                    <button disabled={!isEnabled} className='chatButton btn' onClick={this.post.bind(this)}>Submit</button>
+                </div>
             </div>
         )
     }

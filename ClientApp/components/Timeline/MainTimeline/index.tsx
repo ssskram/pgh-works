@@ -157,7 +157,7 @@ export class Timeline extends React.Component<any, any> {
                             end: sub.endDate,
                             itemType: 'subphase',
                             group: project.projectID,
-                            style: 'background-color: #FFB043; border-color: #FFB043;'
+                            style: 'background-color: #FFF3E1; border-color: #FFF3E1;'
                         }
                         index++
                         items.push(sb)
@@ -176,7 +176,7 @@ export class Timeline extends React.Component<any, any> {
                                     start: m.dueDate,
                                     itemType: 'milestoneOpen',
                                     group: project.projectID,
-                                    style: 'max-width: 250px; background-color: #FF7B43; border-color: #FF7B43;'
+                                    style: 'max-width: 250px; background-color: #ECE0FB; border-color: #ECE0FB;'
                                 }
                                 index++
                             }
@@ -187,7 +187,7 @@ export class Timeline extends React.Component<any, any> {
                                 start: m.dateCompleted,
                                 itemType: 'milestoneCompleted',
                                 group: project.projectID,
-                                style: 'max-width: 250px; background-color: #FF7B43; border-color: #FF7B43;'
+                                style: 'max-width: 250px; background-color: #ECE0FB; border-color: #ECE0FB;'
                             }
                             index++
                         }
@@ -218,8 +218,8 @@ export class Timeline extends React.Component<any, any> {
                             <span style={{ border: '2px solid #DAECFB', backgroundColor: '#DAECFB', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Expected <Checkbox checked={expected} onChange={() => this.setState({ expected: !expected })} /></span>
                             <span style={{ border: '2px solid #3473A8', backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px' }}>Actual <Checkbox checked={actual} onChange={() => this.setState({ actual: !actual })} /></span>
                             <span style={{ border: '2px solid #FF986C', padding: '8px' }}>Phase <Checkbox checked={phase} onChange={() => this.setState({ phase: !phase })} /></span>
-                            <span style={{ border: '2px solid #FFB043', backgroundColor: '#FFB043', padding: '8px' }}>Subphase <Checkbox checked={subphase} onChange={() => this.setState({ subphase: !subphase })} /></span>
-                            <span style={{ border: '2px solid #FF7B43', backgroundColor: '#FF7B43', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Milestone <Checkbox checked={milestone} onChange={() => this.setState({ milestone: !milestone })} /></span>
+                            <span style={{ border: '2px solid #FFF3E1', backgroundColor: '#FFF3E1', padding: '8px' }}>Subphase <Checkbox checked={subphase} onChange={() => this.setState({ subphase: !subphase })} /></span>
+                            <span style={{ border: '2px solid #ECE0FB', backgroundColor: '#ECE0FB', padding: '8px', borderRadius: '0px 5px 5px 0px' }}>Milestone <Checkbox checked={milestone} onChange={() => this.setState({ milestone: !milestone })} /></span>
                         </div>
                         <TL groups={groups} items={items} />
                         <br />

@@ -48,7 +48,7 @@ export default class Subphase extends React.Component<any, any> {
 
         let percentRemaining = 100 - subphase.percentComplete - 1
         const progressBackground = {
-            background: 'linear-gradient(to right, #DEF5DE ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
+            background: 'linear-gradient(to right, #DAECFB ' + subphase.percentComplete + '%, #fff 1%, #fff ' + percentRemaining + '%)'
         }
 
         return (
@@ -60,11 +60,11 @@ export default class Subphase extends React.Component<any, any> {
                     <div className="panel-body text-center">
                         <div className='col-md-12'>
                             <h3><b>{subphase.subphaseName}</b></h3>
+                            <h4><i>{subphase.subphaseStatus}</i></h4>
+                            <h4>{subphase.startDate} - {subphase.endDate}</h4>
                             {subphase.subphaseDescription != '' &&
-                                <h4>"{subphase.subphaseDescription}"</h4>
+                                <h5>"{subphase.subphaseDescription}"</h5>
                             }
-                            <h5>{subphase.startDate} - {subphase.endDate}</h5>
-                            <h5><i>{subphase.subphaseStatus}</i></h5>
                             <button onClick={this.openModal.bind(this)} className='btn'><span className='glyphicon glyphicon-info-sign'></span></button>
                         </div>
                     </div>

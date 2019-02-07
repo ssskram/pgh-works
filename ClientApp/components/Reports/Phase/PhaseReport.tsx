@@ -187,12 +187,12 @@ export class Phase extends React.Component<any, any> {
                 }
                 {spinner == false &&
                     <div>
-                        <h2 style={{ letterSpacing: '2px' }}>
-                            <h4 style={{ marginLeft: '5px' }}>Project</h4>
+                        <div style={{ letterSpacing: '2px' }}>
+                            <div style={{ marginLeft: '5px' }}>Project</div>
                             <div className='btn btn-secondary' onClick={this.returnToProject.bind(this)} title='Return to project'><span style={{ marginRight: '10px' }} className='glyphicon glyphicon-home'></span>{projectName}</div>
-                        </h2>
+                        </div>
                         <br />
-                        <h5 className='text-center' style={{ marginBottom: '-15px' }}><b>Phase</b></h5>
+                        <h5 className='text-center' style={{ marginBottom: '-15px' }}>Phase</h5>
                         <h1 className='text-center'>{phaseName}</h1>
                         <h4 className='text-center'>{phaseType}</h4>
                         {canEdit == true &&

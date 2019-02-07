@@ -547,16 +547,11 @@ td {
     white-space: pre-wrap !important;
     overflow: visible !important;
     text-overflow: inherit !important;
-    padding: 5px !important;
+    padding: 8px !important;
 }
 
 .rt-thead {
-    padding: 5px !important;
-    font-weight: 600;
-}
-
-.rt-resizable-header-content {
-    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .table-container {
@@ -996,15 +991,16 @@ a[href^="https://maps.google.com/maps"] {
     padding: 10px 15px !important;
     font-size: 16px;
     border-top: 0px solid transparent;
+    border-width: 0px;
 }
 
 .chatButton {
     width: 20%;
     background-color: lightgrey;
     border-radius: 0px;
-    margin: 0px;;
+    margin: 0px;
     height: 100% !important;
-    line-height: 2.2;
+    line-height: 2.0;
     border-top: 0px solid transparent;
     border-right: 5px solid #f1f1f1 !important;
 }

@@ -8,7 +8,6 @@ import Modal from 'react-responsive-modal'
 import isPersonnel from '../functions/userIsPersonnel'
 const workerImg = require('./../images/worker.png')
 const projectsImg = require('./../images/projects.png')
-const activityImg = require('./../images/activityLight.png')
 const assetsImg = require('./../images/assets.png')
 const timelineImg = require('./../images/timeline.png')
 const addImg = require('./../images/add.png')

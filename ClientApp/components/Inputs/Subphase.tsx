@@ -277,25 +277,25 @@ export class SubphaseInput extends React.Component<any, any> {
                         <h3>{subphaseName}</h3>
                         {subphaseDescription != '' &&
                             <div>
-                                <h4><b>Description</b></h4>
+                                <h5><b>Description</b></h5>
                                 <h4>{subphaseDescription}</h4>
                             </div>
                         }
-                        <h4><b>Status</b></h4>
+                        <h5><b>Status</b></h5>
                         <h4>{subphaseStatus}</h4>
-                        <h4><b>Start date</b></h4>
+                        <h5><b>Start date</b></h5>
                         <h4>{startDate}</h4>
-                        <h4><b>End date</b></h4>
+                        <h5><b>End date</b></h5>
                         <h4>{endDate}</h4>
                         {percentComplete != '' && percentComplete != 0 &&
                             <div>
-                                <h4><b>Percent complete</b></h4>
+                                <h5><b>Percent complete</b></h5>
                                 <h4>{percentComplete}%</h4>
                             </div>
                         }
                         {notes != '' &&
                             <div>
-                                <h4><b>Notes</b></h4>
+                                <h5><b>Notes</b></h5>
                                 <h4>{notes}</h4>
                             </div>
                         }

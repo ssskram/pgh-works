@@ -81,6 +81,7 @@ export class Phases extends React.Component<any, any> {
         const columns = [{
             Header: 'Name',
             accessor: 'phaseName',
+            Cell: props => <b>{props.value}</b>
         }, {
             Header: 'Type',
             accessor: 'phaseType',

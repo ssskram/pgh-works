@@ -55,7 +55,7 @@ export class PhaseTimeline extends React.Component<any, any> {
                 start: s.startDate,
                 end: s.endDate,
                 itemType: 'subphase',
-                style: 'background-color: #FFB043; border-color: #FFB043;'
+                style: 'background-color: #FFF3E1; border-color: #FFF3E1;'
             }
             items.push(sb)
             counter++
@@ -71,7 +71,7 @@ export class PhaseTimeline extends React.Component<any, any> {
                         content: m.milestoneName,
                         start: m.dueDate,
                         itemType: 'milestoneOpen',
-                        style: 'max-width: 250px; background-color: #FF7B43; border-color: #FF7B43;'
+                        style: 'max-width: 250px; background-color: #ECE0FB; border-color: #ECE0FB;'
                     }
                     counter++
                 }
@@ -81,7 +81,7 @@ export class PhaseTimeline extends React.Component<any, any> {
                     content: m.milestoneName,
                     start: m.dateCompleted,
                     itemType: 'milestoneCompleted',
-                    style: 'max-width: 250px; background-color: #FF7B43; border-color: #FF7B43;'
+                    style: 'max-width: 250px; background-color: #ECE0FB; border-color: #ECE0FB;'
                 }
                 counter++
             }
@@ -93,10 +93,10 @@ export class PhaseTimeline extends React.Component<any, any> {
                 <br />
                 <br />
                 <div className='col-md-12' style={{ marginBottom: '15px', fontSize: '14px' }}>
-                    <span style={{ backgroundColor: '#DAECFB', padding: '8px', borderRadius: '5px 0px 0px 5px' }}>Expected</span>
-                    <span style={{ backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px' }}>Actual</span>
-                    <span style={{ backgroundColor: '#FFB043', padding: '8px' }}>Subphase</span>
-                    <span style={{ backgroundColor: '#FF7B43', padding: '8px', borderRadius: '0px 5px 5px 0px'}}>Milestone</span>
+                    <span style={{ backgroundColor: '#DAECFB', padding: '8px', borderRadius: '5px 0px 0px 5px', borderTop: '.5px solid #383838', borderBottom: '.5px solid #383838', borderLeft:  '.5px solid #383838'}}>Expected</span>
+                    <span style={{ backgroundColor: '#3473A8', color: '#fffcf5', padding: '8px', borderTop: '.5px solid #383838', borderBottom: '.5px solid #383838' }}>Actual</span>
+                    <span style={{ backgroundColor: '#FFF3E1', padding: '8px', borderTop: '.5px solid #383838', borderBottom: '.5px solid #383838' }}>Subphase</span>
+                    <span style={{ backgroundColor: '#ECE0FB', padding: '8px', borderRadius: '0px 5px 5px 0px', borderTop: '.5px solid #383838', borderBottom: '.5px solid #383838', borderRight: '.5px solid #383838' }}>Milestone</span>
                 </div>
                 {this.props.phase &&
                     <TL items={items} />
