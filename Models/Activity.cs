@@ -1,5 +1,7 @@
-namespace pghworks.Models {
-    public class Activities {
+namespace pghworks.Models
+{
+    public class Activities
+    {
         public string cartegraphID { get; set; }
         public string activityID { get; set; }
         public string user { get; set; }
@@ -9,7 +11,8 @@ namespace pghworks.Models {
         public string parentType { get; set; }
     }
 
-    public class CgActivity {
+    public class CgActivity
+    {
         public string Oid { get; set; }
         public string activityIDField { get; set; }
         public string userIDField { get; set; }

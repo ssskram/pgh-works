@@ -1,5 +1,7 @@
-namespace pghworks.Models {
-    public class Tag {
+namespace pghworks.Models
+{
+    public class Tag
+    {
         public string cartegraphID { get; set; }
         public string parentID { get; set; }
         public string parentName { get; set; }
@@ -11,7 +13,8 @@ namespace pghworks.Models {
         public string taggedAssetOID { get; set; }
     }
 
-    public class CgTag {
+    public class CgTag
+    {
         public string parentIDField { get; set; }
         public string parentNameField { get; set; }
         public string parentTypeField { get; set; }

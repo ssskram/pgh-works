@@ -1,5 +1,7 @@
-namespace pghworks.Models {
-    public class Milestone {
+namespace pghworks.Models
+{
+    public class Milestone
+    {
         public string cartegraphID { get; set; }
         public string dateCompleted { get; set; }
         public string dueDate { get; set; }
@@ -11,7 +13,8 @@ namespace pghworks.Models {
         public string notes { get; set; }
     }
 
-    public class CgMilestone {
+    public class CgMilestone
+    {
         public string Oid { get; set; }
         public string subphaseDateCompletedField { get; set; }
         public string subphaseDueDateField { get; set; }

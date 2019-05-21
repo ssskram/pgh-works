@@ -1,5 +1,7 @@
-namespace pghworks.Models {
-    public class Subphase {
+namespace pghworks.Models
+{
+    public class Subphase
+    {
         public string cartegraphID { get; set; }
         public string endDate { get; set; }
         public string notes { get; set; }
@@ -13,7 +15,8 @@ namespace pghworks.Models {
         public string subphaseStatus { get; set; }
     }
 
-    public class CgSubphase {
+    public class CgSubphase
+    {
         public string Oid { get; set; }
         public string subphaseStartDateField { get; set; }
         public string subphaseEndDateField { get; set; }

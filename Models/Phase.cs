@@ -1,5 +1,7 @@
-namespace pghworks.Models {
-    public class Phase {
+namespace pghworks.Models
+{
+    public class Phase
+    {
         public string actualEndDate { get; set; }
         public string actualStartDate { get; set; }
         public string cartegraphID { get; set; }
@@ -13,8 +15,9 @@ namespace pghworks.Models {
         public string phaseStatus { get; set; }
         public string projectID { get; set; }
     }
-    
-    public class CgPhase {
+
+    public class CgPhase
+    {
         public string phaseActualEndDateField { get; set; }
         public string phaseActualStartDateField { get; set; }
         public string Oid { get; set; }
