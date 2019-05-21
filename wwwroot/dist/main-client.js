@@ -5787,18 +5787,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 
-var loadTags = 'loadTags';
-var addTag = 'addTags';
-var deleteTag = 'deleteTags';
+var loadTags = "loadTags";
+var addTag = "addTags";
+var deleteTag = "deleteTags";
 var unloadedState = {
     tags: []
 };
 var actionCreators = {
     loadTags: function () { return function (dispatch, getState) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/loadTags', {
-            credentials: 'same-origin',
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])("/api/tags/loadTags", {
+            credentials: "same-origin",
             headers: {
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+                Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
             }
         })
             .then(function (response) { return response.json(); })
@@ -5811,20 +5811,21 @@ var actionCreators = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = JSON.stringify(item).replace(/'/g, '');
-                    return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/addTag', {
-                            method: 'POST',
+                    data = JSON.stringify(item).replace(/'/g, "");
+                    return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])("/api/tags/addTag", {
+                            method: "POST",
                             body: data,
-                            credentials: 'same-origin',
+                            credentials: "same-origin",
                             headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
+                                Accept: "application/json",
+                                "Content-Type": "application/json"
                             }
                         })];
                 case 1:
                     _a.sent();
                     dispatch({
-                        type: addTag, item: item
+                        type: addTag,
+                        item: item
                     });
                     return [2 /*return*/];
             }
@@ -5835,20 +5836,21 @@ var actionCreators = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = JSON.stringify(item).replace(/'/g, '');
-                    return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])('/api/tags/deleteTag', {
-                            method: 'DELETE',
+                    data = JSON.stringify(item).replace(/'/g, "");
+                    return [4 /*yield*/, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_domain_task__["fetch"])("/api/tags/deleteTag", {
+                            method: "DELETE",
                             body: data,
-                            credentials: 'same-origin',
+                            credentials: "same-origin",
                             headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
+                                Accept: "application/json",
+                                "Content-Type": "application/json"
                             }
                         })];
                 case 1:
                     _a.sent();
                     dispatch({
-                        type: deleteTag, item: item
+                        type: deleteTag,
+                        item: item
                     });
                     return [2 /*return*/];
             }

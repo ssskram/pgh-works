@@ -10,7 +10,7 @@ body {
     background-color: #FAF7F2;
     font-family: 'Raleway', sans-serif;
     letter-spacing: .5px;
-    padding: 70px 0px;
+    padding: 50px 0px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -55,7 +55,7 @@ hr {
 
 @media (max-width: 767px) {
     body {
-        padding: 115px 0px;
+        padding: 75px 0px;
     }
     .main-nav {
         z-index: 100000;
