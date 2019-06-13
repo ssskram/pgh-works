@@ -1,60 +1,64 @@
-import { fetch } from 'domain-task'
-import { Action, Reducer } from 'redux'
-import { AppThunkAction } from './../'
+import { fetch } from "domain-task";
+import { Action, Reducer } from "redux";
+import { AppThunkAction } from "./../";
 
-const loadAssets = 'loadAssets'
+const loadAssets = "loadAssets";
 
 const unloadedState: AssetState = {
-    assets: undefined
-}
+  assets: undefined
+};
 
 export interface AssetState {
-    assets: AssetItem[] | undefined
+  assets: AssetItem[] | undefined;
 }
 
 export interface AssetItem {
-    assetOID: string
-    assetName: string
-    assetType: string
-    neighborhood: string
-    street: string
-    misc: string
-    shape: Coords[]
+  assetOID: string;
+  assetName: string;
+  assetType: string;
+  neighborhood: string;
+  street: string;
+  misc: string;
+  shape: Coords[];
 }
 
 export interface Coords {
-    Points: Points[]
+  Points: Points[];
 }
 
 export interface Points {
-    lat: number
-    lng: number
+  lat: number;
+  lng: number;
 }
 
 export const actionCreators = {
-    loadTaggableAssets: (): AppThunkAction<any> => (dispatch, getState) => {
-        fetch('/api/assets/loadTaggableAssets', {
-            credentials: 'same-origin',
-            headers: {
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                dispatch({ type: loadAssets, assets: data });
-            });
-    }
-}
+  loadTaggableAssets: (): AppThunkAction<any> => (dispatch, getState) => {
+    fetch("/api/assets/loadTaggableAssets", {
+      credentials: "same-origin",
+      headers: {
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        dispatch({ type: loadAssets, assets: data });
+      });
+  }
+};
 
-export const reducer: Reducer<AssetState> = (state: AssetState, incomingAction: Action) =>  {
-    const action = incomingAction as any;
-    switch (action.type) {
-        case loadAssets:
-            return {
-                ...state,
-                assets: action.assets
-            }
-    }
+export const reducer: Reducer<AssetState> = (
+  state: AssetState,
+  incomingAction: Action
+) => {
+  const action = incomingAction as any;
+  switch (action.type) {
+    case loadAssets:
+      return {
+        ...state,
+        assets: action.assets
+      };
+  }
 
-    return state || unloadedState;
-}
+  return state || unloadedState;
+};

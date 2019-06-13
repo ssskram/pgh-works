@@ -1,32 +1,36 @@
-import * as React from 'react'
+import * as React from "react";
 
 export default class LoadingImage extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            imagePath: '../images/image-placeholder.png',
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      imagePath: "../images/image-placeholder.png"
+    };
+  }
 
-    onLoad() {
-        this.setState({
-            imagePath: this.props.src
-        })
-    }
+  onLoad() {
+    this.setState({
+      imagePath: this.props.src
+    });
+  }
 
-    public render() {
-        const { imagePath } = this.state;
+  public render() {
+    const { imagePath } = this.state;
 
-        return (
-            <div>
-                <img style={this.props.style} className="img-responsive" src={imagePath} />
+    return (
+      <div>
+        <img
+          style={this.props.style}
+          className="img-responsive"
+          src={imagePath}
+        />
 
-                <div className="hidden">
-                    <img src={this.props.src} onLoad={this.onLoad.bind(this)} />
-                </div>
-            </div>
-        )
-    }
+        <div className="hidden">
+          <img src={this.props.src} onLoad={this.onLoad.bind(this)} />
+        </div>
+      </div>
+    );
+  }
 }
 
 // props https://hackernoon.com/improve-your-ux-by-dynamically-rendering-images-via-react-onload-393fd4d0d946
