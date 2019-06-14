@@ -18,7 +18,7 @@ PGH Works also interfaces with Sharepoint for a collection of users with edit pr
 
 If you're looking at this you've probably noticed that it's the only web application I developed (and left) for the City of Pittsburgh that has a .net backend.  There are a few reasons for this: first, it's feckin fast.  PGH Works persists a ton of data from Cartegraph in state, and multiple threads just makes start up a lot faster.  Plus, I didn't want to bog down the Cartegraph [proxy service](https://github.com/CityofPittsburgh/cart-api) with all of the requests, thereby affecting performance for other applications interfacing with Cartegraph.
 
-Second, in virtue of the ample mapping that occurs between Cartegraph and PGH Works, there are a couple of intensive methods that would serve as computational bottle necks in a single threaded environment.  For example, when importing the parks assets into state, I need to redraw each park as a single shape, as opposed to a collection of adjacent, free standing shapes.  I wouldn't want to do this on the fly with javascript:
+Second, in virtue of the ample mapping that occurs between Cartegraph and PGH Works, there are a couple of intensive methods that would serve as computational bottle necks in a single threaded environment.  For example, when importing the parks assets into state, each park needs redrawn as a single shape, as opposed to a collection of adjacent, free standing shapes.  I wouldn't want to do this on the fly with javascript:
 
 ```csharp
 public static List<Points> GetConvexHull(List<Points> points)
